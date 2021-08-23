@@ -1,0 +1,60 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "globals": {
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "promise"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-var": 1,
+    "prefer-const": 1,
+    "no-const-assign": 1,
+    "eqeqeq": 1,
+    "space-in-parens": 1,
+    "space-before-blocks": 1,
+    "space-infix-ops": 1,
+    "space-unary-ops": 1,
+    "keyword-spacing": 1,
+    "arrow-parens": [1, "as-needed"],
+    "eol-last": "error",
+    "global-require": 0,
+    "max-len": 0,
+    "new-cap": 0,
+    "no-console": 0,
+    "no-debugger": 0,
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-nested-ternary": 0,
+    "no-underscore-dangle": 0,
+    "no-unneeded-ternary": 2,
+    "no-unused-expressions": 0,
+    "no-use-before-define": 0,
+    "object-curly-spacing": ["error", "always"],
+    "quotes": [2, "single"],
+    "padded-blocks": [2, "never"],
+    "react/prop-types": 2,
+    "react/jsx-indent": [1, 2],
+    "react/jsx-no-undef": 1,
+    "react/jsx-space-before-closing": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/sort-prop-types": 1,
+    "react/sort-comp": 0,
+    "react/jsx-boolean-value": 0,
+    "semi": [2, "never"],
+    "strict": 0,
+    "no-return-assign": 0,
+    "array-callback-return": 0
+  }
+}

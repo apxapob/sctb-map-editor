@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
 import './App.css'
 
-const App = ():ReactElement => {
+const GameCanvas = ():ReactElement => {
   return (
-    <div className="App">
+    <div >
       
     </div>
   )
 }
 
-export default App
+export default GameCanvas
