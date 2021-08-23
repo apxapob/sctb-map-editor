@@ -1,11 +1,10 @@
 import React, { ReactElement } from 'react'
-import './App.css'
 
 const GameCanvas = ():ReactElement => {
   return (
-    <div >
+    <canvas id="game_canvas">
       
-    </div>
+    </canvas>
   )
 }
 
