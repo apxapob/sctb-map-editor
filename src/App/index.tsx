@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
+import GameCanvas from '../components/game/GameCanvas'
 import './App.css'
-import GameCanvas from './components/GameCanvas'
 
 const App = ():ReactElement => {
   return (
