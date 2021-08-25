@@ -1,29 +1,16 @@
-import React, { ReactElement, useEffect } from 'react'
-import { GameMessage } from '../../Types/types'
+import React, { ReactElement } from 'react'
 import './GameCanvas.css'
+import { observer } from 'mobx-react-lite'
+import MapState from '../../state/MapState'
 
-const gameCanvasId = 'game_canvas'
-
-const SendMsgToGame = (msg:GameMessage) => {
-  const gameIframe = document.getElementById(gameCanvasId) as HTMLIFrameElement
-    
-  console.log('@@@ send msg to game')
-  gameIframe?.contentWindow?.postMessage(JSON.stringify(msg), '*')
-}
+export const GameCanvasId = 'game_canvas'
 
 const GameCanvas = ():ReactElement => {
-  useEffect(() => {
-    window.onmessage = event => {
-      console.log('@@@ Message received:', event.data)
-      SendMsgToGame({
-        method: 'init_map_editor'
-      })
-    }
-  })
+  console.log('@@@ mapState', MapState.size)
 
   return (
-    <iframe id={gameCanvasId} className="Game-canvas" src="/game/index.html" />
+    <iframe id={GameCanvasId} className="Game-canvas" src="/game/index.html" />
   )
 }
 
-export default GameCanvas
+export default observer(GameCanvas)
