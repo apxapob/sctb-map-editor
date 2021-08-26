@@ -1,0 +1,13 @@
+.tools-container {
+  pointer-events: all;
+  background-color: white;
+  color: black;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tools-container:hover { 
+  background-color: red;
+}
