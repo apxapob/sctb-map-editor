@@ -1,6 +1,6 @@
 import { action, autorun } from 'mobx'
-import { GameMessage } from '../../types/types'
-import { PressedKeys } from '../MapState'
+import { GameMessage, ToolType } from '../../types/types'
+import { PressedKeys, ToolState } from '../MapState'
 import SendMsgToGame from './SendMsgToGame'
 
 const OnGameMessage = (msg:GameMessage) => {
@@ -21,5 +21,11 @@ const eventHandlers: { [methodName: string]: (msg:GameMessage) => void } = {
     autorun(
       () => SendMsgToGame({ method: 'keys_pressed', data: PressedKeys })
     )
+  },
+  tool_updated: (msg:GameMessage) => {
+    const data = msg.data as {[index: string]: number | string | boolean}
+    ToolState.radius = data.radius as number
+    ToolState.tool = data.tool as ToolType
+    ToolState.toolUnit = data.toolUnit as string
   }
 }
