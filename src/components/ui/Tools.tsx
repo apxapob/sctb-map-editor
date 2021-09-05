@@ -1,14 +1,13 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import ChangeTool from '../../state/actions/ChangeTool'
+import SetUnitSelectorOpen from '../../state/actions/SetUnitSelectorOpen'
 import { ToolState } from '../../state/ToolState'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 
 const Tools = ():ReactElement => {
-  const { radius, tool, toolUnit } = ToolState
-
-  const [ unitSelection, setUnitSelection ] = useState(false)
+  const { radius, tool, toolUnit, isUnitSelectionOpened } = ToolState
 
   return (
     <div className="tools-container">
@@ -67,14 +66,14 @@ const Tools = ():ReactElement => {
               padding: '2px 6px',
               borderRadius: '6px 0 0 6px'
             }}>{toolUnit}</span>
-          <span className={`${unitSelection ? 'selectedBtn' : 'btn'}`} 
-            onClick={()=>setUnitSelection(!unitSelection)}
+          <span className={`${isUnitSelectionOpened ? 'selectedBtn' : 'btn'}`} 
+            onClick={()=>SetUnitSelectorOpen(!isUnitSelectionOpened)}
             style={{
               padding: '0 6px',
               borderLeftWidth: 0,
               borderRadius: '0 6px 6px 0'
             }}>&rarr;</span>
-          {unitSelection &&
+          {isUnitSelectionOpened &&
             <span style={{
               position:'absolute',
               zIndex: 2,
@@ -90,7 +89,7 @@ const Tools = ():ReactElement => {
           }
         </div>
       </div>
-      {unitSelection &&
+      {isUnitSelectionOpened &&
         <UnitTypeSelector />
       }
     </div>

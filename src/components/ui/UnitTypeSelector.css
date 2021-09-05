@@ -9,3 +9,19 @@
   border: solid 1px black;
   background-color: white;
 }
+
+.labelBtn {
+  cursor: pointer;
+}
+.labelBtn:hover {
+  background-color: #eee;
+}
+.labelBtn:active {
+  background-color: #ddd;
+}
+
+.selectedLabelBtn {
+  user-select: none;
+  cursor: pointer;
+  background-color: #ddd;
+}
