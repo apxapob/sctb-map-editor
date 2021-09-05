@@ -1,7 +1,7 @@
 import OnGameMessage from './OnGameMessage'
 import { GameMessage } from '../../types/types'
 import { action } from 'mobx'
-import { PressedKeys } from '../MapState'
+import { PressedKeys } from '../PressedKeys'
 
 export const Initialize = ():void => {
   window.onmessage = event => {

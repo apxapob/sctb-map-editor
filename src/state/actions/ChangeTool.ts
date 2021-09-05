@@ -1,6 +1,6 @@
 import { ToolStateChangeType } from '../../types/types'
 import { action } from 'mobx'
-import { ToolState } from '../MapState'
+import { ToolState } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 
 const ChangeTool = (newTool:ToolStateChangeType):void => {

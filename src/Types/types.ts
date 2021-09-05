@@ -1,7 +1,6 @@
 export type GameMessage = {
   method: string;
-  data?: number | string | boolean | string[] |
-    {[index: string]: number | string | boolean};
+  data?: number | string | boolean | string[] | Record<string, unknown>;
 };
 
 export type ToolType = 
@@ -14,14 +13,30 @@ export type ToolType =
   'DeleteUnits' |
   'SelectUnits'
 
-export type ToolStateType ={
+export type ToolStateType = {
   radius: number;
   tool: ToolType;
   toolUnit: string;
 }
 
-export type ToolStateChangeType ={
+export type ToolStateChangeType = {
   radius?: number;
   tool?: ToolType;
   toolUnit?: string;
+}
+
+export type UnitStatsType = {
+  attack: number;
+  buffs: string[];
+  detector: boolean;
+  flying: boolean;
+  hp: number;
+  orders: string[];
+  range: number;
+  speed: number;
+  unit_type: string;
+}
+
+export type MapSettingsType = {
+  units: UnitStatsType[];
 }
