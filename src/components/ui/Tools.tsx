@@ -72,7 +72,7 @@ const Tools = ():ReactElement => {
               padding: '0 6px',
               borderLeftWidth: 0,
               borderRadius: '0 6px 6px 0'
-            }}>&rarr;</span>
+            }}>→</span>
           {isUnitSelectionOpened &&
             <span style={{
               position:'absolute',
