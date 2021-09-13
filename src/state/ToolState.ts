@@ -5,5 +5,6 @@ export const ToolState:ToolStateType = observable({
   radius: 1,
   tool: 'LandUp',
   toolUnit: 'soldier',
-  isUnitSelectionOpened: false
+  isUnitSelectionOpened: false,
+  activePanel: null
 })

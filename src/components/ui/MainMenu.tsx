@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement, useState } from 'react'
+import OpenPanel from '../../state/actions/OpenPanel'
 import RotateMap from '../../state/actions/RotateMap'
 import './MainMenu.css'
 
@@ -13,7 +14,7 @@ const MainMenu = ():ReactElement => {
       </span>
       {menuOpen &&
         <React.Fragment>
-          <span className="menu-item" >
+          <span className="menu-item" onClick={() => OpenPanel('NewMap')} >
             <span>New map</span>
             <span>Ctrl+N</span>
           </span>

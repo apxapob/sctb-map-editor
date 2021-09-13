@@ -8,5 +8,5 @@ export const Initialize = ():void => {
     OnGameMessage(JSON.parse(event.data) as GameMessage)
   }
   window.onkeyup = action(e => { delete PressedKeys[e.code] })
-  window.onkeydown = action(e => { PressedKeys[e.code] = 'pressed' })
+  window.onkeydown = action(e => { PressedKeys[e.code] = 'pressed' })//TODO: hot keys here
 }

@@ -3,6 +3,10 @@ export type GameMessage = {
   data?: number | string | boolean | string[] | Record<string, unknown>;
 };
 
+export type PanelType = 
+  'NewMap' | 
+  'MapCode'
+
 export type ToolType = 
   'LandUp' | 
   'LandDown' | 
@@ -18,6 +22,7 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string;
   isUnitSelectionOpened: boolean;
+  activePanel: PanelType | null;
 }
 
 export type ToolStateChangeType = {
