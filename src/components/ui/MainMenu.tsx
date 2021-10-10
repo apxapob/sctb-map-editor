@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { ReactElement, useState } from 'react'
 import OpenPanel from '../../state/actions/OpenPanel'
 import RotateMap from '../../state/actions/RotateMap'
+import SendMsgToGame from '../../state/actions/SendMsgToGame'
 import './MainMenu.css'
 
 const MainMenu = ():ReactElement => {
@@ -22,7 +23,7 @@ const MainMenu = ():ReactElement => {
             <span>Open map</span>
             <span>Ctrl+O</span>
           </span>
-          <span className="menu-item" >
+          <span className="menu-item" onClick={() => SendMsgToGame({ method: 'get_save_info' })}>
             <span>Save map</span>
             <span>Ctrl+S</span>
           </span>

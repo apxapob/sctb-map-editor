@@ -1,4 +1,5 @@
 import { action, autorun } from 'mobx'
+import { saveAs } from 'file-saver'
 import { GameMessage, MapSettingsType, ToolType } from '../../types/types'
 import { MapState } from '../MapState'
 import { PressedKeys } from '../PressedKeys'
@@ -30,5 +31,10 @@ const eventHandlers: { [methodName: string]: (msg:GameMessage) => void } = {
     ToolState.radius = data.radius as number
     ToolState.tool = data.tool as ToolType
     ToolState.toolUnit = data.toolUnit as string
+  },
+  on_get_save_info: async msg => {
+    const data = msg.data as { compressedGameState: string }
+    const blob = new Blob([data.compressedGameState], { type: 'text/plain;charset=utf-8' })
+    saveAs(blob, 'map.map')
   }
 }
