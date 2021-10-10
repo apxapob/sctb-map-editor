@@ -8,6 +8,14 @@ const NewMapPanel = ():ReactElement | null => {
   const [mapSize, setMapSize] = useState(19)
   const [playersCount, setPlayersCount] = useState(6)
 
+  const setSize = (n:number) => setMapSize(
+    Math.min(Math.max(n, 11), 39)
+  )
+
+  const setPlayers = (n:number) => setPlayersCount(
+    Math.min(Math.max(n, 2), 6)
+  )
+
   return (
     <div className="panel">
       <div className="panel-title">New map</div>
@@ -21,9 +29,9 @@ const NewMapPanel = ():ReactElement | null => {
         <span style={{ width: '100%', textAlign:'start' }}>
           Map size:&nbsp;
         </span>
-        <span className="btn" onClick={() => setMapSize(mapSize - 2)} >-</span>
+        <span className="btn" onClick={() => setSize(mapSize - 2)} >-</span>
         <span style={{ minWidth:60 }} >{mapSize}x{mapSize}</span>
-        <span className="btn" onClick={() => setMapSize(mapSize + 2)} >+</span>
+        <span className="btn" onClick={() => setSize(mapSize + 2)} >+</span>
       </div>
 
       <div style={{
@@ -36,9 +44,9 @@ const NewMapPanel = ():ReactElement | null => {
         <span style={{ width: '100%', textAlign:'start' }}>
           Players count:&nbsp;
         </span>
-        <span className="btn" onClick={() => setPlayersCount(playersCount - 1)} >-</span>
+        <span className="btn" onClick={() => setPlayers(playersCount - 1)} >-</span>
         <span style={{ minWidth:60 }} >{playersCount}</span>
-        <span className="btn" onClick={() => setPlayersCount(playersCount + 1)} >+</span>
+        <span className="btn" onClick={() => setPlayers(playersCount + 1)} >+</span>
       </div>
 
       <span className="btn tool" onClick={() => {
