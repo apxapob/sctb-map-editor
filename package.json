@@ -1,6 +1,10 @@
 {
   "name": "sctb-map-editor",
   "version": "0.1.0",
+  "description": "Map editor",
+  "author": "Alexander Arkharov",
+  "license": "MIT",
+  "main": "src/electron.js",
   "private": true,
   "homepage": ".",
   "dependencies": {
@@ -12,6 +16,7 @@
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "electron": "v22.0.0",
     "file-saver": "^2.0.5",
     "mobx": "^6.7.0",
     "mobx-react-lite": "^3.4.0",
@@ -27,7 +32,7 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start & electron .",
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
