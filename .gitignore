@@ -11,6 +11,9 @@
 # production
 /build
 
+.yarn
+.yarnrc.yml
+
 # misc
 .DS_Store
 .env.local

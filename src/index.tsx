@@ -1,14 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { createRoot } from 'react-dom/client'
 import App from './components/App'
 import './index.css'
 import { Initialize } from './state/actions/Initialization'
 
 Initialize()
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+const container = document.getElementById('root')
+const root = createRoot(container!)
+root.render(<App />)
