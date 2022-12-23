@@ -5,6 +5,7 @@ import { PressedKeys } from '../PressedKeys'
 
 export const Initialize = ():void => {
   window.onmessage = event => {
+    console.log('!!!', event)
     OnGameMessage(JSON.parse(event.data) as GameMessage)
   }
   window.onkeyup = action(e => { delete PressedKeys[e.code] })
