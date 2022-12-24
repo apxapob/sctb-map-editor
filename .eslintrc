@@ -19,6 +19,7 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "@typescript-eslint/no-var-requires": null,
     "no-var": 1,
     "prefer-const": 1,
     "no-const-assign": 1,

@@ -3,10 +3,6 @@ import App from './components/App'
 import './index.css'
 import { Initialize } from './state/actions/Initialization'
 
-if (navigator.userAgent.indexOf('Electron') === -1) {
-  window.close()
-}
-
 Initialize()
 
 const container = document.getElementById('root')
