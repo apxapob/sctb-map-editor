@@ -2,6 +2,8 @@ import OnGameMessage from './OnGameMessage'
 import { GameMessage } from '../../types/types'
 import { action } from 'mobx'
 import { PressedKeys } from '../PressedKeys'
+import { CommandType } from '../../types/commands'
+import OpenPanel from './OpenPanel'
 
 export const Initialize = ():void => {
   window.onmessage = event => {
@@ -15,9 +17,10 @@ export const Initialize = ():void => {
   window.onkeydown = action(e => { PressedKeys[e.code] = 'pressed' })//TODO: hot keys here
 }
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { ipcRenderer } = require('electron')
-
-ipcRenderer.on('electron-message', (event:any, message:string) => {
-  console.log('!!!electron-message', message, event) // Prints 'whoooooooh!'
+ipcRenderer.on('electron-message', (event:Event, message:CommandType) => {
+  switch (message.command) {
+    case 'NEW_MAP':
+      OpenPanel('NewMap')
+  }
 })

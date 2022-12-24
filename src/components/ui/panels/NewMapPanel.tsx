@@ -20,44 +20,50 @@ const NewMapPanel = ():ReactElement | null => {
     <div className="panel">
       <div className="panel-title">New map</div>
       
-      <div style={{
-          display:'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          whiteSpace: 'nowrap'
-        }}>
-        <span style={{ width: '100%', textAlign:'start' }}>
-          Map size:&nbsp;
-        </span>
-        <span className="btn" onClick={() => setSize(mapSize - 2)} >-</span>
-        <span style={{ minWidth:60 }} >{mapSize}x{mapSize}</span>
-        <span className="btn" onClick={() => setSize(mapSize + 2)} >+</span>
+      <div style={{ display: 'flex', gap: 6, flexDirection:'column' }}>
+        <div className='hflex'>
+          <span style={{ width: '100%', textAlign:'start' }}>
+            Map name:&nbsp;
+          </span>
+          <input></input>
+        </div>
+
+        <div className='hflex'>
+          <span style={{ width: '100%', textAlign:'start' }}>
+            Map id:&nbsp;
+          </span>
+          <input title='Only latin letters, numbers and character "_" are allowed'></input>
+        </div>
+
+        <div className='hflex'>
+          <span style={{ width: '100%', textAlign:'start' }}>
+            Map size:&nbsp;
+          </span>
+          <button onClick={() => setSize(mapSize - 2)} >-</button>
+          <span style={{ minWidth:60 }} >{mapSize}x{mapSize}</span>
+          <button onClick={() => setSize(mapSize + 2)} >+</button>
+        </div>
+
+        <div className='hflex'>
+          <span style={{ width: '100%', textAlign:'start' }}>
+            Players count:&nbsp;
+          </span>
+          <button onClick={() => setPlayers(playersCount - 1)} >-</button>
+          <span style={{ minWidth:60 }} >{playersCount}</span>
+          <button onClick={() => setPlayers(playersCount + 1)} >+</button>
+        </div>
       </div>
 
-      <div style={{
-          display:'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '8px 0 24px 0',
-          whiteSpace: 'nowrap'
-        }}>
-        <span style={{ width: '100%', textAlign:'start' }}>
-          Players count:&nbsp;
-        </span>
-        <span className="btn" onClick={() => setPlayers(playersCount - 1)} >-</span>
-        <span style={{ minWidth:60 }} >{playersCount}</span>
-        <span className="btn" onClick={() => setPlayers(playersCount + 1)} >+</span>
-      </div>
-
-      <span className="btn tool" onClick={() => {
-        SendMsgToGame({ 
-          method: 'new_map', 
-          data:{ playersCount, mapSize } 
-        })
-        ClosePanel()
+      <button style={{ marginTop: 24 }}
+        onClick={() => {
+          SendMsgToGame({ 
+            method: 'new_map', 
+            data:{ playersCount, mapSize } 
+          })
+          ClosePanel()
       }} >
         Create map
-      </span>
+      </button>
     </div>
   )
 }

@@ -2,4 +2,22 @@
   background-color: #282c34;
   min-height: 100vh;
   color: white;
+  line-height: 24px;
+}
+
+button {
+  min-height: 24px;
+  min-width: 24px;
+  line-height: 18px;
+}
+
+input {
+  line-height: 20px;
+}
+
+.hflex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
 }

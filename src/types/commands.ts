@@ -1,1 +1,3 @@
-export const NEW_MAP = 'NEW_MAP'
+export type CommandType = {
+  command: 'NEW_MAP' | 'SAVE_MAP';
+}
