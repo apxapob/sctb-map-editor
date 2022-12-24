@@ -3,18 +3,18 @@ import React, { ReactElement } from 'react'
 import SelectUnitType from '../../state/actions/SelectUnitType'
 import { MapState } from '../../state/MapState'
 import { ToolState } from '../../state/ToolState'
-import { UnitStatsType } from '../../types/types'
+import { UnitType } from '../../types/types'
 import './UnitTypeSelector.css'
 
 const UnitTypeSelector = ():ReactElement => {
   return (
     <div className="unit-selector-container">
       {MapState.settings.units.map(
-        (u:UnitStatsType) => 
-          <div key={u.unit_type} 
-            className={ToolState.toolUnit === u.unit_type ? 'selectedLabelBtn' : 'labelBtn'}
-            onClick={() => SelectUnitType(u.unit_type) }>
-            {u.unit_type}
+        (u:UnitType) => 
+          <div key={u.type} 
+            className={ToolState.toolUnit === u.type ? 'selectedLabelBtn' : 'labelBtn'}
+            onClick={() => SelectUnitType(u.type) }>
+            {u.type}
           </div>
       )}
     </div>

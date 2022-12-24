@@ -31,18 +31,52 @@ export type ToolStateChangeType = {
   toolUnit?: string;
 }
 
-export type UnitStatsType = {
-  attack: number;
+export type UnitType = {
+  type: string;
+  orders: OrderType[];
   buffs: string[];
-  detector: boolean;
-  flying: boolean;
+  attack: number;
   hp: number;
-  orders: string[];
   range: number;
   speed: number;
-  unit_type: string;
+  vision: number;
+}
+
+export type OrderType = {
+	type: string;
+	args: string[];
+	price: number;
+	mana: number;
+	range: number;
+  radius: number;
+}
+
+export type EffectType = {
+  type: 'DoT' | 'Attack' | 'Vision' | 'Speed' | 'Range';
+  value: number;
+} | {
+  type: 'Fly' | 'Detector' | 'Invisibility';
+  value: boolean;
+} | {
+  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart';
+  script: string;
+  args: string[];
+}
+
+export type BuffType = {
+  type: string;
+  effects: EffectType[];
+  turns: number;
+}
+
+export type UpgradeType = {
+  type: string;
+  effects: EffectType[];
+  unitTypes: string[];
 }
 
 export type MapSettingsType = {
-  units: UnitStatsType[];
+  units: UnitType[];
+  buffs: BuffType[];
+  upgrades: UpgradeType[];
 }
