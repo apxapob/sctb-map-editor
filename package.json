@@ -4,7 +4,7 @@
   "description": "Map editor",
   "author": "Alexander Arkharov",
   "license": "MIT",
-  "main": "src/electron.js",
+  "main": "src/electron/main.js",
   "private": true,
   "homepage": ".",
   "dependencies": {
