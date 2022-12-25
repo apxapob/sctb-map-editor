@@ -27,7 +27,7 @@ exports.openMap = async () => {
     
     let loaded = 0
     for (const file of files) {
-      if (file.endsWith('.json')) {
+      if (file.endsWith('.json') || file.endsWith('.hx')) {
         const fileText = await fs.promises.readFile(file, { encoding: 'utf8' })
         sendCommand({
           command: 'LOAD_TEXT_FILE', 
@@ -51,5 +51,9 @@ exports.openMap = async () => {
     sendCommand({ command: 'LOADING_END' })
   } catch (err) {
     console.error(err)
+    sendCommand({
+      command: 'LOAD_MAP_ERROR', 
+      error: err.message || 'unknown error'
+    })
   }
 }

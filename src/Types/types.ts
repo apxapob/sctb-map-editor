@@ -83,3 +83,10 @@ export type MapSettingsType = {
   buffs: BuffType[];
   upgrades: UpgradeType[];
 }
+
+export type MapInfo = {
+  mapId: string;
+  name: string;
+  author: string | null;
+  startField: string;
+}

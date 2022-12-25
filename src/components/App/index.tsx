@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import { MapState } from '../../state/MapState'
 import GameCanvas from '../game/GameCanvas'
@@ -7,7 +8,7 @@ import Tools from '../ui/Tools'
 import './App.css'
 
 const App = ():ReactElement => {
-  if (MapState.mapId === null) {
+  if (MapState.mapInfo === null) {
     return (
       <div className="App">
         <EmptyPage />
@@ -25,4 +26,4 @@ const App = ():ReactElement => {
   )
 }
 
-export default App
+export default observer(App)

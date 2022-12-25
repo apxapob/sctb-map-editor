@@ -1,6 +1,6 @@
 export type CommandType = {
   command: 'NEW_MAP' | 'SAVE_MAP' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END';
-} | LoadTextCommandType | LoadBinaryCommandType
+} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType
 
 export type LoadTextCommandType = {
   command: 'LOAD_TEXT_FILE';
@@ -14,4 +14,9 @@ export type LoadBinaryCommandType = {
   file: string;
   progress: number;
   bytes: Uint8Array;
+}
+
+export type LoadMapErrorType = {
+  command: 'LOAD_MAP_ERROR', 
+  error: string
 }

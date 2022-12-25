@@ -1,4 +1,4 @@
-import { OnLoadedBinary, OnLoadedText, OnLoadingEnd, OnLoadingStart } from '../state/actions/OnLoadingStart'
+import { OnLoadedBinary, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
 import OpenPanel from '../state/actions/OpenPanel'
 import { CommandType } from '../types/commands'
 
@@ -25,6 +25,9 @@ export function InitMessenger() {
         break
       case 'LOAD_BINARY_FILE':
         OnLoadedBinary(message)
+        break
+      case 'LOAD_MAP_ERROR':
+        OnLoadingError(message.error)
         break
     }
   })

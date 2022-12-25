@@ -1,11 +1,11 @@
 import { observable } from 'mobx'
-import { MapSettingsType } from '../types/types'
+import { MapInfo, MapSettingsType } from '../types/types'
 
 export const MapState: {
-  mapId: string | null,
+  mapInfo: MapInfo | null,
   settings: MapSettingsType
 } = observable({
-  mapId: null,
+  mapInfo: null,
   settings: {
     units: [],
     buffs: [],

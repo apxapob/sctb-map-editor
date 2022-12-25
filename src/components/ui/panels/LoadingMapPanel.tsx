@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement, useState } from 'react'
+import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { MapFiles } from '../../../state/MapFiles'
 import './panels.css'
 
@@ -11,6 +12,18 @@ const LoadingMapPanel = ():ReactElement | null => {
       loading {MapFiles.lastLoadedFile}
       <br />
       <progress style={{ width: '90%' }} value={percent} max="100"> {percent}% </progress>
+      <br />
+      {MapFiles.status === 'Error' &&
+        <>
+          <div style={{ color: 'red' }}>
+            Error: {MapFiles.error}
+          </div>
+          <br />
+          <button onClick={() => ClosePanel()}>
+            Close
+          </button>
+        </>
+      }
     </div>
   )
 }
