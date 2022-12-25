@@ -1,6 +1,43 @@
 export type GameMessage = {
-  method: string;
-  data?: number | string | boolean | string[] | Record<string, unknown>;
+  method: 'show_map_editor';
+} | {
+  method: 'on_get_save_info';
+  data: { compressedGameState: string }
+} | {
+  method: 'init_complete';
+  data: MapSettingsType;
+} | {
+  method: 'tool_updated';
+  data: {[index: string]: number | string | boolean};
+} | {
+  method: 'new_map';
+  data: { 
+    playersCount: number;
+    mapSize: number;
+  }; 
+} | {
+  method: 'change_tool';
+  data: ToolStateType;
+} | {
+  method: 'keys_pressed';
+  data: { 
+    [key: string]: string;
+  }
+} | {
+  method: 'load_map';
+  data: string;
+} | {
+  method: 'load_text_file';
+  data: {
+    path: string,
+    text: string,
+  }
+} | {
+  method: 'load_binary_file';
+  data: {
+    path: string,
+    bytes: Uint8Array;
+  }
 };
 
 export type PanelType = 
