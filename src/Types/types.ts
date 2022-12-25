@@ -5,7 +5,7 @@ export type GameMessage = {
 
 export type PanelType = 
   'NewMap' | 
-  'MapCode'
+  'LoadingMap'
 
 export type ToolType = 
   'LandUp' | 
@@ -22,6 +22,9 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string;
   isUnitSelectionOpened: boolean;
+}
+
+export type EditorStateType = {
   activePanel: PanelType | null;
 }
 

@@ -1,11 +1,11 @@
 const { ipcMain } = require('electron')
-const { openMap } = require('./commands')
 
 exports.messengerInit = () => {
-  ipcMain.on('commands', handleSetTitle)
+  ipcMain.on('commands', handleCommand)
 }
 
-const handleSetTitle = (event, message) => {
+const handleCommand = (event, message) => {
+  const { openMap } = require('./commands')
   switch (message.command) {
     case 'OPEN_MAP':
       openMap()
@@ -13,3 +13,7 @@ const handleSetTitle = (event, message) => {
   }
 }
 
+exports.sendCommand = c => {
+  const { mainWindow } = require('./main')
+  mainWindow.webContents.send('commands', c)
+}  

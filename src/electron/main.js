@@ -18,11 +18,11 @@ const createWindow = () => {
   win.setMenu(getMenu(win))
   //win.loadFile('public/index.html')
   win.once('ready-to-show', () => win.show())
-  return win
+  exports.mainWindow = win
 }
 
 app.whenReady().then(() => {
-  exports.mainWindow = createWindow()
+  createWindow()
   
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

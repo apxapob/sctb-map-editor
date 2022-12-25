@@ -1,5 +1,6 @@
 const { app, Menu, MenuItem } = require('electron')
 const { openMap } = require('./commands')
+const { sendCommand } = require('./messenger')
 
 exports.getMenu = win => {
   const menu = new Menu()
@@ -9,7 +10,7 @@ exports.getMenu = win => {
       {
         label: 'New map',
         accelerator: 'CmdOrCtrl+N',
-        click: () => win.webContents.send('commands', { command: 'NEW_MAP' }),
+        click: () => sendCommand({ command: 'NEW_MAP' }),
       },
       {
         label: 'Open map',

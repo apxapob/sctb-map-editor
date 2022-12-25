@@ -21,3 +21,11 @@ input {
   align-items: center;
   white-space: nowrap;
 }
+
+.vflex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}

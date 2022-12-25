@@ -1,16 +1,19 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import { ClosePanel } from '../../../state/actions/OpenPanel'
-import { ToolState } from '../../../state/ToolState'
+import { EditorState } from '../../../state/ToolState'
+import { PanelType } from '../../../types/types'
+import LoadingMapPanel from './LoadingMapPanel'
 import NewMapPanel from './NewMapPanel'
 import './panels.css'
 
-const panels: Record<string, () => ReactElement|null> = {
-  'NewMap': NewMapPanel
+const panels: Record<PanelType, () => ReactElement|null> = {
+  'NewMap': NewMapPanel,
+  'LoadingMap': LoadingMapPanel
 }
 
 const PanelsContainer = ():ReactElement | null => {
-  const { activePanel } = ToolState
+  const { activePanel } = EditorState
   if (!activePanel) { return null }
   
   const Panel = panels[activePanel]
