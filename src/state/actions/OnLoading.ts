@@ -23,7 +23,7 @@ export const OnLoadingEnd = action(() => {
       MapState.mapInfo = JSON.parse(MapFiles.text['info.json'])
       if (MapState.mapInfo && MapState.mapInfo.mapId) {
         ClosePanel()
-        SendMsgToGame({ method: 'load_map', data: MapState.mapInfo.mapId })
+        SendMsgToGame({ method: 'show_map_editor', data: MapState.mapInfo.mapId })
       } else {
         OnLoadingError('Invalid info.json file: no mapId')
       }
@@ -57,7 +57,7 @@ export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
   MapFiles.binary[c.file] = c.bytes.length
   MapFiles.progress = c.progress
   MapFiles.lastLoadedFile = c.file
-  SendMsgToGame({ 
+  SendMsgToGame({
     method: 'load_binary_file', 
     data: {
       path: c.file,

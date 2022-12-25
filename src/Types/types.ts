@@ -1,5 +1,6 @@
 export type GameMessage = {
   method: 'show_map_editor';
+  data: string;
 } | {
   method: 'on_get_save_info';
   data: { compressedGameState: string }
@@ -23,9 +24,6 @@ export type GameMessage = {
   data: { 
     [key: string]: string;
   }
-} | {
-  method: 'load_map';
-  data: string;
 } | {
   method: 'load_text_file';
   data: {

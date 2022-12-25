@@ -25,7 +25,6 @@ const OnGameMessage = (msg:GameMessage) => {
 export default action(OnGameMessage)
 
 const onInitComplete = (data:MapSettingsType) => {
-  SendMsgToGame({ method: 'show_map_editor' })
   autorun(
     () => SendMsgToGame({ method: 'keys_pressed', data: PressedKeys })
   )

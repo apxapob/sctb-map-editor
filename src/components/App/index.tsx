@@ -8,19 +8,15 @@ import Tools from '../ui/Tools'
 import './App.css'
 
 const App = ():ReactElement => {
-  if (MapState.mapInfo === null) {
-    return (
-      <div className="App">
-        <EmptyPage />
-        <PanelsContainer />
-      </div>
-    )
-  }
-  
   return (
     <div className="App">
       <GameCanvas />
-      <Tools />
+      {MapState.mapInfo === null &&
+        <EmptyPage />
+      }
+      {MapState.mapInfo !== null &&
+        <Tools />
+      }
       <PanelsContainer />
     </div>
   )

@@ -6,7 +6,6 @@ import { InitMessenger } from '../../utils/messenger'
 
 export const Initialize = ():void => {
   window.onmessage = event => {
-    console.log('!!! window.onmessage', event)
     if (typeof event.data !== 'string') {
       return
     }
