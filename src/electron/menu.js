@@ -1,5 +1,5 @@
 const { app, Menu, MenuItem } = require('electron')
-const { openMap } = require('./commands')
+const { openMap, saveMap } = require('./commands')
 const { sendCommand } = require('./messenger')
 
 exports.getMenu = win => {
@@ -20,7 +20,7 @@ exports.getMenu = win => {
       {
         label: 'Save map',
         accelerator: 'CmdOrCtrl+S',
-        click: () => console.log('!!!save'),
+        click: () => saveMap(),
       },
       {
         label: 'Open dev tools',

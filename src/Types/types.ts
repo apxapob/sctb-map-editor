@@ -1,4 +1,7 @@
 export type GameMessage = {
+  method: 'save_map';
+  data: string;
+} | {
   method: 'show_map_editor';
   data: string;
 } | {
@@ -36,6 +39,9 @@ export type GameMessage = {
     path: string,
     bytes: Uint8Array;
   }
+} | {
+  method: 'text_file_updated', 
+  data: { path: string; text: string }
 };
 
 export type PanelType = 

@@ -2,6 +2,8 @@ const { dialog } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 
+let mapDir = null
+
 exports.openMap = async () => {
   const { mainWindow } = require('./main')
   const dir = dialog.showOpenDialogSync(mainWindow, {
@@ -22,7 +24,7 @@ exports.openMap = async () => {
         }
       }
     }
-    const mapDir = dir[0]
+    mapDir = dir[0]
     await loadDir(mapDir)
     
     let loaded = 0
@@ -56,4 +58,17 @@ exports.openMap = async () => {
       error: err.message || 'unknown error'
     })
   }
+}
+
+exports.saveMap = async () => {
+  sendCommand({ command: 'SAVE_CHANGES' })
+}
+
+exports.saveTextFile = async (path, text) => {
+  if (!mapDir) {
+    console.error('no open map')
+    return
+  }
+  const fullPath = (mapDir + '\\' + path).replaceAll('/', '\\')
+  await fs.promises.writeFile(fullPath, text)
 }

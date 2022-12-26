@@ -1,6 +1,11 @@
 export type CommandType = {
-  command: 'NEW_MAP' | 'SAVE_MAP' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END';
-} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType
+  command: 'NEW_MAP' | 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END';
+} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | SaveTextFileType
+
+export type SaveTextFileType = {
+  command: 'SAVE_TEXT_FILE';
+  data: { path: string; text: string };
+}
 
 export type LoadTextCommandType = {
   command: 'LOAD_TEXT_FILE';
