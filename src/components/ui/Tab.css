@@ -5,6 +5,10 @@
   border-radius: 6px 6px 0 0;
 }
 
+.tab-container {
+  background-color: #282c34;
+}
+
 .not-selected:hover {
   background-color: #181c24;
 }

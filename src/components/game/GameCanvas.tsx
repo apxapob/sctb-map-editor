@@ -4,10 +4,14 @@ import { observer } from 'mobx-react-lite'
 
 export const GameCanvasId = 'game_canvas'
 
-const GameCanvas = ():ReactElement => {
+export type GameCanvasProps = {
+  active: boolean;
+}
+
+const GameCanvas = (props:GameCanvasProps):ReactElement => {
   return (
     <iframe id={GameCanvasId} 
-      className="Game-canvas" src="/game/index.html" frameBorder="0" 
+      className={`Game-canvas ${props.active ? 'cnv-active' : ''}`} src="/game/index.html" frameBorder="0" 
     />
   )
 }

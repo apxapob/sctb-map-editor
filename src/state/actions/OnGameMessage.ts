@@ -3,7 +3,7 @@ import { saveAs } from 'file-saver'
 import { GameMessage, MapSettingsType, ToolType } from '../../types/types'
 import { MapState } from '../MapState'
 import { PressedKeys } from '../PressedKeys'
-import { ToolState } from '../ToolState'
+import { EditorState, ToolState } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 import { SendCommand } from '../../utils/messenger'
 
@@ -30,7 +30,10 @@ export default action(OnGameMessage)
 
 const onInitComplete = (data:MapSettingsType) => {
   autorun(
-    () => SendMsgToGame({ method: 'keys_pressed', data: PressedKeys })
+    () => {
+      if (EditorState.activeTab !== 'Field') { return }
+      SendMsgToGame({ method: 'keys_pressed', data: PressedKeys })
+    }
   )
   MapState.settings = data
 }

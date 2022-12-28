@@ -14,16 +14,16 @@ const App = ():ReactElement => {
   const tabs:TabType[] = ['Field', 'Units', 'Buffs', 'Upgrades']
   return (
     <div className="App">
-      <div className='hflex'>
+      <div className='hflex tab-container'>
         {tabs.map(
           s => <Tab key={s} selected={EditorState.activeTab === s} title={s} />
         )}
       </div>
-      <GameCanvas />
+      <GameCanvas active={ EditorState.activeTab === 'Field' } />
       {MapState.mapInfo === null &&
         <EmptyPage />
       }
-      {MapState.mapInfo !== null &&
+      {MapState.mapInfo !== null && EditorState.activeTab === 'Field' &&
         <Tools />
       }
       <PanelsContainer />

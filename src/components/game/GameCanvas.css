@@ -1,5 +1,10 @@
 .Game-canvas {
   position: absolute;
+  width: 0px;
+  height: 0px;
+}
+
+.cnv-active{
   width: 100%;
   height: calc(100% - 24px);
 }
