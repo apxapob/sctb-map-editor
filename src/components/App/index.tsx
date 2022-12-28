@@ -5,13 +5,28 @@ import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
 import GameCanvas from '../game/GameCanvas'
 import EmptyPage from '../ui/EmptyPage'
+import { JsonEditor } from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
 import { Tab } from '../ui/Tab'
 import Tools from '../ui/Tools'
 import './App.css'
 
+const getFilePath = (tab:TabType) => {
+  switch (tab) {
+    case 'Buffs':
+      return 'buffs.json'
+    case 'Units':
+      return 'units.json'
+    case 'Map':
+      return 'info.json'
+    case 'Upgrades':
+      return 'upgrades.json'
+  }
+  return null
+}
+
 const App = ():ReactElement => {
-  const tabs:TabType[] = ['Field', 'Units', 'Buffs', 'Upgrades']
+  const tabs:TabType[] = ['Field', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Map']
   return (
     <div className="App">
       <div className='hflex tab-container'>
@@ -25,6 +40,9 @@ const App = ():ReactElement => {
       }
       {MapState.mapInfo !== null && EditorState.activeTab === 'Field' &&
         <Tools />
+      }
+      {MapState.mapInfo !== null && EditorState.activeTab !== 'Field' &&
+        <JsonEditor filePath={getFilePath(EditorState.activeTab)} />
       }
       <PanelsContainer />
     </div>

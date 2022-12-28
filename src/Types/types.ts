@@ -65,7 +65,7 @@ export type ToolStateType = {
   isUnitSelectionOpened: boolean;
 }
 
-export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades'
+export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map'
 
 export type EditorStateType = {
   activePanel: PanelType | null;
