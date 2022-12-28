@@ -909,7 +909,7 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["mapId","name","author","startField","minPlayers","maxPlayers","playerColors"],[false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["mapId","name","author","startField","minPlayers","maxPlayers","countryColors"],[false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -918,6 +918,9 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			switch(field.name) {
 			case "author":
 				this.value.author = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
+				break;
+			case "countryColors":
+				this.value.countryColors = this.loadObjectField(($_=new JsonParser_$21(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryColors",assigned,this.value.countryColors,pos);
 				break;
 			case "mapId":
 				this.value.mapId = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
@@ -930,9 +933,6 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				break;
 			case "name":
 				this.value.name = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
-				break;
-			case "playerColors":
-				this.value.playerColors = this.loadObjectField(($_=new JsonParser_$21(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playerColors",assigned,this.value.playerColors,pos);
 				break;
 			case "startField":
 				this.value.startField = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
@@ -951,7 +951,7 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		value.startField = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.minPlayers = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.maxPlayers = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.playerColors = new JsonParser_$21([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryColors = new JsonParser_$21([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$20
@@ -90428,11 +90428,11 @@ logic_Locale.get = function(key) {
 	if(Object.prototype.hasOwnProperty.call(logic_Locale.locale,key)) {
 		return logic_Locale.locale[key];
 	}
-	haxe_Log.trace("@@@ no " + logic_Locale.curLang + " text for:",{ fileName : "src/logic/Locale.hx", lineNumber : 29, className : "logic.Locale", methodName : "get", customParams : [key]});
+	haxe_Log.trace("@@@ no " + logic_Locale.curLang + " text for:",{ fileName : "src/logic/Locale.hx", lineNumber : 28, className : "logic.Locale", methodName : "get", customParams : [key]});
 	if(Object.prototype.hasOwnProperty.call(logic_Locale.engLocale,key)) {
 		return logic_Locale.engLocale[key];
 	}
-	haxe_Log.trace("@@@ no text for:",{ fileName : "src/logic/Locale.hx", lineNumber : 33, className : "logic.Locale", methodName : "get", customParams : [key]});
+	haxe_Log.trace("@@@ no text for:",{ fileName : "src/logic/Locale.hx", lineNumber : 32, className : "logic.Locale", methodName : "get", customParams : [key]});
 	return key;
 };
 logic_Locale.ChangeLocale = function(lang) {
@@ -90460,6 +90460,8 @@ logic_Locale.ClearMapLocale = function() {
 var logic_MapEditorSystem = function() { };
 $hxClasses["logic.MapEditorSystem"] = logic_MapEditorSystem;
 logic_MapEditorSystem.__name__ = "logic.MapEditorSystem";
+logic_MapEditorSystem.OnTileMouseDown = function() {
+};
 logic_MapEditorSystem.OnTileClick = function() {
 	var radius = ui_screens_Game.gameField.cursor.radius;
 	var tool = ui_screens_Game.gameField.cursor.tool;
@@ -90537,6 +90539,18 @@ logic_MapEditorSystem.DeleteUnits = function(hexes) {
 	}
 };
 logic_MapEditorSystem.SelectUnits = function(hexes) {
+	var units = [];
+	var _g = 0;
+	while(_g < hexes.length) {
+		var hex = hexes[_g];
+		++_g;
+		var unit = logic_UnitSystem.GetUnitFromHex(hex.q,hex.r);
+		if(unit == null) {
+			continue;
+		}
+		units.push(unit);
+	}
+	utils_IframeEvents.Send({ method : "selected_units", data : units});
 };
 logic_MapEditorSystem.SetTilesType = function(type,hexes) {
 	var _g = 0;
@@ -90718,7 +90732,7 @@ logic_MovementSystem.AfterMoveSpread = function(td) {
 			}
 			var emptyHex = logic_FieldSystem.getNearestEmptyHex(td,logic_G.get_field(),countryUnits1[0].pos,true,countryUnits1[0].dir);
 			if(emptyHex == null) {
-				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 119, className : "logic.MovementSystem", methodName : "AfterMoveSpread"});
+				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 117, className : "logic.MovementSystem", methodName : "AfterMoveSpread"});
 				break;
 			}
 			var _g1 = 0;
@@ -90753,7 +90767,7 @@ logic_MovementSystem.AfterMoveSpread = function(td) {
 			}
 			var empty = logic_FieldSystem.getNearestEmptyHex(td,logic_G.get_field(),u.pos,true,u.dir,busyPoints);
 			if(empty == null) {
-				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 143, className : "logic.MovementSystem", methodName : "AfterMoveSpread"});
+				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 141, className : "logic.MovementSystem", methodName : "AfterMoveSpread"});
 				break;
 			}
 			u.dir = logic_HexMath.getDir(empty,u.pos);
@@ -92415,7 +92429,7 @@ model_MapInfo.prototype = {
 	,startField: null
 	,minPlayers: null
 	,maxPlayers: null
-	,playerColors: null
+	,countryColors: null
 	,copy: function() {
 		var result = new model_MapInfo();
 		result.mapId = this.mapId;
@@ -92424,7 +92438,7 @@ model_MapInfo.prototype = {
 		result.startField = this.startField;
 		result.minPlayers = this.minPlayers;
 		result.maxPlayers = this.maxPlayers;
-		var _this = this.playerColors;
+		var _this = this.countryColors;
 		var result1 = new Array(_this.length);
 		var _g = 0;
 		var _g1 = _this.length;
@@ -92432,7 +92446,7 @@ model_MapInfo.prototype = {
 			var i = _g++;
 			result1[i] = _this[i];
 		}
-		result.playerColors = result1;
+		result.countryColors = result1;
 		return result;
 	}
 	,__class__: model_MapInfo
@@ -92456,7 +92470,20 @@ model_Params.get_tileHeight = function() {
 	return model_Params._tileHeight;
 };
 model_Params.CountryColor = function(countyId) {
-	return new h3d_Vector(1,0,0);
+	try {
+		var mapInfo = logic_DataBase.getMapInfo();
+		var colorString = mapInfo.countryColors[countyId - 1];
+		if(colorString == null) {
+			return new h3d_Vector(1,1,1);
+		}
+		var colorNum = Std.parseInt(colorString);
+		var c = -16777216 + colorNum;
+		var s = 0.00392156862745098;
+		var v = new h3d_Vector((c >> 16 & 255) * s,(c >> 8 & 255) * s,(c & 255) * s,(c >>> 24) * s);
+		return v;
+	} catch( _g ) {
+		return new h3d_Vector(1,1,1);
+	}
 };
 model_Params.TileColor = function(tileType) {
 	switch(tileType) {
@@ -97295,7 +97322,8 @@ var ui_panel_SaveGamePanel = function(si,parent) {
 	this.title.set_text("" + this.info.name + " - " + logic_Locale.get("turn") + " " + this.info.turnNum);
 	var fnt1 = hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont();
 	this.descr = new ui_PPText(fnt1,this);
-	this.descr.set_text("" + this.info.mapId + " " + this.info.playersNum + " " + logic_Locale.get("players") + " \n");
+	var name = this.info.name != null ? this.info.name : this.info.mapId;
+	this.descr.set_text("" + name + " " + this.info.playersNum + " " + logic_Locale.get("players") + " \n");
 	var fh = this.descr;
 	fh.set_text(fh.text + DateTools.format(new Date(this.info.time),"%H:%M - %d %B %Y"));
 	if(ui_screens_LSDScreen.isSaveMode()) {
@@ -98379,7 +98407,6 @@ ui_screens_NextPlayerScreen.prototype = $extend(h2d_Graphics.prototype,{
 	,onNextTurn: function() {
 		this.set_visible(this.lastPlayeId != ui_screens_Game.cam.curPlayerId);
 		this.lastPlayeId = ui_screens_Game.cam.curPlayerId;
-		haxe_Log.trace("Game.cam.state =  2",{ fileName : "src/ui/screens/NextPlayerScreen.hx", lineNumber : 54, className : "ui.screens.NextPlayerScreen", methodName : "onNextTurn"});
 		ui_screens_Game.cam.state = model_GameState.WaitForPlayer;
 		this.redraw();
 	}
@@ -98640,7 +98667,6 @@ ui_screens_WaitForPlayersScreen.prototype = $extend(h2d_Graphics.prototype,{
 			return;
 		}
 		this.set_visible(true);
-		haxe_Log.trace("Game.cam.state = 1",{ fileName : "src/ui/screens/WaitForPlayersScreen.hx", lineNumber : 43, className : "ui.screens.WaitForPlayersScreen", methodName : "onTurnDone"});
 		ui_screens_Game.cam.state = model_GameState.WaitForPlayer;
 		this.redraw();
 	}
@@ -98874,6 +98900,9 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 			var mx = hxd_Window.getInstance().get_mouseX();
 			var my = hxd_Window.getInstance().get_mouseY();
 			_gthis.cursor.setSelection(_gthis.getTileFromPoint(mx,my));
+			if(utils_IframeEvents.isInIframe() && hxd_Key.isDown(0)) {
+				logic_MapEditorSystem.OnTileMouseDown();
+			}
 		};
 		this.interaction.onClick = function(event) {
 			switch(event.button) {
