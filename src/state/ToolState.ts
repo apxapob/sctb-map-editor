@@ -9,5 +9,6 @@ export const ToolState:ToolStateType = observable({
 })
 
 export const EditorState:EditorStateType = observable({
-  activePanel: null
+  activePanel: null,
+  activeTab: 'Field'
 })

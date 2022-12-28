@@ -1,4 +1,4 @@
-import { PanelType } from '../../types/types'
+import { PanelType, TabType } from '../../types/types'
 import { action } from 'mobx'
 import { EditorState } from '../ToolState'
 
@@ -11,5 +11,11 @@ export default action(OpenPanel)
 export const ClosePanel = action(
   ():void => {
     EditorState.activePanel = null
+  }
+)
+
+export const SelectTab = action(
+  (tab:TabType):void => {
+    EditorState.activeTab = tab
   }
 )

@@ -28,7 +28,7 @@ exports.getMenu = win => {
         click: () => win.webContents.openDevTools(),
       },
       {
-        label: 'Reload map editor',
+        label: 'Close map',
         accelerator: 'F5',
         click: () => win.webContents.reload(),
       },

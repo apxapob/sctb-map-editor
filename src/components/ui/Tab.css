@@ -1,0 +1,14 @@
+.tab{
+  cursor: pointer;
+  padding: 0 6px;
+  user-select: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.not-selected:hover {
+  background-color: #181c24;
+}
+
+.selected {
+  background-color: black;
+}
