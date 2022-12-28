@@ -13,5 +13,11 @@ export const Initialize = ():void => {
   }
   window.onkeyup = action(e => { delete PressedKeys[e.code] })
   window.onkeydown = action(e => { PressedKeys[e.code] = 'pressed' })//TODO: hot keys here
+  window.onblur = action(() => {
+    for (const key in PressedKeys) {
+      delete PressedKeys[key]
+    }
+  })
+  
   InitMessenger()
 }

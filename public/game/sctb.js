@@ -90498,7 +90498,7 @@ logic_MapEditorSystem.OnTileClick = function() {
 		break;
 	case 7:
 		logic_MapEditorSystem.SelectUnits(selectedHexes);
-		break;
+		return;
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "",tool);
 };
@@ -90539,7 +90539,9 @@ logic_MapEditorSystem.DeleteUnits = function(hexes) {
 	}
 };
 logic_MapEditorSystem.SelectUnits = function(hexes) {
-	var units = [];
+	if(!hxd_Key.isDown(17)) {
+		ui_screens_Game.cam.selectedUnitIds = [];
+	}
 	var _g = 0;
 	while(_g < hexes.length) {
 		var hex = hexes[_g];
@@ -90548,9 +90550,10 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 		if(unit == null) {
 			continue;
 		}
-		units.push(unit);
+		ui_screens_Game.cam.selectedUnitIds.push(unit.id);
 	}
-	utils_IframeEvents.Send({ method : "selected_units", data : units});
+	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",ui_screens_Game.cam.selectedUnitIds);
+	utils_IframeEvents.Send({ method : "selected_units", data : ui_screens_Game.cam.selectedUnitIds});
 };
 logic_MapEditorSystem.SetTilesType = function(type,hexes) {
 	var _g = 0;
@@ -101072,9 +101075,7 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 			selectionColor.y += 0.1;
 			selectionColor.z += 0.1;
 			this.bmp.color = selectionColor;
-			var this1 = ui_screens_Game.gameField.tiles;
-			var key = this.get_data().pos.q + "_" + this.get_data().pos.r;
-			var tile = this1.h[key];
+			var tile = this.bmp.parent;
 			if(tile != null) {
 				tile.addChildAt(this.selectionBmp,0);
 				this.selectionBmp.set_visible(true);
