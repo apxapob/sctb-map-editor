@@ -4,7 +4,6 @@ import ChangeTool from './ChangeTool'
 
 const SelectUnitType = (type:string):void => {
   ToolState.toolUnit = type
-  ToolState.isUnitSelectionOpened = false
   ChangeTool({ tool: 'CreateUnits', toolUnit: type })
 }
 

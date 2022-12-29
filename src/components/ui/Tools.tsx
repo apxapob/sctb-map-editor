@@ -1,13 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import ChangeTool from '../../state/actions/ChangeTool'
-import SetUnitSelectorOpen from '../../state/actions/SetUnitSelectorOpen'
 import { ToolState } from '../../state/ToolState'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 
 const Tools = ():ReactElement => {
-  const { radius, tool, toolUnit, isUnitSelectionOpened } = ToolState
+  const { radius, tool, toolUnit } = ToolState
 
   return (
     <div className="tools-container">
@@ -19,79 +18,44 @@ const Tools = ():ReactElement => {
           alignItems: 'center',
           paddingTop: 4
         }}>
-          <span className="btn tool" onClick={() => ChangeTool({ radius: radius - 1 })} >-</span>
+          <button className="tool" onClick={() => ChangeTool({ radius: radius - 1 })} >-</button>
           <span style={{ width:'100%', padding: '0 2px' }} >{radius}</span>
-          <span className="btn tool" onClick={() => ChangeTool({ radius: radius + 1 })} >+</span>
+          <button className="tool" onClick={() => ChangeTool({ radius: radius + 1 })} >+</button>
         </div>
         
       </div>
-      <div style={{
-          display: 'flex',
-          gap: 8,
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}>
+      <div style={{ gap: 8, }} className="vflex">
         <span style={{ paddingTop: 16 }}>
           Tool
         </span>
-        <span className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Selection</span>
-        <span className={`tool ${tool === 'LandUp' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'LandUp' })} >Land Up</span>
-        <span className={`tool ${tool === 'LandDown' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'LandDown' })} >Land Down</span>
-        <span className={`tool ${tool === 'DeleteTiles' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'DeleteTiles' })} >Delete Tiles</span>
-        <span className={`tool ${tool === 'CreateTiles' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</span>
-        <span className={`tool ${tool === 'CreateManaTiles' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'CreateManaTiles' })} >Create Mana Tiles</span>
+        <button className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Selection</button>
+
+        <span className='hflex' style={{ width: '100%', gap: 8 }}>
+          Land 
+          <button className={`tool ${tool === 'LandUp' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'LandUp' })} >↑</button>
+          <button className={`tool ${tool === 'LandDown' ? 'selectedBtn' : ''}`}
+              onClick={() => ChangeTool({ tool: 'LandDown' })} >↓</button>
+        </span>
+        
+        <button className={`tool ${tool === 'DeleteTiles' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'DeleteTiles' })} >Delete Tiles</button>
+        <button className={`tool ${tool === 'CreateTiles' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</button>
+        <button className={`tool ${tool === 'CreateManaTiles' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'CreateManaTiles' })} >Create Mana Tiles</button>
           
         <span style={{ paddingTop: 8 }}>
           Create units
         </span>
           
-        <div 
-          style={{
-            position: 'relative',
-            display:'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%'
-          }}>
-          <span className={`${tool === 'CreateUnits' ? 'selectedBtn' : 'btn'}`}
-            onClick={() => ChangeTool({ tool: 'CreateUnits' })}
-            style={{
-              width: '100%',
-              padding: '2px 6px',
-              borderRadius: '6px 0 0 6px'
-            }}>{toolUnit}</span>
-          <span className={`${isUnitSelectionOpened ? 'selectedBtn' : 'btn'}`} 
-            onClick={()=>SetUnitSelectorOpen(!isUnitSelectionOpened)}
-            style={{
-              padding: '0 6px',
-              borderLeftWidth: 0,
-              borderRadius: '0 6px 6px 0'
-            }}>→</span>
-          {isUnitSelectionOpened &&
-            <span style={{
-              position:'absolute',
-              zIndex: 2,
-              right: -16,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: 16, height: 32
-            }}>
-              <svg width='16' height='32' viewBox='0 0 16 32' >
-                <path d="M16 0 C16 16 8 16 0 16 C8 16 16 16 16 32" fill="white" stroke="black" />
-              </svg>
-            </span>
-          }
+        <div className='hflex' style={{ width: '100%', position:'relative' }}>
+          <button className={`${tool === 'CreateUnits' ? 'selectedBtn' : ''} btnWithArrow`}
+            onClick={() => ChangeTool({ tool: 'CreateUnits' })} >{toolUnit}</button>
+          <UnitTypeSelector />
         </div>
       </div>
-      {isUnitSelectionOpened &&
-        <UnitTypeSelector />
-      }
     </div>
   )
 }

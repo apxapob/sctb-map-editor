@@ -5,10 +5,29 @@
   line-height: 24px;
 }
 
+select {
+  cursor: pointer;
+  height: 24px;
+  border: solid 1px #aaa;
+  background-color: black;
+  color: white;
+}
+
 button {
   min-height: 24px;
   min-width: 24px;
   line-height: 18px;
+  border: solid 1px #aaa;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #777;
+}
+button:active {
+  background-color: #888;
 }
 
 input {
