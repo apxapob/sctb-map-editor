@@ -1,5 +1,6 @@
 import { OnLoadedBinary, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
 import OpenPanel from '../state/actions/OpenPanel'
+import SaveChanges from '../state/actions/SaveChanges'
 import SendMsgToGame from '../state/actions/SendMsgToGame'
 import { MapState } from '../state/MapState'
 import { CommandType } from '../types/commands'
@@ -17,8 +18,7 @@ export function InitMessenger() {
         OpenPanel('NewMap')
         break
       case 'SAVE_CHANGES':
-        //TODO: save changes in buffs, units, upgrades, etc.
-        MapState.mapInfo && SendMsgToGame({ method: 'save_map', data: MapState.mapInfo.mapId })
+        SaveChanges()
         break
       case 'LOADING_START':
         OnLoadingStart()

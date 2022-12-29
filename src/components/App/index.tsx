@@ -5,13 +5,13 @@ import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
 import GameCanvas from '../game/GameCanvas'
 import EmptyPage from '../ui/EmptyPage'
-import { JsonEditor } from '../ui/JsonEditor'
+import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
-import { Tab } from '../ui/Tab'
+import Tab from '../ui/Tab'
 import Tools from '../ui/Tools'
 import './App.css'
 
-const getFilePath = (tab:TabType) => {
+export const getFilePath = (tab:TabType) => {
   switch (tab) {
     case 'Buffs':
       return 'buffs.json'
@@ -22,7 +22,7 @@ const getFilePath = (tab:TabType) => {
     case 'Upgrades':
       return 'upgrades.json'
   }
-  return null
+  return ''
 }
 
 const App = ():ReactElement => {
@@ -42,7 +42,7 @@ const App = ():ReactElement => {
         <Tools />
       }
       {MapState.mapInfo !== null && EditorState.activeTab !== 'Field' &&
-        <JsonEditor filePath={getFilePath(EditorState.activeTab)} />
+        <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />
       }
       <PanelsContainer />
     </div>

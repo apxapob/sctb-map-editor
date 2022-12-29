@@ -1,6 +1,26 @@
 .json-editor {
   cursor: pointer;
   white-space: pre-wrap;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 2px);
+  overflow: auto;
+  padding: 2px;
+  margin: 1px;
+  border: transparent 2px solid;
+}
+
+.json-editor-container {
+  max-width: calc(100vw - 0px);
+  max-height: calc(100vh - 24px);
+}
+
+.error-div {
+  color: red;
+}
+
+.parse-error {
+  border: red 2px solid;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
 }
