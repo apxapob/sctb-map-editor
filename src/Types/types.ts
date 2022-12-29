@@ -1,4 +1,6 @@
 export type GameMessage = {
+  method: 'init_complete';
+} | {
   method: 'save_map';
   data: string;
 } | {
@@ -7,9 +9,6 @@ export type GameMessage = {
 } | {
   method: 'on_get_save_info';
   data: { compressedGameState: string }
-} | {
-  method: 'init_complete';
-  data: MapSettingsType;
 } | {
   method: 'tool_updated';
   data: {[index: string]: number | string | boolean};
@@ -120,12 +119,6 @@ export type UpgradeType = {
   type: string;
   effects: EffectType[];
   unitTypes: string[];
-}
-
-export type MapSettingsType = {
-  units: UnitType[];
-  buffs: BuffType[];
-  upgrades: UpgradeType[];
 }
 
 export type MapInfo = {

@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
-import { MapFiles } from '../MapFiles'
-import { MapState } from '../MapState'
+import { MapInfo } from '../../types/types'
+import { INFO_PATH, MapFiles } from '../MapFiles'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -18,20 +18,20 @@ export const OnLoadingStart = action(() => {
 export const OnLoadingEnd = action(() => {
   MapFiles.progress = 1
   try {
-    if (MapFiles.text['info.json'] !== undefined) {
+    if (MapFiles.text[INFO_PATH] !== undefined) {
       MapFiles.status = 'Loaded'
-      MapState.mapInfo = JSON.parse(MapFiles.text['info.json'])
-      if (MapState.mapInfo && MapState.mapInfo.mapId) {
+      const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
+      if (mapInfo && mapInfo.mapId) {
         ClosePanel()
-        SendMsgToGame({ method: 'show_map_editor', data: MapState.mapInfo.mapId })
+        SendMsgToGame({ method: 'show_map_editor', data: mapInfo.mapId })
       } else {
         OnLoadingError('Invalid info.json file: no mapId')
       }
     } else {
       OnLoadingError('Can\'t find info.json file')
     }
-  } catch (e:any) {
-    OnLoadingError('Invalid info.json file: ' + e.message)
+  } catch (e:unknown) {
+    OnLoadingError('Invalid info.json file: ' + (e as Error).message)
   }
 })
 
@@ -51,6 +51,9 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
       text: c.text
     }
   })
+  if (c.file.endsWith('.json')) {
+    MapFiles.json[c.file] = JSON.parse(c.text)
+  }
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {

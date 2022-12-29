@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { MapState } from '../../state/MapState'
+import { getFilePath, MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
 import GameCanvas from '../game/GameCanvas'
@@ -10,20 +10,6 @@ import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
 import Tools from '../ui/Tools'
 import './App.css'
-
-export const getFilePath = (tab:TabType) => {
-  switch (tab) {
-    case 'Buffs':
-      return 'buffs.json'
-    case 'Units':
-      return 'units.json'
-    case 'Map':
-      return 'info.json'
-    case 'Upgrades':
-      return 'upgrades.json'
-  }
-  return ''
-}
 
 const App = ():ReactElement => {
   const tabs:TabType[] = ['Field', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Map']
@@ -35,13 +21,13 @@ const App = ():ReactElement => {
         )}
       </div>
       <GameCanvas active={ EditorState.activeTab === 'Field' } />
-      {MapState.mapInfo === null &&
+      {MapFiles.status === null &&
         <EmptyPage />
       }
-      {MapState.mapInfo !== null && EditorState.activeTab === 'Field' &&
+      {MapFiles.status === 'Loaded' && EditorState.activeTab === 'Field' &&
         <Tools />
       }
-      {MapState.mapInfo !== null && EditorState.activeTab !== 'Field' &&
+      {MapFiles.status === 'Loaded' && EditorState.activeTab !== 'Field' &&
         <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />
       }
       <PanelsContainer />

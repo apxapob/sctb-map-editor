@@ -7132,12 +7132,7 @@ Main.GotoLoadScreen = function() {
 	Main.curScreen = new ui_screens_LSDScreen(false,Main.mainScene);
 };
 Main.GotoStartMenu = function() {
-	logic_NetSystem.disconnect();
-	logic_EventSystem.disconnectAll();
-	logic_G.resetCache();
-	logic_G.stopAllTimers();
-	utils_Tweener.removeAllTweens();
-	utils_Tweener.init();
+	Main.removeListeners();
 	var _this = Main.curScreen;
 	if(_this != null && _this.parent != null) {
 		_this.parent.removeChild(_this);
@@ -7158,12 +7153,16 @@ Main.StartNewGame = function() {
 	ui_screens_Game.game = null;
 	Main.StartLocalGame();
 };
-Main.ShowMapEditor = function(mapId) {
+Main.removeListeners = function() {
+	logic_NetSystem.disconnect();
 	logic_EventSystem.disconnectAll();
 	logic_G.stopAllTimers();
 	logic_G.resetCache();
 	utils_Tweener.removeAllTweens();
 	utils_Tweener.init();
+};
+Main.ShowMapEditor = function(mapId) {
+	Main.removeListeners();
 	if(Main.curScreen != null) {
 		var _this = Main.curScreen;
 		if(_this != null && _this.parent != null) {
@@ -7200,7 +7199,7 @@ Main.StartLocalGame = function() {
 	}
 	Main.StartGame();
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
-	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 144, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
+	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 143, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
 };
 Main.CreateNetGame = function(savefileName) {
@@ -99996,14 +99995,14 @@ utils_IframeEvents.isInIframe = function() {
 	return window != window.top;
 };
 utils_IframeEvents.Init = function() {
-	utils_IframeEvents.Send({ method : "init_complete", data : { units : [], upgrades : [], buffs : []}});
+	utils_IframeEvents.Send({ method : "init_complete"});
 	window.onmessage = function(event) {
 		var msg = event.data;
 		var handler = utils_IframeEvents.eventHandlers.h[msg.method];
 		if(handler != null) {
 			handler(msg);
 		} else {
-			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 50, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
+			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 45, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
 		}
 	};
 };
@@ -101792,7 +101791,7 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		ui_screens_Game.gameField.cursor.set_toolUnit(msg.data.toolUnit);
 	};
 	_g.h["new_map"] = function(msg) {
-		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 72, className : "utils.IframeEvents", methodName : "eventHandlers"});
+		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 67, className : "utils.IframeEvents", methodName : "eventHandlers"});
 	};
 	_g.h["save_map"] = function(msg) {
 		logic_DataBase.saveData(msg.data);

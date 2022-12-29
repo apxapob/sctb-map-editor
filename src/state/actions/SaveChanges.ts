@@ -1,16 +1,17 @@
 import { action } from 'mobx'
-import { getFilePath } from '../../components/App'
+import { MapInfo } from '../../types/types'
 import { SendCommand } from '../../utils/messenger'
-import { MapFiles } from '../MapFiles'
-import { MapState } from '../MapState'
+import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, TabsState } from '../ToolState'
+import { OnLoadedText } from './OnLoading'
 import SendMsgToGame from './SendMsgToGame'
 
 const SaveChanges = ():void => {
-  if (MapState.mapInfo === null) return
+  if (MapFiles.status !== 'Loaded') return
   
   if (EditorState.activeTab === 'Field') {
-    SendMsgToGame({ method: 'save_map', data: MapState.mapInfo.mapId })
+    const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
+    SendMsgToGame({ method: 'save_map', data: mapInfo.mapId })
     return
   }
   const path = getFilePath(EditorState.activeTab)
@@ -19,12 +20,16 @@ const SaveChanges = ():void => {
 
   try {
     JSON.parse(text)
-    MapFiles.text[path] = text
     TabsState[EditorState.activeTab] = null
     TabsErrors[EditorState.activeTab] = null
     const data = { text, path }
     SendCommand({ command: 'SAVE_TEXT_FILE', data })
-    SendMsgToGame({ method: 'load_text_file', data })
+    OnLoadedText({
+      command: 'LOAD_TEXT_FILE',
+      file: path,
+      progress: 1,
+      text
+    })
   } catch (e) {
     TabsErrors[EditorState.activeTab] = (e as Error).message
   }

@@ -1,15 +1,16 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import SelectUnitType from '../../state/actions/SelectUnitType'
-import { MapState } from '../../state/MapState'
+import { MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { ToolState } from '../../state/ToolState'
 import { UnitType } from '../../types/types'
 import './UnitTypeSelector.css'
 
 const UnitTypeSelector = ():ReactElement => {
+  const units = MapFiles.json[UNITS_PATH] as UnitType[]
   return (
     <div className="unit-selector-container">
-      {MapState.settings.units.map(
+      {units.map(
         (u:UnitType) => 
           <div key={u.type} 
             className={ToolState.toolUnit === u.type ? 'selectedLabelBtn' : 'labelBtn'}
