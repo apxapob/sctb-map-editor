@@ -9,10 +9,16 @@ const UnitTypeSelector = ():ReactElement => {
     [unitId: string]: UnitType
   }
   
+  const unitArray = React.useMemo(() => Object.values(units), [units])
+
+  React.useEffect(() => {
+    SelectUnitType(unitArray[0].type)
+  }, [units])
+
   return (
     <select name="Unit types" id="unit-types" style={{ width:20 }} className="btnArrow"
       onChange={e => SelectUnitType(e.target.value)}>
-      {Object.values(units).map(
+      {unitArray.map(
         (u:UnitType) => 
           <option key={u.type} value={u.type}>
             {u.type}

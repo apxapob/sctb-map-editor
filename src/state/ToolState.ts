@@ -4,7 +4,7 @@ import { EditorStateType, ToolStateType } from '../types/types'
 export const ToolState:ToolStateType = observable({
   radius: 1,
   tool: 'LandUp',
-  toolUnit: 'soldier',
+  toolUnit: null,
 })
 
 export const EditorState:EditorStateType = observable({
@@ -17,5 +17,5 @@ export const TabsState:{
 } = observable({})
 
 export const TabsErrors:{
-  [tab: string]: any;
+  [tab: string]: string | null;
 } = observable({})

@@ -60,7 +60,7 @@ export type ToolType =
 export type ToolStateType = {
   radius: number;
   tool: ToolType;
-  toolUnit: string;
+  toolUnit: string|null;
 }
 
 export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map'

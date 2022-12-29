@@ -24,37 +24,35 @@ const Tools = ():ReactElement => {
         </div>
         
       </div>
-      <div style={{ gap: 8, }} className="vflex">
-        <span style={{ paddingTop: 16 }}>
-          Tool
-        </span>
-        <button className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Selection</button>
-
-        <span className='hflex' style={{ width: '100%', gap: 8 }}>
-          Land 
+      <div style={{ gap: 6, paddingTop: 16 }} className="vflex">
+        <span className='hflex' style={{ width: '100%', gap: 6 }}>
           <button className={`tool ${tool === 'LandUp' ? 'selectedBtn' : ''}`}
             onClick={() => ChangeTool({ tool: 'LandUp' })} >↑</button>
+          Land 
           <button className={`tool ${tool === 'LandDown' ? 'selectedBtn' : ''}`}
-              onClick={() => ChangeTool({ tool: 'LandDown' })} >↓</button>
+            onClick={() => ChangeTool({ tool: 'LandDown' })} >↓</button>
         </span>
         
-        <button className={`tool ${tool === 'DeleteTiles' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'DeleteTiles' })} >Delete Tiles</button>
         <button className={`tool ${tool === 'CreateTiles' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</button>
+          onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</button>
         <button className={`tool ${tool === 'CreateManaTiles' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'CreateManaTiles' })} >Create Mana Tiles</button>
+          onClick={() => ChangeTool({ tool: 'CreateManaTiles' })} >Create Mana Tiles</button>
+        <button className={`tool ${tool === 'DeleteTiles' ? 'selectedBtn' : ''}`}
+          onClick={() => ChangeTool({ tool: 'DeleteTiles' })} >Delete Tiles</button>
           
         <span style={{ paddingTop: 8 }}>
-          Create units
+          Units
         </span>
           
+        <button className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : ''}`}
+          onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Select</button>
         <div className='hflex' style={{ width: '100%', position:'relative' }}>
           <button className={`${tool === 'CreateUnits' ? 'selectedBtn' : ''} btnWithArrow`}
             onClick={() => ChangeTool({ tool: 'CreateUnits' })} >{toolUnit}</button>
           <UnitTypeSelector />
         </div>
+        <button className={`tool ${tool === 'DeleteUnits' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'DeleteUnits' })} >Delete units</button>
       </div>
     </div>
   )
