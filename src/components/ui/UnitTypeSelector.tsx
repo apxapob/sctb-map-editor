@@ -7,10 +7,13 @@ import { UnitType } from '../../types/types'
 import './UnitTypeSelector.css'
 
 const UnitTypeSelector = ():ReactElement => {
-  const units = MapFiles.json[UNITS_PATH] as UnitType[]
+  const units = MapFiles.json[UNITS_PATH] as {
+    [unitId: string]: UnitType
+  }
+  
   return (
     <div className="unit-selector-container">
-      {units.map(
+      {Object.values(units).map(
         (u:UnitType) => 
           <div key={u.type} 
             className={ToolState.toolUnit === u.type ? 'selectedLabelBtn' : 'labelBtn'}

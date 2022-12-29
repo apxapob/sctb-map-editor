@@ -28,7 +28,7 @@ export const MapFiles:{
     [filename: string]: string;
   };
   json: {
-    [filename: string]: object | object[];
+    [filename: string]: object;
   };
   lastLoadedFile: string;
   progress: number;
