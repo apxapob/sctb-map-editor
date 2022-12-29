@@ -13,7 +13,6 @@ export type JsonEditorProps = {
 }
 
 const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
-  const text = MapFiles.text[props.filePath]
   const error = TabsErrors[props.tab]
   
   return (
@@ -23,19 +22,31 @@ const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
           {TabsErrors[props.tab]}
         </div>
       }
-      <div className={`json-editor ${error ? 'parse-error' : ''}`} 
-        style={{
-          height: `calc(100vh - ${error ? 50 : 26}px)`
-        }}
-        contentEditable='true'
-        suppressContentEditableWarning={true}
-        onInput={action(e => {
-          TabsState[props.tab] = e.currentTarget.textContent
-        })}>
-        {text}
-      </div>
+      <EditorDiv tab={props.tab} error={error} filePath={props.filePath} />
     </div>
   )
 }
 
 export default observer(JsonEditor)
+
+const EditorDiv = (props: JsonEditorProps & {
+  error: string;
+}) => {
+  const text = TabsState[props.tab] || MapFiles.text[props.filePath]
+  
+  return (
+    <div className={`json-editor ${props.error ? 'parse-error' : ''}`} 
+        style={{
+          height: `calc(100vh - ${props.error ? 50 : 26}px)`
+        }}
+        contentEditable='true'
+        suppressContentEditableWarning={true}
+        onInput={e => updateText(props.tab, e.currentTarget.textContent)}>
+      {text}
+    </div>
+  )
+}
+
+const updateText = action((tab:TabType, text:string|null) => {
+  TabsState[tab] = text
+})
