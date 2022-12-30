@@ -33,6 +33,10 @@ button:active {
 
 input {
   line-height: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  border: solid 1px #aaa;
 }
 
 .hflex {

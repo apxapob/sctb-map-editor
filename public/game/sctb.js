@@ -92718,6 +92718,9 @@ model_TurnData.prototype = {
 	,__class__: model_TurnData
 };
 var model_UnitStatsData = function(type) {
+	if(type == null) {
+		return;
+	}
 	var unitParams = logic_DataBase.getUnit(type);
 	this.attack = unitParams.attack;
 	this.hp = unitParams.hp;
@@ -92736,6 +92739,18 @@ model_UnitStatsData.prototype = {
 	,flying: null
 	,detector: null
 	,invisible: null
+	,copy: function() {
+		var res = new model_UnitStatsData(null);
+		res.attack = this.attack;
+		res.hp = this.hp;
+		res.vision = this.vision;
+		res.range = this.range;
+		res.speed = this.speed;
+		res.flying = this.flying;
+		res.detector = this.detector;
+		res.invisible = this.invisible;
+		return res;
+	}
 	,__class__: model_UnitStatsData
 };
 var model_UnitData = function(type,id) {
@@ -92782,6 +92797,7 @@ model_UnitData.prototype = {
 		var _this = this.pos;
 		res.pos = new model_HexCoords(_this.q,_this.r);
 		res.dir = this.dir;
+		res.stats = this.stats.copy();
 		res.orderIdx = this.orderIdx;
 		res.autocast = this.autocast;
 		res.follow = this.follow;
