@@ -7,7 +7,7 @@ import './panels.css'
 const LoadingMapPanel = ():ReactElement | null => {
   const percent = Math.floor(100 * MapFiles.progress)
   return (
-    <div className="panel fullsize vflex">
+    <div className="panel fullsize vflex" style={{ alignItems: 'center' }}>
       <div className="panel-title">Loading map</div>
       loading {MapFiles.lastLoadedFile}
       <br />

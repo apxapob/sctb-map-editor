@@ -10,12 +10,15 @@ const UpdateUnits = ():void => {
 }
 
 export const UpdateUnitsType = action((newType:string) => {
-  SelectedUnits.data.forEach(u => u.type = newType)
+  if (!newType) return
+  SelectedUnits.data.forEach(u => {
+    u.type = newType
+  })
   UpdateUnits()
 })
 
 export const UpdateUnitsCountry = action((newCountryId:number) => {
-  console.log('!!! update country', newCountryId)
+  if (Number.isNaN(newCountryId)) return
   SelectedUnits.data.forEach(u => u.countryId = newCountryId)
   UpdateUnits()
 })

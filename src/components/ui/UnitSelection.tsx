@@ -20,36 +20,46 @@ const UnitSelection = ():ReactElement|null => {
   buffs:[],
   dir: number;
   stats: UnitStatsType;
-  pos: HexCoords;
   */
   if (selectedUnits.length === 0) {
     return null
   }
-
+  
   const mainUnit = selectedUnits[0]
+  const typeValue = selectedUnits.find(u => u.type !== mainUnit.type) ? '' : mainUnit.type
+  const countryValue = selectedUnits.find(u => u.countryId !== mainUnit.countryId) ? undefined : mainUnit.countryId
+  
   const unitColor = mapInfo.countryColors[mainUnit.countryId - 1] || 'white'
   const countryColors = ['0xffffff', ...mapInfo.countryColors]
 
   return <div className='tools-container unit-selection-container vflex' >
     <div className='hflex' style={{ justifyContent: 'space-between' }}>
-      Type:
-      <select value={mainUnit.type} onChange={e => UpdateUnitsType(e.target.value)}>
-        {unitTypes.map(
+      <label>
+        Type:
+        <select value={typeValue} onChange={e => UpdateUnitsType(e.target.value)}>
+          {typeValue === '' &&
+            <option value={''} />
+          }
+          {unitTypes.map(
           (unitType:string) => 
             <option key={unitType} value={unitType}>
               {unitType}
             </option>
         )}
-      </select>
+        </select>
+      </label>
     </div>
 
     <div className='hflex' style={{ justifyContent: 'space-between' }}>
       Country: 
-      <select value={mainUnit.countryId}
-        style={{ backgroundColor: unitColor.replace('0x', '#') }}
+      <select value={countryValue}
+        style={{ backgroundColor: countryValue === undefined ? 'unset' : unitColor.replace('0x', '#') }}
         onChange={e => UpdateUnitsCountry(
           parseInt(e.target.value)
         )}>
+        {countryValue === undefined &&
+          <option value={undefined} style={{ backgroundColor: 'black' }} />
+        }
         {countryColors.map(
           (countryColor:string, idx:number) => 
             <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }}>

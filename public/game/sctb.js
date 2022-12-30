@@ -90556,7 +90556,6 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 	if(!hxd_Key.isDown(17)) {
 		ui_screens_Game.cam.selectedUnitIds = [];
 	}
-	var unitsSelected = [];
 	var _g = 0;
 	while(_g < hexes.length) {
 		var hex = hexes[_g];
@@ -90566,10 +90565,17 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 			continue;
 		}
 		ui_screens_Game.cam.selectedUnitIds.push(unit.id);
-		unitsSelected.push(unit);
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",ui_screens_Game.cam.selectedUnitIds);
-	utils_IframeEvents.Send({ method : "selected_units", data : unitsSelected});
+	var _this = ui_screens_Game.cam.selectedUnitIds;
+	var result = new Array(_this.length);
+	var _g = 0;
+	var _g1 = _this.length;
+	while(_g < _g1) {
+		var i = _g++;
+		result[i] = logic_G.get_turn().units.h[_this[i]];
+	}
+	utils_IframeEvents.Send({ method : "selected_units", data : result});
 };
 logic_MapEditorSystem.SetTilesType = function(type,hexes) {
 	var _g = 0;
@@ -92739,7 +92745,7 @@ var model_UnitData = function(type,id) {
 	this.autocast = false;
 	this.orderIdx = -1;
 	if(id == null) {
-		this.id = type + "_" + utils_StringUtils.intToString36(Std.random(268435455)) + "" + utils_StringUtils.intToString36(Math.floor(HxOverrides.now() / 1000 * 10000));
+		this.id = utils_StringUtils.intToString36(Std.random(268435455)) + "" + utils_StringUtils.intToString36(Math.floor(HxOverrides.now() / 1000 * 10000));
 	} else {
 		this.id = id;
 	}
@@ -100426,7 +100432,7 @@ var view_UnitView = function(id) {
 	this.selectionBmp.alpha = 0.75;
 	this.bmp = new h2d_Bitmap(null,this);
 	this.bmp.smooth = true;
-	this.bmp.set_width(model_Params.get_tileWidth());
+	this.bmp.set_width(model_Params.get_tileWidth() * 0.8);
 	var _this = this.bmp;
 	var v = (model_Params.get_tileWidth() - this.bmp.width) / 2;
 	_this.posChanged = true;
