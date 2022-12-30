@@ -12,7 +12,7 @@ export type TabProps = {
 
 const Tab = (props:TabProps):ReactElement => {
   return <div className={ `tab ${props.selected ? '' : 'not-'}selected` } onClick={() => SelectTab(props.title)}>
-    {props.title} {TabsState[props.title] && '*'}
+    {props.title}{TabsState[props.title] && '*'}
   </div>
 }
 

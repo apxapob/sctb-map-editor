@@ -90514,6 +90514,7 @@ logic_MapEditorSystem.OnTileClick = function() {
 		return;
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "",tool);
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
 };
 logic_MapEditorSystem.CreateUnits = function(unitType,hexes) {
 	var _g = 0;
