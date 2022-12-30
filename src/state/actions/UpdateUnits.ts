@@ -26,11 +26,15 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
 export type UnitParamId = 'speed' | 'range' | 'vision' | 'hp' | 'attack'
 export const changeUnitParam = action((param:UnitParamId, delta:number) => {
   if (Number.isNaN(delta)) return
-  SelectedUnits.data.forEach(u => u.stats[param] += delta)
+  SelectedUnits.data.forEach(
+    u => u.stats[param] = Math.max(0, u.stats[param] + delta)
+  )
   UpdateUnits()
 })
 export const setUnitParam = action((param:UnitParamId, value:number) => {
   if (Number.isNaN(value)) return
-  SelectedUnits.data.forEach(u => u.stats[param] = value)
+  SelectedUnits.data.forEach(
+    u => u.stats[param] = Math.max(0, value)
+  )
   UpdateUnits()
 })

@@ -91666,7 +91666,7 @@ logic_UnitSystem.UpdateUnits = function(units) {
 		var json = JSON.stringify(u);
 		var this11 = logic_G.get_turn().units;
 		var key = u.id;
-		var value = parser.fromJson(json);
+		var value = parser.fromJson(json).copy();
 		this11.h[key] = value;
 		logic_EventSystem.fire(logic_EventType.UnitUpdated + u.id);
 	}
@@ -92741,11 +92741,16 @@ model_UnitStatsData.prototype = {
 	,invisible: null
 	,copy: function() {
 		var res = new model_UnitStatsData(null);
-		res.attack = this.attack;
-		res.hp = this.hp;
-		res.vision = this.vision;
-		res.range = this.range;
-		res.speed = this.speed;
+		var b = this.attack;
+		res.attack = 0 < b ? b : 0;
+		var b = this.hp;
+		res.hp = 0 < b ? b : 0;
+		var b = this.vision;
+		res.vision = 0 < b ? b : 0;
+		var b = this.range;
+		res.range = 0 < b ? b : 0;
+		var b = this.speed;
+		res.speed = 0 < b ? b : 0;
 		res.flying = this.flying;
 		res.detector = this.detector;
 		res.invisible = this.invisible;
