@@ -7,9 +7,6 @@ export type GameMessage = {
   method: 'show_map_editor';
   data: string;
 } | {
-  method: 'on_get_save_info';
-  data: { compressedGameState: string }
-} | {
   method: 'tool_updated';
   data: {[index: string]: number | string | boolean};
 } | {
@@ -41,6 +38,9 @@ export type GameMessage = {
 } | {
   method: 'text_file_updated', 
   data: { path: string; text: string }
+} | {
+  method: 'selected_units' | 'update_units', 
+  data: UnitDataType[];
 };
 
 export type PanelType = 
@@ -74,6 +74,29 @@ export type ToolStateChangeType = {
   radius?: number;
   tool?: ToolType;
   toolUnit?: string;
+}
+
+export type UnitDataType = {
+  id: string;
+  buffs:[],
+  dir: number;
+  countryId: number;
+  type: string;
+  stats: UnitStatsType;
+  pos: HexCoords;
+}
+
+export type UnitStatsType = {
+  attack: number;
+  hp: number;
+  vision: number;
+  range: number;
+  speed: number;
+}
+
+export type HexCoords = {
+  q: number;
+  r: number;
 }
 
 export type UnitType = {
@@ -125,4 +148,7 @@ export type MapInfo = {
   name: string;
   author: string | null;
   startField: string;
+  minPlayers: number;
+  maxPlayers: number;
+  countryColors: string[];
 }

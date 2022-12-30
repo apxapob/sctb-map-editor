@@ -1,5 +1,5 @@
 import { observable } from 'mobx'
-import { EditorStateType, ToolStateType } from '../types/types'
+import { EditorStateType, ToolStateType, UnitDataType } from '../types/types'
 
 export const ToolState:ToolStateType = observable({
   radius: 1,
@@ -7,9 +7,15 @@ export const ToolState:ToolStateType = observable({
   toolUnit: null,
 })
 
+export const SelectedUnits: {
+  data: UnitDataType[],
+} = observable({
+  data: [],
+})
+
 export const EditorState:EditorStateType = observable({
   activePanel: null,
-  activeTab: 'Field'
+  activeTab: 'Field',
 })
 
 export const TabsState:{

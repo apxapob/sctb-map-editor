@@ -89314,32 +89314,33 @@ var logic_EventType = $hxEnums["logic.EventType"] = { __ename__:true,__construct
 	,CamUpdated: {_hx_name:"CamUpdated",_hx_index:2,__enum__:"logic.EventType",toString:$estr}
 	,FieldEdited: {_hx_name:"FieldEdited",_hx_index:3,__enum__:"logic.EventType",toString:$estr}
 	,UnitSelected: {_hx_name:"UnitSelected",_hx_index:4,__enum__:"logic.EventType",toString:$estr}
-	,OrdersChanged: {_hx_name:"OrdersChanged",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
-	,RallyPointChanged: {_hx_name:"RallyPointChanged",_hx_index:6,__enum__:"logic.EventType",toString:$estr}
-	,AvatarClicked: {_hx_name:"AvatarClicked",_hx_index:7,__enum__:"logic.EventType",toString:$estr}
-	,AvatarRightClicked: {_hx_name:"AvatarRightClicked",_hx_index:8,__enum__:"logic.EventType",toString:$estr}
-	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:9,__enum__:"logic.EventType",toString:$estr}
-	,TurnDone: {_hx_name:"TurnDone",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
-	,TurnStart: {_hx_name:"TurnStart",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
-	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
-	,GameSaved: {_hx_name:"GameSaved",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
-	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
-	,Connected: {_hx_name:"Connected",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
-	,Disconnected: {_hx_name:"Disconnected",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
-	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
-	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
-	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
-	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
-	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
-	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
-	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
+	,UnitUpdated: {_hx_name:"UnitUpdated",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
+	,OrdersChanged: {_hx_name:"OrdersChanged",_hx_index:6,__enum__:"logic.EventType",toString:$estr}
+	,RallyPointChanged: {_hx_name:"RallyPointChanged",_hx_index:7,__enum__:"logic.EventType",toString:$estr}
+	,AvatarClicked: {_hx_name:"AvatarClicked",_hx_index:8,__enum__:"logic.EventType",toString:$estr}
+	,AvatarRightClicked: {_hx_name:"AvatarRightClicked",_hx_index:9,__enum__:"logic.EventType",toString:$estr}
+	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
+	,TurnDone: {_hx_name:"TurnDone",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
+	,TurnStart: {_hx_name:"TurnStart",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
+	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
+	,GameSaved: {_hx_name:"GameSaved",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
+	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
+	,Connected: {_hx_name:"Connected",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
+	,Disconnected: {_hx_name:"Disconnected",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
+	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
+	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
+	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
+	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
+	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
+	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
+	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
 };
-logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
-logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
 var logic_EventSystem = function() { };
 $hxClasses["logic.EventSystem"] = logic_EventSystem;
 logic_EventSystem.__name__ = "logic.EventSystem";
@@ -90541,6 +90542,7 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 	if(!hxd_Key.isDown(17)) {
 		ui_screens_Game.cam.selectedUnitIds = [];
 	}
+	var unitsSelected = [];
 	var _g = 0;
 	while(_g < hexes.length) {
 		var hex = hexes[_g];
@@ -90550,9 +90552,10 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 			continue;
 		}
 		ui_screens_Game.cam.selectedUnitIds.push(unit.id);
+		unitsSelected.push(unit);
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",ui_screens_Game.cam.selectedUnitIds);
-	utils_IframeEvents.Send({ method : "selected_units", data : ui_screens_Game.cam.selectedUnitIds});
+	utils_IframeEvents.Send({ method : "selected_units", data : unitsSelected});
 };
 logic_MapEditorSystem.SetTilesType = function(type,hexes) {
 	var _g = 0;
@@ -90576,7 +90579,7 @@ logic_MapEditorSystem.ChangeTilesHeight = function(hDelta,hexes) {
 		var tmp = _this.tiles[hex.q * _this.size + hex.r];
 		var _this1 = logic_G.get_field();
 		var v = _this1.tiles[hex.q * _this1.size + hex.r].h + hDelta;
-		tmp.h = v < -2 ? -2 : v > 2 ? 2 : v;
+		tmp.h = v < -4 ? -4 : v > 4 ? 4 : v;
 	}
 };
 var logic_MovementSystem = function() { };
@@ -91630,6 +91633,25 @@ logic_UnitSystem.GetUnitFromHex = function(q,r,td) {
 	}
 	return null;
 };
+logic_UnitSystem.UpdateUnits = function(units) {
+	var parser = new JsonParser_$6();
+	var _g = 0;
+	while(_g < units.length) {
+		var u = units[_g];
+		++_g;
+		var this1 = logic_G.get_turn().units;
+		if(!Object.prototype.hasOwnProperty.call(this1.h,u.id)) {
+			continue;
+		}
+		var json = JSON.stringify(u);
+		var this11 = logic_G.get_turn().units;
+		var key = u.id;
+		var value = parser.fromJson(json);
+		this11.h[key] = value;
+		logic_EventSystem.fire(logic_EventType.UnitUpdated + u.id);
+	}
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+};
 logic_UnitSystem.GetAllUnitsFromHex = function(hex,td,radius) {
 	if(radius == null) {
 		radius = 0;
@@ -91948,7 +91970,7 @@ logic_UnitSystem.onCalculationTurnStart = function(td) {
 				case 11:
 					var script = prop.script;
 					var args = prop.args;
-					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 274, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
+					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 292, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
 					break;
 				default:
 				}
@@ -92024,7 +92046,7 @@ logic_UnitSystem.onDeath = function(unit,td) {
 			if(prop._hx_index == 8) {
 				var script = prop.script;
 				var args = prop.args;
-				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 324, className : "logic.UnitSystem", methodName : "onDeath"});
+				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 342, className : "logic.UnitSystem", methodName : "onDeath"});
 				logic_UnitSystem.removeBuff(unit,passive,td);
 			}
 		}
@@ -99311,7 +99333,7 @@ view_UnitsLayer.prototype = {
 		var u_current = 0;
 		while(u_current < u_length) {
 			var u = u_h[u_keys[u_current++]];
-			this.showUnit(u);
+			this.showUnit(u.id);
 		}
 	}
 	,onTurnAnimStart: function() {
@@ -99351,13 +99373,13 @@ view_UnitsLayer.prototype = {
 			u.updatePos();
 		}
 	}
-	,showUnit: function(u) {
-		if(Object.prototype.hasOwnProperty.call(this.unitViews.h,u.id)) {
-			this.unitViews.h[u.id].onTurnStart();
+	,showUnit: function(unitId) {
+		if(Object.prototype.hasOwnProperty.call(this.unitViews.h,unitId)) {
+			this.unitViews.h[unitId].onTurnStart();
 		} else {
-			var view = new view_UnitView(u.id);
+			var view = new view_UnitView(unitId);
 			view.onTurnStart();
-			this.unitViews.h[u.id] = view;
+			this.unitViews.h[unitId] = view;
 		}
 	}
 	,__class__: view_UnitsLayer
@@ -100002,7 +100024,7 @@ utils_IframeEvents.Init = function() {
 		if(handler != null) {
 			handler(msg);
 		} else {
-			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 45, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
+			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 46, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
 		}
 	};
 };
@@ -100388,22 +100410,15 @@ var view_UnitView = function(id) {
 	var this1 = hxd_Res.get_loader();
 	this.selectionBmp = new h2d_Bitmap(this1.loadCache("img/cursor.png",hxd_res_Image).toTile());
 	this.selectionBmp.alpha = 0.75;
-	var tileImage = logic_LoadSystem.GetUnitTile(this.get_data().type);
-	this.bmp = new h2d_Bitmap(tileImage,this);
+	this.bmp = new h2d_Bitmap(null,this);
 	this.bmp.smooth = true;
-	this.bmp.color = model_Params.CountryColor(this.get_data().countryId);
-	this.bmp.set_width(this.get_data().stats.speed == 0 ? model_Params.get_tileWidth() : model_Params.get_tileWidth() / 2);
+	this.bmp.set_width(model_Params.get_tileWidth());
 	var _this = this.bmp;
 	var v = (model_Params.get_tileWidth() - this.bmp.width) / 2;
 	_this.posChanged = true;
 	_this.x = v;
-	var _this = this.bmp;
-	var v = model_Params.get_tileHeight() / 2;
-	var _this1 = this.bmp.getBounds(this.bmp.parent);
-	_this.posChanged = true;
-	_this.y = v - (_this1.yMax - _this1.yMin);
 	var this1 = hxd_Res.get_loader();
-	tileImage = this1.loadCache("img/damage_icon.png",hxd_res_Image).toTile();
+	var tileImage = this1.loadCache("img/damage_icon.png",hxd_res_Image).toTile();
 	this.dmgIcn = new h2d_Bitmap(tileImage,this);
 	this.dmgIcn.set_width(80);
 	this.dmgIcn.smooth = true;
@@ -100435,8 +100450,10 @@ var view_UnitView = function(id) {
 	_this.y = v;
 	this.rallyPoint = new view_RallyPoint(ui_screens_Game.gameField.marksLayer);
 	this.onUnitUpdated();
+	this.onRallyPointChanged();
 	logic_EventSystem.connect(Std.string(logic_EventType.UnitSelected) + "",$bind(this,this.onSelect));
-	logic_EventSystem.connect(Std.string(logic_EventType.RallyPointChanged) + id,$bind(this,this.onUnitUpdated));
+	logic_EventSystem.connect(Std.string(logic_EventType.UnitUpdated) + id,$bind(this,this.onUnitUpdated));
+	logic_EventSystem.connect(Std.string(logic_EventType.RallyPointChanged) + id,$bind(this,this.onRallyPointChanged));
 	logic_EventSystem.connect(Std.string(logic_EventType.OrdersChanged) + "",$bind(this,this.onOrdersChanged));
 };
 $hxClasses["view.UnitView"] = view_UnitView;
@@ -100467,6 +100484,14 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 			return null;
 		}
 		return logic_G.get_prevTurn().units.h[this.id];
+	}
+	,updateBmp: function(type) {
+		this.bmp.set_tile(logic_LoadSystem.GetUnitTile(type));
+		var _this = this.bmp;
+		var v = model_Params.get_tileHeight() / 2;
+		var _this1 = this.bmp.getBounds(this.bmp.parent);
+		_this.posChanged = true;
+		_this.y = v - (_this1.yMax - _this1.yMin);
 	}
 	,onOrdersChanged: function() {
 		var unit = this.get_data();
@@ -100570,6 +100595,11 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 		}
 	}
 	,onUnitUpdated: function() {
+		this.bmp.color = model_Params.CountryColor(this.get_data().countryId);
+		this.updateBmp(this.get_data().type);
+		this.onTurnStart();
+	}
+	,onRallyPointChanged: function() {
 		this.drawOrderRadius();
 		this.rallyPoint.from = this.get_data().pos;
 		if(this.get_data().follow != null) {
@@ -100638,7 +100668,8 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 			_this.parent.removeChild(_this);
 		}
 		logic_EventSystem.disconnect(Std.string(logic_EventType.UnitSelected) + "",$bind(this,this.onSelect));
-		logic_EventSystem.disconnect(Std.string(logic_EventType.RallyPointChanged) + this.id,$bind(this,this.onUnitUpdated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.UnitUpdated) + this.id,$bind(this,this.onUnitUpdated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.RallyPointChanged) + this.id,$bind(this,this.onRallyPointChanged));
 		logic_EventSystem.disconnect(Std.string(logic_EventType.OrdersChanged) + "",$bind(this,this.onOrdersChanged));
 	}
 	,onTurnAnimStart: function() {
@@ -100658,12 +100689,7 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 		this.updatePos(prevData.pos);
 		this.prevPos = prevData.pos;
 		this.dirArrow.set_dir(prevData.dir);
-		this.bmp.set_tile(logic_LoadSystem.GetUnitTile(prevData.type));
-		var _this = this.bmp;
-		var v = model_Params.get_tileHeight() / 2;
-		var _this1 = this.bmp.getBounds(this.bmp.parent);
-		_this.posChanged = true;
-		_this.y = v - (_this1.yMax - _this1.yMin);
+		this.updateBmp(prevData.type);
 		this.bmp.color = model_Params.CountryColor(prevData.countryId);
 		this.AnimAct(0);
 	}
@@ -100796,7 +100822,7 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 		this.alpha = isVisible ? 1 : 0;
 		this.rallyPoint.set_visible(curState.countryId == (logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) && isVisible);
 		this.dmgIcn.set_visible(this.hpIcn.set_visible(isVisible));
-		this.onUnitUpdated();
+		this.onRallyPointChanged();
 		this.updatePos();
 	}
 	,SpinAnim: function(newDir) {
@@ -100961,22 +100987,12 @@ view_UnitView.prototype = $extend(h2d_Object.prototype,{
 	,MorphAnim: function(to,animTime) {
 		var _gthis = this;
 		if(this.alpha < 0.5) {
-			this.bmp.set_tile(logic_LoadSystem.GetUnitTile(to));
-			var _this = this.bmp;
-			var v = model_Params.get_tileHeight() / 2;
-			var _this1 = this.bmp.getBounds(this.bmp.parent);
-			_this.posChanged = true;
-			_this.y = v - (_this1.yMax - _this1.yMin);
+			this.updateBmp(to);
 			return;
 		}
 		var halfTime = Math.floor(animTime / 2);
 		utils_Tweener.AnimAlpha(this,0,halfTime,function() {
-			_gthis.bmp.set_tile(logic_LoadSystem.GetUnitTile(to));
-			var _this = _gthis.bmp;
-			var v = model_Params.get_tileHeight() / 2;
-			var _this1 = _gthis.bmp.getBounds(_gthis.bmp.parent);
-			_this.posChanged = true;
-			_this.y = v - (_this1.yMax - _this1.yMin);
+			_gthis.updateBmp(to);
 			utils_Tweener.AnimAlpha(_gthis,1,halfTime);
 		});
 	}
@@ -101791,7 +101807,7 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		ui_screens_Game.gameField.cursor.set_toolUnit(msg.data.toolUnit);
 	};
 	_g.h["new_map"] = function(msg) {
-		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 67, className : "utils.IframeEvents", methodName : "eventHandlers"});
+		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 68, className : "utils.IframeEvents", methodName : "eventHandlers"});
 	};
 	_g.h["save_map"] = function(msg) {
 		logic_DataBase.saveData(msg.data);
@@ -101802,8 +101818,8 @@ utils_IframeEvents.eventHandlers = (function($this) {
 	_g.h["load_binary_file"] = function(msg) {
 		utils_JSFileSystem.loadBinaryFile(msg.data.path,msg.data.bytes);
 	};
-	_g.h["get_save_info"] = function(msg) {
-		utils_IframeEvents.Send({ method : "on_get_save_info", data : { compressedGameState : logic_LSDSystem.getCompressedGameString(ui_screens_Game.game)}});
+	_g.h["update_units"] = function(msg) {
+		logic_UnitSystem.UpdateUnits(msg.data);
 	};
 	$r = _g;
 	return $r;

@@ -3,7 +3,9 @@ import { GameCanvasId } from '../../components/game/GameCanvas'
 import { GameMessage } from '../../types/types'
 
 const SendMsgToGame = (msg:GameMessage):void => {
-  msg.data = toJS(msg.data)
+  if (msg.method !== 'init_complete') {
+    msg.data = toJS(msg.data)
+  }
   
   const gameIframe = document.getElementById(GameCanvasId) as HTMLIFrameElement
   gameIframe?.contentWindow?.postMessage(msg, '*')

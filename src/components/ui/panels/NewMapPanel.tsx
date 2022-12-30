@@ -17,10 +17,10 @@ const NewMapPanel = ():ReactElement | null => {
   )
 
   return (
-    <div className="panel">
+    <div className="panel" style={{ width: 294 }}>
       <div className="panel-title">New map</div>
       
-      <div style={{ display: 'flex', gap: 6, flexDirection:'column' }}>
+      <div className='vflex'>
         <div className='hflex'>
           <span style={{ width: '100%', textAlign:'start' }}>
             Map name:&nbsp;

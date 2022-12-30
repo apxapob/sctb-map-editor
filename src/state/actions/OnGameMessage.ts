@@ -1,33 +1,33 @@
 import { action, autorun } from 'mobx'
-import { saveAs } from 'file-saver'
 import { GameMessage, ToolType } from '../../types/types'
 import { PressedKeys } from '../PressedKeys'
 import { EditorState, ToolState } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 import { SendCommand } from '../../utils/messenger'
+import { OnSelectUnits } from './OnSelectUnits'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
     case 'init_complete':
-      onInitComplete()
+      OnInitComplete()
       break
     case 'tool_updated':
-      onToolUpdated(msg.data)
-      break
-    case 'on_get_save_info':
-      onGetSaveInfo(msg.data)
+      OnToolUpdated(msg.data)
       break
     case 'text_file_updated':
       SendCommand({ command: 'SAVE_TEXT_FILE', data: msg.data })
       break
+    case 'selected_units':
+      OnSelectUnits(msg.data)
+      break
     default:
-      console.warn('@@@ unknown message', msg)
+      console.warn('unknown message', msg)
   }
 }
 
 export default action(OnGameMessage)
 
-const onInitComplete = () => {
+const OnInitComplete = () => {
   autorun(
     () => {
       if (EditorState.activeTab !== 'Field') { return }
@@ -36,13 +36,8 @@ const onInitComplete = () => {
   )
 }
 
-const onToolUpdated = (data:{[index: string]: number | string | boolean}) => {
+const OnToolUpdated = action((data:{[index: string]: number | string | boolean}) => {
   ToolState.radius = data.radius as number
   ToolState.tool = data.tool as ToolType
   ToolState.toolUnit = data.toolUnit as string
-}
-
-const onGetSaveInfo = async (data: { compressedGameState: string }) => {
-  const blob = new Blob([data.compressedGameState], { type: 'text/plain;charset=utf-8' })
-  saveAs(blob, 'map.map')
-}
+})

@@ -9,6 +9,7 @@ import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
 import Tools from '../ui/Tools'
+import UnitSelection from '../ui/UnitSelection'
 import './App.css'
 
 const App = ():ReactElement => {
@@ -25,7 +26,10 @@ const App = ():ReactElement => {
         <EmptyPage />
       }
       {MapFiles.status === 'Loaded' && EditorState.activeTab === 'Field' &&
-        <Tools />
+        <>
+          <Tools />
+          <UnitSelection />
+        </>
       }
       {MapFiles.status === 'Loaded' && EditorState.activeTab !== 'Field' &&
         <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />

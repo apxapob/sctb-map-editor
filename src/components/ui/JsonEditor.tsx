@@ -30,7 +30,7 @@ const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
 export default observer(JsonEditor)
 
 const EditorDiv = (props: JsonEditorProps & {
-  error: string;
+  error: string|null;
 }) => {
   const text = TabsState[props.tab] || MapFiles.text[props.filePath]
   

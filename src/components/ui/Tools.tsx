@@ -24,7 +24,7 @@ const Tools = ():ReactElement => {
         </div>
         
       </div>
-      <div style={{ gap: 6, paddingTop: 16 }} className="vflex">
+      <div style={{ paddingTop: 16 }} className="vflex">
         <span className='hflex' style={{ width: '100%', gap: 6 }}>
           <button className={`tool ${tool === 'LandUp' ? 'selectedBtn' : ''}`}
             onClick={() => ChangeTool({ tool: 'LandUp' })} >↑</button>

@@ -16,7 +16,7 @@ const UnitTypeSelector = ():ReactElement => {
   }, [units])
 
   return (
-    <select name="Unit types" id="unit-types" style={{ width:20 }} className="btnArrow"
+    <select style={{ width:20 }} className="btnArrow"
       onChange={e => SelectUnitType(e.target.value)}>
       {unitArray.map(
         (u:UnitType) => 
