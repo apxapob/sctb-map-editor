@@ -22,10 +22,10 @@
 }
 
 .panel {
-  border: solid 1px black;
+  border: solid 1px #aaa;
   border-radius: 6px;
-  background-color: rgb(230, 230, 230);
-  color: black;
+  background-color: rgb(25, 25, 25);
+  color: white;
   padding: 8px;
 }
 
