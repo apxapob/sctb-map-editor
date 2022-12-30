@@ -1,5 +1,5 @@
 export type GameMessage = {
-  method: 'init_complete';
+  method: 'init_complete' | 'mark_field_unsaved';
 } | {
   method: 'save_map';
   data: string;

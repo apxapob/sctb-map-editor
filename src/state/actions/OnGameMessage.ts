@@ -5,6 +5,7 @@ import { EditorState, ToolState } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 import { SendCommand } from '../../utils/messenger'
 import { OnSelectUnits } from './OnSelectUnits'
+import { UpdateUnsavedData } from './UpdateText'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
@@ -19,6 +20,9 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'selected_units':
       OnSelectUnits(msg.data)
+      break
+    case 'mark_field_unsaved':
+      UpdateUnsavedData('Field', 'unsaved')
       break
     default:
       console.warn('unknown message', msg)

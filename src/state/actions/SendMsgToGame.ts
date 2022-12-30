@@ -3,7 +3,7 @@ import { GameCanvasId } from '../../components/game/GameCanvas'
 import { GameMessage } from '../../types/types'
 
 const SendMsgToGame = (msg:GameMessage):void => {
-  if (msg.method !== 'init_complete') {
+  if ('data' in msg) {
     msg.data = toJS(msg.data)
   }
   

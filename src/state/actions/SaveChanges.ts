@@ -12,6 +12,7 @@ const SaveChanges = ():void => {
   if (EditorState.activeTab === 'Field') {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
     SendMsgToGame({ method: 'save_map', data: mapInfo.mapId })
+    TabsState[EditorState.activeTab] = null
     return
   }
   const path = getFilePath(EditorState.activeTab)

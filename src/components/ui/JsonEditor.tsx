@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import { TabType } from '../../types/types'
 import { TabsErrors, TabsState } from '../../state/ToolState'
 import { action } from 'mobx'
+import { UpdateUnsavedData } from '../../state/actions/UpdateText'
 
 export type JsonEditorProps = {
   tab: TabType;
@@ -41,12 +42,8 @@ const EditorDiv = (props: JsonEditorProps & {
         }}
         contentEditable='true'
         suppressContentEditableWarning={true}
-        onInput={e => updateText(props.tab, e.currentTarget.textContent)}>
+        onInput={e => UpdateUnsavedData(props.tab, e.currentTarget.textContent)}>
       {text}
     </div>
   )
 }
-
-const updateText = action((tab:TabType, text:string|null) => {
-  TabsState[tab] = text
-})

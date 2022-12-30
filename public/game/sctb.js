@@ -89292,6 +89292,19 @@ logic_DataBase.saveData = function(mapId) {
 		return;
 	}
 	var writer = new JsonWriter_$40();
+	ui_screens_Game.game.field.units.h = Object.create(null);
+	var h = logic_G.get_turn().units.h;
+	var u_h = h;
+	var u_keys = Object.keys(h);
+	var u_length = u_keys.length;
+	var u_current = 0;
+	while(u_current < u_length) {
+		var u = u_h[u_keys[u_current++]];
+		var this1 = ui_screens_Game.game.field.units;
+		var key = u.id;
+		var value = u.copy();
+		this1.h[key] = value;
+	}
 	var json = writer.write(ui_screens_Game.game.field);
 	utils_JSFileSystem.updateTextFile("fields/" + logic_DataBase.db.mapInfo.startField + ".json",json);
 };
