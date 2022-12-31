@@ -78,7 +78,7 @@ export type ToolStateChangeType = {
 
 export type UnitDataType = {
   id: string;
-  buffs:[],
+  buffs: BuffDataType[];
   dir: number;
   countryId: number;
   type: string;
@@ -135,6 +135,11 @@ export type BuffType = {
   type: string;
   effects: EffectType[];
   turns: number;
+}
+
+export type BuffDataType = {
+  buffType: string;
+  turnsLeft: number;
 }
 
 export type UpgradeType = {

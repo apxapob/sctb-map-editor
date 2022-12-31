@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { changeUnitParam, setUnitParam, UnitParamId, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { changeBuffTurns, changeUnitParam, removeBuff, setBuffTurns, setUnitParam, UnitParamId, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedUnits } from '../../state/ToolState'
-import { MapInfo, UnitType } from '../../types/types'
+import { BuffDataType, MapInfo, UnitType } from '../../types/types'
 import './UnitSelection.css'
 
 const spaceBtwStyle = { justifyContent: 'space-between', gap: 6 }
@@ -32,6 +32,28 @@ const UnitSelection = ():ReactElement|null => {
   
   const unitColor = mapInfo.countryColors[mainUnit.countryId - 1] || 'white'
   const countryColors = ['0xffffff', ...mapInfo.countryColors]
+
+  console.log('!!! buffs:', mainUnit.buffs)
+
+  const buffs: (BuffDataType|'different buffs')[] = []
+
+  const maxLen = selectedUnits.reduce(
+    (acc, unit) => Math.max(acc, unit.buffs.length), 
+    0
+  )
+  for (let buffIdx = 0; buffIdx < maxLen; buffIdx++) {
+    const b:BuffDataType = selectedUnits[0].buffs[buffIdx]
+    for (let i = 1; i < selectedUnits.length; i++) {
+      const b2 = selectedUnits[i].buffs[buffs.length]
+      if (!b || !b2 || b.buffType !== b2.buffType) {
+        buffs.push('different buffs')
+        break
+      }
+    }
+    if (buffs.length <= buffIdx) {
+      buffs.push(b)
+    }
+  }
 
   return <div className='tools-container unit-selection-container vflex' >
     <div className='hflex' style={spaceBtwStyle}>
@@ -77,6 +99,17 @@ const UnitSelection = ():ReactElement|null => {
     <UnitStatChanger title='Range' param='range' />
     <UnitStatChanger title='Speed' param='speed' />
     <UnitStatChanger title='Vision' param='vision' />
+
+    <div className='vflex' style={{ paddingTop: 8, gap: 2 }}>
+      Buffs
+      <div className='buff-list vflex'>
+        {buffs.map(
+          (b, idx) => b === 'different buffs' ? b : <BuffChanger idx={idx} key={idx} buff={b} /> 
+        )}
+      </div>
+      
+    </div> 
+    
   </div>
 }
 
@@ -101,6 +134,28 @@ const UnitStatChanger = observer((props:{
         )} value={value} className="num-input" />
         <button onClick={() => changeUnitParam(param, 1)}>+</button>
       </div>
+    </div>
+  )
+})
+
+const BuffChanger = observer((props:{
+  idx: number;
+  buff: BuffDataType;
+}) => {
+  const { buff, idx } = props
+  return (
+    <div className='hflex' >
+      <button onClick={() => removeBuff(idx)}>X</button>
+      <div style={{ width: '100%', textAlign: 'left', padding: '0 6px' }}>
+        {buff.buffType}
+      </div>
+      
+      <button onClick={() => changeBuffTurns(idx, -1)}>-</button>
+      <input onChange={e => setBuffTurns(idx,
+          parseInt(e.target.value)
+        )} value={buff.turnsLeft} className="num-input" />
+      <button onClick={() => changeBuffTurns(idx, 1)}>+</button>
+      
     </div>
   )
 })

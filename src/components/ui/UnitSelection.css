@@ -8,6 +8,12 @@
 
 .num-input {
   margin: 0 6px;
-  width: 50px;
+  width: 30px;
   text-align: center;
+}
+
+.buff-list {
+  width: 100%;
+  min-height: 24px;
+  max-height: 100px;
 }

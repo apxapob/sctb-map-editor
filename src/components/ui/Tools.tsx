@@ -46,7 +46,7 @@ const Tools = ():ReactElement => {
           
         <button className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : ''}`}
           onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Select</button>
-        <div className='hflex' style={{ width: '100%', position:'relative' }}>
+        <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
           <button className={`${tool === 'CreateUnits' ? 'selectedBtn' : ''} btnWithArrow`}
             onClick={() => ChangeTool({ tool: 'CreateUnits' })} >{toolUnit}</button>
           <UnitTypeSelector />

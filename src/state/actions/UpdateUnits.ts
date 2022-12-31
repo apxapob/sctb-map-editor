@@ -38,3 +38,13 @@ export const setUnitParam = action((param:UnitParamId, value:number) => {
   )
   UpdateUnits()
 })
+
+export const changeBuffTurns = action((idx:number, delta:number) => {
+  console.log('!!! changeBuffParam', idx, delta)
+})
+export const setBuffTurns = action((idx:number, value:number) => {
+  console.log('!!! setBuffTurns', idx, value)
+})
+export const removeBuff = action((idx:number) => {
+  console.log('!!! removeBuff', idx)
+})

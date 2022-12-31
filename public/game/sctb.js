@@ -90503,10 +90503,10 @@ logic_MapEditorSystem.startNewHistory = function() {
 	logic_MapEditorSystem.pushToHistory();
 };
 logic_MapEditorSystem.pushToHistory = function() {
-	logic_MapEditorSystem.history.splice(logic_MapEditorSystem.historyPos + 1,99);
+	logic_MapEditorSystem.history.splice(logic_MapEditorSystem.historyPos + 1,99999);
 	logic_UnitSystem.copyTurnUnitsToField();
 	logic_MapEditorSystem.history.push(ui_screens_Game.game.field.copy());
-	if(logic_MapEditorSystem.history.length > 20) {
+	if(logic_MapEditorSystem.history.length > 90) {
 		logic_MapEditorSystem.history.shift();
 	}
 	logic_MapEditorSystem.historyPos = logic_MapEditorSystem.history.length - 1;
@@ -90540,6 +90540,7 @@ logic_MapEditorSystem.Redo = function() {
 	logic_MapEditorSystem.changeHistoryPos(1);
 };
 logic_MapEditorSystem.OnTileMouseDown = function() {
+	logic_MapEditorSystem.toolDrag = false;
 	logic_MapEditorSystem.prevTile = ui_screens_Game.cam.cursorTile;
 	logic_MapEditorSystem.ApplyTool();
 };
@@ -90558,8 +90559,7 @@ logic_MapEditorSystem.OnTileMouseMove = function() {
 	if(tmp) {
 		return;
 	}
-	var tool = ui_screens_Game.gameField.cursor.tool;
-	if(tool._hx_index == 7) {
+	if(ui_screens_Game.gameField.cursor.tool._hx_index == 7) {
 		var _this = ui_screens_Game.cam.cursorTile;
 		var hex = logic_MapEditorSystem.prevTile;
 		logic_UnitSystem.DragSelectedUnits(new model_HexCoords(_this.q - hex.q,_this.r - hex.r));
@@ -90567,9 +90567,16 @@ logic_MapEditorSystem.OnTileMouseMove = function() {
 		logic_MapEditorSystem.ApplyTool();
 	}
 	logic_MapEditorSystem.prevTile = ui_screens_Game.cam.cursorTile;
+	logic_MapEditorSystem.toolDrag = true;
 };
 logic_MapEditorSystem.OnTileClick = function() {
-	logic_MapEditorSystem.pushToHistory();
+	if(ui_screens_Game.gameField.cursor.tool._hx_index == 7) {
+		if(logic_MapEditorSystem.toolDrag) {
+			logic_MapEditorSystem.pushToHistory();
+		}
+	} else {
+		logic_MapEditorSystem.pushToHistory();
+	}
 };
 logic_MapEditorSystem.ApplyTool = function() {
 	var radius = ui_screens_Game.gameField.cursor.radius;
@@ -90624,6 +90631,7 @@ logic_MapEditorSystem.CreateUnits = function(unitType,hexes) {
 		u.pos = hex;
 		ui_screens_Game.game.field.units.h[u.id] = u;
 		logic_G.get_turn().units.h[u.id] = u;
+		logic_UnitSystem.AddDefaultBuffs(u,logic_G.get_turn());
 	}
 };
 logic_MapEditorSystem.DeleteUnits = function(hexes) {
@@ -92135,7 +92143,7 @@ logic_UnitSystem.onCalculationTurnStart = function(td) {
 				case 11:
 					var script = prop.script;
 					var args = prop.args;
-					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 321, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
+					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 320, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
 					break;
 				default:
 				}
@@ -92211,7 +92219,7 @@ logic_UnitSystem.onDeath = function(unit,td) {
 			if(prop._hx_index == 8) {
 				var script = prop.script;
 				var args = prop.args;
-				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 371, className : "logic.UnitSystem", methodName : "onDeath"});
+				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 370, className : "logic.UnitSystem", methodName : "onDeath"});
 				logic_UnitSystem.removeBuff(unit,passive,td);
 			}
 		}
@@ -101936,6 +101944,7 @@ logic_LoadSystem.unitTiles = new haxe_ds_StringMap();
 logic_LoadSystem.orderScripts = new haxe_ds_StringMap();
 logic_LoadSystem.particles = new haxe_ds_StringMap();
 logic_MapEditorSystem.historyPos = 0;
+logic_MapEditorSystem.toolDrag = false;
 logic_MapEditorSystem.prevTile = new model_HexCoords(-1,-1);
 logic_MapEditorSystem.history = [];
 logic_NetSystem.playersNum = 0;
