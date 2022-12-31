@@ -7175,6 +7175,7 @@ Main.ShowMapEditor = function(mapId) {
 	Main.StartGame();
 	ui_screens_Game.ui.set_visible(false);
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	logic_MapEditorSystem.startNewHistory();
 };
 Main.LoadLocalGame = function(filename) {
 	ui_screens_Game.game = logic_LSDSystem.Load(filename);
@@ -7199,7 +7200,7 @@ Main.StartLocalGame = function() {
 	}
 	Main.StartGame();
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
-	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 143, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
+	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 145, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
 };
 Main.CreateNetGame = function(savefileName) {
@@ -89292,19 +89293,7 @@ logic_DataBase.saveData = function(mapId) {
 		return;
 	}
 	var writer = new JsonWriter_$40();
-	ui_screens_Game.game.field.units.h = Object.create(null);
-	var h = logic_G.get_turn().units.h;
-	var u_h = h;
-	var u_keys = Object.keys(h);
-	var u_length = u_keys.length;
-	var u_current = 0;
-	while(u_current < u_length) {
-		var u = u_h[u_keys[u_current++]];
-		var this1 = ui_screens_Game.game.field.units;
-		var key = u.id;
-		var value = u.copy();
-		this1.h[key] = value;
-	}
+	logic_UnitSystem.copyTurnUnitsToField();
 	var json = writer.write(ui_screens_Game.game.field);
 	utils_JSFileSystem.updateTextFile("fields/" + logic_DataBase.db.mapInfo.startField + ".json",json);
 };
@@ -90176,7 +90165,7 @@ logic_HexMath.hexCoordsToPoint = function(q,r,h) {
 	return { x : 0.75 * model_Params.get_tileWidth() * q, y : model_Params.get_tileHeight() * (0.25 * q + 0.5 * r) + logic_HexMath.getTileHeightOffset(h)};
 };
 logic_HexMath.getTileHeightOffset = function(h) {
-	return -0.2 * model_Params.get_tileHeight() * h;
+	return -0.19 * model_Params.get_tileHeight() * h;
 };
 logic_HexMath.hexDistance = function(a,b) {
 	return Math.round((Math.abs(a.q - b.q) + Math.abs(a.q + a.r - b.q - b.r) + Math.abs(a.r - b.r)) / 2);
@@ -90470,12 +90459,119 @@ logic_Locale.ClearMapLocale = function() {
 	logic_Locale.mapLocale = null;
 	logic_Locale.mapEngLocale = null;
 };
+var model_HexCoords = function(Q,R) {
+	this.r = 0;
+	this.q = 0;
+	this.q = Q;
+	this.r = R;
+};
+$hxClasses["model.HexCoords"] = model_HexCoords;
+model_HexCoords.__name__ = "model.HexCoords";
+model_HexCoords.Parse = function(hex) {
+	var arr = hex.split("_");
+	return new model_HexCoords(Std.parseInt(arr[0]),Std.parseInt(arr[1]));
+};
+model_HexCoords.prototype = {
+	q: null
+	,r: null
+	,copy: function() {
+		return new model_HexCoords(this.q,this.r);
+	}
+	,equals: function(hex) {
+		if(this.q == hex.q) {
+			return this.r == hex.r;
+		} else {
+			return false;
+		}
+	}
+	,toString: function() {
+		return this.q + "_" + this.r;
+	}
+	,diff: function(hex) {
+		return new model_HexCoords(this.q - hex.q,this.r - hex.r);
+	}
+	,sum: function(hex) {
+		return new model_HexCoords(this.q + hex.q,this.r + hex.r);
+	}
+	,__class__: model_HexCoords
+};
 var logic_MapEditorSystem = function() { };
 $hxClasses["logic.MapEditorSystem"] = logic_MapEditorSystem;
 logic_MapEditorSystem.__name__ = "logic.MapEditorSystem";
+logic_MapEditorSystem.startNewHistory = function() {
+	logic_MapEditorSystem.history = [];
+	logic_MapEditorSystem.pushToHistory();
+};
+logic_MapEditorSystem.pushToHistory = function() {
+	logic_MapEditorSystem.history.splice(logic_MapEditorSystem.historyPos + 1,99);
+	logic_UnitSystem.copyTurnUnitsToField();
+	logic_MapEditorSystem.history.push(ui_screens_Game.game.field.copy());
+	if(logic_MapEditorSystem.history.length > 20) {
+		logic_MapEditorSystem.history.shift();
+	}
+	logic_MapEditorSystem.historyPos = logic_MapEditorSystem.history.length - 1;
+};
+logic_MapEditorSystem.changeHistoryPos = function(delta) {
+	var v = logic_MapEditorSystem.historyPos + delta;
+	var max = logic_MapEditorSystem.history.length - 1;
+	logic_MapEditorSystem.historyPos = v < 0 ? 0 : v > max ? max : v;
+	ui_screens_Game.game.field = logic_MapEditorSystem.history[logic_MapEditorSystem.historyPos].copy();
+	logic_G.get_turn().units.h = Object.create(null);
+	var h = ui_screens_Game.game.field.units.h;
+	var u_h = h;
+	var u_keys = Object.keys(h);
+	var u_length = u_keys.length;
+	var u_current = 0;
+	while(u_current < u_length) {
+		var u = u_h[u_keys[u_current++]];
+		var this1 = logic_G.get_turn().units;
+		var key = u.id;
+		var value = u.copy();
+		this1.h[key] = value;
+	}
+	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "",null);
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+	logic_MapEditorSystem.sendUnitSelection();
+};
+logic_MapEditorSystem.Undo = function() {
+	logic_MapEditorSystem.changeHistoryPos(-1);
+};
+logic_MapEditorSystem.Redo = function() {
+	logic_MapEditorSystem.changeHistoryPos(1);
+};
 logic_MapEditorSystem.OnTileMouseDown = function() {
+	logic_MapEditorSystem.prevTile = ui_screens_Game.cam.cursorTile;
+	logic_MapEditorSystem.ApplyTool();
+};
+logic_MapEditorSystem.OnTileMouseMove = function() {
+	var tmp;
+	var _this = logic_MapEditorSystem.prevTile;
+	var hex = ui_screens_Game.cam.cursorTile;
+	if(!(_this.q == hex.q && _this.r == hex.r)) {
+		var _this = logic_G.get_field();
+		var q = ui_screens_Game.cam.cursorTile.q;
+		var r = ui_screens_Game.cam.cursorTile.r;
+		tmp = !(q >= 0 && q < _this.size && r >= 0 && r < _this.size);
+	} else {
+		tmp = true;
+	}
+	if(tmp) {
+		return;
+	}
+	var tool = ui_screens_Game.gameField.cursor.tool;
+	if(tool._hx_index == 7) {
+		var _this = ui_screens_Game.cam.cursorTile;
+		var hex = logic_MapEditorSystem.prevTile;
+		logic_UnitSystem.DragSelectedUnits(new model_HexCoords(_this.q - hex.q,_this.r - hex.r));
+	} else {
+		logic_MapEditorSystem.ApplyTool();
+	}
+	logic_MapEditorSystem.prevTile = ui_screens_Game.cam.cursorTile;
 };
 logic_MapEditorSystem.OnTileClick = function() {
+	logic_MapEditorSystem.pushToHistory();
+};
+logic_MapEditorSystem.ApplyTool = function() {
 	var radius = ui_screens_Game.gameField.cursor.radius;
 	var tool = ui_screens_Game.gameField.cursor.tool;
 	var toolUnit = ui_screens_Game.gameField.cursor.toolUnit;
@@ -90566,6 +90662,9 @@ logic_MapEditorSystem.SelectUnits = function(hexes) {
 		}
 		ui_screens_Game.cam.selectedUnitIds.push(unit.id);
 	}
+	logic_MapEditorSystem.sendUnitSelection();
+};
+logic_MapEditorSystem.sendUnitSelection = function() {
 	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",ui_screens_Game.cam.selectedUnitIds);
 	var _this = ui_screens_Game.cam.selectedUnitIds;
 	var result = new Array(_this.length);
@@ -91653,6 +91752,21 @@ logic_UnitSystem.GetUnitFromHex = function(q,r,td) {
 	}
 	return null;
 };
+logic_UnitSystem.copyTurnUnitsToField = function() {
+	ui_screens_Game.game.field.units.h = Object.create(null);
+	var h = logic_G.get_turn().units.h;
+	var u_h = h;
+	var u_keys = Object.keys(h);
+	var u_length = u_keys.length;
+	var u_current = 0;
+	while(u_current < u_length) {
+		var u = u_h[u_keys[u_current++]];
+		var this1 = ui_screens_Game.game.field.units;
+		var key = u.id;
+		var value = u.copy();
+		this1.h[key] = value;
+	}
+};
 logic_UnitSystem.UpdateUnits = function(units) {
 	var parser = new JsonParser_$6();
 	var _g = 0;
@@ -91669,6 +91783,37 @@ logic_UnitSystem.UpdateUnits = function(units) {
 		var value = parser.fromJson(json).copy();
 		this11.h[key] = value;
 		logic_EventSystem.fire(logic_EventType.UnitUpdated + u.id);
+	}
+	logic_MapEditorSystem.pushToHistory();
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+};
+logic_UnitSystem.DragSelectedUnits = function(delta) {
+	var _g = 0;
+	var _g1 = ui_screens_Game.cam.selectedUnitIds;
+	while(_g < _g1.length) {
+		var unitId = _g1[_g];
+		++_g;
+		var unit = logic_G.get_turn().units.h[unitId];
+		var _this = unit.pos;
+		var newPos = new model_HexCoords(_this.q + delta.q,_this.r + delta.r);
+		var _this1 = logic_G.get_field();
+		var q = newPos.q;
+		var r = newPos.r;
+		if(!(q >= 0 && q < _this1.size && r >= 0 && r < _this1.size) || !logic_FieldSystem.isEmpty(logic_G.get_turn(),newPos.q,newPos.r)) {
+			continue;
+		}
+		var tmp;
+		if(!unit.stats.flying) {
+			var _this2 = logic_G.get_field();
+			tmp = _this2.tiles[newPos.q * _this2.size + newPos.r].t == 0;
+		} else {
+			tmp = false;
+		}
+		if(tmp) {
+			continue;
+		}
+		unit.pos = newPos;
+		logic_EventSystem.fire(Std.string(logic_EventType.UnitUpdated) + unitId);
 	}
 	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
 };
@@ -91990,7 +92135,7 @@ logic_UnitSystem.onCalculationTurnStart = function(td) {
 				case 11:
 					var script = prop.script;
 					var args = prop.args;
-					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 292, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
+					haxe_Log.trace("TODO: execute OnTurnStart script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 321, className : "logic.UnitSystem", methodName : "onCalculationTurnStart"});
 					break;
 				default:
 				}
@@ -92066,43 +92211,13 @@ logic_UnitSystem.onDeath = function(unit,td) {
 			if(prop._hx_index == 8) {
 				var script = prop.script;
 				var args = prop.args;
-				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 342, className : "logic.UnitSystem", methodName : "onDeath"});
+				haxe_Log.trace("TODO: execute onDeath script",{ fileName : "src/logic/UnitSystem.hx", lineNumber : 371, className : "logic.UnitSystem", methodName : "onDeath"});
 				logic_UnitSystem.removeBuff(unit,passive,td);
 			}
 		}
 	}
 	var act = td.acts.h[unit.id][logic_GameSystem.MicroTurnNum + 1];
 	act.type = model_ActionType.Dead;
-};
-var model_HexCoords = function(Q,R) {
-	this.r = 0;
-	this.q = 0;
-	this.q = Q;
-	this.r = R;
-};
-$hxClasses["model.HexCoords"] = model_HexCoords;
-model_HexCoords.__name__ = "model.HexCoords";
-model_HexCoords.Parse = function(hex) {
-	var arr = hex.split("_");
-	return new model_HexCoords(Std.parseInt(arr[0]),Std.parseInt(arr[1]));
-};
-model_HexCoords.prototype = {
-	q: null
-	,r: null
-	,copy: function() {
-		return new model_HexCoords(this.q,this.r);
-	}
-	,equals: function(hex) {
-		if(this.q == hex.q) {
-			return this.r == hex.r;
-		} else {
-			return false;
-		}
-	}
-	,toString: function() {
-		return this.q + "_" + this.r;
-	}
-	,__class__: model_HexCoords
 };
 var logic_VisionSystem = function() { };
 $hxClasses["logic.VisionSystem"] = logic_VisionSystem;
@@ -92394,6 +92509,19 @@ model_FieldData.prototype = {
 			var i = _g++;
 			var t = this.tiles[i];
 			res.tiles[i] = new model_FieldTile(t.t,t.h);
+		}
+		res.units = new haxe_ds_StringMap();
+		var h = this.units.h;
+		var unit_h = h;
+		var unit_keys = Object.keys(h);
+		var unit_length = unit_keys.length;
+		var unit_current = 0;
+		while(unit_current < unit_length) {
+			var unit = unit_h[unit_keys[unit_current++]];
+			var this1 = res.units;
+			var key = unit.id;
+			var value = unit.copy();
+			this1.h[key] = value;
 		}
 		return res;
 	}
@@ -97814,36 +97942,25 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		ui_screens_Game.cam = null;
 		ui_screens_Game.game = null;
 	}
-	,handleCtrlHotKey: function() {
-	}
-	,handleMapEditorKeys: function() {
-		if(hxd_Key.isPressed(107) || utils_IframeEvents.pressedKeys["NumpadAdd"] == "pressed") {
-			var fh = ui_screens_Game.gameField.cursor;
-			fh.set_radius(fh.radius + 1);
-		}
-		if(hxd_Key.isPressed(109) || utils_IframeEvents.pressedKeys["NumpadSubtract"] == "pressed") {
-			var fh = ui_screens_Game.gameField.cursor;
-			fh.set_radius(fh.radius - 1);
-		}
-		if(hxd_Key.isPressed(219) || utils_IframeEvents.pressedKeys["BracketLeft"] == "pressed") {
-			var tools = view_MapEditorTool.__empty_constructs__.slice();
-			var curIdx = tools.indexOf(ui_screens_Game.gameField.cursor.tool);
-			var v = curIdx - 1;
-			var max = tools.length - 1;
-			ui_screens_Game.gameField.cursor.set_tool(tools[v < 0 ? 0 : v > max ? max : v]);
-		}
-		if(hxd_Key.isPressed(221) || utils_IframeEvents.pressedKeys["BracketRight"] == "pressed") {
-			var tools = view_MapEditorTool.__empty_constructs__.slice();
-			var curIdx = tools.indexOf(ui_screens_Game.gameField.cursor.tool);
-			var v = curIdx + 1;
-			var max = tools.length - 1;
-			ui_screens_Game.gameField.cursor.set_tool(tools[v < 0 ? 0 : v > max ? max : v]);
-		}
-	}
 	,update: function(dt) {
 		if(ui_screens_Game.ui.pauseScr.parent != null || ui_screens_Game.ui.waitingScreen.visible) {
 			return;
 		}
+		this.handleKeys();
+		var access = utils_IframeEvents.pressedKeys;
+		var _g_access = access;
+		var _g_keys = Reflect.fields(access);
+		var _g_index = 0;
+		while(_g_index < _g_keys.length) {
+			var key = _g_keys[_g_index++];
+			var _g1_value = _g_access[key];
+			var _g1_key = key;
+			var key1 = _g1_key;
+			var value = _g1_value;
+			utils_IframeEvents.pressedKeys[key1] = "down";
+		}
+	}
+	,handleKeys: function() {
 		if(hxd_Key.isDown(17) || utils_IframeEvents.pressedKeys["ControlLeft"] || utils_IframeEvents.pressedKeys["ControlRight"]) {
 			this.handleCtrlHotKey();
 			return;
@@ -97889,17 +98006,39 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		if(utils_IframeEvents.isInIframe()) {
 			this.handleMapEditorKeys();
 		}
-		var access = utils_IframeEvents.pressedKeys;
-		var _g_access = access;
-		var _g_keys = Reflect.fields(access);
-		var _g_index = 0;
-		while(_g_index < _g_keys.length) {
-			var key = _g_keys[_g_index++];
-			var _g1_value = _g_access[key];
-			var _g1_key = key;
-			var key1 = _g1_key;
-			var value = _g1_value;
-			utils_IframeEvents.pressedKeys[key1] = "down";
+	}
+	,handleMapEditorKeys: function() {
+		if(hxd_Key.isPressed(107) || utils_IframeEvents.pressedKeys["NumpadAdd"] == "pressed") {
+			var fh = ui_screens_Game.gameField.cursor;
+			fh.set_radius(fh.radius + 1);
+		}
+		if(hxd_Key.isPressed(109) || utils_IframeEvents.pressedKeys["NumpadSubtract"] == "pressed") {
+			var fh = ui_screens_Game.gameField.cursor;
+			fh.set_radius(fh.radius - 1);
+		}
+		if(hxd_Key.isPressed(219) || utils_IframeEvents.pressedKeys["BracketLeft"] == "pressed") {
+			var tools = view_MapEditorTool.__empty_constructs__.slice();
+			var curIdx = tools.indexOf(ui_screens_Game.gameField.cursor.tool);
+			var v = curIdx - 1;
+			var max = tools.length - 1;
+			ui_screens_Game.gameField.cursor.set_tool(tools[v < 0 ? 0 : v > max ? max : v]);
+		}
+		if(hxd_Key.isPressed(221) || utils_IframeEvents.pressedKeys["BracketRight"] == "pressed") {
+			var tools = view_MapEditorTool.__empty_constructs__.slice();
+			var curIdx = tools.indexOf(ui_screens_Game.gameField.cursor.tool);
+			var v = curIdx + 1;
+			var max = tools.length - 1;
+			ui_screens_Game.gameField.cursor.set_tool(tools[v < 0 ? 0 : v > max ? max : v]);
+		}
+	}
+	,handleCtrlHotKey: function() {
+		if(hxd_Key.isPressed(90) || utils_IframeEvents.pressedKeys["KeyZ"] == "pressed") {
+			logic_MapEditorSystem.Undo();
+			return;
+		}
+		if(hxd_Key.isPressed(89) || utils_IframeEvents.pressedKeys["KeyY"] == "pressed") {
+			logic_MapEditorSystem.Redo();
+			return;
 		}
 	}
 	,__class__: ui_screens_Game
@@ -98966,8 +99105,11 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 			var my = hxd_Window.getInstance().get_mouseY();
 			_gthis.cursor.setSelection(_gthis.getTileFromPoint(mx,my));
 			if(utils_IframeEvents.isInIframe() && hxd_Key.isDown(0)) {
-				logic_MapEditorSystem.OnTileMouseDown();
+				logic_MapEditorSystem.OnTileMouseMove();
 			}
+		};
+		this.interaction.onPush = function(event) {
+			logic_MapEditorSystem.OnTileMouseDown();
 		};
 		this.interaction.onClick = function(event) {
 			switch(event.button) {
@@ -99494,6 +99636,12 @@ view_MapCursor.prototype = {
 			if(_this != null && _this.parent != null) {
 				_this.parent.removeChild(_this);
 			}
+		}
+		var _this = logic_G.get_field();
+		var q = tileOver.q;
+		var r = tileOver.r;
+		if(!(q >= 0 && q < _this.size && r >= 0 && r < _this.size)) {
+			return;
 		}
 		var _g = 0;
 		var _g1 = this.radius;
@@ -100065,7 +100213,7 @@ utils_IframeEvents.Init = function() {
 		if(handler != null) {
 			handler(msg);
 		} else {
-			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 46, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
+			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 47, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
 		}
 	};
 };
@@ -101787,6 +101935,9 @@ logic_HexMath.DIRECTION11 = 5.5;
 logic_LoadSystem.unitTiles = new haxe_ds_StringMap();
 logic_LoadSystem.orderScripts = new haxe_ds_StringMap();
 logic_LoadSystem.particles = new haxe_ds_StringMap();
+logic_MapEditorSystem.historyPos = 0;
+logic_MapEditorSystem.prevTile = new model_HexCoords(-1,-1);
+logic_MapEditorSystem.history = [];
 logic_NetSystem.playersNum = 0;
 logic_NetSystem.myPlayerName = "Player";
 logic_NetSystem.rooms = [];
@@ -101848,7 +101999,7 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		ui_screens_Game.gameField.cursor.set_toolUnit(msg.data.toolUnit);
 	};
 	_g.h["new_map"] = function(msg) {
-		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 68, className : "utils.IframeEvents", methodName : "eventHandlers"});
+		haxe_Log.trace("TODO: new_map command handler",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 69, className : "utils.IframeEvents", methodName : "eventHandlers"});
 	};
 	_g.h["save_map"] = function(msg) {
 		logic_DataBase.saveData(msg.data);
