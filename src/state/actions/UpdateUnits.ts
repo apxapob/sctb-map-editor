@@ -40,11 +40,22 @@ export const setUnitParam = action((param:UnitParamId, value:number) => {
 })
 
 export const changeBuffTurns = action((idx:number, delta:number) => {
-  console.log('!!! changeBuffParam', idx, delta)
+  if (Number.isNaN(delta)) return
+  SelectedUnits.data.forEach(
+    u => u.buffs[idx].turnsLeft += delta
+  )
+  UpdateUnits()
 })
 export const setBuffTurns = action((idx:number, value:number) => {
-  console.log('!!! setBuffTurns', idx, value)
+  if (Number.isNaN(value)) return
+  SelectedUnits.data.forEach(
+    u => u.buffs[idx].turnsLeft = value
+  )
+  UpdateUnits()
 })
 export const removeBuff = action((idx:number) => {
-  console.log('!!! removeBuff', idx)
+  SelectedUnits.data.forEach(
+    u => u.buffs.splice(idx, 1)
+  )
+  UpdateUnits()
 })

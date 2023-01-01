@@ -13,7 +13,7 @@ import UnitSelection from '../ui/UnitSelection'
 import './App.css'
 
 const App = ():ReactElement => {
-  const tabs:TabType[] = ['Field', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Map']
+  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Texts']
   return (
     <div className="App">
       <div className='hflex tab-container'>

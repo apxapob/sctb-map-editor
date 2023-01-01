@@ -18,10 +18,6 @@ const UnitSelection = ():ReactElement|null => {
 
   const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
 
-  /*TODO: add unit properties for editing:
-  buffs:[],
-  dir: number;
-  */
   if (selectedUnits.length === 0) {
     return null
   }
@@ -33,23 +29,27 @@ const UnitSelection = ():ReactElement|null => {
   const unitColor = mapInfo.countryColors[mainUnit.countryId - 1] || 'white'
   const countryColors = ['0xffffff', ...mapInfo.countryColors]
 
-  console.log('!!! buffs:', mainUnit.buffs)
-
-  const buffs: (BuffDataType|'different buffs')[] = []
+  const buffs: ( 
+    BuffDataType | 'different buffs' | { buffType:string }
+  )[] = []
 
   const maxLen = selectedUnits.reduce(
     (acc, unit) => Math.max(acc, unit.buffs.length), 
     0
   )
   for (let buffIdx = 0; buffIdx < maxLen; buffIdx++) {
-    const b:BuffDataType = selectedUnits[0].buffs[buffIdx]
+    let b:BuffDataType | { buffType:string } = selectedUnits[0].buffs[buffIdx]
     for (let i = 1; i < selectedUnits.length; i++) {
       const b2 = selectedUnits[i].buffs[buffs.length]
       if (!b || !b2 || b.buffType !== b2.buffType) {
         buffs.push('different buffs')
         break
       }
+      if ('turnsLeft' in b && b.turnsLeft !== b2.turnsLeft) {
+        b = { buffType: b.buffType }
+      }
     }
+    
     if (buffs.length <= buffIdx) {
       buffs.push(b)
     }
@@ -140,22 +140,29 @@ const UnitStatChanger = observer((props:{
 
 const BuffChanger = observer((props:{
   idx: number;
-  buff: BuffDataType;
+  buff: BuffDataType | { buffType:string };
 }) => {
   const { buff, idx } = props
   return (
-    <div className='hflex' >
+    <div className='hflex' style={spaceBtwStyle}>
       <button onClick={() => removeBuff(idx)}>X</button>
-      <div style={{ width: '100%', textAlign: 'left', padding: '0 6px' }}>
+      <div style={{ width: '100%', textAlign: 'left' }}>
         {buff.buffType}
       </div>
       
-      <button onClick={() => changeBuffTurns(idx, -1)}>-</button>
-      <input onChange={e => setBuffTurns(idx,
-          parseInt(e.target.value)
-        )} value={buff.turnsLeft} className="num-input" />
-      <button onClick={() => changeBuffTurns(idx, 1)}>+</button>
-      
+      {'turnsLeft' in buff &&
+        <>
+          <button onClick={() => changeBuffTurns(idx, -1)}>-</button>
+          <input onChange={e => setBuffTurns(idx,
+              parseInt(e.target.value)
+            )} value={buff.turnsLeft} className="num-input" />
+          <button onClick={() => changeBuffTurns(idx, 1)}>+</button>
+        </>
+      }
+      {!('turnsLeft' in buff) &&
+        '??? '
+      }
+      turns
     </div>
   )
 })

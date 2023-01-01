@@ -63,7 +63,7 @@ export type ToolStateType = {
   toolUnit: string|null;
 }
 
-export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map'
+export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts'
 
 export type EditorStateType = {
   activePanel: PanelType | null;
