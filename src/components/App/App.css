@@ -58,3 +58,23 @@ input {
   white-space: nowrap;
   gap: 6px;
 }
+
+div::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  padding: 8px;
+}
+div::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(100,100,100,0.4);
+}
+div::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: rgba(120,120,120,0.8);
+}
+div::-webkit-scrollbar-thumb:hover{
+  background: rgba(120,120,120,0.9);
+}
+div::-webkit-scrollbar-thumb:active{
+  background: rgba(120,120,120,1);
+}

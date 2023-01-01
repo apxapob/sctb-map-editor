@@ -6,13 +6,27 @@
   font-size: 16px;
 }
 
+.gapped {
+  justify-content: space-between !important;
+  gap: 6px;
+}
+
 .num-input {
   width: 30px;
   text-align: center;
 }
 
 .buff-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  white-space: nowrap;
+  gap: 6px;
   width: 100%;
   min-height: 24px;
-  max-height: 100px;
+  max-height: 200px;
+  overflow-y: auto; 
+  border: #aaa 1px solid;
+  border-width: 1px 0;
+  padding: 4px 4px 4px 0;
 }

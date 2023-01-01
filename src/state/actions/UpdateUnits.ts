@@ -1,4 +1,5 @@
 import { action } from 'mobx'
+import { BuffDataType } from '../../types/types'
 import { SelectedUnits } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -56,6 +57,12 @@ export const setBuffTurns = action((idx:number, value:number) => {
 export const removeBuff = action((idx:number) => {
   SelectedUnits.data.forEach(
     u => u.buffs.splice(idx, 1)
+  )
+  UpdateUnits()
+})
+export const addBuff = action((buff:BuffDataType) => {
+  SelectedUnits.data.forEach(
+    u => u.buffs.push(buff)
   )
   UpdateUnits()
 })

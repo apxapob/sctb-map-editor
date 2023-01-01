@@ -1,20 +1,13 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { changeBuffTurns, changeUnitParam, removeBuff, setBuffTurns, setUnitParam, UnitParamId, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
-import { INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
+import { addBuff, changeBuffTurns, changeUnitParam, removeBuff, setBuffTurns, setUnitParam, UnitParamId, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { BUFFS_PATH, INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedUnits } from '../../state/ToolState'
-import { BuffDataType, MapInfo, UnitType } from '../../types/types'
+import { BuffDataType, BuffType, MapInfo, UnitType } from '../../types/types'
 import './UnitSelection.css'
-
-const spaceBtwStyle = { justifyContent: 'space-between', gap: 6 }
 
 const UnitSelection = ():ReactElement|null => {
   const selectedUnits = SelectedUnits.data
-
-  const unitsData = MapFiles.json[UNITS_PATH] as {
-    [unitId: string]: UnitType
-  }
-  const unitTypes = React.useMemo(() => Object.values(unitsData).map(u => u.type), [unitsData])
 
   const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
 
@@ -56,22 +49,12 @@ const UnitSelection = ():ReactElement|null => {
   }
 
   return <div className='tools-container unit-selection-container vflex' >
-    <div className='hflex' style={spaceBtwStyle}>
+    <div className='hflex gapped'>
       Type:
-      <select value={typeValue} onChange={e => UpdateUnitsType(e.target.value)}>
-        {typeValue === '' &&
-        <option value={''} />
-          }
-        {unitTypes.map(
-          (unitType:string) => 
-            <option key={unitType} value={unitType}>
-              {unitType}
-            </option>
-        )}
-      </select>
+      <UnityTypeChanger typeValue={typeValue} />
     </div>
 
-    <div className='hflex' style={spaceBtwStyle}>
+    <div className='hflex gapped'>
       Country: 
       <select value={countryValue}
         style={{ 
@@ -100,14 +83,14 @@ const UnitSelection = ():ReactElement|null => {
     <UnitStatChanger title='Speed' param='speed' />
     <UnitStatChanger title='Vision' param='vision' />
 
-    <div className='vflex' style={{ paddingTop: 8, gap: 2 }}>
+    <div className='vflex' style={{ paddingTop: 10 }}>
       Buffs
-      <div className='buff-list vflex'>
+      <div className='buff-list'>
         {buffs.map(
           (b, idx) => b === 'different buffs' ? b : <BuffChanger idx={idx} key={idx} buff={b} /> 
         )}
       </div>
-      
+      <BuffAdder />
     </div> 
     
   </div>
@@ -125,9 +108,9 @@ const UnitStatChanger = observer((props:{
   const value = selectedUnits.find(u => u.stats[param] !== mainUnit.stats[param]) ? '?' : mainUnit.stats[param]
 
   return (
-    <div className='hflex' style={spaceBtwStyle}>
+    <div className='hflex gapped'>
       {props.title}: 
-      <div className='hflex'>
+      <div className='hflex gapped'>
         <button onClick={() => changeUnitParam(param, -1)}>-</button>
         <input onChange={e => setUnitParam(param,
           parseInt(e.target.value)
@@ -144,7 +127,7 @@ const BuffChanger = observer((props:{
 }) => {
   const { buff, idx } = props
   return (
-    <div className='hflex' style={spaceBtwStyle}>
+    <div className='hflex gapped'>
       <button onClick={() => removeBuff(idx)}>X</button>
       <div style={{ width: '100%', textAlign: 'left' }}>
         {buff.buffType}
@@ -163,6 +146,62 @@ const BuffChanger = observer((props:{
         '??? '
       }
       turns
+    </div>
+  )
+})
+
+const UnityTypeChanger = observer((
+  { typeValue }: { typeValue:string }
+) => {
+  const unitsData = MapFiles.json[UNITS_PATH] as {
+    [unitId: string]: UnitType
+  }
+  const unitTypes = React.useMemo(() => Object.values(unitsData).map(u => u.type), [unitsData])
+
+  return (
+    <select value={typeValue} onChange={e => UpdateUnitsType(e.target.value)}>
+      {typeValue === '' &&
+        <option value={''} />
+      }
+      {unitTypes.map(
+        (unitType:string) => 
+          <option key={unitType} value={unitType}>
+            {unitType}
+          </option>
+      )}
+    </select>
+  )
+})
+
+const BuffAdder = observer(() => {
+  const buffsData = MapFiles.json[BUFFS_PATH] as {
+    [buffId: string]: BuffType
+  }
+  const buffTypes = React.useMemo(() => Object.values(buffsData).map(b => b.type), [buffsData])
+
+  const [selectedBuff, setSelectedBuff] = React.useState('')
+
+  React.useEffect(() => {
+    if (buffTypes.length > 0)setSelectedBuff(buffTypes[0])
+  }, [buffsData])
+
+  return (
+    <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
+      <button className='btnWithArrow' 
+        onClick={
+          () => addBuff({ buffType: selectedBuff, turnsLeft: buffsData[selectedBuff].turns })
+        }>
+        Add {selectedBuff}
+      </button>
+      <select style={{ width:20 }} className="btnArrow"
+        onChange={e => setSelectedBuff(e.target.value)}>
+        {buffTypes.map(
+          buffType => 
+            <option key={buffType} value={buffType}>
+              {buffType}
+            </option>
+        )}
+      </select>
     </div>
   )
 })
