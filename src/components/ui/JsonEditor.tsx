@@ -5,7 +5,6 @@ import { MapFiles } from '../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { TabType } from '../../types/types'
 import { TabsErrors, TabsState } from '../../state/ToolState'
-import { action } from 'mobx'
 import { UpdateUnsavedData } from '../../state/actions/UpdateText'
 
 export type JsonEditorProps = {

@@ -92424,7 +92424,7 @@ model_GameState.__empty_constructs__ = [model_GameState.Calculating,model_GameSt
 var model_CameraData = function() {
 	this.selectedUnitIds = [];
 	this.cursorTile = new model_HexCoords(-1,-1);
-	this.dir = 0;
+	this.dir = 5;
 	this.state = model_GameState.Calculating;
 	this.positions = new haxe_ds_StringMap();
 };

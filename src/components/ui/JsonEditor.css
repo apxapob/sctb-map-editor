@@ -9,6 +9,7 @@
 }
 
 .json-editor-container {
+  width: 100%;
   max-width: calc(100vw - 0px);
   max-height: calc(100vh - 24px);
 }

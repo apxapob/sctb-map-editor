@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { INFO_PATH, MapFiles } from '../MapFiles'
+import { FilesTree, INFO_PATH, MapFiles, PathTreeType } from '../MapFiles'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -12,6 +12,9 @@ export const OnLoadingStart = action(() => {
   MapFiles.lastLoadedFile = ''
   MapFiles.status = 'Loading'
   MapFiles.error = null
+
+  FilesTree.nodes = {}
+
   OpenPanel('LoadingMap')
 })
 
@@ -53,6 +56,19 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
   })
   if (c.file.endsWith('.json')) {
     MapFiles.json[c.file] = JSON.parse(c.text)
+  }
+  
+  const parts = c.file.split('\\')
+  let curPart = ''
+  let curTree:PathTreeType = FilesTree
+  for (let i = 0; i < parts.length; i++) {
+    curPart = parts[i]
+    if (!(curPart in curTree.nodes)) {
+      curTree.nodes[curPart] = {
+        isOpen: true, nodes: {}
+      }
+    }
+    curTree = curTree.nodes[curPart]
   }
 })
 

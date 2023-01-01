@@ -1,9 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { getFilePath, MapFiles, } from '../../state/MapFiles'
+import { getDirPath, getFilePath, MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
 import GameCanvas from '../game/GameCanvas'
+import DirectoryViewer from '../ui/DirectoryViewer'
 import EmptyPage from '../ui/EmptyPage'
 import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
@@ -14,6 +15,7 @@ import './App.css'
 
 const App = ():ReactElement => {
   const tabs:TabType[] = ['Field', 'Map', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Texts']
+  const isLoaded = MapFiles.status === 'Loaded'
   return (
     <div className="App">
       <div className='hflex tab-container'>
@@ -25,15 +27,20 @@ const App = ():ReactElement => {
       {MapFiles.status === null &&
         <EmptyPage />
       }
-      {MapFiles.status === 'Loaded' && EditorState.activeTab === 'Field' &&
+      {isLoaded && EditorState.activeTab === 'Field' &&
         <>
           <Tools />
           <UnitSelection />
         </>
       }
-      {MapFiles.status === 'Loaded' && EditorState.activeTab !== 'Field' &&
-        <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />
-      }
+      <div className='hflex' style={{ alignItems: 'start' }}>
+        {isLoaded && (EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts') &&
+          <DirectoryViewer path={getDirPath(EditorState.activeTab)} />
+        }
+        {isLoaded && EditorState.activeTab !== 'Field' &&
+          <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />
+        }
+      </div>
       <PanelsContainer />
     </div>
   )

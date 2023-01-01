@@ -1,0 +1,18 @@
+.dir-viewer-container {
+  overflow: auto;
+  width: 420px;
+  max-height: calc(100vh - 24px);
+}
+
+.node {
+  user-select: none;
+  cursor: pointer;
+}
+
+.node:hover {
+  background-color: rgba(100, 100, 100, 0.4);
+}
+
+.node:active {
+  background-color: rgba(100, 100, 100, 0.5);
+}

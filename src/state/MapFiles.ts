@@ -5,6 +5,8 @@ export const UNITS_PATH = 'units.json'
 export const UPGRADES_PATH = 'upgrades.json'
 export const BUFFS_PATH = 'buffs.json'
 export const INFO_PATH = 'info.json'
+export const TEXTS_PATH = 'locales\\'
+export const SCRIPTS_PATH = 'scripts\\'
 
 export const getFilePath = (tab:TabType) => {
   switch (tab) {
@@ -16,6 +18,20 @@ export const getFilePath = (tab:TabType) => {
       return INFO_PATH
     case 'Upgrades':
       return UPGRADES_PATH
+    case 'Texts':
+      return TEXTS_PATH //+ MapFiles.selectedLang
+    case 'Scripts':
+      return SCRIPTS_PATH //+ MapFiles.selectedScript
+  }
+  return ''
+}
+
+export const getDirPath = (tab:TabType) => {
+  switch (tab) {
+    case 'Texts':
+      return TEXTS_PATH
+    case 'Scripts':
+      return SCRIPTS_PATH
   }
   return ''
 }
@@ -41,5 +57,17 @@ export const MapFiles:{
   lastLoadedFile: '',
   progress: 0,
   status: null,
-  error: null
+  error: null,
+})
+
+export type PathTreeType = {
+  isOpen: boolean;
+  nodes: {
+    [index: string]: PathTreeType;
+  }
+}
+
+export const FilesTree: PathTreeType = observable({
+  isOpen: true,
+  nodes: {}
 })
