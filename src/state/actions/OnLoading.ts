@@ -65,7 +65,9 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
     curPart = parts[i]
     if (!(curPart in curTree.nodes)) {
       curTree.nodes[curPart] = {
-        isOpen: true, nodes: {}
+        isOpen: true, 
+        nodes: {}, 
+        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
       }
     }
     curTree = curTree.nodes[curPart]

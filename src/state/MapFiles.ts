@@ -19,9 +19,9 @@ export const getFilePath = (tab:TabType) => {
     case 'Upgrades':
       return UPGRADES_PATH
     case 'Texts':
-      return TEXTS_PATH //+ MapFiles.selectedLang
+      return MapFiles.selectedLang
     case 'Scripts':
-      return SCRIPTS_PATH //+ MapFiles.selectedScript
+      return MapFiles.selectedScript
   }
   return ''
 }
@@ -50,6 +50,8 @@ export const MapFiles:{
   progress: number;
   status: 'Loaded' | 'Loading' | 'Error' | null;
   error: string | null;
+  selectedLang: string;
+  selectedScript: string;
 } = observable({
   binary: {},
   text: {},
@@ -58,10 +60,13 @@ export const MapFiles:{
   progress: 0,
   status: null,
   error: null,
+  selectedLang: '',
+  selectedScript: '',
 })
 
 export type PathTreeType = {
   isOpen: boolean;
+  path: string;
   nodes: {
     [index: string]: PathTreeType;
   }
@@ -69,5 +74,6 @@ export type PathTreeType = {
 
 export const FilesTree: PathTreeType = observable({
   isOpen: true,
+  path: '',
   nodes: {}
 })

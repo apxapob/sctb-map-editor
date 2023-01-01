@@ -16,3 +16,13 @@
 .node:active {
   background-color: rgba(100, 100, 100, 0.5);
 }
+
+.selected-file {
+  background-color: rgba(0, 0, 255, 0.6);
+}
+.selected-file:hover {
+  background-color: rgba(0, 0, 255, 0.6);
+}
+.selected-file:active {
+  background-color: rgba(0, 0, 255, 0.6);
+}

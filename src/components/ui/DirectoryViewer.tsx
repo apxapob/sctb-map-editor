@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { OpenFileTree } from '../../state/actions/OpenFileTree'
-import { FilesTree, PathTreeType } from '../../state/MapFiles'
+import { OpenFileTree, SelectScriptFile } from '../../state/actions/OpenFileTree'
+import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import './DirectoryViewer.css'
 
 export type DirectoryViewerProps = {
@@ -41,16 +41,18 @@ const PathTree = observer(({ tree, root, level }: {
     }
   }
   return <>
-    {root &&
+    {root && nodes.length === 0 &&
+      <div className={`node ${ MapFiles.selectedScript === tree.path ? 'selected-file' : '' }`}
+      style={{ paddingLeft: 18 * (level - 1) }}
+      onClick={() => SelectScriptFile(tree)}>
+        {root}
+      </div>
+    }
+    {root && nodes.length > 0 &&
       <div className='node' 
         style={{ paddingLeft: 18 * (level - 1) }}
         onClick={() => OpenFileTree(tree)}>
-        {nodes.length === 0 
-          ? '' 
-          : tree.isOpen
-            ? '▾' 
-            : '▸'
-        }
+        {tree.isOpen ? '▾'  : '▸'}
         {root}
       </div>
     }

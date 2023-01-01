@@ -14,7 +14,6 @@ export type JsonEditorProps = {
 
 const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
   const error = TabsErrors[props.tab]
-  
   return (
     <div className='json-editor-container'>
       {TabsErrors[props.tab] &&
