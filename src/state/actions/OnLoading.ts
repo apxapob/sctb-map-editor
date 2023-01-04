@@ -1,8 +1,8 @@
 import { action } from 'mobx'
 import { LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FilesTree, INFO_PATH, MapFiles, PathTreeType } from '../MapFiles'
-import { SelectScriptFile } from './OpenFileTree'
+import { FilesTree, INFO_PATH, MapFiles, PathTreeType, TEXTS_PATH } from '../MapFiles'
+import { SelectLangFile, SelectScriptFile } from './OpenFileTree'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -55,9 +55,12 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
       text: c.text
     }
   })
-  
+
   if (c.file.endsWith('.json')) {
     MapFiles.json[c.file] = JSON.parse(c.text)
+    if (c.file.startsWith(TEXTS_PATH) && !MapFiles.selectedLang) {
+      SelectLangFile(c.file)
+    }
   } else if (c.file.endsWith('.hx') && !MapFiles.selectedScript) {
     SelectScriptFile(c.file)
   }
