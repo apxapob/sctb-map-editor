@@ -20,7 +20,10 @@ const SaveChanges = ():void => {
   if (text === null) return
 
   try {
-    JSON.parse(text)
+    if (path.endsWith('.json')) {
+      JSON.parse(text)
+    }
+    
     TabsState[EditorState.activeTab] = null
     TabsErrors[EditorState.activeTab] = null
     const data = { text, path }
