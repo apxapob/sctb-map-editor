@@ -38,7 +38,11 @@ const App = ():ReactElement => {
           <DirectoryViewer path={getDirPath(EditorState.activeTab)} />
         }
         {isLoaded && EditorState.activeTab !== 'Field' &&
-          <JsonEditor filePath={getFilePath(EditorState.activeTab)} tab={EditorState.activeTab} />
+          <JsonEditor 
+            mode={ EditorState.activeTab === 'Scripts' ? 'haxe' : 'json' }
+            filePath={getFilePath(EditorState.activeTab)} 
+            tab={EditorState.activeTab} 
+          />
         }
       </div>
       <PanelsContainer />

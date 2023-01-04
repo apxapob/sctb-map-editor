@@ -8,7 +8,7 @@ export const OpenFileTree = action(
 )
 
 export const SelectScriptFile = action(
-  (tree:PathTreeType) => {
-    MapFiles.selectedScript = tree.path
+  (path:string) => {
+    MapFiles.selectedScript = path
   }
 )

@@ -44,7 +44,7 @@ const PathTree = observer(({ tree, root, level }: {
     {root && nodes.length === 0 &&
       <div className={`node ${ MapFiles.selectedScript === tree.path ? 'selected-file' : '' }`}
       style={{ paddingLeft: 18 * (level - 1) }}
-      onClick={() => SelectScriptFile(tree)}>
+      onClick={() => SelectScriptFile(tree.path)}>
         {root}
       </div>
     }
