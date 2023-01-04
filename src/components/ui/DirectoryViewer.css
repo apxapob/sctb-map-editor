@@ -1,6 +1,6 @@
 .dir-viewer-container {
   overflow: auto;
-  width: 420px;
+  width: 360px;
   max-height: calc(100vh - 24px);
 }
 

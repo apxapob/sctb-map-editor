@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
+import { SelectScriptFile, SelectLangFile } from '../../state/actions/OpenFileTree'
 import { getDirPath, getFilePath, MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
@@ -35,7 +36,10 @@ const App = ():ReactElement => {
       }
       <div className='hflex' style={{ alignItems: 'start' }}>
         {isLoaded && (EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts') &&
-          <DirectoryViewer path={getDirPath(EditorState.activeTab)} />
+          <DirectoryViewer 
+            path={getDirPath(EditorState.activeTab)} 
+            fileSelector={EditorState.activeTab === 'Scripts' ? SelectScriptFile : SelectLangFile}
+          />
         }
         {isLoaded && EditorState.activeTab !== 'Field' &&
           <JsonEditor 

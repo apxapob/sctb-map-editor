@@ -12,3 +12,9 @@ export const SelectScriptFile = action(
     MapFiles.selectedScript = path
   }
 )
+
+export const SelectLangFile = action(
+  (path:string) => {
+    MapFiles.selectedLang = path
+  }
+)
