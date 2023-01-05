@@ -5,10 +5,13 @@ exports.messengerInit = () => {
 }
 
 const handleCommand = (event, message) => {
-  const { openMap, saveTextFile } = require('./commands')
+  const { openMap, saveTextFile, createMap } = require('./commands')
   switch (message.command) {
     case 'OPEN_MAP':
       openMap()
+      return
+    case 'CREATE_MAP':
+      createMap(message.mapId, message.mapName, message.playersCount, message.mapSize)
       return
     case 'SAVE_TEXT_FILE':
       saveTextFile(message.data.path, message.data.text)
@@ -19,5 +22,4 @@ const handleCommand = (event, message) => {
 exports.sendCommand = c => {
   const { mainWindow } = require('./main')
   mainWindow.webContents.send('commands', c)
-}  
-
+}

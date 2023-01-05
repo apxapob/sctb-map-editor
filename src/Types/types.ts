@@ -10,12 +10,6 @@ export type GameMessage = {
   method: 'tool_updated';
   data: {[index: string]: number | string | boolean};
 } | {
-  method: 'new_map';
-  data: { 
-    playersCount: number;
-    mapSize: number;
-  }; 
-} | {
   method: 'change_tool';
   data: ToolStateType;
 } | {
@@ -151,6 +145,7 @@ export type UpgradeType = {
 export type MapInfo = {
   mapId: string;
   name: string;
+  version: number;
   author: string | null;
   startField: string;
   minPlayers: number;

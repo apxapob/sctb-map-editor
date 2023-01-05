@@ -1,6 +1,14 @@
 export type CommandType = {
   command: 'NEW_MAP' | 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END';
-} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | SaveTextFileType
+} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | SaveTextFileType | CreateMapType
+
+export type CreateMapType = {
+  command: 'CREATE_MAP';
+  mapId: string;
+  mapName: string;
+  playersCount: number;
+  mapSize: number;
+}
 
 export type SaveTextFileType = {
   command: 'SAVE_TEXT_FILE';

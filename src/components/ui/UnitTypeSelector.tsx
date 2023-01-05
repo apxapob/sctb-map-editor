@@ -12,7 +12,7 @@ const UnitTypeSelector = ():ReactElement => {
   const unitArray = React.useMemo(() => Object.values(units), [units])
 
   React.useEffect(() => {
-    SelectUnitType(unitArray[0].type, false)
+    SelectUnitType(unitArray[0]?.type, false)
   }, [units])
 
   return (

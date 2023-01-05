@@ -41,7 +41,7 @@ const EditorDiv = (props: JsonEditorProps & {
   error: string|null;
 }) => {
   const editorRef = React.useRef<ReactAce>(null)
-  const text = TabsState[props.tab] || MapFiles.text[props.filePath]
+  const text = TabsState[props.tab] || MapFiles.text[props.filePath] || ''
 
   React.useEffect(
     () => () => editorRef.current?.editor.getSession().getUndoManager().reset(), 

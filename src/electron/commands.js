@@ -2,15 +2,9 @@ const { dialog } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 
-let mapDir = null
+const mapDir = null
 
-exports.openMap = async () => {
-  const { mainWindow } = require('./main')
-  const dir = dialog.showOpenDialogSync(mainWindow, {
-    properties: ['openDirectory']
-  })
-  if (!dir) { return }
-  
+const loadMap = async mapDir => {
   try {
     sendCommand({ command: 'LOADING_START' })
     const files = []
@@ -24,7 +18,7 @@ exports.openMap = async () => {
         }
       }
     }
-    mapDir = dir[0]
+
     await loadDir(mapDir)
     
     let loaded = 0
@@ -60,6 +54,16 @@ exports.openMap = async () => {
   }
 }
 
+exports.openMap = async () => {
+  const { mainWindow } = require('./main')
+  const dir = dialog.showOpenDialogSync(mainWindow, {
+    properties: ['openDirectory']
+  })
+  if (!dir) { return }
+  
+  await loadMap(dir[0])
+}
+
 exports.saveMap = async () => {
   sendCommand({ command: 'SAVE_CHANGES' })
 }
@@ -71,4 +75,69 @@ exports.saveTextFile = async (path, text) => {
   }
   const fullPath = (mapDir + '\\' + path).replaceAll('/', '\\')
   await fs.promises.writeFile(fullPath, text)
+}
+
+exports.createMap = async (mapId, mapName, playersCount, mapSize) => {
+  const { mainWindow } = require('./main')
+  const dir = dialog.showSaveDialogSync(mainWindow, {
+    title: 'Create Map',
+    defaultPath: mapId,
+    properties: ['createDirectory']
+  })
+  if (!dir) { return }
+
+  try {
+    await fs.promises.mkdir(dir)
+    await fs.promises.writeFile(
+      dir + '\\buffs.json',
+      JSON.stringify({})
+    )
+    await fs.promises.writeFile(
+      dir + '\\units.json',
+      JSON.stringify({})
+    )
+    await fs.promises.writeFile(
+      dir + '\\upgrades.json',
+      JSON.stringify({})
+    )
+    await fs.promises.writeFile(
+      dir + '\\info.json',
+      JSON.stringify({  
+        mapId,
+        name: mapName,
+        author: 'unknown',
+        version: 0.01,
+        startField: 'main',
+        minPlayers: 2,
+        maxPlayers: playersCount,
+        countryColors: [
+          '0xff0000','0x00ff00','0x0000ff','0x00ffff','0xff00ff','0xffff00'
+        ]
+      }, null, 2)
+    )
+
+    await fs.promises.mkdir(dir + '\\fields')
+    await fs.promises.writeFile(
+      dir + '\\fields\\main.json',
+      JSON.stringify({
+        size: mapSize,
+        tiles: Array(mapSize * mapSize).fill([1, 0]),
+        units: {},
+      })
+    )
+    await fs.promises.mkdir(dir + '\\img')
+    await fs.promises.mkdir(dir + '\\locales')
+    await fs.promises.writeFile(
+      dir + '\\locales\\en.json',
+      JSON.stringify({ mapName: mapName }, null, 2)
+    )
+    
+    await fs.promises.mkdir(dir + '\\particles')
+    await fs.promises.mkdir(dir + '\\scripts')
+    await fs.promises.mkdir(dir + '\\units')
+    
+    await loadMap(dir)
+  } catch (err) {
+    dialog.showErrorBox('Create directory error', err.message)
+  }
 }

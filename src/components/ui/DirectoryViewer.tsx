@@ -30,6 +30,9 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
   level: number;
   fileSelector: (path:string) => void;
 }) => {
+  if (!tree) {
+    return null
+  }
   const nodes = []
   for (const nodeKey in tree.nodes) {
     const node = tree.nodes[nodeKey]
