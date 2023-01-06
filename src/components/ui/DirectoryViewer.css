@@ -4,6 +4,11 @@
   max-height: calc(100vh - 24px);
 }
 
+.file-adder {
+  gap: 6px;
+  justify-content: flex-start !important;
+}
+
 .node {
   user-select: none;
   cursor: pointer;

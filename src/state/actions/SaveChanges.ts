@@ -40,3 +40,23 @@ const SaveChanges = ():void => {
 }
 
 export default action(SaveChanges)
+
+export const CreateFile = action((path:string) => {
+  SendCommand({ 
+    command: 'SAVE_TEXT_FILE',
+    data: { path, text: '' }
+  })
+  OnLoadedText({
+    command: 'LOAD_TEXT_FILE',
+    file: path,
+    progress: 1,
+    text: ''
+  })
+})
+
+export const CreateFolder = action((path:string) => {
+  SendCommand({ 
+    command: 'MAKE_DIR',
+    path
+  })
+})

@@ -2,7 +2,7 @@ const { dialog } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 
-const mapDir = null
+let mapDirectory = null
 
 const loadMap = async mapDir => {
   try {
@@ -43,7 +43,7 @@ const loadMap = async mapDir => {
         loaded++
       }
     }
-
+    mapDirectory = mapDir
     sendCommand({ command: 'LOADING_END' })
   } catch (err) {
     console.error(err)
@@ -69,12 +69,17 @@ exports.saveMap = async () => {
 }
 
 exports.saveTextFile = async (path, text) => {
-  if (!mapDir) {
+  if (!mapDirectory) {
     console.error('no open map')
     return
   }
-  const fullPath = (mapDir + '\\' + path).replaceAll('/', '\\')
-  await fs.promises.writeFile(fullPath, text)
+  try {
+    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    
+    await fs.promises.writeFile(fullPath, text)
+  } catch (err) {
+    dialog.showErrorBox('File error', err.message)
+  }
 }
 
 exports.createMap = async (mapId, mapName, playersCount, mapSize) => {

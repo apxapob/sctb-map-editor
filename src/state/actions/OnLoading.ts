@@ -44,28 +44,20 @@ export const OnLoadingError = action((errorText:string) => {
   MapFiles.error = errorText
 })
 
-export const OnLoadedText = action((c:LoadTextCommandType) => {
-  MapFiles.text[c.file] = c.text
-  MapFiles.progress = c.progress
-  MapFiles.lastLoadedFile = c.file
-  SendMsgToGame({ 
-    method: 'load_text_file', 
-    data: {
-      path: c.file,
-      text: c.text
-    }
-  })
+export const processTextFile = action((file:string, text:string) => {
+  MapFiles.text[file] = text
+  MapFiles.lastLoadedFile = file
 
-  if (c.file.endsWith('.json')) {
-    MapFiles.json[c.file] = JSON.parse(c.text)
-    if (c.file.startsWith(TEXTS_PATH) && !MapFiles.selectedLang) {
-      SelectLangFile(c.file)
+  if (file.endsWith('.json')) {
+    MapFiles.json[file] = JSON.parse(text)
+    if (file.startsWith(TEXTS_PATH) && !MapFiles.selectedLang) {
+      SelectLangFile(file)
     }
-  } else if (c.file.endsWith('.hx') && !MapFiles.selectedScript) {
-    SelectScriptFile(c.file)
+  } else if (file.endsWith('.hx') && !MapFiles.selectedScript) {
+    SelectScriptFile(file)
   }
   
-  const parts = c.file.split('\\')
+  const parts = file.split('\\')
   let curPart = ''
   let curTree:PathTreeType = FilesTree
   for (let i = 0; i < parts.length; i++) {
@@ -79,6 +71,19 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
     }
     curTree = curTree.nodes[curPart]
   }
+})
+
+export const OnLoadedText = action((c:LoadTextCommandType) => {
+  SendMsgToGame({ 
+    method: 'load_text_file', 
+    data: {
+      path: c.file,
+      text: c.text
+    }
+  })
+
+  MapFiles.progress = c.progress
+  processTextFile(c.file, c.text)
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {

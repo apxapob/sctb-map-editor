@@ -6,6 +6,7 @@ import SendMsgToGame from './SendMsgToGame'
 import { SendCommand } from '../../utils/messenger'
 import { OnSelectUnits } from './OnSelectUnits'
 import { UpdateUnsavedData } from './UpdateText'
+import { processTextFile } from './OnLoading'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
@@ -17,6 +18,7 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'text_file_updated':
       SendCommand({ command: 'SAVE_TEXT_FILE', data: msg.data })
+      processTextFile(msg.data.path, msg.data.text)
       break
     case 'selected_units':
       OnSelectUnits(msg.data)
