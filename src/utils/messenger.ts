@@ -1,4 +1,4 @@
-import { OnLoadedBinary, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
+import { OnLoadedBinary, OnLoadedDirectory, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
 import OpenPanel from '../state/actions/OpenPanel'
 import SaveChanges from '../state/actions/SaveChanges'
 import { CommandType } from '../types/commands'
@@ -33,6 +33,8 @@ export function InitMessenger() {
       case 'LOAD_MAP_ERROR':
         OnLoadingError(message.error)
         break
+      case 'LOAD_DIRECTORY':
+        OnLoadedDirectory(message)
     }
   })
 }

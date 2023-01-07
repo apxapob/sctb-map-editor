@@ -1,5 +1,5 @@
-import { action } from 'mobx'
-import { LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
+import { action, toJS } from 'mobx'
+import { DirectoryType, LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FilesTree, INFO_PATH, MapFiles, PathTreeType, TEXTS_PATH } from '../MapFiles'
 import { SelectLangFile, SelectScriptFile } from './OpenFileTree'
@@ -65,6 +65,25 @@ export const processTextFile = action((file:string, text:string) => {
     if (!(curPart in curTree.nodes)) {
       curTree.nodes[curPart] = {
         isOpen: true, 
+        isDirectory: i < parts.length - 1,
+        nodes: {}, 
+        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
+      }
+    }
+    curTree = curTree.nodes[curPart]
+  }
+})
+
+export const OnLoadedDirectory = action((c:DirectoryType) => {
+  const parts = c.path.split('\\')
+  let curPart = ''
+  let curTree:PathTreeType = FilesTree
+  for (let i = 0; i < parts.length; i++) {
+    curPart = parts[i]
+    if (!(curPart in curTree.nodes)) {
+      curTree.nodes[curPart] = {
+        isOpen: true, 
+        isDirectory: true,
         nodes: {}, 
         path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
       }

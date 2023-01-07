@@ -5,7 +5,7 @@ exports.messengerInit = () => {
 }
 
 const handleCommand = (event, message) => {
-  const { openMap, saveTextFile, createMap } = require('./commands')
+  const { openMap, saveTextFile, createMap, makeDirectory } = require('./commands')
   switch (message.command) {
     case 'OPEN_MAP':
       openMap()
@@ -15,6 +15,9 @@ const handleCommand = (event, message) => {
       return
     case 'SAVE_TEXT_FILE':
       saveTextFile(message.data.path, message.data.text)
+      return
+    case 'MAKE_DIR':
+      makeDirectory(message.path)
       return
   }
 }

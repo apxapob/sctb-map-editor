@@ -8,10 +8,12 @@ const loadMap = async mapDir => {
   try {
     sendCommand({ command: 'LOADING_START' })
     const files = []
+    const dirs = []
     const loadDir = async path => {
       const dirFiles = await fs.promises.readdir(path, { withFileTypes: true })
       for (const file of dirFiles) {
         if (file.isDirectory()) {
+          dirs.push(path + '\\' + file.name)
           await loadDir(path + '\\' + file.name)
         } else {
           files.push(path + '\\' + file.name)
@@ -21,6 +23,13 @@ const loadMap = async mapDir => {
 
     await loadDir(mapDir)
     
+    for (const dir of dirs) {
+      sendCommand({
+        command: 'LOAD_DIRECTORY', 
+        path: dir.replace(mapDir + '\\', '')
+      })
+    }
+
     let loaded = 0
     for (const file of files) {
       if (file.endsWith('.json') || file.endsWith('.hx')) {
@@ -79,6 +88,16 @@ exports.saveTextFile = async (path, text) => {
     await fs.promises.writeFile(fullPath, text)
   } catch (err) {
     dialog.showErrorBox('File error', err.message)
+  }
+}
+
+exports.makeDirectory = async path => {
+  try {
+    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    
+    await fs.promises.mkdir(fullPath)
+  } catch (err) {
+    dialog.showErrorBox('Folder creation error', err.message)
   }
 }
 

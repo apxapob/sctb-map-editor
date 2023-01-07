@@ -13,6 +13,7 @@ export type DirectoryViewerProps = {
 const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElement => {
   return (
     <div className='dir-viewer-container'>
+      <FileAdder path={path.replace('\\', '')} level={0} fileSelector={fileSelector} />
       <PathTree
         fileSelector={fileSelector}
         tree={FilesTree.nodes[path.replace('\\', '')]} 
@@ -51,14 +52,14 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
   
   const isSelected = MapFiles.selectedScript === tree.path || MapFiles.selectedLang === tree.path
   return <>
-    {root && nodes.length === 0 &&
+    {root && !tree.isDirectory &&
       <div className={`node ${ isSelected ? 'selected-file' : '' }`}//make a component
       style={{ paddingLeft: 4 + 18 * (level - 1) }}
       onClick={() => fileSelector(tree.path)}>
         {root}
       </div>
     }
-    {root && nodes.length > 0 &&
+    {root && tree.isDirectory &&
       <>
         <div className='node' 
         style={{ paddingLeft: 2 + 18 * (level - 1) }}
@@ -69,7 +70,7 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
         {tree.isOpen && <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />}
       </>
     }
-    {tree.isOpen && nodes}
+    {tree.isOpen && tree.isDirectory && nodes}
   </>
 })
 

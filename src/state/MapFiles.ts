@@ -66,6 +66,7 @@ export const MapFiles:{
 
 export type PathTreeType = {
   isOpen: boolean;
+  isDirectory: boolean;
   path: string;
   nodes: {
     [index: string]: PathTreeType;
@@ -74,6 +75,7 @@ export type PathTreeType = {
 
 export const FilesTree: PathTreeType = observable({
   isOpen: true,
+  isDirectory: true,
   path: '',
   nodes: {}
 })

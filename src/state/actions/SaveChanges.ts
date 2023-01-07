@@ -3,7 +3,7 @@ import { MapInfo } from '../../types/types'
 import { SendCommand } from '../../utils/messenger'
 import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, TabsState } from '../ToolState'
-import { OnLoadedText } from './OnLoading'
+import { OnLoadedDirectory, OnLoadedText } from './OnLoading'
 import SendMsgToGame from './SendMsgToGame'
 
 const SaveChanges = ():void => {
@@ -57,6 +57,10 @@ export const CreateFile = action((path:string) => {
 export const CreateFolder = action((path:string) => {
   SendCommand({ 
     command: 'MAKE_DIR',
+    path
+  })
+  OnLoadedDirectory({
+    command: 'LOAD_DIRECTORY',
     path
   })
 })
