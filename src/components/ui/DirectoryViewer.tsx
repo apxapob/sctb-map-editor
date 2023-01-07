@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react'
 import { OpenFileTree } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
+import { SendCommand } from '../../utils/messenger'
 import './DirectoryViewer.css'
 
 export type DirectoryViewerProps = {
@@ -26,12 +27,14 @@ const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElem
 
 export default observer(DirectoryViewer)
 
-const PathTree = observer(({ tree, root, level, fileSelector }: {
+type FilesTreeProps = {
   tree: PathTreeType;
   root: string | null;
   level: number;
   fileSelector: (path:string) => void;
-}) => {
+}
+
+const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
   if (!tree) {
     return null
   }
@@ -50,14 +53,9 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
     )
   }
   
-  const isSelected = MapFiles.selectedScript === tree.path || MapFiles.selectedLang === tree.path
   return <>
     {root && !tree.isDirectory &&
-      <div className={`node ${ isSelected ? 'selected-file' : '' }`}//make a component
-      style={{ paddingLeft: 4 + 18 * (level - 1) }}
-      onClick={() => fileSelector(tree.path)}>
-        {root}
-      </div>
+      <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
     }
     {root && tree.isDirectory &&
       <>
@@ -66,6 +64,15 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
         onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾'  : '▸'}
           {root}
+          <span className='delete-file-icon' onClick={e => {
+            e.stopPropagation()
+            SendCommand({
+              command: 'DELETE_DIRECTORY',
+              path: tree.path
+            })
+          }}>
+            🗑️
+          </span>
         </div>
         {tree.isOpen && <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />}
       </>
@@ -74,7 +81,29 @@ const PathTree = observer(({ tree, root, level, fileSelector }: {
   </>
 })
 
-const FileAdder = ({ 
+const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
+  const isSelected = MapFiles.selectedScript === tree.path || MapFiles.selectedLang === tree.path
+  return (
+    <div className={`node ${ isSelected ? 'selected-file' : '' }`}
+      style={{ paddingLeft: 4 + 18 * (level - 1) }}
+      onClick={() => fileSelector(tree.path)}>
+      <span>
+        {root}
+      </span>
+      <span className='delete-file-icon' onClick={e => {
+        e.stopPropagation()
+        SendCommand({
+          command: 'DELETE_FILE',
+          path: tree.path
+        })
+      }}>
+        🗑️
+      </span>
+    </div>
+  )
+})
+
+const FileAdder = ({
   path, level, fileSelector
 }:{ 
   path: string;

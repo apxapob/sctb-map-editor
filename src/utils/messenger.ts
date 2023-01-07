@@ -1,4 +1,4 @@
-import { OnLoadedBinary, OnLoadedDirectory, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
+import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, OnLoadedText, OnLoadingEnd, OnLoadingError, OnLoadingStart } from '../state/actions/OnLoading'
 import OpenPanel from '../state/actions/OpenPanel'
 import SaveChanges from '../state/actions/SaveChanges'
 import { CommandType } from '../types/commands'
@@ -35,6 +35,10 @@ export function InitMessenger() {
         break
       case 'LOAD_DIRECTORY':
         OnLoadedDirectory(message)
+        break
+      case 'DELETED':
+        OnDeleted(message)
+        break
     }
   })
 }

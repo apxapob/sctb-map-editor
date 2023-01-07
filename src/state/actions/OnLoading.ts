@@ -1,5 +1,5 @@
-import { action, toJS } from 'mobx'
-import { DirectoryType, LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
+import { action } from 'mobx'
+import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FilesTree, INFO_PATH, MapFiles, PathTreeType, TEXTS_PATH } from '../MapFiles'
 import { SelectLangFile, SelectScriptFile } from './OpenFileTree'
@@ -44,9 +44,43 @@ export const OnLoadingError = action((errorText:string) => {
   MapFiles.error = errorText
 })
 
+const removeFromTree = action((file:string) => {
+  const parts = file.split('\\')
+  let curPart = ''
+  let curTree:PathTreeType = FilesTree
+  for (let i = 0; i < parts.length; i++) {
+    curPart = parts[i]
+    if (i === parts.length - 1) {
+      delete curTree.nodes[curPart]
+      break
+    }
+    if (!(curPart in curTree.nodes)) {
+      break
+    }
+    curTree = curTree.nodes[curPart]
+  }
+})
+
+const addToTree = action((file:string, isDirectory = false) => {
+  const parts = file.split('\\')
+  let curPart = ''
+  let curTree:PathTreeType = FilesTree
+  for (let i = 0; i < parts.length; i++) {
+    curPart = parts[i]
+    if (!(curPart in curTree.nodes)) {
+      curTree.nodes[curPart] = {
+        isOpen: true,
+        isDirectory: i < parts.length - 1 || isDirectory,
+        nodes: {}, 
+        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
+      }
+    }
+    curTree = curTree.nodes[curPart]
+  }
+})
+
 export const processTextFile = action((file:string, text:string) => {
   MapFiles.text[file] = text
-  MapFiles.lastLoadedFile = file
 
   if (file.endsWith('.json')) {
     MapFiles.json[file] = JSON.parse(text)
@@ -57,58 +91,38 @@ export const processTextFile = action((file:string, text:string) => {
     SelectScriptFile(file)
   }
   
-  const parts = file.split('\\')
-  let curPart = ''
-  let curTree:PathTreeType = FilesTree
-  for (let i = 0; i < parts.length; i++) {
-    curPart = parts[i]
-    if (!(curPart in curTree.nodes)) {
-      curTree.nodes[curPart] = {
-        isOpen: true, 
-        isDirectory: i < parts.length - 1,
-        nodes: {}, 
-        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
-      }
-    }
-    curTree = curTree.nodes[curPart]
-  }
+  addToTree(file)
 })
 
-export const OnLoadedDirectory = action((c:DirectoryType) => {
-  const parts = c.path.split('\\')
-  let curPart = ''
-  let curTree:PathTreeType = FilesTree
-  for (let i = 0; i < parts.length; i++) {
-    curPart = parts[i]
-    if (!(curPart in curTree.nodes)) {
-      curTree.nodes[curPart] = {
-        isOpen: true, 
-        isDirectory: true,
-        nodes: {}, 
-        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
-      }
-    }
-    curTree = curTree.nodes[curPart]
-  }
+export const OnLoadedDirectory = action((c:FSCommandType) => {
+  addToTree(c.path, true)
+})
+
+export const OnDeleted = action((c:FSCommandType) => {
+  removeFromTree(c.path)
 })
 
 export const OnLoadedText = action((c:LoadTextCommandType) => {
-  SendMsgToGame({ 
+  MapFiles.progress = c.progress
+  MapFiles.lastLoadedFile = c.file
+  processTextFile(c.file, c.text)
+
+  SendMsgToGame({
     method: 'load_text_file', 
     data: {
       path: c.file,
       text: c.text
     }
   })
-
-  MapFiles.progress = c.progress
-  processTextFile(c.file, c.text)
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
   MapFiles.binary[c.file] = c.bytes.length
   MapFiles.progress = c.progress
   MapFiles.lastLoadedFile = c.file
+
+  addToTree(c.file)
+
   SendMsgToGame({
     method: 'load_binary_file', 
     data: {

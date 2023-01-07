@@ -63,7 +63,7 @@ const loadMap = async mapDir => {
   }
 }
 
-exports.openMap = async () => {
+exports.OPEN_MAP = async () => {
   const { mainWindow } = require('./main')
   const dir = dialog.showOpenDialogSync(mainWindow, {
     properties: ['openDirectory']
@@ -73,11 +73,8 @@ exports.openMap = async () => {
   await loadMap(dir[0])
 }
 
-exports.saveMap = async () => {
-  sendCommand({ command: 'SAVE_CHANGES' })
-}
-
-exports.saveTextFile = async (path, text) => {
+exports.SAVE_TEXT_FILE = async ({ data }) => {
+  const { path, text } =  data
   if (!mapDirectory) {
     console.error('no open map')
     return
@@ -91,7 +88,7 @@ exports.saveTextFile = async (path, text) => {
   }
 }
 
-exports.makeDirectory = async path => {
+exports.MAKE_DIR = async ({ path }) => {
   try {
     const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
     
@@ -101,7 +98,29 @@ exports.makeDirectory = async path => {
   }
 }
 
-exports.createMap = async (mapId, mapName, playersCount, mapSize) => {
+exports.DELETE_DIRECTORY = async ({ path }) => {
+  try {
+    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    
+    await fs.promises.rmdir(fullPath)
+    sendCommand({ command: 'DELETED', path })
+  } catch (err) {
+    dialog.showErrorBox('Can\'t delete', err.message)
+  }
+}
+
+exports.DELETE_FILE = async ({ path }) => {
+  try {
+    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    
+    await fs.promises.rm(fullPath)
+    sendCommand({ command: 'DELETED', path })
+  } catch (err) {
+    dialog.showErrorBox('Can\'t delete', err.message)
+  }
+}
+
+exports.CREATE_MAP = async ({ mapId, mapName, playersCount, mapSize }) => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
     title: 'Create Map',
