@@ -3,7 +3,7 @@ import { MapInfo } from '../../types/types'
 import { SendCommand } from '../../utils/messenger'
 import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, TabsState } from '../ToolState'
-import { OnLoadedDirectory, OnLoadedText } from './OnLoading'
+import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendMsgToGame from './SendMsgToGame'
 
 const SaveChanges = ():void => {

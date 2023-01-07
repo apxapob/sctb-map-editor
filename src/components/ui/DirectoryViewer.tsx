@@ -77,6 +77,7 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
             🗑️
           </span>
         </div>
+        <br />
         {tree.isOpen && <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />}
       </>
     }
@@ -89,9 +90,50 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
 
 const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
   const isSelected = MapFiles.selectedScript === tree.path || MapFiles.selectedLang === tree.path
+  const [newName, setNewName] = React.useState<string|null>(null)
+
+  const inputRef = React.useRef<HTMLInputElement>(null)
+
+  React.useEffect(() => {
+    inputRef.current?.focus()
+    const endIdx = (root || '').lastIndexOf('.')
+    inputRef.current?.setSelectionRange(0, endIdx > 0 ? endIdx : Number.MAX_SAFE_INTEGER)
+  }, [newName === null])
+
+  const rename = () => SendCommand({
+    command: 'RENAME',
+    path: tree.path,
+    newName: newName + ''
+  })
+
+  if (newName !== null) {
+    return <div className="file-adder">
+      <input
+        style={{ marginLeft: 4 + 18 * (level - 1) }}
+        value={newName} ref={inputRef} 
+        onBlur={() => setNewName(null)}
+        onChange={e => setNewName(e.target.value)}
+        onKeyDown={e => {
+          if (e.key === 'Enter') { 
+            rename()
+            setNewName(null)
+          }
+          if (e.key === 'Escape') { setNewName(null) }
+        }}
+      />
+      <button onMouseDown={rename}>
+        ✓
+      </button>
+      <button onClick={() => setNewName(null)}>
+        ✗
+      </button>
+    </div>
+  }
+
   return (
     <div className={`node ${ isSelected ? 'selected-file' : '' }`}
       style={{ paddingLeft: 4 + 18 * (level - 1) }}
+      onDoubleClick={() => setNewName(root)}
       onClick={() => fileSelector(tree.path)}>
       <span>
         {root}
@@ -124,6 +166,11 @@ const FileAdder = ({
     inputRef.current?.focus()
   }, [showInput])
 
+  const reset = () => {
+    setShowInput('')
+    setInputVal('')
+  }
+
   const createFile = () => {
     const fullpath = path + '\\' + inputVal
     if (showInput === 'file') {
@@ -133,36 +180,41 @@ const FileAdder = ({
       CreateFolder(fullpath)
     }
     
-    setShowInput('')
-    setInputVal('')
+    reset()
   }
 
-  return <div style={{ paddingLeft: 4 + 18 * level }} className="hflex file-adder">
-    {!showInput &&
-      <>
-        <button onClick={() => setShowInput('file')}>
-          +File
-        </button> 
-        <button onClick={() => setShowInput('folder')}>
-          +Folder
-        </button> 
-      </>
-    }
-    {showInput &&
-      <>
-        <input 
-          value={inputVal} ref={inputRef} 
-          onChange={e => setInputVal(e.target.value)}
-          onKeyDown={ e => e.key === 'Enter' && createFile() }
-        />
-        <button onClick={createFile}>
-          Add
-        </button> 
-        <button onClick={() => setShowInput('')}>
-          Cancel
-        </button> 
-      </>
-    }
-    
-  </div>
+  return <>
+    <div style={{ paddingLeft: 4 + 18 * level }} className="file-adder">
+      {!showInput &&
+        <>
+          <button onClick={() => setShowInput('file')}>
+            +File
+          </button> 
+          <button onClick={() => setShowInput('folder')}>
+            +Folder
+          </button> 
+        </>
+      }
+      {showInput &&
+        <>
+          <input
+            value={inputVal} ref={inputRef} 
+            onBlur={reset}
+            onChange={e => setInputVal(e.target.value)}
+            onKeyDown={e => {
+              if (e.key === 'Enter') { createFile() }
+              if (e.key === 'Escape') { reset() }
+            }}
+          />
+          <button onMouseDown={createFile}>
+            ✓
+          </button> 
+          <button onClick={() => setShowInput('')}>
+            ✗
+          </button>
+        </>
+      }
+    </div>
+    <br />
+  </>
 }

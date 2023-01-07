@@ -6,7 +6,7 @@ import SendMsgToGame from './SendMsgToGame'
 import { SendCommand } from '../../utils/messenger'
 import { OnSelectUnits } from './OnSelectUnits'
 import { UpdateUnsavedData } from './UpdateText'
-import { processTextFile } from './OnLoading'
+import { processTextFile } from './FileActions'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {

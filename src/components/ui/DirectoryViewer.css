@@ -5,8 +5,10 @@
 }
 
 .file-adder {
+  display: inline-flex;
   gap: 6px;
-  justify-content: flex-start !important;
+  min-width: 100%;
+  justify-content: flex-start;
 }
 
 .node {

@@ -1,5 +1,5 @@
-import { action } from 'mobx'
-import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType } from '../../types/commands'
+import { action, toJS } from 'mobx'
+import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FilesTree, INFO_PATH, MapFiles, PathTreeType, TEXTS_PATH } from '../MapFiles'
 import { SelectLangFile, SelectScriptFile } from './OpenFileTree'
@@ -104,6 +104,46 @@ export const OnLoadedDirectory = action((c:FSCommandType) => {
 
 export const OnDeleted = action((c:FSCommandType) => {
   removeFromTree(c.path)
+  delete MapFiles.binary[c.path]
+  delete MapFiles.text[c.path]
+  delete MapFiles.json[c.path]
+})
+
+export const OnRenamed = action((c:RenameType) => {
+  const oldPath = c.path
+  const pathParts = c.path.split('\\')
+  pathParts.pop()
+  pathParts.push(c.newName)
+  const newPath = pathParts.join('\\')
+  if (MapFiles.binary[oldPath]) {
+    MapFiles.binary[newPath] = MapFiles.binary[oldPath]
+    delete MapFiles.binary[oldPath]
+  }
+  if (MapFiles.text[oldPath]) {
+    MapFiles.text[newPath] = MapFiles.text[oldPath]
+    delete MapFiles.text[oldPath]
+  }
+  if (MapFiles.json[oldPath]) {
+    MapFiles.json[newPath] = MapFiles.json[oldPath]
+    delete MapFiles.json[oldPath]
+  }
+
+  const parts = oldPath.split('\\')
+  let curPart = ''
+  let curTree:PathTreeType = FilesTree
+  for (let i = 0; i < parts.length; i++) {
+    curPart = parts[i]
+    if (i === parts.length - 1) {
+      curTree.nodes[c.newName] = curTree.nodes[curPart]
+      curTree.nodes[c.newName].path = newPath
+      delete curTree.nodes[curPart]
+      break
+    }
+    if (!(curPart in curTree.nodes)) {
+      break
+    }
+    curTree = curTree.nodes[curPart]
+  }
 })
 
 export const OnLoadedText = action((c:LoadTextCommandType) => {

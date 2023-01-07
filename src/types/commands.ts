@@ -1,7 +1,7 @@
 export type CommandType = {
   command: 'NEW_MAP' | 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END';
 } | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType 
-  | SaveTextFileType | CreateMapType | FSCommandType
+  | SaveTextFileType | CreateMapType | FSCommandType | RenameType
 
 export type CreateMapType = {
   command: 'CREATE_MAP';
@@ -19,6 +19,12 @@ export type SaveTextFileType = {
 export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED';
   path: string;
+}
+
+export type RenameType = {
+  command: 'RENAME' | 'RENAMED';
+  path: string;
+  newName: string;
 }
 
 export type LoadTextCommandType = {

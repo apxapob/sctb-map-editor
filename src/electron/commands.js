@@ -109,6 +109,23 @@ exports.DELETE = async ({ path }) => {
   }
 }
 
+exports.RENAME = async ({ path, newName }) => {
+  try {
+    if (!newName) return
+    const oldPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+
+    const parts = path.split('\\')
+    parts.pop()
+    parts.push(newName)
+    const newPath = (mapDirectory + '\\' + parts.join('\\')).replaceAll('/', '\\')
+    
+    await fs.promises.rename(oldPath, newPath)
+    sendCommand({ command: 'RENAMED', path, newName })
+  } catch (err) {
+    dialog.showErrorBox('Can\'t rename', err.message)
+  }
+}
+
 exports.CREATE_MAP = async ({ mapId, mapName, playersCount, mapSize }) => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
