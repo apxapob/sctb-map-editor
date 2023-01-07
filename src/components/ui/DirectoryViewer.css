@@ -12,8 +12,9 @@
 .node {
   user-select: none;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   gap: 6px;
+  min-width: 100%;
   justify-content: space-between;
 }
 
@@ -26,7 +27,8 @@
 }
 
 .delete-file-icon {
-  display: none;
+  pointer-events: none;
+  color: rgba(0,0,0,0);
 }
 .delete-file-icon:hover {
   background-color: rgba(100, 100, 100, 0.4);
@@ -36,7 +38,8 @@
 }
 
 .node:hover .delete-file-icon{
-  display: unset;
+  pointer-events: all;
+  color: rgba(0,0,0,1);
 }
 
 .selected-file {

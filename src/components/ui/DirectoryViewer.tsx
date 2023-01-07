@@ -55,7 +55,10 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   
   return <>
     {root && !tree.isDirectory &&
-      <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
+      <>
+        <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
+        <br />
+      </>
     }
     {root && tree.isDirectory &&
       <>
@@ -78,6 +81,9 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       </>
     }
     {tree.isOpen && tree.isDirectory && nodes}
+    {!tree.isOpen && tree.isDirectory &&
+      <br />
+    }
   </>
 })
 
