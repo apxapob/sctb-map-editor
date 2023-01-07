@@ -112,6 +112,11 @@ const FileAdder = ({
 }) => {
   const [showInput, setShowInput] = React.useState<'file'|'folder'|''>('')
   const [inputVal, setInputVal] = React.useState<string>('')
+  const inputRef = React.useRef<HTMLInputElement>(null)
+
+  React.useEffect(() => {
+    inputRef.current?.focus()
+  }, [showInput])
 
   const createFile = () => {
     const fullpath = path + '\\' + inputVal
@@ -139,10 +144,16 @@ const FileAdder = ({
     }
     {showInput &&
       <>
-        <input value={inputVal} onChange={e => setInputVal(e.target.value)} 
-         onKeyDown={ e => e.key === 'Enter' && createFile() } />
+        <input 
+          value={inputVal} ref={inputRef} 
+          onChange={e => setInputVal(e.target.value)}
+          onKeyDown={ e => e.key === 'Enter' && createFile() }
+        />
         <button onClick={createFile}>
           Add
+        </button> 
+        <button onClick={() => setShowInput('')}>
+          Cancel
         </button> 
       </>
     }

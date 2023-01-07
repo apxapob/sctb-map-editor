@@ -1,7 +1,7 @@
 .dir-viewer-container {
   overflow: auto;
   width: 360px;
-  max-height: calc(100vh - 24px);
+  height: calc(100vh - 24px);
 }
 
 .file-adder {
@@ -13,6 +13,7 @@
   user-select: none;
   cursor: pointer;
   display: flex;
+  gap: 6px;
   justify-content: space-between;
 }
 

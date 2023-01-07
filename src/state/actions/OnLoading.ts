@@ -85,8 +85,8 @@ export const processTextFile = action((file:string, text:string) => {
   if (file.endsWith('.json')) {
     try {
       MapFiles.json[file] = JSON.parse(text)
-    } catch (e:any) {
-      console.error('Can\'t parse', file, e.message)
+    } catch (e) {
+      console.error('Can\'t parse', file, (e as Error).message)
     }
     if (file.startsWith(TEXTS_PATH) && !MapFiles.selectedLang) {
       SelectLangFile(file)
