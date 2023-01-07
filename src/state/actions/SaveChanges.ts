@@ -42,15 +42,16 @@ const SaveChanges = ():void => {
 export default action(SaveChanges)
 
 export const CreateFile = action((path:string) => {
-  SendCommand({ 
+  const text = path.endsWith('.json') ? '{}' : ''
+  SendCommand({
     command: 'SAVE_TEXT_FILE',
-    data: { path, text: '' }
+    data: { path, text }
   })
   OnLoadedText({
     command: 'LOAD_TEXT_FILE',
     file: path,
     progress: 1,
-    text: ''
+    text
   })
 })
 

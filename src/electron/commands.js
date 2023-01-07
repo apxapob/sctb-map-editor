@@ -1,4 +1,4 @@
-const { dialog } = require('electron')
+const { dialog, shell } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 
@@ -98,22 +98,11 @@ exports.MAKE_DIR = async ({ path }) => {
   }
 }
 
-exports.DELETE_DIRECTORY = async ({ path }) => {
+exports.DELETE = async ({ path }) => {
   try {
     const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
     
-    await fs.promises.rmdir(fullPath)
-    sendCommand({ command: 'DELETED', path })
-  } catch (err) {
-    dialog.showErrorBox('Can\'t delete', err.message)
-  }
-}
-
-exports.DELETE_FILE = async ({ path }) => {
-  try {
-    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
-    
-    await fs.promises.rm(fullPath)
+    await shell.trashItem(fullPath)
     sendCommand({ command: 'DELETED', path })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)

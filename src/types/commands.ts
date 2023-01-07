@@ -17,7 +17,7 @@ export type SaveTextFileType = {
 }
 
 export type FSCommandType = {
-  command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE_DIRECTORY' | 'DELETE_FILE' | 'DELETED';
+  command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED';
   path: string;
 }
 

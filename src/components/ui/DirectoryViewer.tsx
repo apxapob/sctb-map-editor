@@ -67,7 +67,7 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
           <span className='delete-file-icon' onClick={e => {
             e.stopPropagation()
             SendCommand({
-              command: 'DELETE_DIRECTORY',
+              command: 'DELETE',
               path: tree.path
             })
           }}>
@@ -93,7 +93,7 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       <span className='delete-file-icon' onClick={e => {
         e.stopPropagation()
         SendCommand({
-          command: 'DELETE_FILE',
+          command: 'DELETE',
           path: tree.path
         })
       }}>
