@@ -139,7 +139,8 @@ const FileAdder = ({
     }
     {showInput &&
       <>
-        <input value={inputVal} onChange={e => setInputVal(e.target.value)} />
+        <input value={inputVal} onChange={e => setInputVal(e.target.value)} 
+         onKeyDown={ e => e.key === 'Enter' && createFile() } />
         <button onClick={createFile}>
           Add
         </button> 
