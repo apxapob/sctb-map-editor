@@ -7,6 +7,7 @@ export const BUFFS_PATH = 'buffs.json'
 export const INFO_PATH = 'info.json'
 export const TEXTS_PATH = 'locales\\'
 export const SCRIPTS_PATH = 'scripts\\'
+export const PARTICLES_PATH = 'particles\\'
 
 export const getFilePath = (tab:TabType) => {
   switch (tab) {
@@ -22,6 +23,8 @@ export const getFilePath = (tab:TabType) => {
       return MapFiles.selectedLang
     case 'Scripts':
       return MapFiles.selectedScript
+    case 'Particles':
+      return MapFiles.selectedParticlesFile
   }
   return ''
 }
@@ -32,6 +35,8 @@ export const getDirPath = (tab:TabType) => {
       return TEXTS_PATH
     case 'Scripts':
       return SCRIPTS_PATH
+    case 'Particles':
+      return PARTICLES_PATH
   }
   return ''
 }
@@ -52,6 +57,7 @@ export const MapFiles:{
   error: string | null;
   selectedLang: string;
   selectedScript: string;
+  selectedParticlesFile: string;
 } = observable({
   binary: {},
   text: {},
@@ -62,6 +68,7 @@ export const MapFiles:{
   error: null,
   selectedLang: '',
   selectedScript: '',
+  selectedParticlesFile: ''
 })
 
 export type PathTreeType = {

@@ -18,3 +18,10 @@ export const SelectLangFile = action(
     MapFiles.selectedLang = path
   }
 )
+
+export const SelectParticlesFile = action(
+  (path:string) => {
+    MapFiles.selectedParticlesFile = path
+  }
+)
+

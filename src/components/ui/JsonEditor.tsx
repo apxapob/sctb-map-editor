@@ -18,11 +18,12 @@ import ReactAce from 'react-ace/lib/ace'
 export type JsonEditorProps = {
   tab: TabType;
   filePath: string;
-  mode: 'json'|'haxe';
 }
 
 const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
   const error = TabsErrors[props.tab]
+  
+  const mode = props.filePath.endsWith('.json') ? 'json' : 'haxe'
   return (
     <div className='json-editor-container'>
       {TabsErrors[props.tab] &&
@@ -30,7 +31,9 @@ const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
           {TabsErrors[props.tab]}
         </div>
       }
-      <EditorDiv tab={props.tab} error={error} filePath={props.filePath} mode={props.mode} />
+      {props.filePath &&
+        <EditorDiv tab={props.tab} error={error} filePath={props.filePath} mode={mode} />
+      }
     </div>
   )
 }
@@ -39,6 +42,7 @@ export default observer(JsonEditor)
 
 const EditorDiv = (props: JsonEditorProps & {
   error: string|null;
+  mode: string;
 }) => {
   const editorRef = React.useRef<ReactAce>(null)
   const text = TabsState[props.tab] || MapFiles.text[props.filePath] || ''

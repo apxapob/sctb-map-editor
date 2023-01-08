@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { SelectScriptFile, SelectLangFile } from '../../state/actions/OpenFileTree'
+import { SelectScriptFile, SelectLangFile, SelectParticlesFile } from '../../state/actions/OpenFileTree'
 import { getDirPath, getFilePath, MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
@@ -14,9 +14,19 @@ import Tools from '../ui/Tools'
 import UnitSelection from '../ui/UnitSelection'
 import './App.css'
 
+const fileSelectors: {
+  [key: string]: (path:string) => void;
+} = {
+  'Scripts': SelectScriptFile, 
+  'Texts': SelectLangFile, 
+  'Particles': SelectParticlesFile
+}
+
 const App = ():ReactElement => {
-  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Texts']
+  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
+  const showDirViewer = EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts' || EditorState.activeTab === 'Particles'
+  
   return (
     <div className="App">
       <div className='hflex tab-container'>
@@ -35,15 +45,14 @@ const App = ():ReactElement => {
         </>
       }
       <div className='hflex' style={{ alignItems: 'start' }}>
-        {isLoaded && (EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts') &&
+        {isLoaded && showDirViewer &&
           <DirectoryViewer 
             path={getDirPath(EditorState.activeTab)} 
-            fileSelector={EditorState.activeTab === 'Scripts' ? SelectScriptFile : SelectLangFile}
+            fileSelector={fileSelectors[EditorState.activeTab]}
           />
         }
         {isLoaded && EditorState.activeTab !== 'Field' &&
-          <JsonEditor 
-            mode={ EditorState.activeTab === 'Scripts' ? 'haxe' : 'json' }
+          <JsonEditor
             filePath={getFilePath(EditorState.activeTab)} 
             tab={EditorState.activeTab} 
           />

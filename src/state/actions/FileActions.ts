@@ -88,11 +88,6 @@ export const processTextFile = action((file:string, text:string) => {
     } catch (e) {
       console.error('Can\'t parse', file, (e as Error).message)
     }
-    if (file.startsWith(TEXTS_PATH) && !MapFiles.selectedLang) {
-      SelectLangFile(file)
-    }
-  } else if (file.endsWith('.hx') && !MapFiles.selectedScript) {
-    SelectScriptFile(file)
   }
   
   addToTree(file)

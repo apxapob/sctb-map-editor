@@ -89,7 +89,9 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
 })
 
 const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
-  const isSelected = MapFiles.selectedScript === tree.path || MapFiles.selectedLang === tree.path
+  const isSelected = MapFiles.selectedScript === tree.path || 
+                     MapFiles.selectedLang === tree.path || 
+                     MapFiles.selectedParticlesFile === tree.path
   const [newName, setNewName] = React.useState<string|null>(null)
 
   const inputRef = React.useRef<HTMLInputElement>(null)
