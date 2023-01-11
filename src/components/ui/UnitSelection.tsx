@@ -87,7 +87,9 @@ const UnitSelection = ():ReactElement|null => {
       Buffs
       <div className='buff-list'>
         {buffs.map(
-          (b, idx) => b === 'different buffs' ? b : <BuffChanger idx={idx} key={idx} buff={b} /> 
+          (b, idx) => b === 'different buffs' 
+            ? <div key={idx}>{b}</div>
+            : <BuffChanger idx={idx} key={idx} buff={b} /> 
         )}
       </div>
       <BuffAdder />

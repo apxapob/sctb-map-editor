@@ -909,7 +909,7 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["mapId","name","version","author","startField","minPlayers","maxPlayers","countryColors"],[false,false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["mapId","name","description","version","author","startField","minPlayers","maxPlayers","countryColors"],[false,false,false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -921,6 +921,9 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				break;
 			case "countryColors":
 				this.value.countryColors = this.loadObjectField(($_=new JsonParser_$22(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryColors",assigned,this.value.countryColors,pos);
+				break;
+			case "description":
+				this.value.description = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
 				break;
 			case "mapId":
 				this.value.mapId = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
@@ -950,6 +953,7 @@ JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		var value = Object.create(model_MapInfo.prototype);
 		value.mapId = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.name = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.description = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.version = new JsonParser_$21([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.author = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.startField = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -7114,48 +7118,23 @@ var Main = function() {
 };
 $hxClasses["Main"] = Main;
 Main.__name__ = "Main";
-Main.GotoRoom = function() {
-	var _this = Main.curScreen;
-	if(_this != null && _this.parent != null) {
-		_this.parent.removeChild(_this);
-	}
-	Main.curScreen = new ui_screens_NetRoomScreen(Main.mainScene);
-};
-Main.GotoLobby = function() {
-	var _this = Main.curScreen;
-	if(_this != null && _this.parent != null) {
-		_this.parent.removeChild(_this);
-	}
-	Main.curScreen = new ui_screens_NetLobbyScreen(Main.mainScene);
-};
-Main.GotoLoadScreen = function() {
-	var _this = Main.curScreen;
-	if(_this != null && _this.parent != null) {
-		_this.parent.removeChild(_this);
-	}
-	Main.curScreen = new ui_screens_LSDScreen(false,Main.mainScene);
-};
 Main.GotoStartMenu = function() {
+	ui_screens_Game.game = null;
 	Main.removeListeners();
-	var _this = Main.curScreen;
-	if(_this != null && _this.parent != null) {
-		_this.parent.removeChild(_this);
-	}
-	Main.curScreen = new ui_screens_StartScreen(Main.mainScene);
-};
-Main.StartGame = function() {
-	var _this = Main.curScreen;
-	if(_this != null && _this.parent != null) {
-		_this.parent.removeChild(_this);
-	}
-	Main.curScreen = new ui_screens_Game(Main.mainScene);
+	Main.ChangeScreen(new ui_screens_StartScreen());
 };
 Main.ShowMessageBox = function(msg) {
 	return new ui_panel_MessageBox(msg,Main.mainScene);
 };
-Main.StartNewGame = function() {
-	ui_screens_Game.game = null;
-	Main.StartLocalGame();
+Main.ChangeScreen = function(screen) {
+	if(Main.curScreen != null) {
+		var _this = Main.curScreen;
+		if(_this != null && _this.parent != null) {
+			_this.parent.removeChild(_this);
+		}
+	}
+	Main.curScreen = screen;
+	Main.mainScene.addChild(screen);
 };
 Main.removeListeners = function() {
 	logic_NetSystem.disconnect();
@@ -7176,13 +7155,21 @@ Main.ShowMapEditor = function(mapId) {
 	ui_screens_Game.game = null;
 	ui_screens_Game.cam = new model_CameraData();
 	ui_screens_Game.game = logic_LSDSystem.LoadMap(mapId);
-	Main.StartGame();
+	Main.ChangeScreen(new ui_screens_Game());
 	ui_screens_Game.ui.set_visible(false);
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
 	logic_MapEditorSystem.startNewHistory();
 };
 Main.LoadLocalGame = function(filename) {
 	ui_screens_Game.game = logic_LSDSystem.Load(filename);
+	Main.StartLocalGame();
+};
+Main.LoadMap = function(filename) {
+	ui_screens_Game.game = logic_LSDSystem.Load(filename);
+	Main.StartLocalGame();
+};
+Main.StartNewGame = function(mapId) {
+	ui_screens_Game.game = logic_LSDSystem.LoadMap(mapId);
 	Main.StartLocalGame();
 };
 Main.StartLocalGame = function() {
@@ -7202,9 +7189,9 @@ Main.StartLocalGame = function() {
 			break;
 		}
 	}
-	Main.StartGame();
+	Main.ChangeScreen(new ui_screens_Game());
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
-	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 145, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
+	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 148, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
 };
 Main.CreateNetGame = function(savefileName) {
@@ -7220,12 +7207,11 @@ Main.CreateNetGame = function(savefileName) {
 Main.JoinNetGame = function() {
 	ui_screens_Game.cam = new model_CameraData();
 	ui_screens_Game.cam.curPlayerId = logic_NetSystem.myId;
-	Main.StartGame();
+	Main.ChangeScreen(new ui_screens_Game());
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
 	logic_CamSystem.PopCamState();
 };
 Main.main = function() {
-	hxd_res_Resource.LIVE_UPDATE = true;
 	hxd_Res.set_loader(new hxd_res_Loader(new hxd_fs_EmbedFileSystem(haxe_Unserializer.run("oy10:font33.pngty3:imgoy14:txt_cursor.pngty10:cursor.pngty18:tile_highlight.pngty8:ring.pngty9:shoot.pngty8:tile.pngty14:armor_icon.pngty15:health_icon.pngty14:dmg_effect.pngty12:no_image.pngty15:damage_icon.pngtgy10:font11.fntty10:font11.pngty10:font22.pngty10:font22.fntty7:localesoy7:en.jsonty7:ru.jsontgy10:font33.fnttg"))));
 	new Main();
 };
@@ -35880,9 +35866,6 @@ h3d_impl_Driver.prototype = {
 	,begin: function(frame) {
 	}
 	,log: function(str) {
-		if(this.logEnable) {
-			this.logImpl(str);
-		}
 	}
 	,generateMipMaps: function(texture) {
 		throw haxe_Exception.thrown("Mipmaps auto generation is not supported on this platform");
@@ -41612,10 +41595,6 @@ h3d_pass_Default.prototype = $extend(h3d_pass_Base.prototype,{
 		}
 	}
 	,log: function(str) {
-		var _this = this.ctx.engine.driver;
-		if(_this.logEnable) {
-			_this.logImpl(str);
-		}
 	}
 	,drawObject: function(p) {
 		this.ctx.drawPass = p;
@@ -46422,9 +46401,6 @@ h3d_scene_Object.prototype = {
 		if(o == null) {
 			o = new h3d_scene_Object();
 		}
-		if(js_Boot.getClass(o) != js_Boot.getClass(this)) {
-			throw haxe_Exception.thrown(Std.string(this) + " is missing clone()");
-		}
 		var v = this.x;
 		o.x = v;
 		var f = 1;
@@ -48830,7 +48806,6 @@ var h3d_scene_Scene = function(createRenderer,createLightSystem) {
 	if(createRenderer == null) {
 		createRenderer = true;
 	}
-	this.checkPasses = true;
 	h3d_scene_Object.call(this,null);
 	this.window = hxd_Window.getInstance();
 	this.eventListeners = [];
@@ -48863,7 +48838,6 @@ h3d_scene_Scene.prototype = $extend(h3d_scene_Object.prototype,{
 	,hitInteractives: null
 	,eventListeners: null
 	,window: null
-	,checkPasses: null
 	,setEvents: function(events) {
 		this.events = events;
 	}
@@ -49554,16 +49528,6 @@ h3d_scene_Scene.prototype = $extend(h3d_scene_Object.prototype,{
 			this.lightSystem.initLights(this.ctx);
 		}
 		this.renderer.process(passes);
-		if(!this.ctx.computingStatic && this.checkPasses) {
-			var _g = 0;
-			while(_g < passes.length) {
-				var p = passes[_g];
-				++_g;
-				if(!p.rendered) {
-					haxe_Log.trace("Pass " + p.name + " has not been rendered : don't know how to handle.",{ fileName : "h3d/scene/Scene.hx", lineNumber : 438, className : "h3d.scene.Scene", methodName : "render"});
-				}
-			}
-		}
 		if(this.camera.rightHanded) {
 			engine.driver.setRenderFlag(h3d_impl_RenderFlag.CameraHandness,0);
 		}
@@ -73079,14 +73043,8 @@ hxd_res_NanoJpeg.prototype = {
 		this.pos += count;
 		this.size -= count;
 		this.length -= count;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,syntax: function(flag) {
-		if(flag) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,get: function(p) {
 		return this.bytes.b[this.pos + p];
@@ -73113,9 +73071,6 @@ hxd_res_NanoJpeg.prototype = {
 			this.bufbits += 8;
 			this.buf = this.buf << 8 | newbyte;
 			if(newbyte == 255) {
-				if(this.size == 0) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				var marker = this.bytes.b[this.pos];
 				this.pos++;
 				this.size--;
@@ -73126,9 +73081,6 @@ hxd_res_NanoJpeg.prototype = {
 				case 0:case 255:
 					break;
 				default:
-					if((marker & 248) != 208) {
-						throw haxe_Exception.thrown("Invalid JPEG file");
-					}
 					this.buf = this.buf << 8 | marker;
 					this.bufbits += 8;
 				}
@@ -73148,59 +73100,26 @@ hxd_res_NanoJpeg.prototype = {
 		return r;
 	}
 	,njDecodeLength: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,njSkipMarker: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		var count = this.length;
 		this.pos += count;
 		this.size -= count;
 		this.length -= count;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,njDecodeSOF: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
-		if(this.length < 9) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		if(this.bytes.b[this.pos] != 8) {
 			this.notSupported();
 		}
@@ -73210,17 +73129,11 @@ hxd_res_NanoJpeg.prototype = {
 		this.pos += 6;
 		this.size -= 6;
 		this.length -= 6;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		switch(this.ncomp) {
 		case 1:case 3:
 			break;
 		default:
 			this.notSupported();
-		}
-		if(this.length < this.ncomp * 3) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
 		}
 		var ssxmax = 0;
 		var ssymax = 0;
@@ -73231,29 +73144,17 @@ hxd_res_NanoJpeg.prototype = {
 			var c = this.comps[i];
 			c.cid = this.bytes.b[this.pos];
 			c.ssx = this.bytes.b[this.pos + 1] >> 4;
-			if(c.ssx == 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			if((c.ssx & c.ssx - 1) != 0) {
 				this.notSupported();
 			}
 			c.ssy = this.bytes.b[this.pos + 1] & 15;
-			if(c.ssy == 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			if((c.ssy & c.ssy - 1) != 0) {
 				this.notSupported();
 			}
 			c.qtsel = this.bytes.b[this.pos + 2];
-			if((c.qtsel & 252) != 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			this.pos += 3;
 			this.size -= 3;
 			this.length -= 3;
-			if(this.size < 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			this.qtused |= 1 << c.qtsel;
 			if(c.ssx > ssxmax) {
 				ssxmax = c.ssx;
@@ -73290,29 +73191,14 @@ hxd_res_NanoJpeg.prototype = {
 		this.pos += count;
 		this.size -= count;
 		this.length -= count;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,njDecodeDQT: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		while(this.length >= 65) {
 			var i = this.bytes.b[this.pos];
-			if((i & 252) != 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			this.qtavail |= 1 << i;
 			var t = this.qtab[i];
 			var _g = 0;
@@ -73323,33 +73209,15 @@ hxd_res_NanoJpeg.prototype = {
 			this.pos += 65;
 			this.size -= 65;
 			this.length -= 65;
-			if(this.size < 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
-		}
-		if(this.length != 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
 		}
 	}
 	,njDecodeDHT: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		while(this.length >= 17) {
 			var i = this.bytes.b[this.pos];
-			if((i & 236) != 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			i = i >> 4 & 1 | (i & 3) << 1;
 			this.counts[0] = this.bytes.b[this.pos + 1];
 			this.counts[1] = this.bytes.b[this.pos + 2];
@@ -73370,9 +73238,6 @@ hxd_res_NanoJpeg.prototype = {
 			this.pos += 17;
 			this.size -= 17;
 			this.length -= 17;
-			if(this.size < 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			var vlc = this.vlctab[i];
 			var vpos = 0;
 			var remain = 65536;
@@ -73385,13 +73250,7 @@ hxd_res_NanoJpeg.prototype = {
 				if(currcnt == 0) {
 					continue;
 				}
-				if(this.length < currcnt) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				remain -= currcnt << 16 - codelen;
-				if(remain < 0) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				var _g1 = 0;
 				var _g2 = currcnt;
 				while(_g1 < _g2) {
@@ -73408,52 +73267,28 @@ hxd_res_NanoJpeg.prototype = {
 				this.pos += currcnt;
 				this.size -= currcnt;
 				this.length -= currcnt;
-				if(this.size < 0) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 			}
 			while(remain-- != 0) {
 				vlc.b[vpos] = 0;
 				vpos += 2;
 			}
 		}
-		if(this.length != 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,njDecodeDRI: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
-		if(this.length < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.rstinterval = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
 		var count = this.length;
 		this.pos += count;
 		this.size -= count;
 		this.length -= count;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 	}
 	,vlcCode: null
 	,njGetVLC: function(vlc) {
 		var value = this.njShowBits(16);
 		var bits = vlc.b[value << 1];
-		if(bits == 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		if(this.bufbits < bits) {
 			this.njShowBits(bits);
 		}
@@ -73612,9 +73447,6 @@ hxd_res_NanoJpeg.prototype = {
 		var vlc = this.vlctab[c.dctabsel];
 		var value1 = this.njShowBits(16);
 		var bits = vlc.b[value1 << 1];
-		if(bits == 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		if(this.bufbits < bits) {
 			this.njShowBits(bits);
 		}
@@ -73641,9 +73473,6 @@ hxd_res_NanoJpeg.prototype = {
 		while(true) {
 			var value1 = this.njShowBits(16);
 			var bits = at.b[value1 << 1];
-			if(bits == 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			if(this.bufbits < bits) {
 				this.njShowBits(bits);
 			}
@@ -73665,13 +73494,7 @@ hxd_res_NanoJpeg.prototype = {
 			if(this.vlcCode == 0) {
 				break;
 			}
-			if((this.vlcCode & 15) == 0 && this.vlcCode != 240) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			coef += (this.vlcCode >> 4) + 1;
-			if(coef > 63) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			this.block[this.njZZ[coef]] = value * qt[coef];
 			if(!(coef < 63)) {
 				break;
@@ -74706,50 +74529,26 @@ hxd_res_NanoJpeg.prototype = {
 		throw haxe_Exception.thrown("This JPG file is not supported");
 	}
 	,njDecodeScan: function() {
-		if(this.size < 2) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-		if(this.length > this.size) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
-		if(this.length < 4 + 2 * this.ncomp) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		if(this.bytes.b[this.pos] != this.ncomp) {
 			this.notSupported();
 		}
 		this.pos += 1;
 		this.size -= 1;
 		this.length -= 1;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		var _g = 0;
 		var _g1 = this.ncomp;
 		while(_g < _g1) {
 			var i = _g++;
 			var c = this.comps[i];
-			if(this.bytes.b[this.pos] != c.cid) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
-			if((this.bytes.b[this.pos + 1] & 236) != 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			c.dctabsel = this.bytes.b[this.pos + 1] >> 4 << 1;
 			c.actabsel = (this.bytes.b[this.pos + 1] & 3) << 1 | 1;
 			this.pos += 2;
 			this.size -= 2;
 			this.length -= 2;
-			if(this.size < 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 		}
 		var start = this.bytes.b[this.pos];
 		var count = this.bytes.b[this.pos + 1];
@@ -74761,9 +74560,6 @@ hxd_res_NanoJpeg.prototype = {
 		this.pos += count;
 		this.size -= count;
 		this.length -= count;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		var mbx = 0;
 		var mby = 0;
 		var rstcount = this.rstinterval;
@@ -74797,9 +74593,6 @@ hxd_res_NanoJpeg.prototype = {
 				var r = this.njShowBits(16);
 				this.bufbits -= 16;
 				var i1 = r;
-				if((i1 & 65528) != 65488 || (i1 & 7) != nextrst) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				nextrst = nextrst + 1 & 7;
 				rstcount = this.rstinterval;
 				this.comps[0].dcpred = 0;
@@ -75013,19 +74806,10 @@ hxd_res_NanoJpeg.prototype = {
 		this.pos += 2;
 		this.size -= 2;
 		this.length -= 2;
-		if(this.size < 0) {
-			throw haxe_Exception.thrown("Invalid JPEG file");
-		}
 		_hx_loop1: while(true) {
-			if(this.size < 2 || this.bytes.b[this.pos] != 255) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			this.pos += 2;
 			this.size -= 2;
 			this.length -= 2;
-			if(this.size < 0) {
-				throw haxe_Exception.thrown("Invalid JPEG file");
-			}
 			switch(this.bytes.b[this.pos + (-1)]) {
 			case 192:
 				this.njDecodeSOF();
@@ -75064,52 +74848,28 @@ hxd_res_NanoJpeg.prototype = {
 				this.njDecodeDRI();
 				break;
 			case 254:
-				if(this.size < 2) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-				if(this.length > this.size) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				this.pos += 2;
 				this.size -= 2;
 				this.length -= 2;
-				if(this.size < 0) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				var count = this.length;
 				this.pos += count;
 				this.size -= count;
 				this.length -= count;
-				if(this.size < 0) {
-					throw haxe_Exception.thrown("Invalid JPEG file");
-				}
 				break;
 			default:
 				switch(this.bytes.b[this.pos + (-1)] & 240) {
 				case 192:
 					throw haxe_Exception.thrown("Unsupported jpeg type " + (this.bytes.b[this.pos + (-1)] & 15));
 				case 224:
-					if(this.size < 2) {
-						throw haxe_Exception.thrown("Invalid JPEG file");
-					}
 					this.length = this.bytes.b[this.pos] << 8 | this.bytes.b[this.pos + 1];
-					if(this.length > this.size) {
-						throw haxe_Exception.thrown("Invalid JPEG file");
-					}
 					this.pos += 2;
 					this.size -= 2;
 					this.length -= 2;
-					if(this.size < 0) {
-						throw haxe_Exception.thrown("Invalid JPEG file");
-					}
 					var count1 = this.length;
 					this.pos += count1;
 					this.size -= count1;
 					this.length -= count1;
-					if(this.size < 0) {
-						throw haxe_Exception.thrown("Invalid JPEG file");
-					}
 					break;
 				default:
 					throw haxe_Exception.thrown("Unsupported jpeg tag 0x" + StringTools.hex(this.bytes.b[this.pos + (-1)],2));
@@ -76148,7 +75908,6 @@ hxd_snd_Manager.prototype = {
 			c.duration = c.sound.getData().get_duration();
 			var playedSamples = this.driver.getPlayedSampleCount(s.handle);
 			if(playedSamples < 0) {
-				haxe_Log.trace("playedSamples should positive : bug in driver",{ fileName : "hxd/snd/Manager.hx", lineNumber : 360, className : "hxd.snd.Manager", methodName : "update"});
 				playedSamples = 0;
 			}
 			c.set_position(playedSamples / s.buffers[0].sampleRate);
@@ -79424,12 +79183,6 @@ hxsl_Cache.prototype = {
 		haxe_ds_ArraySort.sort(shaderDatas,function(s1,s2) {
 			return s2.p - s1.p;
 		});
-		var _g = 0;
-		while(_g < shaderDatas.length) {
-			var s = shaderDatas[_g];
-			++_g;
-			hxsl_Printer.check(s.inst.shader);
-		}
 		var linker = new hxsl_Linker(batchMode);
 		var s;
 		try {
@@ -79492,14 +79245,6 @@ hxsl_Cache.prototype = {
 				checkRec(v);
 			}
 		}
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < shaderDatas.length) {
-			var s1 = shaderDatas[_g1];
-			++_g1;
-			_g.push(s1.inst.shader);
-		}
-		hxsl_Printer.check(s,_g);
 		var paramVars = new haxe_ds_IntMap();
 		var _g = 0;
 		var _g1 = linker.allVars;
@@ -79530,19 +79275,15 @@ hxsl_Cache.prototype = {
 				throw _g;
 			}
 		}
-		hxsl_Printer.check(s1.vertex,[prev]);
-		hxsl_Printer.check(s1.fragment,[prev]);
 		var prev = s1;
 		var s = new hxsl_Dce().dce(s1.vertex,s1.fragment);
-		hxsl_Printer.check(s.vertex,[prev.vertex]);
-		hxsl_Printer.check(s.fragment,[prev.fragment]);
 		var r = this.buildRuntimeShader(s.vertex,s.fragment,paramVars);
 		var _g = [];
-		var _g7_l = shaders;
-		var _g7_last = null;
-		while(_g7_l != _g7_last) {
-			var s = _g7_l.s;
-			_g7_l = _g7_l.next;
+		var _g4_l = shaders;
+		var _g4_last = null;
+		while(_g4_l != _g4_last) {
+			var s = _g4_l.s;
+			_g4_l = _g4_l.next;
 			var s1 = s;
 			_g.push(new hxsl_ShaderInstanceDesc(s1.shader,s1.constBits));
 		}
@@ -79583,8 +79324,6 @@ hxsl_Cache.prototype = {
 		r.globals = new haxe_ds_IntMap();
 		this.initGlobals(r,r.vertex);
 		this.initGlobals(r,r.fragment);
-		hxsl_Printer.check(r.vertex.data,[vertex]);
-		hxsl_Printer.check(r.fragment.data,[fragment]);
 		return r;
 	}
 	,initGlobals: function(r,s) {
@@ -88430,7 +88169,6 @@ hxsl_SharedShader.prototype = {
 		$eval.inlineCalls = true;
 		$eval.unrollLoops = hxsl_SharedShader.UNROLL_LOOPS;
 		var i = new hxsl_ShaderInstance($eval.eval(this.data));
-		hxsl_Printer.check(i.shader,[this.data]);
 		this.paramsCount = 0;
 		var _g = 0;
 		var _g1 = this.data.vars;
@@ -89138,7 +88876,7 @@ logic_CamSystem.PopCamState = function() {
 				break;
 			}
 		}
-		ui_screens_Game.cam.set_dir(0);
+		ui_screens_Game.cam.set_dir(5);
 		logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
 	} else {
 		ui_screens_Game.cam.set_dir(state.w | 0);
@@ -89328,25 +89066,26 @@ var logic_EventType = $hxEnums["logic.EventType"] = { __ename__:true,__construct
 	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
 	,TurnDone: {_hx_name:"TurnDone",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
 	,TurnStart: {_hx_name:"TurnStart",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
-	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
-	,GameSaved: {_hx_name:"GameSaved",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
-	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
-	,Connected: {_hx_name:"Connected",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
-	,Disconnected: {_hx_name:"Disconnected",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
-	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
-	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
-	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
-	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
-	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
-	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
-	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
+	,MapSelected: {_hx_name:"MapSelected",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
+	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
+	,GameSaved: {_hx_name:"GameSaved",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
+	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
+	,Connected: {_hx_name:"Connected",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
+	,Disconnected: {_hx_name:"Disconnected",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
+	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
+	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
+	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
+	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
+	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
+	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
+	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:29,__enum__:"logic.EventType",toString:$estr}
 };
-logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
-logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
 var logic_EventSystem = function() { };
 $hxClasses["logic.EventSystem"] = logic_EventSystem;
 logic_EventSystem.__name__ = "logic.EventSystem";
@@ -89764,11 +89503,11 @@ logic_FightSystem.CalcFights = function(td) {
 			var hex = hitHexes[_g3];
 			++_g3;
 			var _g4 = [];
-			var _g5 = 0;
-			var _g6 = logic_UnitSystem.GetAllUnitsFromHex(hex,td);
-			while(_g5 < _g6.length) {
-				var v1 = _g6[_g5];
-				++_g5;
+			var _g11 = 0;
+			var _g21 = logic_UnitSystem.GetAllUnitsFromHex(hex,td);
+			while(_g11 < _g21.length) {
+				var v1 = _g21[_g11];
+				++_g11;
 				if(v1.countryId != u.countryId && v1.stats.hp > 0) {
 					_g4.push(v1);
 				}
@@ -91428,8 +91167,6 @@ logic_OrderSystem.ExecuteOrder = function(order,data,targetHex,unit,td) {
 		var script = logic_LoadSystem.GetScript("skills/" + scriptId);
 		if(script != null) {
 			interp.execute(script);
-		} else {
-			logic_OrderSystem.testScript(interp);
 		}
 		logic_OrderSystem.checkDifference(unitClone,td);
 		var _g = 0;
@@ -91440,7 +91177,7 @@ logic_OrderSystem.ExecuteOrder = function(order,data,targetHex,unit,td) {
 		}
 	} catch( _g ) {
 		var e = haxe_Exception.caught(_g);
-		haxe_Log.trace("runSkillScript error:",{ fileName : "src/logic/OrderSystem.hx", lineNumber : 82, className : "logic.OrderSystem", methodName : "ExecuteOrder", customParams : [e.get_message()]});
+		haxe_Log.trace("runSkillScript error:",{ fileName : "src/logic/OrderSystem.hx", lineNumber : 84, className : "logic.OrderSystem", methodName : "ExecuteOrder", customParams : [e.get_message()]});
 		return false;
 	}
 	return success;
@@ -91488,8 +91225,6 @@ logic_OrderSystem.checkDifference = function(clone,td) {
 		act.events.push(model_ActionEvent.Dmg(original.stats.hp - clone.stats.hp));
 		original.stats.hp = clone.stats.hp;
 	}
-};
-logic_OrderSystem.testScript = function(interp) {
 };
 logic_OrderSystem.enoughResForOrder = function(order,curCountryId) {
 	if(order.price > 0 && order.price > logic_CountrySystem.AvailableMinerals(curCountryId)) {
@@ -91705,11 +91440,11 @@ logic_ResSystem.CollectRes = function(td) {
 			var hex = neibHexes[_g3];
 			++_g3;
 			var _g4 = [];
-			var _g5 = 0;
-			var _g6 = logic_UnitSystem.GetAllUnitsFromHex(hex,td);
-			while(_g5 < _g6.length) {
-				var v1 = _g6[_g5];
-				++_g5;
+			var _g11 = 0;
+			var _g21 = logic_UnitSystem.GetAllUnitsFromHex(hex,td);
+			while(_g11 < _g21.length) {
+				var v1 = _g21[_g11];
+				++_g11;
 				if(v1.type == "mineral" && v1.stats.hp > 0) {
 					_g4.push(v1);
 				}
@@ -91801,10 +91536,10 @@ logic_UnitSystem.UpdateUnits = function(units) {
 			continue;
 		}
 		var json = JSON.stringify(u);
-		var this2 = logic_G.get_turn().units;
+		var this11 = logic_G.get_turn().units;
 		var key = u.id;
 		var value = parser.fromJson(json).copy();
-		this2.h[key] = value;
+		this11.h[key] = value;
 		logic_EventSystem.fire(logic_EventType.UnitUpdated + u.id);
 	}
 	logic_MapEditorSystem.pushToHistory();
@@ -92327,32 +92062,32 @@ logic_VisionSystem.CalcVision = function(td) {
 			neibs = neibs.concat(allTiles);
 		}
 		var _g2 = [];
-		var _g3 = 0;
-		var _g4 = neibs;
-		while(_g3 < _g4.length) {
-			var v = _g4[_g3];
-			++_g3;
+		var _g11 = 0;
+		var _g21 = neibs;
+		while(_g11 < _g21.length) {
+			var v = _g21[_g11];
+			++_g11;
 			if(!canSee(v.q,v.r,u)) {
 				_g2.push(v);
 			}
 		}
 		var shadowDropers = _g2;
-		var _g5 = [];
-		var _g6 = 0;
-		var _g7 = neibs;
-		while(_g6 < _g7.length) {
-			var v1 = _g7[_g6];
-			++_g6;
+		var _g3 = [];
+		var _g12 = 0;
+		var _g22 = neibs;
+		while(_g12 < _g22.length) {
+			var v1 = _g22[_g12];
+			++_g12;
 			if(canSee(v1.q,v1.r,u)) {
-				_g5.push(v1);
+				_g3.push(v1);
 			}
 		}
-		neibs = _g5;
+		neibs = _g3;
 		var shadow = [[]];
-		var _g8 = 0;
-		while(_g8 < shadowDropers.length) {
-			var shadowDroper = shadowDropers[_g8];
-			++_g8;
+		var _g4 = 0;
+		while(_g4 < shadowDropers.length) {
+			var shadowDroper = shadowDropers[_g4];
+			++_g4;
 			var dir = logic_HexMath.getFloatDir(u.pos,shadowDroper);
 			if(dir == Math.floor(dir)) {
 				var dist = logic_HexMath.hexDistance(u.pos,shadowDroper);
@@ -92371,12 +92106,12 @@ logic_VisionSystem.CalcVision = function(td) {
 				shadow[0] = shadow[0].concat(createShadow(logic_VisionSystem.diagonalShadow,shadowDroper,Math.floor(dir - 0.5)));
 			}
 		}
-		var _g9 = [];
-		var _g10 = 0;
-		var _g11 = neibs;
-		while(_g10 < _g11.length) {
-			var v2 = _g11[_g10];
-			++_g10;
+		var _g5 = [];
+		var _g13 = 0;
+		var _g23 = neibs;
+		while(_g13 < _g23.length) {
+			var v2 = _g23[_g13];
+			++_g13;
 			if(((function(shadow) {
 				return function(hex) {
 					var _g = 0;
@@ -92390,14 +92125,14 @@ logic_VisionSystem.CalcVision = function(td) {
 					return true;
 				};
 			})(shadow))(v2)) {
-				_g9.push(v2);
+				_g5.push(v2);
 			}
 		}
-		neibs = _g9;
-		var _g12 = 0;
-		while(_g12 < neibs.length) {
-			var hex = neibs[_g12];
-			++_g12;
+		neibs = _g5;
+		var _g6 = 0;
+		while(_g6 < neibs.length) {
+			var hex = neibs[_g6];
+			++_g6;
 			setVision(hex.q,hex.r,u);
 		}
 	}
@@ -92620,6 +92355,7 @@ model_MapInfo.__name__ = "model.MapInfo";
 model_MapInfo.prototype = {
 	mapId: null
 	,name: null
+	,description: null
 	,version: null
 	,author: null
 	,startField: null
@@ -92630,6 +92366,7 @@ model_MapInfo.prototype = {
 		var result = new model_MapInfo();
 		result.mapId = this.mapId;
 		result.name = this.name;
+		result.description = this.description;
 		result.version = this.version;
 		result.author = this.author;
 		result.startField = this.startField;
@@ -94304,7 +94041,6 @@ tink_core_Lazy.ofConst = function(c) {
 	return new tink_core__$Lazy_LazyConst(c);
 };
 var tink_core__$Lazy_LazyFunc = function(f,from) {
-	this.busy = false;
 	this.f = f;
 	this.from = from;
 };
@@ -94315,7 +94051,6 @@ tink_core__$Lazy_LazyFunc.prototype = {
 	f: null
 	,from: null
 	,result: null
-	,busy: null
 	,underlying: function() {
 		return this.from;
 	}
@@ -94326,13 +94061,9 @@ tink_core__$Lazy_LazyFunc.prototype = {
 		return this.result;
 	}
 	,compute: function() {
-		if(this.busy) {
-			throw haxe_Exception.thrown(new tink_core_TypedError(null,"circular lazyness",{ fileName : "tink/core/Lazy.hx", lineNumber : 85, className : "tink.core._Lazy.LazyFunc", methodName : "compute"}));
-		}
 		var _g = this.f;
 		if(_g != null) {
 			var v = _g;
-			this.busy = true;
 			this.f = null;
 			var _g = this.from;
 			if(_g != null) {
@@ -94352,7 +94083,6 @@ tink_core__$Lazy_LazyFunc.prototype = {
 				}
 			}
 			this.result = v();
-			this.busy = false;
 		}
 	}
 	,__class__: tink_core__$Lazy_LazyFunc
@@ -96548,7 +96278,6 @@ var ui_Btn = function(parent) {
 			_gthis.onRightClick();
 		}
 	};
-	this.smooth = true;
 	this.resize();
 };
 $hxClasses["ui.Btn"] = ui_Btn;
@@ -96739,7 +96468,7 @@ ui_SelectionFrame.prototype = $extend(h2d_Graphics.prototype,{
 	,__class__: ui_SelectionFrame
 });
 var ui_UserInterface = function(parent) {
-	this.showReplayBtns = true;
+	this.showReplayBtns = false;
 	this.manaTxt = logic_Locale.get("label_mana");
 	this.mineralsTxt = logic_Locale.get("label_minerals");
 	h2d_Object.call(this,parent);
@@ -96850,7 +96579,7 @@ ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 			fh.set_text(fh.text + ("\n" + StringTools.replace(this.manaTxt,"{number}",totalMana + "")));
 		}
 		var fh = this.fpsLabel;
-		fh.set_text(fh.text + ("\nfps: " + Math.round(1 / dt)));
+		fh.set_text(fh.text + ("\nfps: " + hxd_Timer.fps()));
 		this.turnEndBtn.set_enabled(ui_screens_Game.cam.state != model_GameState.TurnAnimation);
 		if(hxd_Key.isPressed(27)) {
 			if(this.pauseScr.parent == null) {
@@ -97373,6 +97102,104 @@ ui_panel_InputPanel.prototype = $extend(h2d_Mask.prototype,{
 	,__class__: ui_panel_InputPanel
 	,__properties__: $extend(h2d_Mask.prototype.__properties__,{set_text:"set_text",get_text:"get_text"})
 });
+var ui_panel_MapPanel = function(mi,parent) {
+	this.isSelected = false;
+	this.isDown = false;
+	this.isOver = false;
+	var _gthis = this;
+	h2d_Graphics.call(this,parent);
+	this.info = mi;
+	this.interaction = new h2d_Interactive(0,0,this);
+	this.interaction.onOver = function(e) {
+		_gthis.isOver = true;
+		_gthis.redraw();
+	};
+	this.interaction.onOut = function(e) {
+		_gthis.isOver = false;
+		_gthis.isDown = false;
+		_gthis.redraw();
+	};
+	this.interaction.onPush = function(e) {
+		_gthis.isDown = true;
+		_gthis.redraw();
+	};
+	this.interaction.onRelease = function(e) {
+		_gthis.isDown = false;
+		_gthis.redraw();
+	};
+	this.interaction.onClick = function(e) {
+		logic_EventSystem.fire(Std.string(logic_EventType.MapSelected) + "",_gthis.info);
+	};
+	var fnt2 = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
+	this.title = new ui_PPText(fnt2,this);
+	var name = this.info.name != null ? this.info.name : this.info.mapId;
+	this.title.set_text(name);
+	var fnt1 = hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont();
+	this.descr = new ui_PPText(fnt1,this);
+	this.descr.set_text(this.info.description);
+	this.set_height(85);
+	logic_EventSystem.connect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
+};
+$hxClasses["ui.panel.MapPanel"] = ui_panel_MapPanel;
+ui_panel_MapPanel.__name__ = "ui.panel.MapPanel";
+ui_panel_MapPanel.__super__ = h2d_Graphics;
+ui_panel_MapPanel.prototype = $extend(h2d_Graphics.prototype,{
+	interaction: null
+	,title: null
+	,descr: null
+	,info: null
+	,isOver: null
+	,isDown: null
+	,isSelected: null
+	,onRemove: function() {
+		h2d_Graphics.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
+	}
+	,onMapSelected: function(mi) {
+		var newVal = this.info == mi;
+		if(this.isSelected == newVal) {
+			return;
+		}
+		this.isSelected = newVal;
+		this.redraw();
+	}
+	,redraw: function() {
+		this.clear();
+		if(this.isOver || this.isDown || this.isSelected) {
+			this.beginFill(0,this.isDown || this.isSelected ? 0.3 : 0.2);
+			this.drawRect(0,0,this.get_width(),this.get_height());
+			this.endFill();
+		}
+		var _this = this.title;
+		_this.posChanged = true;
+		_this.x = 6;
+		var _this = this.descr;
+		_this.posChanged = true;
+		_this.x = 8;
+		var _this = this.descr;
+		var v = this.title.get_textHeight() + 6;
+		_this.posChanged = true;
+		_this.y = v;
+	}
+	,get_width: function() {
+		return this.interaction.width;
+	}
+	,set_width: function(val) {
+		this.interaction.width = val;
+		this.redraw();
+		return val;
+	}
+	,get_height: function() {
+		return this.interaction.height;
+	}
+	,set_height: function(val) {
+		this.interaction.height = val;
+		this.redraw();
+		return val;
+	}
+	,__class__: ui_panel_MapPanel
+	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_height:"set_height",get_height:"get_height",set_width:"set_width",get_width:"get_width"})
+});
 var ui_panel_MessageBox = function(msg,parent) {
 	var _gthis = this;
 	h2d_Graphics.call(this,parent);
@@ -97820,7 +97647,6 @@ var ui_panel_UnitAvatar = function(parent) {
 	var _gthis = this;
 	h2d_Graphics.call(this,parent);
 	this.bmp = new h2d_Bitmap(this.tileImage,this);
-	this.bmp.smooth = true;
 	this.bmp.set_visible(false);
 	this.interaction = new h2d_Interactive(1,1,this);
 	this.interaction.enableRightButton = true;
@@ -97892,8 +97718,15 @@ ui_panel_UnitAvatar.prototype = $extend(h2d_Graphics.prototype,{
 });
 var ui_screens_BaseScreen = function(parent) {
 	h2d_Graphics.call(this,parent);
+	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
+	this.title = new ui_PPText(fnt,this);
+	this.title.set_textAlign(h2d_Align.Center);
 	this.interaction = new h2d_Interactive(1,1,this);
 	this.interaction.set_cursor(hxd_Cursor.Default);
+	this.goBackBtn = new ui_Btn(this);
+	this.goBackBtn.set_label("X");
+	this.goBackBtn.set_width(30);
+	this.goBackBtn.set_height(30);
 	logic_EventSystem.connect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
 };
 $hxClasses["ui.screens.BaseScreen"] = ui_screens_BaseScreen;
@@ -97901,6 +97734,8 @@ ui_screens_BaseScreen.__name__ = "ui.screens.BaseScreen";
 ui_screens_BaseScreen.__super__ = h2d_Graphics;
 ui_screens_BaseScreen.prototype = $extend(h2d_Graphics.prototype,{
 	interaction: null
+	,title: null
+	,goBackBtn: null
 	,onRemove: function() {
 		h2d_Graphics.prototype.onRemove.call(this);
 		logic_EventSystem.disconnect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
@@ -97912,6 +97747,20 @@ ui_screens_BaseScreen.prototype = $extend(h2d_Graphics.prototype,{
 		this.beginFill(11184810);
 		this.drawRect(0,0,hxd_Window.getInstance().get_width(),hxd_Window.getInstance().get_height());
 		this.endFill();
+		var _this = this.goBackBtn;
+		var v = hxd_Window.getInstance().get_width() - this.goBackBtn.width - 16;
+		_this.posChanged = true;
+		_this.x = v;
+		var _this = this.goBackBtn;
+		_this.posChanged = true;
+		_this.y = 22;
+		var _this = this.title;
+		var v = Math.round(hxd_Window.getInstance().get_width() / 2);
+		_this.posChanged = true;
+		_this.x = v;
+		var _this = this.title;
+		_this.posChanged = true;
+		_this.y = 16;
 	}
 	,__class__: ui_screens_BaseScreen
 });
@@ -97929,9 +97778,20 @@ var ui_screens_Game = function(parent) {
 		if(ui_screens_Game.ui.pauseScr.parent != null || ui_screens_Game.ui.waitingScreen.visible) {
 			return;
 		}
-		var sc = ui_screens_Game.gameField.scaleX - 0.05 * event.wheelDelta;
-		sc = Math.min(2,sc);
-		sc = Math.max(0.20,sc);
+		var sc = ui_screens_Game.gameField.scaleX * (1 - 0.12 * event.wheelDelta);
+		var min = 0.2;
+		var max = 2;
+		if(max == null) {
+			max = 1.;
+		}
+		if(min == null) {
+			min = 0.;
+		}
+		if(sc < min) {
+			sc = min;
+		} else if(sc > max) {
+			sc = max;
+		}
 		var scalechange = sc - ui_screens_Game.gameField.scaleX;
 		var screenCenter = new h2d_col_Point(0.5 * hxd_Window.getInstance().get_width(),0.5 * hxd_Window.getInstance().get_height());
 		var offset = ui_screens_Game.gameField.globalToLocal(screenCenter);
@@ -97971,7 +97831,7 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		if(ui_screens_Game.ui.pauseScr.parent != null || ui_screens_Game.ui.waitingScreen.visible) {
 			return;
 		}
-		this.handleKeys();
+		this.handleKeys(dt);
 		var access = utils_IframeEvents.pressedKeys;
 		var _g_access = access;
 		var _g_keys = Reflect.fields(access);
@@ -97985,7 +97845,7 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 			utils_IframeEvents.pressedKeys[key1] = "down";
 		}
 	}
-	,handleKeys: function() {
+	,handleKeys: function(dt) {
 		if(hxd_Key.isDown(17) || utils_IframeEvents.pressedKeys["ControlLeft"] || utils_IframeEvents.pressedKeys["ControlRight"]) {
 			this.handleCtrlHotKey();
 			return;
@@ -97993,22 +97853,22 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		if(hxd_Key.isDown(87) || utils_IframeEvents.pressedKeys["KeyW"]) {
 			var fh = ui_screens_Game.gameField;
 			fh.posChanged = true;
-			fh.y += 20 * ui_screens_Game.gameField.scaleX;
+			fh.y += 1200 * dt * ui_screens_Game.gameField.scaleX;
 		}
 		if(hxd_Key.isDown(83) || utils_IframeEvents.pressedKeys["KeyS"]) {
 			var fh = ui_screens_Game.gameField;
 			fh.posChanged = true;
-			fh.y -= 20 * ui_screens_Game.gameField.scaleX;
+			fh.y -= 1200 * dt * ui_screens_Game.gameField.scaleX;
 		}
 		if(hxd_Key.isDown(65) || utils_IframeEvents.pressedKeys["KeyA"]) {
 			var fh = ui_screens_Game.gameField;
 			fh.posChanged = true;
-			fh.x += 20 * ui_screens_Game.gameField.scaleX;
+			fh.x += 1200 * dt * ui_screens_Game.gameField.scaleX;
 		}
 		if(hxd_Key.isDown(68) || utils_IframeEvents.pressedKeys["KeyD"]) {
 			var fh = ui_screens_Game.gameField;
 			fh.posChanged = true;
-			fh.x -= 20 * ui_screens_Game.gameField.scaleX;
+			fh.x -= 1200 * dt * ui_screens_Game.gameField.scaleX;
 		}
 		if(hxd_Key.isPressed(69) || utils_IframeEvents.pressedKeys["KeyE"] == "pressed") {
 			logic_CamSystem.RotateCam(1);
@@ -98024,9 +97884,6 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		}
 		if(hxd_Key.isPressed(82) || utils_IframeEvents.pressedKeys["KeyR"] == "pressed") {
 			logic_GameSystem.ReplayTurn(0);
-		}
-		if(hxd_Key.isPressed(46)) {
-			logic_GameSystem.DeleteLastTurn(0);
 		}
 		if(utils_IframeEvents.isInIframe()) {
 			this.handleMapEditorKeys();
@@ -98071,10 +97928,6 @@ ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 var ui_screens_LSDScreen = function(netGames,parent) {
 	var _gthis = this;
 	ui_screens_BaseScreen.call(this,parent);
-	this.goBackBtn = new ui_Btn(this);
-	this.goBackBtn.set_label("X");
-	this.goBackBtn.set_width(30);
-	this.goBackBtn.set_height(30);
 	this.goBackBtn.onClick = function() {
 		if(ui_screens_LSDScreen.isSaveMode() || netGames) {
 			if(_gthis != null && _gthis.parent != null) {
@@ -98084,10 +97937,7 @@ var ui_screens_LSDScreen = function(netGames,parent) {
 			Main.GotoStartMenu();
 		}
 	};
-	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
-	this.title = new ui_PPText(fnt,this);
 	this.title.set_text(logic_Locale.get(ui_screens_LSDScreen.isSaveMode() ? "label_save_game" : "label_load_game"));
-	this.title.set_textAlign(h2d_Align.Center);
 	this.savesList = [];
 	this.savesListContainer = new ui_panel_ScrollPanel(100,400,this);
 	if(ui_screens_LSDScreen.isSaveMode()) {
@@ -98105,12 +97955,10 @@ ui_screens_LSDScreen.isSaveMode = function() {
 };
 ui_screens_LSDScreen.__super__ = ui_screens_BaseScreen;
 ui_screens_LSDScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
-	title: null
-	,savesListContainer: null
+	savesListContainer: null
 	,savesList: null
 	,newSGP: null
 	,netGames: null
-	,goBackBtn: null
 	,updateGameList: function() {
 		while(this.savesList.length > 0) {
 			var _this = this.savesList.pop();
@@ -98135,20 +97983,6 @@ ui_screens_LSDScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
 	}
 	,redraw: function() {
 		ui_screens_BaseScreen.prototype.redraw.call(this);
-		var _this = this.goBackBtn;
-		var v = hxd_Window.getInstance().get_width() - this.goBackBtn.width - 16;
-		_this.posChanged = true;
-		_this.x = v;
-		var _this = this.goBackBtn;
-		_this.posChanged = true;
-		_this.y = 22;
-		var _this = this.title;
-		var v = Math.round(hxd_Window.getInstance().get_width() / 2);
-		_this.posChanged = true;
-		_this.x = v;
-		var _this = this.title;
-		_this.posChanged = true;
-		_this.y = 16;
 		var _this = this.savesListContainer;
 		_this.posChanged = true;
 		_this.x = 16;
@@ -98186,8 +98020,6 @@ var ui_screens_NetLobbyScreen = function(parent) {
 	this.selectedRoomIdx = -1;
 	var _gthis = this;
 	ui_screens_BaseScreen.call(this,parent);
-	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
-	this.title = new ui_PPText(fnt,this);
 	this.title.set_text("" + logic_Locale.get("button_multi_player") + " (" + logic_Locale.get("label_connecting") + ")");
 	this.createRoomBtn = new ui_Btn(this);
 	this.createRoomBtn.set_width(140);
@@ -98210,12 +98042,7 @@ var ui_screens_NetLobbyScreen = function(parent) {
 	this.joinRoomBtn.onClick = function() {
 		logic_NetSystem.sendJoinRoom(_gthis.selectedRoomIdx);
 	};
-	this.goBackBtn = new ui_Btn(this);
-	this.goBackBtn.set_label("X");
-	this.goBackBtn.set_width(30);
-	this.goBackBtn.onClick = function() {
-		Main.GotoStartMenu();
-	};
+	this.goBackBtn.onClick = Main.GotoStartMenu;
 	this.roomList = [];
 	this.roomListContainer = new ui_panel_ScrollPanel(100,100,this);
 	logic_EventSystem.connect(Std.string(logic_EventType.OnGetRooms) + "",$bind(this,this.onGetRooms));
@@ -98240,14 +98067,12 @@ $hxClasses["ui.screens.NetLobbyScreen"] = ui_screens_NetLobbyScreen;
 ui_screens_NetLobbyScreen.__name__ = "ui.screens.NetLobbyScreen";
 ui_screens_NetLobbyScreen.__super__ = ui_screens_BaseScreen;
 ui_screens_NetLobbyScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
-	title: null
-	,yourNameTxt: null
+	yourNameTxt: null
 	,roomList: null
 	,roomListContainer: null
 	,loadRoomBtn: null
 	,createRoomBtn: null
 	,joinRoomBtn: null
-	,goBackBtn: null
 	,nameInput: null
 	,selectedRoomIdx: null
 	,onConnect: function() {
@@ -98271,7 +98096,7 @@ ui_screens_NetLobbyScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
 		logic_EventSystem.disconnect(Std.string(logic_EventType.Disconnected) + "",$bind(this,this.onDisconnect));
 	}
 	,onRoomEnter: function() {
-		Main.GotoRoom();
+		Main.ChangeScreen(new ui_screens_NetRoomScreen());
 	}
 	,onRoomClick: function(rl) {
 		if(this.selectedRoomIdx >= 0) {
@@ -98339,13 +98164,6 @@ ui_screens_NetLobbyScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
 			_this.y = i * 32;
 			this.roomList[i].set_width(hxd_Window.getInstance().get_width() - 32);
 		}
-		var _this = this.goBackBtn;
-		var v = hxd_Window.getInstance().get_width() - 16 - this.goBackBtn.width;
-		_this.posChanged = true;
-		_this.x = v;
-		var _this = this.goBackBtn;
-		_this.posChanged = true;
-		_this.y = 22;
 		var _this = this.loadRoomBtn;
 		_this.posChanged = true;
 		_this.x = this.goBackBtn.x - 16 - this.loadRoomBtn.width;
@@ -98397,15 +98215,14 @@ ui_screens_NetLobbyScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
 var ui_screens_NetRoomScreen = function(parent) {
 	var _gthis = this;
 	ui_screens_BaseScreen.call(this,parent);
-	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
-	this.title = new ui_PPText(fnt,this);
+	this.goBackBtn.set_visible(false);
 	this.title.set_text(logic_NetSystem.currentRoom.name);
 	this.leaveRoomBtn = new ui_Btn(this);
 	this.leaveRoomBtn.set_width(120);
 	this.leaveRoomBtn.set_label(logic_Locale.get("label_leave"));
 	this.leaveRoomBtn.onClick = function() {
 		logic_NetSystem.sendLeaveRoom();
-		Main.GotoLobby();
+		Main.ChangeScreen(new ui_screens_NetLobbyScreen());
 	};
 	this.startGameBtn = new ui_Btn(this);
 	this.startGameBtn.set_width(120);
@@ -98439,8 +98256,7 @@ $hxClasses["ui.screens.NetRoomScreen"] = ui_screens_NetRoomScreen;
 ui_screens_NetRoomScreen.__name__ = "ui.screens.NetRoomScreen";
 ui_screens_NetRoomScreen.__super__ = ui_screens_BaseScreen;
 ui_screens_NetRoomScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
-	title: null
-	,msgList: null
+	msgList: null
 	,msgContainer: null
 	,playersList: null
 	,playersContainer: null
@@ -98772,8 +98588,155 @@ ui_screens_PauseScreen.prototype = $extend(h2d_Graphics.prototype,{
 	}
 	,__class__: ui_screens_PauseScreen
 });
+var ui_screens_SelectMapScreen = function(parent) {
+	this.mapList = [];
+	var _gthis = this;
+	ui_screens_BaseScreen.call(this,parent);
+	this.goBackBtn.onClick = Main.GotoStartMenu;
+	this.title.set_text(logic_Locale.get("button_single_player"));
+	this.startBtn = new ui_Btn(this);
+	this.startBtn.set_width(300);
+	this.startBtn.set_height(60);
+	this.startBtn.set_enabled(false);
+	this.startBtn.onClick = function() {
+		Main.StartNewGame(_gthis.selectedMap.mapId);
+	};
+	var fnt = hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont();
+	this.mapTitle = new ui_PPText(fnt,this);
+	var fnt = hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont();
+	this.mapParams = new ui_PPText(fnt,this);
+	this.mapsContainer = new ui_panel_ScrollPanel(100,400,this);
+	this.updateMapsList();
+	this.rewriteTexts();
+	logic_EventSystem.connect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
+};
+$hxClasses["ui.screens.SelectMapScreen"] = ui_screens_SelectMapScreen;
+ui_screens_SelectMapScreen.__name__ = "ui.screens.SelectMapScreen";
+ui_screens_SelectMapScreen.__super__ = ui_screens_BaseScreen;
+ui_screens_SelectMapScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
+	startBtn: null
+	,mapsContainer: null
+	,mapList: null
+	,mapTitle: null
+	,mapParams: null
+	,selectedMap: null
+	,onRemove: function() {
+		ui_screens_BaseScreen.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
+	}
+	,onMapSelected: function(mi) {
+		this.selectedMap = mi;
+		this.redraw();
+	}
+	,rewriteTexts: function() {
+		this.startBtn.set_label(logic_Locale.get("label_start_game"));
+	}
+	,updateMapsList: function() {
+		while(this.mapList.length > 0) {
+			var _this = this.mapList.pop();
+			if(_this != null && _this.parent != null) {
+				_this.parent.removeChild(_this);
+			}
+		}
+		var fs = new utils_JSFileSystem();
+		var miParser = new JsonParser_$20();
+		var _this = fs.dir("");
+		var result = new Array(_this.length);
+		var _g = 0;
+		var _g1 = _this.length;
+		while(_g < _g1) {
+			var i = _g++;
+			var file = _this[i];
+			var tmp;
+			try {
+				if(!fs.exists(file.name + "/info.json")) {
+					tmp = null;
+				} else {
+					var json = fs.get(file.name + "/info.json").getText();
+					tmp = miParser.fromJson(json);
+				}
+			} catch( _g2 ) {
+				tmp = null;
+			}
+			result[i] = tmp;
+		}
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = result;
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(v != null) {
+				_g.push(v);
+			}
+		}
+		var maps = _g;
+		var _g = 0;
+		while(_g < maps.length) {
+			var i = maps[_g];
+			++_g;
+			var panel = new ui_panel_MapPanel(i,this.mapsContainer);
+			this.mapList.push(panel);
+		}
+		this.redraw();
+	}
+	,redraw: function() {
+		ui_screens_BaseScreen.prototype.redraw.call(this);
+		var _this = this.startBtn;
+		var v = hxd_Window.getInstance().get_width() - this.startBtn.width - 16;
+		_this.posChanged = true;
+		_this.x = v;
+		var _this = this.startBtn;
+		var v = hxd_Window.getInstance().get_height() - this.startBtn.height - 16;
+		_this.posChanged = true;
+		_this.y = v;
+		var _this = this.mapsContainer;
+		_this.posChanged = true;
+		_this.x = 16;
+		var _this = this.mapsContainer;
+		var v = this.title.y + this.title.get_textHeight() + 16;
+		_this.posChanged = true;
+		_this.y = v;
+		var tmp = hxd_Window.getInstance().get_width();
+		this.mapsContainer.width = tmp - 348;
+		var tmp = hxd_Window.getInstance().get_height() - 16 - this.mapsContainer.y;
+		this.mapsContainer.height = Math.round(tmp);
+		this.mapsContainer.updateIntZone();
+		var _g = 0;
+		var _g1 = this.mapList.length;
+		while(_g < _g1) {
+			var i = _g++;
+			var panel = this.mapList[i];
+			panel.set_width(this.mapsContainer.width);
+			var v = panel.get_height() * i;
+			panel.posChanged = true;
+			panel.y = v;
+		}
+		this.mapParams.set_visible(this.mapTitle.set_visible(this.startBtn.set_enabled(this.selectedMap != null)));
+		if(this.selectedMap == null) {
+			return;
+		}
+		this.mapTitle.set_text(this.selectedMap.name);
+		this.mapParams.set_text("ID: " + this.selectedMap.mapId + "\r\nplayers: from " + this.selectedMap.minPlayers + " to " + this.selectedMap.maxPlayers + "\r\nversion: " + this.selectedMap.version + "\r\nAuthor: " + this.selectedMap.author);
+		var _this = this.mapTitle;
+		_this.posChanged = true;
+		_this.x = this.startBtn.x;
+		var _this = this.mapParams;
+		_this.posChanged = true;
+		_this.x = this.mapTitle.x + 1;
+		var _this = this.mapTitle;
+		_this.posChanged = true;
+		_this.y = this.mapsContainer.y;
+		var _this = this.mapParams;
+		var v = this.mapTitle.y + this.mapTitle.get_textHeight() + 12;
+		_this.posChanged = true;
+		_this.y = v;
+	}
+	,__class__: ui_screens_SelectMapScreen
+});
 var ui_screens_StartScreen = function(parent) {
 	ui_screens_BaseScreen.call(this,parent);
+	this.goBackBtn.set_visible(false);
 	this.singlePlayerBtn = new ui_Btn(this);
 	this.singlePlayerBtn.set_width(200);
 	this.singlePlayerBtn.set_height(60);
@@ -98790,9 +98753,6 @@ var ui_screens_StartScreen = function(parent) {
 	this.langBtn.set_width(200);
 	this.langBtn.set_height(30);
 	this.langBtn.onClick = $bind(this,this.onChangeLangClick);
-	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
-	this.title = new ui_PPText(fnt,this);
-	this.title.set_textAlign(h2d_Align.Center);
 	logic_EventSystem.connect(Std.string(logic_EventType.LanguageChanged) + "",$bind(this,this.rewriteTexts));
 	this.rewriteTexts();
 	this.redraw();
@@ -98801,8 +98761,7 @@ $hxClasses["ui.screens.StartScreen"] = ui_screens_StartScreen;
 ui_screens_StartScreen.__name__ = "ui.screens.StartScreen";
 ui_screens_StartScreen.__super__ = ui_screens_BaseScreen;
 ui_screens_StartScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
-	title: null
-	,singlePlayerBtn: null
+	singlePlayerBtn: null
 	,multiPlayerBtn: null
 	,loadGameBtn: null
 	,langBtn: null
@@ -98811,13 +98770,13 @@ ui_screens_StartScreen.prototype = $extend(ui_screens_BaseScreen.prototype,{
 		logic_EventSystem.disconnect(Std.string(logic_EventType.LanguageChanged) + "",$bind(this,this.rewriteTexts));
 	}
 	,onSPClick: function() {
-		Main.StartNewGame();
+		Main.ChangeScreen(new ui_screens_SelectMapScreen());
 	}
 	,onMPClick: function() {
-		Main.GotoLobby();
+		Main.ChangeScreen(new ui_screens_NetLobbyScreen());
 	}
 	,onLoadGameClick: function() {
-		Main.GotoLoadScreen();
+		Main.ChangeScreen(new ui_screens_LSDScreen(false));
 	}
 	,onChangeLangClick: function() {
 		logic_Locale.ChangeLocale(logic_Locale.curLang == "en" ? "ru" : "en");
@@ -99141,6 +99100,8 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 			case 0:
 				if(utils_IframeEvents.isInIframe()) {
 					logic_MapEditorSystem.OnTileClick();
+				} else {
+					logic_FieldSystem.OnTileClick();
 				}
 				break;
 			case 1:
@@ -99693,7 +99654,6 @@ view_MapCursor.prototype = {
 			ui_screens_Game.ui.bottomPanel.setDescrText(null);
 			return;
 		}
-		ui_screens_Game.ui.bottomPanel.setDescrText("" + Std.string(tile));
 	}
 	,setSelection: function(tileOver,force) {
 		if(force == null) {
@@ -100625,7 +100585,6 @@ var view_UnitView = function(id) {
 	this.selectionBmp = new h2d_Bitmap(this1.loadCache("img/cursor.png",hxd_res_Image).toTile());
 	this.selectionBmp.alpha = 0.75;
 	this.bmp = new h2d_Bitmap(null,this);
-	this.bmp.smooth = true;
 	this.bmp.set_width(model_Params.get_tileWidth() * 0.8);
 	var _this = this.bmp;
 	var v = (model_Params.get_tileWidth() - this.bmp.width) / 2;
@@ -100635,12 +100594,10 @@ var view_UnitView = function(id) {
 	var tileImage = this1.loadCache("img/damage_icon.png",hxd_res_Image).toTile();
 	this.dmgIcn = new h2d_Bitmap(tileImage,this);
 	this.dmgIcn.set_width(80);
-	this.dmgIcn.smooth = true;
 	var this1 = hxd_Res.get_loader();
 	tileImage = this1.loadCache("img/health_icon.png",hxd_res_Image).toTile();
 	this.hpIcn = new h2d_Bitmap(tileImage,this);
 	this.hpIcn.set_width(80);
-	this.hpIcn.smooth = true;
 	var this1 = hxd_Res.get_loader();
 	this.orderAreaTile = this1.loadCache("img/tile_highlight.png",hxd_res_Image).toTile();
 	var fnt = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
@@ -101815,7 +101772,7 @@ hxd_impl_BufferFlags.UniformDynamic = 1;
 hxd_impl_BufferFlags.RawFormat = 2;
 hxd_impl_BufferFlags.RawQuads = 3;
 hxd_poly2tri_Point.C_ID = 0;
-hxd_res_Resource.LIVE_UPDATE = true;
+hxd_res_Resource.LIVE_UPDATE = false;
 hxd_res_ImageFormat.Jpg = 0;
 hxd_res_ImageFormat.Png = 1;
 hxd_res_ImageFormat.Gif = 2;
@@ -102044,5 +102001,3 @@ utils_IframeEvents.eventHandlers = (function($this) {
 	haxe_EntryPoint.run();
 }
 })(typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : this);
-
-//# sourceMappingURL=sctb.js.map

@@ -17,7 +17,10 @@ const UnitTypeSelector = ():ReactElement => {
 
   return (
     <select style={{ width:20 }} className="btnArrow"
-      onChange={e => SelectUnitType(e.target.value)}>
+      onChange={e => {
+        SelectUnitType(e.target.value)
+        e.target.blur()
+      }}>
       {unitArray.map(
         (u:UnitType) => 
           <option key={u.type} value={u.type}>
