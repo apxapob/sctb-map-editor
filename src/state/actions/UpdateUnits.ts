@@ -1,5 +1,5 @@
 import { action } from 'mobx'
-import { BuffDataType } from '../../types/types'
+import { BuffDataType, UnitStatsType } from '../../types/types'
 import { SelectedUnits } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -24,7 +24,8 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
   UpdateUnits()
 })
 
-export type UnitParamId = 'speed' | 'range' | 'vision' | 'hp' | 'attack'
+export type UnitParamId = keyof UnitStatsType
+
 export const changeUnitParam = action((param:UnitParamId, delta:number) => {
   if (Number.isNaN(delta)) return
   SelectedUnits.data.forEach(

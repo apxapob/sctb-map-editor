@@ -82,10 +82,13 @@ export type UnitDataType = {
 
 export type UnitStatsType = {
   attack: number;
-  hp: number;
+  maxHp: number;
   vision: number;
   range: number;
   speed: number;
+  flying: number;
+	detector: number;
+	invisible: number;
 }
 
 export type HexCoords = {

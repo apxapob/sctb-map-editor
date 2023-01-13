@@ -78,10 +78,13 @@ const UnitSelection = ():ReactElement|null => {
     </div>
     
     <UnitStatChanger title='Attack' param='attack' />
-    <UnitStatChanger title='Health' param='hp' />
+    <UnitStatChanger title='Health' param='maxHp' />
     <UnitStatChanger title='Range' param='range' />
     <UnitStatChanger title='Speed' param='speed' />
     <UnitStatChanger title='Vision' param='vision' />
+    <UnitStatChanger title='Flying' param='flying' />
+    <UnitStatChanger title='Detector' param='detector' />
+    <UnitStatChanger title='Invisible' param='invisible' />
 
     <div className='vflex' style={{ paddingTop: 10 }}>
       Buffs
