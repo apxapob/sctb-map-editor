@@ -21,7 +21,7 @@ export type JsonEditorProps = {
 }
 
 const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
-  const error = TabsErrors[props.tab]
+  const error = TabsErrors[props.tab] ?? null
   
   const mode = props.filePath.endsWith('.json') ? 'json' : 'haxe'
   return (

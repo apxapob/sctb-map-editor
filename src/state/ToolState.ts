@@ -1,5 +1,5 @@
 import { observable } from 'mobx'
-import { EditorStateType, ToolStateType, UnitDataType } from '../types/types'
+import { EditorStateType, TabType, ToolStateType, UnitDataType } from '../types/types'
 
 export const ToolState:ToolStateType = observable({
   radius: 1,
@@ -19,9 +19,9 @@ export const EditorState:EditorStateType = observable({
 })
 
 export const TabsState:{
-  [tab: string]: string | null;
+  [tab in TabType]?: string | null;
 } = observable({})
 
 export const TabsErrors:{
-  [tab: string]: string | null;
+  [tab in TabType]?: string | null;
 } = observable({})

@@ -17,7 +17,7 @@ const SaveChanges = ():void => {
   }
   const path = getFilePath(EditorState.activeTab)
   const text = TabsState[EditorState.activeTab]
-  if (text === null) return
+  if (text === null || text === undefined) return
 
   try {
     if (path.endsWith('.json')) {
