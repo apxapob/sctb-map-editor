@@ -88248,7 +88248,6 @@ logic_BuffSystem.getBuffedStats = function(unitId) {
 		var calculatedStats = logic_BuffSystem.calcStats(unit);
 		c.unitStats.h[unitId] = calculatedStats;
 		if(unit.hp == null) {
-			haxe_Log.trace("new unit",{ fileName : "src/logic/BuffSystem.hx", lineNumber : 22, className : "logic.BuffSystem", methodName : "getBuffedStats"});
 			unit.hp = calculatedStats.maxHp;
 		}
 	}
@@ -88708,7 +88707,6 @@ logic_FieldGenerator.placeCapitals = function(field,countriesNum,firstTurn) {
 		var i = _g++;
 		var sp = spawnPoints[i];
 		var u = new model_UnitData("race_chooser");
-		u.hp = 1;
 		u.pos = sp;
 		u.countryId = i + 1;
 		firstTurn.units.h[u.id] = u;

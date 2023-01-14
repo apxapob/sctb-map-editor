@@ -57,7 +57,7 @@ export type ToolStateType = {
   toolUnit: string|null;
 }
 
-export type TabType = 'Field' | 'Units' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
+export type TabType = 'Field' | 'Units' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
 
 export type EditorStateType = {
   activePanel: PanelType | null;

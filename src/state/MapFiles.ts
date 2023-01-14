@@ -2,6 +2,7 @@ import { observable } from 'mobx'
 import { TabType } from '../types/types'
 
 export const UNITS_PATH = 'units.json'
+export const SKILLS_PATH = 'skills.json'
 export const UPGRADES_PATH = 'upgrades.json'
 export const BUFFS_PATH = 'buffs.json'
 export const INFO_PATH = 'info.json'
@@ -15,6 +16,8 @@ export const getFilePath = (tab:TabType) => {
       return BUFFS_PATH
     case 'Units':
       return UNITS_PATH
+    case 'Skills':
+      return SKILLS_PATH
     case 'Map':
       return INFO_PATH
     case 'Upgrades':
