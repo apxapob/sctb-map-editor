@@ -6,18 +6,18 @@ import { EditorState, TabsErrors, TabsState } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendMsgToGame from './SendMsgToGame'
 
-const SaveChanges = ():void => {
-  if (MapFiles.status !== 'Loaded') return
+const SaveChanges = ():boolean => {
+  if (MapFiles.status !== 'Loaded') return false
   
   if (EditorState.activeTab === 'Field') {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
     SendMsgToGame({ method: 'save_map', data: mapInfo.mapId })
     TabsState[EditorState.activeTab] = null
-    return
+    return true
   }
   const path = getFilePath(EditorState.activeTab)
   const text = TabsState[EditorState.activeTab]
-  if (text === null || text === undefined) return
+  if (text === null || text === undefined) return true
 
   try {
     if (path.endsWith('.json')) {
@@ -36,7 +36,9 @@ const SaveChanges = ():void => {
     })
   } catch (e) {
     TabsErrors[EditorState.activeTab] = (e as Error).message
+    return false
   }
+  return true
 }
 
 export default action(SaveChanges)

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { addBuff, changeBuffTurns, changeUnitParam, removeBuff, setBuffTurns, setUnitParam, UnitParamId, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { addBuff, changeBuffTurns, removeBuff, setBuffTurns, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedUnits } from '../../state/ToolState'
 import { BuffDataType, BuffType, MapInfo, UnitType } from '../../types/types'
@@ -77,15 +77,6 @@ const UnitSelection = ():ReactElement|null => {
       </select>
     </div>
     
-    <UnitStatChanger title='Attack' param='attack' />
-    <UnitStatChanger title='Health' param='maxHp' />
-    <UnitStatChanger title='Range' param='range' />
-    <UnitStatChanger title='Speed' param='speed' />
-    <UnitStatChanger title='Vision' param='vision' />
-    <UnitStatChanger title='Flying' param='flying' />
-    <UnitStatChanger title='Detector' param='detector' />
-    <UnitStatChanger title='Invisible' param='invisible' />
-
     <div className='vflex' style={{ paddingTop: 10 }}>
       Buffs
       <div className='buff-list'>
@@ -102,6 +93,16 @@ const UnitSelection = ():ReactElement|null => {
 }
 
 export default observer(UnitSelection)
+
+/*
+    <UnitStatChanger title='Attack' param='attack' />
+    <UnitStatChanger title='Health' param='maxHp' />
+    <UnitStatChanger title='Range' param='range' />
+    <UnitStatChanger title='Speed' param='speed' />
+    <UnitStatChanger title='Vision' param='vision' />
+    <UnitStatChanger title='Flying' param='flying' />
+    <UnitStatChanger title='Detector' param='detector' />
+    <UnitStatChanger title='Invisible' param='invisible' />
 
 const UnitStatChanger = observer((props:{
   title: string;
@@ -124,7 +125,7 @@ const UnitStatChanger = observer((props:{
       </div>
     </div>
   )
-})
+})*/
 
 const BuffChanger = observer((props:{
   idx: number;
