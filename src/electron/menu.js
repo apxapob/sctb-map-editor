@@ -9,7 +9,7 @@ exports.getMenu = win => {
       {
         label: 'New map',
         accelerator: 'CmdOrCtrl+N',
-        click: () => sendCommand({ command: 'NEW_MAP' }),
+        click: () => require('./commands').CREATE_MAP(),
       },
       {
         label: 'Open map',

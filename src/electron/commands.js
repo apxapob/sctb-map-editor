@@ -126,67 +126,127 @@ exports.RENAME = async ({ path, newName }) => {
   }
 }
 
-exports.CREATE_MAP = async ({ mapId, mapName, playersCount, mapSize }) => {
+exports.CREATE_MAP = async () => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
     title: 'Create Map',
-    defaultPath: mapId,
     properties: ['createDirectory']
   })
   if (!dir) { return }
 
+  const mapId = dir.split(/[\\/]/gm).pop()
+  
   try {
     await fs.promises.mkdir(dir)
-    await fs.promises.writeFile(
-      dir + '\\buffs.json',
-      JSON.stringify({})
-    )
-    await fs.promises.writeFile(
-      dir + '\\units.json',
-      JSON.stringify({})
-    )
-    await fs.promises.writeFile(
-      dir + '\\upgrades.json',
-      JSON.stringify({})
-    )
-    await fs.promises.writeFile(
-      dir + '\\info.json',
-      JSON.stringify({  
-        mapId,
-        name: mapName,
-        author: 'unknown',
-        version: 0.01,
-        startField: 'main',
-        minPlayers: 2,
-        maxPlayers: playersCount,
-        countryColors: [
-          '0xff0000','0x00ff00','0x0000ff','0x00ffff','0xff00ff','0xffff00'
-        ]
-      }, null, 2)
-    )
+    await makeRootFiles(dir, mapId)
 
-    await fs.promises.mkdir(dir + '\\fields')
-    await fs.promises.writeFile(
-      dir + '\\fields\\main.json',
-      JSON.stringify({
-        size: mapSize,
-        tiles: Array(mapSize * mapSize).fill([1, 0]),
-        units: {},
-      })
-    )
-    await fs.promises.mkdir(dir + '\\img')
-    await fs.promises.mkdir(dir + '\\locales')
-    await fs.promises.writeFile(
-      dir + '\\locales\\en.json',
-      JSON.stringify({ mapName: mapName }, null, 2)
-    )
-    
-    await fs.promises.mkdir(dir + '\\particles')
-    await fs.promises.mkdir(dir + '\\scripts')
-    await fs.promises.mkdir(dir + '\\units')
+    await makeFieldsDir(dir, mapId)
+    await makeImagesDir(dir, mapId)
+    await makeLocaleDir(dir, mapId)
+    await makeParticlesDir(dir, mapId)
+    await makeScriptsDir(dir, mapId)
+    await makeUnitsDir(dir, mapId)
     
     await loadMap(dir)
   } catch (err) {
     dialog.showErrorBox('Create directory error', err.message)
   }
 }
+
+const makeRootFiles = async (dir, mapId) => {
+  await fs.promises.writeFile(
+    dir + '\\buffs.json',
+    JSON.stringify({})
+  )
+  await fs.promises.writeFile(
+    dir + '\\units.json',
+    JSON.stringify({})
+  )
+  await fs.promises.writeFile(
+    dir + '\\skills.json',
+    JSON.stringify({})
+  )
+  await fs.promises.writeFile(
+    dir + '\\upgrades.json',
+    JSON.stringify({})
+  )
+  await fs.promises.writeFile(
+    dir + '\\info.json',
+    JSON.stringify({  
+      mapId,
+      name: mapId,
+      author: 'unknown',
+      version: 0.01,
+      startField: 'main',
+      minPlayers: 2,
+      maxPlayers: 6,
+      countryColors: [
+        '0xff4444','0x44ff44','0x4444ff','0x44ffff','0xff44ff','0xffff44'
+      ]
+    }, null, 2)
+  )
+}
+
+const makeLocaleDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\locales')
+  await fs.promises.writeFile(
+    dir + '\\locales\\en.json',
+    JSON.stringify({ mapName: mapId }, null, 2)
+  )
+}
+
+const makeParticlesDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\particles')
+}
+
+const makeScriptsDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\scripts')
+  await fs.promises.writeFile(
+    dir + '\\scripts\\help.hx',
+    testScriptText
+  )
+}
+
+const makeUnitsDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\units')
+}
+
+const makeImagesDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\img')
+}
+
+const makeFieldsDir = async (dir, mapId) => {
+  const mapSize = 19
+
+  await fs.promises.mkdir(dir + '\\fields')
+  await fs.promises.writeFile(
+    dir + '\\fields\\main.json',
+    JSON.stringify({
+      size: mapSize,
+      tiles: Array(mapSize * mapSize).fill([1, 0]),
+      units: {},
+    })
+  )
+}
+
+const testScriptText = `
+//This is a script file. The script language is Haxe.
+//Assign it to a skill or buff in the map editor and 
+//it will be executed when a unit uses the skill or is affected by the buff effect.
+//There are global variables and functions.
+//Use trace function to write any information in the console. Like this:
+trace("Hello World!");
+
+//There are also global utility classes: Math and HexMath.
+//See how other scripts use them.
+
+//All game variables are stored in vars global object. 
+//All game functions are stored in funcs global object.
+//Look what's inside:
+trace(vars);
+trace(funcs);
+
+//Sometimes the game waits for a script to return a value.
+//For example, if you return false, it will be considered a failure and any changes made by the script will be reverted.
+return false;
+  `

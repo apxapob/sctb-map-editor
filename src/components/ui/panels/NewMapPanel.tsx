@@ -65,7 +65,7 @@ const NewMapPanel = ():ReactElement | null => {
 
       <button style={{ marginTop: 24 }}
         onClick={() => {
-          CreateMap(mapId, mapName, playersCount, mapSize)
+          //CreateMap(mapId, mapName, playersCount, mapSize)
           ClosePanel()
       }} >
         Create map

@@ -1,3 +1,4 @@
+import CreateMap from '../state/actions/CreateMap'
 import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, 
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
@@ -14,9 +15,6 @@ export function SendCommand(c:CommandType) {
 export function InitMessenger() {
   ipcRenderer.on('commands', (event:Event, message:CommandType) => {
     switch (message.command) {
-      case 'NEW_MAP':
-        OpenPanel('NewMap')
-        break
       case 'SAVE_CHANGES':
         SaveChanges()
         break
