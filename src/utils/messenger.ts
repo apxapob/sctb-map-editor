@@ -1,9 +1,8 @@
-import CreateMap from '../state/actions/CreateMap'
 import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, 
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
-import OpenPanel from '../state/actions/OpenPanel'
 import SaveChanges from '../state/actions/SaveChanges'
+import TestMap from '../state/actions/TestMap'
 import { CommandType } from '../types/commands'
 
 const { ipcRenderer } = require('electron')
@@ -17,6 +16,9 @@ export function InitMessenger() {
     switch (message.command) {
       case 'SAVE_CHANGES':
         SaveChanges()
+        break
+      case 'TEST_MAP':
+        TestMap()
         break
       case 'LOADING_START':
         OnLoadingStart()

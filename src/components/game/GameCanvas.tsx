@@ -6,12 +6,14 @@ export const GameCanvasId = 'game_canvas'
 
 export type GameCanvasProps = {
   active: boolean;
+  testing: boolean;
 }
 
 const GameCanvas = (props:GameCanvasProps):ReactElement => {
   return (
     <iframe id={GameCanvasId} 
-      className={`Game-canvas ${props.active ? 'cnv-active' : ''}`} src="/game/index.html" frameBorder="0" 
+      className={`Game-canvas ${props.active ? 'cnv-active' : ''} ${props.testing ? 'cnv-test' : ''}`} 
+      src="/game/index.html" frameBorder="0" 
     />
   )
 }

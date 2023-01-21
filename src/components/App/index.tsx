@@ -29,16 +29,18 @@ const App = ():ReactElement => {
   
   return (
     <div className="App">
-      <div className='hflex tab-container'>
-        {tabs.map(
-          s => <Tab key={s} selected={EditorState.activeTab === s} title={s} />
-        )}
-      </div>
-      <GameCanvas active={ EditorState.activeTab === 'Field' } />
+      {!EditorState.mapTesting &&
+        <div className='hflex tab-container'>
+          {tabs.map(
+            s => <Tab key={s} selected={EditorState.activeTab === s} title={s} />
+          )}
+        </div>
+      }
+      <GameCanvas active={ EditorState.activeTab === 'Field' } testing={ EditorState.mapTesting } />
       {MapFiles.status === null &&
         <EmptyPage />
       }
-      {isLoaded && EditorState.activeTab === 'Field' &&
+      {isLoaded && EditorState.activeTab === 'Field' && !EditorState.mapTesting &&
         <>
           <Tools />
           <UnitSelection />

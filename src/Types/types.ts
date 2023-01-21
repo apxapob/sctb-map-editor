@@ -1,5 +1,5 @@
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved';
+  method: 'init_complete' | 'mark_field_unsaved' | 'test_map';
 } | {
   method: 'save_map';
   data: string;
@@ -62,6 +62,7 @@ export type TabType = 'Field' | 'Units' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scr
 export type EditorStateType = {
   activePanel: PanelType | null;
   activeTab: TabType;
+  mapTesting: boolean;
 }
 
 export type ToolStateChangeType = {
