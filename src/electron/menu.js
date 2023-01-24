@@ -42,6 +42,19 @@ exports.getMenu = win => {
 
   menu.append(
     new MenuItem({
+      label: 'View',
+      submenu: [
+        {
+          label: 'Fullscreen',
+          accelerator: 'F11',
+          click: () => {win.fullScreen = !win.fullScreen}
+        },
+      ]
+    })
+  )
+  
+  menu.append(
+    new MenuItem({
       label: 'Map',
       submenu: [
         {

@@ -18,7 +18,8 @@ const createWindow = () => {
 
   win.setMenu(getMenu(win))
   //win.loadFile('public/index.html')
-  win.once('ready-to-show', () => win.show())
+  
+  win.once('ready-to-show', () => win.maximize())
   exports.mainWindow = win
 }
 
