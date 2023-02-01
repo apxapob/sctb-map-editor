@@ -33,7 +33,7 @@ const SaveChanges = ():boolean => {
       file: path,
       progress: 1,
       text
-    })
+    }, true)
   } catch (e) {
     TabsErrors[EditorState.activeTab] = (e as Error).message
     return false

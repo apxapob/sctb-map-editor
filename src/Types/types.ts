@@ -1,5 +1,5 @@
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved' | 'test_map';
+  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs';
 } | {
   method: 'save_map';
   data: string;
@@ -22,6 +22,7 @@ export type GameMessage = {
   data: {
     path: string,
     text: string,
+    refresh: boolean
   }
 } | {
   method: 'load_binary_file';

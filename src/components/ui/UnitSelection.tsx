@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
+import SendMsgToGame from '../../state/actions/SendMsgToGame'
 import { addBuff, changeBuffTurns, removeBuff, setBuffTurns, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedUnits } from '../../state/ToolState'
@@ -83,10 +84,15 @@ const UnitSelection = ():ReactElement|null => {
         {buffs.map(
           (b, idx) => b === 'different buffs' 
             ? <div key={idx}>{b}</div>
-            : <BuffChanger idx={idx} key={idx} buff={b} /> 
+            : <BuffChanger idx={idx} key={idx} buff={b} />
         )}
       </div>
       <BuffAdder />
+      <button onClick={
+        () => SendMsgToGame({ method: 'reset_units_buffs' })
+      }>
+        Set default buffs
+      </button>
     </div> 
     
   </div>

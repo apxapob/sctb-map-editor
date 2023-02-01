@@ -1,8 +1,7 @@
-import { action, toJS } from 'mobx'
+import { action } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FilesTree, INFO_PATH, MapFiles, PathTreeType, TEXTS_PATH } from '../MapFiles'
-import { SelectLangFile, SelectScriptFile } from './OpenFileTree'
+import { FilesTree, INFO_PATH, MapFiles, PathTreeType } from '../MapFiles'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 
@@ -141,7 +140,7 @@ export const OnRenamed = action((c:RenameType) => {
   }
 })
 
-export const OnLoadedText = action((c:LoadTextCommandType) => {
+export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
   MapFiles.progress = c.progress
   MapFiles.lastLoadedFile = c.file
   processTextFile(c.file, c.text)
@@ -150,7 +149,8 @@ export const OnLoadedText = action((c:LoadTextCommandType) => {
     method: 'load_text_file', 
     data: {
       path: c.file,
-      text: c.text
+      text: c.text,
+      refresh: refreshGame
     }
   })
 })
