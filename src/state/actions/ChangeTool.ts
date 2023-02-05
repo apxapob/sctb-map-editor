@@ -7,6 +7,7 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.radius)ToolState.radius = Math.max(1, Math.min(10, newTool.radius)) 
   if (newTool.tool)ToolState.tool = newTool.tool
   if (newTool.toolUnit)ToolState.toolUnit = newTool.toolUnit
+  if (newTool.toolItem)ToolState.toolItem = newTool.toolItem
   
   SendMsgToGame({
     method: 'change_tool',

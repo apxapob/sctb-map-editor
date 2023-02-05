@@ -5,6 +5,7 @@ export const ToolState:ToolStateType = observable({
   radius: 1,
   tool: 'LandUp',
   toolUnit: null,
+  toolItem: null,
 })
 
 export const SelectedUnits: {

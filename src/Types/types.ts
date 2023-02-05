@@ -48,17 +48,19 @@ export type ToolType =
   'DeleteTiles' |
   'CreateTiles' |
   'CreateManaTiles' |
+  'CreateItems' |
   'CreateUnits' |
-  'DeleteUnits' |
-  'SelectUnits'
+  'Delete' |
+  'Select'
 
 export type ToolStateType = {
   radius: number;
   tool: ToolType;
   toolUnit: string|null;
+  toolItem: string|null;
 }
 
-export type TabType = 'Field' | 'Units' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
+export type TabType = 'Field' | 'Units' | 'Items' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
 
 export type EditorStateType = {
   activePanel: PanelType | null;
@@ -70,6 +72,7 @@ export type ToolStateChangeType = {
   radius?: number;
   tool?: ToolType;
   toolUnit?: string;
+  toolItem?: string;
 }
 
 export type UnitDataType = {
@@ -107,6 +110,15 @@ export type UnitType = {
   range: number;
   speed: number;
   vision: number;
+  detector: number;
+  invisible: number;
+}
+
+export type ItemType = {
+  type: string;
+  buffs: string[];
+  unpickable: boolean;
+  invisible: number;
 }
 
 export type OrderType = {

@@ -2,11 +2,12 @@ import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import ChangeTool from '../../state/actions/ChangeTool'
 import { ToolState } from '../../state/ToolState'
+import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 
 const Tools = ():ReactElement => {
-  const { radius, tool, toolUnit } = ToolState
+  const { radius, tool, toolUnit, toolItem } = ToolState
 
   return (
     <div className="tools-container">
@@ -44,15 +45,39 @@ const Tools = ():ReactElement => {
           Units
         </span>
           
-        <button className={`tool ${tool === 'SelectUnits' ? 'selectedBtn' : ''}`}
-          onClick={() => ChangeTool({ tool: 'SelectUnits' })} >Select</button>
         <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
-          <button className={`${tool === 'CreateUnits' ? 'selectedBtn' : ''} btnWithArrow`}
-            onClick={() => ChangeTool({ tool: 'CreateUnits' })} >{toolUnit}</button>
+          <button 
+            className={`${tool === 'CreateUnits' ? 'selectedBtn' : ''} btnWithArrow`}
+            onClick={() => ChangeTool({ tool: 'CreateUnits' })} 
+          >
+            {toolUnit}
+          </button>
           <UnitTypeSelector />
         </div>
-        <button className={`tool ${tool === 'DeleteUnits' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'DeleteUnits' })} >Delete units</button>
+
+        <span style={{ paddingTop: 8 }}>
+          Items
+        </span>
+          
+        <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
+          <button 
+            className={`${tool === 'CreateItems' ? 'selectedBtn' : ''} btnWithArrow`}
+            onClick={() => ChangeTool({ tool: 'CreateItems' })} 
+          >
+            {toolItem}
+          </button>
+          <ItemTypeSelector />
+        </div>
+        
+        <button 
+          className={`tool ${tool === 'Select' ? 'selectedBtn' : ''}`}
+          onClick={() => ChangeTool({ tool: 'Select' })} 
+        >
+          Select
+        </button>
+        
+        <button className={`tool ${tool === 'Delete' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'Delete' })} >Delete units</button>
       </div>
     </div>
   )

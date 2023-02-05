@@ -23,7 +23,7 @@ const fileSelectors: {
 }
 
 const App = ():ReactElement => {
-  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
+  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
   const showDirViewer = EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts' || EditorState.activeTab === 'Particles'
   
