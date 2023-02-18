@@ -1,40 +1,43 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import SendMsgToGame from '../../state/actions/SendMsgToGame'
-import { addBuff, changeBuffTurns, removeBuff, setBuffTurns, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
-import { BUFFS_PATH, INFO_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
-import { SelectedUnits } from '../../state/ToolState'
-import { BuffDataType, BuffType, MapInfo, UnitType } from '../../types/types'
+import { addBuff, changeBuffTurns, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
+import { SelectedObjects } from '../../state/ToolState'
+import { BuffDataType, BuffType, ItemType, MapInfo, UnitDataType, UnitType } from '../../types/types'
 import './UnitSelection.css'
 
-const UnitSelection = ():ReactElement|null => {
-  const selectedUnits = SelectedUnits.data
-
+const ObjectSelection = ():ReactElement|null => {
+  const selectedObjects = SelectedObjects.data
   const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
 
-  if (selectedUnits.length === 0) {
+  if (selectedObjects.length === 0) {
     return null
   }
+
+  const selectedUnits:UnitDataType[] = selectedObjects.filter(isUnit) as UnitDataType[]
+
+  const mainObj = selectedObjects[0]
+  const typeValue = selectedObjects.find(u => u.type !== mainObj.type) ? '' : mainObj.type
   
   const mainUnit = selectedUnits[0]
-  const typeValue = selectedUnits.find(u => u.type !== mainUnit.type) ? '' : mainUnit.type
-  const countryValue = selectedUnits.find(u => u.countryId !== mainUnit.countryId) ? undefined : mainUnit.countryId
+  const countryValue = mainUnit && (selectedUnits.find(u => u.countryId !== mainUnit.countryId) ? undefined : mainUnit.countryId)
   
-  const unitColor = mapInfo.countryColors[mainUnit.countryId - 1] || 'white'
+  const unitColor = mainUnit && (mapInfo.countryColors[mainUnit.countryId - 1] || 'white')
   const countryColors = ['0xffffff', ...mapInfo.countryColors]
 
   const buffs: ( 
     BuffDataType | 'different buffs' | { buffType:string }
   )[] = []
 
-  const maxLen = selectedUnits.reduce(
+  const maxLen = selectedObjects.reduce(
     (acc, unit) => Math.max(acc, unit.buffs.length), 
     0
   )
   for (let buffIdx = 0; buffIdx < maxLen; buffIdx++) {
-    let b:BuffDataType | { buffType:string } = selectedUnits[0].buffs[buffIdx]
-    for (let i = 1; i < selectedUnits.length; i++) {
-      const b2 = selectedUnits[i].buffs[buffs.length]
+    let b:BuffDataType | { buffType:string } = selectedObjects[0].buffs[buffIdx]
+    for (let i = 1; i < selectedObjects.length; i++) {
+      const b2 = selectedObjects[i].buffs[buffs.length]
       if (!b || !b2 || b.buffType !== b2.buffType) {
         buffs.push('different buffs')
         break
@@ -52,31 +55,39 @@ const UnitSelection = ():ReactElement|null => {
   return <div className='tools-container unit-selection-container vflex' >
     <div className='hflex gapped'>
       Type:
-      <UnityTypeChanger typeValue={typeValue} />
+      {isUnit(mainObj) &&
+        <UnitsTypeChanger typeValue={typeValue} />
+      }
+      {isItem(mainObj) &&
+        <ItemsTypeChanger typeValue={typeValue} />
+      }
+      
     </div>
 
-    <div className='hflex gapped'>
-      Country: 
-      <select value={countryValue}
-        style={{ 
-          width: 60,
-          backgroundColor: countryValue === undefined ? 'unset' : unitColor.replace('0x', '#') 
-        }}
-        onChange={e => UpdateUnitsCountry(
-          parseInt(e.target.value)
-        )}
-      >
-        {countryValue === undefined &&
-          <option value={undefined} style={{ backgroundColor: 'black' }} />
-        }
-        {countryColors.map(
-          (countryColor:string, idx:number) => 
-            <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }}>
-              
-            </option>
-        )}
-      </select>
-    </div>
+    {selectedUnits.length > 0 &&
+      <div className='hflex gapped'>
+        Country: 
+        <select value={countryValue}
+          style={{ 
+            width: 60,
+            backgroundColor: countryValue === undefined ? 'unset' : unitColor.replace('0x', '#') 
+          }}
+          onChange={e => UpdateUnitsCountry(
+            parseInt(e.target.value)
+          )}
+        >
+          {countryValue === undefined &&
+            <option value={undefined} style={{ backgroundColor: 'black' }} />
+          }
+          {countryColors.map(
+            (countryColor:string, idx:number) => 
+              <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }}>
+                
+              </option>
+          )}
+        </select>
+      </div>
+    }
     
     <div className='vflex' style={{ paddingTop: 10 }}>
       Buffs
@@ -98,7 +109,7 @@ const UnitSelection = ():ReactElement|null => {
   </div>
 }
 
-export default observer(UnitSelection)
+export default observer(ObjectSelection)
 
 /*
     <UnitStatChanger title='Attack' param='attack' />
@@ -162,12 +173,10 @@ const BuffChanger = observer((props:{
   )
 })
 
-const UnityTypeChanger = observer((
+const UnitsTypeChanger = observer((
   { typeValue }: { typeValue:string }
 ) => {
-  const unitsData = MapFiles.json[UNITS_PATH] as {
-    [unitId: string]: UnitType
-  }
+  const unitsData = MapFiles.json[UNITS_PATH] as { [unitId: string]: UnitType }
   const unitTypes = React.useMemo(() => Object.values(unitsData).map(u => u.type), [unitsData])
 
   return (
@@ -179,6 +188,27 @@ const UnityTypeChanger = observer((
         (unitType:string) => 
           <option key={unitType} value={unitType}>
             {unitType}
+          </option>
+      )}
+    </select>
+  )
+})
+
+const ItemsTypeChanger = observer((
+  { typeValue }: { typeValue:string }
+) => {
+  const itemsData = MapFiles.json[ITEMS_PATH] as { [itemId: string]: ItemType }
+  const itemTypes = React.useMemo(() => Object.values(itemsData).map(i => i.type), [itemsData])
+
+  return (
+    <select value={typeValue} onChange={e => UpdateItemsType(e.target.value)}>
+      {typeValue === '' &&
+        <option value={''} />
+      }
+      {itemTypes.map(
+        (itemType:string) => 
+          <option key={itemType} value={itemType}>
+            {itemType}
           </option>
       )}
     </select>

@@ -1,15 +1,15 @@
 import { observable } from 'mobx'
-import { EditorStateType, TabType, ToolStateType, UnitDataType } from '../types/types'
+import { EditorStateType, ItemDataType, TabType, ToolStateType, UnitDataType } from '../types/types'
 
 export const ToolState:ToolStateType = observable({
   radius: 1,
-  tool: 'LandUp',
+  tool: 'Select',
   toolUnit: null,
   toolItem: null,
 })
 
-export const SelectedUnits: {
-  data: UnitDataType[],
+export const SelectedObjects: {
+  data: (ItemDataType | UnitDataType)[],
 } = observable({
   data: [],
 })

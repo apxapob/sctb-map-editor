@@ -1,69 +1,92 @@
 import { action } from 'mobx'
-import { BuffDataType, UnitStatsType } from '../../types/types'
-import { SelectedUnits } from '../ToolState'
+import { BuffDataType, ObjectDataType, UnitDataType, UnitStatsType } from '../../types/types'
+import { SelectedObjects } from '../ToolState'
 import SendMsgToGame from './SendMsgToGame'
 
-const UpdateUnits = ():void => {
+export const isUnit = (o:ObjectDataType) => o?.hasOwnProperty('countryId')
+export const isItem = (o:ObjectDataType) => o?.hasOwnProperty('unpickable')
+
+const UpdateObjects = ():void => {
   SendMsgToGame({
-    method: 'update_units',
-    data: SelectedUnits.data
+    method: 'update_objects',
+    data: SelectedObjects.data
   })
 }
 
+export const UpdateItemsType = action((newType:string) => {
+  if (!newType) return
+  SelectedObjects.data.forEach(i => {
+    if (!isItem(i)) return
+    i.type = newType
+  })
+  UpdateObjects()
+})
+
 export const UpdateUnitsType = action((newType:string) => {
   if (!newType) return
-  SelectedUnits.data.forEach(u => {
+  SelectedObjects.data.forEach(u => {
+    if (!isUnit(u)) return
     u.type = newType
   })
-  UpdateUnits()
+  UpdateObjects()
 })
 
 export const UpdateUnitsCountry = action((newCountryId:number) => {
   if (Number.isNaN(newCountryId)) return
-  SelectedUnits.data.forEach(u => u.countryId = newCountryId)
-  UpdateUnits()
+  SelectedObjects.data.forEach(u => {
+    if (!isUnit(u)) return
+    (u as UnitDataType).countryId = newCountryId
+  })
+  UpdateObjects()
 })
 
 export type UnitParamId = keyof UnitStatsType
 
 export const changeUnitParam = action((param:UnitParamId, delta:number) => {
   if (Number.isNaN(delta)) return
-  SelectedUnits.data.forEach(
-    u => u.stats[param] = Math.max(0, u.stats[param] + delta)
+  SelectedObjects.data.forEach(
+    u => {
+      if (!isUnit(u)) return
+      u = u as UnitDataType
+      u.stats[param] = Math.max(0, u.stats[param] + delta)
+    }
   )
-  UpdateUnits()
+  UpdateObjects()
 })
 export const setUnitParam = action((param:UnitParamId, value:number) => {
   if (Number.isNaN(value)) return
-  SelectedUnits.data.forEach(
-    u => u.stats[param] = Math.max(0, value)
+  SelectedObjects.data.forEach(
+    u => {
+      if (!isUnit(u)) return
+      (u as UnitDataType).stats[param] = Math.max(0, value)
+    }
   )
-  UpdateUnits()
+  UpdateObjects()
 })
 
 export const changeBuffTurns = action((idx:number, delta:number) => {
   if (Number.isNaN(delta)) return
-  SelectedUnits.data.forEach(
+  SelectedObjects.data.forEach(
     u => u.buffs[idx].turnsLeft += delta
   )
-  UpdateUnits()
+  UpdateObjects()
 })
 export const setBuffTurns = action((idx:number, value:number) => {
   if (Number.isNaN(value)) return
-  SelectedUnits.data.forEach(
+  SelectedObjects.data.forEach(
     u => u.buffs[idx].turnsLeft = value
   )
-  UpdateUnits()
+  UpdateObjects()
 })
 export const removeBuff = action((idx:number) => {
-  SelectedUnits.data.forEach(
+  SelectedObjects.data.forEach(
     u => u.buffs.splice(idx, 1)
   )
-  UpdateUnits()
+  UpdateObjects()
 })
 export const addBuff = action((buff:BuffDataType) => {
-  SelectedUnits.data.forEach(
+  SelectedObjects.data.forEach(
     u => u.buffs.push(buff)
   )
-  UpdateUnits()
+  UpdateObjects()
 })

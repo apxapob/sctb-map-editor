@@ -1,9 +1,9 @@
 import { action } from 'mobx'
-import { UnitDataType } from '../../types/types'
-import { SelectedUnits } from '../ToolState'
+import { ItemDataType, UnitDataType } from '../../types/types'
+import { SelectedObjects } from '../ToolState'
 
 export const OnSelectUnits = action(
-  (unitIds:UnitDataType[]) => {
-    SelectedUnits.data = unitIds
+  (ids:(ItemDataType | UnitDataType)[]) => {
+    SelectedObjects.data = ids
   }
 )

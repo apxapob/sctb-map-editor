@@ -34,8 +34,8 @@ export type GameMessage = {
   method: 'text_file_updated', 
   data: { path: string; text: string }
 } | {
-  method: 'selected_units' | 'update_units', 
-  data: UnitDataType[];
+  method: 'selected_objects' | 'update_objects', 
+  data: (ItemDataType | UnitDataType)[];
 };
 
 export type PanelType = 
@@ -75,14 +75,22 @@ export type ToolStateChangeType = {
   toolItem?: string;
 }
 
-export type UnitDataType = {
+export type ObjectDataType = {
   id: string;
   buffs: BuffDataType[];
+  type: string;
+  pos: HexCoords;
+}
+
+export type ItemDataType = ObjectDataType & {
+  invisible: number;
+  unpickable: boolean;
+}
+
+export type UnitDataType = ObjectDataType & {
   dir: number;
   countryId: number;
-  type: string;
   stats: UnitStatsType;
-  pos: HexCoords;
 }
 
 export type UnitStatsType = {
@@ -101,10 +109,13 @@ export type HexCoords = {
   r: number;
 }
 
-export type UnitType = {
+export type ObjectType = {
   type: string;
-  orders: OrderType[];
   buffs: string[];
+}
+
+export type UnitType = ObjectType & {
+  orders: OrderType[];
   attack: number;
   hp: number;
   range: number;
@@ -114,9 +125,7 @@ export type UnitType = {
   invisible: number;
 }
 
-export type ItemType = {
-  type: string;
-  buffs: string[];
+export type ItemType = ObjectType & {
   unpickable: boolean;
   invisible: number;
 }

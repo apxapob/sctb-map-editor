@@ -11,7 +11,7 @@ import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
 import Tools from '../ui/Tools'
-import UnitSelection from '../ui/UnitSelection'
+import ObjectSelection from '../ui/ObjectSelection'
 import './App.css'
 
 const fileSelectors: {
@@ -43,7 +43,7 @@ const App = ():ReactElement => {
       {isLoaded && EditorState.activeTab === 'Field' && !EditorState.mapTesting &&
         <>
           <Tools />
-          <UnitSelection />
+          <ObjectSelection />
         </>
       }
       <div className='hflex' style={{ alignItems: 'start' }}>

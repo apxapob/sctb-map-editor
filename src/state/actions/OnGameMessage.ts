@@ -20,7 +20,7 @@ const OnGameMessage = (msg:GameMessage) => {
       SendCommand({ command: 'SAVE_TEXT_FILE', data: msg.data })
       processTextFile(msg.data.path, msg.data.text)
       break
-    case 'selected_units':
+    case 'selected_objects':
       OnSelectUnits(msg.data)
       break
     case 'mark_field_unsaved':

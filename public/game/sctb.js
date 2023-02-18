@@ -477,7 +477,7 @@ JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["id","follow","rallyPoints","orderIdx","autocast","type","hp","countryId","dir","buffs","pos"],[false,false,false,false,false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["follow","rallyPoints","orderIdx","autocast","hp","countryId","dir","id","type","pos","buffs"],[false,false,false,false,false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -485,37 +485,37 @@ JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "autocast":
-				this.value.autocast = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
+				this.value.autocast = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
 				break;
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$6(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "dir":
-				this.value.dir = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
+				this.value.dir = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
 				break;
 			case "follow":
-				this.value.follow = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
+				this.value.follow = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
 				break;
 			case "hp":
-				this.value.hp = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
+				this.value.hp = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "orderIdx":
-				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
+				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
 				break;
 			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$6(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
 				break;
 			case "rallyPoints":
-				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
+				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$8(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -525,17 +525,17 @@ JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_UnitData.prototype);
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.follow = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.rallyPoints = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.orderIdx = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.autocast = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.hp = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.dir = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.buffs = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$6([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.follow = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.rallyPoints = new JsonParser_$8([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.orderIdx = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.autocast = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.hp = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.dir = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.buffs = new JsonParser_$6([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$0
@@ -551,17 +551,54 @@ JsonParser_$1.__name__ = "JsonParser_1";
 JsonParser_$1.__super__ = json2object_reader_BaseParser;
 JsonParser_$1.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"String",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.ItemData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
 		this.value = null;
 	}
-	,loadJsonString: function(s,pos,variable) {
-		this.value = s;
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["invisible","unpickable","id","type","pos","buffs"],[false,false,false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "buffs":
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$6(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				break;
+			case "id":
+				this.value.id = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				break;
+			case "invisible":
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				break;
+			case "pos":
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				break;
+			case "type":
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				break;
+			case "unpickable":
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		var value = Object.create(model_ItemData.prototype);
+		value.invisible = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.unpickable = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.buffs = new JsonParser_$6([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
 	}
 	,__class__: JsonParser_$1
 });
@@ -575,6 +612,70 @@ $hxClasses["JsonParser_10"] = JsonParser_$10;
 JsonParser_$10.__name__ = "JsonParser_10";
 JsonParser_$10.__super__ = json2object_reader_BaseParser;
 JsonParser_$10.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SaveInfo>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$11(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$10([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$10
+});
+var JsonParser_$11 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_11"] = JsonParser_$11;
+JsonParser_$11.__name__ = "JsonParser_11";
+JsonParser_$11.__super__ = json2object_reader_BaseParser;
+JsonParser_$11.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.SaveInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -592,28 +693,28 @@ JsonParser_$10.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countriesNum":
-				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
+				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
 				break;
 			case "isGameFinished":
-				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
+				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "playersNum":
-				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
+				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
 				break;
 			case "time":
-				this.value.time = this.loadObjectField(($_=new JsonParser_$11(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
+				this.value.time = this.loadObjectField(($_=new JsonParser_$12(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
 				break;
 			case "turnNum":
-				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
+				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -623,29 +724,29 @@ JsonParser_$10.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_SaveInfo.prototype);
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.time = new JsonParser_$11([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnNum = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.playersNum = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countriesNum = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isGameFinished = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.time = new JsonParser_$12([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.playersNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countriesNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isGameFinished = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$10
+	,__class__: JsonParser_$11
 });
-var JsonParser_$11 = function(errors,putils,errorType) {
+var JsonParser_$12 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 	this.value = 0;
 };
-$hxClasses["JsonParser_11"] = JsonParser_$11;
-JsonParser_$11.__name__ = "JsonParser_11";
-JsonParser_$11.__super__ = json2object_reader_BaseParser;
-JsonParser_$11.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_12"] = JsonParser_$12;
+JsonParser_$12.__name__ = "JsonParser_12";
+JsonParser_$12.__super__ = json2object_reader_BaseParser;
+JsonParser_$12.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -654,20 +755,20 @@ JsonParser_$11.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = this.loadJsonFloat(f,pos,variable,this.value);
 	}
 	,getAuto: function() {
-		return new JsonParser_$11([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$12([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$11
+	,__class__: JsonParser_$12
 });
-var JsonParser_$13 = function(errors,putils,errorType) {
+var JsonParser_$14 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_13"] = JsonParser_$13;
-JsonParser_$13.__name__ = "JsonParser_13";
-JsonParser_$13.__super__ = json2object_reader_BaseParser;
-JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_14"] = JsonParser_$14;
+JsonParser_$14.__name__ = "JsonParser_14";
+JsonParser_$14.__super__ = json2object_reader_BaseParser;
+JsonParser_$14.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -684,7 +785,7 @@ JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -718,20 +819,20 @@ JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$13([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$14([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$13
+	,__class__: JsonParser_$14
 });
-var JsonParser_$15 = function(errors,putils,errorType) {
+var JsonParser_$16 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_15"] = JsonParser_$15;
-JsonParser_$15.__name__ = "JsonParser_15";
-JsonParser_$15.__super__ = json2object_reader_BaseParser;
-JsonParser_$15.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_16"] = JsonParser_$16;
+JsonParser_$16.__name__ = "JsonParser_16";
+JsonParser_$16.__super__ = json2object_reader_BaseParser;
+JsonParser_$16.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -748,7 +849,7 @@ JsonParser_$15.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -782,20 +883,20 @@ JsonParser_$15.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$15([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$16([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$15
+	,__class__: JsonParser_$16
 });
-var JsonParser_$17 = function(errors,putils,errorType) {
+var JsonParser_$18 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_17"] = JsonParser_$17;
-JsonParser_$17.__name__ = "JsonParser_17";
-JsonParser_$17.__super__ = json2object_reader_BaseParser;
-JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_18"] = JsonParser_$18;
+JsonParser_$18.__name__ = "JsonParser_18";
+JsonParser_$18.__super__ = json2object_reader_BaseParser;
+JsonParser_$18.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UpgradeType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -812,7 +913,7 @@ JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -846,20 +947,43 @@ JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$17([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$18([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$17
+	,__class__: JsonParser_$18
 });
-var JsonParser_$19 = function(errors,putils,errorType) {
+var JsonParser_$2 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+	this.value = 0;
+};
+$hxClasses["JsonParser_2"] = JsonParser_$2;
+JsonParser_$2.__name__ = "JsonParser_2";
+JsonParser_$2.__super__ = json2object_reader_BaseParser;
+JsonParser_$2.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Int",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNumber: function(f,pos,variable) {
+		this.value = this.loadJsonInt(f,pos,variable,this.value);
+	}
+	,getAuto: function() {
+		return new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$2
+});
+var JsonParser_$20 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_19"] = JsonParser_$19;
-JsonParser_$19.__name__ = "JsonParser_19";
-JsonParser_$19.__super__ = json2object_reader_BaseParser;
-JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_20"] = JsonParser_$20;
+JsonParser_$20.__name__ = "JsonParser_20";
+JsonParser_$20.__super__ = json2object_reader_BaseParser;
+JsonParser_$20.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.BuffType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -876,7 +1000,7 @@ JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -910,45 +1034,20 @@ JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$19([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$20([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$19
+	,__class__: JsonParser_$20
 });
-var JsonParser_$2 = function(errors,putils,errorType) {
+var JsonParser_$22 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_2"] = JsonParser_$2;
-JsonParser_$2.__name__ = "JsonParser_2";
-JsonParser_$2.__super__ = json2object_reader_BaseParser;
-JsonParser_$2.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.HexCoords>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$6(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$2
-});
-var JsonParser_$21 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_21"] = JsonParser_$21;
-JsonParser_$21.__name__ = "JsonParser_21";
-JsonParser_$21.__super__ = json2object_reader_BaseParser;
-JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_22"] = JsonParser_$22;
+JsonParser_$22.__name__ = "JsonParser_22";
+JsonParser_$22.__super__ = json2object_reader_BaseParser;
+JsonParser_$22.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SkillType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -965,7 +1064,7 @@ JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -999,20 +1098,20 @@ JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$21([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$22([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$21
+	,__class__: JsonParser_$22
 });
-var JsonParser_$22 = function(errors,putils,errorType) {
+var JsonParser_$23 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_22"] = JsonParser_$22;
-JsonParser_$22.__name__ = "JsonParser_22";
-JsonParser_$22.__super__ = json2object_reader_BaseParser;
-JsonParser_$22.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_23"] = JsonParser_$23;
+JsonParser_$23.__name__ = "JsonParser_23";
+JsonParser_$23.__super__ = json2object_reader_BaseParser;
+JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.MapInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1030,31 +1129,31 @@ JsonParser_$22.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "author":
-				this.value.author = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
+				this.value.author = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
 				break;
 			case "countryColors":
-				this.value.countryColors = this.loadObjectField(($_=new JsonParser_$30(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryColors",assigned,this.value.countryColors,pos);
+				this.value.countryColors = this.loadObjectField(($_=new JsonParser_$31(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryColors",assigned,this.value.countryColors,pos);
 				break;
 			case "description":
-				this.value.description = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
+				this.value.description = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "maxPlayers":
-				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
+				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
 				break;
 			case "minPlayers":
-				this.value.minPlayers = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minPlayers",assigned,this.value.minPlayers,pos);
+				this.value.minPlayers = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minPlayers",assigned,this.value.minPlayers,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "startField":
-				this.value.startField = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
+				this.value.startField = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
 				break;
 			case "version":
-				this.value.version = this.loadObjectField(($_=new JsonParser_$11(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
+				this.value.version = this.loadObjectField(($_=new JsonParser_$12(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1064,29 +1163,29 @@ JsonParser_$22.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_MapInfo.prototype);
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.description = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.version = new JsonParser_$11([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.author = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.startField = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minPlayers = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.maxPlayers = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryColors = new JsonParser_$30([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.description = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.version = new JsonParser_$12([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.author = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.startField = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minPlayers = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.maxPlayers = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryColors = new JsonParser_$31([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$22
+	,__class__: JsonParser_$23
 });
-var JsonParser_$23 = function(errors,putils,errorType) {
+var JsonParser_$24 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_23"] = JsonParser_$23;
-JsonParser_$23.__name__ = "JsonParser_23";
-JsonParser_$23.__super__ = json2object_reader_BaseParser;
-JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_24"] = JsonParser_$24;
+JsonParser_$24.__name__ = "JsonParser_24";
+JsonParser_$24.__super__ = json2object_reader_BaseParser;
+JsonParser_$24.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1104,16 +1203,16 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$28(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				this.value.items = this.loadObjectField(($_=new JsonParser_$29(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
 				break;
 			case "size":
-				this.value.size = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
+				this.value.size = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
 				break;
 			case "tiles":
-				this.value.tiles = this.loadObjectField(($_=new JsonParser_$24(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
+				this.value.tiles = this.loadObjectField(($_=new JsonParser_$25(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
 				break;
 			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$26(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				this.value.units = this.loadObjectField(($_=new JsonParser_$27(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1123,24 +1222,24 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_FieldData.prototype);
-		value.size = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.tiles = new JsonParser_$24([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.units = new JsonParser_$26([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.items = new JsonParser_$28([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.size = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.tiles = new JsonParser_$25([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.units = new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.items = new JsonParser_$29([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$23
+	,__class__: JsonParser_$24
 });
-var JsonParser_$24 = function(errors,putils,errorType) {
+var JsonParser_$25 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_24"] = JsonParser_$24;
-JsonParser_$24.__name__ = "JsonParser_24";
-JsonParser_$24.__super__ = json2object_reader_BaseParser;
-JsonParser_$24.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_25"] = JsonParser_$25;
+JsonParser_$25.__name__ = "JsonParser_25";
+JsonParser_$25.__super__ = json2object_reader_BaseParser;
+JsonParser_$25.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldTile>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1149,23 +1248,23 @@ JsonParser_$24.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$31(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$30(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$24([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$25([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$24
+	,__class__: JsonParser_$25
 });
-var JsonParser_$26 = function(errors,putils,errorType) {
+var JsonParser_$27 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_26"] = JsonParser_$26;
-JsonParser_$26.__name__ = "JsonParser_26";
-JsonParser_$26.__super__ = json2object_reader_BaseParser;
-JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_27"] = JsonParser_$27;
+JsonParser_$27.__name__ = "JsonParser_27";
+JsonParser_$27.__super__ = json2object_reader_BaseParser;
+JsonParser_$27.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1182,7 +1281,7 @@ JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1216,20 +1315,20 @@ JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$26([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$26
+	,__class__: JsonParser_$27
 });
-var JsonParser_$28 = function(errors,putils,errorType) {
+var JsonParser_$29 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_28"] = JsonParser_$28;
-JsonParser_$28.__name__ = "JsonParser_28";
-JsonParser_$28.__super__ = json2object_reader_BaseParser;
-JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_29"] = JsonParser_$29;
+JsonParser_$29.__name__ = "JsonParser_29";
+JsonParser_$29.__super__ = json2object_reader_BaseParser;
+JsonParser_$29.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1246,7 +1345,7 @@ JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1263,7 +1362,7 @@ JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$29(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1280,69 +1379,7 @@ JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$28([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$28
-});
-var JsonParser_$29 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_29"] = JsonParser_$29;
-JsonParser_$29.__name__ = "JsonParser_29";
-JsonParser_$29.__super__ = json2object_reader_BaseParser;
-JsonParser_$29.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.ItemData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["id","type","buffs","invisible","unpickable","pos"],[false,false,false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$30(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
-				break;
-			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
-				break;
-			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
-				break;
-			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$6(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
-				break;
-			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
-				break;
-			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_ItemData.prototype);
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.buffs = new JsonParser_$30([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.invisible = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.unpickable = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$6([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
+		return new JsonParser_$29([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,__class__: JsonParser_$29
 });
@@ -1351,18 +1388,18 @@ var JsonParser_$3 = function(errors,putils,errorType) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-	this.value = 0;
+	this.value = false;
 };
 $hxClasses["JsonParser_3"] = JsonParser_$3;
 JsonParser_$3.__name__ = "JsonParser_3";
 JsonParser_$3.__super__ = json2object_reader_BaseParser;
 JsonParser_$3.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Int",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"Bool",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
-	,loadJsonNumber: function(f,pos,variable) {
-		this.value = this.loadJsonInt(f,pos,variable,this.value);
+	,loadJsonBool: function(b,pos,variable) {
+		this.value = b;
 	}
 	,getAuto: function() {
 		return new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -1380,17 +1417,17 @@ JsonParser_$30.__name__ = "JsonParser_30";
 JsonParser_$30.__super__ = json2object_reader_BaseParser;
 JsonParser_$30.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<String>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldTile",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$30([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,loadJson: function(json,variable) {
+		if(variable == null) {
+			variable = "";
+		}
+		return this.value = model_FieldTile.customParse(json,variable);
 	}
 	,__class__: JsonParser_$30
 });
@@ -1405,17 +1442,17 @@ JsonParser_$31.__name__ = "JsonParser_31";
 JsonParser_$31.__super__ = json2object_reader_BaseParser;
 JsonParser_$31.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldTile",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$4(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$31([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,loadJson: function(json,variable) {
-		if(variable == null) {
-			variable = "";
-		}
-		return this.value = model_FieldTile.customParse(json,variable);
 	}
 	,__class__: JsonParser_$31
 });
@@ -1449,22 +1486,22 @@ JsonParser_$33.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				this.value.args = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
 				break;
 			case "price":
-				this.value.price = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"price",assigned,this.value.price,pos);
+				this.value.price = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"price",assigned,this.value.price,pos);
 				break;
 			case "radius":
-				this.value.radius = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
+				this.value.radius = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "script":
-				this.value.script = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				this.value.script = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1473,7 +1510,7 @@ JsonParser_$33.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { args : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), id : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mana : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), price : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { args : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), id : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mana : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), price : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$33
 });
@@ -1495,7 +1532,7 @@ JsonParser_$34.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$4(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -1532,10 +1569,10 @@ JsonParser_$36.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				this.value.effects = this.loadObjectField(($_=new JsonParser_$37(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1544,7 +1581,7 @@ JsonParser_$36.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$36
 });
@@ -1666,7 +1703,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1702,7 +1739,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __radius = new JsonParser_$3(this.errors,this.putils,2);
+					var __radius = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1738,7 +1775,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __affects1 = __affects.loadJson(_g[0].value,field.name + "." + "affects");
-					var __particles = new JsonParser_$1(this.errors,this.putils,2);
+					var __particles = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1806,7 +1843,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __delta = new JsonParser_$3(this.errors,this.putils,2);
+					var __delta = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1842,7 +1879,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1868,6 +1905,54 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 					var __args1 = __args.loadJson(_g[0].value,field.name + "." + "args");
 					this.value = model_EffectType.OnAttack(__script1,__args1);
 					break;
+				case "OnBuffEnd":
+					var _names = ["script","args"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
+						this.parsingThrow();
+					}
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
+					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __args1 = __args.loadJson(_g[0].value,field.name + "." + "args");
+					this.value = model_EffectType.OnBuffEnd(__script1,__args1);
+					break;
 				case "OnDeath":
 					var _names = ["script","args"];
 					var tmp;
@@ -1890,7 +1975,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1938,7 +2023,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1964,7 +2049,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 					var __args1 = __args.loadJson(_g[0].value,field.name + "." + "args");
 					this.value = model_EffectType.OnDefend(__script1,__args1);
 					break;
-				case "OnPickUp":
+				case "OnTouch":
 					var _names = ["script","args"];
 					var tmp;
 					if(s0.length == 2) {
@@ -1986,7 +2071,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2010,7 +2095,55 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __args1 = __args.loadJson(_g[0].value,field.name + "." + "args");
-					this.value = model_EffectType.OnPickUp(__script1,__args1);
+					this.value = model_EffectType.OnTouch(__script1,__args1);
+					break;
+				case "OnTurnEnd":
+					var _names = ["script","args"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
+						this.parsingThrow();
+					}
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
+					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __args1 = __args.loadJson(_g[0].value,field.name + "." + "args");
+					this.value = model_EffectType.OnTurnEnd(__script1,__args1);
 					break;
 				case "OnTurnStart":
 					var _names = ["script","args"];
@@ -2034,7 +2167,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2082,7 +2215,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2130,7 +2263,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __value = new JsonParser_$3(this.errors,this.putils,2);
+					var __value = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2301,18 +2434,20 @@ var JsonParser_$4 = function(errors,putils,errorType) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-	this.value = false;
 };
 $hxClasses["JsonParser_4"] = JsonParser_$4;
 JsonParser_$4.__name__ = "JsonParser_4";
 JsonParser_$4.__super__ = json2object_reader_BaseParser;
 JsonParser_$4.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Bool",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"String",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
-	,loadJsonBool: function(b,pos,variable) {
-		this.value = b;
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonString: function(s,pos,variable) {
+		this.value = s;
 	}
 	,getAuto: function() {
 		return new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -2505,10 +2640,10 @@ JsonParser_$46.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "alpha":
-				this.value.alpha = this.loadObjectField(($_=new JsonParser_$11(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
+				this.value.alpha = this.loadObjectField(($_=new JsonParser_$12(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
 				break;
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2517,7 +2652,7 @@ JsonParser_$46.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { alpha : new JsonParser_$11([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { alpha : new JsonParser_$12([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$46
 });
@@ -2551,7 +2686,7 @@ JsonParser_$48.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				this.value.effects = this.loadObjectField(($_=new JsonParser_$37(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unitTypes":
 				this.value.unitTypes = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitTypes",assigned,this.value.unitTypes,pos);
@@ -2563,7 +2698,7 @@ JsonParser_$48.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$48
 });
@@ -2578,17 +2713,17 @@ JsonParser_$5.__name__ = "JsonParser_5";
 JsonParser_$5.__super__ = json2object_reader_BaseParser;
 JsonParser_$5.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.BuffData>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexCoords",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$7(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,loadJson: function(json,variable) {
+		if(variable == null) {
+			variable = "";
+		}
+		return this.value = model_HexCoords.customParse(json,variable);
 	}
 	,__class__: JsonParser_$5
 });
@@ -2622,13 +2757,13 @@ JsonParser_$50.prototype = $extend(json2object_reader_BaseParser.prototype,{
 				this.value.buffs = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2637,7 +2772,7 @@ JsonParser_$50.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$50
 });
@@ -2668,37 +2803,37 @@ JsonParser_$52.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "attack":
-				this.value.attack = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
+				this.value.attack = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
 				break;
 			case "buffs":
 				this.value.buffs = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "detector":
-				this.value.detector = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
+				this.value.detector = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
 				break;
 			case "flying":
-				this.value.flying = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
+				this.value.flying = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "maxHp":
-				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
+				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "skills":
 				this.value.skills = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
 				break;
 			case "speed":
-				this.value.speed = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				this.value.speed = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "vision":
-				this.value.vision = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
+				this.value.vision = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2707,7 +2842,7 @@ JsonParser_$52.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { attack : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { attack : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
 	,__class__: JsonParser_$52
 });
@@ -2738,19 +2873,19 @@ JsonParser_$53.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "curTurn":
-				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
+				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
 				break;
 			case "field":
-				this.value.field = this.loadObjectField(($_=new JsonParser_$23(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
+				this.value.field = this.loadObjectField(($_=new JsonParser_$24(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "mapName":
-				this.value.mapName = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
+				this.value.mapName = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "players":
 				this.value.players = this.loadObjectField(($_=new JsonParser_$55(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"players",assigned,this.value.players,pos);
@@ -2766,13 +2901,13 @@ JsonParser_$53.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_GameData.prototype);
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapName = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.curTurn = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapName = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.curTurn = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.turns = new JsonParser_$54([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.players = new JsonParser_$55([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.field = new JsonParser_$23([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.field = new JsonParser_$24([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$53
@@ -2854,22 +2989,22 @@ JsonParser_$56.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "disconnected":
-				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
+				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "isAI":
-				this.value.isAI = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
+				this.value.isAI = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "turnDone":
-				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
+				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2879,12 +3014,12 @@ JsonParser_$56.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_PlayerData.prototype);
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.disconnected = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnDone = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isAI = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.disconnected = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnDone = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isAI = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$56
@@ -2908,7 +3043,7 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["countries","units","items","microTurns","fieldEffects"],[false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["countries","units","items","microTurns"],[false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -2918,17 +3053,14 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			case "countries":
 				this.value.countries = this.loadObjectField(($_=new JsonParser_$59(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
 				break;
-			case "fieldEffects":
-				this.value.fieldEffects = this.loadObjectField(($_=new JsonParser_$61(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"fieldEffects",assigned,this.value.fieldEffects,pos);
-				break;
 			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$28(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				this.value.items = this.loadObjectField(($_=new JsonParser_$29(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
 				break;
 			case "microTurns":
 				this.value.microTurns = this.loadObjectField(($_=new JsonParser_$60(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"microTurns",assigned,this.value.microTurns,pos);
 				break;
 			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$26(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				this.value.units = this.loadObjectField(($_=new JsonParser_$27(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2939,10 +3071,9 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	,getAuto: function() {
 		var value = Object.create(model_TurnData.prototype);
 		value.countries = new JsonParser_$59([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.units = new JsonParser_$26([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.items = new JsonParser_$28([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.units = new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.items = new JsonParser_$29([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.microTurns = new JsonParser_$60([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.fieldEffects = new JsonParser_$61([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$57
@@ -2973,7 +3104,7 @@ JsonParser_$59.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$3(this.errors,this.putils,2);
+				var key1 = new JsonParser_$2(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -2990,7 +3121,7 @@ JsonParser_$59.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$70(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$69(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3022,17 +3153,17 @@ JsonParser_$6.__name__ = "JsonParser_6";
 JsonParser_$6.__super__ = json2object_reader_BaseParser;
 JsonParser_$6.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexCoords",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.BuffData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$7(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$6([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,loadJson: function(json,variable) {
-		if(variable == null) {
-			variable = "";
-		}
-		return this.value = model_HexCoords.customParse(json,variable);
 	}
 	,__class__: JsonParser_$6
 });
@@ -3054,7 +3185,7 @@ JsonParser_$60.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$64(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$61(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$60([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -3072,17 +3203,42 @@ JsonParser_$61.__name__ = "JsonParser_61";
 JsonParser_$61.__super__ = json2object_reader_BaseParser;
 JsonParser_$61.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Array<model.FieldEffect>>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.MicroTurn",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
 		this.value = null;
 	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$62(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["acts","events","effects"],[false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "acts":
+				this.value.acts = this.loadObjectField(($_=new JsonParser_$62(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
+				break;
+			case "effects":
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$64(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				break;
+			case "events":
+				this.value.events = this.loadObjectField(($_=new JsonParser_$63(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return new JsonParser_$61([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		var value = Object.create(model_MicroTurn.prototype);
+		value.acts = new JsonParser_$62([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.events = new JsonParser_$63([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.effects = new JsonParser_$64([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
 	}
 	,__class__: JsonParser_$61
 });
@@ -3097,14 +3253,53 @@ JsonParser_$62.__name__ = "JsonParser_62";
 JsonParser_$62.__super__ = json2object_reader_BaseParser;
 JsonParser_$62.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldEffect>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ActionType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
 		this.value = null;
 	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$63(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$68(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
 	}
 	,getAuto: function() {
 		return new JsonParser_$62([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -3121,6 +3316,95 @@ $hxClasses["JsonParser_63"] = JsonParser_$63;
 JsonParser_$63.__name__ = "JsonParser_63";
 JsonParser_$63.__super__ = json2object_reader_BaseParser;
 JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.ActionEvent>>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$66(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$63([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$63
+});
+var JsonParser_$64 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_64"] = JsonParser_$64;
+JsonParser_$64.__name__ = "JsonParser_64";
+JsonParser_$64.__super__ = json2object_reader_BaseParser;
+JsonParser_$64.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldEffect>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$65(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$64([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$64
+});
+var JsonParser_$65 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_65"] = JsonParser_$65;
+JsonParser_$65.__name__ = "JsonParser_65";
+JsonParser_$65.__super__ = json2object_reader_BaseParser;
+JsonParser_$65.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldEffect",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3164,7 +3448,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3176,7 +3460,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __id1 = __id.loadJson(_g[0].value,field.name + "." + "id");
-					var __from = new JsonParser_$6(this.errors,this.putils,2);
+					var __from = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3188,7 +3472,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$6(this.errors,this.putils,2);
+					var __to = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3236,7 +3520,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3248,7 +3532,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __id1 = __id.loadJson(_g[0].value,field.name + "." + "id");
-					var __hex = new JsonParser_$6(this.errors,this.putils,2);
+					var __hex = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3285,116 +3569,6 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$63([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$63
-});
-var JsonParser_$64 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_64"] = JsonParser_$64;
-JsonParser_$64.__name__ = "JsonParser_64";
-JsonParser_$64.__super__ = json2object_reader_BaseParser;
-JsonParser_$64.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.MicroTurn",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["acts","events"],[false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "acts":
-				this.value.acts = this.loadObjectField(($_=new JsonParser_$65(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
-				break;
-			case "events":
-				this.value.events = this.loadObjectField(($_=new JsonParser_$66(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_MicroTurn.prototype);
-		value.acts = new JsonParser_$65([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.events = new JsonParser_$66([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
-	}
-	,__class__: JsonParser_$64
-});
-var JsonParser_$65 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_65"] = JsonParser_$65;
-JsonParser_$65.__name__ = "JsonParser_65";
-JsonParser_$65.__super__ = json2object_reader_BaseParser;
-JsonParser_$65.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ActionType>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$69(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
 		return new JsonParser_$65([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,__class__: JsonParser_$65
@@ -3410,53 +3584,14 @@ JsonParser_$66.__name__ = "JsonParser_66";
 JsonParser_$66.__super__ = json2object_reader_BaseParser;
 JsonParser_$66.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.ActionEvent>>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.ActionEvent>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
 		this.value = null;
 	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$67(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$67(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$66([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -3473,31 +3608,6 @@ $hxClasses["JsonParser_67"] = JsonParser_$67;
 JsonParser_$67.__name__ = "JsonParser_67";
 JsonParser_$67.__super__ = json2object_reader_BaseParser;
 JsonParser_$67.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.ActionEvent>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$68(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$67([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$67
-});
-var JsonParser_$68 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_68"] = JsonParser_$68;
-JsonParser_$68.__name__ = "JsonParser_68";
-JsonParser_$68.__super__ = json2object_reader_BaseParser;
-JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionEvent",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3541,7 +3651,7 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __buffType = new JsonParser_$1(this.errors,this.putils,2);
+					var __buffType = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3577,7 +3687,7 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __to = new JsonParser_$3(this.errors,this.putils,2);
+					var __to = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3613,7 +3723,7 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __d = new JsonParser_$3(this.errors,this.putils,2);
+					var __d = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3649,7 +3759,7 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __m = new JsonParser_$3(this.errors,this.putils,2);
+					var __m = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3685,7 +3795,7 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __m = new JsonParser_$3(this.errors,this.putils,2);
+					var __m = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3710,20 +3820,20 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$68([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$67([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$68
+	,__class__: JsonParser_$67
 });
-var JsonParser_$69 = function(errors,putils,errorType) {
+var JsonParser_$68 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_69"] = JsonParser_$69;
-JsonParser_$69.__name__ = "JsonParser_69";
-JsonParser_$69.__super__ = json2object_reader_BaseParser;
-JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_68"] = JsonParser_$68;
+JsonParser_$68.__name__ = "JsonParser_68";
+JsonParser_$68.__super__ = json2object_reader_BaseParser;
+JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3776,7 +3886,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __from = new JsonParser_$6(this.errors,this.putils,2);
+					var __from = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3788,7 +3898,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$6(this.errors,this.putils,2);
+					var __to = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3824,7 +3934,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$3(this.errors,this.putils,2);
+					var __q = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3836,7 +3946,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$3(this.errors,this.putils,2);
+					var __r = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3880,7 +3990,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __unitType = new JsonParser_$1(this.errors,this.putils,2);
+					var __unitType = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3916,7 +4026,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$3(this.errors,this.putils,2);
+					var __q = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3928,7 +4038,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$3(this.errors,this.putils,2);
+					var __r = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3964,7 +4074,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __type = new JsonParser_$1(this.errors,this.putils,2);
+					var __type = new JsonParser_$4(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3976,7 +4086,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __from = new JsonParser_$6(this.errors,this.putils,2);
+					var __from = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3988,7 +4098,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$6(this.errors,this.putils,2);
+					var __to = new JsonParser_$5(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4024,7 +4134,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __d = new JsonParser_$3(this.errors,this.putils,2);
+					var __d = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4068,7 +4178,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$3(this.errors,this.putils,2);
+					var __q = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4080,7 +4190,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$3(this.errors,this.putils,2);
+					var __r = new JsonParser_$2(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4105,7 +4215,61 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$69([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$68([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$68
+});
+var JsonParser_$69 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_69"] = JsonParser_$69;
+JsonParser_$69.__name__ = "JsonParser_69";
+JsonParser_$69.__super__ = json2object_reader_BaseParser;
+JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryData",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["id","minerals","mana","upgrades"],[false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "id":
+				this.value.id = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				break;
+			case "mana":
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				break;
+			case "minerals":
+				this.value.minerals = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
+				break;
+			case "upgrades":
+				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$71(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_CountryData.prototype);
+		value.id = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minerals = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mana = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.upgrades = new JsonParser_$71([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
 	}
 	,__class__: JsonParser_$69
 });
@@ -4136,10 +4300,10 @@ JsonParser_$7.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "buffType":
-				this.value.buffType = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffType",assigned,this.value.buffType,pos);
+				this.value.buffType = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffType",assigned,this.value.buffType,pos);
 				break;
 			case "turnsLeft":
-				this.value.turnsLeft = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnsLeft",assigned,this.value.turnsLeft,pos);
+				this.value.turnsLeft = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnsLeft",assigned,this.value.turnsLeft,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -4149,76 +4313,22 @@ JsonParser_$7.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_BuffData.prototype);
-		value.turnsLeft = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.buffType = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnsLeft = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.buffType = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
 	,__class__: JsonParser_$7
 });
-var JsonParser_$70 = function(errors,putils,errorType) {
+var JsonParser_$71 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_70"] = JsonParser_$70;
-JsonParser_$70.__name__ = "JsonParser_70";
-JsonParser_$70.__super__ = json2object_reader_BaseParser;
-JsonParser_$70.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["id","minerals","mana","upgrades"],[false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
-				break;
-			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
-				break;
-			case "minerals":
-				this.value.minerals = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
-				break;
-			case "upgrades":
-				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$72(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_CountryData.prototype);
-		value.id = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minerals = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mana = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.upgrades = new JsonParser_$72([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
-	}
-	,__class__: JsonParser_$70
-});
-var JsonParser_$72 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_72"] = JsonParser_$72;
-JsonParser_$72.__name__ = "JsonParser_72";
-JsonParser_$72.__super__ = json2object_reader_BaseParser;
-JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_71"] = JsonParser_$71;
+JsonParser_$71.__name__ = "JsonParser_71";
+JsonParser_$71.__super__ = json2object_reader_BaseParser;
+JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<Int>>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4235,7 +4345,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$4(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4252,7 +4362,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$73(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$72(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4267,6 +4377,31 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			this1.h[key] = value;
 		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$71([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$71
+});
+var JsonParser_$72 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_72"] = JsonParser_$72;
+JsonParser_$72.__name__ = "JsonParser_72";
+JsonParser_$72.__super__ = json2object_reader_BaseParser;
+JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Int>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$2(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
 		return new JsonParser_$72([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
@@ -4284,31 +4419,6 @@ JsonParser_$73.__name__ = "JsonParser_73";
 JsonParser_$73.__super__ = json2object_reader_BaseParser;
 JsonParser_$73.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Int>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$3(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$73([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$73
-});
-var JsonParser_$74 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_74"] = JsonParser_$74;
-JsonParser_$74.__name__ = "JsonParser_74";
-JsonParser_$74.__super__ = json2object_reader_BaseParser;
-JsonParser_$74.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
@@ -4324,7 +4434,7 @@ JsonParser_$74.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$3(this.errors,this.putils,2);
+				var key1 = new JsonParser_$2(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4341,7 +4451,7 @@ JsonParser_$74.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$4(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4358,73 +4468,34 @@ JsonParser_$74.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$74([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$73([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$74
+	,__class__: JsonParser_$73
 });
-var JsonParser_$9 = function(errors,putils,errorType) {
+var JsonParser_$8 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_9"] = JsonParser_$9;
-JsonParser_$9.__name__ = "JsonParser_9";
-JsonParser_$9.__super__ = json2object_reader_BaseParser;
-JsonParser_$9.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8"] = JsonParser_$8;
+JsonParser_$8.__name__ = "JsonParser_8";
+JsonParser_$8.__super__ = json2object_reader_BaseParser;
+JsonParser_$8.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SaveInfo>",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.HexCoords>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
 		this.value = null;
 	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$10(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$5(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$9
+	,__class__: JsonParser_$8
 });
 var JsonWriter_$0 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
@@ -4477,7 +4548,7 @@ JsonWriter_$0.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$4(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$40(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$42(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$4(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$38(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$40(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -4848,7 +4919,7 @@ JsonWriter_$14.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"follow\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$15(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$17(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"follow\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$15(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$17(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -5359,7 +5430,7 @@ JsonWriter_$21.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$22(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull),indent + space + "\"invisible\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"invisible\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$17(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -5446,7 +5517,7 @@ JsonWriter_$22.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$23(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -5520,19 +5591,32 @@ JsonWriter_$23.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$24(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		var decl = [indent + space + "\"acts\": " + new JsonWriter_$24(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$26(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull),indent + space + "\"effects\": " + new JsonWriter_$29(this.ignoreNullOptionals)._write(o.effects,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
 		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
 		return json;
 	}
 	,write: function(o,space) {
@@ -5594,94 +5678,7 @@ JsonWriter_$24.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"acts\": " + new JsonWriter_$25(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$27(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$24
-};
-var JsonWriter_$25 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_25"] = JsonWriter_$25;
-JsonWriter_$25.__name__ = "JsonWriter_25";
-JsonWriter_$25.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$26(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$25(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -5705,18 +5702,18 @@ JsonWriter_$25.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$25
+	,__class__: JsonWriter_$24
 };
-var JsonWriter_$26 = function(ignoreNullOptionals) {
+var JsonWriter_$25 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_26"] = JsonWriter_$26;
-JsonWriter_$26.__name__ = "JsonWriter_26";
-JsonWriter_$26.prototype = {
+$hxClasses["JsonWriter_25"] = JsonWriter_$25;
+JsonWriter_$25.__name__ = "JsonWriter_25";
+JsonWriter_$25.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5847,6 +5844,83 @@ JsonWriter_$26.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
+	,__class__: JsonWriter_$25
+};
+var JsonWriter_$26 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_26"] = JsonWriter_$26;
+JsonWriter_$26.__name__ = "JsonWriter_26";
+JsonWriter_$26.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$27(this.ignoreNullOptionals);
+		var _g = [];
+		var h = o.h;
+		var key_h = h;
+		var key_keys = Object.keys(h);
+		var key_length = key_keys.length;
+		var key_current = 0;
+		while(key_current < key_length) {
+			var key = key_keys[key_current++];
+			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
 	,__class__: JsonWriter_$26
 };
 var JsonWriter_$27 = function(ignoreNullOptionals) {
@@ -5902,20 +5976,17 @@ JsonWriter_$27.prototype = {
 		}
 		var valueWriter = new JsonWriter_$28(this.ignoreNullOptionals);
 		var _g = [];
-		var h = o.h;
-		var key_h = h;
-		var key_keys = Object.keys(h);
-		var key_length = key_keys.length;
-		var key_current = 0;
-		while(key_current < key_length) {
-			var key = key_keys[key_current++];
-			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
 		}
 		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
 		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
+		json += indent + "]";
 		return json;
 	}
 	,write: function(o,space) {
@@ -5936,80 +6007,6 @@ var JsonWriter_$28 = function(ignoreNullOptionals) {
 $hxClasses["JsonWriter_28"] = JsonWriter_$28;
 JsonWriter_$28.__name__ = "JsonWriter_28";
 JsonWriter_$28.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$29(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$28
-};
-var JsonWriter_$29 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_29"] = JsonWriter_$29;
-JsonWriter_$29.__name__ = "JsonWriter_29";
-JsonWriter_$29.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6103,6 +6100,80 @@ JsonWriter_$29.prototype = {
 			json += indent + "}";
 			return json;
 		}
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$28
+};
+var JsonWriter_$29 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_29"] = JsonWriter_$29;
+JsonWriter_$29.__name__ = "JsonWriter_29";
+JsonWriter_$29.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$30(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6219,20 +6290,33 @@ JsonWriter_$30.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$31(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		switch(o._hx_index) {
+		case 0:
+			var id = o.id;
+			var hex = o.hex;
+			var colorAdj = o.colorAdj;
+			var decl = [indent + space + space + "\"" + "id" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(id,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$32(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var newLine = space != "" && decl.length > 0 ? "\n" : "";
+			var json = firstIndent + "{" + newLine;
+			json += indent + space + "\"" + "SimpleEffect" + "\": {" + newLine;
+			json += decl.join("," + newLine) + newLine;
+			json += indent + space + "}" + newLine;
+			json += indent + "}";
+			return json;
+		case 1:
+			var id = o.id;
+			var from = o.from;
+			var to = o.to;
+			var colorAdj = o.colorAdj;
+			var decl = [indent + space + space + "\"" + "id" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(id,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$32(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var newLine = space != "" && decl.length > 0 ? "\n" : "";
+			var json = firstIndent + "{" + newLine;
+			json += indent + space + "\"" + "DirectedEffect" + "\": {" + newLine;
+			json += decl.join("," + newLine) + newLine;
+			json += indent + space + "}" + newLine;
+			json += indent + "}";
+			return json;
 		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6241,80 +6325,6 @@ JsonWriter_$30.prototype = {
 		return this._write(o,space,0,false);
 	}
 	,__class__: JsonWriter_$30
-};
-var JsonWriter_$31 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_31"] = JsonWriter_$31;
-JsonWriter_$31.__name__ = "JsonWriter_31";
-JsonWriter_$31.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$32(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$31
 };
 var JsonWriter_$32 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
@@ -6367,33 +6377,33 @@ JsonWriter_$32.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		switch(o._hx_index) {
-		case 0:
-			var id = o.id;
-			var hex = o.hex;
-			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "id" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(id,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
-			var newLine = space != "" && decl.length > 0 ? "\n" : "";
-			var json = firstIndent + "{" + newLine;
-			json += indent + space + "\"" + "SimpleEffect" + "\": {" + newLine;
-			json += decl.join("," + newLine) + newLine;
-			json += indent + space + "}" + newLine;
-			json += indent + "}";
-			return json;
-		case 1:
-			var id = o.id;
-			var from = o.from;
-			var to = o.to;
-			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "id" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(id,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$16(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
-			var newLine = space != "" && decl.length > 0 ? "\n" : "";
-			var json = firstIndent + "{" + newLine;
-			json += indent + space + "\"" + "DirectedEffect" + "\": {" + newLine;
-			json += decl.join("," + newLine) + newLine;
-			json += indent + space + "}" + newLine;
-			json += indent + "}";
-			return json;
+		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$36(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$34(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [o.contrast == null,o.gain == null,o.hue == null,o.lightness == null,o.saturation == null];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
 		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6449,38 +6459,7 @@ JsonWriter_$34.prototype = {
 		if(space == null) {
 			space = "";
 		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$36(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$38(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$36(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$36(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$36(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [o.contrast == null,o.gain == null,o.hue == null,o.lightness == null,o.saturation == null];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
+		return (indentFirst ? this.buildIndent(space,level) : "") + (o == null ? "null" : o + "");
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6536,7 +6515,38 @@ JsonWriter_$36.prototype = {
 		if(space == null) {
 			space = "";
 		}
-		return (indentFirst ? this.buildIndent(space,level) : "") + (o == null ? "null" : o + "");
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$37(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6545,6 +6555,62 @@ JsonWriter_$36.prototype = {
 		return this._write(o,space,0,false);
 	}
 	,__class__: JsonWriter_$36
+};
+var JsonWriter_$37 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_37"] = JsonWriter_$37;
+JsonWriter_$37.__name__ = "JsonWriter_37";
+JsonWriter_$37.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		return (indentFirst ? this.buildIndent(space,level) : "") + o;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$37
 };
 var JsonWriter_$38 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
@@ -6597,32 +6663,19 @@ JsonWriter_$38.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$39(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
+		var valueWriter = new JsonWriter_$39(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
 		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
 		return json;
 	}
 	,write: function(o,space) {
@@ -6679,7 +6732,38 @@ JsonWriter_$39.prototype = {
 		if(space == null) {
 			space = "";
 		}
-		return (indentFirst ? this.buildIndent(space,level) : "") + o;
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -6814,19 +6898,32 @@ JsonWriter_$40.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$41(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		var decl = [indent + space + "\"size\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$41(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$13(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$20(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
 		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
 		return json;
 	}
 	,write: function(o,space) {
@@ -6888,32 +6985,19 @@ JsonWriter_$41.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
+		var valueWriter = new JsonWriter_$42(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
 		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
 		return json;
 	}
 	,write: function(o,space) {
@@ -6970,38 +7054,7 @@ JsonWriter_$42.prototype = {
 		if(space == null) {
 			space = "";
 		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"size\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$43(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$13(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$20(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
+		return model_FieldTile.customWrite(o);
 	}
 	,write: function(o,space) {
 		if(space == null) {
@@ -7010,80 +7063,6 @@ JsonWriter_$42.prototype = {
 		return this._write(o,space,0,false);
 	}
 	,__class__: JsonWriter_$42
-};
-var JsonWriter_$43 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_43"] = JsonWriter_$43;
-JsonWriter_$43.__name__ = "JsonWriter_43";
-JsonWriter_$43.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$44(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$43
 };
 var JsonWriter_$44 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
@@ -7131,68 +7110,12 @@ JsonWriter_$44.prototype = {
 		if(space == null) {
 			space = "";
 		}
-		return model_FieldTile.customWrite(o);
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$44
-};
-var JsonWriter_$46 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_46"] = JsonWriter_$46;
-JsonWriter_$46.__name__ = "JsonWriter_46";
-JsonWriter_$46.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
 		var indent = this.buildIndent(space,level);
 		var firstIndent = indentFirst ? indent : "";
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$47(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$45(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -7216,18 +7139,18 @@ JsonWriter_$46.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$46
+	,__class__: JsonWriter_$44
 };
-var JsonWriter_$47 = function(ignoreNullOptionals) {
+var JsonWriter_$45 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_47"] = JsonWriter_$47;
-JsonWriter_$47.__name__ = "JsonWriter_47";
-JsonWriter_$47.prototype = {
+$hxClasses["JsonWriter_45"] = JsonWriter_$45;
+JsonWriter_$45.__name__ = "JsonWriter_45";
+JsonWriter_$45.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7269,7 +7192,7 @@ JsonWriter_$47.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$39(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$37(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7303,18 +7226,18 @@ JsonWriter_$47.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$47
+	,__class__: JsonWriter_$45
 };
-var JsonWriter_$48 = function(ignoreNullOptionals) {
+var JsonWriter_$46 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_48"] = JsonWriter_$48;
-JsonWriter_$48.__name__ = "JsonWriter_48";
-JsonWriter_$48.prototype = {
+$hxClasses["JsonWriter_46"] = JsonWriter_$46;
+JsonWriter_$46.__name__ = "JsonWriter_46";
+JsonWriter_$46.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7376,7 +7299,7 @@ JsonWriter_$48.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$48
+	,__class__: JsonWriter_$46
 };
 var JsonWriter_$5 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
@@ -7429,9 +7352,9 @@ JsonWriter_$5.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"countries\": " + new JsonWriter_$7(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$13(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$20(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$23(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull),indent + space + "\"fieldEffects\": " + new JsonWriter_$30(this.ignoreNullOptionals)._write(o.fieldEffects,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"countries\": " + new JsonWriter_$7(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$13(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$20(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$22(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false];
+			var skips = [false,false,false,false];
 			if(skips.indexOf(false) == -1) {
 				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
 			} else {
@@ -7878,7 +7801,7 @@ Main.ShowMapEditor = function(mapId) {
 	}
 	view_ui_screens_Game.ui.set_visible(false);
 	logic_MapEditorSystem.startNewHistory();
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnAnimStart) + "");
 	model_Store.cam.cursorHex = new model_HexCoords(model_Store.game.field.size >> 1,model_Store.game.field.size >> 1);
 	logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
@@ -7890,7 +7813,7 @@ Main.TestGame = function() {
 	model_Store.cam.curPlayerId = model_Store.game.players[0].id;
 	view_ui_screens_Game.ui.set_visible(true);
 	logic_MapEditorSystem.startNewHistory();
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 };
 Main.LoadLocalGame = function(filename) {
 	if(Main.curScreen != null) {
@@ -7916,7 +7839,7 @@ Main.StartLocalGame = function() {
 	var now = HxOverrides.now() / 1000;
 	model_Store.cam = new model_CameraData();
 	if(model_Store.game == null) {
-		model_Store.game = logic_GameSystem.CreateNewRandomGame(2);
+		model_Store.game = logic_GameSystem.createNewRandomGame(2);
 		logic_GameSystem.createPlayersForGame(model_Store.game,2);
 	}
 	var _g = 0;
@@ -7932,13 +7855,13 @@ Main.StartLocalGame = function() {
 	Main.ChangeScreen(new view_ui_screens_Game());
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
 	haxe_Log.trace("Game init time",{ fileName : "src/Main.hx", lineNumber : 167, className : "Main", methodName : "StartLocalGame", customParams : [turnCalcTime]});
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 };
 Main.CreateNetGame = function(savefileName) {
 	if(savefileName != null) {
 		model_Store.game = logic_LSDSystem.Load(savefileName);
 	} else {
-		model_Store.game = logic_GameSystem.CreateNewRandomGame(logic_NetSystem.currentRoom.maxPlayers);
+		model_Store.game = logic_GameSystem.createNewRandomGame(logic_NetSystem.currentRoom.maxPlayers);
 	}
 	model_Store.game.netGame = true;
 	logic_GameSystem.placePlayersToCountries(model_Store.game,logic_NetSystem.currentRoom.countries);
@@ -7948,7 +7871,7 @@ Main.JoinNetGame = function() {
 	model_Store.cam = new model_CameraData();
 	model_Store.cam.curPlayerId = logic_NetSystem.myId;
 	Main.ChangeScreen(new view_ui_screens_Game());
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	logic_CamSystem.PopCamState();
 };
 Main.main = function() {
@@ -12616,17 +12539,17 @@ h2d_Object.prototype = {
 			view.yMax = y1;
 		}
 		var a = bounds.xMin;
-		var b = view.xMin;
-		bounds.xMin = a < b ? b : a;
+		var b1 = view.xMin;
+		bounds.xMin = a < b1 ? b1 : a;
 		var a = bounds.yMin;
-		var b = view.yMin;
-		bounds.yMin = a < b ? b : a;
+		var b1 = view.yMin;
+		bounds.yMin = a < b1 ? b1 : a;
 		var a = bounds.xMax;
-		var b = view.xMax;
-		bounds.xMax = a > b ? b : a;
+		var b1 = view.xMax;
+		bounds.xMax = a > b1 ? b1 : a;
 		var a = bounds.yMax;
-		var b = view.yMax;
-		bounds.yMax = a > b ? b : a;
+		var b1 = view.yMax;
+		bounds.yMax = a > b1 ? b1 : a;
 	}
 	,drawFilters: function(ctx) {
 		if(!ctx.pushFilter(this)) {
@@ -14217,83 +14140,83 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					this1.array = newArray;
 				}
 				this1.array[this1.pos++] = x;
-				var this2 = _this.tmp;
-				if(this2.pos == this2.array.length) {
-					var newSize1 = this2.array.length << 1;
+				var this11 = _this.tmp;
+				if(this11.pos == this11.array.length) {
+					var newSize1 = this11.array.length << 1;
 					if(newSize1 < 128) {
 						newSize1 = 128;
 					}
 					var newArray1 = new Float32Array(newSize1);
-					newArray1.set(this2.array);
-					this2.array = newArray1;
+					newArray1.set(this11.array);
+					this11.array = newArray1;
 				}
-				this2.array[this2.pos++] = y;
-				var this3 = _this.tmp;
-				if(this3.pos == this3.array.length) {
-					var newSize2 = this3.array.length << 1;
+				this11.array[this11.pos++] = y;
+				var this12 = _this.tmp;
+				if(this12.pos == this12.array.length) {
+					var newSize2 = this12.array.length << 1;
 					if(newSize2 < 128) {
 						newSize2 = 128;
 					}
 					var newArray2 = new Float32Array(newSize2);
-					newArray2.set(this3.array);
-					this3.array = newArray2;
+					newArray2.set(this12.array);
+					this12.array = newArray2;
 				}
-				this3.array[this3.pos++] = 0;
-				var this4 = _this.tmp;
-				if(this4.pos == this4.array.length) {
-					var newSize3 = this4.array.length << 1;
+				this12.array[this12.pos++] = 0;
+				var this13 = _this.tmp;
+				if(this13.pos == this13.array.length) {
+					var newSize3 = this13.array.length << 1;
 					if(newSize3 < 128) {
 						newSize3 = 128;
 					}
 					var newArray3 = new Float32Array(newSize3);
-					newArray3.set(this4.array);
-					this4.array = newArray3;
+					newArray3.set(this13.array);
+					this13.array = newArray3;
 				}
-				this4.array[this4.pos++] = 0;
-				var this5 = _this.tmp;
-				if(this5.pos == this5.array.length) {
-					var newSize4 = this5.array.length << 1;
+				this13.array[this13.pos++] = 0;
+				var this14 = _this.tmp;
+				if(this14.pos == this14.array.length) {
+					var newSize4 = this14.array.length << 1;
 					if(newSize4 < 128) {
 						newSize4 = 128;
 					}
 					var newArray4 = new Float32Array(newSize4);
-					newArray4.set(this5.array);
-					this5.array = newArray4;
+					newArray4.set(this14.array);
+					this14.array = newArray4;
 				}
-				this5.array[this5.pos++] = r;
-				var this6 = _this.tmp;
-				if(this6.pos == this6.array.length) {
-					var newSize5 = this6.array.length << 1;
+				this14.array[this14.pos++] = r;
+				var this15 = _this.tmp;
+				if(this15.pos == this15.array.length) {
+					var newSize5 = this15.array.length << 1;
 					if(newSize5 < 128) {
 						newSize5 = 128;
 					}
 					var newArray5 = new Float32Array(newSize5);
-					newArray5.set(this6.array);
-					this6.array = newArray5;
+					newArray5.set(this15.array);
+					this15.array = newArray5;
 				}
-				this6.array[this6.pos++] = g;
-				var this7 = _this.tmp;
-				if(this7.pos == this7.array.length) {
-					var newSize6 = this7.array.length << 1;
+				this15.array[this15.pos++] = g;
+				var this16 = _this.tmp;
+				if(this16.pos == this16.array.length) {
+					var newSize6 = this16.array.length << 1;
 					if(newSize6 < 128) {
 						newSize6 = 128;
 					}
 					var newArray6 = new Float32Array(newSize6);
-					newArray6.set(this7.array);
-					this7.array = newArray6;
+					newArray6.set(this16.array);
+					this16.array = newArray6;
 				}
-				this7.array[this7.pos++] = b;
-				var this8 = _this.tmp;
-				if(this8.pos == this8.array.length) {
-					var newSize7 = this8.array.length << 1;
+				this16.array[this16.pos++] = b;
+				var this17 = _this.tmp;
+				if(this17.pos == this17.array.length) {
+					var newSize7 = this17.array.length << 1;
 					if(newSize7 < 128) {
 						newSize7 = 128;
 					}
 					var newArray7 = new Float32Array(newSize7);
-					newArray7.set(this8.array);
-					this8.array = newArray7;
+					newArray7.set(this17.array);
+					this17.array = newArray7;
 				}
-				this8.array[this8.pos++] = a;
+				this17.array[this17.pos++] = a;
 				_this.bufferDirty = true;
 				var _this1 = this.content;
 				var x1 = p.x - nx;
@@ -14302,94 +14225,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 				var g1 = p.g;
 				var b1 = p.b;
 				var a1 = p.a;
-				var this9 = _this1.tmp;
-				if(this9.pos == this9.array.length) {
-					var newSize8 = this9.array.length << 1;
+				var this18 = _this1.tmp;
+				if(this18.pos == this18.array.length) {
+					var newSize8 = this18.array.length << 1;
 					if(newSize8 < 128) {
 						newSize8 = 128;
 					}
 					var newArray8 = new Float32Array(newSize8);
-					newArray8.set(this9.array);
-					this9.array = newArray8;
+					newArray8.set(this18.array);
+					this18.array = newArray8;
 				}
-				this9.array[this9.pos++] = x1;
-				var this10 = _this1.tmp;
-				if(this10.pos == this10.array.length) {
-					var newSize9 = this10.array.length << 1;
+				this18.array[this18.pos++] = x1;
+				var this19 = _this1.tmp;
+				if(this19.pos == this19.array.length) {
+					var newSize9 = this19.array.length << 1;
 					if(newSize9 < 128) {
 						newSize9 = 128;
 					}
 					var newArray9 = new Float32Array(newSize9);
-					newArray9.set(this10.array);
-					this10.array = newArray9;
+					newArray9.set(this19.array);
+					this19.array = newArray9;
 				}
-				this10.array[this10.pos++] = y1;
-				var this11 = _this1.tmp;
-				if(this11.pos == this11.array.length) {
-					var newSize10 = this11.array.length << 1;
+				this19.array[this19.pos++] = y1;
+				var this110 = _this1.tmp;
+				if(this110.pos == this110.array.length) {
+					var newSize10 = this110.array.length << 1;
 					if(newSize10 < 128) {
 						newSize10 = 128;
 					}
 					var newArray10 = new Float32Array(newSize10);
-					newArray10.set(this11.array);
-					this11.array = newArray10;
+					newArray10.set(this110.array);
+					this110.array = newArray10;
 				}
-				this11.array[this11.pos++] = 0;
-				var this12 = _this1.tmp;
-				if(this12.pos == this12.array.length) {
-					var newSize11 = this12.array.length << 1;
+				this110.array[this110.pos++] = 0;
+				var this111 = _this1.tmp;
+				if(this111.pos == this111.array.length) {
+					var newSize11 = this111.array.length << 1;
 					if(newSize11 < 128) {
 						newSize11 = 128;
 					}
 					var newArray11 = new Float32Array(newSize11);
-					newArray11.set(this12.array);
-					this12.array = newArray11;
+					newArray11.set(this111.array);
+					this111.array = newArray11;
 				}
-				this12.array[this12.pos++] = 0;
-				var this13 = _this1.tmp;
-				if(this13.pos == this13.array.length) {
-					var newSize12 = this13.array.length << 1;
+				this111.array[this111.pos++] = 0;
+				var this112 = _this1.tmp;
+				if(this112.pos == this112.array.length) {
+					var newSize12 = this112.array.length << 1;
 					if(newSize12 < 128) {
 						newSize12 = 128;
 					}
 					var newArray12 = new Float32Array(newSize12);
-					newArray12.set(this13.array);
-					this13.array = newArray12;
+					newArray12.set(this112.array);
+					this112.array = newArray12;
 				}
-				this13.array[this13.pos++] = r1;
-				var this14 = _this1.tmp;
-				if(this14.pos == this14.array.length) {
-					var newSize13 = this14.array.length << 1;
+				this112.array[this112.pos++] = r1;
+				var this113 = _this1.tmp;
+				if(this113.pos == this113.array.length) {
+					var newSize13 = this113.array.length << 1;
 					if(newSize13 < 128) {
 						newSize13 = 128;
 					}
 					var newArray13 = new Float32Array(newSize13);
-					newArray13.set(this14.array);
-					this14.array = newArray13;
+					newArray13.set(this113.array);
+					this113.array = newArray13;
 				}
-				this14.array[this14.pos++] = g1;
-				var this15 = _this1.tmp;
-				if(this15.pos == this15.array.length) {
-					var newSize14 = this15.array.length << 1;
+				this113.array[this113.pos++] = g1;
+				var this114 = _this1.tmp;
+				if(this114.pos == this114.array.length) {
+					var newSize14 = this114.array.length << 1;
 					if(newSize14 < 128) {
 						newSize14 = 128;
 					}
 					var newArray14 = new Float32Array(newSize14);
-					newArray14.set(this15.array);
-					this15.array = newArray14;
+					newArray14.set(this114.array);
+					this114.array = newArray14;
 				}
-				this15.array[this15.pos++] = b1;
-				var this16 = _this1.tmp;
-				if(this16.pos == this16.array.length) {
-					var newSize15 = this16.array.length << 1;
+				this114.array[this114.pos++] = b1;
+				var this115 = _this1.tmp;
+				if(this115.pos == this115.array.length) {
+					var newSize15 = this115.array.length << 1;
 					if(newSize15 < 128) {
 						newSize15 = 128;
 					}
 					var newArray15 = new Float32Array(newSize15);
-					newArray15.set(this16.array);
-					this16.array = newArray15;
+					newArray15.set(this115.array);
+					this115.array = newArray15;
 				}
-				this16.array[this16.pos++] = a1;
+				this115.array[this115.pos++] = a1;
 				_this1.bufferDirty = true;
 				var pnext = i == last ? start : this.pindex + 2;
 				if(i < count - 1 || closed) {
@@ -14432,94 +14355,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g2 = p.g;
 					var b2 = p.b;
 					var a2 = p.a;
-					var this17 = _this8.tmp;
-					if(this17.pos == this17.array.length) {
-						var newSize16 = this17.array.length << 1;
+					var this116 = _this8.tmp;
+					if(this116.pos == this116.array.length) {
+						var newSize16 = this116.array.length << 1;
 						if(newSize16 < 128) {
 							newSize16 = 128;
 						}
 						var newArray16 = new Float32Array(newSize16);
-						newArray16.set(this17.array);
-						this17.array = newArray16;
+						newArray16.set(this116.array);
+						this116.array = newArray16;
 					}
-					this17.array[this17.pos++] = x2;
-					var this18 = _this8.tmp;
-					if(this18.pos == this18.array.length) {
-						var newSize17 = this18.array.length << 1;
+					this116.array[this116.pos++] = x2;
+					var this117 = _this8.tmp;
+					if(this117.pos == this117.array.length) {
+						var newSize17 = this117.array.length << 1;
 						if(newSize17 < 128) {
 							newSize17 = 128;
 						}
 						var newArray17 = new Float32Array(newSize17);
-						newArray17.set(this18.array);
-						this18.array = newArray17;
+						newArray17.set(this117.array);
+						this117.array = newArray17;
 					}
-					this18.array[this18.pos++] = y2;
-					var this19 = _this8.tmp;
-					if(this19.pos == this19.array.length) {
-						var newSize18 = this19.array.length << 1;
+					this117.array[this117.pos++] = y2;
+					var this118 = _this8.tmp;
+					if(this118.pos == this118.array.length) {
+						var newSize18 = this118.array.length << 1;
 						if(newSize18 < 128) {
 							newSize18 = 128;
 						}
 						var newArray18 = new Float32Array(newSize18);
-						newArray18.set(this19.array);
-						this19.array = newArray18;
+						newArray18.set(this118.array);
+						this118.array = newArray18;
 					}
-					this19.array[this19.pos++] = 0;
-					var this20 = _this8.tmp;
-					if(this20.pos == this20.array.length) {
-						var newSize19 = this20.array.length << 1;
+					this118.array[this118.pos++] = 0;
+					var this119 = _this8.tmp;
+					if(this119.pos == this119.array.length) {
+						var newSize19 = this119.array.length << 1;
 						if(newSize19 < 128) {
 							newSize19 = 128;
 						}
 						var newArray19 = new Float32Array(newSize19);
-						newArray19.set(this20.array);
-						this20.array = newArray19;
+						newArray19.set(this119.array);
+						this119.array = newArray19;
 					}
-					this20.array[this20.pos++] = 0;
-					var this21 = _this8.tmp;
-					if(this21.pos == this21.array.length) {
-						var newSize20 = this21.array.length << 1;
+					this119.array[this119.pos++] = 0;
+					var this120 = _this8.tmp;
+					if(this120.pos == this120.array.length) {
+						var newSize20 = this120.array.length << 1;
 						if(newSize20 < 128) {
 							newSize20 = 128;
 						}
 						var newArray20 = new Float32Array(newSize20);
-						newArray20.set(this21.array);
-						this21.array = newArray20;
+						newArray20.set(this120.array);
+						this120.array = newArray20;
 					}
-					this21.array[this21.pos++] = r2;
-					var this22 = _this8.tmp;
-					if(this22.pos == this22.array.length) {
-						var newSize21 = this22.array.length << 1;
+					this120.array[this120.pos++] = r2;
+					var this121 = _this8.tmp;
+					if(this121.pos == this121.array.length) {
+						var newSize21 = this121.array.length << 1;
 						if(newSize21 < 128) {
 							newSize21 = 128;
 						}
 						var newArray21 = new Float32Array(newSize21);
-						newArray21.set(this22.array);
-						this22.array = newArray21;
+						newArray21.set(this121.array);
+						this121.array = newArray21;
 					}
-					this22.array[this22.pos++] = g2;
-					var this23 = _this8.tmp;
-					if(this23.pos == this23.array.length) {
-						var newSize22 = this23.array.length << 1;
+					this121.array[this121.pos++] = g2;
+					var this122 = _this8.tmp;
+					if(this122.pos == this122.array.length) {
+						var newSize22 = this122.array.length << 1;
 						if(newSize22 < 128) {
 							newSize22 = 128;
 						}
 						var newArray22 = new Float32Array(newSize22);
-						newArray22.set(this23.array);
-						this23.array = newArray22;
+						newArray22.set(this122.array);
+						this122.array = newArray22;
 					}
-					this23.array[this23.pos++] = b2;
-					var this24 = _this8.tmp;
-					if(this24.pos == this24.array.length) {
-						var newSize23 = this24.array.length << 1;
+					this122.array[this122.pos++] = b2;
+					var this123 = _this8.tmp;
+					if(this123.pos == this123.array.length) {
+						var newSize23 = this123.array.length << 1;
 						if(newSize23 < 128) {
 							newSize23 = 128;
 						}
 						var newArray23 = new Float32Array(newSize23);
-						newArray23.set(this24.array);
-						this24.array = newArray23;
+						newArray23.set(this123.array);
+						this123.array = newArray23;
 					}
-					this24.array[this24.pos++] = a2;
+					this123.array[this123.pos++] = a2;
 					_this8.bufferDirty = true;
 					var _this9 = this.content;
 					var x3 = p.x - nnx;
@@ -14528,94 +14451,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g3 = p.g;
 					var b3 = p.b;
 					var a3 = p.a;
-					var this25 = _this9.tmp;
-					if(this25.pos == this25.array.length) {
-						var newSize24 = this25.array.length << 1;
+					var this124 = _this9.tmp;
+					if(this124.pos == this124.array.length) {
+						var newSize24 = this124.array.length << 1;
 						if(newSize24 < 128) {
 							newSize24 = 128;
 						}
 						var newArray24 = new Float32Array(newSize24);
-						newArray24.set(this25.array);
-						this25.array = newArray24;
+						newArray24.set(this124.array);
+						this124.array = newArray24;
 					}
-					this25.array[this25.pos++] = x3;
-					var this26 = _this9.tmp;
-					if(this26.pos == this26.array.length) {
-						var newSize25 = this26.array.length << 1;
+					this124.array[this124.pos++] = x3;
+					var this125 = _this9.tmp;
+					if(this125.pos == this125.array.length) {
+						var newSize25 = this125.array.length << 1;
 						if(newSize25 < 128) {
 							newSize25 = 128;
 						}
 						var newArray25 = new Float32Array(newSize25);
-						newArray25.set(this26.array);
-						this26.array = newArray25;
+						newArray25.set(this125.array);
+						this125.array = newArray25;
 					}
-					this26.array[this26.pos++] = y3;
-					var this27 = _this9.tmp;
-					if(this27.pos == this27.array.length) {
-						var newSize26 = this27.array.length << 1;
+					this125.array[this125.pos++] = y3;
+					var this126 = _this9.tmp;
+					if(this126.pos == this126.array.length) {
+						var newSize26 = this126.array.length << 1;
 						if(newSize26 < 128) {
 							newSize26 = 128;
 						}
 						var newArray26 = new Float32Array(newSize26);
-						newArray26.set(this27.array);
-						this27.array = newArray26;
+						newArray26.set(this126.array);
+						this126.array = newArray26;
 					}
-					this27.array[this27.pos++] = 0;
-					var this28 = _this9.tmp;
-					if(this28.pos == this28.array.length) {
-						var newSize27 = this28.array.length << 1;
+					this126.array[this126.pos++] = 0;
+					var this127 = _this9.tmp;
+					if(this127.pos == this127.array.length) {
+						var newSize27 = this127.array.length << 1;
 						if(newSize27 < 128) {
 							newSize27 = 128;
 						}
 						var newArray27 = new Float32Array(newSize27);
-						newArray27.set(this28.array);
-						this28.array = newArray27;
+						newArray27.set(this127.array);
+						this127.array = newArray27;
 					}
-					this28.array[this28.pos++] = 0;
-					var this29 = _this9.tmp;
-					if(this29.pos == this29.array.length) {
-						var newSize28 = this29.array.length << 1;
+					this127.array[this127.pos++] = 0;
+					var this128 = _this9.tmp;
+					if(this128.pos == this128.array.length) {
+						var newSize28 = this128.array.length << 1;
 						if(newSize28 < 128) {
 							newSize28 = 128;
 						}
 						var newArray28 = new Float32Array(newSize28);
-						newArray28.set(this29.array);
-						this29.array = newArray28;
+						newArray28.set(this128.array);
+						this128.array = newArray28;
 					}
-					this29.array[this29.pos++] = r3;
-					var this30 = _this9.tmp;
-					if(this30.pos == this30.array.length) {
-						var newSize29 = this30.array.length << 1;
+					this128.array[this128.pos++] = r3;
+					var this129 = _this9.tmp;
+					if(this129.pos == this129.array.length) {
+						var newSize29 = this129.array.length << 1;
 						if(newSize29 < 128) {
 							newSize29 = 128;
 						}
 						var newArray29 = new Float32Array(newSize29);
-						newArray29.set(this30.array);
-						this30.array = newArray29;
+						newArray29.set(this129.array);
+						this129.array = newArray29;
 					}
-					this30.array[this30.pos++] = g3;
-					var this31 = _this9.tmp;
-					if(this31.pos == this31.array.length) {
-						var newSize30 = this31.array.length << 1;
+					this129.array[this129.pos++] = g3;
+					var this130 = _this9.tmp;
+					if(this130.pos == this130.array.length) {
+						var newSize30 = this130.array.length << 1;
 						if(newSize30 < 128) {
 							newSize30 = 128;
 						}
 						var newArray30 = new Float32Array(newSize30);
-						newArray30.set(this31.array);
-						this31.array = newArray30;
+						newArray30.set(this130.array);
+						this130.array = newArray30;
 					}
-					this31.array[this31.pos++] = b3;
-					var this32 = _this9.tmp;
-					if(this32.pos == this32.array.length) {
-						var newSize31 = this32.array.length << 1;
+					this130.array[this130.pos++] = b3;
+					var this131 = _this9.tmp;
+					if(this131.pos == this131.array.length) {
+						var newSize31 = this131.array.length << 1;
 						if(newSize31 < 128) {
 							newSize31 = 128;
 						}
 						var newArray31 = new Float32Array(newSize31);
-						newArray31.set(this32.array);
-						this32.array = newArray31;
+						newArray31.set(this131.array);
+						this131.array = newArray31;
 					}
-					this32.array[this32.pos++] = a3;
+					this131.array[this131.pos++] = a3;
 					_this9.bufferDirty = true;
 					var _this10 = this.content;
 					var x4 = p.x + nnx;
@@ -14624,94 +14547,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g4 = p.g;
 					var b4 = p.b;
 					var a4 = p.a;
-					var this33 = _this10.tmp;
-					if(this33.pos == this33.array.length) {
-						var newSize32 = this33.array.length << 1;
+					var this132 = _this10.tmp;
+					if(this132.pos == this132.array.length) {
+						var newSize32 = this132.array.length << 1;
 						if(newSize32 < 128) {
 							newSize32 = 128;
 						}
 						var newArray32 = new Float32Array(newSize32);
-						newArray32.set(this33.array);
-						this33.array = newArray32;
+						newArray32.set(this132.array);
+						this132.array = newArray32;
 					}
-					this33.array[this33.pos++] = x4;
-					var this34 = _this10.tmp;
-					if(this34.pos == this34.array.length) {
-						var newSize33 = this34.array.length << 1;
+					this132.array[this132.pos++] = x4;
+					var this133 = _this10.tmp;
+					if(this133.pos == this133.array.length) {
+						var newSize33 = this133.array.length << 1;
 						if(newSize33 < 128) {
 							newSize33 = 128;
 						}
 						var newArray33 = new Float32Array(newSize33);
-						newArray33.set(this34.array);
-						this34.array = newArray33;
+						newArray33.set(this133.array);
+						this133.array = newArray33;
 					}
-					this34.array[this34.pos++] = y4;
-					var this35 = _this10.tmp;
-					if(this35.pos == this35.array.length) {
-						var newSize34 = this35.array.length << 1;
+					this133.array[this133.pos++] = y4;
+					var this134 = _this10.tmp;
+					if(this134.pos == this134.array.length) {
+						var newSize34 = this134.array.length << 1;
 						if(newSize34 < 128) {
 							newSize34 = 128;
 						}
 						var newArray34 = new Float32Array(newSize34);
-						newArray34.set(this35.array);
-						this35.array = newArray34;
+						newArray34.set(this134.array);
+						this134.array = newArray34;
 					}
-					this35.array[this35.pos++] = 0;
-					var this36 = _this10.tmp;
-					if(this36.pos == this36.array.length) {
-						var newSize35 = this36.array.length << 1;
+					this134.array[this134.pos++] = 0;
+					var this135 = _this10.tmp;
+					if(this135.pos == this135.array.length) {
+						var newSize35 = this135.array.length << 1;
 						if(newSize35 < 128) {
 							newSize35 = 128;
 						}
 						var newArray35 = new Float32Array(newSize35);
-						newArray35.set(this36.array);
-						this36.array = newArray35;
+						newArray35.set(this135.array);
+						this135.array = newArray35;
 					}
-					this36.array[this36.pos++] = 0;
-					var this37 = _this10.tmp;
-					if(this37.pos == this37.array.length) {
-						var newSize36 = this37.array.length << 1;
+					this135.array[this135.pos++] = 0;
+					var this136 = _this10.tmp;
+					if(this136.pos == this136.array.length) {
+						var newSize36 = this136.array.length << 1;
 						if(newSize36 < 128) {
 							newSize36 = 128;
 						}
 						var newArray36 = new Float32Array(newSize36);
-						newArray36.set(this37.array);
-						this37.array = newArray36;
+						newArray36.set(this136.array);
+						this136.array = newArray36;
 					}
-					this37.array[this37.pos++] = r4;
-					var this38 = _this10.tmp;
-					if(this38.pos == this38.array.length) {
-						var newSize37 = this38.array.length << 1;
+					this136.array[this136.pos++] = r4;
+					var this137 = _this10.tmp;
+					if(this137.pos == this137.array.length) {
+						var newSize37 = this137.array.length << 1;
 						if(newSize37 < 128) {
 							newSize37 = 128;
 						}
 						var newArray37 = new Float32Array(newSize37);
-						newArray37.set(this38.array);
-						this38.array = newArray37;
+						newArray37.set(this137.array);
+						this137.array = newArray37;
 					}
-					this38.array[this38.pos++] = g4;
-					var this39 = _this10.tmp;
-					if(this39.pos == this39.array.length) {
-						var newSize38 = this39.array.length << 1;
+					this137.array[this137.pos++] = g4;
+					var this138 = _this10.tmp;
+					if(this138.pos == this138.array.length) {
+						var newSize38 = this138.array.length << 1;
 						if(newSize38 < 128) {
 							newSize38 = 128;
 						}
 						var newArray38 = new Float32Array(newSize38);
-						newArray38.set(this39.array);
-						this39.array = newArray38;
+						newArray38.set(this138.array);
+						this138.array = newArray38;
 					}
-					this39.array[this39.pos++] = b4;
-					var this40 = _this10.tmp;
-					if(this40.pos == this40.array.length) {
-						var newSize39 = this40.array.length << 1;
+					this138.array[this138.pos++] = b4;
+					var this139 = _this10.tmp;
+					if(this139.pos == this139.array.length) {
+						var newSize39 = this139.array.length << 1;
 						if(newSize39 < 128) {
 							newSize39 = 128;
 						}
 						var newArray39 = new Float32Array(newSize39);
-						newArray39.set(this40.array);
-						this40.array = newArray39;
+						newArray39.set(this139.array);
+						this139.array = newArray39;
 					}
-					this40.array[this40.pos++] = a4;
+					this139.array[this139.pos++] = a4;
 					_this10.bufferDirty = true;
 					var _this11 = this.content;
 					_this11.index.push(this.pindex);
@@ -14739,94 +14662,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g5 = p.g;
 					var b5 = p.b;
 					var a5 = p.a;
-					var this41 = _this17.tmp;
-					if(this41.pos == this41.array.length) {
-						var newSize40 = this41.array.length << 1;
+					var this140 = _this17.tmp;
+					if(this140.pos == this140.array.length) {
+						var newSize40 = this140.array.length << 1;
 						if(newSize40 < 128) {
 							newSize40 = 128;
 						}
 						var newArray40 = new Float32Array(newSize40);
-						newArray40.set(this41.array);
-						this41.array = newArray40;
+						newArray40.set(this140.array);
+						this140.array = newArray40;
 					}
-					this41.array[this41.pos++] = x5;
-					var this42 = _this17.tmp;
-					if(this42.pos == this42.array.length) {
-						var newSize41 = this42.array.length << 1;
+					this140.array[this140.pos++] = x5;
+					var this141 = _this17.tmp;
+					if(this141.pos == this141.array.length) {
+						var newSize41 = this141.array.length << 1;
 						if(newSize41 < 128) {
 							newSize41 = 128;
 						}
 						var newArray41 = new Float32Array(newSize41);
-						newArray41.set(this42.array);
-						this42.array = newArray41;
+						newArray41.set(this141.array);
+						this141.array = newArray41;
 					}
-					this42.array[this42.pos++] = y5;
-					var this43 = _this17.tmp;
-					if(this43.pos == this43.array.length) {
-						var newSize42 = this43.array.length << 1;
+					this141.array[this141.pos++] = y5;
+					var this142 = _this17.tmp;
+					if(this142.pos == this142.array.length) {
+						var newSize42 = this142.array.length << 1;
 						if(newSize42 < 128) {
 							newSize42 = 128;
 						}
 						var newArray42 = new Float32Array(newSize42);
-						newArray42.set(this43.array);
-						this43.array = newArray42;
+						newArray42.set(this142.array);
+						this142.array = newArray42;
 					}
-					this43.array[this43.pos++] = 0;
-					var this44 = _this17.tmp;
-					if(this44.pos == this44.array.length) {
-						var newSize43 = this44.array.length << 1;
+					this142.array[this142.pos++] = 0;
+					var this143 = _this17.tmp;
+					if(this143.pos == this143.array.length) {
+						var newSize43 = this143.array.length << 1;
 						if(newSize43 < 128) {
 							newSize43 = 128;
 						}
 						var newArray43 = new Float32Array(newSize43);
-						newArray43.set(this44.array);
-						this44.array = newArray43;
+						newArray43.set(this143.array);
+						this143.array = newArray43;
 					}
-					this44.array[this44.pos++] = 0;
-					var this45 = _this17.tmp;
-					if(this45.pos == this45.array.length) {
-						var newSize44 = this45.array.length << 1;
+					this143.array[this143.pos++] = 0;
+					var this144 = _this17.tmp;
+					if(this144.pos == this144.array.length) {
+						var newSize44 = this144.array.length << 1;
 						if(newSize44 < 128) {
 							newSize44 = 128;
 						}
 						var newArray44 = new Float32Array(newSize44);
-						newArray44.set(this45.array);
-						this45.array = newArray44;
+						newArray44.set(this144.array);
+						this144.array = newArray44;
 					}
-					this45.array[this45.pos++] = r5;
-					var this46 = _this17.tmp;
-					if(this46.pos == this46.array.length) {
-						var newSize45 = this46.array.length << 1;
+					this144.array[this144.pos++] = r5;
+					var this145 = _this17.tmp;
+					if(this145.pos == this145.array.length) {
+						var newSize45 = this145.array.length << 1;
 						if(newSize45 < 128) {
 							newSize45 = 128;
 						}
 						var newArray45 = new Float32Array(newSize45);
-						newArray45.set(this46.array);
-						this46.array = newArray45;
+						newArray45.set(this145.array);
+						this145.array = newArray45;
 					}
-					this46.array[this46.pos++] = g5;
-					var this47 = _this17.tmp;
-					if(this47.pos == this47.array.length) {
-						var newSize46 = this47.array.length << 1;
+					this145.array[this145.pos++] = g5;
+					var this146 = _this17.tmp;
+					if(this146.pos == this146.array.length) {
+						var newSize46 = this146.array.length << 1;
 						if(newSize46 < 128) {
 							newSize46 = 128;
 						}
 						var newArray46 = new Float32Array(newSize46);
-						newArray46.set(this47.array);
-						this47.array = newArray46;
+						newArray46.set(this146.array);
+						this146.array = newArray46;
 					}
-					this47.array[this47.pos++] = b5;
-					var this48 = _this17.tmp;
-					if(this48.pos == this48.array.length) {
-						var newSize47 = this48.array.length << 1;
+					this146.array[this146.pos++] = b5;
+					var this147 = _this17.tmp;
+					if(this147.pos == this147.array.length) {
+						var newSize47 = this147.array.length << 1;
 						if(newSize47 < 128) {
 							newSize47 = 128;
 						}
 						var newArray47 = new Float32Array(newSize47);
-						newArray47.set(this48.array);
-						this48.array = newArray47;
+						newArray47.set(this147.array);
+						this147.array = newArray47;
 					}
-					this48.array[this48.pos++] = a5;
+					this147.array[this147.pos++] = a5;
 					_this17.bufferDirty = true;
 					var _this18 = this.content;
 					var x6 = p.x - nx;
@@ -14835,94 +14758,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g6 = p.g;
 					var b6 = p.b;
 					var a6 = p.a;
-					var this49 = _this18.tmp;
-					if(this49.pos == this49.array.length) {
-						var newSize48 = this49.array.length << 1;
+					var this148 = _this18.tmp;
+					if(this148.pos == this148.array.length) {
+						var newSize48 = this148.array.length << 1;
 						if(newSize48 < 128) {
 							newSize48 = 128;
 						}
 						var newArray48 = new Float32Array(newSize48);
-						newArray48.set(this49.array);
-						this49.array = newArray48;
+						newArray48.set(this148.array);
+						this148.array = newArray48;
 					}
-					this49.array[this49.pos++] = x6;
-					var this50 = _this18.tmp;
-					if(this50.pos == this50.array.length) {
-						var newSize49 = this50.array.length << 1;
+					this148.array[this148.pos++] = x6;
+					var this149 = _this18.tmp;
+					if(this149.pos == this149.array.length) {
+						var newSize49 = this149.array.length << 1;
 						if(newSize49 < 128) {
 							newSize49 = 128;
 						}
 						var newArray49 = new Float32Array(newSize49);
-						newArray49.set(this50.array);
-						this50.array = newArray49;
+						newArray49.set(this149.array);
+						this149.array = newArray49;
 					}
-					this50.array[this50.pos++] = y6;
-					var this51 = _this18.tmp;
-					if(this51.pos == this51.array.length) {
-						var newSize50 = this51.array.length << 1;
+					this149.array[this149.pos++] = y6;
+					var this150 = _this18.tmp;
+					if(this150.pos == this150.array.length) {
+						var newSize50 = this150.array.length << 1;
 						if(newSize50 < 128) {
 							newSize50 = 128;
 						}
 						var newArray50 = new Float32Array(newSize50);
-						newArray50.set(this51.array);
-						this51.array = newArray50;
+						newArray50.set(this150.array);
+						this150.array = newArray50;
 					}
-					this51.array[this51.pos++] = 0;
-					var this52 = _this18.tmp;
-					if(this52.pos == this52.array.length) {
-						var newSize51 = this52.array.length << 1;
+					this150.array[this150.pos++] = 0;
+					var this151 = _this18.tmp;
+					if(this151.pos == this151.array.length) {
+						var newSize51 = this151.array.length << 1;
 						if(newSize51 < 128) {
 							newSize51 = 128;
 						}
 						var newArray51 = new Float32Array(newSize51);
-						newArray51.set(this52.array);
-						this52.array = newArray51;
+						newArray51.set(this151.array);
+						this151.array = newArray51;
 					}
-					this52.array[this52.pos++] = 0;
-					var this53 = _this18.tmp;
-					if(this53.pos == this53.array.length) {
-						var newSize52 = this53.array.length << 1;
+					this151.array[this151.pos++] = 0;
+					var this152 = _this18.tmp;
+					if(this152.pos == this152.array.length) {
+						var newSize52 = this152.array.length << 1;
 						if(newSize52 < 128) {
 							newSize52 = 128;
 						}
 						var newArray52 = new Float32Array(newSize52);
-						newArray52.set(this53.array);
-						this53.array = newArray52;
+						newArray52.set(this152.array);
+						this152.array = newArray52;
 					}
-					this53.array[this53.pos++] = r6;
-					var this54 = _this18.tmp;
-					if(this54.pos == this54.array.length) {
-						var newSize53 = this54.array.length << 1;
+					this152.array[this152.pos++] = r6;
+					var this153 = _this18.tmp;
+					if(this153.pos == this153.array.length) {
+						var newSize53 = this153.array.length << 1;
 						if(newSize53 < 128) {
 							newSize53 = 128;
 						}
 						var newArray53 = new Float32Array(newSize53);
-						newArray53.set(this54.array);
-						this54.array = newArray53;
+						newArray53.set(this153.array);
+						this153.array = newArray53;
 					}
-					this54.array[this54.pos++] = g6;
-					var this55 = _this18.tmp;
-					if(this55.pos == this55.array.length) {
-						var newSize54 = this55.array.length << 1;
+					this153.array[this153.pos++] = g6;
+					var this154 = _this18.tmp;
+					if(this154.pos == this154.array.length) {
+						var newSize54 = this154.array.length << 1;
 						if(newSize54 < 128) {
 							newSize54 = 128;
 						}
 						var newArray54 = new Float32Array(newSize54);
-						newArray54.set(this55.array);
-						this55.array = newArray54;
+						newArray54.set(this154.array);
+						this154.array = newArray54;
 					}
-					this55.array[this55.pos++] = b6;
-					var this56 = _this18.tmp;
-					if(this56.pos == this56.array.length) {
-						var newSize55 = this56.array.length << 1;
+					this154.array[this154.pos++] = b6;
+					var this155 = _this18.tmp;
+					if(this155.pos == this155.array.length) {
+						var newSize55 = this155.array.length << 1;
 						if(newSize55 < 128) {
 							newSize55 = 128;
 						}
 						var newArray55 = new Float32Array(newSize55);
-						newArray55.set(this56.array);
-						this56.array = newArray55;
+						newArray55.set(this155.array);
+						this155.array = newArray55;
 					}
-					this56.array[this56.pos++] = a6;
+					this155.array[this155.pos++] = a6;
 					_this18.bufferDirty = true;
 					var _this19 = this.content;
 					var x7 = p.x - nnx;
@@ -14931,94 +14854,94 @@ h2d_Graphics.prototype = $extend(h2d_Drawable.prototype,{
 					var g7 = p.g;
 					var b7 = p.b;
 					var a7 = p.a;
-					var this57 = _this19.tmp;
-					if(this57.pos == this57.array.length) {
-						var newSize56 = this57.array.length << 1;
+					var this156 = _this19.tmp;
+					if(this156.pos == this156.array.length) {
+						var newSize56 = this156.array.length << 1;
 						if(newSize56 < 128) {
 							newSize56 = 128;
 						}
 						var newArray56 = new Float32Array(newSize56);
-						newArray56.set(this57.array);
-						this57.array = newArray56;
+						newArray56.set(this156.array);
+						this156.array = newArray56;
 					}
-					this57.array[this57.pos++] = x7;
-					var this58 = _this19.tmp;
-					if(this58.pos == this58.array.length) {
-						var newSize57 = this58.array.length << 1;
+					this156.array[this156.pos++] = x7;
+					var this157 = _this19.tmp;
+					if(this157.pos == this157.array.length) {
+						var newSize57 = this157.array.length << 1;
 						if(newSize57 < 128) {
 							newSize57 = 128;
 						}
 						var newArray57 = new Float32Array(newSize57);
-						newArray57.set(this58.array);
-						this58.array = newArray57;
+						newArray57.set(this157.array);
+						this157.array = newArray57;
 					}
-					this58.array[this58.pos++] = y7;
-					var this59 = _this19.tmp;
-					if(this59.pos == this59.array.length) {
-						var newSize58 = this59.array.length << 1;
+					this157.array[this157.pos++] = y7;
+					var this158 = _this19.tmp;
+					if(this158.pos == this158.array.length) {
+						var newSize58 = this158.array.length << 1;
 						if(newSize58 < 128) {
 							newSize58 = 128;
 						}
 						var newArray58 = new Float32Array(newSize58);
-						newArray58.set(this59.array);
-						this59.array = newArray58;
+						newArray58.set(this158.array);
+						this158.array = newArray58;
 					}
-					this59.array[this59.pos++] = 0;
-					var this60 = _this19.tmp;
-					if(this60.pos == this60.array.length) {
-						var newSize59 = this60.array.length << 1;
+					this158.array[this158.pos++] = 0;
+					var this159 = _this19.tmp;
+					if(this159.pos == this159.array.length) {
+						var newSize59 = this159.array.length << 1;
 						if(newSize59 < 128) {
 							newSize59 = 128;
 						}
 						var newArray59 = new Float32Array(newSize59);
-						newArray59.set(this60.array);
-						this60.array = newArray59;
+						newArray59.set(this159.array);
+						this159.array = newArray59;
 					}
-					this60.array[this60.pos++] = 0;
-					var this61 = _this19.tmp;
-					if(this61.pos == this61.array.length) {
-						var newSize60 = this61.array.length << 1;
+					this159.array[this159.pos++] = 0;
+					var this160 = _this19.tmp;
+					if(this160.pos == this160.array.length) {
+						var newSize60 = this160.array.length << 1;
 						if(newSize60 < 128) {
 							newSize60 = 128;
 						}
 						var newArray60 = new Float32Array(newSize60);
-						newArray60.set(this61.array);
-						this61.array = newArray60;
+						newArray60.set(this160.array);
+						this160.array = newArray60;
 					}
-					this61.array[this61.pos++] = r7;
-					var this62 = _this19.tmp;
-					if(this62.pos == this62.array.length) {
-						var newSize61 = this62.array.length << 1;
+					this160.array[this160.pos++] = r7;
+					var this161 = _this19.tmp;
+					if(this161.pos == this161.array.length) {
+						var newSize61 = this161.array.length << 1;
 						if(newSize61 < 128) {
 							newSize61 = 128;
 						}
 						var newArray61 = new Float32Array(newSize61);
-						newArray61.set(this62.array);
-						this62.array = newArray61;
+						newArray61.set(this161.array);
+						this161.array = newArray61;
 					}
-					this62.array[this62.pos++] = g7;
-					var this63 = _this19.tmp;
-					if(this63.pos == this63.array.length) {
-						var newSize62 = this63.array.length << 1;
+					this161.array[this161.pos++] = g7;
+					var this162 = _this19.tmp;
+					if(this162.pos == this162.array.length) {
+						var newSize62 = this162.array.length << 1;
 						if(newSize62 < 128) {
 							newSize62 = 128;
 						}
 						var newArray62 = new Float32Array(newSize62);
-						newArray62.set(this63.array);
-						this63.array = newArray62;
+						newArray62.set(this162.array);
+						this162.array = newArray62;
 					}
-					this63.array[this63.pos++] = b7;
-					var this64 = _this19.tmp;
-					if(this64.pos == this64.array.length) {
-						var newSize63 = this64.array.length << 1;
+					this162.array[this162.pos++] = b7;
+					var this163 = _this19.tmp;
+					if(this163.pos == this163.array.length) {
+						var newSize63 = this163.array.length << 1;
 						if(newSize63 < 128) {
 							newSize63 = 128;
 						}
 						var newArray63 = new Float32Array(newSize63);
-						newArray63.set(this64.array);
-						this64.array = newArray63;
+						newArray63.set(this163.array);
+						this163.array = newArray63;
 					}
-					this64.array[this64.pos++] = a7;
+					this163.array[this163.pos++] = a7;
 					_this19.bufferDirty = true;
 					var _this20 = this.content;
 					_this20.index.push(this.pindex + 1);
@@ -64757,11 +64680,9 @@ hxd_clipper__$Clipper_ClipperBase.prototype = {
 	}
 	,addPolygons: function(ppg,polyType) {
 		var result = false;
-		var _g_i = 0;
-		var _g_a = ppg;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(ppg);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			if(this.addPolygon(p,polyType)) {
 				result = true;
 			}
@@ -67132,11 +67053,9 @@ hxd_clipper_Clipper.prototype = $extend(hxd_clipper__$Clipper_ClipperBase.protot
 		}
 	}
 	,reversePolygons: function(polys) {
-		var _g_i = 0;
-		var _g_a = polys;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(polys);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			h2d_col_IPolygon.reverse(p);
 		}
 	}
@@ -68184,11 +68103,9 @@ hxd_clipper_ClipperOffset.prototype = {
 		}
 	}
 	,addPolygons: function(pols,joinType,endType) {
-		var _g_i = 0;
-		var _g_a = pols;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(pols);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			this.addPolygon(p,joinType,endType);
 		}
 	}
@@ -68221,11 +68138,11 @@ hxd_clipper_ClipperOffset.prototype = {
 		if(dx == 0 && dy == 0) {
 			return new h2d_col_Point();
 		}
-		var dz = 0.;
-		if(dz == null) {
-			dz = 0.;
+		var dz1 = 0.;
+		if(dz1 == null) {
+			dz1 = 0.;
 		}
-		var f = 1 / Math.sqrt(dx * dx + dy * dy + dz * dz);
+		var f = 1 / Math.sqrt(dx * dx + dy * dy + dz1 * dz1);
 		dx *= f;
 		dy *= f;
 		return new h2d_col_Point(dy,-dx);
@@ -71410,8 +71327,8 @@ hxd_fmt_hmd_Library.prototype = {
 				l.addCurve(o.name,fl,true,rot,scale);
 			}
 			if((o.flags & 1 << hxd_fmt_hmd_AnimationFlag.HasUV._hx_index) != 0) {
-				var this2 = new Array(a.frames * 2);
-				var fl1 = this2;
+				var this11 = new Array(a.frames * 2);
+				var fl1 = this11;
 				var size1 = 8 * a.frames;
 				var data1 = new haxe_io_Bytes(new ArrayBuffer(size1));
 				entry.read(data1,0,size1);
@@ -71424,8 +71341,8 @@ hxd_fmt_hmd_Library.prototype = {
 				l.addUVCurve(o.name,fl1);
 			}
 			if((o.flags & 1 << hxd_fmt_hmd_AnimationFlag.HasAlpha._hx_index) != 0) {
-				var this3 = new Array(a.frames);
-				var fl2 = this3;
+				var this12 = new Array(a.frames);
+				var fl2 = this12;
 				var size2 = 4 * a.frames;
 				var data2 = new haxe_io_Bytes(new ArrayBuffer(size2));
 				entry.read(data2,0,size2);
@@ -71443,8 +71360,8 @@ hxd_fmt_hmd_Library.prototype = {
 				while(_g8 < _g9.length) {
 					var p1 = _g9[_g8];
 					++_g8;
-					var this4 = new Array(a.frames);
-					var fl3 = this4;
+					var this13 = new Array(a.frames);
+					var fl3 = this13;
 					var size3 = 4 * a.frames;
 					var data3 = new haxe_io_Bytes(new ArrayBuffer(size3));
 					entry.read(data3,0,size3);
@@ -82593,9 +82510,6 @@ hxsl_Eval.prototype = {
 					d = hxsl_TExprDef.TBinop(op,e11,e21);
 				}
 				break;
-			case 4:case 21:
-				d = hxsl_TExprDef.TBinop(op,e11,e21);
-				break;
 			case 5:
 				var _g1 = e11.e;
 				var _g2 = e21.e;
@@ -83441,6 +83355,9 @@ hxsl_Eval.prototype = {
 				break;
 			case 20:
 				var _g1 = op.op;
+				d = hxsl_TExprDef.TBinop(op,e11,e21);
+				break;
+			case 4:case 21:
 				d = hxsl_TExprDef.TBinop(op,e11,e21);
 				break;
 			case 22:
@@ -90042,10 +89959,26 @@ logic_BuffSystem.getBuffedStats = function(unitId) {
 		var unit = logic_G.get_turn().units.h[unitId];
 		var result = logic_BuffSystem.calcStats(unit);
 		c.unitStats.h[unitId] = result.stats;
-		c.deathTriggers.h[unitId] = result.deathEvents;
-		c.turnStartTriggers.h[unitId] = result.turnStartEvents;
-		c.attackTriggers.h[unitId] = result.attackEvents;
-		c.defendTriggers.h[unitId] = result.defendEvents;
+		if(result.deathEvents.length > 0) {
+			var v = result.deathEvents;
+			c.deathTriggers.h[unitId] = v;
+		}
+		if(result.turnStartEvents.length > 0) {
+			var v = result.turnStartEvents;
+			c.turnStartTriggers.h[unitId] = v;
+		}
+		if(result.turnEndEvents.length > 0) {
+			var v = result.turnEndEvents;
+			c.turnEndTriggers.h[unitId] = v;
+		}
+		if(result.attackEvents.length > 0) {
+			var v = result.attackEvents;
+			c.attackTriggers.h[unitId] = v;
+		}
+		if(result.defendEvents.length > 0) {
+			var v = result.defendEvents;
+			c.defendTriggers.h[unitId] = v;
+		}
 	}
 	return c.unitStats.h[unitId];
 };
@@ -90070,7 +90003,7 @@ logic_BuffSystem.calcStats = function(unit,withAuras) {
 		while(_g < auras.length) {
 			var aura = auras[_g];
 			++_g;
-			if(aura._hx_index == 10) {
+			if(aura._hx_index == 12) {
 				var radius = aura.radius;
 				var effects = aura.effects;
 				var a = aura.affects;
@@ -90083,6 +90016,7 @@ logic_BuffSystem.calcStats = function(unit,withAuras) {
 	}
 	var deathEvents = [];
 	var turnStartEvents = [];
+	var turnEndEvents = [];
 	var attackEvents = [];
 	var defendEvents = [];
 	var _g = 0;
@@ -90111,11 +90045,16 @@ logic_BuffSystem.calcStats = function(unit,withAuras) {
 			var args3 = e.args;
 			turnStartEvents.push({ script : script3, args : args3});
 			break;
+		case 4:
+			var script4 = e.script;
+			var args4 = e.args;
+			turnEndEvents.push({ script : script4, args : args4});
+			break;
 		default:
 			continue;
 		}
 	}
-	return { stats : result, deathEvents : deathEvents, turnStartEvents : turnStartEvents, attackEvents : attackEvents, defendEvents : defendEvents};
+	return { stats : result, deathEvents : deathEvents, turnStartEvents : turnStartEvents, turnEndEvents : turnEndEvents, attackEvents : attackEvents, defendEvents : defendEvents};
 };
 logic_BuffSystem.applyStatsBuff = function(stats,buffEffects) {
 	var _g = 0;
@@ -90124,25 +90063,25 @@ logic_BuffSystem.applyStatsBuff = function(stats,buffEffects) {
 		var eff = _g1[_g];
 		++_g;
 		switch(eff._hx_index) {
-		case 4:
+		case 6:
 			var stat = eff.stat;
 			var value = eff.value;
 			logic_BuffSystem.SetStats(stats,stat,value);
 			break;
-		case 5:
+		case 7:
 			var stat1 = eff.stat;
 			var value1 = eff.delta;
 			logic_BuffSystem.ChangeStats(stats,stat1,value1);
 			break;
-		case 6:
+		case 8:
 			var id = eff.id;
 			logic_BuffSystem.AddSkillById(stats,id);
 			break;
-		case 8:
+		case 10:
 			var id1 = eff.id;
 			logic_BuffSystem.RemoveSkillById(stats,id1);
 			break;
-		case 9:
+		case 11:
 			logic_BuffSystem.BlockAllSkills(stats);
 			break;
 		default:
@@ -90271,7 +90210,7 @@ logic_CacheSystem.Refresh = function(turnCache,units,field,scripts,particles,uni
 		while(u_current < u_length) {
 			var u = u_h[u_keys[u_current++]];
 			u.hp = u.maxHp();
-			logic_EventSystem.fire(Std.string(logic_EventType.UnitUpdated) + u.id);
+			logic_EventSystem.fire(Std.string(logic_EventType.ObjectUpdated) + u.id);
 		}
 	}
 	if(field) {
@@ -90444,6 +90383,9 @@ logic_DataBase.getUpgrade = function(type) {
 	return logic_DataBase.db.upgradesMap.h[type];
 };
 logic_DataBase.getUpgradeBuff = function(upgrade) {
+	if(upgrade == null) {
+		return null;
+	}
 	return { type : upgrade.type, effects : upgrade.effects, turns : -1};
 };
 logic_DataBase.getMapInfo = function() {
@@ -90480,8 +90422,9 @@ logic_DataBase.saveData = function(mapId) {
 	if(logic_DataBase.db == null) {
 		return;
 	}
-	var writer = new JsonWriter_$42();
+	var writer = new JsonWriter_$40();
 	logic_UnitSystem.copyTurnUnitsToField();
+	logic_ItemSystem.copyTurnItemsToField();
 	var json = writer.write(model_Store.game.field);
 	utils_JSFileSystem.updateTextFile("fields/" + logic_DataBase.db.mapInfo.startField + ".json",json);
 };
@@ -90534,32 +90477,32 @@ logic_DataBase.onNeedRefresh = function(path) {
 	}
 };
 logic_DataBase.parseUnitMap = function() {
-	var parser = new JsonParser_$13();
+	var parser = new JsonParser_$14();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.UNITS_PATH);
 	logic_DataBase.db.unitsMap = parser.fromJson(tmp);
 };
 logic_DataBase.parseItemMap = function() {
-	var parser = new JsonParser_$15();
+	var parser = new JsonParser_$16();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.ITEMS_PATH);
 	logic_DataBase.db.itemsMap = parser.fromJson(tmp);
 };
 logic_DataBase.parseUpgradeMap = function() {
-	var parser = new JsonParser_$17();
+	var parser = new JsonParser_$18();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.UPGRADES_PATH);
 	logic_DataBase.db.upgradesMap = parser.fromJson(tmp);
 };
 logic_DataBase.parseBuffsMap = function() {
-	var parser = new JsonParser_$19();
+	var parser = new JsonParser_$20();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.BUFFS_PATH);
 	logic_DataBase.db.buffsMap = parser.fromJson(tmp);
 };
 logic_DataBase.parseSkillsMap = function() {
-	var parser = new JsonParser_$21();
+	var parser = new JsonParser_$22();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.SKILLS_PATH);
 	logic_DataBase.db.skillsMap = parser.fromJson(tmp);
 };
 logic_DataBase.parseMapInfo = function() {
-	var miParser = new JsonParser_$22();
+	var miParser = new JsonParser_$23();
 	var tmp = logic_DataBase.getMapFileText(logic_DataBase.INFO_PATH);
 	logic_DataBase.db.mapInfo = miParser.fromJson(tmp);
 };
@@ -90578,15 +90521,15 @@ var logic_EventType = $hxEnums["logic.EventType"] = { __ename__:true,__construct
 	,EnterFrame: {_hx_name:"EnterFrame",_hx_index:1,__enum__:"logic.EventType",toString:$estr}
 	,CamUpdated: {_hx_name:"CamUpdated",_hx_index:2,__enum__:"logic.EventType",toString:$estr}
 	,FieldEdited: {_hx_name:"FieldEdited",_hx_index:3,__enum__:"logic.EventType",toString:$estr}
-	,UnitSelected: {_hx_name:"UnitSelected",_hx_index:4,__enum__:"logic.EventType",toString:$estr}
-	,UnitUpdated: {_hx_name:"UnitUpdated",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
+	,SelectionChanged: {_hx_name:"SelectionChanged",_hx_index:4,__enum__:"logic.EventType",toString:$estr}
+	,ObjectUpdated: {_hx_name:"ObjectUpdated",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
 	,OrdersChanged: {_hx_name:"OrdersChanged",_hx_index:6,__enum__:"logic.EventType",toString:$estr}
 	,RallyPointChanged: {_hx_name:"RallyPointChanged",_hx_index:7,__enum__:"logic.EventType",toString:$estr}
 	,AvatarClicked: {_hx_name:"AvatarClicked",_hx_index:8,__enum__:"logic.EventType",toString:$estr}
 	,AvatarRightClicked: {_hx_name:"AvatarRightClicked",_hx_index:9,__enum__:"logic.EventType",toString:$estr}
 	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
 	,TurnDone: {_hx_name:"TurnDone",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
-	,TurnStart: {_hx_name:"TurnStart",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
+	,NewTurnCalculated: {_hx_name:"NewTurnCalculated",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
 	,MapSelected: {_hx_name:"MapSelected",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
 	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
 	,GameSaved: {_hx_name:"GameSaved",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
@@ -90605,8 +90548,8 @@ var logic_EventType = $hxEnums["logic.EventType"] = { __ename__:true,__construct
 	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
 	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:29,__enum__:"logic.EventType",toString:$estr}
 };
-logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
-logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.UnitSelected,logic_EventType.UnitUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.TurnStart,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
 var logic_EventSystem = function() { };
 $hxClasses["logic.EventSystem"] = logic_EventSystem;
 logic_EventSystem.__name__ = "logic.EventSystem";
@@ -90751,32 +90694,45 @@ $hxClasses["logic.FieldSystem"] = logic_FieldSystem;
 logic_FieldSystem.__name__ = "logic.FieldSystem";
 logic_FieldSystem.OnTileClick = function() {
 	var over = model_Store.cam.cursorHex;
-	model_Store.cam.selectedUnitIds = [];
-	var h = logic_G.get_turn().units.h;
-	var u_h = h;
-	var u_keys = Object.keys(h);
-	var u_length = u_keys.length;
-	var u_current = 0;
-	while(u_current < u_length) {
-		var u = u_h[u_keys[u_current++]];
-		if(u.hp < 1 || u.pos == null || u.pos.q != over.q || u.pos.r != over.r) {
-			continue;
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = logic_UnitSystem.GetUnitsFromHex(over);
+	while(_g1 < _g2.length) {
+		var v = _g2[_g1];
+		++_g1;
+		if(v.hp > 0) {
+			_g.push(v);
 		}
-		if(!logic_VisionSystem.isUnitVisible(u,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-			continue;
-		}
-		model_Store.cam.selectedUnitIds = [u.id];
-		break;
 	}
-	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
+	var _this = _g;
+	var result = new Array(_this.length);
+	var _g = 0;
+	var _g1 = _this.length;
+	while(_g < _g1) {
+		var i = _g++;
+		result[i] = _this[i].id;
+	}
+	model_Store.cam.selectedIds = result;
+	if(model_Store.cam.selectedIds.length == 0) {
+		var _this = logic_ItemSystem.GetItemsFromHex(over);
+		var result = new Array(_this.length);
+		var _g = 0;
+		var _g1 = _this.length;
+		while(_g < _g1) {
+			var i = _g++;
+			result[i] = _this[i].id;
+		}
+		model_Store.cam.selectedIds = result;
+	}
+	logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
 };
 logic_FieldSystem.RemoveSelection = function(unitId) {
-	HxOverrides.remove(model_Store.cam.selectedUnitIds,unitId);
-	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
+	HxOverrides.remove(model_Store.cam.selectedIds,unitId);
+	logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
 };
 logic_FieldSystem.LoadField = function(fieldId) {
 	var json = logic_DataBase.getMapFileText("fields/" + fieldId + ".json");
-	var parser = new JsonParser_$23();
+	var parser = new JsonParser_$24();
 	return parser.fromJson(json);
 };
 logic_FieldSystem.getNearestEmptyHex = function(busyPoints,field,pos,dir,flightH) {
@@ -90920,6 +90876,9 @@ logic_FieldSystem.getHexRing = function(field,center,radius,includeEmpty,dir) {
 	}
 	return result;
 };
+logic_FieldSystem.hasItemOnHex = function(hex,td) {
+	return logic_ItemSystem.GetItemsFromHex(hex).length > 0;
+};
 logic_FieldSystem.hasBuildingsOnHex = function(pos,td) {
 	if(pos == null) {
 		return false;
@@ -90933,7 +90892,7 @@ logic_FieldSystem.hasBuildingsOnHex = function(pos,td) {
 	if(!(q >= 0 && q < _this.size && r >= 0 && r < _this.size)) {
 		return false;
 	}
-	var units = logic_UnitSystem.GetAllUnitsFromHex(pos,td);
+	var units = logic_UnitSystem.GetUnitsFromHex(pos,td);
 	var _g = 0;
 	while(_g < units.length) {
 		var u = units[_g];
@@ -91008,7 +90967,7 @@ logic_FightSystem.CalcFights = function(oldTurn,newTurn,finishedActing) {
 			++_g3;
 			var _g4 = [];
 			var _g11 = 0;
-			var _g21 = logic_UnitSystem.GetAllUnitsFromHex(hex,newTurn);
+			var _g21 = logic_UnitSystem.GetUnitsFromHex(hex,newTurn);
 			while(_g11 < _g21.length) {
 				var v1 = _g21[_g11];
 				++_g11;
@@ -91127,29 +91086,31 @@ logic_G.get_turnNum = function() {
 	return model_Store.game.curTurn;
 };
 logic_G.get_prevTurn = function() {
-	if(model_Store.game.curTurn < 1) {
-		return null;
-	}
-	return model_Store.game.turns[model_Store.game.curTurn - 1];
+	return model_Store.game.turns[logic_G.get_prevTurnNum()];
 };
 logic_G.get_prevTurnNum = function() {
-	return model_Store.game.curTurn - 1;
+	var b = model_Store.game.curTurn - 1;
+	if(0 < b) {
+		return b;
+	} else {
+		return 0;
+	}
 };
 var logic_GameSystem = function() { };
 $hxClasses["logic.GameSystem"] = logic_GameSystem;
 logic_GameSystem.__name__ = "logic.GameSystem";
-logic_GameSystem.IsReplayMode = function() {
+logic_GameSystem.isReplayMode = function() {
 	return model_Store.game.curTurn != model_Store.game.turns.length - 1;
 };
-logic_GameSystem.CreateNewRandomGame = function(playersNum) {
+logic_GameSystem.createNewRandomGame = function(playersNum) {
 	var res = new model_GameData("sc");
 	var t = new model_TurnData();
 	res.turns.push(t);
 	res.field = logic_FieldGenerator.Generate(playersNum,t);
-	logic_GameSystem.CreateCountries(res,playersNum);
+	logic_GameSystem.createCountries(res,playersNum);
 	return res;
 };
-logic_GameSystem.CreateCountries = function(gd,playersNum) {
+logic_GameSystem.createCountries = function(gd,playersNum) {
 	var t = gd.turns[0];
 	var _g = 1;
 	var _g1 = playersNum + 1;
@@ -91189,19 +91150,19 @@ logic_GameSystem.createPlayersForGame = function(g,playersNum) {
 		g.players.push(p);
 	}
 };
-logic_GameSystem.DeleteLastTurn = function(delta) {
+logic_GameSystem.deleteLastTurn = function(delta) {
 	if(model_Store.game.netGame) {
 		return;
 	}
 	model_Store.game.curTurn = model_Store.game.turns.length - 2;
 	model_Store.game.turns.pop();
-	model_Store.cam.selectedUnitIds = [];
-	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	model_Store.cam.selectedIds = [];
+	logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnAnimStart) + "");
 };
-logic_GameSystem.ReplayTurn = function(delta) {
+logic_GameSystem.replayTurn = function(delta) {
 	if(model_Store.cam.state != model_GameState.PlayerTurn) {
 		return;
 	}
@@ -91212,6 +91173,7 @@ logic_GameSystem.ReplayTurn = function(delta) {
 	if(model_Store.game.curTurn >= model_Store.game.turns.length) {
 		model_Store.game.curTurn = model_Store.game.turns.length - 1;
 	}
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	logic_EventSystem.fire(Std.string(logic_EventType.TurnAnimStart) + "");
 };
 logic_GameSystem.getPlayerById = function(id) {
@@ -91243,15 +91205,15 @@ logic_GameSystem.isEveryoneFinished = function() {
 		}
 	}
 	var now = HxOverrides.now() / 1000;
-	logic_GameSystem.NextTurn();
+	logic_GameSystem.nextTurn();
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
-	haxe_Log.trace("Turn",{ fileName : "src/logic/GameSystem.hx", lineNumber : 117, className : "logic.GameSystem", methodName : "isEveryoneFinished", customParams : [model_Store.game.curTurn,"calculation time",turnCalcTime]});
+	haxe_Log.trace("Turn",{ fileName : "src/logic/GameSystem.hx", lineNumber : 119, className : "logic.GameSystem", methodName : "isEveryoneFinished", customParams : [model_Store.game.curTurn,"calculation time",turnCalcTime]});
 	logic_NetSystem.shareGameState();
 };
-logic_GameSystem.FinishTurn = function() {
+logic_GameSystem.finishTurn = function() {
 	model_Store.game.curTurn = model_Store.game.turns.length - 1;
-	model_Store.cam.selectedUnitIds = [];
-	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
+	model_Store.cam.selectedIds = [];
+	logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
 	logic_CamSystem.PushCamState();
 	logic_G.get_curPlayer().turnDone = true;
 	if(model_Store.game.netGame) {
@@ -91273,14 +91235,14 @@ logic_GameSystem.FinishTurn = function() {
 		}
 	}
 	var now = HxOverrides.now() / 1000;
-	logic_GameSystem.NextTurn();
+	logic_GameSystem.nextTurn();
 	var turnCalcTime = HxOverrides.now() / 1000 - now;
-	haxe_Log.trace("Turn",{ fileName : "src/logic/GameSystem.hx", lineNumber : 147, className : "logic.GameSystem", methodName : "FinishTurn", customParams : [model_Store.game.curTurn,"calculation time",turnCalcTime]});
+	haxe_Log.trace("Turn",{ fileName : "src/logic/GameSystem.hx", lineNumber : 149, className : "logic.GameSystem", methodName : "finishTurn", customParams : [model_Store.game.curTurn,"calculation time",turnCalcTime]});
 };
-logic_GameSystem.NextTurn = function() {
+logic_GameSystem.nextTurn = function() {
 	model_Store.cam.state = model_GameState.Calculating;
 	var oldTurn = model_Store.game.turns[model_Store.game.turns.length - 1];
-	var newTurn = logic_GameSystem.CalcTurn(oldTurn,oldTurn.copy());
+	var newTurn = logic_GameSystem.calcTurn(oldTurn,oldTurn.copy());
 	model_Store.game.turns.push(newTurn);
 	var _g = 0;
 	var _g1 = model_Store.game.players;
@@ -91294,25 +91256,67 @@ logic_GameSystem.NextTurn = function() {
 	if(model_Store.cache.length <= model_Store.game.curTurn) {
 		model_Store.cache.push(new model_TurnCache());
 	}
-	logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
-	logic_GameSystem.AutoSave();
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
+	if(model_Store.game.players.length == 1) {
+		logic_EventSystem.fire(Std.string(logic_EventType.TurnAnimStart) + "");
+	}
+	logic_GameSystem.autoSave();
 };
-logic_GameSystem.AutoSave = function() {
+logic_GameSystem.autoSave = function() {
 	logic_LSDSystem.Save(model_Store.game.netGame ? "net_autosave" : "autosave");
 };
-logic_GameSystem.CalcTurn = function(oldTurn,newTurn) {
+logic_GameSystem.calcTurn = function(oldTurn,newTurn) {
 	logic_GameSystem.MicroTurnNum = 0;
-	logic_UnitSystem.onCalculationTurnStart(oldTurn,newTurn);
-	logic_GameSystem.CalcTurnActions(oldTurn,newTurn);
-	logic_GameSystem.CalcTurnDeaths(oldTurn,newTurn);
-	logic_MovementSystem.AfterMoveSpread(newTurn);
-	logic_ResSystem.CollectRes(oldTurn,newTurn);
-	logic_UnitSystem.onCalculationTurnEnd(oldTurn,newTurn);
+	logic_GameSystem.MovementAllowed = true;
+	newTurn.microTurns.push(new model_MicroTurn());
+	newTurn.microTurns.push(new model_MicroTurn());
+	logic_ItemSystem.buildItemsCache(oldTurn);
+	logic_UnitSystem.removeDeadUnits(oldTurn,newTurn);
+	logic_ObjectSystem.onCalculationTurnStart(oldTurn,newTurn);
+	logic_GameSystem.calcTurnActions(oldTurn,newTurn);
+	logic_MovementSystem.afterMoveSpread(newTurn);
+	logic_GameSystem.MovementAllowed = false;
+	logic_ItemSystem.pickupItems(oldTurn,newTurn);
+	logic_ResSystem.collectRes(oldTurn,newTurn);
+	logic_ObjectSystem.onCalculationTurnEnd(oldTurn,newTurn);
+	logic_GameSystem.calcTurnDeaths(oldTurn,newTurn);
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = newTurn.microTurns;
+	while(_g1 < _g2.length) {
+		var v = _g2[_g1];
+		++_g1;
+		var tmp;
+		var tmp1;
+		if(v.effects.length <= 0) {
+			var h = v.acts.h;
+			var inlStringMapKeyIterator_h = h;
+			var inlStringMapKeyIterator_keys = Object.keys(h);
+			var inlStringMapKeyIterator_length = inlStringMapKeyIterator_keys.length;
+			var inlStringMapKeyIterator_current = 0;
+			tmp1 = inlStringMapKeyIterator_current < inlStringMapKeyIterator_length;
+		} else {
+			tmp1 = true;
+		}
+		if(!tmp1) {
+			var h1 = v.events.h;
+			var inlStringMapKeyIterator_h1 = h1;
+			var inlStringMapKeyIterator_keys1 = Object.keys(h1);
+			var inlStringMapKeyIterator_length1 = inlStringMapKeyIterator_keys1.length;
+			var inlStringMapKeyIterator_current1 = 0;
+			tmp = inlStringMapKeyIterator_current1 < inlStringMapKeyIterator_length1;
+		} else {
+			tmp = true;
+		}
+		if(tmp) {
+			_g.push(v);
+		}
+	}
+	newTurn.microTurns = _g;
 	logic_GameSystem.MicroTurnNum = -1;
 	return newTurn;
 };
-logic_GameSystem.CalcTurnActions = function(oldTurn,newTurn) {
-	newTurn.microTurns.push(new model_MicroTurn());
+logic_GameSystem.calcTurnActions = function(oldTurn,newTurn) {
 	var actionsNum = 1;
 	var _g = new haxe_ds_StringMap();
 	var h = oldTurn.units.h;
@@ -91327,18 +91331,14 @@ logic_GameSystem.CalcTurnActions = function(oldTurn,newTurn) {
 	var finishedActing = _g;
 	while(actionsNum > 0) {
 		actionsNum = 0;
-		newTurn.microTurns.push(new model_MicroTurn());
-		newTurn.fieldEffects.push([]);
 		actionsNum += logic_MovementSystem.MoveUnits(oldTurn,newTurn,finishedActing);
 		actionsNum += logic_FightSystem.CalcFights(oldTurn,newTurn,finishedActing);
 		actionsNum += logic_OrderSystem.DoOrders(oldTurn,newTurn,finishedActing);
 		logic_GameSystem.MicroTurnNum++;
+		newTurn.microTurns.push(new model_MicroTurn());
 	}
-	newTurn.microTurns.pop();
-	newTurn.fieldEffects.pop();
-	logic_GameSystem.MicroTurnNum--;
 };
-logic_GameSystem.CalcTurnDeaths = function(oldTurn,newTurn) {
+logic_GameSystem.calcTurnDeaths = function(oldTurn,newTurn) {
 	var deathTriggers = 1;
 	var deathTriggerDone_h = Object.create(null);
 	var h = oldTurn.units.h;
@@ -91352,8 +91352,6 @@ logic_GameSystem.CalcTurnDeaths = function(oldTurn,newTurn) {
 	}
 	while(deathTriggers > 0) {
 		deathTriggers = 0;
-		newTurn.microTurns.push(new model_MicroTurn());
-		newTurn.fieldEffects.push([]);
 		var h = newTurn.units.h;
 		var unit_h = h;
 		var unit_keys = Object.keys(h);
@@ -91371,10 +91369,8 @@ logic_GameSystem.CalcTurnDeaths = function(oldTurn,newTurn) {
 			}
 		}
 		logic_GameSystem.MicroTurnNum++;
+		newTurn.microTurns.push(new model_MicroTurn());
 	}
-	newTurn.microTurns.pop();
-	newTurn.fieldEffects.pop();
-	logic_GameSystem.MicroTurnNum--;
 };
 var logic_HexMath = function() { };
 $hxClasses["logic.HexMath"] = logic_HexMath;
@@ -91525,6 +91521,163 @@ logic_HexMath.getHexRing = function(center,radius) {
 	}
 	return results;
 };
+var logic_ItemSystem = function() { };
+$hxClasses["logic.ItemSystem"] = logic_ItemSystem;
+logic_ItemSystem.__name__ = "logic.ItemSystem";
+logic_ItemSystem.pickupItems = function(oldTurn,newTurn) {
+	var cache = model_Store.cache[logic_G.get_turnNum()];
+	var h = oldTurn.items.h;
+	var itemId_h = h;
+	var itemId_keys = Object.keys(h);
+	var itemId_length = itemId_keys.length;
+	var itemId_current = 0;
+	while(itemId_current < itemId_length) {
+		var itemId = itemId_keys[itemId_current++];
+		var item = newTurn.items.h[itemId];
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = logic_UnitSystem.GetUnitsFromHex(item.pos,newTurn);
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(v.hp > 0) {
+				_g.push(v);
+			}
+		}
+		var units = _g;
+		if(units.length < 1) {
+			continue;
+		}
+		var unit = units[0];
+		var triggers = cache.touchTriggers.h[item.id];
+		var _g3 = 0;
+		while(_g3 < triggers.length) {
+			var t = triggers[_g3];
+			++_g3;
+			logic_ScriptSystem.ExecuteTrigger("OnTouch",t.script,t.args,unit,newTurn,[item]);
+		}
+		if(item.unpickable) {
+			continue;
+		}
+		var _this = newTurn.items;
+		if(Object.prototype.hasOwnProperty.call(_this.h,itemId)) {
+			delete(_this.h[itemId]);
+		}
+		var v1 = model_ActionType.Dead;
+		newTurn.microTurns[logic_GameSystem.MicroTurnNum].acts.h[itemId] = v1;
+	}
+};
+logic_ItemSystem.GetItemsFromHex = function(hex,td) {
+	if(td == null) {
+		td = logic_G.get_turn();
+	}
+	var res = [];
+	var h = td.items.h;
+	var i_h = h;
+	var i_keys = Object.keys(h);
+	var i_length = i_keys.length;
+	var i_current = 0;
+	while(i_current < i_length) {
+		var i = i_h[i_keys[i_current++]];
+		var _this = i.pos;
+		if(_this.q == hex.q && _this.r == hex.r) {
+			res.push(i);
+		}
+	}
+	return res;
+};
+logic_ItemSystem.removeItem = function(td,id) {
+	var _this = td.items;
+	if(Object.prototype.hasOwnProperty.call(_this.h,id)) {
+		delete(_this.h[id]);
+	}
+};
+logic_ItemSystem.buildItemOnHex = function(td,parent,type,buildHex) {
+	if(!logic_FieldSystem.isHexAvailable(buildHex,parent,logic_G.get_field())) {
+		return null;
+	}
+	var child = new model_ItemData(type);
+	if(logic_FieldSystem.hasBuildingsOnHex(buildHex,td) || logic_FieldSystem.hasItemOnHex(buildHex,td)) {
+		return null;
+	}
+	child.pos = buildHex;
+	td.items.h[child.id] = child;
+	var v = model_ActionType.Born(buildHex.q,buildHex.r);
+	td.microTurns[logic_GameSystem.MicroTurnNum + 1].acts.h[child.id] = v;
+	return child;
+};
+logic_ItemSystem.buildItemsCache = function(oldTurn) {
+	var cache = model_Store.cache[logic_G.get_turnNum()];
+	var h = oldTurn.items.h;
+	var item_h = h;
+	var item_keys = Object.keys(h);
+	var item_length = item_keys.length;
+	var item_current = 0;
+	while(item_current < item_length) {
+		var item = item_h[item_keys[item_current++]];
+		logic_ItemSystem.buildItemCache(item,cache);
+	}
+};
+logic_ItemSystem.buildItemCache = function(item,cache) {
+	var turnStartEvents = [];
+	var turnEndEvents = [];
+	var touchEvents = [];
+	var _g = 0;
+	var _g1 = item.buffs;
+	while(_g < _g1.length) {
+		var buff = _g1[_g];
+		++_g;
+		var effects = buff.getEffects();
+		var _g2 = 0;
+		var _g3 = effects;
+		while(_g2 < _g3.length) {
+			var effect = _g3[_g2];
+			++_g2;
+			switch(effect._hx_index) {
+			case 3:
+				var script = effect.script;
+				var args = effect.args;
+				turnStartEvents.push({ script : script, args : args});
+				break;
+			case 4:
+				var script1 = effect.script;
+				var args1 = effect.args;
+				turnEndEvents.push({ script : script1, args : args1});
+				break;
+			case 13:
+				var script2 = effect.script;
+				var args2 = effect.args;
+				touchEvents.push({ script : script2, args : args2});
+				break;
+			default:
+			}
+		}
+	}
+	if(turnStartEvents.length > 0) {
+		cache.turnStartTriggers.h[item.id] = turnStartEvents;
+	}
+	if(turnEndEvents.length > 0) {
+		cache.turnEndTriggers.h[item.id] = turnEndEvents;
+	}
+	if(touchEvents.length > 0) {
+		cache.touchTriggers.h[item.id] = touchEvents;
+	}
+};
+logic_ItemSystem.copyTurnItemsToField = function() {
+	model_Store.game.field.items.h = Object.create(null);
+	var h = logic_G.get_turn().items.h;
+	var i_h = h;
+	var i_keys = Object.keys(h);
+	var i_length = i_keys.length;
+	var i_current = 0;
+	while(i_current < i_length) {
+		var i = i_h[i_keys[i_current++]];
+		var this1 = model_Store.game.field.items;
+		var key = i.id;
+		var value = i.copy();
+		this1.h[key] = value;
+	}
+};
 var logic_LSDSystem = function() { };
 $hxClasses["logic.LSDSystem"] = logic_LSDSystem;
 logic_LSDSystem.__name__ = "logic.LSDSystem";
@@ -91551,7 +91704,7 @@ logic_LSDSystem.GetSaves = function(netGames) {
 	if(json2 == null) {
 		return [];
 	} else {
-		var parser = new JsonParser_$9();
+		var parser = new JsonParser_$10();
 		saveDB = parser.fromJson(json2);
 	}
 	var res = [];
@@ -91592,11 +91745,11 @@ logic_LSDSystem.Save = function(filename) {
 	if(json2 == null) {
 		saveDB = new haxe_ds_StringMap();
 	} else {
-		var parser = new JsonParser_$9();
+		var parser = new JsonParser_$10();
 		saveDB = parser.fromJson(json2);
 	}
 	saveDB.h[filename] = si;
-	var writer2 = new JsonWriter_$46();
+	var writer2 = new JsonWriter_$44();
 	json2 = writer2.write(saveDB);
 	logic_LSDSystem.SaveString("saves.inf",json2);
 };
@@ -91607,12 +91760,12 @@ logic_LSDSystem.Delete = function(filename) {
 	if(json2 == null) {
 		return;
 	}
-	var parser = new JsonParser_$9();
+	var parser = new JsonParser_$10();
 	var saveDB = parser.fromJson(json2);
 	if(Object.prototype.hasOwnProperty.call(saveDB.h,filename)) {
 		delete(saveDB.h[filename]);
 	}
-	var writer2 = new JsonWriter_$46();
+	var writer2 = new JsonWriter_$44();
 	json2 = writer2.write(saveDB);
 	logic_LSDSystem.SaveString("saves.inf",json2);
 	logic_EventSystem.fire(Std.string(logic_EventType.GameSaveDeleted) + "");
@@ -91650,7 +91803,7 @@ logic_LSDSystem.LoadMap = function(mapId) {
 		this1.h[key] = value;
 	}
 	result.turns.push(t);
-	logic_GameSystem.CreateCountries(result,mapInfo.minPlayers);
+	logic_GameSystem.createCountries(result,mapInfo.minPlayers);
 	return result;
 };
 logic_LSDSystem.Load = function(filename) {
@@ -91923,7 +92076,7 @@ logic_MapEditorSystem.changeHistoryPos = function(delta) {
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "",null);
 	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
-	logic_MapEditorSystem.sendUnitSelection();
+	logic_MapEditorSystem.sendSelection();
 	logic_CacheSystem.Refresh(true,true,true);
 };
 logic_MapEditorSystem.Undo = function() {
@@ -91957,8 +92110,9 @@ logic_MapEditorSystem.OnTileMouseMove = function() {
 		var _this = model_Store.cam.cursorHex;
 		var hex = logic_MapEditorSystem.prevHex;
 		logic_UnitSystem.DragSelectedUnits(new model_HexCoords(_this.q - hex.q,_this.r - hex.r));
-		logic_MapEditorSystem.sendUnitSelection();
+		logic_MapEditorSystem.sendSelection();
 		logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "");
+		logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	} else {
 		logic_MapEditorSystem.ApplyTool();
 	}
@@ -92005,15 +92159,15 @@ logic_MapEditorSystem.ApplyTool = function() {
 		logic_MapEditorSystem.CreateUnits(toolUnit,selectedHexes);
 		break;
 	case 7:
-		logic_MapEditorSystem.DeleteUnits(selectedHexes);
+		logic_MapEditorSystem.DeleteObjects(selectedHexes);
 		break;
 	case 8:
-		logic_MapEditorSystem.SelectUnits(selectedHexes);
+		logic_MapEditorSystem.SelectObjects(selectedHexes);
 		return;
 	}
 	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "",tool);
 	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
-	logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "");
+	logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 };
 logic_MapEditorSystem.CreateItems = function(itemType,hexes) {
 	if(itemType == null) {
@@ -92050,55 +92204,91 @@ logic_MapEditorSystem.CreateUnits = function(unitType,hexes) {
 		logic_UnitSystem.AddDefaultBuffs(u,logic_G.get_turn());
 	}
 };
-logic_MapEditorSystem.DeleteUnits = function(hexes) {
+logic_MapEditorSystem.DeleteObjects = function(hexes) {
 	var _g = 0;
 	while(_g < hexes.length) {
 		var hex = hexes[_g];
 		++_g;
-		var unit = logic_UnitSystem.GetUnitFromHex(hex.q,hex.r);
-		if(unit == null) {
-			continue;
+		var units = logic_UnitSystem.GetUnitsFromHex(hex);
+		var _g1 = 0;
+		while(_g1 < units.length) {
+			var unit = units[_g1];
+			++_g1;
+			var key = unit.id;
+			var _this = model_Store.game.field.units;
+			if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
+				delete(_this.h[key]);
+			}
+			var this1 = logic_G.get_turn().units;
+			var key1 = unit.id;
+			var _this1 = this1;
+			if(Object.prototype.hasOwnProperty.call(_this1.h,key1)) {
+				delete(_this1.h[key1]);
+			}
 		}
-		var key = unit.id;
-		var _this = model_Store.game.field.units;
-		if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
-			delete(_this.h[key]);
-		}
-		var this1 = logic_G.get_turn().units;
-		var key1 = unit.id;
-		var _this1 = this1;
-		if(Object.prototype.hasOwnProperty.call(_this1.h,key1)) {
-			delete(_this1.h[key1]);
+		var items = logic_ItemSystem.GetItemsFromHex(hex);
+		var _g2 = 0;
+		while(_g2 < items.length) {
+			var item = items[_g2];
+			++_g2;
+			var key2 = item.id;
+			var _this2 = model_Store.game.field.items;
+			if(Object.prototype.hasOwnProperty.call(_this2.h,key2)) {
+				delete(_this2.h[key2]);
+			}
+			var this11 = logic_G.get_turn().items;
+			var key3 = item.id;
+			var _this3 = this11;
+			if(Object.prototype.hasOwnProperty.call(_this3.h,key3)) {
+				delete(_this3.h[key3]);
+			}
 		}
 	}
 };
-logic_MapEditorSystem.SelectUnits = function(hexes) {
+logic_MapEditorSystem.SelectObjects = function(hexes) {
 	if(!hxd_Key.isDown(17)) {
-		model_Store.cam.selectedUnitIds = [];
+		model_Store.cam.selectedIds = [];
 	}
 	var _g = 0;
 	while(_g < hexes.length) {
 		var hex = hexes[_g];
 		++_g;
-		var unit = logic_UnitSystem.GetUnitFromHex(hex.q,hex.r);
-		if(unit == null) {
-			continue;
+		var units = logic_UnitSystem.GetUnitsFromHex(hex);
+		var _g1 = 0;
+		while(_g1 < units.length) {
+			var unit = units[_g1];
+			++_g1;
+			model_Store.cam.selectedIds.push(unit.id);
 		}
-		model_Store.cam.selectedUnitIds.push(unit.id);
+		var items = logic_ItemSystem.GetItemsFromHex(hex);
+		var _g2 = 0;
+		while(_g2 < items.length) {
+			var item = items[_g2];
+			++_g2;
+			model_Store.cam.selectedIds.push(item.id);
+		}
 	}
-	logic_MapEditorSystem.sendUnitSelection();
+	logic_MapEditorSystem.sendSelection();
 };
-logic_MapEditorSystem.sendUnitSelection = function() {
-	logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
-	var _this = model_Store.cam.selectedUnitIds;
+logic_MapEditorSystem.sendSelection = function() {
+	logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
+	var _this = model_Store.cam.selectedIds;
 	var result = new Array(_this.length);
 	var _g = 0;
 	var _g1 = _this.length;
 	while(_g < _g1) {
 		var i = _g++;
-		result[i] = logic_G.get_turn().units.h[_this[i]];
+		var id = _this[i];
+		var result1 = null;
+		var this1 = logic_G.get_turn().units;
+		if(Object.prototype.hasOwnProperty.call(this1.h,id)) {
+			result1 = logic_G.get_turn().units.h[id];
+		} else {
+			result1 = logic_G.get_turn().items.h[id];
+		}
+		result[i] = result1;
 	}
-	utils_IframeEvents.Send({ method : "selected_units", data : result});
+	utils_IframeEvents.Send({ method : "selected_objects", data : result});
 };
 logic_MapEditorSystem.SetTilesType = function(type,hexes) {
 	var _g = 0;
@@ -92234,7 +92424,7 @@ logic_MovementSystem.CalcPaths = function(td,unit) {
 	}
 	return 1;
 };
-logic_MovementSystem.AfterMoveSpread = function(td) {
+logic_MovementSystem.afterMoveSpread = function(td) {
 	var busyPoints = new haxe_ds_StringMap();
 	var h = td.units.h;
 	var unit_h = h;
@@ -92250,11 +92440,79 @@ logic_MovementSystem.AfterMoveSpread = function(td) {
 		if(Object.prototype.hasOwnProperty.call(busyPoints.h,k)) {
 			busyPoints.h[k].push(unit);
 		} else {
-			busyPoints.h[k] = [unit];
+			var v = [unit];
+			busyPoints.h[k] = v;
 		}
 	}
 	logic_MovementSystem.ByCountrySpread(busyPoints,td);
 	logic_MovementSystem.IndividualSpread(busyPoints,td);
+	logic_MovementSystem.ItemsSpread(td);
+};
+logic_MovementSystem.ItemsSpread = function(td) {
+	var busyPoints = new haxe_ds_StringMap();
+	var h = td.items.h;
+	var item_h = h;
+	var item_keys = Object.keys(h);
+	var item_length = item_keys.length;
+	var item_current = 0;
+	while(item_current < item_length) {
+		var item = item_h[item_keys[item_current++]];
+		var k = Std.string(item.pos) + "";
+		if(Object.prototype.hasOwnProperty.call(busyPoints.h,k)) {
+			busyPoints.h[k].push(item);
+		} else {
+			var v = [item];
+			busyPoints.h[k] = v;
+		}
+	}
+	var towers = [];
+	var h = busyPoints.h;
+	var items_h = h;
+	var items_keys = Object.keys(h);
+	var items_length = items_keys.length;
+	var items_current = 0;
+	while(items_current < items_length) {
+		var items = items_h[items_keys[items_current++]];
+		if(items.length < 2) {
+			continue;
+		}
+		towers.push(items);
+	}
+	if(towers.length == 0) {
+		return;
+	}
+	var i = 0;
+	while(true) {
+		i = (i + 1) % towers.length;
+		var tower = towers[i];
+		var item = tower.pop();
+		var empty = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),item.pos);
+		if(empty == null) {
+			haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 137, className : "logic.MovementSystem", methodName : "ItemsSpread"});
+			if(!(towers.length > 0)) {
+				break;
+			} else {
+				continue;
+			}
+		}
+		item.pos = empty;
+		var v = [];
+		busyPoints.h[Std.string(empty) + ""] = v;
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = towers;
+		while(_g1 < _g2.length) {
+			var v1 = _g2[_g1];
+			++_g1;
+			if(v1.length > 1) {
+				_g.push(v1);
+			}
+		}
+		towers = _g;
+		if(!(towers.length > 0)) {
+			break;
+		}
+	}
 };
 logic_MovementSystem.IndividualSpread = function(busyPoints,td) {
 	var towers = [];
@@ -92290,7 +92548,7 @@ logic_MovementSystem.IndividualSpread = function(busyPoints,td) {
 		}
 		var empty = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),u.pos,u.dir,u.flying());
 		if(empty == null) {
-			haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 127, className : "logic.MovementSystem", methodName : "IndividualSpread"});
+			haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 168, className : "logic.MovementSystem", methodName : "IndividualSpread"});
 			if(!(towers.length > 0)) {
 				break;
 			} else {
@@ -92354,7 +92612,7 @@ logic_MovementSystem.ByCountrySpread = function(busyPoints,td) {
 			}
 			var emptyHex = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),countryUnits1[0].pos,countryUnits1[0].dir,0);
 			if(emptyHex == null) {
-				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 162, className : "logic.MovementSystem", methodName : "ByCountrySpread"});
+				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 203, className : "logic.MovementSystem", methodName : "ByCountrySpread"});
 				break;
 			}
 			var _g1 = 0;
@@ -92708,7 +92966,7 @@ logic_NetSystem.selectCountry = function(playerId,cId) {
 	logic_NetSystem.resetCountryPlayerBind(playerId);
 	logic_NetSystem.currentRoom.countries.h[cId] = playerId;
 	logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
-	var writer = new JsonWriter_$48();
+	var writer = new JsonWriter_$46();
 	logic_NetSystem.sendToOthers({ action : "SelectedCountries", params : writer.write(logic_NetSystem.currentRoom.countries)});
 };
 logic_NetSystem.onMsgFromPlayer = function(data) {
@@ -92761,7 +93019,7 @@ logic_NetSystem.onMsgFromPlayer = function(data) {
 		logic_OrderSystem.SelectOrder(params.unitId,params.orderIdx,params.autocast);
 		break;
 	case "SelectedCountries":
-		var parser = new JsonParser_$74();
+		var parser = new JsonParser_$73();
 		logic_NetSystem.currentRoom.countries = parser.fromJson(params);
 		logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
 		break;
@@ -92792,6 +93050,98 @@ logic_NetSystem.sendChatMsg = function(txt) {
 logic_NetSystem.sendCreateRoom = function(saveInfo) {
 	logic_NetSystem.ws.send({ method : "createRoom", data : { name : logic_NetSystem.myPlayerName + " room", maxPlayers : saveInfo == null ? 6 : saveInfo.playersNum, password : null, gameData : { saveName : saveInfo == null ? null : saveInfo.name}}});
 };
+var logic_ObjectSystem = function() { };
+$hxClasses["logic.ObjectSystem"] = logic_ObjectSystem;
+logic_ObjectSystem.__name__ = "logic.ObjectSystem";
+logic_ObjectSystem.removeBuff = function(obj,buff,td) {
+	HxOverrides.remove(obj.buffs,buff);
+	if(buff.turnsLeft != 1) {
+		return;
+	}
+	var effects = buff.getEffects();
+	var _g = 0;
+	var _g1 = effects;
+	while(_g < _g1.length) {
+		var effect = _g1[_g];
+		++_g;
+		if(effect._hx_index == 5) {
+			var script = effect.script;
+			var args = effect.args;
+			logic_ScriptSystem.ExecuteTrigger("OnBuffEnd",script,args,obj,td,[]);
+		}
+	}
+};
+logic_ObjectSystem.fireTriggers = function(triggerType,triggers,newTurn) {
+	var h = triggers.h;
+	var objId_h = h;
+	var objId_keys = Object.keys(h);
+	var objId_length = objId_keys.length;
+	var objId_current = 0;
+	while(objId_current < objId_length) {
+		var objId = objId_keys[objId_current++];
+		var actor = newTurn.units.h[objId];
+		if(actor == null) {
+			actor = newTurn.items.h[objId];
+		}
+		if(actor == null) {
+			continue;
+		}
+		var triggers1 = triggers.h[objId];
+		var _g = 0;
+		while(_g < triggers1.length) {
+			var t = triggers1[_g];
+			++_g;
+			logic_ScriptSystem.ExecuteTrigger(triggerType,t.script,t.args,actor,newTurn);
+		}
+	}
+};
+logic_ObjectSystem.onCalculationTurnStart = function(oldTurn,newTurn) {
+	var c = model_Store.cache[logic_G.get_turnNum()];
+	logic_ObjectSystem.fireTriggers("OnTurnStart",c.turnStartTriggers,newTurn);
+};
+logic_ObjectSystem.onCalculationTurnEnd = function(oldTurn,newTurn) {
+	var c = model_Store.cache[logic_G.get_turnNum()];
+	logic_ObjectSystem.fireTriggers("OnTurnEnd",c.turnEndTriggers,newTurn);
+	logic_ObjectSystem.calcBuffExpiration(new haxe_ds__$StringMap_StringMapKeyIterator(oldTurn.units.h),newTurn.units,newTurn);
+	logic_ObjectSystem.calcBuffExpiration(new haxe_ds__$StringMap_StringMapKeyIterator(oldTurn.items.h),newTurn.items,newTurn);
+};
+logic_ObjectSystem.calcBuffExpiration = function(keys,map,newTurn) {
+	var objId = keys;
+	while(objId.hasNext()) {
+		var objId1 = objId.next();
+		if(map.h[objId1] == null || !((map.h[objId1]) instanceof model_FieldObjectData)) {
+			continue;
+		}
+		var obj = js_Boot.__cast(map.h[objId1] , model_FieldObjectData);
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = obj.buffs;
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(v.turnsLeft == 1) {
+				_g.push(v);
+			}
+		}
+		var expiredBuffs = _g;
+		var _g3 = 0;
+		while(_g3 < expiredBuffs.length) {
+			var b = expiredBuffs[_g3];
+			++_g3;
+			logic_ObjectSystem.removeBuff(obj,b,newTurn);
+		}
+		var _g4 = 0;
+		var _g5 = obj.buffs;
+		while(_g4 < _g5.length) {
+			var passive = _g5[_g4];
+			++_g4;
+			if(passive.turnsLeft == -1) {
+				continue;
+			}
+			passive.turnsLeft--;
+		}
+	}
+};
 var logic_OrderSystem = function() { };
 $hxClasses["logic.OrderSystem"] = logic_OrderSystem;
 logic_OrderSystem.__name__ = "logic.OrderSystem";
@@ -92811,7 +93161,7 @@ logic_OrderSystem.SelectOrder = function(unitId,orderIdx,autocast,fromUI) {
 	if(autocast == null) {
 		autocast = false;
 	}
-	if(logic_GameSystem.IsReplayMode()) {
+	if(logic_GameSystem.isReplayMode()) {
 		return;
 	}
 	var unit = logic_G.get_turn().units.h[unitId];
@@ -92861,7 +93211,7 @@ logic_OrderSystem.CancelOrder = function(unitId,fromUI) {
 	if(fromUI == null) {
 		fromUI = false;
 	}
-	if(logic_GameSystem.IsReplayMode()) {
+	if(logic_GameSystem.isReplayMode()) {
 		return;
 	}
 	var unit = logic_G.get_turn().units.h[unitId];
@@ -92925,6 +93275,9 @@ logic_OrderSystem.DoOrder = function(td,unit,target) {
 			td.countries.h[unit.countryId].minerals -= skill.price;
 			td.countries.h[unit.countryId].mana -= skill.mana;
 		}
+		if(!unit.autocast) {
+			unit.rallyPoints = [];
+		}
 		var v = model_ActionType.Ordr(skill.script,initialPos,target);
 		td.microTurns[logic_GameSystem.MicroTurnNum].acts.h[unit.id] = v;
 	}
@@ -92964,7 +93317,7 @@ logic_OrderSystem.toString = function(skill) {
 var logic_ResSystem = function() { };
 $hxClasses["logic.ResSystem"] = logic_ResSystem;
 logic_ResSystem.__name__ = "logic.ResSystem";
-logic_ResSystem.CollectRes = function(oldTurn,newTurn) {
+logic_ResSystem.collectRes = function(oldTurn,newTurn) {
 	var h = oldTurn.units.h;
 	var unitId_h = h;
 	var unitId_keys = Object.keys(h);
@@ -93010,7 +93363,7 @@ logic_ResSystem.CollectRes = function(oldTurn,newTurn) {
 			++_g3;
 			var _g4 = [];
 			var _g11 = 0;
-			var _g21 = logic_UnitSystem.GetAllUnitsFromHex(hex,newTurn);
+			var _g21 = logic_UnitSystem.GetUnitsFromHex(hex,newTurn);
 			while(_g11 < _g21.length) {
 				var v1 = _g21[_g11];
 				++_g11;
@@ -93045,13 +93398,13 @@ logic_ScriptSystem.ExecuteOrder = function(skill,data,targetHex,unit,td) {
 	var scriptId = skill.script;
 	var radius = skill.radius;
 	var unitClone = unit.copy();
-	var _this = logic_UnitSystem.GetAllUnitsFromHex(targetHex,td,radius);
+	var _this = logic_UnitSystem.GetUnitsFromHex(targetHex,td,radius);
 	var result = new Array(_this.length);
 	var _g = 0;
 	var _g1 = _this.length;
 	while(_g < _g1) {
 		var i = _g++;
-		result[i] = _this[i].copy();
+		result[i] = js_Boot.__cast(_this[i].copy() , model_FieldObjectData);
 	}
 	var allClones = result;
 	var targetClones = allClones.slice();
@@ -93072,71 +93425,157 @@ logic_ScriptSystem.ExecuteOrder = function(skill,data,targetHex,unit,td) {
 		}
 		targetClones = _g;
 	}
-	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : "Skill", unit : unitClone, args : data, targetUnits : targetClones, targetHex : targetHex},allClones,td) != false;
+	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : "Skill", turnNum : logic_G.get_turnNum(), actor : unitClone, args : data, targetObjects : targetClones, targetHex : targetHex},allClones,td) != false;
 };
-logic_ScriptSystem.ExecuteTrigger = function(eventType,scriptId,args,unit,td,targetUnits) {
-	var unitClone = unit.copy();
-	var allClones = [unitClone];
-	var tmp;
-	if(targetUnits == null) {
-		tmp = [];
+logic_ScriptSystem.ExecuteTrigger = function(eventType,scriptId,args,actor,td,targetObjects) {
+	var actorClone = actor.copy();
+	var allClones = [actorClone];
+	if(targetObjects == null) {
+		targetObjects = [];
 	} else {
-		var result = new Array(targetUnits.length);
+		var result = new Array(targetObjects.length);
 		var _g = 0;
-		var _g1 = targetUnits.length;
+		var _g1 = targetObjects.length;
 		while(_g < _g1) {
 			var i = _g++;
-			result[i] = targetUnits[i].copy();
+			var obj = [targetObjects[i]];
+			var clone = Lambda.find(allClones,(function(obj) {
+				return function(cl) {
+					return cl.id == obj[0].id;
+				};
+			})(obj));
+			if(clone == null) {
+				clone = obj[0].copy();
+				allClones.push(clone);
+			}
+			result[i] = clone;
 		}
-		tmp = result;
+		targetObjects = result;
 	}
-	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : eventType, unit : unitClone, args : args, targetUnits : tmp},allClones,td);
+	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : eventType, turnNum : logic_G.get_turnNum(), actor : actorClone, args : args, targetObjects : targetObjects},allClones,td);
 };
-logic_ScriptSystem.ExecuteScript = function(scriptId,vars,unitClones,td) {
+logic_ScriptSystem.ExecuteScript = function(scriptId,vars,objClones,td) {
 	var scriptResult = true;
 	try {
 		var interp = new hscript_Interp();
 		interp.variables.h["trace"] = function(v) {
-			haxe_Log.trace(v,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 73, className : "logic.ScriptSystem", methodName : "ExecuteScript"});
+			haxe_Log.trace(v,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 93, className : "logic.ScriptSystem", methodName : "ExecuteScript"});
 		};
 		interp.variables.h["HexMath"] = logic_HexMath;
 		interp.variables.h["Math"] = hxd_Math;
 		interp.variables.h["vars"] = vars;
 		var this1 = interp.variables;
-		var value = logic_ScriptSystem.GetFuncs(td,unitClones);
+		var value = logic_ScriptSystem.GetFuncs(td,objClones);
 		this1.h["funcs"] = value;
-		var script = logic_LoadSystem.GetScript("skills/" + scriptId);
+		var script = logic_LoadSystem.GetScript(scriptId);
 		if(script == null) {
 			return false;
 		}
 		scriptResult = interp.execute(script);
 		var _g = 0;
-		while(_g < unitClones.length) {
-			var clone = unitClones[_g];
+		while(_g < objClones.length) {
+			var clone = objClones[_g];
 			++_g;
 			logic_ScriptSystem.checkDifference(clone,td);
 		}
 	} catch( _g ) {
 		var e = haxe_Exception.caught(_g);
-		haxe_Log.trace("runSkillScript error:",{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 90, className : "logic.ScriptSystem", methodName : "ExecuteScript", customParams : [e.get_message()]});
+		haxe_Log.trace("runSkillScript error:",{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 110, className : "logic.ScriptSystem", methodName : "ExecuteScript", customParams : [e.get_message()]});
 		return false;
 	}
 	return scriptResult != false;
 };
 logic_ScriptSystem.checkDifference = function(clone,td) {
+	if(Object.prototype.hasOwnProperty.call(td.units.h,clone.id)) {
+		var unit = js_Boot.__cast(clone , model_UnitData);
+		if(unit == null) {
+			return;
+		}
+		logic_ScriptSystem.checkUnitDifference(unit,td);
+	} else if(Object.prototype.hasOwnProperty.call(td.items.h,clone.id)) {
+		var item = js_Boot.__cast(clone , model_ItemData);
+		if(item == null) {
+			return;
+		}
+		logic_ScriptSystem.checkItemDifference(item,td);
+	}
+};
+logic_ScriptSystem.checkItemDifference = function(clone,td) {
+	var original = td.items.h[clone.id];
+	if(original == null) {
+		return;
+	}
+	var mt = td.microTurns[td.microTurns.length - 1];
+	var tmp;
+	var tmp1;
+	if(logic_GameSystem.MovementAllowed) {
+		var _this = original.pos;
+		var hex = clone.pos;
+		tmp1 = !(_this.q == hex.q && _this.r == hex.r);
+	} else {
+		tmp1 = false;
+	}
+	if(tmp1) {
+		var _this = logic_G.get_field();
+		var q = clone.pos.q;
+		var r = clone.pos.r;
+		tmp = q >= 0 && q < _this.size && r >= 0 && r < _this.size;
+	} else {
+		tmp = false;
+	}
+	if(tmp) {
+		var v = model_ActionType.Throw(clone.pos.q,clone.pos.r);
+		mt.acts.h[clone.id] = v;
+		original.pos = clone.pos;
+	}
+	if(clone.type != original.type) {
+		var newItemInfo = logic_DataBase.getItem(clone.type);
+		if(newItemInfo != null) {
+			var v = model_ActionType.Morph(clone.type);
+			mt.acts.h[clone.id] = v;
+			original.type = clone.type;
+			original.buffs = [];
+			var _this = newItemInfo.buffs;
+			var result = new Array(_this.length);
+			var _g = 0;
+			var _g1 = _this.length;
+			while(_g < _g1) {
+				var i = _g++;
+				result[i] = new model_BuffData(logic_DataBase.getBuff(_this[i]));
+			}
+			original.buffs = result;
+		}
+	}
+};
+logic_ScriptSystem.checkUnitDifference = function(clone,td) {
 	var original = td.units.h[clone.id];
 	if(original == null) {
 		return;
 	}
-	var mt = td.microTurns[logic_GameSystem.MicroTurnNum + 1];
+	var mt = td.microTurns[td.microTurns.length - 1];
 	if(clone.dir != original.dir) {
 		var v = model_ActionType.Spin(clone.dir);
 		mt.acts.h[clone.id] = v;
 		original.dir = clone.dir;
 	}
-	var _this = original.pos;
-	var hex = clone.pos;
-	if(!(_this.q == hex.q && _this.r == hex.r)) {
+	var tmp;
+	var tmp1;
+	if(logic_GameSystem.MovementAllowed) {
+		var _this = original.pos;
+		var hex = clone.pos;
+		tmp1 = !(_this.q == hex.q && _this.r == hex.r);
+	} else {
+		tmp1 = false;
+	}
+	if(tmp1) {
+		var _this = logic_G.get_field();
+		var q = clone.pos.q;
+		var r = clone.pos.r;
+		tmp = q >= 0 && q < _this.size && r >= 0 && r < _this.size;
+	} else {
+		tmp = false;
+	}
+	if(tmp) {
 		var v = model_ActionType.Throw(clone.pos.q,clone.pos.r);
 		mt.acts.h[clone.id] = v;
 		original.pos = clone.pos;
@@ -93189,7 +93628,7 @@ logic_ScriptSystem.GetFuncs = function(td,clones) {
 	}, getUnits : function(pos,radius) {
 		var _g = [];
 		var _g1 = 0;
-		var _g2 = logic_UnitSystem.GetAllUnitsFromHex(pos,td,radius);
+		var _g2 = logic_UnitSystem.GetUnitsFromHex(pos,td,radius);
 		while(_g1 < _g2.length) {
 			var v = _g2[_g1];
 			++_g1;
@@ -93221,11 +93660,15 @@ logic_ScriptSystem.GetFuncs = function(td,clones) {
 		}
 		return result;
 	}, createUnit : function(type,pos,parent) {
-		return logic_UnitSystem.BuildUnitOnHex(td,parent,type,pos);
+		return logic_UnitSystem.buildUnitOnHex(td,parent,type,pos);
+	}, createItem : function(type,pos,parent) {
+		return logic_ItemSystem.buildItemOnHex(td,parent,type,pos);
+	}, removeItem : function(id) {
+		logic_ItemSystem.removeItem(td,id);
 	}, addEffect : function(effectId,hex,colorAdj) {
-		return td.fieldEffects[logic_GameSystem.MicroTurnNum].push(model_FieldEffect.SimpleEffect(effectId,hex,colorAdj));
+		return td.microTurns[logic_GameSystem.MicroTurnNum].effects.push(model_FieldEffect.SimpleEffect(effectId,hex,colorAdj));
 	}, addDirectedEffect : function(effectId,from,to,colorAdj) {
-		return td.fieldEffects[logic_GameSystem.MicroTurnNum].push(model_FieldEffect.DirectedEffect(effectId,from,to,colorAdj));
+		return td.microTurns[logic_GameSystem.MicroTurnNum].effects.push(model_FieldEffect.DirectedEffect(effectId,from,to,colorAdj));
 	}, addUpgrade : function(upgradeType,countryId) {
 		return logic_CountrySystem.addUpgrade(countryId,logic_DataBase.getUpgrade(upgradeType),td);
 	}, addBuff : function(clone,buffType) {
@@ -93244,111 +93687,7 @@ logic_UnitSystem.GetUnitHitHexes = function(u) {
 	}
 	return [logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir)),logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir - 2)),logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir + 2))];
 };
-logic_UnitSystem.GetUnitFromHex = function(q,r,td) {
-	if(td == null) {
-		td = logic_G.get_turn();
-	}
-	var h = td.units.h;
-	var u_h = h;
-	var u_keys = Object.keys(h);
-	var u_length = u_keys.length;
-	var u_current = 0;
-	while(u_current < u_length) {
-		var u = u_h[u_keys[u_current++]];
-		if(u.pos.q == q && u.pos.r == r) {
-			return u;
-		}
-	}
-	return null;
-};
-logic_UnitSystem.copyTurnUnitsToField = function() {
-	model_Store.game.field.units.h = Object.create(null);
-	var h = logic_G.get_turn().units.h;
-	var u_h = h;
-	var u_keys = Object.keys(h);
-	var u_length = u_keys.length;
-	var u_current = 0;
-	while(u_current < u_length) {
-		var u = u_h[u_keys[u_current++]];
-		var this1 = model_Store.game.field.units;
-		var key = u.id;
-		var value = u.copy();
-		this1.h[key] = value;
-	}
-};
-logic_UnitSystem.ResetUnitsBuffs = function() {
-	var _g = 0;
-	var _g1 = model_Store.cam.selectedUnitIds;
-	while(_g < _g1.length) {
-		var unitId = _g1[_g];
-		++_g;
-		var unit = logic_G.get_turn().units.h[unitId];
-		unit.buffs = [];
-		logic_UnitSystem.AddDefaultBuffs(unit,logic_G.get_turn());
-		logic_EventSystem.fire(Std.string(logic_EventType.UnitUpdated) + unitId);
-	}
-	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
-	var _this = model_Store.cam.selectedUnitIds;
-	var result = new Array(_this.length);
-	var _g = 0;
-	var _g1 = _this.length;
-	while(_g < _g1) {
-		var i = _g++;
-		result[i] = logic_G.get_turn().units.h[_this[i]];
-	}
-	utils_IframeEvents.Send({ method : "selected_units", data : result});
-};
-logic_UnitSystem.UpdateUnits = function(units) {
-	var parser = new JsonParser_$0();
-	var _g = 0;
-	while(_g < units.length) {
-		var u = units[_g];
-		++_g;
-		var this1 = logic_G.get_turn().units;
-		if(!Object.prototype.hasOwnProperty.call(this1.h,u.id)) {
-			continue;
-		}
-		var key = u.id;
-		var _this = model_Store.cache[model_Store.game.curTurn].unitStats;
-		if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
-			delete(_this.h[key]);
-		}
-		var json = JSON.stringify(u);
-		var this11 = logic_G.get_turn().units;
-		var k = u.id;
-		var v = parser.fromJson(json).copy();
-		this11.h[k] = v;
-		logic_G.get_turn().units.h[u.id].hp = logic_G.get_turn().units.h[u.id].maxHp();
-		logic_EventSystem.fire(logic_EventType.UnitUpdated + u.id);
-	}
-	logic_MapEditorSystem.pushToHistory();
-	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
-};
-logic_UnitSystem.DragSelectedUnits = function(delta) {
-	var _g = 0;
-	var _g1 = model_Store.cam.selectedUnitIds;
-	while(_g < _g1.length) {
-		var unitId = _g1[_g];
-		++_g;
-		var unit = logic_G.get_turn().units.h[unitId];
-		var _this = unit.pos;
-		var newPos = new model_HexCoords(_this.q + delta.q,_this.r + delta.r);
-		var _this1 = logic_G.get_field();
-		var q = newPos.q;
-		var r = newPos.r;
-		if(!(q >= 0 && q < _this1.size && r >= 0 && r < _this1.size) || !logic_FieldSystem.isEmpty(logic_G.get_turn(),newPos.q,newPos.r)) {
-			continue;
-		}
-		var _this2 = logic_G.get_field();
-		if(_this2.tiles[newPos.q * _this2.size + newPos.r].t == 0) {
-			continue;
-		}
-		unit.pos = newPos;
-		logic_EventSystem.fire(Std.string(logic_EventType.UnitUpdated) + unitId);
-	}
-	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
-};
-logic_UnitSystem.GetAllUnitsFromHex = function(hex,td,radius) {
+logic_UnitSystem.GetUnitsFromHex = function(hex,td,radius) {
 	if(radius == null) {
 		radius = 0;
 	}
@@ -93372,11 +93711,141 @@ logic_UnitSystem.GetAllUnitsFromHex = function(hex,td,radius) {
 	}
 	return result;
 };
+logic_UnitSystem.copyTurnUnitsToField = function() {
+	model_Store.game.field.units.h = Object.create(null);
+	var h = logic_G.get_turn().units.h;
+	var u_h = h;
+	var u_keys = Object.keys(h);
+	var u_length = u_keys.length;
+	var u_current = 0;
+	while(u_current < u_length) {
+		var u = u_h[u_keys[u_current++]];
+		var this1 = model_Store.game.field.units;
+		var key = u.id;
+		var value = u.copy();
+		this1.h[key] = value;
+	}
+};
+logic_UnitSystem.ResetUnitsBuffs = function() {
+	var _g = 0;
+	var _g1 = model_Store.cam.selectedIds;
+	while(_g < _g1.length) {
+		var unitId = _g1[_g];
+		++_g;
+		var unit = logic_G.get_turn().units.h[unitId];
+		unit.buffs = [];
+		logic_UnitSystem.AddDefaultBuffs(unit,logic_G.get_turn());
+		logic_EventSystem.fire(Std.string(logic_EventType.ObjectUpdated) + unitId);
+	}
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+	logic_MapEditorSystem.sendSelection();
+};
+logic_UnitSystem.UpdateObjects = function(objects) {
+	var uparser = new JsonParser_$0();
+	var iparser = new JsonParser_$1();
+	var _g = 0;
+	while(_g < objects.length) {
+		var o = objects[_g];
+		++_g;
+		var this1 = logic_G.get_turn().units;
+		if(!Object.prototype.hasOwnProperty.call(this1.h,o.id)) {
+			var this11 = logic_G.get_turn().items;
+			if(!Object.prototype.hasOwnProperty.call(this11.h,o.id)) {
+				continue;
+			}
+			var json = JSON.stringify(o);
+			var this12 = logic_G.get_turn().items;
+			var k = o.id;
+			var v = iparser.fromJson(json).copy();
+			this12.h[k] = v;
+		} else {
+			var key = o.id;
+			var _this = model_Store.cache[model_Store.game.curTurn].unitStats;
+			if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
+				delete(_this.h[key]);
+			}
+			var json1 = JSON.stringify(o);
+			var this13 = logic_G.get_turn().units;
+			var k1 = o.id;
+			var v1 = uparser.fromJson(json1).copy();
+			this13.h[k1] = v1;
+			logic_G.get_turn().units.h[o.id].hp = logic_G.get_turn().units.h[o.id].maxHp();
+		}
+		logic_EventSystem.fire(logic_EventType.ObjectUpdated + o.id);
+	}
+	logic_MapEditorSystem.pushToHistory();
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+};
+logic_UnitSystem.DragSelectedUnits = function(delta) {
+	var _g = 0;
+	var _g1 = model_Store.cam.selectedIds;
+	while(_g < _g1.length) {
+		var unitId = _g1[_g];
+		++_g;
+		var unit = logic_G.get_turn().units.h[unitId];
+		var _this = unit.pos;
+		var newPos = new model_HexCoords(_this.q + delta.q,_this.r + delta.r);
+		var _this1 = logic_G.get_field();
+		var q = newPos.q;
+		var r = newPos.r;
+		if(!(q >= 0 && q < _this1.size && r >= 0 && r < _this1.size) || !logic_FieldSystem.isEmpty(logic_G.get_turn(),newPos.q,newPos.r)) {
+			continue;
+		}
+		var _this2 = logic_G.get_field();
+		if(_this2.tiles[newPos.q * _this2.size + newPos.r].t == 0) {
+			continue;
+		}
+		unit.pos = newPos;
+		logic_EventSystem.fire(Std.string(logic_EventType.ObjectUpdated) + unitId);
+	}
+	utils_IframeEvents.Send({ method : "mark_field_unsaved"});
+};
 logic_UnitSystem.getAuras = function(td) {
 	var result = [];
 	if(td == null) {
 		return result;
 	}
+	var getAllObjAuras = function(obj) {
+		var res = [];
+		var _g = 0;
+		var _g1 = obj.buffs;
+		while(_g < _g1.length) {
+			var buff = _g1[_g];
+			++_g;
+			var _g2 = [];
+			var _g11 = 0;
+			var _g21 = buff.getEffects();
+			while(_g11 < _g21.length) {
+				var v = _g21[_g11];
+				++_g11;
+				var getAllObjAuras;
+				if(v._hx_index == 12) {
+					var radius = v.radius;
+					var e = v.effects;
+					var affects = v.affects;
+					var p = v.particles;
+					var c = v.color;
+					getAllObjAuras = true;
+				} else {
+					getAllObjAuras = false;
+				}
+				if(getAllObjAuras) {
+					_g2.push(v);
+				}
+			}
+			var _this = _g2;
+			var result = new Array(_this.length);
+			var _g3 = 0;
+			var _g12 = _this.length;
+			while(_g3 < _g12) {
+				var i = _g3++;
+				result[i] = { aura : _this[i], center : obj.pos};
+			}
+			var auras = result;
+			res = res.concat(auras);
+		}
+		return res;
+	};
 	var h = td.units.h;
 	var unit_h = h;
 	var unit_keys = Object.keys(h);
@@ -93384,47 +93853,74 @@ logic_UnitSystem.getAuras = function(td) {
 	var unit_current = 0;
 	while(unit_current < unit_length) {
 		var unit = unit_h[unit_keys[unit_current++]];
-		var _g = 0;
-		var _g1 = unit.buffs;
-		while(_g < _g1.length) {
-			var buff = _g1[_g];
-			++_g;
-			var _g2 = [];
-			var _g11 = 0;
-			var _g21 = buff.getEffects();
-			while(_g11 < _g21.length) {
-				var v = _g21[_g11];
-				++_g11;
-				var tmp;
-				if(v._hx_index == 10) {
-					var radius = v.radius;
-					var e = v.effects;
-					var affects = v.affects;
-					var p = v.particles;
-					var c = v.color;
-					tmp = true;
+		result = result.concat(getAllObjAuras(unit));
+	}
+	var h = td.items.h;
+	var item_h = h;
+	var item_keys = Object.keys(h);
+	var item_length = item_keys.length;
+	var item_current = 0;
+	while(item_current < item_length) {
+		var item = item_h[item_keys[item_current++]];
+		result = result.concat(getAllObjAuras(item));
+	}
+	return result;
+};
+logic_UnitSystem.getAurasFromObj = function(hex,obj,objCountryId,countryId) {
+	if(countryId == null) {
+		countryId = -1;
+	}
+	var result = [];
+	var _g = 0;
+	var _g1 = obj.buffs;
+	while(_g < _g1.length) {
+		var buff = _g1[_g];
+		++_g;
+		var _g2 = [];
+		var _g11 = 0;
+		var _g21 = buff.getEffects();
+		while(_g11 < _g21.length) {
+			var v = _g21[_g11];
+			++_g11;
+			if((function(e) {
+				if(e._hx_index == 12) {
+					var radius = e.radius;
+					var e1 = e.effects;
+					var affects = e.affects;
+					var p = e.particles;
+					var c = e.color;
+					if(countryId != -1) {
+						switch(affects._hx_index) {
+						case 1:
+							if(objCountryId != countryId) {
+								return false;
+							}
+							break;
+						case 2:
+							if(objCountryId == countryId) {
+								return false;
+							}
+							break;
+						default:
+						}
+					}
+					return logic_HexMath.hexDistance(hex,obj.pos) <= radius;
 				} else {
-					tmp = false;
+					return false;
 				}
-				if(tmp) {
-					_g2.push(v);
-				}
+			})(v)) {
+				_g2.push(v);
 			}
-			var _this = _g2;
-			var result1 = new Array(_this.length);
-			var _g3 = 0;
-			var _g12 = _this.length;
-			while(_g3 < _g12) {
-				var i = _g3++;
-				result1[i] = { aura : _this[i], center : unit.pos};
-			}
-			var auras = result1;
-			result = result.concat(auras);
 		}
+		var auras = _g2;
+		result = result.concat(auras);
 	}
 	return result;
 };
 logic_UnitSystem.getAurasOnHex = function(hex,countryId) {
+	if(countryId == null) {
+		countryId = -1;
+	}
 	var result = [];
 	var h = logic_G.get_turn().units.h;
 	var unit_h = h;
@@ -93432,51 +93928,19 @@ logic_UnitSystem.getAurasOnHex = function(hex,countryId) {
 	var unit_length = unit_keys.length;
 	var unit_current = 0;
 	while(unit_current < unit_length) {
-		var unit = [unit_h[unit_keys[unit_current++]]];
-		var _g = 0;
-		var _g1 = unit[0].buffs;
-		while(_g < _g1.length) {
-			var buff = _g1[_g];
-			++_g;
-			var _g2 = [];
-			var _g11 = 0;
-			var _g21 = buff.getEffects();
-			while(_g11 < _g21.length) {
-				var v = _g21[_g11];
-				++_g11;
-				if(((function(unit) {
-					return function(e) {
-						if(e._hx_index == 10) {
-							var radius = e.radius;
-							var e1 = e.effects;
-							var affects = e.affects;
-							var p = e.particles;
-							var c = e.color;
-							switch(affects._hx_index) {
-							case 1:
-								if(unit[0].countryId != countryId) {
-									return false;
-								}
-								break;
-							case 2:
-								if(unit[0].countryId == countryId) {
-									return false;
-								}
-								break;
-							default:
-							}
-							return logic_HexMath.hexDistance(hex,unit[0].pos) <= radius;
-						} else {
-							return false;
-						}
-					};
-				})(unit))(v)) {
-					_g2.push(v);
-				}
-			}
-			var auras = _g2;
-			result = result.concat(auras);
-		}
+		var unit = unit_h[unit_keys[unit_current++]];
+		var auras = logic_UnitSystem.getAurasFromObj(hex,unit,unit.countryId,countryId);
+		result = result.concat(auras);
+	}
+	var h = logic_G.get_turn().items.h;
+	var item_h = h;
+	var item_keys = Object.keys(h);
+	var item_length = item_keys.length;
+	var item_current = 0;
+	while(item_current < item_length) {
+		var item = item_h[item_keys[item_current++]];
+		var auras = logic_UnitSystem.getAurasFromObj(hex,item,0,countryId);
+		result = result.concat(auras);
 	}
 	return result;
 };
@@ -93485,7 +93949,7 @@ logic_UnitSystem.FollowUnit = function(unitIds,uid,fromUI) {
 		fromUI = false;
 	}
 	var u = logic_G.get_turn().units.h[uid];
-	if(u == null || logic_GameSystem.IsReplayMode() || u.hp < 1) {
+	if(u == null || logic_GameSystem.isReplayMode() || u.hp < 1) {
 		return;
 	}
 	var _g = 0;
@@ -93508,7 +93972,7 @@ logic_UnitSystem.ChangeRP = function(unitIds,newRP,fromUI) {
 	if(fromUI == null) {
 		fromUI = false;
 	}
-	if(logic_GameSystem.IsReplayMode()) {
+	if(logic_GameSystem.isReplayMode()) {
 		return;
 	}
 	var _g = 0;
@@ -93608,7 +94072,7 @@ logic_UnitSystem.AddDefaultBuffs = function(unit,td) {
 	}
 	logic_UnitSystem.AddUpgradeBuffs(unit,td);
 };
-logic_UnitSystem.BuildUnitOnHex = function(td,parent,type,buildHex) {
+logic_UnitSystem.buildUnitOnHex = function(td,parent,type,buildHex) {
 	if(!logic_FieldSystem.isHexAvailable(buildHex,parent,logic_G.get_field())) {
 		return null;
 	}
@@ -93637,54 +94101,7 @@ logic_UnitSystem.addBuff = function(unit,buff,td) {
 	var microTurnNum = td.microTurns.length - 1;
 	td.microTurns[microTurnNum].addEvent(unit.id,model_ActionEvent.AddBuff(buff.type));
 };
-logic_UnitSystem.removeBuff = function(unit,buff,td,immediate) {
-	if(immediate == null) {
-		immediate = false;
-	}
-	HxOverrides.remove(unit.buffs,buff);
-};
-logic_UnitSystem.onCalculationTurnEnd = function(oldTurn,newTurn) {
-	var h = oldTurn.units.h;
-	var unitId_h = h;
-	var unitId_keys = Object.keys(h);
-	var unitId_length = unitId_keys.length;
-	var unitId_current = 0;
-	while(unitId_current < unitId_length) {
-		var unitId = unitId_keys[unitId_current++];
-		var unit = newTurn.units.h[unitId];
-		if(unit == null) {
-			continue;
-		}
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = unit.buffs;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(v.turnsLeft == 1) {
-				_g.push(v);
-			}
-		}
-		var expiredBuffs = _g;
-		var _g3 = 0;
-		while(_g3 < expiredBuffs.length) {
-			var b = expiredBuffs[_g3];
-			++_g3;
-			logic_UnitSystem.removeBuff(unit,b,newTurn,true);
-		}
-		var _g4 = 0;
-		var _g5 = unit.buffs;
-		while(_g4 < _g5.length) {
-			var passive = _g5[_g4];
-			++_g4;
-			if(passive.turnsLeft == -1) {
-				continue;
-			}
-			passive.turnsLeft--;
-		}
-	}
-};
-logic_UnitSystem.onCalculationTurnStart = function(oldTurn,newTurn) {
+logic_UnitSystem.removeDeadUnits = function(oldTurn,newTurn) {
 	var h = newTurn.units.h;
 	var unit_h = h;
 	var unit_keys = Object.keys(h);
@@ -93698,29 +94115,6 @@ logic_UnitSystem.onCalculationTurnStart = function(oldTurn,newTurn) {
 			if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
 				delete(_this.h[key]);
 			}
-		}
-	}
-	var h = oldTurn.units.h;
-	var unitId_h = h;
-	var unitId_keys = Object.keys(h);
-	var unitId_length = unitId_keys.length;
-	var unitId_current = 0;
-	while(unitId_current < unitId_length) {
-		var unitId = unitId_keys[unitId_current++];
-		var unit = newTurn.units.h[unitId];
-		if(unit == null) {
-			continue;
-		}
-		var c = model_Store.cache[model_Store.game.curTurn];
-		var triggers = c.turnStartTriggers.h[unit.id];
-		if(triggers == null) {
-			continue;
-		}
-		var _g = 0;
-		while(_g < triggers.length) {
-			var t = triggers[_g];
-			++_g;
-			logic_ScriptSystem.ExecuteTrigger("OnTurnStart",t.script,t.args,unit,newTurn);
 		}
 	}
 };
@@ -93870,6 +94264,25 @@ logic_VisionSystem.isUnitVisible = function(unit,byCountryId,onHex,turnNum) {
 	}
 	return visionMap[onHex.q * logic_G.get_field().size + onHex.r] > unit.invisible();
 };
+logic_VisionSystem.isItemVisible = function(item,byCountryId,onHex,turnNum) {
+	if(turnNum == null) {
+		turnNum = -1;
+	}
+	if(item == null) {
+		return false;
+	}
+	if(byCountryId == 0) {
+		return true;
+	}
+	if(onHex == null) {
+		onHex = item.pos;
+	}
+	var visionMap = logic_VisionSystem.getVisionMap(byCountryId,turnNum);
+	if(visionMap == null) {
+		return false;
+	}
+	return visionMap[onHex.q * logic_G.get_field().size + onHex.r] > item.invisible;
+};
 logic_VisionSystem.getVisionMap = function(countryId,turnNum) {
 	if(turnNum == null) {
 		turnNum = -1;
@@ -94000,7 +94413,7 @@ var model_BuffData = function(buff) {
 	if(buff == null) {
 		return;
 	}
-	this.turnsLeft = buff.turns == -1 ? -1 : buff.turns + 1;
+	this.turnsLeft = buff.turns == -1 ? -1 : buff.turns;
 	this.buffType = buff.type;
 };
 $hxClasses["model.BuffData"] = model_BuffData;
@@ -94016,7 +94429,11 @@ model_BuffData.prototype = $extend(model_ModelData.prototype,{
 		return res;
 	}
 	,getEffects: function() {
-		return logic_DataBase.getBuff(this.buffType).effects;
+		var buff = logic_DataBase.getBuff(this.buffType);
+		if(buff == null) {
+			return [];
+		}
+		return buff.effects;
 	}
 	,__class__: model_BuffData
 });
@@ -94029,7 +94446,7 @@ var model_GameState = $hxEnums["model.GameState"] = { __ename__:true,__construct
 model_GameState.__constructs__ = [model_GameState.Calculating,model_GameState.WaitForPlayer,model_GameState.TurnAnimation,model_GameState.PlayerTurn];
 model_GameState.__empty_constructs__ = [model_GameState.Calculating,model_GameState.WaitForPlayer,model_GameState.TurnAnimation,model_GameState.PlayerTurn];
 var model_CameraData = function() {
-	this.selectedUnitIds = [];
+	this.selectedIds = [];
 	this.cursorHex = new model_HexCoords(-1,-1);
 	var dir = 10;
 	while(dir < 0) dir += 12;
@@ -94045,7 +94462,7 @@ model_CameraData.prototype = {
 	,dir: null
 	,positions: null
 	,cursorHex: null
-	,selectedUnitIds: null
+	,selectedIds: null
 	,curPlayerId: null
 	,__class__: model_CameraData
 };
@@ -94218,15 +94635,22 @@ model_GameData.prototype = {
 	,field: null
 	,__class__: model_GameData
 };
-var model_FieldObjectData = function() { };
+var model_FieldObjectData = function() {
+	this.buffs = [];
+};
 $hxClasses["model.FieldObjectData"] = model_FieldObjectData;
 model_FieldObjectData.__name__ = "model.FieldObjectData";
 model_FieldObjectData.__super__ = model_ModelData;
 model_FieldObjectData.prototype = $extend(model_ModelData.prototype,{
-	pos: null
+	id: null
+	,type: null
+	,pos: null
+	,buffs: null
+	,copy: null
 	,__class__: model_FieldObjectData
 });
 var model_ItemData = function(type,id) {
+	model_FieldObjectData.call(this);
 	if(id == null) {
 		this.id = utils_StringUtils.intToString62(Std.random(268435455)) + "" + utils_StringUtils.intToString62(Math.floor(HxOverrides.now() / 1000 * 10000));
 	} else {
@@ -94237,7 +94661,15 @@ var model_ItemData = function(type,id) {
 	if(template == null) {
 		return;
 	}
-	this.buffs = template.buffs.slice();
+	var _this = template.buffs;
+	var result = new Array(_this.length);
+	var _g = 0;
+	var _g1 = _this.length;
+	while(_g < _g1) {
+		var i = _g++;
+		result[i] = new model_BuffData(logic_DataBase.getBuff(_this[i]));
+	}
+	this.buffs = result;
 	this.invisible = template.invisible;
 	this.unpickable = template.unpickable;
 };
@@ -94245,17 +94677,20 @@ $hxClasses["model.ItemData"] = model_ItemData;
 model_ItemData.__name__ = "model.ItemData";
 model_ItemData.__super__ = model_FieldObjectData;
 model_ItemData.prototype = $extend(model_FieldObjectData.prototype,{
-	id: null
-	,type: null
-	,buffs: null
-	,invisible: null
+	invisible: null
 	,unpickable: null
 	,copy: function() {
 		var res = new model_ItemData(null,this.id);
 		res.type = this.type;
 		var _this = this.pos;
 		res.pos = new model_HexCoords(_this.q,_this.r);
-		res.buffs = this.buffs.slice();
+		var _g = 0;
+		var _g1 = this.buffs;
+		while(_g < _g1.length) {
+			var p = _g1[_g];
+			++_g;
+			res.buffs.push(p.copy());
+		}
 		res.invisible = this.invisible;
 		res.unpickable = this.unpickable;
 		return res;
@@ -94360,14 +94795,16 @@ model_Params.set_animSpeed = function(val) {
 model_Params.microTurnTime = function() {
 	return 250 * model_Params.animSpeed;
 };
-model_Params.pushTime = function() {
-	return 250 * model_Params.animSpeed;
-};
 model_Params.turnAnimTime = function() {
-	return (logic_G.get_turn().microTurns.length + 1) * model_Params.microTurnTime() + model_Params.pushTime();
+	return (logic_G.get_turn().microTurns.length + 1) * model_Params.microTurnTime();
 };
 model_Params.turnTimeLeft = function(microTurnNum) {
-	return model_Params.turnAnimTime() - microTurnNum * model_Params.microTurnTime();
+	var b = model_Params.turnAnimTime() - microTurnNum * model_Params.microTurnTime();
+	if(0 < b) {
+		return b;
+	} else {
+		return 0;
+	}
 };
 var model_PlayerData = function(id,name) {
 	this.isAI = false;
@@ -94423,6 +94860,8 @@ var model_TurnCache = function() {
 	this.visionCache = new haxe_ds_IntMap();
 	this.defendTriggers = new haxe_ds_StringMap();
 	this.attackTriggers = new haxe_ds_StringMap();
+	this.touchTriggers = new haxe_ds_StringMap();
+	this.turnEndTriggers = new haxe_ds_StringMap();
 	this.turnStartTriggers = new haxe_ds_StringMap();
 	this.deathTriggers = new haxe_ds_StringMap();
 	this.unitStats = new haxe_ds_StringMap();
@@ -94433,6 +94872,8 @@ model_TurnCache.prototype = {
 	unitStats: null
 	,deathTriggers: null
 	,turnStartTriggers: null
+	,turnEndTriggers: null
+	,touchTriggers: null
 	,attackTriggers: null
 	,defendTriggers: null
 	,visionCache: null
@@ -94460,21 +94901,34 @@ var model_Affects = $hxEnums["model.Affects"] = { __ename__:true,__constructs__:
 };
 model_Affects.__constructs__ = [model_Affects.All,model_Affects.Allies,model_Affects.Enemies];
 model_Affects.__empty_constructs__ = [model_Affects.All,model_Affects.Allies,model_Affects.Enemies];
+var model_Shapes = $hxEnums["model.Shapes"] = { __ename__:true,__constructs__:null
+	,HexArea: {_hx_name:"HexArea",_hx_index:0,__enum__:"model.Shapes",toString:$estr}
+	,Ring: {_hx_name:"Ring",_hx_index:1,__enum__:"model.Shapes",toString:$estr}
+	,Sector: {_hx_name:"Sector",_hx_index:2,__enum__:"model.Shapes",toString:$estr}
+	,WideSector: {_hx_name:"WideSector",_hx_index:3,__enum__:"model.Shapes",toString:$estr}
+	,Wall: {_hx_name:"Wall",_hx_index:4,__enum__:"model.Shapes",toString:$estr}
+	,Line: {_hx_name:"Line",_hx_index:5,__enum__:"model.Shapes",toString:$estr}
+	,Crescent: {_hx_name:"Crescent",_hx_index:6,__enum__:"model.Shapes",toString:$estr}
+};
+model_Shapes.__constructs__ = [model_Shapes.HexArea,model_Shapes.Ring,model_Shapes.Sector,model_Shapes.WideSector,model_Shapes.Wall,model_Shapes.Line,model_Shapes.Crescent];
+model_Shapes.__empty_constructs__ = [model_Shapes.HexArea,model_Shapes.Ring,model_Shapes.Sector,model_Shapes.WideSector,model_Shapes.Wall,model_Shapes.Line,model_Shapes.Crescent];
 var model_EffectType = $hxEnums["model.EffectType"] = { __ename__:true,__constructs__:null
 	,OnDeath: ($_=function(script,args) { return {_hx_index:0,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnDeath",$_.__params__ = ["script","args"],$_)
 	,OnAttack: ($_=function(script,args) { return {_hx_index:1,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnAttack",$_.__params__ = ["script","args"],$_)
 	,OnDefend: ($_=function(script,args) { return {_hx_index:2,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnDefend",$_.__params__ = ["script","args"],$_)
 	,OnTurnStart: ($_=function(script,args) { return {_hx_index:3,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTurnStart",$_.__params__ = ["script","args"],$_)
-	,SetStat: ($_=function(stat,value) { return {_hx_index:4,stat:stat,value:value,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="SetStat",$_.__params__ = ["stat","value"],$_)
-	,ChangeStat: ($_=function(stat,delta) { return {_hx_index:5,stat:stat,delta:delta,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="ChangeStat",$_.__params__ = ["stat","delta"],$_)
-	,AddSkill: ($_=function(id) { return {_hx_index:6,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddSkill",$_.__params__ = ["id"],$_)
-	,AddCustomSkill: ($_=function(skill) { return {_hx_index:7,skill:skill,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddCustomSkill",$_.__params__ = ["skill"],$_)
-	,RemoveSkill: ($_=function(id) { return {_hx_index:8,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="RemoveSkill",$_.__params__ = ["id"],$_)
-	,BlockSkills: {_hx_name:"BlockSkills",_hx_index:9,__enum__:"model.EffectType",toString:$estr}
-	,Aura: ($_=function(radius,effects,affects,particles,color) { return {_hx_index:10,radius:radius,effects:effects,affects:affects,particles:particles,color:color,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="Aura",$_.__params__ = ["radius","effects","affects","particles","color"],$_)
-	,OnPickUp: ($_=function(script,args) { return {_hx_index:11,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnPickUp",$_.__params__ = ["script","args"],$_)
+	,OnTurnEnd: ($_=function(script,args) { return {_hx_index:4,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTurnEnd",$_.__params__ = ["script","args"],$_)
+	,OnBuffEnd: ($_=function(script,args) { return {_hx_index:5,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnBuffEnd",$_.__params__ = ["script","args"],$_)
+	,SetStat: ($_=function(stat,value) { return {_hx_index:6,stat:stat,value:value,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="SetStat",$_.__params__ = ["stat","value"],$_)
+	,ChangeStat: ($_=function(stat,delta) { return {_hx_index:7,stat:stat,delta:delta,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="ChangeStat",$_.__params__ = ["stat","delta"],$_)
+	,AddSkill: ($_=function(id) { return {_hx_index:8,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddSkill",$_.__params__ = ["id"],$_)
+	,AddCustomSkill: ($_=function(skill) { return {_hx_index:9,skill:skill,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddCustomSkill",$_.__params__ = ["skill"],$_)
+	,RemoveSkill: ($_=function(id) { return {_hx_index:10,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="RemoveSkill",$_.__params__ = ["id"],$_)
+	,BlockSkills: {_hx_name:"BlockSkills",_hx_index:11,__enum__:"model.EffectType",toString:$estr}
+	,Aura: ($_=function(radius,effects,affects,particles,color) { return {_hx_index:12,radius:radius,effects:effects,affects:affects,particles:particles,color:color,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="Aura",$_.__params__ = ["radius","effects","affects","particles","color"],$_)
+	,OnTouch: ($_=function(script,args) { return {_hx_index:13,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTouch",$_.__params__ = ["script","args"],$_)
 };
-model_EffectType.__constructs__ = [model_EffectType.OnDeath,model_EffectType.OnAttack,model_EffectType.OnDefend,model_EffectType.OnTurnStart,model_EffectType.SetStat,model_EffectType.ChangeStat,model_EffectType.AddSkill,model_EffectType.AddCustomSkill,model_EffectType.RemoveSkill,model_EffectType.BlockSkills,model_EffectType.Aura,model_EffectType.OnPickUp];
+model_EffectType.__constructs__ = [model_EffectType.OnDeath,model_EffectType.OnAttack,model_EffectType.OnDefend,model_EffectType.OnTurnStart,model_EffectType.OnTurnEnd,model_EffectType.OnBuffEnd,model_EffectType.SetStat,model_EffectType.ChangeStat,model_EffectType.AddSkill,model_EffectType.AddCustomSkill,model_EffectType.RemoveSkill,model_EffectType.BlockSkills,model_EffectType.Aura,model_EffectType.OnTouch];
 model_EffectType.__empty_constructs__ = [model_EffectType.BlockSkills];
 var model_Tables = function() { };
 $hxClasses["model.Tables"] = model_Tables;
@@ -94508,6 +94962,7 @@ var model_FieldEffect = $hxEnums["model.FieldEffect"] = { __ename__:true,__const
 model_FieldEffect.__constructs__ = [model_FieldEffect.SimpleEffect,model_FieldEffect.DirectedEffect];
 model_FieldEffect.__empty_constructs__ = [];
 var model_MicroTurn = function() {
+	this.effects = [];
 	this.events = new haxe_ds_StringMap();
 	this.acts = new haxe_ds_StringMap();
 };
@@ -94516,6 +94971,7 @@ model_MicroTurn.__name__ = "model.MicroTurn";
 model_MicroTurn.prototype = {
 	acts: null
 	,events: null
+	,effects: null
 	,addEvent: function(unitId,e) {
 		if(!Object.prototype.hasOwnProperty.call(this.events.h,unitId)) {
 			var v = [];
@@ -94530,7 +94986,6 @@ var model_TurnData = function() {
 	this.units = new haxe_ds_StringMap();
 	this.items = new haxe_ds_StringMap();
 	this.microTurns = [];
-	this.fieldEffects = [];
 };
 $hxClasses["model.TurnData"] = model_TurnData;
 model_TurnData.__name__ = "model.TurnData";
@@ -94540,7 +94995,6 @@ model_TurnData.prototype = $extend(model_ModelData.prototype,{
 	,units: null
 	,items: null
 	,microTurns: null
-	,fieldEffects: null
 	,copy: function() {
 		var res = new model_TurnData();
 		var c = this.countries.iterator();
@@ -94622,11 +95076,11 @@ model_UnitStatsData.prototype = {
 	,__class__: model_UnitStatsData
 };
 var model_UnitData = function(type,id) {
-	this.buffs = [];
 	this.dir = 0;
 	this.countryId = 0;
 	this.autocast = false;
 	this.orderIdx = -1;
+	model_FieldObjectData.call(this);
 	if(id == null) {
 		this.id = utils_StringUtils.intToString62(Std.random(268435455)) + "" + utils_StringUtils.intToString62(Math.floor(HxOverrides.now() / 1000 * 10000));
 	} else {
@@ -94640,16 +95094,13 @@ $hxClasses["model.UnitData"] = model_UnitData;
 model_UnitData.__name__ = "model.UnitData";
 model_UnitData.__super__ = model_FieldObjectData;
 model_UnitData.prototype = $extend(model_FieldObjectData.prototype,{
-	id: null
-	,follow: null
+	follow: null
 	,rallyPoints: null
 	,orderIdx: null
 	,autocast: null
-	,type: null
 	,hp: null
 	,countryId: null
 	,dir: null
-	,buffs: null
 	,baseStats: function() {
 		return logic_DataBase.getUnit(this.type);
 	}
@@ -98386,7 +98837,7 @@ var view_ui_screens_Game = function(parent) {
 		fh.y -= offset.y * scalechange;
 	};
 	hxd_Window.getInstance().addEventTarget(onEvent);
-	logic_EventSystem.connect(Std.string(logic_EventType.GameStateShared) + "",$bind(this,this.onGameStarted));
+	logic_EventSystem.connect(Std.string(logic_EventType.GameStateShared) + "",$bind(this,this.onGameStateShared));
 	logic_EventSystem.connect(Std.string(logic_EventType.EnterFrame) + "",$bind(this,this.update));
 	logic_DataBase.loadData(model_Store.game.mapId);
 };
@@ -98394,12 +98845,12 @@ $hxClasses["view.ui.screens.Game"] = view_ui_screens_Game;
 view_ui_screens_Game.__name__ = "view.ui.screens.Game";
 view_ui_screens_Game.__super__ = h2d_Object;
 view_ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
-	onGameStarted: function() {
-		logic_EventSystem.fire(Std.string(logic_EventType.TurnStart) + "");
+	onGameStateShared: function() {
+		logic_EventSystem.fire(Std.string(logic_EventType.NewTurnCalculated) + "");
 	}
 	,onRemove: function() {
 		h2d_Object.prototype.onRemove.call(this);
-		logic_EventSystem.disconnect(Std.string(logic_EventType.GameStateShared) + "",$bind(this,this.onGameStarted));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.GameStateShared) + "",$bind(this,this.onGameStateShared));
 		logic_EventSystem.disconnect(Std.string(logic_EventType.EnterFrame) + "",$bind(this,this.update));
 		logic_DataBase.clearData();
 	}
@@ -98464,11 +98915,11 @@ view_ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		}
 		if(hxd_Key.isPressed(82) || utils_IframeEvents.pressedKeys["KeyR"] == "pressed") {
 			if(!utils_IframeEvents.isInIframe()) {
-				logic_GameSystem.ReplayTurn(0);
+				logic_GameSystem.replayTurn(0);
 			}
 		}
 		if(hxd_Key.isPressed(46)) {
-			logic_GameSystem.DeleteLastTurn(0);
+			logic_GameSystem.deleteLastTurn(0);
 		}
 		if(utils_IframeEvents.isInIframe()) {
 			this.handleMapEditorKeys();
@@ -98682,14 +99133,24 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 				}
 				break;
 			case 1:
-				if(model_Store.cam.selectedUnitIds.length == 0) {
+				if(model_Store.cam.selectedIds.length == 0) {
 					return;
 				}
-				var u = logic_UnitSystem.GetUnitFromHex(model_Store.cam.cursorHex.q,model_Store.cam.cursorHex.r);
-				if(!hxd_Key.isDown(16) && logic_VisionSystem.isUnitVisible(u,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-					logic_UnitSystem.FollowUnit(model_Store.cam.selectedUnitIds,u.id,true);
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = logic_UnitSystem.GetUnitsFromHex(model_Store.cam.cursorHex);
+				while(_g1 < _g2.length) {
+					var v = _g2[_g1];
+					++_g1;
+					if(logic_VisionSystem.isUnitVisible(v,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) && v.hp > 0) {
+						_g.push(v);
+					}
+				}
+				var units = _g;
+				if(!hxd_Key.isDown(16) && units.length > 0) {
+					logic_UnitSystem.FollowUnit(model_Store.cam.selectedIds,units[0].id,true);
 				} else {
-					logic_UnitSystem.ChangeRP(model_Store.cam.selectedUnitIds,model_Store.cam.cursorHex,true);
+					logic_UnitSystem.ChangeRP(model_Store.cam.selectedIds,model_Store.cam.cursorHex,true);
 				}
 				break;
 			case 2:
@@ -98701,6 +99162,12 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 		logic_EventSystem.connect(Std.string(logic_EventType.FieldEdited) + "",$bind(this,this.onFieldEdited));
 		logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
 		this.objectsLayer.init();
+	}
+	,onRemove: function() {
+		h2d_Object.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.onCamUpdated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.FieldEdited) + "",$bind(this,this.onFieldEdited));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
 	}
 	,onTurnAnimStart: function() {
 		var _gthis = this;
@@ -98725,11 +99192,11 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 			}
 		}
 		var _g = 0;
-		var _g1 = logic_G.get_turn().fieldEffects.length;
+		var _g1 = logic_G.get_turn().microTurns.length;
 		while(_g < _g1) {
 			var microTurnNum = _g++;
 			var delay = microTurnNum * model_Params.microTurnTime();
-			var effects = [logic_G.get_turn().fieldEffects[microTurnNum]];
+			var effects = [logic_G.get_turn().microTurns[microTurnNum].effects];
 			logic_G.delay((function(effects) {
 				return function() {
 					var _g = 0;
@@ -98794,23 +99261,17 @@ view_GameField.prototype = $extend(h2d_Object.prototype,{
 		}
 		this.showTurnAuras(logic_G.get_prevTurn());
 		while(this.auraVisuals.length > 0) {
-			var av = [this.auraVisuals.pop()];
-			utils_Tweener.AnimAlpha(av[0],0,model_Params.turnAnimTime(),(function(av) {
-				return function() {
-					if(av[0] != null && av[0].parent != null) {
-						av[0].parent.removeChild(av[0]);
-					}
-				};
-			})(av));
+			var av = this.auraVisuals.pop();
+			utils_Tweener.AnimAlpha(av,0,model_Params.turnAnimTime(),$bind(av,av.remove));
 		}
 		this.showTurnAuras(logic_G.get_turn());
 		var _g = 0;
 		var _g1 = this.auraVisuals;
 		while(_g < _g1.length) {
-			var av1 = _g1[_g];
+			var av = _g1[_g];
 			++_g;
-			av1.alpha = 0;
-			utils_Tweener.AnimAlpha(av1,1,model_Params.turnAnimTime());
+			av.alpha = 0;
+			utils_Tweener.AnimAlpha(av,1,model_Params.turnAnimTime());
 		}
 	}
 	,centerToHex: function(h) {
@@ -99093,10 +99554,16 @@ view_ObjectsLayer.__name__ = "view.ObjectsLayer";
 view_ObjectsLayer.prototype = {
 	objectViews: null
 	,init: function() {
-		logic_EventSystem.connect(Std.string(logic_EventType.TurnStart) + "",$bind(this,this.onTurnStart));
+		logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
 		logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
 		logic_EventSystem.connect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.onCamUpdated));
 		logic_EventSystem.connect(Std.string(logic_EventType.FieldEdited) + "",$bind(this,this.onFieldEdited));
+	}
+	,onRemove: function() {
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.onCamUpdated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.FieldEdited) + "",$bind(this,this.onFieldEdited));
 	}
 	,onFieldEdited: function(tool) {
 		var h = this.objectViews.h;
@@ -99115,7 +99582,7 @@ view_ObjectsLayer.prototype = {
 				}
 			}
 		}
-		this.onTurnStart();
+		this.onTurnCalculated();
 	}
 	,SelectUnits: function(from,to) {
 		var res = [];
@@ -99155,6 +99622,9 @@ view_ObjectsLayer.prototype = {
 		var uv_current = 0;
 		while(uv_current < uv_length) {
 			var uv = uv_h[uv_keys[uv_current++]];
+			if(!((uv) instanceof view_UnitView)) {
+				continue;
+			}
 			var data = js_Boot.__cast(uv.getData() , model_UnitData);
 			if(data == null || data.countryId != (logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) || data.hp < 1) {
 				continue;
@@ -99171,10 +99641,10 @@ view_ObjectsLayer.prototype = {
 				return -1;
 			}
 		});
-		model_Store.cam.selectedUnitIds = res;
-		logic_EventSystem.fire(Std.string(logic_EventType.UnitSelected) + "",model_Store.cam.selectedUnitIds);
+		model_Store.cam.selectedIds = res;
+		logic_EventSystem.fire(Std.string(logic_EventType.SelectionChanged) + "",model_Store.cam.selectedIds);
 	}
-	,onTurnStart: function() {
+	,onTurnCalculated: function() {
 		var h = logic_G.get_turn().units.h;
 		var u_h = h;
 		var u_keys = Object.keys(h);
@@ -99188,7 +99658,6 @@ view_ObjectsLayer.prototype = {
 				var v = new view_UnitView(u.id);
 				this1.h[k] = v;
 			}
-			this.objectViews.h[u.id].onTurnStart();
 		}
 		var h = logic_G.get_turn().items.h;
 		var i_h = h;
@@ -99203,7 +99672,6 @@ view_ObjectsLayer.prototype = {
 				var v = new view_ItemView(i.id);
 				this1.h[k] = v;
 			}
-			this.objectViews.h[i.id].onTurnStart();
 		}
 	}
 	,onTurnAnimStart: function() {
@@ -99217,14 +99685,11 @@ view_ObjectsLayer.prototype = {
 		while(o_current < o_length) {
 			var o = o_h[o_keys[o_current++]];
 			if(o.getData() == null) {
-				o.onDataRemoved();
 				var key = o.id;
 				var _this = this.objectViews;
 				if(Object.prototype.hasOwnProperty.call(_this.h,key)) {
 					delete(_this.h[key]);
 				}
-			} else {
-				o.onTurnAnimStart();
 			}
 		}
 		logic_G.delay(function() {
@@ -99378,11 +99843,22 @@ view_MapCursor.prototype = {
 		}
 		var t = view_ui_screens_Game.gameField.tiles.h[Std.string(tileOver) + ""];
 		this.showHexDescr(tileOver);
-		var u = logic_UnitSystem.GetUnitFromHex(tileOver.q,tileOver.r);
-		if(u == null || u.hp < 1 || !logic_VisionSystem.isUnitVisible(u,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = logic_UnitSystem.GetUnitsFromHex(tileOver);
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(v.hp > 0 && logic_VisionSystem.isUnitVisible(v,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
+				_g.push(v);
+			}
+		}
+		var units = _g;
+		if(units.length < 1) {
 			return;
 		}
-		var hitHexes = logic_UnitSystem.GetUnitHitHexes(u);
+		var unit = units[0];
+		var hitHexes = logic_UnitSystem.GetUnitHitHexes(unit);
 		var hitArea = [];
 		var _g = 0;
 		while(_g < hitHexes.length) {
@@ -99413,7 +99889,7 @@ var view_ui_UserInterface = function(parent) {
 	this.mineralsTxt = logic_Locale.get("label_minerals");
 	h2d_Object.call(this,parent);
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.redrawUI));
-	logic_EventSystem.connect(Std.string(logic_EventType.TurnStart) + "",$bind(this,this.redrawUI));
+	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.redrawUI));
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.redrawUI));
 	logic_EventSystem.connect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redrawUI));
 	logic_EventSystem.connect(Std.string(logic_EventType.EnterFrame) + "",$bind(this,this.update));
@@ -99425,7 +99901,7 @@ var view_ui_UserInterface = function(parent) {
 	this.bottomPanel = new view_ui_panel_BottomPanel(this);
 	this.turnEndBtn = new view_ui_Btn(this);
 	this.turnEndBtn.onClick = function() {
-		logic_GameSystem.FinishTurn();
+		logic_GameSystem.finishTurn();
 	};
 	if(this.showReplayBtns) {
 		this.backBtn = new view_ui_Btn(this);
@@ -99433,10 +99909,10 @@ var view_ui_UserInterface = function(parent) {
 		this.turnLabel.color = new h3d_Vector(1,0,0);
 		this.nextBtn = new view_ui_Btn(this);
 		this.backBtn.onClick = function() {
-			logic_GameSystem.ReplayTurn(-1);
+			logic_GameSystem.replayTurn(-1);
 		};
 		this.nextBtn.onClick = function() {
-			logic_GameSystem.ReplayTurn(1);
+			logic_GameSystem.replayTurn(1);
 		};
 	}
 	if(model_Store.game.netGame) {
@@ -99463,6 +99939,14 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 	,nextBtn: null
 	,showReplayBtns: null
 	,selection: null
+	,onRemove: function() {
+		h2d_Object.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.redrawUI));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.redrawUI));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.redrawUI));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redrawUI));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.EnterFrame) + "",$bind(this,this.update));
+	}
 	,redrawUI: function() {
 		this.turnEndBtn.set_label(logic_Locale.get("label_end_turn") + " " + (model_Store.game.curTurn + 1));
 		this.turnEndBtn.set_width(160);
@@ -99518,7 +100002,7 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 		}
 		var fh = this.fpsLabel;
 		fh.set_text(fh.text + ("\nfps: " + Math.round(hxd_Timer.fps())));
-		this.turnEndBtn.set_enabled(model_Store.cam.state != model_GameState.TurnAnimation);
+		this.turnEndBtn.set_enabled(model_Store.cam.state != model_GameState.TurnAnimation && logic_G.get_turnNum() == model_Store.game.turns.length - 1);
 		if(hxd_Key.isPressed(27)) {
 			if(this.pauseScr.parent == null) {
 				this.addChild(this.pauseScr);
@@ -100737,7 +101221,7 @@ view_ui_SelectionFrame.prototype = $extend(h2d_Graphics.prototype,{
 	,__class__: view_ui_SelectionFrame
 });
 var view_ui_panel_BottomPanel = function(parent) {
-	this.unitSelectedIdx = 0;
+	this.selectionIdx = 0;
 	this.gap = 6;
 	this.padding = 8;
 	var _gthis = this;
@@ -100787,12 +101271,12 @@ var view_ui_panel_BottomPanel = function(parent) {
 	this.skillDescrPanel = new view_ui_Btn(this);
 	this.skillDescrPanel.set_enabled(false);
 	this.skillDescrPanel.set_visible(false);
-	this.unitNameTxt = new view_ui_PPText(hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont(),this);
-	this.unitDescrTxt = new view_ui_PPText(hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont(),this);
-	this.onUnitSelected(null);
+	this.objNameTxt = new view_ui_PPText(hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont(),this);
+	this.objDescrTxt = new view_ui_PPText(hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont(),this);
+	this.onSelectionChanged(null);
 	this.redraw();
 	logic_EventSystem.connect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.onResize));
-	logic_EventSystem.connect(Std.string(logic_EventType.UnitSelected) + "",$bind(this,this.onUnitSelected));
+	logic_EventSystem.connect(Std.string(logic_EventType.SelectionChanged) + "",$bind(this,this.onSelectionChanged));
 	logic_EventSystem.connect(Std.string(logic_EventType.OrdersChanged) + "",$bind(this,this.updateButtons));
 	logic_EventSystem.connect(Std.string(logic_EventType.AvatarClicked) + "",$bind(this,this.onAvaClick));
 	logic_EventSystem.connect(Std.string(logic_EventType.AvatarRightClicked) + "",$bind(this,this.onAvaRightClick));
@@ -100806,9 +101290,9 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 	,interaction: null
 	,skillBtns: null
 	,avatars: null
-	,unitSelectedIdx: null
-	,unitNameTxt: null
-	,unitDescrTxt: null
+	,selectionIdx: null
+	,objNameTxt: null
+	,objDescrTxt: null
 	,skillDescrPanel: null
 	,setDescrText: function(txt) {
 		this.skillDescrPanel.set_visible(txt != null);
@@ -100816,7 +101300,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 	}
 	,onSkillBtnOut: function(idx) {
 		this.setDescrText(null);
-		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedUnitIds[this.unitSelectedIdx]];
+		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedIds[this.selectionIdx]];
 		if(unit == null) {
 			return;
 		}
@@ -100824,14 +101308,16 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 			return;
 		}
 		var objView = view_ui_screens_Game.gameField.objectsLayer.objectViews.h[unit.id];
-		var unitView = js_Boot.__cast(objView , view_UnitView);
-		if(unitView == null) {
-			return;
+		if(((objView) instanceof view_UnitView)) {
+			var unitView = js_Boot.__cast(objView , view_UnitView);
+			if(unitView == null) {
+				return;
+			}
+			unitView.hideSkillRange();
 		}
-		unitView.hideSkillRange();
 	}
 	,onSkillBtnOver: function(idx) {
-		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedUnitIds[this.unitSelectedIdx]];
+		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedIds[this.selectionIdx]];
 		if(unit == null) {
 			return;
 		}
@@ -100844,21 +101330,23 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 			return;
 		}
 		var objView = view_ui_screens_Game.gameField.objectsLayer.objectViews.h[unit.id];
-		var unitView = js_Boot.__cast(objView , view_UnitView);
-		if(unitView == null) {
-			return;
+		if(((objView) instanceof view_UnitView)) {
+			var unitView = js_Boot.__cast(objView , view_UnitView);
+			if(unitView == null) {
+				return;
+			}
+			unitView.drawSkillRange(skills[idx]);
 		}
-		unitView.drawSkillRange(skills[idx]);
 	}
 	,selectOrder: function(idx,changeAutocast) {
 		if(changeAutocast == null) {
 			changeAutocast = false;
 		}
-		var unitType = model_Store.cam.selectedUnitIds.length > 0 ? HxOverrides.cca(model_Store.cam.selectedUnitIds[this.unitSelectedIdx],0) : null;
+		var unitType = model_Store.cam.selectedIds.length > 0 ? HxOverrides.cca(model_Store.cam.selectedIds[this.selectionIdx],0) : null;
 		var autocast = this.skillBtns[idx].autocast;
 		var selected = this.skillBtns[idx].selected;
 		var _g = 0;
-		var _g1 = model_Store.cam.selectedUnitIds;
+		var _g1 = model_Store.cam.selectedIds;
 		while(_g < _g1.length) {
 			var id = _g1[_g];
 			++_g;
@@ -100872,18 +101360,18 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 		}
 	}
 	,onAvaRightClick: function(unitId) {
-		if(this.unitSelectedIdx == model_Store.cam.selectedUnitIds.indexOf(unitId) || this.unitSelectedIdx >= model_Store.cam.selectedUnitIds.length - 1) {
-			this.unitSelectedIdx = 0;
+		if(this.selectionIdx == model_Store.cam.selectedIds.indexOf(unitId) || this.selectionIdx >= model_Store.cam.selectedIds.length - 1) {
+			this.selectionIdx = 0;
 		}
 		logic_FieldSystem.RemoveSelection(unitId);
 	}
 	,onAvaClick: function(unitId) {
-		if(model_Store.cam.selectedUnitIds.length > 0 && model_Store.cam.selectedUnitIds[this.unitSelectedIdx] == unitId) {
+		if(model_Store.cam.selectedIds.length > 0 && model_Store.cam.selectedIds[this.selectionIdx] == unitId) {
 			var u = logic_G.get_turn().units.h[unitId];
 			view_ui_screens_Game.gameField.centerToHex(u.pos);
 			return;
 		}
-		this.unitSelectedIdx = model_Store.cam.selectedUnitIds.indexOf(unitId);
+		this.selectionIdx = model_Store.cam.selectedIds.indexOf(unitId);
 		this.updateButtons();
 		this.redraw();
 	}
@@ -100891,7 +101379,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 		this.skillBtns[0].set_visible(false);
 		this.skillBtns[1].set_visible(false);
 		this.skillBtns[2].set_visible(false);
-		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedUnitIds[this.unitSelectedIdx]];
+		var unit = logic_G.get_turn().units.h[model_Store.cam.selectedIds[this.selectionIdx]];
 		if(unit == null) {
 			return;
 		}
@@ -100917,19 +101405,19 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 			}
 		}
 	}
-	,onUnitSelected: function(selectedUnitIds) {
+	,onSelectionChanged: function(selectedIds) {
 		while(this.avatars.length > 0) {
 			var ava = this.avatars.pop();
 			this.removeChild(ava);
 		}
-		if(selectedUnitIds != null) {
-			this.unitSelectedIdx = 0;
+		if(selectedIds != null) {
+			this.selectionIdx = 0;
 			var _g = 0;
-			var _g1 = selectedUnitIds.length;
+			var _g1 = selectedIds.length;
 			while(_g < _g1) {
 				var i = _g++;
 				var ava = new view_ui_panel_UnitAvatar(this);
-				ava.set_unitId(selectedUnitIds[i]);
+				ava.set_objId(selectedIds[i]);
 				this.avatars.push(ava);
 			}
 		}
@@ -100941,6 +101429,70 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 	}
 	,getAvaSize: function(rows) {
 		return Math.round((160 - 2 * this.padding - (rows - 1) * this.gap) / rows);
+	}
+	,showDescr: function() {
+		if(model_Store.cam.selectedIds == null || model_Store.cam.selectedIds.length == 0) {
+			return;
+		}
+		this.objNameTxt.set_visible(this.objDescrTxt.set_visible(true));
+		var unitId = model_Store.cam.selectedIds[0];
+		var obj = logic_G.get_turn().units.h[unitId];
+		if(obj == null) {
+			obj = logic_G.get_turn().items.h[unitId];
+		}
+		if(obj == null) {
+			return;
+		}
+		var unitAva = this.avatars[0];
+		this.objNameTxt.set_text(logic_Locale.get(obj.type));
+		if(((obj) instanceof model_UnitData)) {
+			var unit = js_Boot.__cast(obj , model_UnitData);
+			this.objDescrTxt.set_text("" + logic_Locale.get("stat_hp") + ": " + unit.hp + "\r\n" + logic_Locale.get("stat_attack") + ": " + unit.attack() + "\r\n" + logic_Locale.get("stat_speed") + ": " + unit.speed());
+			if(unit.range() > 0) {
+				var fh = this.objDescrTxt;
+				fh.set_text(fh.text + ("\n" + logic_Locale.get("stat_range") + ": " + unit.range()));
+			}
+		} else {
+			this.objDescrTxt.set_text("");
+		}
+		var buffDescr = [];
+		var _g = 0;
+		var _g1 = obj.buffs;
+		while(_g < _g1.length) {
+			var passive = _g1[_g];
+			++_g;
+			var descr = logic_Locale.get("buff_" + passive.buffType);
+			if(passive.turnsLeft != -1) {
+				descr += "(" + passive.turnsLeft + " " + logic_Locale.get("turns") + ")";
+			}
+			buffDescr.push(descr);
+		}
+		if(buffDescr.length > 0) {
+			var fh = this.objDescrTxt;
+			fh.set_text(fh.text + "\n");
+			var _g = 0;
+			while(_g < buffDescr.length) {
+				var b = buffDescr[_g];
+				++_g;
+				var fh = this.objDescrTxt;
+				fh.set_text(fh.text + (b + ", "));
+			}
+			this.objDescrTxt.set_text(this.objDescrTxt.text.substring(0,this.objDescrTxt.text.length - 2));
+		}
+		var _this = this.objNameTxt;
+		_this.posChanged = true;
+		_this.x = unitAva.x + unitAva.size + 8;
+		var _this = this.objNameTxt;
+		_this.posChanged = true;
+		_this.y = 2;
+		var _this = this.objDescrTxt;
+		var v = this.objNameTxt.y + this.objNameTxt.get_textHeight() + 8;
+		_this.posChanged = true;
+		_this.y = v;
+		var _this = this.objDescrTxt;
+		_this.posChanged = true;
+		_this.x = this.objNameTxt.x;
+		this.objNameTxt.set_maxWidth(this.objDescrTxt.set_maxWidth(this.skillBtns[this.skillBtns.length - 1].x - 8 - this.objDescrTxt.x));
 	}
 	,redraw: function() {
 		this.clear();
@@ -100998,7 +101550,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 			columns = Math.ceil(this.avatars.length / avaRows);
 		}
 		columns = Math.floor(avaBlockWidth / (avaSize + this.gap));
-		var unitType = model_Store.cam.selectedUnitIds.length > 0 ? model_Store.cam.selectedUnitIds[this.unitSelectedIdx].split("_")[0] : null;
+		var unitType = model_Store.cam.selectedIds.length > 0 ? model_Store.cam.selectedIds[this.selectionIdx].split("_")[0] : null;
 		this.beginFill(43520);
 		var _g = 0;
 		var _g1 = this.avatars.length;
@@ -101012,80 +101564,33 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 			ava.y = this.padding + row * (avaSize + this.gap);
 			ava.posChanged = true;
 			ava.x = this.padding + column * (avaSize + this.gap);
-			if(unitType == ava.unitId.split("_")[0]) {
+			if(unitType == ava.objId.split("_")[0]) {
 				this.drawRoundedRect(ava.x - 4,ava.y - 4,avaSize + 8,avaSize + 8,2);
 			}
 		}
 		this.endFill();
-		if(model_Store.cam.selectedUnitIds.length == 1) {
-			this.unitNameTxt.set_visible(this.unitDescrTxt.set_visible(true));
-			var unitId = model_Store.cam.selectedUnitIds[0];
-			var unit = logic_G.get_turn().units.h[unitId];
-			var unitAva = this.avatars[0];
-			this.unitNameTxt.set_text(logic_Locale.get(unit.type));
-			this.unitDescrTxt.set_text("" + logic_Locale.get("stat_hp") + ": " + unit.hp + "\r\n" + logic_Locale.get("stat_attack") + ": " + unit.attack() + "\r\n" + logic_Locale.get("stat_speed") + ": " + unit.speed());
-			if(unit.range() > 0) {
-				var fh = this.unitDescrTxt;
-				fh.set_text(fh.text + ("\n" + logic_Locale.get("stat_range") + ": " + unit.range()));
-			}
-			var buffDescr = [];
-			var _g = 0;
-			var _g1 = unit.buffs;
-			while(_g < _g1.length) {
-				var passive = _g1[_g];
-				++_g;
-				var descr = logic_Locale.get("buff_" + passive.buffType);
-				if(passive.turnsLeft != -1) {
-					descr += "(" + passive.turnsLeft + " " + logic_Locale.get("turns") + ")";
-				}
-				buffDescr.push(descr);
-			}
-			if(buffDescr.length > 0) {
-				var fh = this.unitDescrTxt;
-				fh.set_text(fh.text + "\n");
-				var _g = 0;
-				while(_g < buffDescr.length) {
-					var b = buffDescr[_g];
-					++_g;
-					var fh = this.unitDescrTxt;
-					fh.set_text(fh.text + (b + ", "));
-				}
-				this.unitDescrTxt.set_text(this.unitDescrTxt.text.substring(0,this.unitDescrTxt.text.length - 2));
-			}
-			var _this = this.unitNameTxt;
-			_this.posChanged = true;
-			_this.x = unitAva.x + unitAva.size + 8;
-			var _this = this.unitNameTxt;
-			_this.posChanged = true;
-			_this.y = 2;
-			var _this = this.unitDescrTxt;
-			var v = this.unitNameTxt.y + this.unitNameTxt.get_textHeight() + 8;
-			_this.posChanged = true;
-			_this.y = v;
-			var _this = this.unitDescrTxt;
-			_this.posChanged = true;
-			_this.x = this.unitNameTxt.x;
-			this.unitNameTxt.set_maxWidth(this.unitDescrTxt.set_maxWidth(this.skillBtns[this.skillBtns.length - 1].x - 8 - this.unitDescrTxt.x));
+		if(model_Store.cam.selectedIds.length == 1) {
+			this.showDescr();
 		} else {
-			this.unitNameTxt.set_visible(this.unitDescrTxt.set_visible(false));
+			this.objNameTxt.set_visible(this.objDescrTxt.set_visible(false));
 		}
 		if(this.avatars.length == 0) {
-			this.unitNameTxt.set_text(logic_Locale.get("label_controls"));
-			this.unitDescrTxt.set_text(logic_Locale.get("label_controls_descr"));
-			var _this = this.unitNameTxt;
+			this.objNameTxt.set_text(logic_Locale.get("label_controls"));
+			this.objDescrTxt.set_text(logic_Locale.get("label_controls_descr"));
+			var _this = this.objNameTxt;
 			_this.posChanged = true;
 			_this.x = 8;
-			var _this = this.unitNameTxt;
+			var _this = this.objNameTxt;
 			_this.posChanged = true;
 			_this.y = 2;
-			var _this = this.unitDescrTxt;
-			var v = this.unitNameTxt.y + this.unitNameTxt.get_textHeight() + 8;
+			var _this = this.objDescrTxt;
+			var v = this.objNameTxt.y + this.objNameTxt.get_textHeight() + 8;
 			_this.posChanged = true;
 			_this.y = v;
-			var _this = this.unitDescrTxt;
+			var _this = this.objDescrTxt;
 			_this.posChanged = true;
-			_this.x = this.unitNameTxt.x;
-			this.unitDescrTxt.set_visible(this.unitNameTxt.set_visible(true));
+			_this.x = this.objNameTxt.x;
+			this.objDescrTxt.set_visible(this.objNameTxt.set_visible(true));
 		}
 	}
 	,__class__: view_ui_panel_BottomPanel
@@ -101123,7 +101628,7 @@ var view_ui_screens_WaitForPlayersScreen = function(parent) {
 	this.tf.set_textAlign(h2d_Align.Center);
 	this.redraw();
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.onTurnDone));
-	logic_EventSystem.connect(Std.string(logic_EventType.TurnStart) + "",$bind(this,this.onTurnStart));
+	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
 	logic_EventSystem.connect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
 };
 $hxClasses["view.ui.screens.WaitForPlayersScreen"] = view_ui_screens_WaitForPlayersScreen;
@@ -101132,6 +101637,12 @@ view_ui_screens_WaitForPlayersScreen.__super__ = h2d_Graphics;
 view_ui_screens_WaitForPlayersScreen.prototype = $extend(h2d_Graphics.prototype,{
 	tf: null
 	,interaction: null
+	,onRemove: function() {
+		h2d_Graphics.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.onTurnDone));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
+	}
 	,onTurnDone: function() {
 		if(!logic_G.get_curPlayer().turnDone) {
 			this.set_visible(false);
@@ -101141,7 +101652,7 @@ view_ui_screens_WaitForPlayersScreen.prototype = $extend(h2d_Graphics.prototype,
 		model_Store.cam.state = model_GameState.WaitForPlayer;
 		this.redraw();
 	}
-	,onTurnStart: function() {
+	,onTurnCalculated: function() {
 		this.set_visible(false);
 		logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
 		logic_EventSystem.fire(Std.string(logic_EventType.TurnAnimStart) + "");
@@ -101194,7 +101705,7 @@ var view_ui_screens_NextPlayerScreen = function(parent) {
 	this.tf.set_textAlign(h2d_Align.Center);
 	this.redraw();
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.onNextTurn));
-	logic_EventSystem.connect(Std.string(logic_EventType.TurnStart) + "",$bind(this,this.onNextTurn));
+	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onNextTurn));
 	logic_EventSystem.connect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
 };
 $hxClasses["view.ui.screens.NextPlayerScreen"] = view_ui_screens_NextPlayerScreen;
@@ -101205,8 +101716,18 @@ view_ui_screens_NextPlayerScreen.prototype = $extend(h2d_Graphics.prototype,{
 	,tf: null
 	,interaction: null
 	,ok_btn: null
+	,onRemove: function() {
+		h2d_Graphics.prototype.onRemove.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.onNextTurn));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onNextTurn));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
+	}
 	,onNextTurn: function() {
-		this.set_visible(this.lastPlayeId != model_Store.cam.curPlayerId);
+		if(this.lastPlayeId == model_Store.cam.curPlayerId) {
+			this.set_visible(false);
+			return;
+		}
+		this.set_visible(true);
 		this.lastPlayeId = model_Store.cam.curPlayerId;
 		model_Store.cam.state = model_GameState.WaitForPlayer;
 		this.redraw();
@@ -101308,7 +101829,7 @@ var utils_ParticleEffects = function() { };
 $hxClasses["utils.ParticleEffects"] = utils_ParticleEffects;
 utils_ParticleEffects.__name__ = "utils.ParticleEffects";
 utils_ParticleEffects.ShowAuraEffect = function(tiles,aura,center) {
-	if(aura._hx_index == 10) {
+	if(aura._hx_index == 12) {
 		var radius = aura.radius;
 		var effects = aura.effects;
 		var affects = aura.affects;
@@ -101370,11 +101891,7 @@ utils_ParticleEffects.ShowSimpleEffect = function(parent,effectId,colorAdjust,ti
 	if(timePeriods < 0) {
 		return particles;
 	}
-	utils_Tweener.AnimAlpha(particles,0,time,function() {
-		if(particles != null && particles.parent != null) {
-			particles.parent.removeChild(particles);
-		}
-	});
+	utils_Tweener.AnimAlpha(particles,0,time,$bind(particles,particles.remove));
 	return particles;
 };
 utils_ParticleEffects.ShowDirectedEffect = function(from,to,effectId,colorAdjust,timePeriods) {
@@ -101418,11 +101935,7 @@ utils_ParticleEffects.ShowDirectedEffect = function(from,to,effectId,colorAdjust
 	if(timePeriods < 0) {
 		return particles;
 	}
-	utils_Tweener.AnimAlpha(particles,0,time,function() {
-		if(particles != null && particles.parent != null) {
-			particles.parent.removeChild(particles);
-		}
-	});
+	utils_Tweener.AnimAlpha(particles,0,time,$bind(particles,particles.remove));
 	return particles;
 };
 var utils_ScaleData = function(obj,toX,toY,time_ms,onComplete) {
@@ -101624,6 +102137,7 @@ view_DirArrow.prototype = $extend(h2d_Graphics.prototype,{
 	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_dir:"set_dir"})
 });
 var view_FieldObject = function(id) {
+	this.shadow = new h2d_filter_DropShadow(0,0,0,1,1,1,0.07);
 	h2d_Object.call(this);
 	this.id = id;
 	this.bmp = new h2d_Bitmap(null,this);
@@ -101637,11 +102151,17 @@ $hxClasses["view.FieldObject"] = view_FieldObject;
 view_FieldObject.__name__ = "view.FieldObject";
 view_FieldObject.__super__ = h2d_Object;
 view_FieldObject.prototype = $extend(h2d_Object.prototype,{
-	bmp: null
+	shadow: null
+	,bmp: null
 	,id: null
 	,onTurnAnimStart: null
 	,getData: null
+	,getPrevData: null
 	,getBmpTile: null
+	,animAct: null
+	,PushesPhase: null
+	,wasVisible: null
+	,nowVisible: null
 	,onDataRemoved: function() {
 		utils_Tweener.removeAllTweens(this);
 		if(this.parent != null) {
@@ -101666,6 +102186,9 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 	,updatePos: function(pos) {
 		var data = this.getData();
 		if(data == null) {
+			data = this.getPrevData();
+		}
+		if(data == null) {
 			return null;
 		}
 		if(pos == null) {
@@ -101681,15 +102204,160 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 		tile.addChild(this);
 		return tile;
 	}
-	,onTurnStart: function() {
+	,onTurnCalculated: function() {
 		this.updatePos();
+	}
+	,AnimMicroTurn: function(i) {
+		var _gthis = this;
+		if(i >= logic_G.get_turn().microTurns.length) {
+			this.PushesPhase();
+			return;
+		}
+		utils_Tweener.finishAllTweens(this);
+		logic_G.delay(function() {
+			_gthis.AnimMicroTurn(i + 1);
+		},model_Params.microTurnTime());
+		var mt = logic_G.get_turn().microTurns[i];
+		this.AnimEvents(mt.events.h[this.id],i);
+		var act = mt.acts.h[this.id];
+		this.animAct(act,i);
+	}
+	,AnimEvents: function(events,microTurnNum) {
+		var _gthis = this;
+		if(events == null) {
+			return;
+		}
+		var data = this.getData();
+		var _g = 0;
+		while(_g < events.length) {
+			var actEvent = events[_g];
+			++_g;
+			switch(actEvent._hx_index) {
+			case 0:
+				var to = actEvent.to;
+				this.ChangeCntrAnim(to,model_Params.microTurnTime());
+				break;
+			case 1:
+				var dmg = actEvent.d;
+				this.animTextFlow(dmg == 0 ? "Miss" : Math.abs(dmg) + "",dmg >= 0 ? new h3d_Vector(1,0.1,0.1) : new h3d_Vector(0.1,1,0.1),false);
+				break;
+			case 2:
+				var m = [actEvent.m];
+				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
+					continue;
+				}
+				logic_G.delay((function(m) {
+					return function() {
+						_gthis.animTextFlow("+" + m[0] + " mana",new h3d_Vector(0.1,1,0.1));
+					};
+				})(m),model_Params.turnTimeLeft(microTurnNum) - model_Params.microTurnTime());
+				break;
+			case 3:
+				var m1 = [actEvent.m];
+				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
+					continue;
+				}
+				logic_G.delay((function(m) {
+					return function() {
+						_gthis.animTextFlow("+" + m[0] + " minerals",new h3d_Vector(0.3,0.3,1));
+					};
+				})(m1),model_Params.turnTimeLeft(microTurnNum) - model_Params.microTurnTime());
+				break;
+			case 4:
+				var buffId = [actEvent.buffType];
+				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
+					continue;
+				}
+				logic_G.delay((function(buffId) {
+					return function() {
+						_gthis.animTextFlow(logic_Locale.get("buff_" + buffId[0]),new h3d_Vector(0.1,0.1,1));
+					};
+				})(buffId),model_Params.turnTimeLeft(microTurnNum) - model_Params.microTurnTime());
+				break;
+			}
+		}
+	}
+	,ChangeCntrAnim: function(to,animTime) {
+		utils_Tweener.AnimColor(this.bmp,model_Params.CountryColor(to),animTime);
+	}
+	,animTextFlow: function(txt,color,linearFlight) {
+		if(linearFlight == null) {
+			linearFlight = true;
+		}
+		var fnt = hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont();
+		var tf = new view_ui_PPText(fnt,this.parent);
+		tf.set_textAlign(h2d_Align.Center);
+		tf.set_filter(this.shadow);
+		tf.color = color;
+		tf.set_text(txt);
+		var v = (model_Params.get_tileWidth() - tf.get_textWidth()) / 2;
+		tf.posChanged = true;
+		tf.x = v;
+		var v = tf.get_textHeight() / 2;
+		tf.posChanged = true;
+		tf.y = v;
+		utils_Utils.Reparent(tf,view_ui_screens_Game.ui);
+		var x = Math.random() - 0.5;
+		var y = Math.random() - 1.25;
+		if(y == null) {
+			y = 0.;
+		}
+		if(x == null) {
+			x = 0.;
+		}
+		var _this_x = x;
+		var _this_y = y;
+		var k = _this_x * _this_x + _this_y * _this_y;
+		if(k < 1e-10) {
+			k = 0;
+		} else {
+			k = 1. / Math.sqrt(k);
+		}
+		var x = _this_x * k;
+		var y = _this_y * k;
+		if(y == null) {
+			y = 0.;
+		}
+		if(x == null) {
+			x = 0.;
+		}
+		var dir_x = x;
+		var dir_y = y;
+		var to = new h2d_col_Point(tf.x + 256 * dir_x,tf.y + 226 * dir_y);
+		var animTime = 800;
+		if(linearFlight) {
+			utils_Tweener.LinearMoveTo(tf,to,animTime);
+		} else {
+			var middle = new h2d_col_Point((to.x + tf.x) / 2,(to.y + tf.y) / 2 - 200);
+			utils_Tweener.BezierMoveTo(tf,middle,to,animTime);
+		}
+		logic_G.delay(function() {
+			utils_Tweener.AnimAlpha(tf,0,animTime >> 1,$bind(tf,tf.remove));
+		},animTime >> 1);
+	}
+	,morphAnim: function(to,microTurnNum) {
+		var _gthis = this;
+		logic_G.delay(function() {
+			if(_gthis.alpha < 0.5) {
+				_gthis.updateBmp(to);
+				return;
+			}
+			var halfTime = model_Params.microTurnTime() >> 1;
+			utils_Tweener.AnimAlpha(_gthis,0,halfTime,function() {
+				_gthis.updateBmp(to);
+				utils_Tweener.AnimAlpha(_gthis,1,halfTime);
+			});
+		},model_Params.turnTimeLeft(microTurnNum) - model_Params.microTurnTime());
 	}
 	,__class__: view_FieldObject
 });
 var view_ItemView = function(id) {
 	view_FieldObject.call(this,id);
-	haxe_Log.trace("!!!3",{ fileName : "src/view/ItemView.hx", lineNumber : 21, className : "view.ItemView", methodName : "new"});
-	this.updateBmp(this.getData().type);
+	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+	logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
+	logic_EventSystem.connect(Std.string(logic_EventType.ObjectUpdated) + id,$bind(this,this.onItemUpdated));
+	this.onTurnCalculated();
+	this.onItemUpdated();
 };
 $hxClasses["view.ItemView"] = view_ItemView;
 view_ItemView.__name__ = "view.ItemView";
@@ -101701,14 +102369,160 @@ view_ItemView.prototype = $extend(view_FieldObject.prototype,{
 		}
 		return logic_G.get_turn().items.h[this.id];
 	}
-	,onTurnStart: function() {
-		view_FieldObject.prototype.onTurnStart.call(this);
-		haxe_Log.trace("!!!1",{ fileName : "src/view/ItemView.hx", lineNumber : 27, className : "view.ItemView", methodName : "onTurnStart"});
-		this.updateBmp(this.getData().type);
+	,getPrevData: function() {
+		if(logic_G.get_field() == null) {
+			return null;
+		}
+		return logic_G.get_prevTurn().items.h[this.id];
+	}
+	,wasVisible: function() {
+		return logic_VisionSystem.isItemVisible(this.getPrevData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId,null,logic_G.get_prevTurnNum());
+	}
+	,nowVisible: function() {
+		return logic_VisionSystem.isItemVisible(this.getData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId);
+	}
+	,onItemUpdated: function() {
+		var data = this.getData();
+		if(data != null) {
+			this.updateBmp(data.type);
+		}
+	}
+	,PushesPhase: function() {
+		var data = this.getData();
+		if(data == null) {
+			return;
+		}
+		utils_Tweener.finishAllTweens(this);
+		this.moveAnim(data.pos,model_Params.microTurnTime());
+		logic_G.delay($bind(this,this.TurnAnimsDone),model_Params.microTurnTime());
+	}
+	,TurnAnimsDone: function() {
+		var curState = this.getData();
+		if(curState == null) {
+			return;
+		}
+		this.alpha = this.nowVisible() ? 1 : 0;
+		this.updatePos();
 	}
 	,onTurnAnimStart: function() {
-		haxe_Log.trace("!!!2",{ fileName : "src/view/ItemView.hx", lineNumber : 32, className : "view.ItemView", methodName : "onTurnAnimStart"});
-		this.updateBmp(this.getData().type);
+		var prevData = this.getPrevData();
+		var curData = this.getData();
+		this.alpha = this.wasVisible() ? 1 : 0;
+		if(prevData != null) {
+			this.updateBmp(prevData.type);
+			this.updatePos(prevData.pos);
+		} else if(curData != null) {
+			this.updateBmp(curData.type);
+			this.updatePos(curData.pos);
+		}
+		if(curData == null && prevData == null) {
+			this.onDataRemoved();
+			return;
+		}
+		this.AnimMicroTurn(0);
+	}
+	,noAct: function(actIdx) {
+		var visible = this.nowVisible();
+		if(this.alpha == 0 && visible || this.alpha == 1 && !visible) {
+			var _g = actIdx + 1;
+			var _g1 = logic_G.get_turn().microTurns.length;
+			while(_g < _g1) {
+				var j = _g++;
+				var act = logic_G.get_turn().microTurns[j].acts.h[this.id];
+				if(act != null) {
+					switch(act._hx_index) {
+					case 0:
+						var q = act.q;
+						var r = act.r;
+						return;
+					case 1:
+						return;
+					case 2:
+						var to = act.unitType;
+						return;
+					case 4:
+						var q1 = act.q;
+						var r1 = act.r;
+						return;
+					default:
+					}
+				}
+			}
+			utils_Tweener.AnimAlpha(this,visible ? 1 : 0,model_Params.microTurnTime());
+		}
+	}
+	,animAct: function(act,actIdx) {
+		var _gthis = this;
+		if(act == null) {
+			this.noAct(actIdx);
+			return;
+		}
+		switch(act._hx_index) {
+		case 0:
+			var q = act.q;
+			var r = act.r;
+			var bornPos = new model_HexCoords(q,r);
+			this.updatePos(bornPos);
+			this.alpha = 0;
+			if(this.nowVisible()) {
+				utils_Tweener.AnimAlpha(this,1,model_Params.microTurnTime());
+			}
+			break;
+		case 1:
+			var animTime = model_Params.microTurnTime() >> 1;
+			var to = new h2d_col_Point(this.x,this.y - 200);
+			utils_Tweener.MoveTo(this,to,animTime,function() {
+				utils_Tweener.AnimAlpha(_gthis,0,animTime);
+			});
+			break;
+		case 2:
+			var to = act.unitType;
+			this.morphAnim(to,actIdx);
+			break;
+		case 4:
+			var q = act.q;
+			var r = act.r;
+			this.moveAnim(new model_HexCoords(q,r),model_Params.microTurnTime());
+			break;
+		default:
+		}
+	}
+	,moveAnim: function(newPos,animTime) {
+		var _gthis = this;
+		this.posChanged = true;
+		this.posChanged = true;
+		this.x = this.y = 0;
+		var nextTile = view_ui_screens_Game.gameField.tiles.h[Std.string(newPos) + ""];
+		if(nextTile == this.parent) {
+			return;
+		}
+		var newAlpha = logic_VisionSystem.isItemVisible(this.getData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId,newPos) ? 1 : 0;
+		if(this.alpha != newAlpha) {
+			utils_Tweener.AnimAlpha(this,newAlpha,animTime);
+		}
+		if(view_ui_screens_Game.gameField.tilesLayer.getChildIndex(nextTile) > view_ui_screens_Game.gameField.tilesLayer.getChildIndex(this.parent)) {
+			utils_Utils.Reparent(this,nextTile);
+			var mid = new h2d_col_Point(this.x / 2,this.y / 2 - model_Params.get_tileHeight());
+			utils_Tweener.BezierMoveTo(this,mid,new h2d_col_Point(0,0),animTime);
+		} else {
+			var nextPos = nextTile.localToGlobal();
+			nextPos = this.parent.globalToLocal(nextPos);
+			var callback = function() {
+				utils_Utils.Reparent(_gthis,nextTile);
+				_gthis.posChanged = true;
+				var v = _gthis.y = 0;
+				_gthis.posChanged = true;
+				return _gthis.x = v;
+			};
+			var mid = new h2d_col_Point(nextPos.x / 2,nextPos.y / 2 - model_Params.get_tileHeight());
+			utils_Tweener.BezierMoveTo(this,mid,nextPos,animTime,callback);
+		}
+	}
+	,onDataRemoved: function() {
+		view_FieldObject.prototype.onDataRemoved.call(this);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.ObjectUpdated) + this.id,$bind(this,this.onItemUpdated));
 	}
 	,getBmpTile: function(type) {
 		return logic_LoadSystem.GetItemTile(type);
@@ -101796,7 +102610,6 @@ var view_UnitView = function(id) {
 	this.flyAnimTimer = null;
 	this.waitForFlyAnim = false;
 	this.skillAreaGroup = [];
-	this.shadow = new h2d_filter_DropShadow(0,0,0,1,1,1,0.07);
 	view_FieldObject.call(this,id);
 	this.dirArrow = new view_DirArrow(this);
 	var this1 = hxd_Res.get_loader();
@@ -101836,10 +102649,13 @@ var view_UnitView = function(id) {
 	this.rallyPoint = new view_RallyPoint(view_ui_screens_Game.gameField.marksLayer);
 	this.onUnitUpdated();
 	this.onRallyPointChanged();
-	logic_EventSystem.connect(Std.string(logic_EventType.UnitSelected) + "",$bind(this,this.onSelect));
-	logic_EventSystem.connect(Std.string(logic_EventType.UnitUpdated) + id,$bind(this,this.onUnitUpdated));
+	logic_EventSystem.connect(Std.string(logic_EventType.SelectionChanged) + "",$bind(this,this.onSelect));
+	logic_EventSystem.connect(Std.string(logic_EventType.ObjectUpdated) + id,$bind(this,this.onUnitUpdated));
 	logic_EventSystem.connect(Std.string(logic_EventType.RallyPointChanged) + id,$bind(this,this.onRallyPointChanged));
 	logic_EventSystem.connect(Std.string(logic_EventType.OrdersChanged) + "",$bind(this,this.onOrdersChanged));
+	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+	logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
+	this.onTurnCalculated();
 };
 $hxClasses["view.UnitView"] = view_UnitView;
 view_UnitView.__name__ = "view.UnitView";
@@ -101848,7 +102664,6 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 	dmgIcn: null
 	,hpIcn: null
 	,selectionBmp: null
-	,shadow: null
 	,dmgText: null
 	,hpText: null
 	,skillAreaTile: null
@@ -101862,11 +102677,17 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		}
 		return logic_G.get_turn().units.h[this.id];
 	}
-	,getPrevTurnData: function() {
-		if(logic_G.get_prevTurn() == null) {
+	,getPrevData: function() {
+		if(logic_G.get_field() == null) {
 			return null;
 		}
 		return logic_G.get_prevTurn().units.h[this.id];
+	}
+	,wasVisible: function() {
+		return logic_VisionSystem.isUnitVisible(this.getPrevData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId,null,logic_G.get_prevTurnNum());
+	}
+	,nowVisible: function() {
+		return logic_VisionSystem.isUnitVisible(this.getData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId);
 	}
 	,getBmpTile: function(type) {
 		return logic_LoadSystem.GetUnitTile(type);
@@ -101936,7 +102757,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 				_this.parent.removeChild(_this);
 			}
 		}
-		var ids = model_Store.cam.selectedUnitIds;
+		var ids = model_Store.cam.selectedIds;
 		if(ids == null || ids.indexOf(this.id) == -1) {
 			return;
 		}
@@ -101968,7 +102789,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		var data = this.getData();
 		this.bmp.color = model_Params.CountryColor(data.countryId);
 		this.updateBmp(data.type);
-		this.onTurnStart();
+		this.updateIcons();
 	}
 	,onRallyPointChanged: function() {
 		this.drawSkillRadius();
@@ -101986,6 +102807,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			this.rallyPoint.to = data.rallyPoints;
 			this.rallyPoint.rpColor = 52224;
 		}
+		this.rallyPoint.target = data.orderIdx != -1;
 		var tmp = data.speed();
 		this.rallyPoint.isAnimated = tmp > 0;
 		this.flyAnim();
@@ -102020,8 +102842,11 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			});
 		}
 	}
-	,onTurnStart: function() {
-		view_FieldObject.prototype.onTurnStart.call(this);
+	,onTurnCalculated: function() {
+		view_FieldObject.prototype.onTurnCalculated.call(this);
+		this.updateIcons();
+	}
+	,updateIcons: function() {
 		var data = this.getData();
 		if(data == null) {
 			return;
@@ -102050,10 +102875,12 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		if(this.flyAnimTimer != null) {
 			this.flyAnimTimer.stop();
 		}
-		logic_EventSystem.disconnect(Std.string(logic_EventType.UnitSelected) + "",$bind(this,this.onSelect));
-		logic_EventSystem.disconnect(Std.string(logic_EventType.UnitUpdated) + this.id,$bind(this,this.onUnitUpdated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.SelectionChanged) + "",$bind(this,this.onSelect));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.ObjectUpdated) + this.id,$bind(this,this.onUnitUpdated));
 		logic_EventSystem.disconnect(Std.string(logic_EventType.RallyPointChanged) + this.id,$bind(this,this.onRallyPointChanged));
 		logic_EventSystem.disconnect(Std.string(logic_EventType.OrdersChanged) + "",$bind(this,this.onOrdersChanged));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
 	}
 	,onTurnAnimStart: function() {
 		this.rallyPoint.set_visible(false);
@@ -102061,14 +102888,15 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		this.hpIcn.set_visible(false);
 		var data = this.getData();
 		if(data == null) {
+			this.onDataRemoved();
 			return;
 		}
-		var prevData = this.getPrevTurnData();
+		var prevData = this.getPrevData();
 		if(prevData == null) {
 			prevData = data;
 			this.alpha = 0;
 		} else {
-			this.alpha = logic_VisionSystem.isUnitVisible(prevData,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId,null,logic_G.get_prevTurnNum()) ? 1 : 0;
+			this.alpha = this.wasVisible() ? 1 : 0;
 		}
 		this.updatePos(prevData.pos);
 		this.prevPos = prevData.pos;
@@ -102077,60 +102905,46 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		this.bmp.color = model_Params.CountryColor(prevData.countryId);
 		this.AnimMicroTurn(0);
 	}
-	,AnimMicroTurn: function(i) {
-		if(i == null) {
-			i = 0;
-		}
-		var _gthis = this;
-		if(i >= logic_G.get_turn().microTurns.length) {
-			this.PushesPhase();
-			return;
-		}
-		utils_Tweener.finishAllTweens(this);
-		logic_G.delay(function() {
-			_gthis.AnimMicroTurn(i + 1);
-		},model_Params.microTurnTime());
-		var mt = logic_G.get_turn().microTurns[i];
-		this.AnimEvents(mt.events.h[this.id],i);
-		var act = mt.acts.h[this.id];
-		if(act == null) {
-			if(this.alpha == 0 && logic_VisionSystem.isUnitVisible(this.getData(),logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-				var _g = i + 1;
-				var _g1 = logic_G.get_turn().microTurns.length;
-				while(_g < _g1) {
-					var j = _g++;
-					act = logic_G.get_turn().microTurns[j].acts.h[this.id];
-					if(act != null) {
-						switch(act._hx_index) {
-						case 0:
-							var q = act.q;
-							var r = act.r;
-							return;
-						case 1:
-							return;
-						case 2:
-							var to = act.unitType;
-							return;
-						case 3:
-							var q1 = act.q;
-							var r1 = act.r;
-							return;
-						case 4:
-							var q2 = act.q;
-							var r2 = act.r;
-							return;
-						default:
-						}
+	,noAct: function(actIdx) {
+		var data = this.getData();
+		if(this.alpha == 0 && this.nowVisible()) {
+			if(data.hp < 1) {
+				return;
+			}
+			var _g = actIdx + 1;
+			var _g1 = logic_G.get_turn().microTurns.length;
+			while(_g < _g1) {
+				var j = _g++;
+				var act = logic_G.get_turn().microTurns[j].acts.h[this.id];
+				if(act != null) {
+					switch(act._hx_index) {
+					case 0:
+						var q = act.q;
+						var r = act.r;
+						return;
+					case 1:
+						return;
+					case 2:
+						var to = act.unitType;
+						return;
+					case 3:
+						var q1 = act.q;
+						var r1 = act.r;
+						return;
+					case 4:
+						var q2 = act.q;
+						var r2 = act.r;
+						return;
+					default:
 					}
 				}
-				utils_Tweener.AnimAlpha(this,1,model_Params.microTurnTime());
 			}
-		} else {
-			this.AnimAct(act);
+			utils_Tweener.AnimAlpha(this,1,model_Params.microTurnTime());
 		}
 	}
-	,AnimAct: function(act) {
+	,animAct: function(act,actIdx) {
 		if(act == null) {
+			this.noAct(actIdx);
 			return;
 		}
 		var data = this.getData();
@@ -102146,22 +102960,22 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			}
 			break;
 		case 1:
-			this.MoveAnim(data.pos,model_Params.microTurnTime());
+			this.moveAnim(data.pos,model_Params.microTurnTime());
 			utils_Tweener.AnimAlpha(this,0,model_Params.microTurnTime());
 			break;
 		case 2:
 			var to = act.unitType;
-			this.MorphAnim(to,model_Params.microTurnTime());
+			this.morphAnim(to,actIdx);
 			break;
 		case 3:
 			var q = act.q;
 			var r = act.r;
-			this.MoveAnim(new model_HexCoords(q,r),model_Params.microTurnTime());
+			this.moveAnim(new model_HexCoords(q,r),model_Params.microTurnTime());
 			break;
 		case 4:
 			var q = act.q;
 			var r = act.r;
-			this.MoveAnim(new model_HexCoords(q,r),model_Params.microTurnTime(),true);
+			this.moveAnim(new model_HexCoords(q,r),model_Params.microTurnTime(),true);
 			break;
 		case 5:
 			var from = act.from;
@@ -102181,62 +102995,6 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			break;
 		}
 	}
-	,AnimEvents: function(events,microTurnNum) {
-		var _gthis = this;
-		if(events == null) {
-			return;
-		}
-		var data = this.getData();
-		var _g = 0;
-		while(_g < events.length) {
-			var actEvent = events[_g];
-			++_g;
-			switch(actEvent._hx_index) {
-			case 0:
-				var to = actEvent.to;
-				this.ChangeCntrAnim(to,model_Params.microTurnTime());
-				break;
-			case 1:
-				var dmg = actEvent.d;
-				var tmp = dmg >= 0 ? new h3d_Vector(1,0.1,0.1) : new h3d_Vector(0.1,1,0.1);
-				this.animTextFlow(dmg == 0 ? "Miss" : (dmg < 0 ? -dmg : dmg) + "",tmp,false);
-				break;
-			case 2:
-				var m = [actEvent.m];
-				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-					continue;
-				}
-				logic_G.delay((function(m) {
-					return function() {
-						_gthis.animTextFlow("+" + m[0] + " mana",new h3d_Vector(0.1,1,0.1));
-					};
-				})(m),model_Params.turnTimeLeft(microTurnNum) - model_Params.pushTime());
-				break;
-			case 3:
-				var m1 = [actEvent.m];
-				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-					continue;
-				}
-				logic_G.delay((function(m) {
-					return function() {
-						_gthis.animTextFlow("+" + m[0] + " minerals",new h3d_Vector(0.3,0.3,1));
-					};
-				})(m1),model_Params.turnTimeLeft(microTurnNum) - model_Params.pushTime());
-				break;
-			case 4:
-				var buffId = [actEvent.buffType];
-				if(!logic_VisionSystem.isHexVisible(data.pos,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
-					continue;
-				}
-				logic_G.delay((function(buffId) {
-					return function() {
-						_gthis.animTextFlow(logic_Locale.get("buff_" + buffId[0]),new h3d_Vector(0.1,0.1,1));
-					};
-				})(buffId),model_Params.turnTimeLeft(microTurnNum) - model_Params.pushTime());
-				break;
-			}
-		}
-	}
 	,PushesPhase: function() {
 		var data = this.getData();
 		if(data == null) {
@@ -102244,9 +103002,9 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		}
 		utils_Tweener.finishAllTweens(this);
 		if(data.hp > 0) {
-			this.MoveAnim(data.pos,model_Params.pushTime());
+			this.moveAnim(data.pos,model_Params.microTurnTime());
 		}
-		logic_G.delay($bind(this,this.TurnAnimsDone),model_Params.pushTime());
+		logic_G.delay($bind(this,this.TurnAnimsDone),model_Params.microTurnTime());
 		this.dirArrow.set_dir(model_HexDirection.fromInt(data.dir));
 	}
 	,TurnAnimsDone: function() {
@@ -102254,7 +103012,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		if(curState == null) {
 			return;
 		}
-		var isVisible = logic_VisionSystem.isUnitVisible(curState,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) && curState.hp > 0;
+		var isVisible = this.nowVisible() && curState.hp > 0;
 		this.alpha = isVisible ? 1 : 0;
 		this.rallyPoint.set_visible(curState.countryId == (logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) && isVisible);
 		this.dmgIcn.set_visible(this.hpIcn.set_visible(isVisible));
@@ -102327,81 +103085,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			});
 		}
 	}
-	,animTextFlow: function(txt,color,linearFlight) {
-		if(linearFlight == null) {
-			linearFlight = true;
-		}
-		var fnt = hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont();
-		var tf = new view_ui_PPText(fnt,this.parent);
-		tf.set_textAlign(h2d_Align.Center);
-		tf.set_filter(this.shadow);
-		tf.color = color;
-		tf.set_text(txt);
-		var v = (model_Params.get_tileWidth() - tf.get_textWidth()) / 2;
-		tf.posChanged = true;
-		tf.x = v;
-		var v = tf.get_textHeight() / 2;
-		tf.posChanged = true;
-		tf.y = v;
-		utils_Utils.Reparent(tf,view_ui_screens_Game.ui);
-		var x = Math.random() - 0.5;
-		var y = Math.random() - 1.25;
-		if(y == null) {
-			y = 0.;
-		}
-		if(x == null) {
-			x = 0.;
-		}
-		var _this_x = x;
-		var _this_y = y;
-		var k = _this_x * _this_x + _this_y * _this_y;
-		if(k < 1e-10) {
-			k = 0;
-		} else {
-			k = 1. / Math.sqrt(k);
-		}
-		var x = _this_x * k;
-		var y = _this_y * k;
-		if(y == null) {
-			y = 0.;
-		}
-		if(x == null) {
-			x = 0.;
-		}
-		var dir_x = x;
-		var dir_y = y;
-		var to = new h2d_col_Point(tf.x + 256 * dir_x,tf.y + 226 * dir_y);
-		var animTime = 800;
-		if(linearFlight) {
-			utils_Tweener.LinearMoveTo(tf,to,animTime);
-		} else {
-			var middle = new h2d_col_Point((to.x + tf.x) / 2,(to.y + tf.y) / 2 - 200);
-			utils_Tweener.BezierMoveTo(tf,middle,to,animTime);
-		}
-		logic_G.delay(function() {
-			utils_Tweener.AnimAlpha(tf,0,animTime >> 1,function() {
-				if(tf != null && tf.parent != null) {
-					tf.parent.removeChild(tf);
-				}
-			});
-		},animTime >> 1);
-	}
-	,MorphAnim: function(to,animTime) {
-		var _gthis = this;
-		if(this.alpha < 0.5) {
-			this.updateBmp(to);
-			return;
-		}
-		var halfTime = Math.floor(animTime / 2);
-		utils_Tweener.AnimAlpha(this,0,halfTime,function() {
-			_gthis.updateBmp(to);
-			utils_Tweener.AnimAlpha(_gthis,1,halfTime);
-		});
-	}
-	,ChangeCntrAnim: function(to,animTime) {
-		utils_Tweener.AnimColor(this.bmp,model_Params.CountryColor(to),animTime);
-	}
-	,MoveAnim: function(newPos,animTime,isJump) {
+	,moveAnim: function(newPos,animTime,isJump) {
 		if(isJump == null) {
 			isJump = false;
 		}
@@ -102472,13 +103156,13 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		_this.y = v - (_this1.yMax - _this1.yMin);
 		return tile;
 	}
-	,onSelect: function(selectedUnitIds) {
+	,onSelect: function(selectedIds) {
 		this.drawSkillRadius();
 		var data = this.getData();
 		if(data == null) {
 			return;
 		}
-		if(selectedUnitIds != null && selectedUnitIds.indexOf(this.id) != -1) {
+		if(selectedIds != null && selectedIds.indexOf(this.id) != -1) {
 			var selectionColor = model_Params.CountryColor(data.countryId);
 			selectionColor.x += 0.4;
 			selectionColor.y += 0.4;
@@ -102954,9 +103638,9 @@ var view_ui_panel_UnitAvatar = function(parent) {
 	this.interaction.enableRightButton = true;
 	this.interaction.onClick = function(e) {
 		if(e.button == 0) {
-			logic_EventSystem.fire(Std.string(logic_EventType.AvatarClicked) + "",_gthis.unitId);
+			logic_EventSystem.fire(Std.string(logic_EventType.AvatarClicked) + "",_gthis.objId);
 		} else if(e.button == 1) {
-			logic_EventSystem.fire(Std.string(logic_EventType.AvatarRightClicked) + "",_gthis.unitId);
+			logic_EventSystem.fire(Std.string(logic_EventType.AvatarRightClicked) + "",_gthis.objId);
 		}
 	};
 	this.redraw();
@@ -102974,13 +103658,20 @@ view_ui_panel_UnitAvatar.prototype = $extend(h2d_Graphics.prototype,{
 		this.redraw();
 		return val;
 	}
-	,unitId: null
-	,set_unitId: function(val) {
-		this.unitId = val;
+	,objId: null
+	,set_objId: function(val) {
+		this.objId = val;
 		var unit = logic_G.get_turn().units.h[val];
 		if(unit == null) {
-			this.tileImage = null;
-			this.bmp.set_visible(false);
+			var item = logic_G.get_turn().items.h[val];
+			if(item == null) {
+				this.tileImage = null;
+				this.bmp.set_visible(false);
+			} else {
+				this.tileImage = logic_LoadSystem.GetItemTile(item.type);
+				this.bmp.set_tile(this.tileImage);
+				this.bmp.set_visible(true);
+			}
 		} else {
 			this.tileImage = logic_LoadSystem.GetUnitTile(unit.type);
 			this.bmp.set_tile(this.tileImage);
@@ -103016,7 +103707,7 @@ view_ui_panel_UnitAvatar.prototype = $extend(h2d_Graphics.prototype,{
 		_this.y = (v - (_this1.yMax - _this1.yMin)) / 2;
 	}
 	,__class__: view_ui_panel_UnitAvatar
-	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_unitId:"set_unitId",set_size:"set_size"})
+	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_objId:"set_objId",set_size:"set_size"})
 });
 var view_ui_screens_NetLobbyScreen = function(parent) {
 	this.selectedRoomIdx = -1;
@@ -103468,7 +104159,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 			}
 		}
 		var fs = new utils_JSFileSystem();
-		var miParser = new JsonParser_$22();
+		var miParser = new JsonParser_$23();
 		var _this = fs.dir("");
 		var result = new Array(_this.length);
 		var _g = 0;
@@ -104191,6 +104882,7 @@ logic_DataBase.INFO_PATH = "info.json";
 logic_EventSystem.listeners = new haxe_ds_StringMap();
 logic_G.timers = [];
 logic_GameSystem.MicroTurnNum = -1;
+logic_GameSystem.MovementAllowed = false;
 logic_LoadSystem.objTiles = new haxe_ds_StringMap();
 logic_LoadSystem.scriptsCache = new haxe_ds_StringMap();
 logic_LoadSystem.particles = new haxe_ds_StringMap();
@@ -104688,9 +105380,9 @@ utils_IframeEvents.eventHandlers = (function($this) {
 	_g.h["load_binary_file"] = function(msg) {
 		utils_JSFileSystem.loadBinaryFile(msg.data.path,msg.data.bytes);
 	};
-	_g.h["update_units"] = function(msg) {
+	_g.h["update_objects"] = function(msg) {
 		logic_CacheSystem.ClearTurnCache();
-		logic_UnitSystem.UpdateUnits(msg.data);
+		logic_UnitSystem.UpdateObjects(msg.data);
 	};
 	_g.h["test_map"] = function(msg) {
 		if(logic_MapEditorSystem.isTestMapMode) {
