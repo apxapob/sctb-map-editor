@@ -10,7 +10,7 @@ const ItemTypeSelector = ():ReactElement => {
     [itemType: string]: ItemType
   }
   
-  const itemArray = React.useMemo(() => Object.values(items), [items])
+  const itemArray = React.useMemo(() => Object.values(items ?? {}), [items])
 
   React.useEffect(() => {
     SelectItemType(itemArray[0]?.type, false)
