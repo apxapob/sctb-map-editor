@@ -146,6 +146,7 @@ exports.CREATE_MAP = async () => {
     await makeParticlesDir(dir, mapId)
     await makeScriptsDir(dir, mapId)
     await makeUnitsDir(dir, mapId)
+    await makeItemsDir(dir, mapId)
     
     await loadMap(dir)
   } catch (err) {
@@ -160,6 +161,10 @@ const makeRootFiles = async (dir, mapId) => {
   )
   await fs.promises.writeFile(
     dir + '\\units.json',
+    JSON.stringify({})
+  )
+  await fs.promises.writeFile(
+    dir + '\\items.json',
     JSON.stringify({})
   )
   await fs.promises.writeFile(
@@ -205,6 +210,10 @@ const makeScriptsDir = async (dir, mapId) => {
     dir + '\\scripts\\help.hx',
     testScriptText
   )
+}
+
+const makeItemsDir = async (dir, mapId) => {
+  await fs.promises.mkdir(dir + '\\items')
 }
 
 const makeUnitsDir = async (dir, mapId) => {
