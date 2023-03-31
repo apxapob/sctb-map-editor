@@ -3,89 +3,21 @@
 <head>
     <meta charset="utf-8"/>
     <title>SCTB</title>
-    <style>
-        body { margin:0;padding:0;background-color:black;overflow: hidden; }
-        canvas#webgl { width:100%; height:100%; min-width: 100%; min-height: 100%; } 
-    </style>
-    
-    <script>
-      var self = this || {};
-      (function (Object, wm) {
-        var create = Object.create;
-        var defineProperty = Object.defineProperty;
-        var proto = EventTarget.prototype;
-        define(proto, 'addEventListener', function (type, listener, options) {
-          for (var
-            secret = wm.get(this),
-            listeners = secret[type] || (secret[type] = []),
-            i = 0, length = listeners.length; i < length; i++
-          ) {
-            if (listeners[i].listener === listener)
-              return;
-          }
-          listeners.push({target: this, listener: listener, options: options});
-        });
-        define(proto, 'dispatchEvent', function (event) {
-          var secret = wm.get(this);
-          var listeners = secret[event.type];
-          if (listeners) {
-            define(event, 'target', this);
-            define(event, 'currentTarget', this);
-            listeners.slice(0).forEach(dispatch, event);
-            delete event.currentTarget;
-            delete event.target;
-          }
-          return true;
-        });
-        define(proto, 'removeEventListener', function (type, listener) {
-          for (var
-            secret = wm.get(this),
-            /* istanbul ignore next */
-            listeners = secret[type] || (secret[type] = []),
-            i = 0, length = listeners.length; i < length; i++
-          ) {
-            if (listeners[i].listener === listener) {
-              listeners.splice(i, 1);
-              return;
-            }
-          }
-        });
-        self.EventTarget = EventTarget;
-        function EventTarget() {'use strict';
-          wm.set(this, create(null));
-        }
-        function define(target, name, value) {
-          defineProperty(
-            target,
-            name,
-            {
-              configurable: true,
-              writable: true,
-              value: value
-            }
-          );
-        }
-        function dispatch(info) {
-          var options = info.options;
-          if (options && options.once)
-            info.target.removeEventListener(this.type, info.listener);
-          if (typeof info.listener === 'function')
-            info.listener.call(info.target, this);
-          else
-            info.listener.handleEvent(this);
-        }
-      }(Object, new WeakMap));
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
 
-    <!--
-    <script src='pako.min.js' ></script>
-    -->
+    <style>
+      body,html { margin:0; padding:0; background-color:black; width:100%; height:100%; overflow: hidden; }
+      canvas#webgl { width:100%; height:100%; }
+    </style>    
 </head>
 <body>
     <canvas id="webgl"></canvas>
     <script type="text/javascript" src="sctb.js"></script>
     <script>
-      /*function onResize(){  
+      function onResize(){  
         var w = document.documentElement.clientWidth;
         var h = document.documentElement.clientHeight;
         const webgl = document.getElementById('webgl')
@@ -97,7 +29,7 @@
         webgl.width = w * window.devicePixelRatio;
         webgl.height = h * window.devicePixelRatio;
       }
-      window.addEventListener("resize", onResize);*/
+      window.addEventListener("resize", onResize);
     </script>
 </body>
 </html>
