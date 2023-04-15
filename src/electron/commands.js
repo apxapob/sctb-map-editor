@@ -231,6 +231,7 @@ const makeFieldsDir = async (dir, mapId) => {
   await fs.promises.writeFile(
     dir + '\\fields\\main.json',
     JSON.stringify({
+      id: 'main',
       size: mapSize,
       tiles: Array(mapSize * mapSize).fill([1, 0]),
       units: {},

@@ -64,8 +64,9 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       <>
         <div className='node' 
         style={{ paddingLeft: 2 + 18 * (level - 1) }}
+        onContextMenu={() => OpenFileTree(tree)}
         onClick={() => OpenFileTree(tree)}>
-          {tree.isOpen ? '▾'  : '▸'}
+          {tree.isOpen ? '▾📂'  : '▸📁'}
           {root}
           <span className='delete-file-icon' onClick={e => {
             e.stopPropagation()
@@ -77,8 +78,13 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
             🗑️
           </span>
         </div>
-        <br />
-        {tree.isOpen && <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />}
+        
+        {tree.isOpen && 
+          <>
+            <br />
+            <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />
+          </>
+        }
       </>
     }
     {tree.isOpen && tree.isDirectory && nodes}
