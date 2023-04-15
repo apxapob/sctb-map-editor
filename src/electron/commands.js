@@ -234,6 +234,7 @@ const makeFieldsDir = async (dir, mapId) => {
       size: mapSize,
       tiles: Array(mapSize * mapSize).fill([1, 0]),
       units: {},
+      items: {},
     })
   )
 }
