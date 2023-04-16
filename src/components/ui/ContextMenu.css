@@ -1,0 +1,26 @@
+.context-menu-container {
+  position: absolute;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.context-menu-back {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.context-menu-item {
+  cursor: pointer;
+  width: 100%;
+  padding: 2px 4px;
+}
+
+.context-menu-item:hover {
+  background-color: #222244;
+}

@@ -5,6 +5,7 @@ import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import { SendCommand } from '../../utils/messenger'
 import './DirectoryViewer.css'
+import ShowMenu from '../../state/actions/ShowMenu'
 
 export type DirectoryViewerProps = {
   path: string;
@@ -12,9 +13,9 @@ export type DirectoryViewerProps = {
 }
 
 const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElement => {
+  //<FileAdder path={path.replace('\\', '')} level={0} fileSelector={fileSelector} />
   return (
     <div className='dir-viewer-container'>
-      <FileAdder path={path.replace('\\', '')} level={0} fileSelector={fileSelector} />
       <PathTree
         fileSelector={fileSelector}
         tree={FilesTree.nodes[path.replace('\\', '')]} 
@@ -35,6 +36,8 @@ type FilesTreeProps = {
 }
 
 const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
+  const [adder, setAdder] = React.useState<'file'|'folder'|null>(null)
+
   if (!tree) {
     return null
   }
@@ -52,45 +55,53 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       />
     )
   }
+
+  const getMenuItems = (path:string) => [
+    { 
+      title: 'Delete', 
+      callback: () => SendCommand({
+        command: 'DELETE',
+        path: path
+      })
+    },
+    { 
+      title: 'New file', 
+      callback: () => setAdder('file')
+    },
+    { 
+      title: 'New folder', 
+      callback: () => setAdder('folder')
+    },
+  ]
   
   return <>
     {root && !tree.isDirectory &&
-      <>
-        <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
-        <br />
-      </>
+      <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
     }
     {root && tree.isDirectory &&
       <>
         <div className='node' 
-        style={{ paddingLeft: 2 + 18 * (level - 1) }}
-        onContextMenu={() => OpenFileTree(tree)}
-        onClick={() => OpenFileTree(tree)}>
+          style={{ paddingLeft: 2 + 18 * (level - 1) }}
+          onContextMenu={
+            e => ShowMenu(e, getMenuItems(tree.path))
+          }
+          onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
           {root}
-          <span className='delete-file-icon' onClick={e => {
-            e.stopPropagation()
-            SendCommand({
-              command: 'DELETE',
-              path: tree.path
-            })
-          }}>
-            🗑️
-          </span>
         </div>
         
-        {tree.isOpen && 
-          <>
-            <br />
-            <FileAdder path={tree.path} level={level} fileSelector={fileSelector} />
-          </>
+        {tree.isOpen && adder !== null &&
+          <FileAdder
+            path={tree.path} 
+            level={level} 
+            fileSelector={fileSelector} 
+            add={adder} 
+            reset={() => setAdder(null)}
+          />
         }
       </>
     }
     {tree.isOpen && tree.isDirectory && nodes}
-    {!tree.isOpen && tree.isDirectory &&
-      <br />
-    }
   </>
 })
 
@@ -160,28 +171,24 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
 })
 
 const FileAdder = ({
-  path, level, fileSelector
+  path, level, fileSelector, add, reset
 }:{ 
   path: string;
-  level: number; 
+  level: number;
+  add: 'file'|'folder';
   fileSelector: (path:string) => void;
+  reset: () => void;
 }) => {
-  const [showInput, setShowInput] = React.useState<'file'|'folder'|''>('')
   const [inputVal, setInputVal] = React.useState<string>('')
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
     inputRef.current?.focus()
-  }, [showInput])
-
-  const reset = () => {
-    setShowInput('')
-    setInputVal('')
-  }
+  }, [add])
 
   const createFile = () => {
     const fullpath = path + '\\' + inputVal
-    if (showInput === 'file') {
+    if (add === 'file') {
       CreateFile(fullpath)
       fileSelector(fullpath)
     } else {
@@ -192,37 +199,22 @@ const FileAdder = ({
   }
 
   return <>
-    <div style={{ paddingLeft: 4 + 18 * level }} className="file-adder">
-      {!showInput &&
-        <>
-          <button onClick={() => setShowInput('file')}>
-            +File
-          </button> 
-          <button onClick={() => setShowInput('folder')}>
-            +Folder
-          </button> 
-        </>
-      }
-      {showInput &&
-        <>
-          <input
-            value={inputVal} ref={inputRef} 
-            onBlur={reset}
-            onChange={e => setInputVal(e.target.value)}
-            onKeyDown={e => {
-              if (e.key === 'Enter') { createFile() }
-              if (e.key === 'Escape') { reset() }
-            }}
-          />
-          <button onMouseDown={createFile}>
-            ✓
-          </button> 
-          <button onClick={() => setShowInput('')}>
-            ✗
-          </button>
-        </>
-      }
+    <div style={{ paddingLeft: 4 + 18 * level }} className="file-adder">  
+      <input
+        value={inputVal} ref={inputRef} 
+        onBlur={reset}
+        onChange={e => setInputVal(e.target.value)}
+        onKeyDown={e => {
+          if (e.key === 'Enter') { createFile() }
+          if (e.key === 'Escape') { reset() }
+        }}
+      />
+      <button onMouseDown={createFile}>
+        ✓
+      </button> 
+      <button onClick={() => reset()}>
+        ✗
+      </button>
     </div>
-    <br />
   </>
 }

@@ -13,6 +13,7 @@ import Tab from '../ui/Tab'
 import Tools from '../ui/Tools'
 import ObjectSelection from '../ui/ObjectSelection'
 import './App.css'
+import ContextMenu from '../ui/ContextMenu'
 
 const fileSelectors: {
   [key: string]: (path:string) => void;
@@ -61,6 +62,7 @@ const App = ():ReactElement => {
         }
       </div>
       <PanelsContainer />
+      <ContextMenu />
     </div>
   )
 }
