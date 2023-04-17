@@ -12,13 +12,49 @@ export type DirectoryViewerProps = {
   fileSelector: (path:string) => void;
 }
 
+type AdderType = 'file'|'folder'|null
+
+const getMenuItems = (
+  tree:PathTreeType,
+  setAdder: (val:AdderType) => void
+) => [
+  {
+    title: 'Delete', 
+    callback: () => SendCommand({
+      command: 'DELETE',
+      path: tree.path
+    })
+  },
+  { 
+    title: 'New file', 
+    callback: () => {
+      if (!tree.isOpen)OpenFileTree(tree)
+      setAdder('file')
+    }
+  },
+  { 
+    title: 'New folder', 
+    callback: () => {
+      if (!tree.isOpen)OpenFileTree(tree)
+      setAdder('folder')
+    }
+  },
+]
+
 const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElement => {
-  //<FileAdder path={path.replace('\\', '')} level={0} fileSelector={fileSelector} />
+  const mainTree:PathTreeType = {
+    isOpen: true,
+    isDirectory: true,
+    path: '',
+    nodes: {
+      [path]: FilesTree.nodes[path]
+    }
+  }
   return (
     <div className='dir-viewer-container'>
       <PathTree
         fileSelector={fileSelector}
-        tree={FilesTree.nodes[path.replace('\\', '')]} 
+        tree={mainTree} 
         root={null} 
         level={0} 
       />
@@ -36,7 +72,7 @@ type FilesTreeProps = {
 }
 
 const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
-  const [adder, setAdder] = React.useState<'file'|'folder'|null>(null)
+  const [adder, setAdder] = React.useState<AdderType>(null)
 
   if (!tree) {
     return null
@@ -55,24 +91,6 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       />
     )
   }
-
-  const getMenuItems = (path:string) => [
-    { 
-      title: 'Delete', 
-      callback: () => SendCommand({
-        command: 'DELETE',
-        path: path
-      })
-    },
-    { 
-      title: 'New file', 
-      callback: () => setAdder('file')
-    },
-    { 
-      title: 'New folder', 
-      callback: () => setAdder('folder')
-    },
-  ]
   
   return <>
     {root && !tree.isDirectory &&
@@ -83,7 +101,7 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
         <div className='node' 
           style={{ paddingLeft: 2 + 18 * (level - 1) }}
           onContextMenu={
-            e => ShowMenu(e, getMenuItems(tree.path))
+            e => ShowMenu(e, getMenuItems(tree, setAdder))
           }
           onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
@@ -175,7 +193,7 @@ const FileAdder = ({
 }:{ 
   path: string;
   level: number;
-  add: 'file'|'folder';
+  add: AdderType;
   fileSelector: (path:string) => void;
   reset: () => void;
 }) => {

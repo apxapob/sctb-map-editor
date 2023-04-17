@@ -1,9 +1,11 @@
 import { action } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FilesTree, INFO_PATH, MapFiles, PathTreeType } from '../MapFiles'
+import { FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
+import { EditorState } from '../ToolState'
+import { CreateFolder } from './SaveChanges'
 
 export const OnLoadingStart = action(() => {
   MapFiles.progress = 0
@@ -101,6 +103,13 @@ export const OnDeleted = action((c:FSCommandType) => {
   delete MapFiles.binary[c.path]
   delete MapFiles.text[c.path]
   delete MapFiles.json[c.path]
+
+  if (
+    c.path === getDirPath(EditorState.activeTab).replace('\\', '')
+  ) {
+    //deleted one of the main folders in map, let's restore it
+    CreateFolder(c.path)
+  }
 })
 
 export const OnRenamed = action((c:RenameType) => {

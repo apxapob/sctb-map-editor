@@ -4,6 +4,7 @@
   overflow: auto;
   width: 360px;
   height: calc(100vh - 24px);
+  border-right: 1px solid gray;
 }
 
 .file-adder {

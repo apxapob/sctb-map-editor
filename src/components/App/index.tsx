@@ -50,7 +50,7 @@ const App = ():ReactElement => {
       <div className='hflex' style={{ alignItems: 'start' }}>
         {isLoaded && showDirViewer &&
           <DirectoryViewer 
-            path={getDirPath(EditorState.activeTab)} 
+            path={getDirPath(EditorState.activeTab).replace('\\', '')}
             fileSelector={fileSelectors[EditorState.activeTab]}
           />
         }
