@@ -31,17 +31,6 @@
   background-color: rgba(100, 100, 100, 0.5);
 }
 
-.delete-file-icon {
-  pointer-events: none;
-  color: rgba(0,0,0,0);
-}
-.delete-file-icon:hover {
-  background-color: rgba(100, 100, 100, 0.4);
-}
-.delete-file-icon:active {
-  background-color: rgba(100, 100, 100, 0.7);
-}
-
 .node:hover .delete-file-icon{
   pointer-events: all;
   color: rgba(0,0,0,1);

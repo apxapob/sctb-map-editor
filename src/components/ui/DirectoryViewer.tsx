@@ -14,6 +14,23 @@ export type DirectoryViewerProps = {
 
 type AdderType = 'file'|'folder'|null
 
+const getFileMenuItems = (
+  tree:PathTreeType,
+  renameFile: () => void
+) => [
+  {
+    title: 'Rename', 
+    callback: () => renameFile()
+  },
+  {
+    title: 'Delete', 
+    callback: () => SendCommand({
+      command: 'DELETE',
+      path: tree.path
+    })
+  },
+]
+
 const getMenuItems = (
   tree:PathTreeType,
   setAdder: (val:AdderType) => void
@@ -77,20 +94,29 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   if (!tree) {
     return null
   }
-  const nodes = []
-  for (const nodeKey in tree.nodes) {
-    const node = tree.nodes[nodeKey]
-    
-    nodes.push(
-      <PathTree 
-        tree={node} 
+  
+  const nodes = Object.keys(tree.nodes)
+    .sort((key1, key2) => {
+      const node1 = tree.nodes[key1]
+      const node2 = tree.nodes[key2]
+      if (node1.isDirectory && !node2.isDirectory) {
+        return -1
+      }
+      if (!node1.isDirectory && node2.isDirectory) {
+        return 1
+      }
+
+      return key1 > key2 ? 1 : -1
+    })
+    .map(nodeKey => 
+      <PathTree
+        tree={tree.nodes[nodeKey]} 
         root={nodeKey} 
         level={level + 1} 
         key={root + nodeKey + level} 
         fileSelector={fileSelector}
       />
     )
-  }
   
   return <>
     {root && !tree.isDirectory &&
@@ -167,23 +193,15 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
     </div>
   }
 
+  const startRenaming = () => setNewName(root)
+
   return (
     <div className={`node ${ isSelected ? 'selected-file' : '' }`}
       style={{ paddingLeft: 4 + 18 * (level - 1) }}
-      onDoubleClick={() => setNewName(root)}
+      onDoubleClick={startRenaming}
+      onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming))}
       onClick={() => fileSelector(tree.path)}>
-      <span>
-        {root}
-      </span>
-      <span className='delete-file-icon' onClick={e => {
-        e.stopPropagation()
-        SendCommand({
-          command: 'DELETE',
-          path: tree.path
-        })
-      }}>
-        🗑️
-      </span>
+      {root}
     </div>
   )
 })
