@@ -1,33 +1,35 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { SelectScriptFile, SelectLangFile, SelectParticlesFile } from '../../state/actions/OpenFileTree'
-import { getDirPath, getFilePath, MapFiles, } from '../../state/MapFiles'
+import { MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
-import GameCanvas from '../game/GameCanvas'
-import DirectoryViewer from '../ui/DirectoryViewer'
+import GameCanvas from '../Views/GameCanvas'
 import EmptyPage from '../ui/EmptyPage'
 import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
-import Tools from '../ui/Tools'
-import ObjectSelection from '../ui/ObjectSelection'
 import './App.css'
 import ContextMenu from '../ui/ContextMenu'
+import FieldView from '../Views/FieldView'
 
-const fileSelectors: {
-  [key: string]: (path:string) => void;
-} = {
-  'Scripts': SelectScriptFile, 
-  'Texts': SelectLangFile, 
-  'Particles': SelectParticlesFile
+const Views: Record<TabType, () => ReactElement|null> = {
+  Field: FieldView,
+  Units: JsonEditor,
+  Items: JsonEditor,
+  Skills: JsonEditor,
+  Buffs: JsonEditor,
+  Upgrades: JsonEditor,
+  Scripts: JsonEditor,
+  Map: JsonEditor,
+  Texts: JsonEditor,
+  Particles: JsonEditor,
 }
 
 const App = ():ReactElement => {
   const tabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
-  const showDirViewer = EditorState.activeTab === 'Texts' || EditorState.activeTab === 'Scripts' || EditorState.activeTab === 'Particles'
   
+  const View = Views[EditorState.activeTab]
   return (
     <div className="App">
       {!EditorState.mapTesting &&
@@ -41,25 +43,8 @@ const App = ():ReactElement => {
       {MapFiles.status === null &&
         <EmptyPage />
       }
-      {isLoaded && EditorState.activeTab === 'Field' && !EditorState.mapTesting &&
-        <>
-          <Tools />
-          <ObjectSelection />
-        </>
-      }
       <div className='hflex' style={{ alignItems: 'start' }}>
-        {isLoaded && showDirViewer &&
-          <DirectoryViewer 
-            path={getDirPath(EditorState.activeTab).replace('\\', '')}
-            fileSelector={fileSelectors[EditorState.activeTab]}
-          />
-        }
-        {isLoaded && EditorState.activeTab !== 'Field' &&
-          <JsonEditor
-            filePath={getFilePath(EditorState.activeTab)} 
-            tab={EditorState.activeTab} 
-          />
-        }
+        {isLoaded && !EditorState.mapTesting && <View />}
       </div>
       <PanelsContainer />
       <ContextMenu />

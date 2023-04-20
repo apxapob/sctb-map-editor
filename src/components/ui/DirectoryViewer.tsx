@@ -1,15 +1,23 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
-import { OpenFileTree } from '../../state/actions/OpenFileTree'
+import { OpenFileTree, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import { SendCommand } from '../../utils/messenger'
 import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
+import { EditorState } from '../../state/ToolState'
+
+export const fileSelectors: {
+  [key: string]: (path:string) => void;
+} = {
+  'Scripts': SelectScriptFile, 
+  'Texts': SelectLangFile, 
+  'Particles': SelectParticlesFile
+}
 
 export type DirectoryViewerProps = {
   path: string;
-  fileSelector: (path:string) => void;
 }
 
 type AdderType = 'file'|'folder'|null
@@ -58,7 +66,7 @@ const getMenuItems = (
   },
 ]
 
-const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElement => {
+const DirectoryViewer = ({ path }: DirectoryViewerProps):ReactElement => {
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
@@ -67,6 +75,9 @@ const DirectoryViewer = ({ path, fileSelector }: DirectoryViewerProps):ReactElem
       [path]: FilesTree.nodes[path]
     }
   }
+
+  const fileSelector = fileSelectors[EditorState.activeTab]
+
   return (
     <div className='dir-viewer-container'>
       <PathTree

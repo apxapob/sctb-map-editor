@@ -1,5 +1,5 @@
 import { toJS } from 'mobx'
-import { GameCanvasId } from '../../components/game/GameCanvas'
+import { GameCanvasId } from '../../components/Views/GameCanvas'
 import { GameMessage } from '../../types/types'
 
 const SendMsgToGame = (msg:GameMessage):void => {

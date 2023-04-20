@@ -1,10 +1,10 @@
 
 import React, { ReactElement } from 'react'
 import './JsonEditor.css'
-import { MapFiles } from '../../state/MapFiles'
+import { MapFiles, getDirPath, getFilePath } from '../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { TabType } from '../../types/types'
-import { TabsErrors, TabsState } from '../../state/ToolState'
+import { EditorState, TabsErrors, TabsState } from '../../state/ToolState'
 import { UpdateUnsavedData } from '../../state/actions/UpdateText'
 import AceEditor from 'react-ace'
 
@@ -14,27 +14,36 @@ import 'ace-builds/src-noconflict/theme-twilight'
 import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-min-noconflict/ext-searchbox'
 import ReactAce from 'react-ace/lib/ace'
+import DirectoryViewer from './DirectoryViewer'
 
 export type JsonEditorProps = {
   tab: TabType;
   filePath: string;
 }
 
-const JsonEditor = (props:JsonEditorProps):ReactElement|null => {
-  const error = TabsErrors[props.tab] ?? null
+const JsonEditor = ():ReactElement|null => {
+  const filePath = getFilePath(EditorState.activeTab)
+  const tab = EditorState.activeTab
+  const error = TabsErrors[tab] ?? null
+  const mode = filePath.endsWith('.json') ? 'json' : 'haxe'
+  const dirPath = getDirPath(EditorState.activeTab).replace('\\', '')
   
-  const mode = props.filePath.endsWith('.json') ? 'json' : 'haxe'
   return (
-    <div className='json-editor-container'>
-      {TabsErrors[props.tab] &&
-        <div className="error-div">
-          {TabsErrors[props.tab]}
-        </div>
+    <>
+      {dirPath !== '' &&
+        <DirectoryViewer path={dirPath} />
       }
-      {props.filePath &&
-        <EditorDiv tab={props.tab} error={error} filePath={props.filePath} mode={mode} />
-      }
-    </div>
+      <div className='json-editor-container'>
+        {TabsErrors[tab] &&
+          <div className="error-div">
+            {TabsErrors[tab]}
+          </div>
+        }
+        {filePath &&
+          <EditorDiv tab={tab} error={error} filePath={filePath} mode={mode} />
+        }
+      </div>
+    </>
   )
 }
 
