@@ -39,7 +39,7 @@ export type GameMessage = {
 };
 
 export type PanelType = 
-  'NewMap' | 
+  'MapSettings' | 
   'LoadingMap'
 
 export type ToolType = 

@@ -4,11 +4,10 @@ import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { EditorState } from '../../../state/ToolState'
 import { PanelType } from '../../../types/types'
 import LoadingMapPanel from './LoadingMapPanel'
-import NewMapPanel from './NewMapPanel'
 import './panels.css'
 
 const panels: Record<PanelType, () => ReactElement|null> = {
-  'NewMap': NewMapPanel,
+  'MapSettings': () => null,
   'LoadingMap': LoadingMapPanel
 }
 
