@@ -29,7 +29,7 @@ const JsonEditor = ():ReactElement|null => {
   const dirPath = getDirPath(EditorState.activeTab).replace('\\', '')
   
   return (
-    <>
+    <div className='hflex' style={{ alignItems: 'start' }}>
       {dirPath !== '' &&
         <DirectoryViewer path={dirPath} />
       }
@@ -43,7 +43,7 @@ const JsonEditor = ():ReactElement|null => {
           <EditorDiv tab={tab} error={error} filePath={filePath} mode={mode} />
         }
       </div>
-    </>
+    </div>
   )
 }
 

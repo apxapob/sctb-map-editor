@@ -1,5 +1,5 @@
 import { observable } from 'mobx'
-import { TabType } from '../types/types'
+import { JSONObject, TabType } from '../types/types'
 
 export const UNITS_PATH = 'units.json'
 export const ITEMS_PATH = 'items.json'
@@ -55,7 +55,7 @@ export const MapFiles:{
     [filename: string]: string;
   };
   json: {
-    [filename: string]: object;
+    [filename: string]: JSONObject;
   };
   lastLoadedFile: string;
   progress: number;

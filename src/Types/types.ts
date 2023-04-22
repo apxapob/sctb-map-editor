@@ -1,3 +1,7 @@
+export type JSONValue = string | number | boolean | JSONObject | JSONArray
+export type JSONObject = { [x: string]: JSONValue; }
+export type JSONArray = JSONValue[]
+
 export type GameMessage = {
   method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs';
 } | {

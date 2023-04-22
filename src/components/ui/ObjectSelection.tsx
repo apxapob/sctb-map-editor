@@ -111,39 +111,6 @@ const ObjectSelection = ():ReactElement|null => {
 
 export default observer(ObjectSelection)
 
-/*
-    <UnitStatChanger title='Attack' param='attack' />
-    <UnitStatChanger title='Health' param='maxHp' />
-    <UnitStatChanger title='Range' param='range' />
-    <UnitStatChanger title='Speed' param='speed' />
-    <UnitStatChanger title='Vision' param='vision' />
-    <UnitStatChanger title='Flying' param='flying' />
-    <UnitStatChanger title='Detector' param='detector' />
-    <UnitStatChanger title='Invisible' param='invisible' />
-
-const UnitStatChanger = observer((props:{
-  title: string;
-  param: UnitParamId;
-}) => {
-  const selectedUnits = SelectedUnits.data
-  const mainUnit = selectedUnits[0]
-  const { param } = props
-  const value = selectedUnits.find(u => u.stats[param] !== mainUnit.stats[param]) ? '?' : mainUnit.stats[param]
-
-  return (
-    <div className='hflex gapped'>
-      {props.title}: 
-      <div className='hflex gapped'>
-        <button onClick={() => changeUnitParam(param, -1)}>-</button>
-        <input onChange={e => setUnitParam(param,
-          parseInt(e.target.value)
-        )} value={value} className="num-input" />
-        <button onClick={() => changeUnitParam(param, 1)}>+</button>
-      </div>
-    </div>
-  )
-})*/
-
 const BuffChanger = observer((props:{
   idx: number;
   buff: BuffDataType | { buffType:string };

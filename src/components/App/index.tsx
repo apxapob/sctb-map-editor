@@ -11,6 +11,7 @@ import Tab from '../ui/Tab'
 import './App.css'
 import ContextMenu from '../ui/ContextMenu'
 import FieldView from '../Views/FieldView'
+import MapView from '../Views/MapView'
 
 const Views: Record<TabType, () => ReactElement|null> = {
   Field: FieldView,
@@ -20,7 +21,7 @@ const Views: Record<TabType, () => ReactElement|null> = {
   Buffs: JsonEditor,
   Upgrades: JsonEditor,
   Scripts: JsonEditor,
-  Map: JsonEditor,
+  Map: MapView,
   Texts: JsonEditor,
   Particles: JsonEditor,
 }
@@ -43,9 +44,7 @@ const App = ():ReactElement => {
       {MapFiles.status === null &&
         <EmptyPage />
       }
-      <div className='hflex' style={{ alignItems: 'start' }}>
-        {isLoaded && !EditorState.mapTesting && <View />}
-      </div>
+      {isLoaded && !EditorState.mapTesting && <View />}
       <PanelsContainer />
       <ContextMenu />
     </div>
