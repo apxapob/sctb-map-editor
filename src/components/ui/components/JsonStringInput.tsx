@@ -11,7 +11,7 @@ export type InputProps = {
   placeholder?: string;
 }
 
-const JsonValueInput = (
+const JsonStringInput = (
   { filePath, valuePath, title, placeholder }:InputProps
 ):ReactElement => {
   const value = MapFiles.json[filePath][valuePath]
@@ -30,4 +30,4 @@ const JsonValueInput = (
   )
 }
 
-export default observer(JsonValueInput)
+export default observer(JsonStringInput)

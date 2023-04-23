@@ -3,7 +3,7 @@ import { MapFiles } from '../../../state/MapFiles'
 import { UpdateMapJsonFile } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
-import { InputProps } from './JsonValueInput'
+import { InputProps } from './JsonStringInput'
 
 export type NumberInputProps = InputProps & {
   isInteger: boolean;

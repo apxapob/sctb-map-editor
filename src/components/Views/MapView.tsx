@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react'
 import { observer } from 'mobx-react-lite'
 import JsonEditor from '../ui/JsonEditor'
-import JsonValueInput from '../ui/components/JsonValueInput'
+import JsonStringInput from '../ui/components/JsonStringInput'
 import { INFO_PATH } from '../../state/MapFiles'
 import './View.css'
 import ApplyCancelButtons from './ApplyCancelButtons'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
+import CountriesColors from '../ui/components/CountriesColors'
 
 const MapView = ():ReactElement => {
   //const mapInfo = useRef(MapFiles.json[INFO_PATH] as MapInfo)
@@ -14,25 +15,25 @@ const MapView = ():ReactElement => {
 
   return <div className='view-container'>
     <div className='vflex'>
-      <JsonValueInput
+      <JsonStringInput
         placeholder='Map id'
         title="Map id"
         filePath={INFO_PATH}
         valuePath='mapId'
       />
-      <JsonValueInput
+      <JsonStringInput
         placeholder='Map name'
         title="Map name"
         filePath={INFO_PATH}
         valuePath='name'
       />
-      <JsonValueInput
+      <JsonStringInput
         placeholder='Description'
         title="Description"
         filePath={INFO_PATH}
         valuePath='description'
       />
-      <JsonValueInput
+      <JsonStringInput
         placeholder='Author'
         title="Author"
         filePath={INFO_PATH}
@@ -61,10 +62,13 @@ const MapView = ():ReactElement => {
         min={1}
         max={99}
       />
+      <CountriesColors
+        title="Countries colors:"
+        filePath={INFO_PATH}
+        valuePath='countryColors'
+      />
       <ApplyCancelButtons />
     </div>
-    <JsonEditor />
-  
   </div>
 }
 

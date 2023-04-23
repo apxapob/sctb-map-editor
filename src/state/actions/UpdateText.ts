@@ -1,5 +1,5 @@
 import { action } from 'mobx'
-import { TabType } from '../../types/types'
+import { JSONValue, TabType } from '../../types/types'
 import { EditorState, TabsState } from '../ToolState'
 import { MapFiles, getFilePath } from '../MapFiles'
 
@@ -16,7 +16,7 @@ export const CancelUnsavedData = action(() => {
 export const UpdateMapJsonFile = action((
   filePath: string,
   valuePath: string,
-  value: string | number | boolean,
+  value: JSONValue,
 ) => {
   const oldValue = MapFiles.json[filePath][valuePath]
   if (oldValue === value) return
