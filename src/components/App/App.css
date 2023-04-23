@@ -36,11 +36,32 @@ button:active {
 }
 
 input {
-  line-height: 20px;
+  line-height: 20.4px;
+  padding: 1px 4px;
   background-color: black;
   color: white;
   border-radius: 6px;
   border: solid 1px #aaa;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+input[type="checkbox"]::before {
+  content: "";
+}
+input[type="checkbox"]:checked::before {
+  content: "✔";
 }
 
 .hflex {

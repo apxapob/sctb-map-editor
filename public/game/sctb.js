@@ -1122,7 +1122,7 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["mapId","name","description","version","author","startField","minPlayers","maxPlayers","countryColors"],[false,false,false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["mapId","name","description","version","author","startField","singlePlayer","maxPlayers","countryColors"],[false,false,false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -1144,11 +1144,11 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			case "maxPlayers":
 				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
 				break;
-			case "minPlayers":
-				this.value.minPlayers = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minPlayers",assigned,this.value.minPlayers,pos);
-				break;
 			case "name":
 				this.value.name = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				break;
+			case "singlePlayer":
+				this.value.singlePlayer = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"singlePlayer",assigned,this.value.singlePlayer,pos);
 				break;
 			case "startField":
 				this.value.startField = this.loadObjectField(($_=new JsonParser_$4(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
@@ -1170,7 +1170,7 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		value.version = new JsonParser_$12([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.author = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.startField = new JsonParser_$4([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minPlayers = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.singlePlayer = new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.maxPlayers = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.countryColors = [];
 		return value;
@@ -95977,7 +95977,8 @@ logic_LSDSystem.LoadMap = function(mapId) {
 	var mapInfo = logic_DataBase.getMapInfo();
 	result.mapName = mapInfo.name;
 	result.field = logic_FieldSystem.LoadField(mapInfo.startField);
-	logic_GameSystem.createPlayersForGame(result,mapInfo.minPlayers);
+	var playersNum = mapInfo.singlePlayer ? 1 : 2;
+	logic_GameSystem.createPlayersForGame(result,playersNum);
 	var t = new model_TurnData();
 	if(result.field.units != null) {
 		var h = result.field.units.h;
@@ -96008,7 +96009,7 @@ logic_LSDSystem.LoadMap = function(mapId) {
 		}
 	}
 	result.turns.push(t);
-	logic_GameSystem.createCountries(result,mapInfo.minPlayers);
+	logic_GameSystem.createCountries(result,playersNum);
 	return result;
 };
 logic_LSDSystem.Load = function(filename) {
@@ -99075,7 +99076,7 @@ model_MapInfo.prototype = $extend(model_ModelData.prototype,{
 	,version: null
 	,author: null
 	,startField: null
-	,minPlayers: null
+	,singlePlayer: null
 	,maxPlayers: null
 	,countryColors: null
 	,copy: function() {
@@ -99086,7 +99087,7 @@ model_MapInfo.prototype = $extend(model_ModelData.prototype,{
 		result.version = this.version;
 		result.author = this.author;
 		result.startField = this.startField;
-		result.minPlayers = this.minPlayers;
+		result.singlePlayer = this.singlePlayer;
 		result.maxPlayers = this.maxPlayers;
 		var _this = this.countryColors;
 		var result1 = new Array(_this.length);
@@ -108637,7 +108638,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 			return;
 		}
 		this.mapTitle.set_text(this.selectedMap.name);
-		this.mapParams.set_text("ID: " + this.selectedMap.mapId + "\r\nplayers: from " + this.selectedMap.minPlayers + " to " + this.selectedMap.maxPlayers + "\r\nversion: " + this.selectedMap.version + "\r\nAuthor: " + this.selectedMap.author);
+		this.mapParams.set_text("ID: " + this.selectedMap.mapId + "\r\nplayers: from " + (this.selectedMap.singlePlayer ? 1 : 2) + " to " + this.selectedMap.maxPlayers + "\r\nversion: " + this.selectedMap.version + "\r\nAuthor: " + this.selectedMap.author);
 		var _this = this.mapTitle;
 		_this.posChanged = true;
 		_this.x = this.startBtn.x;

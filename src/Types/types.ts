@@ -178,7 +178,7 @@ export type MapInfo = {
   version: number;
   author: string | null;
   startField: string;
-  minPlayers: number;
+  singlePlayer: boolean;
   maxPlayers: number;
   countryColors: string[];
 }

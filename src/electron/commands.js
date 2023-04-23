@@ -183,7 +183,7 @@ const makeRootFiles = async (dir, mapId) => {
       author: 'unknown',
       version: 0.01,
       startField: 'main',
-      minPlayers: 2,
+      singlePlayer: false,
       maxPlayers: 6,
       countryColors: [
         '0xff4444','0x44ff44','0x4444ff','0x44ffff','0xff44ff','0xffff44'

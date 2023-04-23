@@ -16,8 +16,10 @@ export const CancelUnsavedData = action(() => {
 export const UpdateMapJsonFile = action((
   filePath: string,
   valuePath: string,
-  value: string,
+  value: string | number | boolean,
 ) => {
+  const oldValue = MapFiles.json[filePath][valuePath]
+  if (oldValue === value) return
   MapFiles.json[filePath][valuePath] = value
   TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
 })
