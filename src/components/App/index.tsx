@@ -40,7 +40,10 @@ const App = ():ReactElement => {
           )}
         </div>
       }
-      <GameCanvas active={ EditorState.activeTab === 'Field' } testing={ EditorState.mapTesting } />
+      <GameCanvas 
+        active={ EditorState.activeTab === 'Field' || EditorState.activeTab === 'Map' } 
+        testing={ EditorState.mapTesting } 
+      />
       {MapFiles.status === null &&
         <EmptyPage />
       }

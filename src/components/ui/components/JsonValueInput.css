@@ -1,5 +1,6 @@
 .view-input-title {
-  min-width: 100px;
+  min-width: 110px;
+  text-align: start;
 }
 
 .view-input {

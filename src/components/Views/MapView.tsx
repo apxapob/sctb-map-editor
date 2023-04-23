@@ -1,6 +1,4 @@
 import React, { ReactElement } from 'react'
-import { observer } from 'mobx-react-lite'
-import JsonEditor from '../ui/JsonEditor'
 import JsonStringInput from '../ui/components/JsonStringInput'
 import { INFO_PATH } from '../../state/MapFiles'
 import './View.css'
@@ -9,11 +7,8 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesColors from '../ui/components/CountriesColors'
 
-const MapView = ():ReactElement => {
-  //const mapInfo = useRef(MapFiles.json[INFO_PATH] as MapInfo)
-  //mapInfo.current.
-
-  return <div className='view-container'>
+const MapView = ():ReactElement => 
+  <div className='tools-container'>
     <div className='vflex'>
       <JsonStringInput
         placeholder='Map id'
@@ -70,6 +65,5 @@ const MapView = ():ReactElement => {
       <ApplyCancelButtons />
     </div>
   </div>
-}
 
-export default observer(MapView)
+export default MapView
