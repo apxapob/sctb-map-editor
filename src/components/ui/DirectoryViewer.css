@@ -21,6 +21,8 @@
   gap: 6px;
   min-width: 100%;
   justify-content: space-between;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .node:hover {
@@ -36,12 +38,12 @@
   color: rgba(0,0,0,1);
 }
 
-.selected-file {
+.selected-item {
   background-color: rgba(0, 0, 255, 0.4);
 }
-.selected-file:hover {
+.selected-item:hover {
   background-color: rgba(0, 0, 255, 0.4);
 }
-.selected-file:active {
+.selected-item:active {
   background-color: rgba(0, 0, 255, 0.5);
 }

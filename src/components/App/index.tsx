@@ -12,10 +12,11 @@ import './App.css'
 import ContextMenu from '../ui/ContextMenu'
 import FieldView from '../Views/FieldView'
 import MapView from '../Views/MapView'
+import UnitsView from '../Views/UnitsView'
 
 const Views: Record<TabType, () => ReactElement|null> = {
   Field: FieldView,
-  Units: JsonEditor,
+  Units: UnitsView,
   Items: JsonEditor,
   Skills: JsonEditor,
   Buffs: JsonEditor,

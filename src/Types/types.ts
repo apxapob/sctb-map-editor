@@ -104,8 +104,11 @@ export type UnitStatsType = {
   range: number;
   speed: number;
   flying: number;
-	detector: number;
-	invisible: number;
+  detector: number;
+  invisible: number;
+  buffs: string[];
+  skills: string[];
+  type: string;
 }
 
 export type HexCoords = {

@@ -207,7 +207,7 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   const startRenaming = () => setNewName(root)
 
   return (
-    <div className={`node ${ isSelected ? 'selected-file' : '' }`}
+    <div className={`node ${ isSelected ? 'selected-item' : '' }`}
       style={{ paddingLeft: 4 + 18 * (level - 1) }}
       onDoubleClick={startRenaming}
       onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming))}
