@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { INFO_PATH, MapFiles } from '../../../state/MapFiles'
-import { UpdateMapJsonFile } from '../../../state/actions/UpdateText'
+import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -53,7 +53,7 @@ const CountriesColors = (
           value={color}
           setValue={newColor => {
             colors[idx] = newColor
-            UpdateMapJsonFile(filePath, valuePath, colors)
+            UpdateJsonFileValue(filePath, valuePath, colors)
           }}
         />
       )}

@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
-import { MapFiles } from '../../../state/MapFiles'
-import { UpdateMapJsonFile } from '../../../state/actions/UpdateText'
+import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -14,12 +13,12 @@ export type NumberInputProps = InputProps & {
 const JsonNumberInput = (
   { filePath, valuePath, title, placeholder, isInteger, min, max }:NumberInputProps
 ):ReactElement => {
-  const value = MapFiles.json[filePath][valuePath] as number
+  const value = GetJsonFileValue(filePath, valuePath) as number
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     let newVal = (isInteger ? parseInt(e.target.value) : parseFloat(e.target.value)) || 0
     if (min !== undefined) newVal = Math.max(min, newVal)
     if (max !== undefined) newVal = Math.min(max, newVal)
-    UpdateMapJsonFile(
+    UpdateJsonFileValue(
       filePath,
       valuePath,
       newVal

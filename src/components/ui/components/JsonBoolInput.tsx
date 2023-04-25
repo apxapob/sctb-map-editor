@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { MapFiles } from '../../../state/MapFiles'
-import { UpdateMapJsonFile } from '../../../state/actions/UpdateText'
+import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -16,7 +16,7 @@ const JsonBoolInput = (
       </span>
       <input
         type='checkbox'
-        onChange={e => UpdateMapJsonFile(filePath, valuePath, e.target.checked)}
+        onChange={e => UpdateJsonFileValue(filePath, valuePath, e.target.checked)}
         checked={value}
         placeholder={placeholder}
       />

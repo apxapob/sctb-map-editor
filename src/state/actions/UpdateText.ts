@@ -1,5 +1,5 @@
 import { action } from 'mobx'
-import { JSONValue, TabType } from '../../types/types'
+import { JSONObject, JSONValue, TabType } from '../../types/types'
 import { EditorState, TabsState } from '../ToolState'
 import { MapFiles, getFilePath } from '../MapFiles'
 
@@ -13,13 +13,51 @@ export const CancelUnsavedData = action(() => {
   MapFiles.json[filePath] = JSON.parse(MapFiles.text[filePath])
 })
 
-export const UpdateMapJsonFile = action((
+export const GetJsonFileValue = (filePath:string, valuePath:string) => {
+  const fileObj = MapFiles.json[filePath]
+  let result:JSONValue = fileObj
+
+  const path = valuePath.split('.')
+  while (path.length > 0) {
+    if (
+      typeof result === 'number' ||
+      typeof result === 'boolean' ||
+      typeof result === 'string' ||
+      Array.isArray(result)//TODO: array should be fine
+    ) {
+      console.warn('GetJsonFileValue: wrong value path', filePath, valuePath, fileObj, result)
+      return null 
+    }
+    result = result[path.shift() ?? '']
+  }
+  
+  return result
+}
+
+export const UpdateJsonFileValue = action((
   filePath: string,
   valuePath: string,
   value: JSONValue,
 ) => {
-  const oldValue = MapFiles.json[filePath][valuePath]
+  const fileObj = MapFiles.json[filePath]
+  let targetObj:JSONObject = fileObj
+
+  const path = valuePath.split('.')
+  while (path.length > 1) {
+    if (
+      typeof targetObj === 'number' ||
+      typeof targetObj === 'boolean' ||
+      typeof targetObj === 'string' ||
+      Array.isArray(targetObj)
+    ) {
+      console.warn('UpdateJsonFileValue: wrong value path', filePath, valuePath, fileObj, targetObj)
+      return null 
+    }
+    targetObj = targetObj[path.shift() ?? ''] as JSONObject
+  }
+  const lastPathPart = path.shift() ?? ''
+  const oldValue = targetObj[lastPathPart]
   if (oldValue === value) return
-  MapFiles.json[filePath][valuePath] = value
+  targetObj[lastPathPart] = value
   TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
 })

@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
-import { MapFiles } from '../../../state/MapFiles'
-import { UpdateMapJsonFile } from '../../../state/actions/UpdateText'
+import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 
@@ -14,7 +13,7 @@ export type InputProps = {
 const JsonStringInput = (
   { filePath, valuePath, title, placeholder }:InputProps
 ):ReactElement => {
-  const value = MapFiles.json[filePath][valuePath]
+  const value = GetJsonFileValue(filePath, valuePath)
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
       <span className='view-input-title'>
@@ -22,7 +21,7 @@ const JsonStringInput = (
       </span>
       <input
         className='view-input'
-        onChange={e => UpdateMapJsonFile(filePath, valuePath, e.target.value)}
+        onChange={e => UpdateJsonFileValue(filePath, valuePath, e.target.value)}
         value={value?.toString()}
         placeholder={placeholder}
       />
