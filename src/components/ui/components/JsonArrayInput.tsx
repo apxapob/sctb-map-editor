@@ -17,11 +17,14 @@ const JsonArrayInput = (
       
       {values.map((value, idx) => 
         <div key={idx} style={{ margin: '0 6px' }}>
-          <button onClick={() => UpdateJsonFileValue(
-            filePath,
-            valuePath,
-            [...values.slice(0, idx), ...values.slice(idx + 1)]
-          )}>
+          <button 
+            title={'Remove ' + placeholder}
+            onClick={() => UpdateJsonFileValue(
+              filePath,
+              valuePath,
+              [...values.slice(0, idx), ...values.slice(idx + 1)]
+            )}
+          >
             ✗
           </button>
           &nbsp;
