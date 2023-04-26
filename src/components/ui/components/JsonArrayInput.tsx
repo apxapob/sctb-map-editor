@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { GetJsonFileValue } from '../../../state/actions/UpdateText'
+import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -17,7 +17,11 @@ const JsonArrayInput = (
       
       {values.map((value, idx) => 
         <div key={idx} style={{ margin: '0 6px' }}>
-          <button onClick={() => console.log('!!! remove', value)}>
+          <button onClick={() => UpdateJsonFileValue(
+            filePath,
+            valuePath,
+            [...values.slice(0, idx), ...values.slice(idx + 1)]
+          )}>
             ✗
           </button>
           &nbsp;
@@ -28,7 +32,11 @@ const JsonArrayInput = (
         style={{ width: 'unset', margin: '0 6px' }}
         items={valuesSource} 
         placeholder={'Add ' + placeholder}
-        onSelect={newVal => console.log('!!! add', newVal)} 
+        onSelect={newVal => UpdateJsonFileValue(
+          filePath,
+          valuePath,
+          [...values, newVal]
+        )}
       />
     </div>
   )
