@@ -2,13 +2,11 @@ import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import SelectUnitType from '../../state/actions/SelectUnitType'
 import { MapFiles, UNITS_PATH } from '../../state/MapFiles'
-import { UnitType } from '../../types/types'
 import { Selector } from './components/Selector'
+import { UnitsMap } from '../../types/types'
 
 const UnitTypeSelector = ():ReactElement => {
-  const units = MapFiles.json[UNITS_PATH] as {
-    [unitId: string]: UnitType
-  }
+  const units = MapFiles.json[UNITS_PATH] as UnitsMap
   
   const unitArray = React.useMemo(() => Object.values(units), [units])
 

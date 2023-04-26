@@ -185,3 +185,15 @@ export type MapInfo = {
   maxPlayers: number;
   countryColors: string[];
 }
+
+export type UnitsMap = {
+  [index: string]: UnitStatsType;
+}
+
+export type BuffsMap = {
+  [index: string]: UnitStatsType;
+}
+
+export type SkillsMap = {
+  [index: string]: UnitStatsType;
+}

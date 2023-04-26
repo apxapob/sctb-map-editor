@@ -1,14 +1,11 @@
 import React, { ReactElement, useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { MapFiles, UNITS_PATH } from '../../state/MapFiles'
-import { UnitStatsType } from '../../types/types'
+import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonEditor from '../ui/JsonEditor'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
-
-type UnitsMap = {
-  [index: string]: UnitStatsType;
-}
+import JsonArrayInput from '../ui/components/JsonArrayInput'
+import { BuffsMap, SkillsMap, UnitsMap } from '../../types/types'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -18,10 +15,13 @@ const UnitsStatsEditor = ({
   unitId
 }:UnitsStatsEditorProps):ReactElement|null => {
   if (!unitId) return null
-  /*
-  'buffs': [],
-  'skills': ['build_worker', 'build_observer', 'recall'],
-  */
+  
+  const skills = MapFiles.json[SKILLS_PATH] as SkillsMap
+  const skillsArray = React.useMemo(() => Object.keys(skills), [skills])
+
+  const buffs = MapFiles.json[BUFFS_PATH] as BuffsMap
+  const buffsArray = React.useMemo(() => Object.keys(buffs), [buffs])
+
   return <div className='vflex' style={{ padding: 6 }}>
     <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
       {unitId}
@@ -89,6 +89,21 @@ const UnitsStatsEditor = ({
       valuePath={`${unitId}.invisible`}
       isInteger={true}
       min={0}
+    />
+
+    <JsonArrayInput
+      title='Skills'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.skills`}
+      placeholder='skill'
+      valuesSource={skillsArray}
+    />
+    <JsonArrayInput
+      title='Buffs'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.buffs`}
+      placeholder='buff'
+      valuesSource={buffsArray}
     />
   </div>
 }
