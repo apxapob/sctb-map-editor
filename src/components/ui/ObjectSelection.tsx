@@ -4,9 +4,8 @@ import SendMsgToGame from '../../state/actions/SendMsgToGame'
 import { addBuff, changeBuffTurns, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
-import { BuffDataType, BuffType, ItemType, MapInfo, UnitDataType } from '../../types/types'
+import { BuffDataType, BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
-import { UnitsMap } from '../Views/UnitsView'
 
 const ObjectSelection = ():ReactElement|null => {
   const selectedObjects = SelectedObjects.data
