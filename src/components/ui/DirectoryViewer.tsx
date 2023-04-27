@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { OpenFileTree, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
@@ -7,6 +7,7 @@ import { SendCommand } from '../../utils/messenger'
 import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
 import { EditorState } from '../../state/ToolState'
+import { Renamer } from './components/Renamer'
 
 export const fileSelectors: {
   [key: string]: (path:string) => void;
@@ -66,7 +67,7 @@ const getMenuItems = (
   },
 ]
 
-const DirectoryViewer = ({ path }: DirectoryViewerProps):ReactElement => {
+const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
@@ -164,47 +165,27 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   const isSelected = MapFiles.selectedScript === tree.path || 
                      MapFiles.selectedLang === tree.path || 
                      MapFiles.selectedParticlesFile === tree.path
-  const [newName, setNewName] = React.useState<string|null>(null)
+  const [isRenaming, setRenaming] = React.useState(false)
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
-
-  React.useEffect(() => {
-    inputRef.current?.focus()
-    const endIdx = (root || '').lastIndexOf('.')
-    inputRef.current?.setSelectionRange(0, endIdx > 0 ? endIdx : Number.MAX_SAFE_INTEGER)
-  }, [newName === null])
-
-  const rename = () => SendCommand({
-    command: 'RENAME',
-    path: tree.path,
-    newName: newName + ''
-  })
-
-  if (newName !== null) {
-    return <div className="file-adder">
-      <input
-        style={{ marginLeft: 4 + 18 * (level - 1) }}
-        value={newName} ref={inputRef} 
-        onBlur={() => setNewName(null)}
-        onChange={e => setNewName(e.target.value)}
-        onKeyDown={e => {
-          if (e.key === 'Enter') { 
-            rename()
-            setNewName(null)
-          }
-          if (e.key === 'Escape') { setNewName(null) }
-        }}
-      />
-      <button onMouseDown={rename}>
-        ✓
-      </button>
-      <button onClick={() => setNewName(null)}>
-        ✗
-      </button>
-    </div>
+  const rename = (newName:string) => {
+    setRenaming(false)
+    if (newName === root) { return }
+    SendCommand({
+      command: 'RENAME',
+      path: tree.path,
+      newName: newName + ''
+    })
   }
 
-  const startRenaming = () => setNewName(root)
+  if (isRenaming) {
+    return <Renamer 
+      style={{ marginLeft: 4 + 18 * (level - 1) }}
+      oldName={root ?? ''} 
+      rename={rename}
+    />
+  }
+
+  const startRenaming = () => setRenaming(true)
 
   return (
     <div className={`node ${ isSelected ? 'selected-item' : '' }`}

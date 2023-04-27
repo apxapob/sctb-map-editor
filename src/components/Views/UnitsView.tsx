@@ -1,10 +1,11 @@
-import React, { ReactElement, useState } from 'react'
+import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
 import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitsMap } from '../../types/types'
+import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -12,7 +13,7 @@ type UnitsStatsEditorProps = {
 
 const UnitsStatsEditor = ({
   unitId
-}:UnitsStatsEditorProps):ReactElement|null => {
+}:UnitsStatsEditorProps) => {
   if (!unitId) return null
   
   const skills = MapFiles.json[SKILLS_PATH] as SkillsMap
@@ -107,38 +108,19 @@ const UnitsStatsEditor = ({
   </div>
 }
 
-const UnitsView = ():ReactElement => {
+const UnitsView = () => {
   const unitsMap = MapFiles.json[UNITS_PATH] as UnitsMap
   const unitIds = React.useMemo(() => Object.keys(unitsMap), [unitsMap]) 
 
   const [selectedUnitId, selectUnit] = useState<string>('')
 
-  const onKeyDown = (e:React.KeyboardEvent) => {
-    const idx = unitIds.indexOf(selectedUnitId)
-    if (idx === -1) { return }
-    if (e.code === 'ArrowUp' && idx > 0) {
-      selectUnit(unitIds[ idx - 1 ])
-      e.preventDefault()
-      return 
-    }
-    if (e.code === 'ArrowDown' && idx < unitIds.length - 1) {
-      selectUnit(unitIds[ idx + 1 ])
-      e.preventDefault()
-      return
-    }
-  }
-
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
-      <div className='dir-viewer-container' onKeyDown={e => onKeyDown(e)} tabIndex={0}>
-        {unitIds.map(unitId =>
-          <div className={`node ${ selectedUnitId === unitId ? 'selected-item' : '' }`}
-            key={unitId} 
-            onClick={() => selectUnit(unitId)}>
-            {unitId}
-          </div>
-        )}
-      </div>
+      <JsonArrayViewer 
+        items={unitIds} 
+        selectedItemId={selectedUnitId} 
+        selectUnit={selectUnit}
+      />
       <div className='json-editor-container'>
         <UnitsStatsEditor unitId={selectedUnitId} />
       </div>

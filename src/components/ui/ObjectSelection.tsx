@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import SendMsgToGame from '../../state/actions/SendMsgToGame'
 import { addBuff, changeBuffTurns, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
@@ -7,7 +7,7 @@ import { SelectedObjects } from '../../state/ToolState'
 import { BuffDataType, BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
 
-const ObjectSelection = ():ReactElement|null => {
+const ObjectSelection = () => {
   const selectedObjects = SelectedObjects.data
   const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
 

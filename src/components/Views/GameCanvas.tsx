@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import './GameCanvas.css'
 import { observer } from 'mobx-react-lite'
 
@@ -9,7 +9,7 @@ export type GameCanvasProps = {
   testing: boolean;
 }
 
-const GameCanvas = (props:GameCanvasProps):ReactElement => {
+const GameCanvas = (props:GameCanvasProps) => {
   return (
     <iframe id={GameCanvasId} 
       className={`Game-canvas ${props.active ? 'cnv-active' : ''} ${props.testing ? 'cnv-test' : ''}`} 

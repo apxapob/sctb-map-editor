@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import ChangeTool from '../../state/actions/ChangeTool'
 import { ToolState } from '../../state/ToolState'
 import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 
-const Tools = ():ReactElement => {
+const Tools = () => {
   const { radius, tool, toolUnit, toolItem } = ToolState
 
   return (

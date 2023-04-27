@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import JsonStringInput from '../ui/components/JsonStringInput'
 import { INFO_PATH } from '../../state/MapFiles'
 import './View.css'
@@ -7,7 +7,7 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesColors from '../ui/components/CountriesColors'
 
-const MapView = ():ReactElement => 
+const MapView = () => 
   <div className='tools-container'>
     <div className='vflex'>
       <JsonStringInput

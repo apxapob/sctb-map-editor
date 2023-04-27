@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import SelectItemType from '../../state/actions/SelectItemType'
 import { MapFiles, ITEMS_PATH } from '../../state/MapFiles'
 import { ItemType } from '../../types/types'
 import { Selector } from './components/Selector'
 
-const ItemTypeSelector = ():ReactElement => {
+const ItemTypeSelector = () => {
   const items = MapFiles.json[ITEMS_PATH] as {
     [itemType: string]: ItemType
   }

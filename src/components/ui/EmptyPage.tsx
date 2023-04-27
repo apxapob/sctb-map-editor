@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import CreateMap from '../../state/actions/CreateMap'
 import { SendCommand } from '../../utils/messenger'
 import './EmptyPage.css'
 
-const EmptyPage = ():ReactElement => {
+const EmptyPage = () => {
   return (
     <div className="empty-page">
       <button onClick={CreateMap}>

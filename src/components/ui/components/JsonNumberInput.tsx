@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
@@ -12,7 +12,7 @@ export type NumberInputProps = InputProps & {
 
 const JsonNumberInput = (
   { filePath, valuePath, title, placeholder, isInteger, min, max }:NumberInputProps
-):ReactElement => {
+) => {
   const value = GetJsonFileValue(filePath, valuePath) as number
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     let newVal = (isInteger ? parseInt(e.target.value) : parseFloat(e.target.value)) || 0

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
@@ -7,7 +7,7 @@ import { Selector } from './Selector'
 
 const JsonArrayInput = (
   { filePath, valuePath, title, placeholder, valuesSource }:InputProps & { valuesSource: string[] }
-):ReactElement => {
+) => {
   const values = GetJsonFileValue(filePath, valuePath) as string[]
   return (
     <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
@@ -12,7 +12,7 @@ export type InputProps = {
 
 const JsonStringInput = (
   { filePath, valuePath, title, placeholder }:InputProps
-):ReactElement => {
+) => {
   const value = GetJsonFileValue(filePath, valuePath)
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>

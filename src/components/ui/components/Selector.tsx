@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 
 export type SelectorProps = {
   items: string[];
@@ -7,7 +7,7 @@ export type SelectorProps = {
   style?: React.CSSProperties;
 }
 
-export const Selector = (props:SelectorProps):ReactElement => 
+export const Selector = (props:SelectorProps) => 
   <select
     style={{ width: 20, ...props.style }} 
     value={props.placeholder}

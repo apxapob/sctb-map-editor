@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { EditorState } from '../../../state/ToolState'
 import { PanelType } from '../../../types/types'

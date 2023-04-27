@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { INFO_PATH, MapFiles } from '../../../state/MapFiles'
 import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
@@ -15,7 +15,7 @@ type ColorInputProps = {
 
 const ColorInput = (
   { value, title, setValue }:ColorInputProps
-):ReactElement => 
+) => 
   <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
     <span className='view-input-title'>
       {title}

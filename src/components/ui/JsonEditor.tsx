@@ -1,5 +1,5 @@
 
-import React, { ReactElement } from 'react'
+import React from 'react'
 import './JsonEditor.css'
 import { MapFiles, getDirPath, getFilePath } from '../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
@@ -21,7 +21,7 @@ export type JsonEditorProps = {
   filePath: string;
 }
 
-const JsonEditor = ():ReactElement|null => {
+const JsonEditor = () => {
   const filePath = getFilePath(EditorState.activeTab)
   const tab = EditorState.activeTab
   const error = TabsErrors[tab] ?? null

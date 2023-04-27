@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { MapFiles } from '../../../state/MapFiles'
 import './panels.css'

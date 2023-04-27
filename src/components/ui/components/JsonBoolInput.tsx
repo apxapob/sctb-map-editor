@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { MapFiles } from '../../../state/MapFiles'
 import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
@@ -7,7 +7,7 @@ import { InputProps } from './JsonStringInput'
 
 const JsonBoolInput = (
   { filePath, valuePath, title, placeholder }:InputProps
-):ReactElement => {
+) => {
   const value = MapFiles.json[filePath][valuePath] as boolean
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>

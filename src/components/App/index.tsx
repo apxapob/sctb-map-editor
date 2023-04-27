@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
@@ -27,7 +27,7 @@ const Views: Record<TabType, () => ReactElement|null> = {
   Particles: JsonEditor,
 }
 
-const App = ():ReactElement => {
+const App = () => {
   const tabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
   
