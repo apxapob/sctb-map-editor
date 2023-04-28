@@ -34,7 +34,7 @@ const JsonArrayInput = (
       <Selector 
         style={{ width: 'unset', margin: '0 6px' }}
         items={valuesSource} 
-        placeholder={'Add ' + placeholder}
+        value={'Add ' + placeholder}
         onSelect={newVal => UpdateJsonFileValue(
           filePath,
           valuePath,

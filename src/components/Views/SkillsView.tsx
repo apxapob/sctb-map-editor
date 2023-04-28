@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { MapFiles, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { SkillsMap, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
-import JsonStringInput from '../ui/components/JsonStringInput'
+import { DeleteJsonFileValue, GetJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
+import { Selector } from '../ui/components/Selector'
 
 type SkillsStatsEditorProps = {
   skillId: string;
@@ -18,20 +18,36 @@ const SkillsStatsEditor = ({
 }:SkillsStatsEditorProps) => {
   if (!skillId) return null
   
+  const scripts = Object.keys(MapFiles.text)
+    .filter(filename => filename.startsWith(SCRIPTS_PATH))
+    .map(filename => filename.replace(SCRIPTS_PATH, ''))
+  const script = GetJsonFileValue(SKILLS_PATH, `${skillId}.script`) as string
+
   const units = MapFiles.json[UNITS_PATH] as UnitsMap
   const unitsArray = React.useMemo(() => Object.keys(units), [units])
 
-  //TODO: scripts to dropdown
+  //TODO: args are just strings
   return <div className='vflex' style={{ padding: 6 }}>
     <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
       {skillId}
     </span>
-    <JsonStringInput
-      placeholder='Script'
-      title="Script"
-      filePath={SKILLS_PATH}
-      valuePath={`${skillId}.script`}
-    />
+    
+    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
+      <span className='view-input-title'>
+        Script:
+      </span>
+      <Selector
+        value={script}
+        style={{ width: 'unset', margin: 0 }}
+        items={scripts}
+        onSelect={newVal => UpdateJsonFileValue(
+          SKILLS_PATH,
+          `${skillId}.script`,
+          newVal
+        )}
+      />
+    </div>
+
     <JsonNumberInput
       placeholder='Mana cost'
       title='Mana cost'
@@ -55,8 +71,8 @@ const SkillsStatsEditor = ({
       min={0}
     />
     <JsonNumberInput
-      placeholder='Min dist to target'
-      title='Min dist to target'
+      placeholder='Distance'
+      title='Distance'
       filePath={SKILLS_PATH}
       valuePath={`${skillId}.range`}
       isInteger={true}
@@ -67,7 +83,7 @@ const SkillsStatsEditor = ({
       title='Parameters'
       filePath={SKILLS_PATH}
       valuePath={`${skillId}.args`}
-      placeholder='buff'
+      placeholder='parameter'
       valuesSource={unitsArray}
     />
   </div>

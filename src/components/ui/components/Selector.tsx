@@ -1,24 +1,23 @@
 import React from 'react'
 
 export type SelectorProps = {
+  value?: string;
   items: string[];
   onSelect: (value:string) => void;
-  placeholder?: string;
   style?: React.CSSProperties;
 }
 
 export const Selector = (props:SelectorProps) => 
   <select
     style={{ width: 20, ...props.style }} 
-    value={props.placeholder}
-    className={props.placeholder ? '' : 'btnArrow'}
+    className={props.value ? '' : 'btnArrow'}
     onChange={e => {
       props.onSelect(e.target.value)
       e.target.blur()
     }}>
-    {props.placeholder &&
-      <option key="placeholder">{props.placeholder}</option>
-    }
+    
+    <option key="value">{props.value ?? ' '}</option>
+    
     {props.items.map(
       item => <option key={item} value={item}>{item}</option>
     )}
