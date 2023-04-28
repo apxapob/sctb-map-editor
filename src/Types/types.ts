@@ -111,6 +111,13 @@ export type UnitStatsType = {
   type: string;
 }
 
+export type ItemStatsType = {
+  type: string;
+  buffs: string[];
+	invisible: number;
+	unpickable: boolean;
+}
+
 export type HexCoords = {
   q: number;
   r: number;
@@ -188,6 +195,10 @@ export type MapInfo = {
 
 export type UnitsMap = {
   [index: string]: UnitStatsType;
+}
+
+export type ItemsMap = {
+  [index: string]: ItemStatsType;
 }
 
 export type BuffsMap = {

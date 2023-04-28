@@ -1,6 +1,5 @@
 import React from 'react'
-import { MapFiles } from '../../../state/MapFiles'
-import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
+import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -8,7 +7,7 @@ import { InputProps } from './JsonStringInput'
 const JsonBoolInput = (
   { filePath, valuePath, title, placeholder }:InputProps
 ) => {
-  const value = MapFiles.json[filePath][valuePath] as boolean
+  const value = GetJsonFileValue(filePath, valuePath) as boolean
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
       <span className='view-input-title'>

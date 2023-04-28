@@ -1,6 +1,6 @@
 import React from 'react'
 import { INFO_PATH, MapFiles } from '../../../state/MapFiles'
-import { UpdateJsonFileValue } from '../../../state/actions/UpdateText'
+import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
@@ -30,7 +30,7 @@ const ColorInput = (
 const CountriesColors = (
   { filePath, valuePath, title }:InputProps
 ) => {
-  const observedColors = MapFiles.json[filePath][valuePath] as string[]
+  const observedColors = GetJsonFileValue(filePath, valuePath) as string[]
   const colors = toJS(observedColors ?? [])
   
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers

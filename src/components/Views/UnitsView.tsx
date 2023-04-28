@@ -120,7 +120,7 @@ const UnitsView = () => {
       <JsonArrayViewer 
         items={unitIds} 
         selectedItemId={selectedUnitId} 
-        selectUnit={selectUnit}
+        selectItem={selectUnit}
         renameItem={(id, newName) => {
           selectUnit(newName)
           RenameJsonFileValue(UNITS_PATH, id, newName)

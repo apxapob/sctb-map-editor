@@ -7,7 +7,7 @@ export type JsonArrayViewerProps = {
   renameItem: (id:string, newName:string) => void;
   items: string[];
   selectedItemId: string;
-  selectUnit: (id:string) => void;
+  selectItem: (id:string) => void;
 }
 
 type ViewerItemProps = {
@@ -18,7 +18,7 @@ type ViewerItemProps = {
   renameItem: (id:string, newName:string) => void;
 }
 
-const ViewerItem = ({ itemId, selected, onClick, deleteItem, renameItem }:ViewerItemProps) => {
+const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem }:ViewerItemProps) => {
   const [isRenaming, setRenaming] = useState(false)
   const startRenaming = () => setRenaming(true)
 
@@ -58,18 +58,18 @@ const ViewerItem = ({ itemId, selected, onClick, deleteItem, renameItem }:Viewer
 }
 
 export const JsonArrayViewer = (
-  { selectedItemId, items, selectUnit, deleteItem, renameItem }:JsonArrayViewerProps
+  { selectedItemId, items, selectItem, deleteItem, renameItem }:JsonArrayViewerProps
 ) => {
   const onKeyDown = (e:React.KeyboardEvent) => {
     const idx = items.indexOf(selectedItemId)
     if (idx === -1) { return }
     if (e.code === 'ArrowUp' && idx > 0) {
-      selectUnit(items[ idx - 1 ])
+      selectItem(items[ idx - 1 ])
       e.preventDefault()
       return 
     }
     if (e.code === 'ArrowDown' && idx < items.length - 1) {
-      selectUnit(items[ idx + 1 ])
+      selectItem(items[ idx + 1 ])
       e.preventDefault()
       return
     }
@@ -77,13 +77,13 @@ export const JsonArrayViewer = (
 
   return <div className='dir-viewer-container' onKeyDown={e => onKeyDown(e)} tabIndex={0}>
     {items.map(itemId =>
-      <ViewerItem
+      <ItemViewer
         itemId={itemId}
         key={itemId}
         selected={itemId === selectedItemId}
         renameItem={renameItem}
         deleteItem={deleteItem}
-        onClick={() => selectUnit(itemId)} />
+        onClick={() => selectItem(itemId)} />
     )}
   </div>
 }

@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { TabType } from '../../types/types'
@@ -13,11 +13,12 @@ import ContextMenu from '../ui/ContextMenu'
 import FieldView from '../Views/FieldView'
 import MapView from '../Views/MapView'
 import UnitsView from '../Views/UnitsView'
+import ItemsView from '../Views/ItemsView'
 
 const Views: Record<TabType, () => ReactElement|null> = {
   Field: FieldView,
   Units: UnitsView,
-  Items: JsonEditor,
+  Items: ItemsView,
   Skills: JsonEditor,
   Buffs: JsonEditor,
   Upgrades: JsonEditor,
