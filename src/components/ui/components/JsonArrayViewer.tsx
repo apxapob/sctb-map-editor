@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Renamer } from './Renamer'
+import ShowMenu from '../../../state/actions/ShowMenu'
 
 export type JsonArrayViewerProps = {
+  deleteItem: (id:string) => void;
+  renameItem: (id:string, newName:string) => void;
   items: string[];
   selectedItemId: string;
   selectUnit: (id:string) => void;
@@ -12,15 +15,25 @@ type ViewerItemProps = {
   selected: boolean;
   onClick: () => void;
   deleteItem: (id:string) => void;
+  renameItem: (id:string, newName:string) => void;
 }
 
-const ViewerItem = ({ itemId, selected, onClick, deleteItem }:ViewerItemProps) => {
+const ViewerItem = ({ itemId, selected, onClick, deleteItem, renameItem }:ViewerItemProps) => {
   const [isRenaming, setRenaming] = useState(false)
+  const startRenaming = () => setRenaming(true)
+
+  const contextMenuItems = [{
+    title: 'Rename', 
+    callback: startRenaming
+  }, {
+    title: 'Delete', 
+    callback: () => deleteItem(itemId)
+  }]
 
   const rename = (newName:string) => {
     setRenaming(false)
     if (newName === itemId) { return }
-    console.log('!!! TODO: rename', itemId, 'to', newName)
+    renameItem(itemId, newName)
   }
 
   if (isRenaming) {
@@ -30,19 +43,22 @@ const ViewerItem = ({ itemId, selected, onClick, deleteItem }:ViewerItemProps) =
       rename={rename}
     />
   }
-  //TODO: delete and remove in context menu
-  return <div className={`node ${ selected ? 'selected-item' : '' }`}
-    onDoubleClick={() => setRenaming(true)}
-    onClick={onClick}>
+  
+  return <div 
+    className={`node ${ selected ? 'selected-item' : '' }`}
+    onDoubleClick={startRenaming}
+    onContextMenu={e => {
+      onClick()
+      ShowMenu(e, contextMenuItems)
+    }}
+    onClick={onClick}
+  >
     {itemId}
-    <button title='Delete' onClick={() => deleteItem(itemId)}>
-      ✗
-    </button>
   </div>
 }
 
 export const JsonArrayViewer = (
-  { selectedItemId, items, selectUnit }:JsonArrayViewerProps
+  { selectedItemId, items, selectUnit, deleteItem, renameItem }:JsonArrayViewerProps
 ) => {
   const onKeyDown = (e:React.KeyboardEvent) => {
     const idx = items.indexOf(selectedItemId)
@@ -61,11 +77,12 @@ export const JsonArrayViewer = (
 
   return <div className='dir-viewer-container' onKeyDown={e => onKeyDown(e)} tabIndex={0}>
     {items.map(itemId =>
-      <ViewerItem 
-        itemId={itemId} 
-        key={itemId} 
+      <ViewerItem
+        itemId={itemId}
+        key={itemId}
         selected={itemId === selectedItemId}
-        deleteItem={id => console.log('!!! TODO: delete', id)}
+        renameItem={renameItem}
+        deleteItem={deleteItem}
         onClick={() => selectUnit(itemId)} />
     )}
   </div>

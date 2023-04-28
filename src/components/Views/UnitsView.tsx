@@ -6,6 +6,7 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
+import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -110,7 +111,7 @@ const UnitsStatsEditor = ({
 
 const UnitsView = () => {
   const unitsMap = MapFiles.json[UNITS_PATH] as UnitsMap
-  const unitIds = React.useMemo(() => Object.keys(unitsMap), [unitsMap]) 
+  const unitIds = Object.keys(unitsMap).sort()
 
   const [selectedUnitId, selectUnit] = useState<string>('')
 
@@ -120,6 +121,14 @@ const UnitsView = () => {
         items={unitIds} 
         selectedItemId={selectedUnitId} 
         selectUnit={selectUnit}
+        renameItem={(id, newName) => {
+          selectUnit(newName)
+          RenameJsonFileValue(UNITS_PATH, id, newName)
+        }}
+        deleteItem={id => {
+          selectUnit('')
+          DeleteJsonFileValue(UNITS_PATH, id)
+        }}
       />
       <div className='json-editor-container'>
         <UnitsStatsEditor unitId={selectedUnitId} />

@@ -23,7 +23,7 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
       typeof result === 'number' ||
       typeof result === 'boolean' ||
       typeof result === 'string' ||
-      Array.isArray(result)//TODO: array should be fine
+      Array.isArray(result)
     ) {
       console.warn('GetJsonFileValue: wrong value path', filePath, valuePath, fileObj, result)
       return null 
@@ -33,6 +33,38 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
   
   return result
 }
+
+export const DeleteJsonFileValue = action((
+  filePath: string,
+  id: string,
+) => {
+  const fileObj = MapFiles.json[filePath]
+  const value = fileObj[id] as JSONObject
+  if (!value) return
+  
+  delete fileObj[id]
+  
+  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+})
+
+export const RenameJsonFileValue = action((
+  filePath: string,
+  oldId: string,
+  newId: string,
+) => {
+  const fileObj = MapFiles.json[filePath]
+  const value = fileObj[oldId] as JSONObject
+  if (!value) return
+  
+  if (value.type) {
+    value.type = newId
+  }
+
+  delete fileObj[oldId]
+  fileObj[newId] = value
+
+  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+})
 
 export const UpdateJsonFileValue = action((
   filePath: string,
