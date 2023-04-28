@@ -94,28 +94,19 @@ export type ItemDataType = ObjectDataType & {
 export type UnitDataType = ObjectDataType & {
   dir: number;
   countryId: number;
+  orders: OrderType[];
+  hp: number;
   stats: UnitStatsType;
 }
 
-export type UnitStatsType = {
-  attack: number;
-  maxHp: number;
-  vision: number;
+export type SkillType = {
+  id: string;
+  args: string[];
+  mana: number;
+  script: string;
+  price: number;
+  radius: number;
   range: number;
-  speed: number;
-  flying: number;
-  detector: number;
-  invisible: number;
-  buffs: string[];
-  skills: string[];
-  type: string;
-}
-
-export type ItemStatsType = {
-  type: string;
-  buffs: string[];
-	invisible: number;
-	unpickable: boolean;
 }
 
 export type HexCoords = {
@@ -128,15 +119,16 @@ export type ObjectType = {
   buffs: string[];
 }
 
-export type UnitType = ObjectType & {
-  orders: OrderType[];
+export type UnitStatsType = ObjectType & {
   attack: number;
-  hp: number;
   range: number;
   speed: number;
   vision: number;
   detector: number;
   invisible: number;
+  maxHp: number;
+  flying: number;
+  skills: string[];
 }
 
 export type ItemType = ObjectType & {
@@ -160,10 +152,27 @@ export type EffectType = {
   type: 'Fly' | 'Detector' | 'Invisibility';
   value: boolean;
 } | {
-  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart';
+  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart' | 'OnTurnEnd' | 'OnBuffEnd';
   script: string;
   args: string[];
 }
+
+/*
+  SetStat(stat:StatType, value:Int);
+  ChangeStat(stat:StatType, delta:Int);
+  AddSkill(id:String);
+  AddCustomSkill(skill:SkillType);//TODO: implement this
+  RemoveSkill(id:String);
+  BlockSkills;
+  Aura(//works for items too
+    radius:Int, 
+    effects:ReadOnlyArray<EffectType>, 
+    affects:Affects, 
+    particles:String, 
+    color:ColorAdjust
+  );
+  OnTouch(script:String, args:ReadOnlyArray<String>);//works only for items
+*/
 
 export type BuffType = {
   type: string;
@@ -198,13 +207,13 @@ export type UnitsMap = {
 }
 
 export type ItemsMap = {
-  [index: string]: ItemStatsType;
+  [index: string]: ItemType;
 }
 
 export type BuffsMap = {
-  [index: string]: UnitStatsType;
+  [index: string]: BuffType;
 }
 
 export type SkillsMap = {
-  [index: string]: UnitStatsType;
+  [index: string]: SkillType;
 }

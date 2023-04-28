@@ -59,6 +59,9 @@ export const RenameJsonFileValue = action((
   if (value.type) {
     value.type = newId
   }
+  if (value.id) {
+    value.id = newId
+  }
 
   delete fileObj[oldId]
   fileObj[newId] = value

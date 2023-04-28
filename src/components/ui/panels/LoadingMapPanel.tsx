@@ -4,7 +4,7 @@ import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { MapFiles } from '../../../state/MapFiles'
 import './panels.css'
 
-const LoadingMapPanel = ():ReactElement | null => {
+const LoadingMapPanel = () => {
   const percent = Math.floor(100 * MapFiles.progress)
   return (
     <div className="panel fullsize vflex" style={{ alignItems: 'center' }}>

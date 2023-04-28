@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { ClosePanel } from '../../../state/actions/OpenPanel'
 import { EditorState } from '../../../state/ToolState'
 import { PanelType } from '../../../types/types'
@@ -11,7 +11,7 @@ const panels: Record<PanelType, () => ReactElement|null> = {
   'LoadingMap': LoadingMapPanel
 }
 
-const PanelsContainer = ():ReactElement | null => {
+const PanelsContainer = () => {
   const { activePanel } = EditorState
   if (!activePanel) { return null }
   
