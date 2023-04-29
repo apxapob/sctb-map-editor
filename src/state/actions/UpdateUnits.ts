@@ -43,14 +43,14 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
 export const changeBuffTurns = action((idx:number, delta:number) => {
   if (Number.isNaN(delta)) return
   SelectedObjects.data.forEach(
-    u => u.buffs[idx].turnsLeft += delta
+    u => u.buffs[idx].turns += delta
   )
   UpdateObjects()
 })
 export const setBuffTurns = action((idx:number, value:number) => {
   if (Number.isNaN(value)) return
   SelectedObjects.data.forEach(
-    u => u.buffs[idx].turnsLeft = value
+    u => u.buffs[idx].turns = value
   )
   UpdateObjects()
 })
