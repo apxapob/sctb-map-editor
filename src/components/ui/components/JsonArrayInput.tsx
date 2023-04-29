@@ -6,9 +6,21 @@ import { InputProps } from './JsonStringInput'
 import { Selector } from './Selector'
 
 const JsonArrayInput = (
-  { filePath, valuePath, title, placeholder, valuesSource }:InputProps & { valuesSource: string[] }
+  { filePath, valuePath, title, placeholder, valuesSource }:InputProps & { valuesSource?: string[] }
 ) => {
+  const inputRef = React.useRef<HTMLInputElement>(null)
   const values = GetJsonFileValue(filePath, valuePath) as string[]
+
+  const addInputParam = () => {
+    if (!inputRef?.current?.value) { return }
+    UpdateJsonFileValue(
+      filePath,
+      valuePath,
+      [...values, inputRef.current.value]
+    )
+    inputRef.current.value = ''
+  }
+
   return (
     <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
       <div style={{ fontSize: 20, marginTop: 8 }}>
@@ -31,16 +43,26 @@ const JsonArrayInput = (
           {value}
         </div>
       )}
-      <Selector 
-        style={{ width: 'unset', margin: '0 6px' }}
-        items={valuesSource} 
-        value={'Add ' + placeholder}
-        onSelect={newVal => UpdateJsonFileValue(
-          filePath,
-          valuePath,
-          [...values, newVal]
-        )}
-      />
+      {valuesSource && 
+        <Selector 
+          style={{ width: 'unset', margin: '0 6px' }}
+          items={valuesSource} 
+          value={'Add ' + placeholder}
+          onSelect={newVal => UpdateJsonFileValue(
+            filePath,
+            valuePath,
+            [...values, newVal]
+          )}
+        />
+      }
+      {!valuesSource && 
+        <div className='hflex' style={{ gap: 6, margin: '0 6px' }}>
+          <input ref={inputRef} />
+          <button onClick={addInputParam}>
+            ✓ Add {placeholder}
+          </button>
+        </div>
+      }
     </div>
   )
 }

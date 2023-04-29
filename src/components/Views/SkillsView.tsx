@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { MapFiles, SCRIPTS_PATH, SKILLS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
-import { SkillsMap, UnitsMap } from '../../types/types'
+import { SkillsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { DeleteJsonFileValue, GetJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
 import { Selector } from '../ui/components/Selector'
@@ -23,10 +23,6 @@ const SkillsStatsEditor = ({
     .map(filename => filename.replace(SCRIPTS_PATH, ''))
   const script = GetJsonFileValue(SKILLS_PATH, `${skillId}.script`) as string
 
-  const units = MapFiles.json[UNITS_PATH] as UnitsMap
-  const unitsArray = React.useMemo(() => Object.keys(units), [units])
-
-  //TODO: args are just strings
   return <div className='vflex' style={{ padding: 6 }}>
     <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
       {skillId}
@@ -84,7 +80,6 @@ const SkillsStatsEditor = ({
       filePath={SKILLS_PATH}
       valuePath={`${skillId}.args`}
       placeholder='parameter'
-      valuesSource={unitsArray}
     />
   </div>
 }
