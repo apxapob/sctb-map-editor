@@ -6,7 +6,7 @@ import { InputProps } from './JsonStringInput'
 import { Selector } from './Selector'
 
 const JsonArrayInput = (
-  { filePath, valuePath, title, placeholder, valuesSource }:InputProps & { valuesSource?: string[] }
+  { filePath, valuePath, title, placeholder, valuesSource, tooltip }:InputProps & { valuesSource?: string[] }
 ) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const values = GetJsonFileValue(filePath, valuePath) as string[]
@@ -22,7 +22,7 @@ const JsonArrayInput = (
   }
 
   return (
-    <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
+    <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
       <div style={{ fontSize: 20, marginTop: 8 }}>
         {title}
       </div>

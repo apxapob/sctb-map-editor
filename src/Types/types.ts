@@ -64,6 +64,8 @@ export type ToolStateType = {
   toolItem: string|null;
 }
 
+export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'
+
 export type TabType = 'Field' | 'Units' | 'Items' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
 
 export type EditorStateType = {
@@ -81,7 +83,7 @@ export type ToolStateChangeType = {
 
 export type ObjectDataType = {
   id: string;
-  buffs: BuffDataType[];
+  buffs: BuffType[];
   type: string;
   pos: HexCoords;
 }
@@ -145,6 +147,19 @@ export type OrderType = {
   radius: number;
 }
 
+export type ColorAdjust = {
+  saturation?: number;
+	lightness?: number;
+	hue?: number;
+	contrast?: number;
+	gain?: { 
+    color : number; 
+    alpha : number; 
+  };
+}
+
+export type Affects = 'All' | 'Allies' | 'Enemies'
+
 export type EffectType = {
   type: 'DoT' | 'Attack' | 'Vision' | 'Speed' | 'Range';
   value: number;
@@ -152,37 +167,38 @@ export type EffectType = {
   type: 'Fly' | 'Detector' | 'Invisibility';
   value: boolean;
 } | {
-  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart' | 'OnTurnEnd' | 'OnBuffEnd';
+  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart' | 'OnTurnEnd' | 'OnBuffEnd' | 'OnTouch';
   script: string;
   args: string[];
+} | {
+  type: 'SetStat';
+  stat: StatType;
+  value: number;
+} | {
+  type: 'ChangeStat';
+  stat: StatType;
+  delta: number;
+} | {
+  type: 'AddSkill' | 'RemoveSkill';
+  id: string;
+} | {
+  type: 'BlockSkills';
+} | {
+  type: 'AddCustomSkill';
+  skill: SkillType;
+} | {
+  type: 'Aura';
+  radius: number;
+  effects: EffectType[];
+  affects: Affects, 
+  particles: string;
+  color: ColorAdjust;
 }
-
-/*
-  SetStat(stat:StatType, value:Int);
-  ChangeStat(stat:StatType, delta:Int);
-  AddSkill(id:String);
-  AddCustomSkill(skill:SkillType);//TODO: implement this
-  RemoveSkill(id:String);
-  BlockSkills;
-  Aura(//works for items too
-    radius:Int, 
-    effects:ReadOnlyArray<EffectType>, 
-    affects:Affects, 
-    particles:String, 
-    color:ColorAdjust
-  );
-  OnTouch(script:String, args:ReadOnlyArray<String>);//works only for items
-*/
 
 export type BuffType = {
   type: string;
   effects: EffectType[];
   turns: number;
-}
-
-export type BuffDataType = {
-  buffType: string;
-  turnsLeft: number;
 }
 
 export type UpgradeType = {

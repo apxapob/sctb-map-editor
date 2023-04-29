@@ -4,7 +4,7 @@ import SendMsgToGame from '../../state/actions/SendMsgToGame'
 import { addBuff, changeBuffTurns, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
-import { BuffDataType, BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
+import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
 
 const ObjectSelection = () => {
@@ -27,7 +27,7 @@ const ObjectSelection = () => {
   const countryColors = ['0xffffff', ...mapInfo.countryColors]
 
   const buffs: ( 
-    BuffDataType | 'different buffs' | { buffType:string }
+    BuffType | 'different buffs' | { type: string }
   )[] = []
 
   const maxLen = selectedObjects.reduce(
@@ -35,15 +35,15 @@ const ObjectSelection = () => {
     0
   )
   for (let buffIdx = 0; buffIdx < maxLen; buffIdx++) {
-    let b:BuffDataType | { buffType:string } = selectedObjects[0].buffs[buffIdx]
+    let b:BuffType | { type: string } = selectedObjects[0].buffs[buffIdx]
     for (let i = 1; i < selectedObjects.length; i++) {
       const b2 = selectedObjects[i].buffs[buffs.length]
-      if (!b || !b2 || b.buffType !== b2.buffType) {
+      if (!b || !b2 || b.type !== b2.type) {
         buffs.push('different buffs')
         break
       }
-      if ('turnsLeft' in b && b.turnsLeft !== b2.turnsLeft) {
-        b = { buffType: b.buffType }
+      if ('turns' in b && b.turns !== b2.turns) {
+        b = { type: b.type }
       }
     }
     
@@ -113,26 +113,26 @@ export default observer(ObjectSelection)
 
 const BuffChanger = observer((props:{
   idx: number;
-  buff: BuffDataType | { buffType:string };
+  buff: BuffType | { type: string };
 }) => {
   const { buff, idx } = props
   return (
     <div className='hflex gapped'>
       <button onClick={() => removeBuff(idx)}>X</button>
       <div style={{ width: '100%', textAlign: 'left' }}>
-        {buff.buffType}
+        {buff.type}
       </div>
       
-      {'turnsLeft' in buff &&
+      {'turns' in buff &&
         <>
           <button onClick={() => changeBuffTurns(idx, -1)}>-</button>
           <input onChange={e => setBuffTurns(idx,
               parseInt(e.target.value)
-            )} value={buff.turnsLeft} className="num-input" />
+            )} value={buff.turns} className="num-input" />
           <button onClick={() => changeBuffTurns(idx, 1)}>+</button>
         </>
       }
-      {!('turnsLeft' in buff) &&
+      {!('turns' in buff) &&
         '??? '
       }
       turns
@@ -198,7 +198,7 @@ const BuffAdder = observer(() => {
     <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
       <button className='btnWithArrow' 
         onClick={
-          () => addBuff({ buffType: selectedBuff, turnsLeft: buffsData[selectedBuff].turns })
+          () => addBuff(buffsData[selectedBuff])
         }>
         Add {selectedBuff}
       </button>

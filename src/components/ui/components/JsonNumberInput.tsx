@@ -11,7 +11,7 @@ export type NumberInputProps = InputProps & {
 }
 
 const JsonNumberInput = (
-  { filePath, valuePath, title, placeholder, isInteger, min, max }:NumberInputProps
+  { filePath, valuePath, title, placeholder, isInteger, min, max, tooltip }:NumberInputProps
 ) => {
   const value = GetJsonFileValue(filePath, valuePath) as number
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +25,7 @@ const JsonNumberInput = (
     )
   }
   return (
-    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
+    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
       <span className='view-input-title'>
         {title}
       </span>

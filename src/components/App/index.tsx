@@ -15,13 +15,14 @@ import MapView from '../Views/MapView'
 import UnitsView from '../Views/UnitsView'
 import ItemsView from '../Views/ItemsView'
 import SkillsView from '../Views/SkillsView'
+import BuffsView from '../Views/BuffsView'
 
 const Views: Record<TabType, () => ReactElement|null> = {
   Field: FieldView,
   Units: UnitsView,
   Items: ItemsView,
   Skills: SkillsView,
-  Buffs: JsonEditor,
+  Buffs: BuffsView,
   Upgrades: JsonEditor,
   Scripts: JsonEditor,
   Map: MapView,

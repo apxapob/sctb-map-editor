@@ -5,11 +5,11 @@ import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
 
 const JsonBoolInput = (
-  { filePath, valuePath, title, placeholder }:InputProps
+  { filePath, valuePath, title, placeholder, tooltip }:InputProps
 ) => {
   const value = GetJsonFileValue(filePath, valuePath) as boolean
   return (
-    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
+    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
       <span className='view-input-title'>
         {title}
       </span>
