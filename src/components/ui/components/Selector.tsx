@@ -2,13 +2,14 @@ import React from 'react'
 
 export type SelectorProps = {
   value?: string;
-  items: string[];
+  items: readonly string[];
   onSelect: (value:string) => void;
   style?: React.CSSProperties;
 }
 
 export const Selector = (props:SelectorProps) => 
   <select
+    value={props.value}
     style={{ width: 20, ...props.style }} 
     className={props.value === undefined ? 'btnArrow' : ''}
     onChange={e => {

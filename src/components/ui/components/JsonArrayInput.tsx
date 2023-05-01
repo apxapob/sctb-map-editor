@@ -37,7 +37,7 @@ const JsonArrayInput = (
               [...values.slice(0, idx), ...values.slice(idx + 1)]
             )}
           >
-            ✗
+            🗑️
           </button>
           &nbsp;
           {value}

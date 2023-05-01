@@ -1,18 +1,27 @@
 import React from 'react'
-import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
+import { ChangeEffectType, GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
-import { EffectType, Effects } from '../../../types/types'
+import { EffectType, EffectTypes, Effects } from '../../../types/types'
+import { Selector } from './Selector'
+import ScriptSelector from './ScriptSelector'
+import './EffectsEditor.css'
 
-const EffectEditor = (
-  { effect, removeEffect }: { effect: EffectType, removeEffect: () => void }
+type EffectEditorProps = { 
+  effect: EffectType;
+  removeEffect: () => void;
+  filePath: string;
+  effectPath: string ;
+  idx: number;
+}
+
+const EffectEditor = observer((
+  { effect, removeEffect, filePath, effectPath, idx }: EffectEditorProps
 ) => {
   const type = Object.keys(effect)[0] as Effects
   const data = typeof effect !== 'string' ? effect[type] : null
-
   /*
-  script?: string;
   args?: string[];
   stat?: StatType;
   delta?: number;
@@ -26,20 +35,28 @@ const EffectEditor = (
   particles?: string;
   color?: ColorAdjust;
   */
-  return <div className='hflex' style={{ gap: 12, alignItems: 'center' }}>
+  return <div className='effect-editor'>
     <button 
       title={'Remove Effect'}
       onClick={removeEffect}
     >
-      ✗
+      🗑️
     </button>
     <div className='effect-param'>
       Type
-      <div>
-        {type}
-      </div>
+      <Selector 
+        value={type}
+        style={{ width: 'unset', margin: 0 }}
+        items={EffectTypes}
+        onSelect={newVal => ChangeEffectType(
+          filePath,
+          effectPath,
+          idx,
+          newVal as Effects
+        )}
+      />
     </div>
-    {data?.value &&
+    {data?.value !== undefined &&
       <div className='effect-param'>
         Value
         <div>
@@ -47,15 +64,16 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.script &&
+    {data?.script !== undefined &&
       <div className='effect-param'>
         Script
-        <div>
-          {data.script}
-        </div>
+        <ScriptSelector
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.script`}
+        />
       </div>
     }
-    {data?.args &&
+    {data?.args !== undefined &&
       <div className='effect-param'>
         Parameters
         <div>
@@ -63,7 +81,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.stat &&
+    {data?.stat !== undefined &&
       <div className='effect-param'>
         Stat
         <div>
@@ -71,7 +89,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.delta &&
+    {data?.delta !== undefined &&
       <div className='effect-param'>
         Change
         <div>
@@ -79,7 +97,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.id &&
+    {data?.id !== undefined &&
       <div className='effect-param'>
         Skill Id
         <div>
@@ -87,7 +105,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.radius &&
+    {data?.radius !== undefined &&
       <div className='effect-param'>
         Aura size
         <div>
@@ -95,7 +113,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.affects &&
+    {data?.affects !== undefined &&
       <div className='effect-param'>
         Affects
         <div>
@@ -103,7 +121,7 @@ const EffectEditor = (
         </div>
       </div>
     }
-    {data?.particles &&
+    {data?.particles !== undefined &&
       <div className='effect-param'>
         Visual effect
         <div>
@@ -112,7 +130,7 @@ const EffectEditor = (
       </div>
     }
   </div>
-}
+})
 
 const JsonEffectsEditor = (
   { filePath, valuePath, title, tooltip }:InputProps
@@ -120,35 +138,28 @@ const JsonEffectsEditor = (
   const effects = GetJsonFileValue(filePath, valuePath) as EffectType[]
   
   return (
-    <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
+    <div className='effect-editor-container' title={tooltip}>
       <div style={{ fontSize: 20, marginTop: 8 }}>
         {title}
       </div>
       
       {effects.map((value, idx) => 
-        <div key={idx} style={{ margin: '0 6px' }}>
-          <EffectEditor 
-            effect={value} 
-            removeEffect={() => UpdateJsonFileValue(
-              filePath,
-              valuePath,
-              [...effects.slice(0, idx), ...effects.slice(idx + 1)]
-            )}
-          />
-        </div>
-      )}
-      {/*
-        <Selector 
-          style={{ width: 'unset', margin: '0 6px' }}
-          items={valuesSource} 
-          value={'Add ' + placeholder}
-          onSelect={newVal => UpdateJsonFileValue(
+        <EffectEditor 
+          key={idx}
+          effect={value}
+          removeEffect={() => UpdateJsonFileValue(
             filePath,
             valuePath,
-            [...values, newVal]
-          )}
+            [...effects.slice(0, idx), ...effects.slice(idx + 1)]
+          )} 
+          filePath={filePath} 
+          effectPath={valuePath}
+          idx={idx}
         />
-      */}
+      )}
+      <button style={{ margin: '12px 6px' }}>
+        Add Effect
+      </button>
     </div>
   )
 }

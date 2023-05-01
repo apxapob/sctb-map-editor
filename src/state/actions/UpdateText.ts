@@ -1,5 +1,5 @@
 import { action } from 'mobx'
-import { JSONObject, JSONValue, TabType } from '../../types/types'
+import { EffectTemplates, EffectType, Effects, JSONObject, JSONValue, TabType } from '../../types/types'
 import { EditorState, TabsState } from '../ToolState'
 import { MapFiles, getFilePath } from '../MapFiles'
 
@@ -22,13 +22,19 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
     if (
       typeof result === 'number' ||
       typeof result === 'boolean' ||
-      typeof result === 'string' ||
-      Array.isArray(result)
+      typeof result === 'string'
     ) {
       console.warn('GetJsonFileValue: wrong value path', filePath, valuePath, fileObj, result)
       return null 
     }
-    result = result[path.shift() ?? '']
+    const nextPathPart = path.shift() ?? ''
+    
+    if (Array.isArray(result)) {
+      const idx = parseInt(nextPathPart)
+      result = result[idx]
+    } else {
+      result = result[nextPathPart]
+    }
   }
   
   return result
@@ -87,6 +93,28 @@ export const RenameJsonFileValue = action((
   TabsState[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
 })
 
+export const ChangeEffectType = action((
+  filePath:string, effectPath:string, idx:number, newVal:Effects
+) => {
+  const effectsArray = GetJsonFileValue(filePath, effectPath) as EffectType[]
+  if (!effectsArray) {
+    console.warn('ChangeEffectType: effects array', effectsArray)
+    return
+  }
+
+  const newEffectData = { ...EffectTemplates[newVal] } as JSONObject
+  for (const key in newEffectData) {
+    if (Array.isArray(newEffectData[key])) {
+      newEffectData[key] = []
+    }
+  }
+
+  const newEffect = { [newVal]: newEffectData }
+  console.log('!!! newEffect', newEffect, idx)
+  effectsArray[idx] = newEffect as EffectType
+  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+})
+
 export const UpdateJsonFileValue = action((
   filePath: string,
   valuePath: string,
@@ -100,13 +128,20 @@ export const UpdateJsonFileValue = action((
     if (
       typeof targetObj === 'number' ||
       typeof targetObj === 'boolean' ||
-      typeof targetObj === 'string' ||
-      Array.isArray(targetObj)
+      typeof targetObj === 'string'
     ) {
       console.warn('UpdateJsonFileValue: wrong value path', filePath, valuePath, fileObj, targetObj)
-      return null 
+      return null
     }
-    targetObj = targetObj[path.shift() ?? ''] as JSONObject
+
+    const nextPathPart = path.shift() ?? ''
+    
+    if (Array.isArray(targetObj)) {
+      const idx = parseInt(nextPathPart)
+      targetObj = targetObj[idx]
+    } else {
+      targetObj = targetObj[nextPathPart] as JSONObject
+    }
   }
   const lastPathPart = path.shift() ?? ''
   const oldValue = targetObj[lastPathPart]

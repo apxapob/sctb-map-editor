@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { MapFiles, SCRIPTS_PATH, SKILLS_PATH } from '../../state/MapFiles'
+import { MapFiles, SKILLS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { SkillType, SkillsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { AddJsonFileValue, DeleteJsonFileValue, GetJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
-import { Selector } from '../ui/components/Selector'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import ScriptSelector from '../ui/components/ScriptSelector'
 
 type SkillsStatsEditorProps = {
   skillId: string;
@@ -17,11 +17,6 @@ const SkillsStatsEditor = ({
   skillId
 }:SkillsStatsEditorProps) => {
   if (!skillId) return null
-  
-  const scripts = Object.keys(MapFiles.text)
-    .filter(filename => filename.startsWith(SCRIPTS_PATH))
-    .map(filename => filename.replace(SCRIPTS_PATH, ''))
-  const script = GetJsonFileValue(SKILLS_PATH, `${skillId}.script`) as string
 
   return <div className='vflex' style={{ padding: 6 }}>
     <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
@@ -32,15 +27,9 @@ const SkillsStatsEditor = ({
       <span className='view-input-title'>
         Script:
       </span>
-      <Selector
-        value={script}
-        style={{ width: 'unset', margin: 0 }}
-        items={scripts}
-        onSelect={newVal => UpdateJsonFileValue(
-          SKILLS_PATH,
-          `${skillId}.script`,
-          newVal
-        )}
+      <ScriptSelector
+        filePath={SKILLS_PATH}
+        valuePath={`${skillId}.script`}
       />
     </div>
 

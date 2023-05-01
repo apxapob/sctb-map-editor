@@ -1,0 +1,18 @@
+.effect-editor {
+  gap: 12px;
+  width: 100%;
+  display: flex;
+  padding: 0 6px 6px 6px;
+  border-bottom: 1px white solid;
+  align-items: center;
+}
+
+.effect-editor-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  white-space: nowrap;
+  gap: 6px;
+}
