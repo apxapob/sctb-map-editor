@@ -80,6 +80,10 @@ input[type="checkbox"]:checked::before {
   gap: 6px;
 }
 
+.nogap {
+  gap: 0px;
+}
+
 div::-webkit-scrollbar {
   width: 6px;
   height: 6px;

@@ -160,39 +160,53 @@ export type ColorAdjust = {
 
 export type Affects = 'All' | 'Allies' | 'Enemies'
 
-export type EffectType = {
-  type: 'DoT' | 'Attack' | 'Vision' | 'Speed' | 'Range';
-  value: number;
-} | {
-  type: 'Fly' | 'Detector' | 'Invisibility';
-  value: boolean;
-} | {
-  type: 'OnDeath' | 'OnAttack' | 'OnDefend' | 'OnTurnStart' | 'OnTurnEnd' | 'OnBuffEnd' | 'OnTouch';
-  script: string;
-  args: string[];
-} | {
-  type: 'SetStat';
-  stat: StatType;
-  value: number;
-} | {
-  type: 'ChangeStat';
-  stat: StatType;
-  delta: number;
-} | {
-  type: 'AddSkill' | 'RemoveSkill';
-  id: string;
-} | {
-  type: 'BlockSkills';
-} | {
-  type: 'AddCustomSkill';
-  skill: SkillType;
-} | {
-  type: 'Aura';
-  radius: number;
-  effects: EffectType[];
-  affects: Affects, 
-  particles: string;
-  color: ColorAdjust;
+export const EffectTemplates = {
+  OnDeath: { script:'', args: [] },
+  OnAttack: { script:'', args: [] },
+  OnDefend: { script: '', args: [] },
+  OnTurnStart: { script: '', args: [] },//works for items too
+  OnTurnEnd: { script: '', args: [] },//works for items too
+  OnBuffEnd: { script: '', args: [] },//works for items too
+  OnTouch: { script: '', args: [] },//works only for items
+
+  SetStat: { stat:'', value:0 },
+  ChangeStat: { stat:'', delta:0 },
+  
+  AddSkill: { id:'' },
+  //AddCustomSkill: { skill:SkillType },//TODO: implement this
+  RemoveSkill: { id:'' },
+  BlockSkills: null,
+  
+  Aura: { //works for items too
+    radius: 0,
+    effects: [],
+    affects: '',
+    particles: '',
+    color: {}
+  }
+} as const
+
+export const EffectTypes = [...Object.keys(EffectTemplates)] as const
+
+export type Effects = keyof typeof EffectTemplates
+
+export type EffectType = 'BlockSkills' | {
+  [type in Effects]: {
+    value?: number | boolean;
+    script?: string;
+    args?: string[];
+    stat?: StatType;
+    delta?: number;
+    id?: string;//skillId
+    //skill: SkillType;//custom skill
+
+    //Aura params:
+    radius?: number;
+    effects?: EffectType[];//
+    affects?: Affects, 
+    particles?: string;
+    color?: ColorAdjust;//
+  } 
 }
 
 export type BuffType = {

@@ -6,6 +6,7 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import { BuffsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import JsonEffectsEditor from '../ui/components/JsonEffectsEditor'
 
 type BuffsEditorProps = {
   buffId: string;
@@ -28,6 +29,11 @@ const BuffEditor = ({
       valuePath={`${buffId}.turns`}
       isInteger={true}
       min={-1}
+    />
+    <JsonEffectsEditor 
+      filePath={BUFFS_PATH} 
+      valuePath={`${buffId}.effects`} 
+      title={'Effects'}
     />
 
   </div>

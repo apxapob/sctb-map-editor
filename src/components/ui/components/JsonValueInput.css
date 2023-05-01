@@ -6,3 +6,11 @@
 .view-input {
   width: 100%;
 }
+
+.effect-param {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  white-space: nowrap;
+}

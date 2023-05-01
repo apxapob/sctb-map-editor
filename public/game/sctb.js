@@ -94137,7 +94137,7 @@ logic_BuffSystem.calcStats = function(unit,withAuras) {
 		while(_g < auras.length) {
 			var aura = auras[_g];
 			++_g;
-			if(aura._hx_index == 12) {
+			if(aura._hx_index == 13) {
 				var radius = aura.radius;
 				var effects = aura.effects;
 				var a = aura.affects;
@@ -94197,25 +94197,25 @@ logic_BuffSystem.applyStatsBuff = function(stats,buffEffects) {
 		var eff = _g1[_g];
 		++_g;
 		switch(eff._hx_index) {
-		case 6:
+		case 7:
 			var stat = eff.stat;
 			var value = eff.value;
 			logic_BuffSystem.SetStats(stats,stat,value);
 			break;
-		case 7:
+		case 8:
 			var stat1 = eff.stat;
 			var value1 = eff.delta;
 			logic_BuffSystem.ChangeStats(stats,stat1,value1);
 			break;
-		case 8:
+		case 9:
 			var id = eff.id;
 			logic_BuffSystem.AddSkillById(stats,id);
 			break;
-		case 10:
+		case 11:
 			var id1 = eff.id;
 			logic_BuffSystem.RemoveSkillById(stats,id1);
 			break;
-		case 11:
+		case 12:
 			logic_BuffSystem.BlockAllSkills(stats);
 			break;
 		default:
@@ -95845,7 +95845,7 @@ logic_ItemSystem.buildItemCache = function(item,cache) {
 				var args1 = effect.args;
 				turnEndEvents.push({ script : script1, args : args1});
 				break;
-			case 13:
+			case 6:
 				var script2 = effect.script;
 				var args2 = effect.args;
 				touchEvents.push({ script : script2, args : args2});
@@ -96083,7 +96083,7 @@ logic_LoadSystem.GetScript = function(scriptId) {
 	if(logic_LoadSystem.scriptsCache.h[scriptId] == null) {
 		var parser = new hscript_Parser();
 		var this1 = logic_LoadSystem.scriptsCache;
-		var v = parser.parseString(logic_DataBase.getMapFileText("scripts/" + scriptId + ".hx"));
+		var v = parser.parseString(logic_DataBase.getMapFileText("scripts/" + scriptId));
 		this1.h[scriptId] = v;
 	}
 	return logic_LoadSystem.scriptsCache.h[scriptId];
@@ -96094,7 +96094,7 @@ logic_LoadSystem.ClearScriptsCache = function() {
 logic_LoadSystem.GetParticles = function(effectId) {
 	if(logic_LoadSystem.particles.h[effectId] == null) {
 		var this1 = logic_LoadSystem.particles;
-		var v = JSON.parse(logic_DataBase.getMapFileText("particles/" + effectId + ".json"));
+		var v = JSON.parse(logic_DataBase.getMapFileText("particles/" + effectId));
 		this1.h[effectId] = v;
 	}
 	return logic_LoadSystem.particles.h[effectId];
@@ -98195,7 +98195,7 @@ logic_UnitSystem.getAuras = function(td) {
 				var v = _g4[_g3];
 				++_g3;
 				var getAllObjAuras;
-				if(v._hx_index == 12) {
+				if(v._hx_index == 13) {
 					var radius = v.radius;
 					var e = v.effects;
 					var affects = v.affects;
@@ -98259,7 +98259,7 @@ logic_UnitSystem.getAurasFromObj = function(hex,obj,objCountryId,countryId) {
 			var v = _g4[_g3];
 			++_g3;
 			if((function(e) {
-				if(e._hx_index == 12) {
+				if(e._hx_index == 13) {
 					var radius = e.radius;
 					var e1 = e.effects;
 					var affects = e.affects;
@@ -99284,16 +99284,16 @@ var model_EffectType = $hxEnums["model.EffectType"] = { __ename__:true,__constru
 	,OnTurnStart: ($_=function(script,args) { return {_hx_index:3,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTurnStart",$_.__params__ = ["script","args"],$_)
 	,OnTurnEnd: ($_=function(script,args) { return {_hx_index:4,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTurnEnd",$_.__params__ = ["script","args"],$_)
 	,OnBuffEnd: ($_=function(script,args) { return {_hx_index:5,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnBuffEnd",$_.__params__ = ["script","args"],$_)
-	,SetStat: ($_=function(stat,value) { return {_hx_index:6,stat:stat,value:value,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="SetStat",$_.__params__ = ["stat","value"],$_)
-	,ChangeStat: ($_=function(stat,delta) { return {_hx_index:7,stat:stat,delta:delta,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="ChangeStat",$_.__params__ = ["stat","delta"],$_)
-	,AddSkill: ($_=function(id) { return {_hx_index:8,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddSkill",$_.__params__ = ["id"],$_)
-	,AddCustomSkill: ($_=function(skill) { return {_hx_index:9,skill:skill,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddCustomSkill",$_.__params__ = ["skill"],$_)
-	,RemoveSkill: ($_=function(id) { return {_hx_index:10,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="RemoveSkill",$_.__params__ = ["id"],$_)
-	,BlockSkills: {_hx_name:"BlockSkills",_hx_index:11,__enum__:"model.EffectType",toString:$estr}
-	,Aura: ($_=function(radius,effects,affects,particles,color) { return {_hx_index:12,radius:radius,effects:effects,affects:affects,particles:particles,color:color,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="Aura",$_.__params__ = ["radius","effects","affects","particles","color"],$_)
-	,OnTouch: ($_=function(script,args) { return {_hx_index:13,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTouch",$_.__params__ = ["script","args"],$_)
+	,OnTouch: ($_=function(script,args) { return {_hx_index:6,script:script,args:args,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="OnTouch",$_.__params__ = ["script","args"],$_)
+	,SetStat: ($_=function(stat,value) { return {_hx_index:7,stat:stat,value:value,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="SetStat",$_.__params__ = ["stat","value"],$_)
+	,ChangeStat: ($_=function(stat,delta) { return {_hx_index:8,stat:stat,delta:delta,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="ChangeStat",$_.__params__ = ["stat","delta"],$_)
+	,AddSkill: ($_=function(id) { return {_hx_index:9,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddSkill",$_.__params__ = ["id"],$_)
+	,AddCustomSkill: ($_=function(skill) { return {_hx_index:10,skill:skill,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="AddCustomSkill",$_.__params__ = ["skill"],$_)
+	,RemoveSkill: ($_=function(id) { return {_hx_index:11,id:id,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="RemoveSkill",$_.__params__ = ["id"],$_)
+	,BlockSkills: {_hx_name:"BlockSkills",_hx_index:12,__enum__:"model.EffectType",toString:$estr}
+	,Aura: ($_=function(radius,effects,affects,particles,color) { return {_hx_index:13,radius:radius,effects:effects,affects:affects,particles:particles,color:color,__enum__:"model.EffectType",toString:$estr}; },$_._hx_name="Aura",$_.__params__ = ["radius","effects","affects","particles","color"],$_)
 };
-model_EffectType.__constructs__ = [model_EffectType.OnDeath,model_EffectType.OnAttack,model_EffectType.OnDefend,model_EffectType.OnTurnStart,model_EffectType.OnTurnEnd,model_EffectType.OnBuffEnd,model_EffectType.SetStat,model_EffectType.ChangeStat,model_EffectType.AddSkill,model_EffectType.AddCustomSkill,model_EffectType.RemoveSkill,model_EffectType.BlockSkills,model_EffectType.Aura,model_EffectType.OnTouch];
+model_EffectType.__constructs__ = [model_EffectType.OnDeath,model_EffectType.OnAttack,model_EffectType.OnDefend,model_EffectType.OnTurnStart,model_EffectType.OnTurnEnd,model_EffectType.OnBuffEnd,model_EffectType.OnTouch,model_EffectType.SetStat,model_EffectType.ChangeStat,model_EffectType.AddSkill,model_EffectType.AddCustomSkill,model_EffectType.RemoveSkill,model_EffectType.BlockSkills,model_EffectType.Aura];
 model_EffectType.__empty_constructs__ = [model_EffectType.BlockSkills];
 var model_Tables = function() { };
 $hxClasses["model.Tables"] = model_Tables;
@@ -106250,7 +106250,7 @@ var utils_ParticleEffects = function() { };
 $hxClasses["utils.ParticleEffects"] = utils_ParticleEffects;
 utils_ParticleEffects.__name__ = "utils.ParticleEffects";
 utils_ParticleEffects.ShowAuraEffect = function(tiles,aura,center) {
-	if(aura._hx_index == 12) {
+	if(aura._hx_index == 13) {
 		var radius = aura.radius;
 		var effects = aura.effects;
 		var affects = aura.affects;
@@ -106267,7 +106267,9 @@ utils_ParticleEffects.ShowAuraEffect = function(tiles,aura,center) {
 				continue;
 			}
 			var effect = utils_ParticleEffects.ShowSimpleEffect(tile,particlesId,colorAdjust,-1,false);
-			result.push(effect);
+			if(effect != null) {
+				result.push(effect);
+			}
 		}
 		return result;
 	} else {
@@ -106283,7 +106285,18 @@ utils_ParticleEffects.ShowSimpleEffect = function(parent,effectId,colorAdjust,ti
 	}
 	var time = timePeriods * model_Params.microTurnTime();
 	var particles = new h2d_Particles(parent);
-	particles.load(logic_LoadSystem.GetParticles(effectId));
+	var effectData = logic_LoadSystem.GetParticles(effectId);
+	if(effectData == null) {
+		haxe_Log.trace("Can't find particles file:",{ fileName : "src/utils/ParticleEffects.hx", lineNumber : 42, className : "utils.ParticleEffects", methodName : "ShowSimpleEffect", customParams : [effectId]});
+		return null;
+	}
+	try {
+		particles.load(effectData);
+	} catch( _g ) {
+		var e = haxe_Exception.caught(_g);
+		haxe_Log.trace("Particles parsing error:",{ fileName : "src/utils/ParticleEffects.hx", lineNumber : 48, className : "utils.ParticleEffects", methodName : "ShowSimpleEffect", customParams : [e.get_message()]});
+		return null;
+	}
 	if(colorAdjust != null) {
 		particles.adjustColor(colorAdjust);
 	}
@@ -106321,7 +106334,18 @@ utils_ParticleEffects.ShowDirectedEffect = function(from,to,effectId,colorAdjust
 	}
 	var time = timePeriods * model_Params.microTurnTime();
 	var particles = new h2d_Particles(from);
-	particles.load(logic_LoadSystem.GetParticles(effectId));
+	var effectData = logic_LoadSystem.GetParticles(effectId);
+	if(effectData == null) {
+		haxe_Log.trace("Can't find particles file:",{ fileName : "src/utils/ParticleEffects.hx", lineNumber : 79, className : "utils.ParticleEffects", methodName : "ShowDirectedEffect", customParams : [effectId]});
+		return null;
+	}
+	try {
+		particles.load(effectData);
+	} catch( _g ) {
+		var e = haxe_Exception.caught(_g);
+		haxe_Log.trace("Particles parsing error:",{ fileName : "src/utils/ParticleEffects.hx", lineNumber : 85, className : "utils.ParticleEffects", methodName : "ShowDirectedEffect", customParams : [e.get_message()]});
+		return null;
+	}
 	if(colorAdjust != null) {
 		particles.adjustColor(colorAdjust);
 	}
