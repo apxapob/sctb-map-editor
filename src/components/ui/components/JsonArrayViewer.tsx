@@ -1,24 +1,28 @@
 import React, { useState } from 'react'
 import { Renamer } from './Renamer'
 import ShowMenu from '../../../state/actions/ShowMenu'
+import { MenuItem } from '../../../state/MenuState'
 
 export type JsonArrayViewerProps = {
+  addItem: () => void;
   deleteItem: (id:string) => void;
   renameItem: (id:string, newName:string) => void;
   items: string[];
   selectedItemId: string;
   selectItem: (id:string) => void;
+  placeholder: string;
 }
 
 type ViewerItemProps = {
   itemId: string;
   selected: boolean;
+  menuItems: MenuItem[];
   onClick: () => void;
   deleteItem: (id:string) => void;
   renameItem: (id:string, newName:string) => void;
 }
 
-const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem }:ViewerItemProps) => {
+const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem, menuItems }:ViewerItemProps) => {
   const [isRenaming, setRenaming] = useState(false)
   const startRenaming = () => setRenaming(true)
 
@@ -28,7 +32,7 @@ const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem }:Viewer
   }, {
     title: 'Delete', 
     callback: () => deleteItem(itemId)
-  }]
+  }, ...menuItems]
 
   const rename = (newName:string) => {
     setRenaming(false)
@@ -58,7 +62,7 @@ const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem }:Viewer
 }
 
 export const JsonArrayViewer = (
-  { selectedItemId, items, selectItem, deleteItem, renameItem }:JsonArrayViewerProps
+  { selectedItemId, items, selectItem, deleteItem, renameItem, placeholder, addItem }:JsonArrayViewerProps
 ) => {
   const onKeyDown = (e:React.KeyboardEvent) => {
     const idx = items.indexOf(selectedItemId)
@@ -75,7 +79,17 @@ export const JsonArrayViewer = (
     }
   }
 
-  return <div className='dir-viewer-container' onKeyDown={e => onKeyDown(e)} tabIndex={0}>
+  const menuItems = [{
+    title: 'Add ' + placeholder, 
+    callback: addItem
+  }]
+
+  return <div 
+    className='dir-viewer-container' 
+    onKeyDown={e => onKeyDown(e)} 
+    tabIndex={0}
+    onContextMenuCapture={e => ShowMenu(e, menuItems)}
+  >
     {items.map(itemId =>
       <ItemViewer
         itemId={itemId}
@@ -83,6 +97,7 @@ export const JsonArrayViewer = (
         selected={itemId === selectedItemId}
         renameItem={renameItem}
         deleteItem={deleteItem}
+        menuItems={menuItems}
         onClick={() => selectItem(itemId)} />
     )}
   </div>

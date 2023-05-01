@@ -34,6 +34,24 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
   return result
 }
 
+export const AddJsonFileValue = action(<T extends JSONObject>(
+  filePath: string,
+  defaultName: string,
+  template: T,
+  selectItem?: (id:string) => void
+) => {
+  const fileObj = MapFiles.json[filePath]
+  let n = 1
+  let newId = 'New ' + defaultName
+  while (fileObj[newId]) {
+    newId = 'New ' + defaultName + n
+    n++
+  }
+  fileObj[newId] = template
+  TabsState[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
+  selectItem?.(newId)
+})
+
 export const DeleteJsonFileValue = action((
   filePath: string,
   id: string,
@@ -44,7 +62,7 @@ export const DeleteJsonFileValue = action((
   
   delete fileObj[id]
   
-  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+  TabsState[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
 })
 
 export const RenameJsonFileValue = action((
@@ -66,7 +84,7 @@ export const RenameJsonFileValue = action((
   delete fileObj[oldId]
   fileObj[newId] = value
 
-  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+  TabsState[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
 })
 
 export const UpdateJsonFileValue = action((
@@ -94,5 +112,5 @@ export const UpdateJsonFileValue = action((
   const oldValue = targetObj[lastPathPart]
   if (oldValue === value) return
   targetObj[lastPathPart] = value
-  TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+  TabsState[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
 })

@@ -3,9 +3,9 @@ import './View.css'
 import { observer } from 'mobx-react-lite'
 import { BUFFS_PATH, MapFiles } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
-import { BuffsMap } from '../../types/types'
+import { BuffType, BuffsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 import JsonEffectsEditor from '../ui/components/JsonEffectsEditor'
 
 type BuffsEditorProps = {
@@ -41,13 +41,14 @@ const BuffEditor = ({
 
 const BuffsView = () => {
   const buffs = MapFiles.json[BUFFS_PATH] as BuffsMap
-  const buffsArray = React.useMemo(() => Object.keys(buffs), [buffs])
+  const buffsArray = Object.keys(buffs).sort()
 
   const [selectedBuffId, selectBuff] = useState<string>('')
 
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
       <JsonArrayViewer 
+        placeholder='Buff'
         items={buffsArray} 
         selectedItemId={selectedBuffId} 
         selectItem={selectBuff}
@@ -55,6 +56,12 @@ const BuffsView = () => {
           selectBuff(newName)
           RenameJsonFileValue(BUFFS_PATH, id, newName)
         }}
+        addItem={() => AddJsonFileValue<BuffType>(
+          BUFFS_PATH, 
+          'Buff', 
+          { type: '', effects: [], turns: 0 },
+          selectBuff
+        )}
         deleteItem={id => {
           selectBuff('')
           DeleteJsonFileValue(BUFFS_PATH, id)

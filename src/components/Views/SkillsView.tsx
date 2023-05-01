@@ -4,9 +4,9 @@ import { observer } from 'mobx-react-lite'
 import { MapFiles, SCRIPTS_PATH, SKILLS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
-import { SkillsMap } from '../../types/types'
+import { SkillType, SkillsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { DeleteJsonFileValue, GetJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, GetJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
 import { Selector } from '../ui/components/Selector'
 
 type SkillsStatsEditorProps = {
@@ -93,6 +93,7 @@ const SkillsView = () => {
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
       <JsonArrayViewer 
+        placeholder='Skill'
         items={skillIds} 
         selectedItemId={selectedSkillId} 
         selectItem={selectSkill}
@@ -100,6 +101,12 @@ const SkillsView = () => {
           selectSkill(newName)
           RenameJsonFileValue(SKILLS_PATH, id, newName)
         }}
+        addItem={() => AddJsonFileValue<SkillType>(
+          SKILLS_PATH, 
+          'Skill', 
+          { id: '', args: [], mana: 0, script: '', price: 0, radius: 0, range: 0 },
+          selectSkill
+        )}
         deleteItem={id => {
           selectSkill('')
           DeleteJsonFileValue(SKILLS_PATH, id)

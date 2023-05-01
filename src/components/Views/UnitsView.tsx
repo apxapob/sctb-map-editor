@@ -4,9 +4,9 @@ import { observer } from 'mobx-react-lite'
 import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
-import { BuffsMap, SkillsMap, UnitsMap } from '../../types/types'
+import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -117,14 +117,21 @@ const UnitsView = () => {
 
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
-      <JsonArrayViewer 
-        items={unitIds} 
+      <JsonArrayViewer
+        items={unitIds}
+        placeholder='Unit'
         selectedItemId={selectedUnitId} 
         selectItem={selectUnit}
         renameItem={(id, newName) => {
           selectUnit(newName)
           RenameJsonFileValue(UNITS_PATH, id, newName)
         }}
+        addItem={() => AddJsonFileValue<UnitStatsType>(
+          UNITS_PATH, 
+          'Unit',
+          { type: '', buffs: [], attack: 0, range: 0, speed: 0, vision: 0, detector: 0, invisible: 0, maxHp: 0, flying: 0, skills: [] },
+          selectUnit
+        )}
         deleteItem={id => {
           selectUnit('')
           DeleteJsonFileValue(UNITS_PATH, id)

@@ -10,7 +10,7 @@ export type SelectorProps = {
 export const Selector = (props:SelectorProps) => 
   <select
     style={{ width: 20, ...props.style }} 
-    className={props.value ? '' : 'btnArrow'}
+    className={props.value === undefined ? 'btnArrow' : ''}
     onChange={e => {
       props.onSelect(e.target.value)
       e.target.blur()

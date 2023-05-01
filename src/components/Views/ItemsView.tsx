@@ -4,9 +4,9 @@ import { observer } from 'mobx-react-lite'
 import { BUFFS_PATH, MapFiles, ITEMS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
-import { BuffsMap, ItemsMap } from '../../types/types'
+import { BuffsMap, ItemType, ItemsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 
 type ItemsStatsEditorProps = {
@@ -55,10 +55,11 @@ const ItemsView = () => {
   const itemIds = Object.keys(itemsMap).sort()
 
   const [selectedItemId, selectItem] = useState<string>('')
-
+  
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
       <JsonArrayViewer 
+        placeholder='Item'
         items={itemIds} 
         selectedItemId={selectedItemId} 
         selectItem={selectItem}
@@ -66,6 +67,12 @@ const ItemsView = () => {
           selectItem(newName)
           RenameJsonFileValue(ITEMS_PATH, id, newName)
         }}
+        addItem={() => AddJsonFileValue<ItemType>(
+          ITEMS_PATH, 
+          'Item', 
+          { type: '', buffs: [], unpickable: false, invisible: 0 },
+          selectItem
+        )}
         deleteItem={id => {
           selectItem('')
           DeleteJsonFileValue(ITEMS_PATH, id)
