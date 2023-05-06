@@ -45,6 +45,11 @@ exports.getMenu = win => {
       label: 'View',
       submenu: [
         {
+          label: 'Json mode on/off',
+          accelerator: 'F8',
+          click: () => sendCommand({ command: 'JSON_MODE' })
+        },
+        {
           label: 'Fullscreen',
           accelerator: 'F11',
           click: () => {win.fullScreen = !win.fullScreen}

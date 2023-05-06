@@ -1,5 +1,5 @@
 export type CommandType = {
-  command: 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END' | 'CREATE_MAP' | 'TEST_MAP';
+  command: 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'LOADING_END' | 'CREATE_MAP' | 'TEST_MAP' | 'JSON_MODE';
 } | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType 
   | SaveTextFileType | FSCommandType | RenameType
 

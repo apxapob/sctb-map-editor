@@ -3,6 +3,7 @@ import { OnDeleted, OnLoadedBinary, OnLoadedDirectory,
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
 import SaveChanges from '../state/actions/SaveChanges'
 import TestMap from '../state/actions/TestMap'
+import ToggleJsonMode from '../state/actions/ToggleJsonMode'
 import { CommandType } from '../types/commands'
 
 const { ipcRenderer } = require('electron')
@@ -19,6 +20,9 @@ export function InitMessenger() {
         break
       case 'TEST_MAP':
         TestMap()
+        break
+      case 'JSON_MODE':
+        ToggleJsonMode()
         break
       case 'LOADING_START':
         OnLoadingStart()

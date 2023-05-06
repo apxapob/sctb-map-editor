@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { OpenFileTree, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
+import { OpenFileTree, SelectFieldFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import { SendCommand } from '../../utils/messenger'
@@ -8,10 +8,12 @@ import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
 import { EditorState } from '../../state/ToolState'
 import { Renamer } from './components/Renamer'
+import { TabType } from '../../types/types'
 
 export const fileSelectors: {
-  [key: string]: (path:string) => void;
+  [tab in TabType]?: (path:string) => void;
 } = {
+  'Field': SelectFieldFile,
   'Scripts': SelectScriptFile, 
   'Texts': SelectLangFile, 
   'Particles': SelectParticlesFile
@@ -40,7 +42,7 @@ const getFileMenuItems = (
   },
 ]
 
-const getMenuItems = (
+const getFolderMenuItems = (
   tree:PathTreeType,
   setAdder: (val:AdderType) => void
 ) => [
@@ -78,7 +80,7 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   }
 
   const fileSelector = fileSelectors[EditorState.activeTab]
-
+  if (!fileSelector) return null
   return (
     <div className='dir-viewer-container'>
       <PathTree
@@ -139,7 +141,7 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
         <div className='node' 
           style={{ paddingLeft: 2 + 18 * (level - 1) }}
           onContextMenu={
-            e => ShowMenu(e, getMenuItems(tree, setAdder))
+            e => ShowMenu(e, getFolderMenuItems(tree, setAdder))
           }
           onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
@@ -162,9 +164,12 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
 })
 
 const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
-  const isSelected = MapFiles.selectedScript === tree.path || 
-                     MapFiles.selectedLang === tree.path || 
-                     MapFiles.selectedParticlesFile === tree.path
+  //TODO: make normal condition
+  const isSelected = 
+    MapFiles.selectedField === tree.path || 
+    MapFiles.selectedScript === tree.path || 
+    MapFiles.selectedLang === tree.path || 
+    MapFiles.selectedParticlesFile === tree.path
   const [isRenaming, setRenaming] = React.useState(false)
 
   const rename = (newName:string) => {

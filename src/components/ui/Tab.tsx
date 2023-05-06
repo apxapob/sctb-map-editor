@@ -3,17 +3,26 @@ import React from 'react'
 import { SelectTab } from '../../state/actions/OpenPanel'
 import { TabType } from '../../types/types'
 import { observer } from 'mobx-react-lite'
-import { TabsState } from '../../state/ToolState'
+import { JsonMode, TabsState } from '../../state/ToolState'
+import ShowMenu from '../../state/actions/ShowMenu'
+import ToggleJsonMode from '../../state/actions/ToggleJsonMode'
 
 export type TabProps = {
   title: TabType;
   selected: boolean;
 }
 
-const Tab = (props:TabProps) => {
-  return <div className={ `tab ${props.selected ? '' : 'not-'}selected-tab` } onClick={() => SelectTab(props.title)}>
-    {props.title}{TabsState[props.title] && '*'}
+const Tab = ({ title, selected }:TabProps) => 
+  <div 
+    className={ `tab ${selected ? '' : 'not-'}selected-tab` } 
+    onClick={() => SelectTab(title)}
+    onContextMenu={e => title !== 'Scripts' && title !== 'Particles' &&
+      ShowMenu(e, [
+        { title: 'Json mode on/off', callback: () => ToggleJsonMode(title) }
+      ])
+    }
+  >
+    {title}{JsonMode[title] ? '(JSON)' : ''}{TabsState[title] && '*'}
   </div>
-}
 
 export default observer(Tab)

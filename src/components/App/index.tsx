@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import { MapFiles, } from '../../state/MapFiles'
-import { EditorState } from '../../state/ToolState'
+import { EditorState, JsonMode } from '../../state/ToolState'
 import { TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
 import EmptyPage from '../ui/EmptyPage'
@@ -34,24 +34,27 @@ const App = () => {
   const tabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
   
-  const View = Views[EditorState.activeTab]
+  const tab = EditorState.activeTab
+  const View = Views[tab]
   return (
     <div className="App">
       {!EditorState.mapTesting &&
         <div className='hflex tab-container'>
           {tabs.map(
-            s => <Tab key={s} selected={EditorState.activeTab === s} title={s} />
+            s => <Tab key={s} selected={tab === s} title={s} />
           )}
         </div>
       }
       <GameCanvas 
-        active={ EditorState.activeTab === 'Field' || EditorState.activeTab === 'Map' } 
+        active={ !JsonMode[tab] && (tab === 'Field' || tab === 'Map') } 
         testing={ EditorState.mapTesting } 
       />
       {MapFiles.status === null &&
         <EmptyPage />
       }
-      {isLoaded && !EditorState.mapTesting && <View />}
+      {isLoaded && !EditorState.mapTesting && 
+        (JsonMode[tab] ? <JsonEditor /> : <View />)
+      }
       <PanelsContainer />
       <ContextMenu />
     </div>

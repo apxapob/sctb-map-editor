@@ -27,3 +27,7 @@ export const TabsState:{
 export const TabsErrors:{
   [tab in TabType]?: string | null;
 } = observable({})
+
+export const JsonMode:{
+  [tab in TabType]?: boolean | null;
+} = observable({})

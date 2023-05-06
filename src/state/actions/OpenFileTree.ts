@@ -8,10 +8,18 @@ export const OpenFileTree = action(
   }
 )
 
+//TODO: remove copy pasted code
 export const SelectScriptFile = action(
   (path:string) => {
     if (!SaveChanges()) { return }
     MapFiles.selectedScript = path
+  }
+)
+
+export const SelectFieldFile = action(
+  (path:string) => {
+    if (!SaveChanges()) { return }
+    MapFiles.selectedField = path
   }
 )
 
