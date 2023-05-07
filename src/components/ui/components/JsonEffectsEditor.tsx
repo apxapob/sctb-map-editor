@@ -8,8 +8,9 @@ import { Selector } from './Selector'
 import FileSelector from './FileSelector'
 import './EffectsEditor.css'
 import JsonNumberInput from './JsonNumberInput'
-import { PARTICLES_PATH, SCRIPTS_PATH } from '../../../state/MapFiles'
+import { MapFiles, PARTICLES_PATH, SCRIPTS_PATH, SKILLS_PATH } from '../../../state/MapFiles'
 import ValueSelector from './ValueSelector'
+import JsonArrayInput from './JsonArrayInput'
 
 type EffectEditorProps = { 
   effect: EffectType;
@@ -24,12 +25,9 @@ const EffectEditor = observer((
 ) => {
   const type = Object.keys(effect)[0] as Effects
   const data = typeof effect !== 'string' ? effect[type] : null
+  const AllSkills = Object.keys(MapFiles.json[SKILLS_PATH])
+  console.log('!!! effect editor render')
   /*
-  args?: string[];
-  stat?: StatType;
-  id?: string;//skillId
-  //skill: SkillType;//custom skill
-
   //Aura params:
   effects?: EffectType[];
   color?: ColorAdjust;
@@ -75,14 +73,6 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.args !== undefined &&
-      <div className='effect-param'>
-        Parameters
-        <div>
-          {data.args}
-        </div>
-      </div>
-    }
     {data?.stat !== undefined &&
       <div className='effect-param'>
         Stat
@@ -105,9 +95,11 @@ const EffectEditor = observer((
     {data?.id !== undefined &&
       <div className='effect-param'>
         Skill Id
-        <div>
-          {data.id}
-        </div>
+        <ValueSelector 
+          values={AllSkills}
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.id`}
+        />
       </div>
     }
     {data?.radius !== undefined &&
@@ -137,6 +129,30 @@ const EffectEditor = observer((
           sourcePath={PARTICLES_PATH}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.particles`}
+        />
+      </div>
+    }
+    {data?.color !== undefined &&
+      <div className='effect-param'>
+        Color adjust
+        
+      </div>
+    }
+    {data?.effects !== undefined &&
+      <div className='effect-param'>
+        Aura effect
+        {data?.effects.length}
+      </div>
+    }
+
+    {data?.args !== undefined &&
+      <div className='effect-param'>
+        Parameters
+        <JsonArrayInput
+          horizontal
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.args`}
+          placeholder='parameter'
         />
       </div>
     }

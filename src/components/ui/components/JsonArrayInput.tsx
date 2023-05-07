@@ -6,7 +6,7 @@ import { InputProps } from './JsonStringInput'
 import { Selector } from './Selector'
 
 const JsonArrayInput = (
-  { filePath, valuePath, title, placeholder, valuesSource, tooltip }:InputProps & { valuesSource?: string[] }
+  { filePath, valuePath, title, placeholder, valuesSource, tooltip, horizontal }:InputProps & { valuesSource?: string[], horizontal?:boolean }
 ) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const values = GetJsonFileValue(filePath, valuePath) as string[]
@@ -22,13 +22,19 @@ const JsonArrayInput = (
   }
 
   return (
-    <div className='vflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
-      <div style={{ fontSize: 20, marginTop: 8 }}>
-        {title}
-      </div>
+    <div 
+      className={horizontal ? 'hflex' : 'vflex'} 
+      style={{ alignItems: 'start', justifyContent: 'flex-start', flexWrap: 'wrap' }} 
+      title={tooltip}
+    >
+      {title &&
+        <div style={{ fontSize: 20, marginTop: 8 }}>
+          {title}
+        </div>
+      }
       
       {values.map((value, idx) => 
-        <div key={idx} style={{ margin: '0 6px' }}>
+        <div key={idx} style={{ margin: horizontal ? '0 6px 6px 0' : '0 6px' }}>
           <button 
             title={'Remove ' + placeholder}
             onClick={() => UpdateJsonFileValue(
@@ -45,7 +51,7 @@ const JsonArrayInput = (
       )}
       {valuesSource && 
         <Selector 
-          style={{ width: 'unset', margin: '0 6px' }}
+          style={{ width: 'unset', margin: horizontal ? '0 6px 6px 0' : '0 6px' }}
           items={valuesSource} 
           value={'Add ' + placeholder}
           onSelect={newVal => UpdateJsonFileValue(
@@ -56,7 +62,7 @@ const JsonArrayInput = (
         />
       }
       {!valuesSource && 
-        <div className='hflex' style={{ gap: 6, margin: '0 6px' }}>
+        <div className='hflex' style={{ gap: 6, margin: horizontal ? '0 6px 6px 0' : '0 6px' }}>
           <input ref={inputRef} />
           <button onClick={addInputParam}>
             ✓ Add {placeholder}
