@@ -7,7 +7,7 @@ import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { SkillType, SkillsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
-import ScriptSelector from '../ui/components/ScriptSelector'
+import FileSelector from '../ui/components/FileSelector'
 
 type SkillsStatsEditorProps = {
   skillId: string;
@@ -27,7 +27,7 @@ const SkillsStatsEditor = ({
       <span className='view-input-title'>
         Script:
       </span>
-      <ScriptSelector
+      <FileSelector
         filePath={SKILLS_PATH}
         valuePath={`${skillId}.script`}
       />

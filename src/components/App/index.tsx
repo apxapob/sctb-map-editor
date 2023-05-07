@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import { MapFiles, } from '../../state/MapFiles'
 import { EditorState, JsonMode } from '../../state/ToolState'
-import { TabType } from '../../types/types'
+import { AllTabs, TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
 import EmptyPage from '../ui/EmptyPage'
 import JsonEditor from '../ui/JsonEditor'
@@ -31,7 +31,6 @@ const Views: Record<TabType, () => ReactElement|null> = {
 }
 
 const App = () => {
-  const tabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
   const isLoaded = MapFiles.status === 'Loaded'
   
   const tab = EditorState.activeTab
@@ -40,7 +39,7 @@ const App = () => {
     <div className="App">
       {!EditorState.mapTesting &&
         <div className='hflex tab-container'>
-          {tabs.map(
+          {AllTabs.map(
             s => <Tab key={s} selected={tab === s} title={s} />
           )}
         </div>

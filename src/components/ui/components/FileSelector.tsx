@@ -1,15 +1,15 @@
 import React from 'react'
 import { Selector } from './Selector'
-import { MapFiles, SCRIPTS_PATH } from '../../../state/MapFiles'
+import { MapFiles } from '../../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 
-const ScriptSelector = (
-  { filePath, valuePath } : { filePath: string, valuePath: string }
+const FileSelector = (
+  { sourcePath, filePath, valuePath } : { sourcePath:string, filePath: string, valuePath: string }
 ) => {
   const scripts = Object.keys(MapFiles.text)
-      .filter(filename => filename.startsWith(SCRIPTS_PATH))
-      .map(filename => filename.replace(SCRIPTS_PATH, ''))
+      .filter(filename => filename.startsWith(sourcePath))
+      .map(filename => filename.replace(sourcePath, ''))
 
   const script = GetJsonFileValue(filePath, valuePath) as string
 
@@ -25,4 +25,4 @@ const ScriptSelector = (
   />
 }
 
-export default observer(ScriptSelector)
+export default observer(FileSelector)

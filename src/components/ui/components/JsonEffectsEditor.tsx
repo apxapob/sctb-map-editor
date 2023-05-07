@@ -3,11 +3,13 @@ import { ChangeEffectType, GetJsonFileValue, UpdateJsonFileValue } from '../../.
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
 import { InputProps } from './JsonStringInput'
-import { EffectType, EffectTypes, Effects } from '../../../types/types'
+import { AllAffects, AllStats, EffectType, EffectTypes, Effects } from '../../../types/types'
 import { Selector } from './Selector'
-import ScriptSelector from './ScriptSelector'
+import FileSelector from './FileSelector'
 import './EffectsEditor.css'
 import JsonNumberInput from './JsonNumberInput'
+import { PARTICLES_PATH, SCRIPTS_PATH } from '../../../state/MapFiles'
+import ValueSelector from './ValueSelector'
 
 type EffectEditorProps = { 
   effect: EffectType;
@@ -30,8 +32,6 @@ const EffectEditor = observer((
 
   //Aura params:
   effects?: EffectType[];
-  affects?: Affects, 
-  particles?: string;
   color?: ColorAdjust;
   */
   return <div className='effect-editor'>
@@ -68,7 +68,8 @@ const EffectEditor = observer((
     {data?.script !== undefined &&
       <div className='effect-param'>
         Script
-        <ScriptSelector
+        <FileSelector
+          sourcePath={SCRIPTS_PATH}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.script`}
         />
@@ -85,9 +86,11 @@ const EffectEditor = observer((
     {data?.stat !== undefined &&
       <div className='effect-param'>
         Stat
-        <div>
-          {data.stat}
-        </div>
+        <ValueSelector 
+          values={AllStats}
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.stat`}
+        />
       </div>
     }
     {data?.delta !== undefined &&
@@ -120,17 +123,21 @@ const EffectEditor = observer((
     {data?.affects !== undefined &&
       <div className='effect-param'>
         Affects
-        <div>
-          {data.affects}
-        </div>
+        <ValueSelector 
+          values={AllAffects}
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.affects`}
+        />
       </div>
     }
     {data?.particles !== undefined &&
       <div className='effect-param'>
         Visual effect
-        <div>
-          {data.particles}
-        </div>
+        <FileSelector
+          sourcePath={PARTICLES_PATH}
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.particles`}
+        />
       </div>
     }
   </div>

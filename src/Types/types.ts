@@ -65,8 +65,13 @@ export type ToolStateType = {
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'
+export const AllStats:StatType[] = ['attack', 'maxHp', 'vision', 'range', 'speed', 'flying', 'detector', 'invisible']
 
 export type TabType = 'Field' | 'Units' | 'Items' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
+export const AllTabs:TabType[] = ['Field', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Map', 'Texts', 'Particles']
+
+export type AffectType = 'All' | 'Allies' | 'Enemies'
+export const AllAffects:AffectType[] = ['All', 'Allies', 'Enemies']
 
 export type EditorStateType = {
   activePanel: PanelType | null;
@@ -158,8 +163,6 @@ export type ColorAdjust = {
   };
 }
 
-export type Affects = 'All' | 'Allies' | 'Enemies'
-
 export const EffectTemplates = {
   OnDeath: { script:'', args: [] },
   OnAttack: { script:'', args: [] },
@@ -203,7 +206,7 @@ export type EffectType = 'BlockSkills' | {
     //Aura params:
     radius?: number;
     effects?: EffectType[];//
-    affects?: Affects, 
+    affects?: AffectType, 
     particles?: string;
     color?: ColorAdjust;//
   } 
