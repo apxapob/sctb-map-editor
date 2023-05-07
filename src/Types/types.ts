@@ -68,7 +68,7 @@ export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flyi
 export const AllStats:StatType[] = ['attack', 'maxHp', 'vision', 'range', 'speed', 'flying', 'detector', 'invisible']
 
 export type TabType = 'Field' | 'Units' | 'Items' | 'Skills' | 'Buffs' | 'Upgrades' | 'Scripts' | 'Map' | 'Texts' | 'Particles'
-export const AllTabs:TabType[] = ['Field', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Map', 'Texts', 'Particles']
+export const AllTabs:TabType[] = ['Field', 'Map', 'Units', 'Items', 'Skills', 'Buffs', 'Upgrades', 'Scripts', 'Texts', 'Particles']
 
 export type AffectType = 'All' | 'Allies' | 'Enemies'
 export const AllAffects:AffectType[] = ['All', 'Allies', 'Enemies']

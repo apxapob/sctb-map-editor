@@ -16,11 +16,6 @@ import 'ace-builds/src-min-noconflict/ext-searchbox'
 import ReactAce from 'react-ace/lib/ace'
 import DirectoryViewer from './DirectoryViewer'
 
-export type JsonEditorProps = {
-  tab: TabType;
-  filePath: string;
-}
-
 const JsonEditor = () => {
   const filePath = getFilePath(EditorState.activeTab)
   const tab = EditorState.activeTab
@@ -49,9 +44,11 @@ const JsonEditor = () => {
 
 export default observer(JsonEditor)
 
-const EditorDiv = (props: JsonEditorProps & {
+const EditorDiv = (props: {
   error: string|null;
   mode: string;
+  tab: TabType;
+  filePath: string;
 }) => {
   const editorRef = React.useRef<ReactAce>(null)
   const text = TabsState[props.tab] || MapFiles.text[props.filePath] || ''

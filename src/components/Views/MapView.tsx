@@ -2,7 +2,6 @@ import React from 'react'
 import JsonStringInput from '../ui/components/JsonStringInput'
 import { INFO_PATH } from '../../state/MapFiles'
 import './View.css'
-import ApplyCancelButtons from './ApplyCancelButtons'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesColors from '../ui/components/CountriesColors'
@@ -62,7 +61,6 @@ const MapView = () =>
         filePath={INFO_PATH}
         valuePath='countryColors'
       />
-      <ApplyCancelButtons />
     </div>
   </div>
 

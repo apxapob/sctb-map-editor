@@ -17,7 +17,7 @@ const Tab = ({ title, selected }:TabProps) =>
   <div 
     className={ `tab ${selected ? '' : 'not-'}selected-tab` } 
     onClick={() => SelectTab(title)}
-    onContextMenu={e => title !== 'Scripts' && title !== 'Particles' &&
+    onContextMenu={e => title !== 'Scripts' && title !== 'Particles' && title !== 'Texts' &&
       ShowMenu(e, [
         { title: 'Discard changes', callback: () => CancelUnsavedData(title) },
         { title: 'Json mode on/off', callback: () => ToggleJsonMode(title) }
