@@ -11,7 +11,7 @@ const ApplyCancelButtons = () =>
         <button onClick={SaveChanges}>
           ✓ Apply changes
         </button> 
-        <button onClick={CancelUnsavedData}>
+        <button onClick={() => CancelUnsavedData()}>
           ✗ Cancel
         </button>
       </>

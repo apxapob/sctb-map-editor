@@ -7,9 +7,11 @@ export const UpdateUnsavedData = action((tab:TabType, text:string|null) => {
   TabsState[tab] = text
 })
 
-export const CancelUnsavedData = action(() => {
-  TabsState[EditorState.activeTab] = null
-  const filePath = getFilePath(EditorState.activeTab)
+export const CancelUnsavedData = action((tab?:TabType) => {
+  if (!tab) { tab = EditorState.activeTab }
+
+  TabsState[tab] = null
+  const filePath = getFilePath(tab)
   MapFiles.json[filePath] = JSON.parse(MapFiles.text[filePath])
 })
 

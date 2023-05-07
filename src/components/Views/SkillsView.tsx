@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { MapFiles, SKILLS_PATH } from '../../state/MapFiles'
+import { MapFiles, SCRIPTS_PATH, SKILLS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { SkillType, SkillsMap } from '../../types/types'
@@ -28,6 +28,7 @@ const SkillsStatsEditor = ({
         Script:
       </span>
       <FileSelector
+        sourcePath={SCRIPTS_PATH}
         filePath={SKILLS_PATH}
         valuePath={`${skillId}.script`}
       />

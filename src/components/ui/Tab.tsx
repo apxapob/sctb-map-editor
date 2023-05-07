@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import { JsonMode, TabsState } from '../../state/ToolState'
 import ShowMenu from '../../state/actions/ShowMenu'
 import ToggleJsonMode from '../../state/actions/ToggleJsonMode'
+import { CancelUnsavedData } from '../../state/actions/UpdateText'
 
 export type TabProps = {
   title: TabType;
@@ -18,6 +19,7 @@ const Tab = ({ title, selected }:TabProps) =>
     onClick={() => SelectTab(title)}
     onContextMenu={e => title !== 'Scripts' && title !== 'Particles' &&
       ShowMenu(e, [
+        { title: 'Discard changes', callback: () => CancelUnsavedData(title) },
         { title: 'Json mode on/off', callback: () => ToggleJsonMode(title) }
       ])
     }
