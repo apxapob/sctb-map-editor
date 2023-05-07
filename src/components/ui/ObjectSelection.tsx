@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import SendMsgToGame from '../../state/actions/SendMsgToGame'
-import { addBuff, changeBuffTurns, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { addBuff, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
 import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
@@ -124,13 +124,11 @@ const BuffChanger = observer((props:{
       </div>
       
       {'turns' in buff &&
-        <>
-          <button onClick={() => changeBuffTurns(idx, -1)}>-</button>
-          <input onChange={e => setBuffTurns(idx,
-              parseInt(e.target.value)
-            )} value={buff.turns} className="num-input" />
-          <button onClick={() => changeBuffTurns(idx, 1)}>+</button>
-        </>
+        <input 
+          onChange={ e => setBuffTurns(idx, parseInt(e.target.value)) }
+          value={buff.turns} 
+          type='number' 
+        />
       }
       {!('turns' in buff) &&
         '??? '

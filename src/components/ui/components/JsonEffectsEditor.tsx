@@ -7,6 +7,7 @@ import { EffectType, EffectTypes, Effects } from '../../../types/types'
 import { Selector } from './Selector'
 import ScriptSelector from './ScriptSelector'
 import './EffectsEditor.css'
+import JsonNumberInput from './JsonNumberInput'
 
 type EffectEditorProps = { 
   effect: EffectType;
@@ -24,12 +25,10 @@ const EffectEditor = observer((
   /*
   args?: string[];
   stat?: StatType;
-  delta?: number;
   id?: string;//skillId
   //skill: SkillType;//custom skill
 
   //Aura params:
-  radius?: number;
   effects?: EffectType[];
   affects?: Affects, 
   particles?: string;
@@ -59,9 +58,11 @@ const EffectEditor = observer((
     {data?.value !== undefined &&
       <div className='effect-param'>
         Value
-        <div>
-          {data.value}
-        </div>
+        <JsonNumberInput 
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.value`}
+          min={0}
+          isInteger={true} />
       </div>
     }
     {data?.script !== undefined &&
@@ -92,9 +93,10 @@ const EffectEditor = observer((
     {data?.delta !== undefined &&
       <div className='effect-param'>
         Change
-        <div>
-          {data.delta}
-        </div>
+        <JsonNumberInput 
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.delta`}
+          isInteger={true} />
       </div>
     }
     {data?.id !== undefined &&
@@ -108,9 +110,11 @@ const EffectEditor = observer((
     {data?.radius !== undefined &&
       <div className='effect-param'>
         Aura size
-        <div>
-          {data.radius}
-        </div>
+        <JsonNumberInput 
+          filePath={filePath}
+          valuePath={`${effectPath}.${idx}.${type}.radius`}
+          min={0} max={99}
+          isInteger={true} />
       </div>
     }
     {data?.affects !== undefined &&
@@ -144,7 +148,7 @@ const JsonEffectsEditor = (
       </div>
       
       {effects.map((value, idx) => 
-        <EffectEditor 
+        <EffectEditor
           key={idx}
           effect={value}
           removeEffect={() => UpdateJsonFileValue(

@@ -6,7 +6,7 @@ import './JsonValueInput.css'
 export type InputProps = {
   filePath: string;
   valuePath: string;
-  title: string;
+  title?: string;
   tooltip?: string;
   placeholder?: string;
 }

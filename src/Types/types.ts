@@ -192,7 +192,7 @@ export type Effects = keyof typeof EffectTemplates
 
 export type EffectType = 'BlockSkills' | {
   [type in Effects]: {
-    value?: number | boolean;
+    value?: number;
     script?: string;
     args?: string[];
     stat?: StatType;
