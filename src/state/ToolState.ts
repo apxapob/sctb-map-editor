@@ -2,6 +2,7 @@ import { observable } from 'mobx'
 import { EditorStateType, ItemDataType, TabType, ToolStateType, UnitDataType } from '../types/types'
 
 export const ToolState:ToolStateType = observable({
+  fogOfWarCountryId: 0,
   radius: 1,
   tool: 'Select',
   toolUnit: null,

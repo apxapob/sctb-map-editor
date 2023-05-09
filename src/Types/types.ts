@@ -29,6 +29,9 @@ export type GameMessage = {
     refresh: boolean
   }
 } | {
+  method: 'select_country_view';
+  data: { countyId: number; }
+} | {
   method: 'load_binary_file';
   data: {
     path: string,
@@ -58,6 +61,7 @@ export type ToolType =
   'Select'
 
 export type ToolStateType = {
+  fogOfWarCountryId: number;
   radius: number;
   tool: ToolType;
   toolUnit: string|null;

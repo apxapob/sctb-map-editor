@@ -16,3 +16,12 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
 }
 
 export default action(ChangeTool)
+
+export const ChangeFogOfWarCountry = action((newId:number) =>{
+  ToolState.fogOfWarCountryId = newId
+  
+  SendMsgToGame({
+    method: 'select_country_view', 
+    data: { countyId: newId }
+  })
+})

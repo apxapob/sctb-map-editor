@@ -19,7 +19,7 @@ export const Selector = (props:SelectorProps) =>
     
     <option key="value">{props.value ?? ' '}</option>
     
-    {props.items.map(
+    {props.items.filter(item => item !== props.value).map(
       item => <option key={item} value={item}>{item}</option>
     )}
   </select>
