@@ -19,6 +19,7 @@ export const CancelUnsavedData = action((tab?:TabType) => {
   }
 
   TabsState[tab] = null
+  EditorState.jsonEditorTrigger = !EditorState.jsonEditorTrigger
 })
 
 export const GetJsonFileValue = (filePath:string, valuePath:string) => {

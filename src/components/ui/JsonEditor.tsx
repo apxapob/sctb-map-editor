@@ -22,6 +22,8 @@ const JsonEditor = () => {
   const error = TabsErrors[tab] ?? null
   const mode = filePath.endsWith('.json') ? 'json' : 'haxe'
   const dirPath = getDirPath(EditorState.activeTab).replace('\\', '')
+
+  EditorState.jsonEditorTrigger//just subscribing to the trigger
   
   return (
     <div className='hflex' style={{ alignItems: 'start' }}>

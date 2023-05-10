@@ -18,7 +18,8 @@ export const SelectedObjects: {
 export const EditorState:EditorStateType = observable({
   activePanel: null,
   activeTab: 'Field',
-  mapTesting: false
+  mapTesting: false,
+  jsonEditorTrigger: false
 })
 
 export const TabsState:{

@@ -81,6 +81,7 @@ export type EditorStateType = {
   activePanel: PanelType | null;
   activeTab: TabType;
   mapTesting: boolean;
+  jsonEditorTrigger: boolean;
 }
 
 export type ToolStateChangeType = {
