@@ -43,7 +43,7 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
 export const setBuffTurns = action((idx:number, value:number) => {
   if (Number.isNaN(value)) return
   SelectedObjects.data.forEach(
-    u => u.buffs[idx].turns = value
+    u => u.buffs[idx].turns = Math.max(-1, value)
   )
   UpdateObjects()
 })
