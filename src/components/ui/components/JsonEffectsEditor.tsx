@@ -11,6 +11,7 @@ import JsonNumberInput from './JsonNumberInput'
 import { MapFiles, PARTICLES_PATH, SCRIPTS_PATH, SKILLS_PATH } from '../../../state/MapFiles'
 import ValueSelector from './ValueSelector'
 import JsonArrayInput from './JsonArrayInput'
+import JsonColorSelector from './JsonColorSelector'
 
 type EffectEditorProps = { 
   effect: EffectType;
@@ -133,14 +134,28 @@ const EffectEditor = observer((
       </div>
     }
     {data?.color !== undefined &&
-      <div className='effect-param'>
-        Color adjust
-        
-      </div>
+      <>
+        <div className='effect-param'>
+          Color
+          <JsonColorSelector 
+            filePath={filePath}
+            valuePath={`${effectPath}.${idx}.${type}.color.gain.color`}
+          />
+        </div>
+        <div className='effect-param'>
+          Alpha
+          <JsonNumberInput 
+            filePath={filePath}
+            valuePath={`${effectPath}.${idx}.${type}.color.gain.alpha`}
+            min={0} max={1}
+            isInteger={false} 
+          />
+        </div>
+      </>
     }
     {data?.effects !== undefined &&
       <div className='effect-param'>
-        Aura effect
+        Aura effects
         {data?.effects.length}
       </div>
     }
