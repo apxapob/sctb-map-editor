@@ -20,15 +20,17 @@ const UpgradeEditor = ({
   const unitIds = Object.keys(unitsMap).sort()
   
   return <div className='vflex' style={{ padding: 6 }}>
-    <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
+    <div style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
       {upgradeId}
+    </div>
+    <span style={{ fontSize: 20, marginTop: 8 }}>
+      Affected Unit types:
     </span>
     <JsonArrayInput
-      horizontal
       filePath={UPGRADES_PATH}
       valuesSource={unitIds}
       valuePath={`${upgradeId}.unitTypes`}
-      placeholder='Unit types affected'
+      placeholder='Unit type'
     />
     <JsonEffectsEditor 
       filePath={UPGRADES_PATH} 
