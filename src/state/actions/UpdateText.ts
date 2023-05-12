@@ -44,6 +44,10 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
     } else {
       result = result[nextPathPart]
     }
+    if (result === undefined) {
+      console.warn('Wrong value path', valuePath)
+      return null
+    }
   }
   
   return result
@@ -119,7 +123,6 @@ export const ChangeEffectType = action((
   }
 
   const newEffect = { [newVal]: newEffectData }
-  console.log('!!! newEffect', newEffect, idx)
   effectsArray[idx] = newEffect as EffectType
   TabsState[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
 })

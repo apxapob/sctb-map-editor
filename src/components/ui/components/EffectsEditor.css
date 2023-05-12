@@ -18,3 +18,9 @@
   white-space: nowrap;
   gap: 6px;
 }
+
+.aura-effects-editor {
+  flex-basis: 100%;
+  align-items: flex-start;
+  margin-left: 44px;
+}

@@ -162,7 +162,7 @@ export type ColorAdjust = {
 	lightness?: number;
 	hue?: number;
 	contrast?: number;
-	gain?: { 
+	gain: { 
     color : number; 
     alpha : number; 
   };
@@ -190,7 +190,9 @@ export const EffectTemplates = {
     effects: [],
     affects: '',
     particles: '',
-    color: {}
+    color: {
+      gain: { color: 0,  alpha: 1 }
+    },
   }
 } as const
 

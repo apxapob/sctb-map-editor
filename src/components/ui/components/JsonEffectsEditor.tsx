@@ -12,6 +12,7 @@ import { MapFiles, PARTICLES_PATH, SCRIPTS_PATH, SKILLS_PATH } from '../../../st
 import ValueSelector from './ValueSelector'
 import JsonArrayInput from './JsonArrayInput'
 import JsonColorSelector from './JsonColorSelector'
+import { EffectTemplates } from '../../../types/types'
 
 type EffectEditorProps = { 
   effect: EffectType;
@@ -27,12 +28,7 @@ const EffectEditor = observer((
   const type = Object.keys(effect)[0] as Effects
   const data = typeof effect !== 'string' ? effect[type] : null
   const AllSkills = Object.keys(MapFiles.json[SKILLS_PATH])
-  console.log('!!! effect editor render')
-  /*
-  //Aura params:
-  effects?: EffectType[];
-  color?: ColorAdjust;
-  */
+  
   return <div className='effect-editor'>
     <button 
       title={'Remove Effect'}
@@ -153,13 +149,6 @@ const EffectEditor = observer((
         </div>
       </>
     }
-    {data?.effects !== undefined &&
-      <div className='effect-param'>
-        Aura effects
-        {data?.effects.length}
-      </div>
-    }
-
     {data?.args !== undefined &&
       <div className='effect-param'>
         Parameters
@@ -171,10 +160,19 @@ const EffectEditor = observer((
         />
       </div>
     }
+    {data?.effects !== undefined &&
+      <div className='effect-param aura-effects-editor'>
+        <JsonEffectsEditor 
+          filePath={filePath} 
+          valuePath={`${effectPath}.${idx}.${type}.effects`}
+          title={'Aura effects'}
+        />
+      </div>
+    }
   </div>
 })
 
-const JsonEffectsEditor = (
+const JsonEffectsEditor = observer((
   { filePath, valuePath, title, tooltip }:InputProps
 ) => {
   const effects = GetJsonFileValue(filePath, valuePath) as EffectType[]
@@ -199,11 +197,21 @@ const JsonEffectsEditor = (
           idx={idx}
         />
       )}
-      <button style={{ margin: '12px 6px' }}>
+      <button 
+        style={{ margin: '12px 6px' }} 
+        onClick={() => UpdateJsonFileValue(
+          filePath,
+          valuePath,
+          [
+            ...effects, 
+            { ChangeStat:{ ...EffectTemplates.ChangeStat } }
+          ]
+        )}
+        >
         Add Effect
       </button>
     </div>
   )
-}
+})
 
-export default observer(JsonEffectsEditor)
+export default JsonEffectsEditor
