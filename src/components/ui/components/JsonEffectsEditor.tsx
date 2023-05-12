@@ -26,9 +26,9 @@ const EffectEditor = observer((
   { effect, removeEffect, filePath, effectPath, idx }: EffectEditorProps
 ) => {
   const type = Object.keys(effect)[0] as Effects
-  const data = typeof effect !== 'string' ? effect[type] : null
+  const data = typeof effect !== 'string' ? effect[type] : {}
   const AllSkills = Object.keys(MapFiles.json[SKILLS_PATH])
-  
+
   return <div className='effect-editor'>
     <button 
       title={'Remove Effect'}
@@ -50,7 +50,7 @@ const EffectEditor = observer((
         )}
       />
     </div>
-    {data?.value !== undefined &&
+    {'value' in data &&
       <div className='effect-param'>
         Value
         <JsonNumberInput 
@@ -60,7 +60,7 @@ const EffectEditor = observer((
           isInteger={true} />
       </div>
     }
-    {data?.script !== undefined &&
+    {'script' in data &&
       <div className='effect-param'>
         Script
         <FileSelector
@@ -70,7 +70,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.stat !== undefined &&
+    {'stat' in data &&
       <div className='effect-param'>
         Stat
         <ValueSelector 
@@ -80,7 +80,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.delta !== undefined &&
+    {'delta' in data &&
       <div className='effect-param'>
         Change
         <JsonNumberInput 
@@ -89,7 +89,7 @@ const EffectEditor = observer((
           isInteger={true} />
       </div>
     }
-    {data?.id !== undefined &&
+    {'id' in data &&
       <div className='effect-param'>
         Skill Id
         <ValueSelector 
@@ -99,7 +99,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.radius !== undefined &&
+    {'radius' in data &&
       <div className='effect-param'>
         Aura size
         <JsonNumberInput 
@@ -109,7 +109,7 @@ const EffectEditor = observer((
           isInteger={true} />
       </div>
     }
-    {data?.affects !== undefined &&
+    {'affects' in data &&
       <div className='effect-param'>
         Affects
         <ValueSelector 
@@ -119,7 +119,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.particles !== undefined &&
+    {'particles' in data &&
       <div className='effect-param'>
         Visual effect
         <FileSelector
@@ -129,7 +129,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.color !== undefined &&
+    {'color' in data &&
       <>
         <div className='effect-param'>
           Color
@@ -149,7 +149,7 @@ const EffectEditor = observer((
         </div>
       </>
     }
-    {data?.args !== undefined &&
+    {'args' in data &&
       <div className='effect-param'>
         Parameters
         <JsonArrayInput
@@ -160,7 +160,7 @@ const EffectEditor = observer((
         />
       </div>
     }
-    {data?.effects !== undefined &&
+    {'effects' in data &&
       <div className='effect-param aura-effects-editor'>
         <JsonEffectsEditor 
           filePath={filePath} 
