@@ -254,6 +254,10 @@ export type BuffsMap = {
   [index: string]: BuffType;
 }
 
+export type UpgradesMap = {
+  [index: string]: UpgradeType;
+}
+
 export type SkillsMap = {
   [index: string]: SkillType;
 }
