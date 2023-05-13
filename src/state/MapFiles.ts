@@ -2,7 +2,9 @@ import { observable } from 'mobx'
 import { JSONObject, TabType } from '../types/types'
 
 export const UNITS_PATH = 'units.json'
+export const UNITS_IMAGES_PATH = 'units\\'
 export const ITEMS_PATH = 'items.json'
+export const ITEMS_IMAGES_PATH = 'items\\'
 export const SKILLS_PATH = 'skills.json'
 export const UPGRADES_PATH = 'upgrades.json'
 export const BUFFS_PATH = 'buffs.json'
@@ -54,7 +56,7 @@ export const getDirPath = (tab:TabType) => {
 
 export const MapFiles:{
   binary: {
-    [filename: string]: number;
+    [filename: string]: Uint8Array;
   };
   text: {
     [filename: string]: string;

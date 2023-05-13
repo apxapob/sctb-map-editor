@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_IMAGES_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
@@ -10,6 +10,24 @@ import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../.
 
 type UnitsStatsEditorProps = {
   unitId: string;
+}
+
+const UnitImage = ({
+  unitId
+}:UnitsStatsEditorProps) => {
+  const ref = useRef<HTMLImageElement>(null)
+  useEffect(() => {
+    const img = ref?.current
+    if (!img) return
+
+    const buffer = MapFiles.binary[UNITS_IMAGES_PATH + unitId + '.png']
+    const blob = new Blob([ buffer ])
+    const url = URL.createObjectURL(blob)
+    img.src = url
+    img.onload = () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
+  }, [unitId])
+
+  return <img ref={ref} className='unit-img' />
 }
 
 const UnitsStatsEditor = ({
@@ -137,8 +155,12 @@ const UnitsView = () => {
           DeleteJsonFileValue(UNITS_PATH, id)
         }}
       />
-      <div className='json-editor-container'>
+      
+      <div className='unit-container'>
         <UnitsStatsEditor unitId={selectedUnitId} />
+        {selectedUnitId &&
+          <UnitImage unitId={selectedUnitId} />
+        }
       </div>
     </div>
   </>

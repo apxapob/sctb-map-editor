@@ -3,3 +3,15 @@
   height: 100%;
   background-color: black;
 }
+
+.unit-container {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.unit-img {
+  width: 256px;
+}
+

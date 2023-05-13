@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles, ITEMS_PATH } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, ITEMS_PATH, ITEMS_IMAGES_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, ItemType, ItemsMap } from '../../types/types'
@@ -11,6 +11,24 @@ import JsonBoolInput from '../ui/components/JsonBoolInput'
 
 type ItemsStatsEditorProps = {
   itemId: string;
+}
+
+const ItemImage = ({
+  itemId
+}:ItemsStatsEditorProps) => {
+  const ref = useRef<HTMLImageElement>(null)
+  useEffect(() => {
+    const img = ref?.current
+    if (!img) return
+
+    const buffer = MapFiles.binary[ITEMS_IMAGES_PATH + itemId + '.png']
+    const blob = new Blob([ buffer ])
+    const url = URL.createObjectURL(blob)
+    img.src = url
+    img.onload = () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
+  }, [itemId])
+
+  return <img ref={ref} className='unit-img' />
 }
 
 const ItemsStatsEditor = ({
@@ -78,8 +96,11 @@ const ItemsView = () => {
           DeleteJsonFileValue(ITEMS_PATH, id)
         }}
       />
-      <div className='json-editor-container'>
+      <div className='unit-container'>
         <ItemsStatsEditor itemId={selectedItemId} />
+        {selectedItemId &&
+          <ItemImage itemId={selectedItemId} />
+        }
       </div>
     </div>
   </>

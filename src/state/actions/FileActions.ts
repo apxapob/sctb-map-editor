@@ -166,7 +166,7 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
-  MapFiles.binary[c.file] = c.bytes.length
+  MapFiles.binary[c.file] = c.bytes
   MapFiles.progress = c.progress
   MapFiles.lastLoadedFile = c.file
 
