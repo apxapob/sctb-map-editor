@@ -5,11 +5,11 @@ import { ToolState } from '../../state/ToolState'
 import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
-import { FIELDS_PATH, MapFiles } from '../../state/MapFiles'
+import { MapFiles } from '../../state/MapFiles'
 
 const Tools = () => {
-  const { radius, tool, toolUnit, toolItem, currentField } = ToolState
-  const fieldSize = MapFiles.json[FIELDS_PATH + currentField].size as number
+  const { radius, tool, toolUnit, toolItem } = ToolState
+  const fieldSize = MapFiles.json[MapFiles.selectedField].size as number
 
   return (
     <div className="tools-container">

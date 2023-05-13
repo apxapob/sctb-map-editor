@@ -69,7 +69,6 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string|null;
   toolItem: string|null;
-  currentField: string;
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'

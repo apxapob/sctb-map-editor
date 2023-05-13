@@ -3,7 +3,7 @@ import { observable } from 'mobx'
 export type MenuItem = {
   title: string;
   callback: () => void;
-}
+} | false
 
 export const MenuState: {
   menuX: number,

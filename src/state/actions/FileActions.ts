@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
+import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
 import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 import { EditorState } from '../ToolState'
@@ -28,6 +28,7 @@ export const OnLoadingEnd = action(() => {
       const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
       if (mapInfo && mapInfo.mapId) {
         ClosePanel()
+        MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
         SendMsgToGame({ method: 'show_map_editor', data: mapInfo.mapId })
       } else {
         OnLoadingError('Invalid info.json file: no mapId')

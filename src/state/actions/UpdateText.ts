@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { EffectTemplates, EffectType, Effects, JSONObject, JSONValue, TabType } from '../../types/types'
-import { EditorState, TabsState, ToolState } from '../ToolState'
-import { FIELDS_PATH, MapFiles, getFilePath } from '../MapFiles'
+import { EditorState, TabsState } from '../ToolState'
+import { MapFiles, getFilePath } from '../MapFiles'
 import SendMsgToGame from './SendMsgToGame'
 
 export const UpdateUnsavedData = action((tab:TabType, text:string|null) => {
@@ -13,15 +13,13 @@ export const CancelUnsavedData = action((tab?:TabType) => {
 
   if (tab === 'Field') {
     SendMsgToGame({ method: 'reset_field' })
-
-    //TODO: discard for all tabs
-    const curFieldPath = FIELDS_PATH + ToolState.currentField
-    MapFiles.json[curFieldPath] = JSON.parse(MapFiles.text[curFieldPath])
-  } else {
-    const filePath = getFilePath(tab)
+  }
+  
+  const filePath = getFilePath(tab)
+  if (tab !== 'Scripts' && filePath) {
     MapFiles.json[filePath] = JSON.parse(MapFiles.text[filePath])
   }
-
+  
   TabsState[tab] = null
   EditorState.jsonEditorTrigger = !EditorState.jsonEditorTrigger
 })
