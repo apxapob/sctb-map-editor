@@ -10,6 +10,7 @@ export type SelectorProps = {
 export const Selector = (props:SelectorProps) => 
   <select
     value={props.value}
+    disabled={!props.items || props.items.length === 0}
     style={{ width: 20, ...props.style }} 
     className={props.value === undefined ? 'btnArrow' : ''}
     onChange={e => {

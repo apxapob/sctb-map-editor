@@ -46,4 +46,5 @@ const OnToolUpdated = action((data:{[index: string]: number | string | boolean})
   ToolState.radius = data.radius as number
   ToolState.tool = data.tool as ToolType
   ToolState.toolUnit = data.toolUnit as string
+  ToolState.toolItem = data.toolItem as string
 })
