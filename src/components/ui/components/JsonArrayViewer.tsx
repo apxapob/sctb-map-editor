@@ -80,7 +80,7 @@ export const JsonArrayViewer = (
   }
 
   const menuItems = [{
-    title: 'Add ' + placeholder, 
+    title: 'Add ' + placeholder,
     callback: addItem
   }]
 
@@ -100,5 +100,8 @@ export const JsonArrayViewer = (
         menuItems={menuItems}
         onClick={() => selectItem(itemId)} />
     )}
+    <div onClick={addItem} className={'node'}>
+      {'+Add ' + placeholder}
+    </div>
   </div>
 }
