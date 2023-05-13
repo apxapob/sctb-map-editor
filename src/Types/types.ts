@@ -32,6 +32,9 @@ export type GameMessage = {
   method: 'select_country_view';
   data: { countyId: number; }
 } | {
+  method: 'change_field_size';
+  data: { size: number; }
+} | {
   method: 'load_binary_file';
   data: {
     path: string,
@@ -66,6 +69,7 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string|null;
   toolItem: string|null;
+  currentField: string;
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'

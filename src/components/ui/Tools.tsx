@@ -1,16 +1,31 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import ChangeTool from '../../state/actions/ChangeTool'
+import ChangeTool, { ChangeFieldSize } from '../../state/actions/ChangeTool'
 import { ToolState } from '../../state/ToolState'
 import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
+import { FIELDS_PATH, MapFiles } from '../../state/MapFiles'
 
 const Tools = () => {
-  const { radius, tool, toolUnit, toolItem } = ToolState
+  const { radius, tool, toolUnit, toolItem, currentField } = ToolState
+  const fieldSize = MapFiles.json[FIELDS_PATH + currentField].size as number
 
   return (
     <div className="tools-container">
+      <div>
+        Field size
+        <div style={{
+          display:'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 4
+        }}>
+          <button className="tool" onClick={() => ChangeFieldSize(fieldSize - 2)} >-</button>
+          <span style={{ width:'100%', padding: '0 2px' }} >{fieldSize}</span>
+          <button className="tool" onClick={() => ChangeFieldSize(fieldSize + 2)} >+</button>
+        </div>
+      </div>
       <div>
         Tool radius 
         <div style={{
