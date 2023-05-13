@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
 import { BUFFS_PATH, MapFiles, ITEMS_PATH, ITEMS_IMAGES_PATH } from '../../state/MapFiles'
@@ -8,6 +8,7 @@ import { BuffsMap, ItemType, ItemsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
+import BlobImage from '../ui/components/BlobImage'
 
 type ItemsStatsEditorProps = {
   itemId: string;
@@ -16,19 +17,7 @@ type ItemsStatsEditorProps = {
 const ItemImage = ({
   itemId
 }:ItemsStatsEditorProps) => {
-  const ref = useRef<HTMLImageElement>(null)
-  useEffect(() => {
-    const img = ref?.current
-    if (!img) return
-
-    const buffer = MapFiles.binary[ITEMS_IMAGES_PATH + itemId + '.png']
-    const blob = new Blob([ buffer ])
-    const url = URL.createObjectURL(blob)
-    img.src = url
-    img.onload = () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
-  }, [itemId])
-
-  return <img ref={ref} className='unit-img' />
+  return <BlobImage path={ITEMS_IMAGES_PATH + itemId + '.png'} />
 }
 
 const ItemsStatsEditor = ({

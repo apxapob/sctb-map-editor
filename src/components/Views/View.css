@@ -11,7 +11,18 @@
   justify-content: flex-start;
 }
 
-.unit-img {
+.blob-image {
   width: 256px;
 }
 
+.blob-image-container {
+  min-width: 261px;
+  min-height: 261px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 6px;
+  margin: 8px;
+  padding: 2px;
+}
