@@ -18,7 +18,7 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
 
 export default action(ChangeTool)
 
-export const ChangeFogOfWarCountry = action((newId:number) =>{
+export const ChangeFogOfWarCountry = action((newId:number) => {
   ToolState.fogOfWarCountryId = newId
   
   SendMsgToGame({
@@ -27,7 +27,7 @@ export const ChangeFogOfWarCountry = action((newId:number) =>{
   })
 })
 
-export const ChangeFieldSize = action((newSize:number) =>{
+export const ChangeFieldSize = action((newSize:number) => {
   MapFiles.json[MapFiles.selectedField].size = Math.max(1, newSize)
   
   SendMsgToGame({
