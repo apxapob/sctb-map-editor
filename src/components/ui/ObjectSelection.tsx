@@ -81,9 +81,7 @@ const ObjectSelection = () => {
           }
           {countryColors.map(
             (countryColor:string, idx:number) => 
-              <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }}>
-                
-              </option>
+              <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }} />
           )}
         </select>
       </div>
