@@ -61,7 +61,6 @@ const ObjectSelection = () => {
       {isItem(mainObj) &&
         <ItemsTypeChanger typeValue={typeValue} />
       }
-      
     </div>
 
     {selectedUnits.length > 0 &&
