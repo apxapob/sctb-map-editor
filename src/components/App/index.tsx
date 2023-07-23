@@ -4,7 +4,6 @@ import { MapFiles, } from '../../state/MapFiles'
 import { EditorState, JsonMode } from '../../state/ToolState'
 import { AllTabs, TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
-import EmptyPage from '../ui/EmptyPage'
 import JsonEditor from '../ui/JsonEditor'
 import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
@@ -36,23 +35,18 @@ const App = () => {
   
   const tab = EditorState.activeTab
   const View = Views[tab]
+
   return (
     <div className="App">
-      {!EditorState.mapTesting &&
+      {!EditorState.playMode &&
         <div className='hflex tab-container'>
           {AllTabs.map(
             s => <Tab key={s} selected={tab === s} title={s} />
           )}
         </div>
       }
-      <GameCanvas 
-        active={ !JsonMode[tab] && (tab === 'Field' || tab === 'Map') } 
-        testing={ EditorState.mapTesting } 
-      />
-      {MapFiles.status === null &&
-        <EmptyPage />
-      }
-      {isLoaded && !EditorState.mapTesting && 
+      <GameCanvas />
+      {isLoaded && !EditorState.playMode && 
         (JsonMode[tab] ? <JsonEditor /> : <View />)
       }
       <PanelsContainer />

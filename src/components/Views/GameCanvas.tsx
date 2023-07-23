@@ -1,18 +1,17 @@
 import React from 'react'
 import './GameCanvas.css'
 import { observer } from 'mobx-react-lite'
+import { EditorState, JsonMode } from '../../state/ToolState'
 
 export const GameCanvasId = 'game_canvas'
 
-export type GameCanvasProps = {
-  active: boolean;
-  testing: boolean;
-}
-
-const GameCanvas = (props:GameCanvasProps) => {
+const GameCanvas = () => {
+  const playMode = EditorState.playMode
+  const tab = EditorState.activeTab
+  const editMap = !JsonMode[tab] && (tab === 'Field' || tab === 'Map')
   return (
     <iframe id={GameCanvasId} 
-      className={`Game-canvas ${props.active ? 'cnv-active' : ''} ${props.testing ? 'cnv-test' : ''}`} 
+      className={`Game-canvas ${editMap ? 'cnv-editor' : ''} ${playMode ? 'cnv-game' : ''}`} 
       src="/game/index.html" frameBorder="0" 
     />
   )

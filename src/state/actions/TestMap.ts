@@ -5,7 +5,7 @@ import SendMsgToGame from './SendMsgToGame'
 
 const TestMap = () => {
   if (MapFiles.status !== 'Loaded') return
-  EditorState.mapTesting = !EditorState.mapTesting
+  EditorState.playMode = !EditorState.playMode
   EditorState.activeTab = 'Field'
   SendMsgToGame({ method: 'test_map' })
 }

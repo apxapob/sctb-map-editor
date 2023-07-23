@@ -4,12 +4,12 @@
   height: 0px;
 }
 
-.cnv-active{
+.cnv-editor {
   width: 100%;
   height: calc(100% - 24px);
 }
 
-.cnv-test {
+.cnv-game {
   width: 100%;
   height: 100%;
 }
