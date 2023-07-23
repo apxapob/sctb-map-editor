@@ -10,6 +10,8 @@
 
 # production
 /build
+/dist
+/out
 
 .yarn
 .yarnrc.yml
