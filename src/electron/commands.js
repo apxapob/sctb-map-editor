@@ -4,7 +4,7 @@ const { sendCommand } = require('./messenger')
 
 let mapDirectory = null
 
-const loadMap = async mapDir => {
+const loadMap = async (mapDir, forEditing = false) => {
   try {
     sendCommand({ command: 'LOADING_START' })
     const files = []
@@ -53,7 +53,7 @@ const loadMap = async mapDir => {
       }
     }
     mapDirectory = mapDir
-    sendCommand({ command: 'LOADING_END' })
+    sendCommand({ command: 'LOADING_END', forEditing })
   } catch (err) {
     console.error(err)
     sendCommand({
@@ -70,7 +70,7 @@ exports.OPEN_MAP = async () => {
   })
   if (!dir) { return }
   
-  await loadMap(dir[0])
+  await loadMap(dir[0], true)
 }
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {
@@ -148,7 +148,7 @@ exports.CREATE_MAP = async () => {
     await makeUnitsDir(dir, mapId)
     await makeItemsDir(dir, mapId)
     
-    await loadMap(dir)
+    await loadMap(dir, true)
   } catch (err) {
     dialog.showErrorBox('Create directory error', err.message)
   }

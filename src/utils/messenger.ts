@@ -1,3 +1,4 @@
+import { EditorState } from '../state/ToolState'
 import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, 
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
@@ -29,6 +30,7 @@ export function InitMessenger() {
         break
       case 'LOADING_END':
         OnLoadingEnd()
+        EditorState.playMode = !message.forEditing
         break
       case 'LOAD_TEXT_FILE':
         OnLoadedText(message)

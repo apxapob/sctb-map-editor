@@ -7,6 +7,7 @@ import { SendCommand } from '../../utils/messenger'
 import { OnSelectUnits } from './OnSelectUnits'
 import { UpdateUnsavedData } from './UpdateText'
 import { processTextFile } from './FileActions'
+import CreateMap from './CreateMap'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
@@ -25,6 +26,12 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'mark_field_unsaved':
       UpdateUnsavedData('Field', 'unsaved')
+      break
+    case 'create_map':
+      CreateMap()
+      break
+    case 'edit_map':
+      SendCommand({ command: 'OPEN_MAP' })
       break
     default:
       console.warn('unknown message', msg)

@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {!EditorState.playMode &&
+      {isLoaded && !EditorState.playMode &&
         <div className='hflex tab-container'>
           {AllTabs.map(
             s => <Tab key={s} selected={tab === s} title={s} />
