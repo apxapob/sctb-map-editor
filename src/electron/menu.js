@@ -24,7 +24,7 @@ exports.getMenu = win => {
         },
         {
           label: 'Open dev tools',
-          accelerator: 'CmdOrCtrl+F12',
+          accelerator: 'F12',
           click: () => win.webContents.openDevTools(),
         },
         {
