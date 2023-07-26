@@ -3,6 +3,7 @@ import { OnDeleted, OnLoadedBinary, OnLoadedDirectory,
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
 import SaveChanges from '../state/actions/SaveChanges'
+import SendMsgToGame from '../state/actions/SendMsgToGame'
 import TestMap from '../state/actions/TestMap'
 import ToggleJsonMode from '../state/actions/ToggleJsonMode'
 import { CommandType } from '../types/commands'
@@ -24,6 +25,9 @@ export function InitMessenger() {
         break
       case 'JSON_MODE':
         ToggleJsonMode()
+        break
+      case 'MAPS_LIST':
+        SendMsgToGame({ method: 'maps_list', data: message.maps })
         break
       case 'LOADING_START':
         OnLoadingStart()

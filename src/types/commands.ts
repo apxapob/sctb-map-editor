@@ -1,11 +1,16 @@
 export type CommandType = {
-  command: 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'CREATE_MAP' | 'TEST_MAP' | 'JSON_MODE';
-} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType 
+  command: 'SAVE_CHANGES' | 'OPEN_MAP' | 'LOADING_START' | 'CREATE_MAP' | 'TEST_MAP' | 'JSON_MODE' | 'LOAD_MAPS_LIST';
+} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | MapsListType
   | SaveTextFileType | FSCommandType | RenameType | LoadingEndType
 
 export type SaveTextFileType = {
   command: 'SAVE_TEXT_FILE';
   data: { path: string; text: string };
+}
+
+export type MapsListType = {
+  command: 'MAPS_LIST';
+  maps: string[];
 }
 
 export type LoadingEndType = {

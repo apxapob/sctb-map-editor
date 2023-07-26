@@ -1,4 +1,4 @@
-const { dialog, shell } = require('electron')
+const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 
@@ -61,6 +61,28 @@ const loadMap = async (mapDir, forEditing = false) => {
       error: err.message || 'unknown error'
     })
   }
+}
+
+exports.LOAD_MAPS_LIST = async () => {
+  const mapsDirPath = app.isPackaged ? './maps/' : '../sctb-client/maps/'
+  let dirs = []
+  try {  
+    dirs = await fs.promises.readdir(mapsDirPath)
+  } catch (err) {
+    dialog.showErrorBox('Maps directory error:', err.message)
+  }
+  
+  const maps = []
+  while( dirs.length > 0 ){
+    const dir = mapsDirPath + dirs.pop()
+    try {
+      const fileText = await fs.promises.readFile(dir + '/info.json', { encoding: 'utf8' })
+      maps.push(fileText)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  sendCommand({ command: 'MAPS_LIST', maps })
 }
 
 exports.OPEN_MAP = async () => {

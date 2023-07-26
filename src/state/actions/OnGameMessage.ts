@@ -17,6 +17,9 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'tool_updated':
       OnToolUpdated(msg.data)
       break
+    case 'load_maps_list':
+      SendCommand({ command: 'LOAD_MAPS_LIST' })
+      break
     case 'text_file_updated':
       SendCommand({ command: 'SAVE_TEXT_FILE', data: msg.data })
       processTextFile(msg.data.path, msg.data.text)

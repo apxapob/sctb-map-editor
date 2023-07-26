@@ -3,7 +3,8 @@ export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
 
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 'reset_field' | 'create_map' | 'edit_map';
+  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 
+          'reset_field' | 'create_map' | 'edit_map' | 'load_maps_list' | 'maps_list';
 } | {
   method: 'save_map';
   data: string;
@@ -46,6 +47,9 @@ export type GameMessage = {
 } | {
   method: 'selected_objects' | 'update_objects', 
   data: (ItemDataType | UnitDataType)[];
+} | {
+  method: 'maps_list', 
+  data: string[];
 };
 
 export type PanelType = 
