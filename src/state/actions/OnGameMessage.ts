@@ -33,8 +33,11 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'create_map':
       CreateMap()
       break
+    case 'open_map':
+      SendCommand({ command: 'OPEN_MAP', data: msg.data })
+      break
     case 'edit_map':
-      SendCommand({ command: 'OPEN_MAP' })
+      SendCommand({ command: 'EDIT_MAP' })
       break
     default:
       console.warn('unknown message', msg)

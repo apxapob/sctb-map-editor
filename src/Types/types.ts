@@ -9,6 +9,9 @@ export type GameMessage = {
   method: 'save_map';
   data: string;
 } | {
+  method: 'open_map';
+  data: string;
+} | {
   method: 'show_map_editor';
   data: string;
 } | {

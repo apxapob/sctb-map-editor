@@ -20,7 +20,7 @@ export const OnLoadingStart = action(() => {
   OpenPanel('LoadingMap')
 })
 
-export const OnLoadingEnd = action(() => {
+export const OnLoadingEnd = action((isPlayMode:boolean) => {
   MapFiles.progress = 1
   try {
     if (MapFiles.text[INFO_PATH] !== undefined) {
@@ -36,6 +36,7 @@ export const OnLoadingEnd = action(() => {
     } else {
       OnLoadingError('Can\'t find info.json file')
     }
+    EditorState.playMode = isPlayMode
   } catch (e:unknown) {
     OnLoadingError('Invalid info.json file: ' + (e as Error).message)
   }

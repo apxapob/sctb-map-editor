@@ -33,8 +33,7 @@ export function InitMessenger() {
         OnLoadingStart()
         break
       case 'LOADING_END':
-        OnLoadingEnd()
-        EditorState.playMode = !message.forEditing
+        OnLoadingEnd(!message.forEditing)
         break
       case 'LOAD_TEXT_FILE':
         OnLoadedText(message)

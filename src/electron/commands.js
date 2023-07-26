@@ -4,6 +4,10 @@ const { sendCommand } = require('./messenger')
 
 let mapDirectory = null
 
+const getMapsDirPath = () => {
+  return app.isPackaged ? './maps/' : '../sctb-client/maps/'
+}
+
 const loadMap = async (mapDir, forEditing = false) => {
   try {
     sendCommand({ command: 'LOADING_START' })
@@ -64,8 +68,8 @@ const loadMap = async (mapDir, forEditing = false) => {
 }
 
 exports.LOAD_MAPS_LIST = async () => {
-  const mapsDirPath = app.isPackaged ? './maps/' : '../sctb-client/maps/'
   let dirs = []
+  const mapsDirPath = getMapsDirPath()
   try {  
     dirs = await fs.promises.readdir(mapsDirPath)
   } catch (err) {
@@ -85,7 +89,12 @@ exports.LOAD_MAPS_LIST = async () => {
   sendCommand({ command: 'MAPS_LIST', maps })
 }
 
-exports.OPEN_MAP = async () => {
+exports.OPEN_MAP = async ({ data }) => {
+  const mapsDirPath = getMapsDirPath()
+  await loadMap(mapsDirPath + data)
+}
+
+exports.EDIT_MAP = async () => {
   const { mainWindow } = require('./main')
   const dir = dialog.showOpenDialogSync(mainWindow, {
     properties: ['openDirectory']
