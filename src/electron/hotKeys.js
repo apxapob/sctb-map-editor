@@ -2,15 +2,34 @@ const { app, globalShortcut } = require('electron')
 const { sendCommand } = require('./messenger')
 
 exports.initHotKeys = (win) => {
-  app.whenReady().then(() => {
-    globalShortcut.register( 'CmdOrCtrl+S', () => sendCommand({ command: 'SAVE_CHANGES' }) )
-    globalShortcut.register( 'CmdOrCtrl+F8', () => sendCommand({ command: 'JSON_MODE' }) )
-    //globalShortcut.register( 'F11', () => {win.fullScreen = !win.fullScreen} )//works without hotkey
-    globalShortcut.register( 'F9', () => sendCommand({ command: 'TEST_MAP' }) )
+
+  win.webContents.on('before-input-event', (event, input) => {
     
-    if(!app.isPackaged){
-      win.webContents.openDevTools()
-      globalShortcut.register( 'F5', () => win.webContents.reload() )
+    if (input.control || input.command){
+      if(input.key.toLowerCase() === 's') {
+        sendCommand({ command: 'SAVE_CHANGES' })
+        event.preventDefault()
+      }
+      if(input.key.toLowerCase() === 'f8') {
+        sendCommand({ command: 'JSON_MODE' })
+        event.preventDefault()
+      }
+      if(input.key.toLowerCase() === 'f9') {
+        sendCommand({ command: 'TEST_MAP' })
+        event.preventDefault()
+      }
+      return
     }
+
+    if(!app.isPackaged){
+      if(input.key.toLowerCase() === 'f5') {
+        win.webContents.reload()
+      }
+      if(input.key.toLowerCase() === 'f12') {
+        win.webContents.openDevTools()
+      }
+    }
+     
   })
+
 }

@@ -21,6 +21,10 @@ const createWindow = () => {
   }
   
   initHotKeys(win)
+
+  if(!app.isPackaged){
+    win.webContents.openDevTools()
+  }
   
   win.once('ready-to-show', () => win.maximize())
   exports.mainWindow = win
