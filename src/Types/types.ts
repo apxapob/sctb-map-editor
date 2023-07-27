@@ -3,7 +3,7 @@ export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
 
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 
+  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 'exit' | 
           'reset_field' | 'create_map' | 'edit_map' | 'load_maps_list' | 'maps_list';
 } | {
   method: 'save_map';

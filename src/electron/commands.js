@@ -89,6 +89,8 @@ exports.LOAD_MAPS_LIST = async () => {
   sendCommand({ command: 'MAPS_LIST', maps })
 }
 
+exports.EXIT = () => app.quit()
+
 exports.OPEN_MAP = async ({ data }) => {
   const mapsDirPath = getMapsDirPath()
   await loadMap(mapsDirPath + data)

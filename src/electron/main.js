@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const { initHotKeys } = require('./hotKeys')
 const { messengerInit } = require('./messenger')
 

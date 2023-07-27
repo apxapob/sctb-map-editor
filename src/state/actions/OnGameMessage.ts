@@ -17,6 +17,9 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'tool_updated':
       OnToolUpdated(msg.data)
       break
+    case 'exit':
+      SendCommand({ command: 'EXIT' })
+      break
     case 'load_maps_list':
       SendCommand({ command: 'LOAD_MAPS_LIST' })
       break
