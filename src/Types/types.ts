@@ -93,7 +93,7 @@ export const AllAffects:AffectType[] = ['All', 'Allies', 'Enemies']
 export type EditorStateType = {
   activePanel: PanelType | null;
   activeTab: TabType;
-  playMode: boolean;
+  mode: 'play' | 'edit' | 'test';
   jsonEditorTrigger: boolean;
 }
 

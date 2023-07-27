@@ -42,7 +42,7 @@ export const OnLoadingEnd = action((isPlayMode:boolean) => {
     } else {
       OnLoadingError('Can\'t find info.json file')
     }
-    EditorState.playMode = isPlayMode
+    EditorState.mode = isPlayMode ? 'play' : 'edit'
   } catch (e:unknown) {
     OnLoadingError('Invalid info.json file: ' + (e as Error).message)
   }
