@@ -33,7 +33,8 @@ export type GameMessage = {
   data: {
     path: string,
     text: string,
-    refresh: boolean
+    refresh: boolean,
+    progress: number,
   }
 } | {
   method: 'select_country_view';
@@ -46,6 +47,7 @@ export type GameMessage = {
   data: {
     path: string,
     bytes: Uint8Array;
+    progress: number;
   }
 } | {
   method: 'text_file_updated', 
@@ -57,10 +59,6 @@ export type GameMessage = {
   method: 'maps_list', 
   data: string[];
 };
-
-export type PanelType = 
-  'MapSettings' | 
-  'LoadingMap'
 
 export type ToolType = 
   'LandUp' | 
@@ -91,7 +89,6 @@ export type AffectType = 'All' | 'Allies' | 'Enemies'
 export const AllAffects:AffectType[] = ['All', 'Allies', 'Enemies']
 
 export type EditorStateType = {
-  activePanel: PanelType | null;
   activeTab: TabType;
   mode: 'play' | 'edit' | 'test';
   jsonEditorTrigger: boolean;

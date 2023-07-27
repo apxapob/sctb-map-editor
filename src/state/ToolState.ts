@@ -16,7 +16,6 @@ export const SelectedObjects: {
 })
 
 export const EditorState:EditorStateType = observable({
-  activePanel: null,
   activeTab: 'Field',
   mode: 'play',
   jsonEditorTrigger: false

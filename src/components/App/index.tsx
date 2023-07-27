@@ -5,7 +5,6 @@ import { EditorState, JsonMode } from '../../state/ToolState'
 import { AllTabs, TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
 import JsonEditor from '../ui/JsonEditor'
-import PanelsContainer from '../ui/panels/PanelsContainer'
 import Tab from '../ui/Tab'
 import './App.css'
 import ContextMenu from '../ui/ContextMenu'
@@ -49,7 +48,6 @@ const App = () => {
       {isLoaded && EditorState.mode === 'edit' && 
         (JsonMode[tab] ? <JsonEditor /> : <View />)
       }
-      <PanelsContainer />
       <ContextMenu />
     </div>
   )

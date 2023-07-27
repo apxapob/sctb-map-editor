@@ -64,8 +64,6 @@ export const MapFiles:{
   json: {
     [filename: string]: JSONObject;
   };
-  lastLoadedFile: string;
-  progress: number;
   status: 'Loaded' | 'Loading' | 'Error' | null;
   error: string | null;
   selectedField: string;
@@ -76,8 +74,6 @@ export const MapFiles:{
   binary: {},
   text: {},
   json: {},
-  lastLoadedFile: '',
-  progress: 0,
   status: null,
   error: null,
   selectedField: '',

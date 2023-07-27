@@ -1,6 +1,6 @@
 import './Tab.css'
 import React from 'react'
-import { SelectTab } from '../../state/actions/OpenPanel'
+import { SelectTab } from '../../state/actions/SelectTab'
 import { TabType } from '../../types/types'
 import { observer } from 'mobx-react-lite'
 import { JsonMode, TabsState } from '../../state/ToolState'

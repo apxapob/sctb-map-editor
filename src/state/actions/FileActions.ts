@@ -2,32 +2,25 @@ import { action } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
-import OpenPanel, { ClosePanel } from './OpenPanel'
 import SendMsgToGame from './SendMsgToGame'
 import { EditorState } from '../ToolState'
 import { CreateFolder } from './SaveChanges'
 
 export const OnLoadingStart = action(() => {
-  MapFiles.progress = 0
   MapFiles.text = {}
   MapFiles.binary = {}
-  MapFiles.lastLoadedFile = ''
   MapFiles.status = 'Loading'
   MapFiles.error = null
 
   FilesTree.nodes = {}
-
-  OpenPanel('LoadingMap')
 })
 
 export const OnLoadingEnd = action((isPlayMode:boolean) => {
-  MapFiles.progress = 1
   try {
     if (MapFiles.text[INFO_PATH] !== undefined) {
       MapFiles.status = 'Loaded'
       const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
       if (mapInfo && mapInfo.mapId) {
-        ClosePanel()
         MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
         SendMsgToGame({ 
           method: 'show_map', 
@@ -158,8 +151,6 @@ export const OnRenamed = action((c:RenameType) => {
 })
 
 export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
-  MapFiles.progress = c.progress
-  MapFiles.lastLoadedFile = c.file
   processTextFile(c.file, c.text)
 
   SendMsgToGame({
@@ -167,6 +158,7 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
     data: {
       path: c.file,
       text: c.text,
+      progress: c.progress,
       refresh: refreshGame
     }
   })
@@ -174,16 +166,14 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
   MapFiles.binary[c.file] = c.bytes
-  MapFiles.progress = c.progress
-  MapFiles.lastLoadedFile = c.file
 
   addToTree(c.file)
-
   SendMsgToGame({
     method: 'load_binary_file', 
     data: {
       path: c.file,
-      bytes: c.bytes
+      bytes: c.bytes,
+      progress: c.progress
     }
   })
 })
