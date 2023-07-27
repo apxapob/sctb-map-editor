@@ -1,5 +1,5 @@
 const { app, BrowserWindow, globalShortcut } = require('electron')
-const { getMenu } = require('./menu')
+const { initHotKeys } = require('./hotKeys')
 const { messengerInit } = require('./messenger')
 
 const createWindow = () => {
@@ -14,10 +14,13 @@ const createWindow = () => {
     show: false
   })
 
-  win.loadURL('http://localhost:3000')
-
-  win.setMenu(getMenu(win))
-  //win.loadFile('public/index.html')
+  if(app.isPackaged){
+    win.loadFile('public/index.html')
+  } else {
+    win.loadURL('http://localhost:3000')
+  }
+  
+  initHotKeys(win)
   
   win.once('ready-to-show', () => win.maximize())
   exports.mainWindow = win
