@@ -29,7 +29,13 @@ export const OnLoadingEnd = action((isPlayMode:boolean) => {
       if (mapInfo && mapInfo.mapId) {
         ClosePanel()
         MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
-        SendMsgToGame({ method: 'show_map_editor', data: mapInfo.mapId })
+        SendMsgToGame({ 
+          method: 'show_map', 
+          data: {
+            mapId: mapInfo.mapId,
+            isPlayMode
+          } 
+        })
       } else {
         OnLoadingError('Invalid info.json file: no mapId')
       }

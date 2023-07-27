@@ -11,9 +11,12 @@ export type GameMessage = {
 } | {
   method: 'open_map';
   data: string;
-} | {
-  method: 'show_map_editor';
-  data: string;
+} | { 
+  method: 'show_map';
+  data: {
+    mapId: string;
+    isPlayMode: boolean;
+  } 
 } | {
   method: 'tool_updated';
   data: {[index: string]: number | string | boolean};
