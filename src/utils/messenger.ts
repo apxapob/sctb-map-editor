@@ -47,6 +47,12 @@ export function InitMessenger() {
       case 'LOAD_DIRECTORY':
         OnLoadedDirectory(message)
         break
+      case 'SAFE_FILE_LOADED':
+        console.log("!!! SAFE_FILE_LOADED", message)
+        break
+      case 'SAVES_LIST':
+        SendMsgToGame({ method: 'saves_list', data: message.saves })
+        break
       case 'DELETED':
         OnDeleted(message)
         break

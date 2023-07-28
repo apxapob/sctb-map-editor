@@ -4,14 +4,17 @@ export type JSONArray = JSONValue[]
 
 export type GameMessage = {
   method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 'exit' | 
-          'reset_field' | 'create_map' | 'edit_map' | 'load_maps_list' | 'maps_list';
+          'reset_field' | 'create_map' | 'edit_map' | 'load_maps_list' | 'maps_list' | 'load_saves_list';
 } | {
-  method: 'save_map';
+  method: 'save_file', 
+  data: {
+    filename: string,
+    content: string
+  } 
+} | {
+  method: 'save_map' | 'open_map' | 'delete_save_file' | 'load_game' | 'saves_list';
   data: string;
 } | {
-  method: 'open_map';
-  data: string;
-} | { 
   method: 'show_map';
   data: {
     mapId: string;

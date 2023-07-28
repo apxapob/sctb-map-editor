@@ -14,6 +14,26 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'init_complete':
       OnInitComplete()
       break
+    case 'load_saves_list':
+      SendCommand({ command: 'LOAD_SAVES_LIST' })
+      break
+    case 'delete_save_file':
+      SendCommand({ command: 'DELETE_SAVE_FILE', data: msg.data })
+      break 
+    case 'save_file':
+      SendCommand({ 
+        command: 'SAVE_GAME', 
+        data: { 
+          path: msg.data.filename, 
+          text: msg.data.content 
+        }
+      })
+      console.log("!!! save_game", msg);
+      break
+    case 'load_game':
+      SendCommand({ command: 'LOAD_GAME', data: msg.data })
+      console.log("!!! load_game", msg);
+      break
     case 'tool_updated':
       OnToolUpdated(msg.data)
       break

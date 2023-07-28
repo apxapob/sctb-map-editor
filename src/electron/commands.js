@@ -7,6 +7,9 @@ let mapDirectory = null
 const getMapsDirPath = () => {
   return app.isPackaged ? './maps/' : '../sctb-client/maps/'
 }
+const getSaveFilesDirPath = () => {
+  return app.isPackaged ? './saves/' : '../sctb-client/saves/'
+}
 
 const loadMap = async (mapDir, forEditing = false) => {
   try {
@@ -64,6 +67,54 @@ const loadMap = async (mapDir, forEditing = false) => {
       command: 'LOAD_MAP_ERROR', 
       error: err.message || 'unknown error'
     })
+  }
+}
+
+exports.DELETE_SAVE_FILE = async ({ data }) => {
+  try {
+    const fullPath = getSaveFilesDirPath() + data
+    await fs.promises.rm(fullPath)
+  } catch (err) {
+    dialog.showErrorBox('Can\'t delete', err.message)
+  }
+}
+
+exports.SAVE_GAME = async ({ data }) => {
+  try {
+    const { path, text } =  data
+    const fullPath = (getSaveFilesDirPath() + path)
+    
+    await fs.promises.writeFile(fullPath, text)
+  } catch (err) {
+    dialog.showErrorBox('Save game error:', err.message)
+  }
+}
+
+exports.LOAD_GAME = async ({ data }) => {
+  try {
+    const saveFilePath = getSaveFilesDirPath() + data
+    const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
+
+    sendCommand({
+      command: 'SAFE_FILE_LOADED', 
+      data: fileText
+    })
+  } catch (err) {
+    dialog.showErrorBox('Load game error:', err.message)
+  }
+}
+
+exports.LOAD_SAVES_LIST = async () => {
+  try {
+    const saveFilePath = getSaveFilesDirPath() + "saves.inf"
+    const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
+
+    sendCommand({
+      command: 'SAVES_LIST',
+      saves: fileText
+    })
+  } catch (err) {
+    dialog.showErrorBox('Load saves list error:', err.message)
   }
 }
 
