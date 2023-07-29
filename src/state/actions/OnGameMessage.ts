@@ -28,11 +28,9 @@ const OnGameMessage = (msg:GameMessage) => {
           text: msg.data.content 
         }
       })
-      console.log("!!! save_game", msg);
       break
     case 'load_game':
       SendCommand({ command: 'LOAD_GAME', data: msg.data })
-      console.log("!!! load_game", msg);
       break
     case 'tool_updated':
       OnToolUpdated(msg.data)

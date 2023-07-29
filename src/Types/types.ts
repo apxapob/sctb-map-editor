@@ -10,9 +10,9 @@ export type GameMessage = {
   data: {
     filename: string,
     content: string
-  } 
+  }
 } | {
-  method: 'save_map' | 'open_map' | 'delete_save_file' | 'load_game' | 'saves_list';
+  method: 'save_map' | 'open_map' | 'delete_save_file' | 'load_game' | 'saves_list' | 'save_file_loaded';
   data: string;
 } | {
   method: 'show_map';
