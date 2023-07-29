@@ -1,7 +1,7 @@
 import { ToolStateChangeType } from '../../types/types'
 import { action } from 'mobx'
 import { ToolState } from '../ToolState'
-import SendMsgToGame from './SendMsgToGame'
+import SendToGame from './SendToGame'
 import { MapFiles } from '../MapFiles'
 
 const ChangeTool = (newTool:ToolStateChangeType):void => {
@@ -10,7 +10,7 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.toolUnit)ToolState.toolUnit = newTool.toolUnit
   if (newTool.toolItem)ToolState.toolItem = newTool.toolItem
   
-  SendMsgToGame({
+  SendToGame({
     method: 'change_tool',
     data: ToolState
   })
@@ -21,7 +21,7 @@ export default action(ChangeTool)
 export const ChangeFogOfWarCountry = action((newId:number) => {
   ToolState.fogOfWarCountryId = newId
   
-  SendMsgToGame({
+  SendToGame({
     method: 'select_country_view', 
     data: { countyId: newId }
   })
@@ -30,7 +30,7 @@ export const ChangeFogOfWarCountry = action((newId:number) => {
 export const ChangeFieldSize = action((newSize:number) => {
   MapFiles.json[MapFiles.selectedField].size = Math.max(1, newSize)
   
-  SendMsgToGame({
+  SendToGame({
     method: 'change_field_size',
     data: { size: newSize }
   })

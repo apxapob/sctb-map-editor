@@ -3,7 +3,7 @@ import React from 'react'
 import { OpenFileTree, SelectFieldFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
-import { SendCommand } from '../../utils/messenger'
+import { SendToElectron } from '../../utils/messenger'
 import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
 import { EditorState } from '../../state/ToolState'
@@ -35,7 +35,7 @@ const getFileMenuItems = (
   },
   {
     title: 'Delete', 
-    callback: () => SendCommand({
+    callback: () => SendToElectron({
       command: 'DELETE',
       path: tree.path
     })
@@ -48,7 +48,7 @@ const getFolderMenuItems = (
 ) => [
   {
     title: 'Delete', 
-    callback: () => SendCommand({
+    callback: () => SendToElectron({
       command: 'DELETE',
       path: tree.path
     })
@@ -175,7 +175,7 @@ const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   const rename = (newName:string) => {
     setRenaming(false)
     if (newName === root) { return }
-    SendCommand({
+    SendToElectron({
       command: 'RENAME',
       path: tree.path,
       newName: newName + ''

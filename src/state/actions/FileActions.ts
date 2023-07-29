@@ -2,7 +2,7 @@ import { action } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
-import SendMsgToGame from './SendMsgToGame'
+import SendToGame from './SendToGame'
 import { EditorState } from '../ToolState'
 import { CreateFolder } from './SaveChanges'
 
@@ -22,7 +22,7 @@ export const OnLoadingEnd = action((isPlayMode:boolean) => {
       const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
       if (mapInfo && mapInfo.mapId) {
         MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
-        SendMsgToGame({ 
+        SendToGame({ 
           method: 'show_map', 
           data: {
             mapId: mapInfo.mapId,
@@ -153,7 +153,7 @@ export const OnRenamed = action((c:RenameType) => {
 export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
   processTextFile(c.file, c.text)
 
-  SendMsgToGame({
+  SendToGame({
     method: 'load_text_file', 
     data: {
       path: c.file,
@@ -168,7 +168,7 @@ export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
   MapFiles.binary[c.file] = c.bytes
 
   addToTree(c.file)
-  SendMsgToGame({
+  SendToGame({
     method: 'load_binary_file', 
     data: {
       path: c.file,

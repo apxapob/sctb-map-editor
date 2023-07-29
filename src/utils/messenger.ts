@@ -3,14 +3,14 @@ import { OnDeleted, OnLoadedBinary, OnLoadedDirectory,
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
 import SaveChanges from '../state/actions/SaveChanges'
-import SendMsgToGame from '../state/actions/SendMsgToGame'
+import SendToGame from '../state/actions/SendToGame'
 import TestMap from '../state/actions/TestMap'
 import ToggleJsonMode from '../state/actions/ToggleJsonMode'
 import { CommandType } from '../types/commands'
 
 const { ipcRenderer } = require('electron')
 
-export function SendCommand(c:CommandType) {
+export function SendToElectron(c:CommandType) {
   ipcRenderer.send('commands', c)
 }
 
@@ -27,7 +27,7 @@ export function InitMessenger() {
         ToggleJsonMode()
         break
       case 'MAPS_LIST':
-        SendMsgToGame({ method: 'maps_list', data: message.maps })
+        SendToGame({ method: 'maps_list', data: message.maps })
         break
       case 'LOADING_START':
         OnLoadingStart()
@@ -48,13 +48,13 @@ export function InitMessenger() {
         OnLoadedDirectory(message)
         break
       case 'SAFE_FILE_LOADED':
-        SendMsgToGame({ 
+        SendToGame({ 
           method: 'save_file_loaded', 
           data: message.data
         })
         break
       case 'SAVES_LIST':
-        SendMsgToGame({ method: 'saves_list', data: message.saves })
+        SendToGame({ method: 'saves_list', data: message.saves })
         break
       case 'DELETED':
         OnDeleted(message)

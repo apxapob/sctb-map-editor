@@ -2,7 +2,7 @@ import { action } from 'mobx'
 import { EffectTemplates, EffectType, Effects, JSONObject, JSONValue, TabType } from '../../types/types'
 import { EditorState, TabsState } from '../ToolState'
 import { MapFiles, getFilePath } from '../MapFiles'
-import SendMsgToGame from './SendMsgToGame'
+import SendToGame from './SendToGame'
 
 export const UpdateUnsavedData = action((tab:TabType, text:string|null) => {
   TabsState[tab] = text
@@ -12,7 +12,7 @@ export const CancelUnsavedData = action((tab?:TabType) => {
   if (!tab) { tab = EditorState.activeTab }
 
   if (tab === 'Field') {
-    SendMsgToGame({ method: 'reset_field' })
+    SendToGame({ method: 'reset_field' })
   }
   
   const filePath = getFilePath(tab)

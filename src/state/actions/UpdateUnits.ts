@@ -1,13 +1,13 @@
 import { action } from 'mobx'
 import { BuffType, ObjectDataType, UnitDataType } from '../../types/types'
 import { SelectedObjects } from '../ToolState'
-import SendMsgToGame from './SendMsgToGame'
+import SendToGame from './SendToGame'
 
 export const isUnit = (o:ObjectDataType) => o?.hasOwnProperty('countryId')
 export const isItem = (o:ObjectDataType) => o?.hasOwnProperty('unpickable')
 
 const UpdateObjects = ():void => {
-  SendMsgToGame({
+  SendToGame({
     method: 'update_objects',
     data: SelectedObjects.data
   })

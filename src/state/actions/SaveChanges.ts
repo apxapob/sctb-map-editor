@@ -1,17 +1,17 @@
 import { action } from 'mobx'
 import { MapInfo } from '../../types/types'
-import { SendCommand } from '../../utils/messenger'
+import { SendToElectron } from '../../utils/messenger'
 import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, TabsState } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
-import SendMsgToGame from './SendMsgToGame'
+import SendToGame from './SendToGame'
 
 const SaveChanges = ():boolean => {
   if (MapFiles.status !== 'Loaded') return false
   
   if (EditorState.activeTab === 'Field') {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
-    SendMsgToGame({ method: 'save_map', data: mapInfo.mapId })
+    SendToGame({ method: 'save_map', data: mapInfo.mapId })
     TabsState[EditorState.activeTab] = null
     return true
   }
@@ -27,7 +27,7 @@ const SaveChanges = ():boolean => {
     TabsState[EditorState.activeTab] = null
     TabsErrors[EditorState.activeTab] = null
     const data = { text, path }
-    SendCommand({ command: 'SAVE_TEXT_FILE', data })
+    SendToElectron({ command: 'SAVE_TEXT_FILE', data })
     OnLoadedText({
       command: 'LOAD_TEXT_FILE',
       file: path,
@@ -45,7 +45,7 @@ export default action(SaveChanges)
 
 export const CreateFile = action((path:string) => {
   const text = path.endsWith('.json') ? '{}' : ''
-  SendCommand({
+  SendToElectron({
     command: 'SAVE_TEXT_FILE',
     data: { path, text }
   })
@@ -58,7 +58,7 @@ export const CreateFile = action((path:string) => {
 })
 
 export const CreateFolder = action((path:string) => {
-  SendCommand({ 
+  SendToElectron({ 
     command: 'MAKE_DIR',
     path
   })

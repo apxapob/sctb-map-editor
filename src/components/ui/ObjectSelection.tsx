@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import SendMsgToGame from '../../state/actions/SendMsgToGame'
+import SendToGame from '../../state/actions/SendToGame'
 import { addBuff, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
@@ -97,7 +97,7 @@ const ObjectSelection = () => {
       </div>
       <BuffAdder />
       <button onClick={
-        () => SendMsgToGame({ method: 'reset_units_buffs' })
+        () => SendToGame({ method: 'reset_units_buffs' })
       }>
         Set default buffs
       </button>
