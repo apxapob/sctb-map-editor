@@ -14,29 +14,11 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'init_complete':
       OnInitComplete()
       break
-    case 'save_file':
-      SendToElectron({ 
-        command: 'SAVE_GAME', 
-        data: { 
-          path: msg.data.filename, 
-          text: msg.data.content 
-        }
-      })
-      break
-    case 'load_game':
-      SendToElectron({ command: 'LOAD_GAME', data: msg.data })
-      break
     case 'to_electron':
       SendToElectron(msg.data)
       break
     case 'tool_updated':
       OnToolUpdated(msg.data)
-      break
-    case 'exit':
-      SendToElectron({ command: 'EXIT' })
-      break
-    case 'load_maps_list':
-      SendToElectron({ command: 'LOAD_MAPS_LIST' })
       break
     case 'text_file_updated':
       SendToElectron({ command: 'SAVE_TEXT_FILE', data: msg.data })
@@ -50,12 +32,6 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'create_map':
       CreateMap()
-      break
-    case 'open_map':
-      SendToElectron({ command: 'OPEN_MAP', data: msg.data })
-      break
-    case 'edit_map':
-      SendToElectron({ command: 'EDIT_MAP' })
       break
     default:
       console.warn('unknown message', msg)
