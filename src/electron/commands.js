@@ -1,6 +1,7 @@
 const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
+const { compress, decompress } = require('./StringUtils')
 
 let mapDirectory = null
 
@@ -119,7 +120,8 @@ exports.SAVE_GAME = async ({ data }) => {
     const { path, text } =  data
     const fullPath = getSaveFilesDirPath() + path
     
-    await fs.promises.writeFile(fullPath, text)
+    const compressed = await compress(text)
+    await fs.promises.writeFile(fullPath, compressed)
   } catch (err) {
     dialog.showErrorBox('Save game error:', err.message)
   }
@@ -128,13 +130,14 @@ exports.SAVE_GAME = async ({ data }) => {
 exports.LOAD_GAME = async ({ data }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data
-    const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
-
+    const fileBuffer = await fs.promises.readFile(saveFilePath)
+    const decompressed = await decompress(fileBuffer)
+    
     sendCommand({
       command: 'TO_GAME', 
       data: { 
-        method: 'save_file_loaded', 
-        data: fileText
+        method: 'save_file_loaded',
+        data: decompressed
       }
     })
   } catch (err) {
@@ -152,7 +155,10 @@ exports.LOAD_SAVES_LIST = async () => {
       data: { method: 'saves_list', data: fileText }
     })
   } catch (err) {
-    dialog.showErrorBox('Load saves list error:', err.message)
+    sendCommand({
+      command: 'TO_GAME',
+      data: { method: 'saves_list', data: '{}' }
+    })
   }
 }
 
