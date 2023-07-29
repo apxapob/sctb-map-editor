@@ -105,8 +105,8 @@ const UPDATE_SAVES_INFO = async ({ key, data }) => {
       json
     )
     sendCommand({
-      command: 'SAVES_LIST',
-      saves: json
+      command: 'TO_GAME',
+      data: { method: 'saves_list', data: json }
     })
   } catch (err) {
     dialog.showErrorBox('Save game error:', err.message)
@@ -131,8 +131,11 @@ exports.LOAD_GAME = async ({ data }) => {
     const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
 
     sendCommand({
-      command: 'SAFE_FILE_LOADED', 
-      data: fileText
+      command: 'TO_GAME', 
+      data: { 
+        method: 'save_file_loaded', 
+        data: fileText
+      }
     })
   } catch (err) {
     dialog.showErrorBox('Load game error:', err.message)
@@ -145,8 +148,8 @@ exports.LOAD_SAVES_LIST = async () => {
     const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
 
     sendCommand({
-      command: 'SAVES_LIST',
-      saves: fileText
+      command: 'TO_GAME',
+      data: { method: 'saves_list', data: fileText }
     })
   } catch (err) {
     dialog.showErrorBox('Load saves list error:', err.message)
@@ -172,7 +175,10 @@ exports.LOAD_MAPS_LIST = async () => {
       console.error(err)
     }
   }
-  sendCommand({ command: 'MAPS_LIST', maps })
+  sendCommand({ 
+    command: 'TO_GAME', 
+    data: { method: 'maps_list', data: maps }
+  })
 }
 
 exports.EXIT = () => app.quit()

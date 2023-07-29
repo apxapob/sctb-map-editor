@@ -1,8 +1,8 @@
 export type CommandType = {
   command: 'SAVE_CHANGES' | 'EDIT_MAP' | 'LOADING_START' | 'CREATE_MAP' | 
            'TEST_MAP' | 'JSON_MODE' | 'LOAD_MAPS_LIST' | 'EXIT';
-} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | MapsListType
-  | SaveTextFileType | FSCommandType | RenameType | LoadingEndType | OpenMapType | SavesListType
+} | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | ToGameType
+  | SaveTextFileType | FSCommandType | RenameType | LoadingEndType | OpenMapType
 
 export type SaveTextFileType = {
   command: 'SAVE_TEXT_FILE' | 'SAVE_GAME';
@@ -15,18 +15,8 @@ export type ToGameType = {
 }
 
 export type OpenMapType = {
-  command: 'OPEN_MAP' | 'LOAD_GAME' | 'SAFE_FILE_LOADED';
+  command: 'OPEN_MAP' | 'LOAD_GAME';
   data: string;
-}
-
-export type SavesListType = {
-  command: 'SAVES_LIST';
-  saves: string;
-}
-
-export type MapsListType = {
-  command: 'MAPS_LIST';
-  maps: string[];
 }
 
 export type LoadingEndType = {

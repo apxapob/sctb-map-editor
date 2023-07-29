@@ -26,8 +26,8 @@ export function InitMessenger() {
       case 'JSON_MODE':
         ToggleJsonMode()
         break
-      case 'MAPS_LIST':
-        SendToGame({ method: 'maps_list', data: message.maps })
+      case 'TO_GAME':
+        SendToGame(message.data)
         break
       case 'LOADING_START':
         OnLoadingStart()
@@ -46,15 +46,6 @@ export function InitMessenger() {
         break
       case 'LOAD_DIRECTORY':
         OnLoadedDirectory(message)
-        break
-      case 'SAFE_FILE_LOADED':
-        SendToGame({ 
-          method: 'save_file_loaded', 
-          data: message.data
-        })
-        break
-      case 'SAVES_LIST':
-        SendToGame({ method: 'saves_list', data: message.saves })
         break
       case 'DELETED':
         OnDeleted(message)
