@@ -72,17 +72,52 @@ const loadMap = async (mapDir, forEditing = false) => {
 
 exports.DELETE_SAVE_FILE = async ({ data }) => {
   try {
-    const fullPath = getSaveFilesDirPath() + data
+    const fullPath = getSaveFilesDirPath() + data + '.sav'
     await fs.promises.rm(fullPath)
+
+    await UPDATE_SAVES_INFO({ key: data })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)
   }
 }
 
+const UPDATE_SAVES_INFO = async ({ key, data }) => {
+  try {
+    const fullPath = getSaveFilesDirPath() + 'saves.inf'
+    let savesDB = {}
+    
+    try {
+      const fileText = await fs.promises.readFile(fullPath, { encoding: 'utf8' })
+      savesDB = JSON.parse(fileText)
+    } catch (err) {
+      console.warn('Saves DB error:', err.message)
+    }
+    
+    if(!data){
+      delete savesDB[key]
+    } else {
+      savesDB[key] = data
+    }
+
+    const json = JSON.stringify(savesDB)
+    await fs.promises.writeFile(
+      fullPath, 
+      json
+    )
+    sendCommand({
+      command: 'SAVES_LIST',
+      saves: json
+    })
+  } catch (err) {
+    dialog.showErrorBox('Save game error:', err.message)
+  }
+}
+exports.UPDATE_SAVES_INFO = UPDATE_SAVES_INFO
+
 exports.SAVE_GAME = async ({ data }) => {
   try {
     const { path, text } =  data
-    const fullPath = (getSaveFilesDirPath() + path)
+    const fullPath = getSaveFilesDirPath() + path
     
     await fs.promises.writeFile(fullPath, text)
   } catch (err) {

@@ -6,11 +6,14 @@ export type GameMessage = {
   method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' | 'exit' | 
           'reset_field' | 'create_map' | 'edit_map' | 'load_maps_list' | 'maps_list' | 'load_saves_list';
 } | {
-  method: 'save_file', 
+  method: 'save_file';
   data: {
-    filename: string,
-    content: string
+    filename: string;
+    content: string;
   }
+} | {
+  method: 'to_electron';
+  data: any;
 } | {
   method: 'save_map' | 'open_map' | 'delete_save_file' | 'load_game' | 'saves_list' | 'save_file_loaded';
   data: string;
@@ -22,7 +25,7 @@ export type GameMessage = {
   } 
 } | {
   method: 'tool_updated';
-  data: {[index: string]: number | string | boolean};
+  data: {[index: string]: number | string | boolean}
 } | {
   method: 'change_tool';
   data: ToolStateType;
@@ -34,10 +37,10 @@ export type GameMessage = {
 } | {
   method: 'load_text_file';
   data: {
-    path: string,
-    text: string,
-    refresh: boolean,
-    progress: number,
+    path: string;
+    text: string;
+    refresh: boolean;
+    progress: number;
   }
 } | {
   method: 'select_country_view';
@@ -48,18 +51,18 @@ export type GameMessage = {
 } | {
   method: 'load_binary_file';
   data: {
-    path: string,
+    path: string;
     bytes: Uint8Array;
     progress: number;
   }
 } | {
-  method: 'text_file_updated', 
+  method: 'text_file_updated';
   data: { path: string; text: string }
 } | {
-  method: 'selected_objects' | 'update_objects', 
+  method: 'selected_objects' | 'update_objects';
   data: (ItemDataType | UnitDataType)[];
 } | {
-  method: 'maps_list', 
+  method: 'maps_list';
   data: string[];
 };
 

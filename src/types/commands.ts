@@ -9,6 +9,11 @@ export type SaveTextFileType = {
   data: { path: string; text: string };
 }
 
+export type ToGameType = {
+  command: 'TO_GAME';
+  data: any;
+}
+
 export type OpenMapType = {
   command: 'OPEN_MAP' | 'DELETE_SAVE_FILE' | 'LOAD_GAME' | 'SAFE_FILE_LOADED';
   data: string;

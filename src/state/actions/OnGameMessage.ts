@@ -32,6 +32,9 @@ const OnGameMessage = (msg:GameMessage) => {
     case 'load_game':
       SendCommand({ command: 'LOAD_GAME', data: msg.data })
       break
+    case 'to_electron':
+      SendCommand(msg.data)
+      break
     case 'tool_updated':
       OnToolUpdated(msg.data)
       break
