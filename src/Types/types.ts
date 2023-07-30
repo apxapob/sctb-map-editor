@@ -4,7 +4,7 @@ export type JSONArray = JSONValue[]
 
 export type GameMessage = {
   method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' |
-          'reset_field' | 'create_map' | 'maps_list';
+          'reset_field' | 'create_map' | 'maps_list' | 'loading_start';
 } | {
   method: 'to_electron';
   data: any;

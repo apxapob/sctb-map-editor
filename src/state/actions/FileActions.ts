@@ -13,6 +13,8 @@ export const OnLoadingStart = action(() => {
   MapFiles.error = null
 
   FilesTree.nodes = {}
+
+  SendToGame({ method: 'loading_start' })
 })
 
 export const OnLoadingEnd = action((isPlayMode:boolean) => {
@@ -27,7 +29,7 @@ export const OnLoadingEnd = action((isPlayMode:boolean) => {
           data: {
             mapId: mapInfo.mapId,
             isPlayMode
-          } 
+          }
         })
       } else {
         OnLoadingError('Invalid info.json file: no mapId')
