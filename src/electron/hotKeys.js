@@ -8,15 +8,12 @@ exports.initHotKeys = (win) => {
     if (input.control || input.command){
       if(input.key.toLowerCase() === 's') {
         sendCommand({ command: 'SAVE_CHANGES' })
-        event.preventDefault()
       }
       if(input.key.toLowerCase() === 'f8') {
         sendCommand({ command: 'JSON_MODE' })
-        event.preventDefault()
       }
       if(input.key.toLowerCase() === 'f9') {
         sendCommand({ command: 'TEST_MAP' })
-        event.preventDefault()
       }
       return
     }
