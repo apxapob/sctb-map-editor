@@ -3,13 +3,13 @@ export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
 
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved' | 'test_map' | 'reset_units_buffs' |
-          'reset_field' | 'create_map' | 'maps_list' | 'loading_start';
+  method: 'init_complete' | 'mark_field_unsaved' | 'reset_units_buffs' | 'to_main_screen' |
+          'reset_field' | 'create_map' | 'maps_list' | 'loading_start' | 'save_changes';
 } | {
   method: 'to_electron';
   data: any;
 } | {
-  method: 'save_map' | 'saves_list' | 'save_file_loaded';
+  method: 'save_map' | 'saves_list' | 'save_file_loaded' | 'test_map';
   data: string;
 } | {
   method: 'show_map';

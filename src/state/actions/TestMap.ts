@@ -7,7 +7,7 @@ const TestMap = () => {
   if (MapFiles.status !== 'Loaded' || EditorState.mode === 'play') return
   EditorState.mode = EditorState.mode === 'edit' ? 'test' : 'edit'
   EditorState.activeTab = 'Field'
-  SendToGame({ method: 'test_map' })
+  SendToGame({ method: 'test_map', data: EditorState.mode })
 }
 
 export default action(TestMap)

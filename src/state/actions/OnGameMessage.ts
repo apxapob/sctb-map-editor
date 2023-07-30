@@ -8,14 +8,26 @@ import { OnSelectUnits } from './OnSelectUnits'
 import { UpdateUnsavedData } from './UpdateText'
 import { processTextFile } from './FileActions'
 import CreateMap from './CreateMap'
+import SaveChanges from './SaveChanges'
+import TestMap from './TestMap'
+import ToMainScreen from './ToMainScreen'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
     case 'init_complete':
       OnInitComplete()
       break
+    case 'save_changes':
+      SaveChanges()
+      break
+    case 'test_map':
+      TestMap()
+      break
     case 'to_electron':
       SendToElectron(msg.data)
+      break
+    case 'to_main_screen':
+      ToMainScreen()
       break
     case 'tool_updated':
       OnToolUpdated(msg.data)
