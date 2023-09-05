@@ -92,7 +92,7 @@ const Tools = () => {
         </button>
         
         <button className={`tool ${tool === 'Delete' ? 'selectedBtn' : ''}`}
-            onClick={() => ChangeTool({ tool: 'Delete' })} >Delete units</button>
+            onClick={() => ChangeTool({ tool: 'Delete' })} >Delete objects</button>
       </div>
     </div>
   )

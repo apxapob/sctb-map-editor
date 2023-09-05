@@ -4,6 +4,7 @@ const { sendCommand } = require('./messenger')
 exports.initHotKeys = (win) => {
 
   win.webContents.on('before-input-event', (event, input) => {
+    if(input.type !== 'keyUp'){ return; }
     
     if (input.control || input.command){
       if(input.key.toLowerCase() === 's') {
