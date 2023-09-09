@@ -241,6 +241,12 @@ export type UpgradeType = {
   unitTypes: string[];
 }
 
+export type CountryInfo = {
+  color: string;
+  minerals: number;
+  mana: number;
+}
+
 export type MapInfo = {
   mapId: string;
   name: string;
@@ -249,7 +255,7 @@ export type MapInfo = {
   startField: string;
   singlePlayer: boolean;
   maxPlayers: number;
-  countryColors: string[];
+  countries: CountryInfo[];
 }
 
 export type UnitsMap = {

@@ -4,7 +4,7 @@ import { INFO_PATH } from '../../state/MapFiles'
 import './View.css'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
-import CountriesColors from '../ui/components/CountriesColors'
+import CountriesOptions from '../ui/components/CountriesOptions'
 
 const MapView = () => 
   <div className='tools-container'>
@@ -56,10 +56,9 @@ const MapView = () =>
         min={1}
         max={99}
       />
-      <CountriesColors
-        title="Countries colors:"
+      <CountriesOptions
         filePath={INFO_PATH}
-        valuePath='countryColors'
+        valuePath='countries'
       />
     </div>
   </div>
