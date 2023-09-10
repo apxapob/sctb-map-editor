@@ -6,6 +6,8 @@ import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 import { MapFiles } from '../../state/MapFiles'
+import { UpdateUnitsCountry } from '../../state/actions/UpdateUnits'
+import CountryColorSelector from './components/CountryColorSelector'
 
 const Tools = () => {
   const { radius, tool, toolUnit, toolItem } = ToolState
@@ -68,6 +70,7 @@ const Tools = () => {
             {toolUnit}
           </button>
           <UnitTypeSelector />
+          <CountryColorSelector countryId={ToolState.countryId} onChange={id => ChangeTool({ countryId: id })} />
         </div>
 
         <span style={{ paddingTop: 8 }}>

@@ -9,6 +9,7 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.tool)ToolState.tool = newTool.tool
   if (newTool.toolUnit)ToolState.toolUnit = newTool.toolUnit
   if (newTool.toolItem)ToolState.toolItem = newTool.toolItem
+  if (newTool.countryId !== undefined)ToolState.countryId = newTool.countryId
   
   SendToGame({
     method: 'change_tool',

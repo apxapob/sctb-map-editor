@@ -19,7 +19,7 @@ const CountriesOptions = (
       observedCountries.pop()
     } else {
       observedCountries.push({
-        color: '0xffffff',
+        color: 0xffffff,
         minerals: 0,
         mana: 0
       })

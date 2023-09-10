@@ -77,6 +77,7 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string|null;
   toolItem: string|null;
+  countryId: number;
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'
@@ -99,6 +100,7 @@ export type ToolStateChangeType = {
   tool?: ToolType;
   toolUnit?: string;
   toolItem?: string;
+  countryId?: number;
 }
 
 export type ObjectDataType = {
@@ -242,7 +244,7 @@ export type UpgradeType = {
 }
 
 export type CountryInfo = {
-  color: string;
+  color: number;
   minerals: number;
   mana: number;
 }

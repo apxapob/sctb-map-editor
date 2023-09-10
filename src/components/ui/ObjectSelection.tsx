@@ -6,10 +6,10 @@ import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../s
 import { SelectedObjects } from '../../state/ToolState'
 import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
+import CountryColorSelector from './components/CountryColorSelector'
 
 const ObjectSelection = () => {
   const selectedObjects = SelectedObjects.data
-  const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
 
   if (selectedObjects.length === 0) {
     return null
@@ -23,9 +23,6 @@ const ObjectSelection = () => {
   const mainUnit = selectedUnits[0]
   const countryValue = mainUnit && (selectedUnits.find(u => u.countryId !== mainUnit.countryId) ? undefined : mainUnit.countryId)
   
-  const unitColor = mainUnit && (mapInfo.countryColors[mainUnit.countryId - 1] || 'white')
-  const countryColors = ['0xffffff', ...mapInfo.countryColors]
-
   const buffs: ( 
     BuffType | 'different buffs' | { type: string }
   )[] = []
@@ -55,34 +52,14 @@ const ObjectSelection = () => {
   return <div className='tools-container unit-selection-container vflex' >
     <div className='hflex gapped'>
       Type:
-      {isUnit(mainObj) &&
-        <UnitsTypeChanger typeValue={typeValue} />
-      }
-      {isItem(mainObj) &&
-        <ItemsTypeChanger typeValue={typeValue} />
-      }
+      {isUnit(mainObj) && <UnitsTypeChanger typeValue={typeValue} />}
+      {isItem(mainObj) && <ItemsTypeChanger typeValue={typeValue} />}
     </div>
 
     {selectedUnits.length > 0 &&
       <div className='hflex gapped'>
         Country: 
-        <select value={countryValue}
-          style={{ 
-            width: 60,
-            backgroundColor: countryValue === undefined ? 'unset' : unitColor.replace('0x', '#') 
-          }}
-          onChange={e => UpdateUnitsCountry(
-            parseInt(e.target.value)
-          )}
-        >
-          {countryValue === undefined &&
-            <option value={undefined} style={{ backgroundColor: 'black' }} />
-          }
-          {countryColors.map(
-            (countryColor:string, idx:number) => 
-              <option key={countryColor} value={idx} style={{ backgroundColor: countryColor.replace('0x', '#') }} />
-          )}
-        </select>
+        <CountryColorSelector countryId={countryValue} onChange={UpdateUnitsCountry} />
       </div>
     }
     

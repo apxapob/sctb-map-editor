@@ -316,8 +316,37 @@ const makeRootFiles = async (dir, mapId) => {
       startField: 'main.json',
       singlePlayer: false,
       maxPlayers: 6,
-      countryColors: [
-        '0xff4444','0x44ff44','0x4444ff','0x44ffff','0xff44ff','0xffff44'
+      countries: [
+        {
+          color: 16729156,
+          minerals: 100,
+          mana: 10
+        },
+        {
+          color: 4474111,
+          minerals: 100,
+          mana: 10
+        },
+        {
+          color: 4521796,
+          minerals: 100,
+          mana: 10
+        },
+        {
+          color: 4521983,
+          minerals: 100,
+          mana: 10
+        },
+        {
+          color: 16729343,
+          minerals: 100,
+          mana: 10
+        },
+        {
+          color: 16777028,
+          minerals: 100,
+          mana: 10
+        }
       ]
     }, null, 2)
   )

@@ -7,6 +7,7 @@ export const ToolState:ToolStateType = observable({
   tool: 'Select',
   toolUnit: null,
   toolItem: null,
+  countryId: 0
 })
 
 export const SelectedObjects: {
