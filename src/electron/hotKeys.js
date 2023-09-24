@@ -7,7 +7,7 @@ exports.initHotKeys = (win) => {
     if(input.type !== 'keyUp'){ return; }
     
     if (input.control || input.command){
-      if(input.key.toLowerCase() === 's') {
+      if(input.code === 'KeyS') {
         sendCommand({ command: 'SAVE_CHANGES' })
       }
       if(input.key.toLowerCase() === 'f8') {
