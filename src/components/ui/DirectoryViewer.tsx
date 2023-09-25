@@ -27,8 +27,17 @@ type AdderType = 'file'|'folder'|null
 
 const getFileMenuItems = (
   tree:PathTreeType,
-  renameFile: () => void
+  renameFile: () => void,
+  setAdder: (val:AdderType) => void
 ) => [
+  {
+    title: 'New file', 
+    callback: () => setAdder('file')
+  },
+  {
+    title: 'New folder', 
+    callback: () => setAdder('folder')
+  },
   {
     title: 'Rename', 
     callback: () => renameFile()
@@ -47,25 +56,19 @@ const getFolderMenuItems = (
   setAdder: (val:AdderType) => void
 ) => [
   {
-    title: 'Delete', 
+    title: 'New file', 
+    callback: () => setAdder('file')
+  },
+  {
+    title: 'New folder', 
+    callback: () => setAdder('folder')
+  },
+  {
+    title: 'Delete',
     callback: () => SendToElectron({
       command: 'DELETE',
       path: tree.path
     })
-  },
-  { 
-    title: 'New file', 
-    callback: () => {
-      if (!tree.isOpen)OpenFileTree(tree)
-      setAdder('file')
-    }
-  },
-  { 
-    title: 'New folder', 
-    callback: () => {
-      if (!tree.isOpen)OpenFileTree(tree)
-      setAdder('folder')
-    }
   },
 ]
 
@@ -85,9 +88,10 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
     <div className='dir-viewer-container'>
       <PathTree
         fileSelector={fileSelector}
-        tree={mainTree} 
-        root={null} 
-        level={0} 
+        tree={mainTree}
+        root={null}
+        level={0}
+        setAdder={() => {}}
       />
     </div>
   )
@@ -100,11 +104,15 @@ type FilesTreeProps = {
   root: string | null;
   level: number;
   fileSelector: (path:string) => void;
+  setAdder: (val:AdderType) => void;
 }
 
-const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
-  const [adder, setAdder] = React.useState<AdderType>(null)
-
+const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
+  const [adder, _] = React.useState<AdderType>(null)
+  if(tree.isDirectory || !setAdder){
+    setAdder = _
+  }
+  
   if (!tree) {
     return null
   }
@@ -126,7 +134,8 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
       <PathTree
         tree={tree.nodes[nodeKey]} 
         root={nodeKey} 
-        level={level + 1} 
+        level={level + 1}
+        setAdder={setAdder}
         key={root + nodeKey + level} 
         fileSelector={fileSelector}
       />
@@ -134,15 +143,19 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   
   return <>
     {root && !tree.isDirectory &&
-      <FileItem tree={tree} root={root} level={level} fileSelector={fileSelector} />
+      <FileItem 
+        tree={tree} 
+        root={root} 
+        level={level} 
+        fileSelector={fileSelector} 
+        setAdder={setAdder}
+      />
     }
     {root && tree.isDirectory &&
       <>
         <div className='node' 
           style={{ paddingLeft: 2 + 18 * (level - 1) }}
-          onContextMenu={
-            e => ShowMenu(e, getFolderMenuItems(tree, setAdder))
-          }
+          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
           onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
           {root}
@@ -163,45 +176,48 @@ const PathTree = observer(({ tree, root, level, fileSelector }:FilesTreeProps) =
   </>
 })
 
-const FileItem = observer(({ tree, root, level, fileSelector }:FilesTreeProps) => {
-  //TODO: make normal condition
-  const isSelected = 
-    MapFiles.selectedField === tree.path || 
-    MapFiles.selectedScript === tree.path || 
-    MapFiles.selectedLang === tree.path || 
-    MapFiles.selectedParticlesFile === tree.path
-  const [isRenaming, setRenaming] = React.useState(false)
+const FileItem = observer(
+  ({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
+    //TODO: make normal condition
+    const isSelected = 
+      MapFiles.selectedField === tree.path || 
+      MapFiles.selectedScript === tree.path || 
+      MapFiles.selectedLang === tree.path || 
+      MapFiles.selectedParticlesFile === tree.path
+    const [isRenaming, setRenaming] = React.useState(false)
 
-  const rename = (newName:string) => {
-    setRenaming(false)
-    if (newName === root) { return }
-    SendToElectron({
-      command: 'RENAME',
-      path: tree.path,
-      newName: newName + ''
-    })
+    const rename = (newName:string) => {
+      setRenaming(false)
+      if (newName === root) { return }
+      SendToElectron({
+        command: 'RENAME',
+        path: tree.path,
+        newName: newName + ''
+      })
+    }
+
+    if (isRenaming) {
+      return <Renamer 
+        style={{ marginLeft: 4 + 18 * (level - 1) }}
+        oldName={root ?? ''} 
+        rename={rename}
+      />
+    }
+
+    const startRenaming = () => setRenaming(true)
+
+    return (
+      <div className={`node ${ isSelected ? 'selected-item' : '' }`}
+        style={{ paddingLeft: 4 + 18 * (level - 1) }}
+        onDoubleClick={startRenaming}
+        tabIndex={0}
+        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}
+        onClick={() => fileSelector(tree.path)}>
+        {root}
+      </div>
+    )
   }
-
-  if (isRenaming) {
-    return <Renamer 
-      style={{ marginLeft: 4 + 18 * (level - 1) }}
-      oldName={root ?? ''} 
-      rename={rename}
-    />
-  }
-
-  const startRenaming = () => setRenaming(true)
-
-  return (
-    <div className={`node ${ isSelected ? 'selected-item' : '' }`}
-      style={{ paddingLeft: 4 + 18 * (level - 1) }}
-      onDoubleClick={startRenaming}
-      onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming))}
-      onClick={() => fileSelector(tree.path)}>
-      {root}
-    </div>
-  )
-})
+)
 
 const FileAdder = ({
   path, level, fileSelector, add, reset

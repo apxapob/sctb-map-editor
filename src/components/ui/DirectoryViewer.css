@@ -23,6 +23,11 @@
   justify-content: space-between;
   padding-left: 6px;
   padding-right: 6px;
+  border: 1px solid transparent;
+}
+
+.node:focus {
+  border-color: rgba(0, 0, 255, 0.8);
 }
 
 .node:hover {
