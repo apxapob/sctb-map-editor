@@ -10,9 +10,10 @@ const createWindow = () => {
       nodeIntegration: true,
       contextIsolation: false
     },
-    autoHideMenuBar: true,
     show: false
   })
+
+  win.setMenu(null)
 
   if(app.isPackaged){
     win.loadFile('public/index.html')
