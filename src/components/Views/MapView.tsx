@@ -5,6 +5,7 @@ import './View.css'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesOptions from '../ui/components/CountriesOptions'
+import TilesOptions from '../ui/components/TilesOptions'
 
 const MapView = () => 
   <div className='tools-container'>
@@ -59,6 +60,10 @@ const MapView = () =>
       <CountriesOptions
         filePath={INFO_PATH}
         valuePath='countries'
+      />
+      <TilesOptions
+        filePath={INFO_PATH}
+        valuePath='tiles'
       />
     </div>
   </div>

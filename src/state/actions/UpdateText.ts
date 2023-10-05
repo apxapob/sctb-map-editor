@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { EffectTemplates, EffectType, Effects, JSONObject, JSONValue, TabType } from '../../types/types'
 import { EditorState, TabsState } from '../ToolState'
-import { MapFiles, getFilePath } from '../MapFiles'
+import { INFO_PATH, MapFiles, getFilePath } from '../MapFiles'
 import SendToGame from './SendToGame'
 
 export const UpdateUnsavedData = action((tab:TabType, text:string|null) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { INFO_PATH, MapFiles } from '../../../state/MapFiles'
+import { MapFiles } from '../../../state/MapFiles'
 import { GetJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
 import './JsonValueInput.css'
@@ -12,7 +12,7 @@ const CountriesOptions = (
   { filePath, valuePath }:InputProps
 ) => {
   const observedCountries = GetJsonFileValue(filePath, valuePath) as CountryInfo[]
-  const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
+  const maxPlayers = (MapFiles.json[filePath] as MapInfo).maxPlayers
 
   while (observedCountries.length !== maxPlayers) {
     if (observedCountries.length > maxPlayers) {
@@ -49,21 +49,21 @@ const CountriesOptions = (
               {'Country ' + (idx + 1)}
             </span>
             <JsonColorSelector
-              filePath={INFO_PATH}
+              filePath={filePath}
               valuePath={`countries.${idx}.color`}
             />
           </div>
           <JsonNumberInput
             placeholder='Minerals'
             title=""
-            filePath={INFO_PATH}
+            filePath={filePath}
             valuePath={`countries.${idx}.minerals`} 
             isInteger={true} 
           />
           <JsonNumberInput
             placeholder='Mana'
             title=""
-            filePath={INFO_PATH}
+            filePath={filePath}
             valuePath={`countries.${idx}.mana`} 
             isInteger={true} 
           />

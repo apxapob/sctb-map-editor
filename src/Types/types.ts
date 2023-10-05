@@ -249,6 +249,13 @@ export type CountryInfo = {
   mana: number;
 }
 
+export type TileTypeInfo = {
+  image_h: string;
+  image_v: string;
+  color: number;
+  alpha: number;
+}
+
 export type MapInfo = {
   mapId: string;
   name: string;
@@ -258,6 +265,7 @@ export type MapInfo = {
   singlePlayer: boolean;
   maxPlayers: number;
   countries: CountryInfo[];
+  tiles: TileTypeInfo[];
 }
 
 export type UnitsMap = {

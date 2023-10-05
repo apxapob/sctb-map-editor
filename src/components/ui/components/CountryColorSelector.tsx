@@ -21,7 +21,7 @@ const CountryColorSelector = (props:{
     }
     {countryColors.map(
       (countryColor:number, idx:number) => 
-        <option key={countryColor} value={idx} style={{ backgroundColor: '#'+countryColor.toString(16) }} />
+        <option key={idx} value={idx} style={{ backgroundColor: '#'+countryColor.toString(16) }} />
     )}
   </select>
 }
