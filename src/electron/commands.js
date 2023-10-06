@@ -358,14 +358,12 @@ const makeRootFiles = async (dir, mapId) => {
         {
           image_h: "hex_h.png",
           image_v: "hex_v.png",
-          color: 16777215,
-          alpha: 1
+          color: 16777215
         },
         {
           image_h: "hex_h.png",
           image_v: "hex_v.png",
-          color: 0,
-          alpha: 1
+          color: 0
         }
       ],
     }, null, 2)

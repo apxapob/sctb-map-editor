@@ -65,7 +65,6 @@ export type ToolType =
   'LandDown' | 
   'DeleteTiles' |
   'CreateTiles' |
-  'CreateManaTiles' |
   'CreateItems' |
   'CreateUnits' |
   'Delete' |
@@ -77,6 +76,7 @@ export type ToolStateType = {
   tool: ToolType;
   toolUnit: string|null;
   toolItem: string|null;
+  tileType: number;
   countryId: number;
 }
 
@@ -95,13 +95,7 @@ export type EditorStateType = {
   jsonEditorTrigger: boolean;
 }
 
-export type ToolStateChangeType = {
-  radius?: number;
-  tool?: ToolType;
-  toolUnit?: string;
-  toolItem?: string;
-  countryId?: number;
-}
+export type ToolStateChangeType = Partial<ToolStateType>;
 
 export type ObjectDataType = {
   id: string;

@@ -1,27 +1,28 @@
 import { observer } from "mobx-react-lite"
 import { INFO_PATH, MapFiles } from "../../../state/MapFiles"
 import { MapInfo } from "../../../types/types"
+import { IntToRGB } from "../../../utils/utilFuncs"
 
 const CountryColorSelector = (props:{
-  countryId: number | undefined,
-  onChange: (color:number) => void
+  onChange: (color:number) => void;
+  countryId: number | undefined
 }) => {
+  const countryId = props.countryId
   const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
   const countryColors = [0xffffff, ...mapInfo.countries.map(c => c.color)]
 
-  return <select value={props.countryId}
+  return <select value={countryId}
     style={{ 
       width: 60,
-      backgroundColor: props.countryId === undefined ? 'unset' : '#'+countryColors[props.countryId].toString(16)
+      backgroundColor: countryId === undefined ? 'unset' : IntToRGB(countryColors[countryId])
     }}
     onChange={e => props.onChange( parseInt(e.target.value) )}
   >
-    {props.countryId === undefined &&
+    {countryId === undefined &&
       <option value={undefined} style={{ backgroundColor: 'black' }} />
     }
     {countryColors.map(
-      (countryColor:number, idx:number) => 
-        <option key={idx} value={idx} style={{ backgroundColor: '#'+countryColor.toString(16) }} />
+      (countryColor:number, idx:number) => <option key={idx} value={idx} style={{ backgroundColor: IntToRGB(countryColor) }} />
     )}
   </select>
 }

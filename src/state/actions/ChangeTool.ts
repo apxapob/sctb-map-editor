@@ -10,6 +10,8 @@ const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.toolUnit)ToolState.toolUnit = newTool.toolUnit
   if (newTool.toolItem)ToolState.toolItem = newTool.toolItem
   if (newTool.countryId !== undefined)ToolState.countryId = newTool.countryId
+  if (newTool.tileType !== undefined)ToolState.tileType = newTool.tileType
+  if (newTool.fogOfWarCountryId !== undefined)ChangeFogOfWarCountry(newTool.fogOfWarCountryId)
   
   SendToGame({
     method: 'change_tool',

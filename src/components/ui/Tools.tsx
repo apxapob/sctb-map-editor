@@ -6,8 +6,8 @@ import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
 import { MapFiles } from '../../state/MapFiles'
-import { UpdateUnitsCountry } from '../../state/actions/UpdateUnits'
 import CountryColorSelector from './components/CountryColorSelector'
+import TileTypeSelector from './components/TileTypeSelector'
 
 const Tools = () => {
   const { radius, tool, toolUnit, toolItem } = ToolState
@@ -51,10 +51,11 @@ const Tools = () => {
             onClick={() => ChangeTool({ tool: 'LandDown' })} >↓</button>
         </span>
         
-        <button className={`tool ${tool === 'CreateTiles' ? 'selectedBtn' : ''}`}
-          onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</button>
-        <button className={`tool ${tool === 'CreateManaTiles' ? 'selectedBtn' : ''}`}
-          onClick={() => ChangeTool({ tool: 'CreateManaTiles' })} >Create Mana Tiles</button>
+        <div className='hflex' style={{ width: '100%', alignItems:'center' }}>
+          <button className={`tool ${tool === 'CreateTiles' ? 'selectedBtn' : ''}`}
+            onClick={() => ChangeTool({ tool: 'CreateTiles' })} >Create Tiles</button>
+          <TileTypeSelector />
+        </div>
         <button className={`tool ${tool === 'DeleteTiles' ? 'selectedBtn' : ''}`}
           onClick={() => ChangeTool({ tool: 'DeleteTiles' })} >Delete Tiles</button>
           
