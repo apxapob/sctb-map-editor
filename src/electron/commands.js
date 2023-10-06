@@ -282,8 +282,6 @@ exports.CREATE_MAP = async () => {
     await makeLocaleDir(dir, mapId)
     await makeParticlesDir(dir, mapId)
     await makeScriptsDir(dir, mapId)
-    await makeUnitsDir(dir, mapId)
-    await makeItemsDir(dir, mapId)
     
     await loadMap(dir, true)
   } catch (err) {
@@ -390,16 +388,11 @@ const makeScriptsDir = async (dir, mapId) => {
   )
 }
 
-const makeItemsDir = async (dir, mapId) => {
-  await fs.promises.mkdir(dir + '\\items')
-}
-
-const makeUnitsDir = async (dir, mapId) => {
-  await fs.promises.mkdir(dir + '\\units')
-}
-
 const makeImagesDir = async (dir, mapId) => {
   await fs.promises.mkdir(dir + '\\img')
+  await fs.promises.mkdir(dir + '\\img\\units')
+  await fs.promises.mkdir(dir + '\\img\\items')
+  await fs.promises.mkdir(dir + '\\img\\tiles')
 }
 
 const makeFieldsDir = async (dir, mapId) => {
