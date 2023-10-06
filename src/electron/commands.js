@@ -34,8 +34,8 @@ const loadMap = async (mapDir, forEditing = false) => {
     }
 
     const sharedImgPath = getSharedImagesDirPath()
-    await loadDir(mapDir)
     await loadDir(sharedImgPath)
+    await loadDir(mapDir)
     
     for (const dir of dirs) {
       sendCommand({
