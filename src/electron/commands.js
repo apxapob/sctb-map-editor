@@ -5,6 +5,10 @@ const { compress, decompress } = require('./StringUtils')
 
 let mapDirectory = null
 
+const getSharedImagesDirPath = () => {
+  return app.isPackaged ? './res/img/' : '../sctb-client/res/img/'
+}
+
 const getMapsDirPath = () => {
   return app.isPackaged ? './maps/' : '../sctb-client/maps/'
 }
@@ -29,7 +33,9 @@ const loadMap = async (mapDir, forEditing = false) => {
       }
     }
 
+    const sharedImgPath = getSharedImagesDirPath()
     await loadDir(mapDir)
+    await loadDir(sharedImgPath)
     
     for (const dir of dirs) {
       sendCommand({
@@ -55,7 +61,7 @@ const loadMap = async (mapDir, forEditing = false) => {
           command: 'LOAD_BINARY_FILE', 
           bytes: fileBytes, 
           progress: loaded / files.length, 
-          file: file.replace(mapDir + '\\', '')
+          file: file.replace(mapDir + '\\', '').replace(sharedImgPath, 'img')
         })
         loaded++
       }
@@ -347,7 +353,21 @@ const makeRootFiles = async (dir, mapId) => {
           minerals: 100,
           mana: 10
         }
-      ]
+      ],
+      tiles: [
+        {
+          image_h: "hex_h.png",
+          image_v: "hex_v.png",
+          color: 16777215,
+          alpha: 1
+        },
+        {
+          image_h: "hex_h.png",
+          image_v: "hex_v.png",
+          color: 0,
+          alpha: 1
+        }
+      ],
     }, null, 2)
   )
 }

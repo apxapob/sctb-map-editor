@@ -6,6 +6,8 @@ import { TileTypeInfo } from '../../../types/types'
 import JsonNumberInput from './JsonNumberInput'
 import JsonColorSelector from './JsonColorSelector'
 import { AddMapInfoTile, RemoveTileType } from '../../../state/actions/TileActions'
+import FileSelector from './FileSelector'
+import { TILES_IMAGES_PATH } from '../../../state/MapFiles'
   
 const TilesOptions = (
   { filePath, valuePath }:InputProps
@@ -27,9 +29,18 @@ const TilesOptions = (
     <div className='vflex' style={{ margin: '6px 0 0 0' }}>
       {tiles.map((tile, idx) => 
         <div key={idx} className='hflex' style={{ alignItems: "center", gap: 6 }}>
-          <span className='view-input-title'>
-            {tile.image_h} {tile.image_v}
-          </span>
+          <FileSelector
+            fileType='binary'
+            sourcePath={TILES_IMAGES_PATH}
+            filePath={filePath}
+            valuePath={`tiles.${idx}.image_h`}
+          />
+          <FileSelector
+            fileType='binary'
+            sourcePath={TILES_IMAGES_PATH}
+            filePath={filePath}
+            valuePath={`tiles.${idx}.image_v`}
+          />
           <JsonColorSelector
             filePath={filePath}
             valuePath={`tiles.${idx}.color`}

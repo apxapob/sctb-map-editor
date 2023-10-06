@@ -4,19 +4,22 @@ import { MapFiles } from '../../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 
+export type FileType = 'text' | 'binary' | 'json' 
+
 const FileSelector = (
-  { sourcePath, filePath, valuePath } : { sourcePath:string, filePath: string, valuePath: string }
+  { sourcePath, filePath, valuePath, fileType } : { sourcePath:string, filePath: string, valuePath: string, fileType?:FileType }
 ) => {
-  const scripts = Object.keys(MapFiles.text)
+  const files:{ [filename: string]: any; } = MapFiles[fileType || 'text']
+
+  const items = Object.keys(files)
       .filter(filename => filename.startsWith(sourcePath))
       .map(filename => filename.replace(sourcePath, ''))
 
-  const script = GetJsonFileValue(filePath, valuePath) as string
-
+  const value = GetJsonFileValue(filePath, valuePath) as string
   return <Selector
-    value={script}
+    value={value}
     style={{ width: 'unset', margin: 0 }}
-    items={scripts}
+    items={items}
     onSelect={newVal => UpdateJsonFileValue(
       filePath,
       valuePath,
