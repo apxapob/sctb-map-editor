@@ -253,7 +253,6 @@ export type TileTypeInfo = {
   image_h: string;
   image_v: string;
   color: number;
-  alpha: number;
 }
 
 export type MapInfo = {

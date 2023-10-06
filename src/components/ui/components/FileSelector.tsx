@@ -6,8 +6,16 @@ import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/Up
 
 export type FileType = 'text' | 'binary' | 'json' 
 
+type FileSelectorProps = { 
+  sourcePath:string; 
+  filePath: string; 
+  valuePath: string; 
+  fileType?: FileType;
+  width?: string | number;
+}
+
 const FileSelector = (
-  { sourcePath, filePath, valuePath, fileType } : { sourcePath:string, filePath: string, valuePath: string, fileType?:FileType }
+  { sourcePath, filePath, valuePath, fileType, width } : FileSelectorProps
 ) => {
   const files:{ [filename: string]: any; } = MapFiles[fileType || 'text']
 
@@ -18,7 +26,7 @@ const FileSelector = (
   const value = GetJsonFileValue(filePath, valuePath) as string
   return <Selector
     value={value}
-    style={{ width: 'unset', margin: 0 }}
+    style={{ width: width ?? 'unset', margin: 0 }}
     items={items}
     onSelect={newVal => UpdateJsonFileValue(
       filePath,
