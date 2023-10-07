@@ -6,7 +6,7 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
 import BlobImage from '../ui/components/BlobImage'
 
 type UnitsStatsEditorProps = {
@@ -132,6 +132,7 @@ const UnitsView = () => {
         renameItem={(id, newName) => {
           selectUnit(newName)
           RenameJsonFileValue(UNITS_PATH, id, newName)
+          UpdateJsonFileValue(UNITS_PATH, `${newName}.type`, newName)
         }}
         addItem={() => AddJsonFileValue<UnitStatsType>(
           UNITS_PATH, 

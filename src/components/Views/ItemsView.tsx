@@ -6,7 +6,7 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, ItemType, ItemsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import BlobImage from '../ui/components/BlobImage'
 
@@ -73,6 +73,7 @@ const ItemsView = () => {
         renameItem={(id, newName) => {
           selectItem(newName)
           RenameJsonFileValue(ITEMS_PATH, id, newName)
+          UpdateJsonFileValue(ITEMS_PATH, `${newName}.type`, newName)
         }}
         addItem={() => AddJsonFileValue<ItemType>(
           ITEMS_PATH, 
