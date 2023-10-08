@@ -14,8 +14,9 @@ const TilesOptions = (
 ) => {
   const tiles = GetJsonFileValue(filePath, valuePath) as TileTypeInfo[]
   
-  return <div>
-    <div className='hflex' style={{ gap: 6, marginTop: 12 }}>
+  return <div style={{ marginTop: 12 }}>
+    Hex Types
+    <div className='hflex' style={{ gap: 6 }}>
       <span style={{ width: 120 }}>
         Horizontal
       </span>
