@@ -58,6 +58,17 @@ export type GameMessage = {
 } | {
   method: 'maps_list';
   data: string[];
+} | {
+  method: 'rename_unit_type' | 'rename_item_type';
+  data: {
+    oldType: string; 
+    newType: string;
+  }
+} | {
+  method: 'delete_unit_type' | 'delete_item_type';
+  data: {
+    type: string;
+  }
 };
 
 export type ToolType = 

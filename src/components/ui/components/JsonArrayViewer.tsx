@@ -6,7 +6,7 @@ import { MenuItem } from '../../../state/MenuState'
 export type JsonArrayViewerProps = {
   addItem: () => void;
   deleteItem: (id:string) => void;
-  renameItem: (id:string, newName:string) => void;
+  renameItem: (oldName:string, newName:string) => void;
   items: string[];
   selectedItemId: string;
   selectItem: (id:string) => void;
@@ -19,7 +19,7 @@ type ViewerItemProps = {
   menuItems: MenuItem[];
   onClick: () => void;
   deleteItem: (id:string) => void;
-  renameItem: (id:string, newName:string) => void;
+  renameItem: (oldName:string, newName:string) => void;
 }
 
 const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem, menuItems }:ViewerItemProps) => {
