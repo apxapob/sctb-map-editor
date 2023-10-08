@@ -34,6 +34,26 @@ const SkillsStatsEditor = ({
       />
     </div>
 
+    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
+      <span className='view-input-title'>
+        Area script:
+      </span>
+      <FileSelector
+        sourcePath={SCRIPTS_PATH}
+        filePath={SKILLS_PATH}
+        valuePath={`${skillId}.areaScript`}
+      />
+    </div>
+
+    <JsonNumberInput
+      placeholder='AOE radius'
+      title='AOE radius'
+      filePath={SKILLS_PATH}
+      valuePath={`${skillId}.radius`}
+      isInteger={true}
+      min={0}
+    />
+
     <JsonNumberInput
       placeholder='Mana cost'
       title='Mana cost'
@@ -47,14 +67,6 @@ const SkillsStatsEditor = ({
       filePath={SKILLS_PATH}
       valuePath={`${skillId}.price`}
       isInteger={true}
-    />
-    <JsonNumberInput
-      placeholder='AOE radius'
-      title='AOE radius'
-      filePath={SKILLS_PATH}
-      valuePath={`${skillId}.radius`}
-      isInteger={true}
-      min={0}
     />
     <JsonNumberInput
       placeholder='Distance'
@@ -94,7 +106,7 @@ const SkillsView = () => {
         addItem={() => AddJsonFileValue<SkillType>(
           SKILLS_PATH, 
           'Skill', 
-          { id: '', args: [], mana: 0, script: '', price: 0, radius: 0, range: 0 },
+          { id: '', args: [], mana: 0, script: '', areaScript: '', price: 0, radius: 0, range: 0 },
           selectSkill
         )}
         deleteItem={id => {

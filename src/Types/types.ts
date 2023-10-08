@@ -133,6 +133,7 @@ export type SkillType = {
   args: string[];
   mana: number;
   script: string;
+  areaScript: string;
   price: number;
   radius: number;
   range: number;
