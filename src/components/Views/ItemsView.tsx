@@ -6,11 +6,10 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, ItemType, ItemsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
-import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue, UpdateJsonFileValue } from '../../state/actions/UpdateText'
+import { AddJsonFileValue } from '../../state/actions/UpdateText'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import BlobImage from '../ui/components/BlobImage'
-import SendToGame from '../../state/actions/SendToGame'
-import { RenameEntity } from '../../state/actions/RenameActions'
+import { DeleteEntity, RenameEntity } from '../../state/actions/RenameActions'
 
 type ItemsStatsEditorProps = {
   itemId: string;
@@ -84,7 +83,7 @@ const ItemsView = () => {
         )}
         deleteItem={id => {
           selectItem('')
-          DeleteJsonFileValue(ITEMS_PATH, id)
+          DeleteEntity("item", id)
         }}
       />
       <div className='unit-container'>
