@@ -64,6 +64,8 @@ const ItemViewer = ({ itemId, selected, onClick, deleteItem, renameItem, menuIte
 export const JsonArrayViewer = (
   { selectedItemId, items, selectItem, deleteItem, renameItem, placeholder, addItem }:JsonArrayViewerProps
 ) => {
+  const [searchVal, setSearchVal] = useState("")
+  
   const onKeyDown = (e:React.KeyboardEvent) => {
     const idx = items.indexOf(selectedItemId)
     if (idx === -1) { return }
@@ -90,16 +92,23 @@ export const JsonArrayViewer = (
     tabIndex={0}
     onContextMenuCapture={e => ShowMenu(e, menuItems)}
   >
-    {items.map(itemId =>
-      <ItemViewer
-        itemId={itemId}
-        key={itemId}
-        selected={itemId === selectedItemId}
-        renameItem={renameItem}
-        deleteItem={deleteItem}
-        menuItems={menuItems}
-        onClick={() => selectItem(itemId)} />
-    )}
+    <input
+      placeholder='🔍 Search'
+      value={searchVal}
+      onChange={e => setSearchVal(e.target.value)}
+    />
+    {items
+      .filter(itemId => itemId.toLowerCase().includes(searchVal.toLowerCase()))
+      .map(itemId =>
+        <ItemViewer
+          itemId={itemId}
+          key={itemId}
+          selected={itemId === selectedItemId}
+          renameItem={renameItem}
+          deleteItem={deleteItem}
+          menuItems={menuItems}
+          onClick={() => selectItem(itemId)} />
+      )}
     <div onClick={addItem} className={'node'}>
       {'+Add ' + placeholder}
     </div>
