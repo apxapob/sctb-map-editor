@@ -9,7 +9,7 @@ import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue } from '../../state/actions/UpdateText'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import BlobImage from '../ui/components/BlobImage'
-import { DeleteEntity, RenameEntity } from '../../state/actions/RenameActions'
+import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 
 type ItemsStatsEditorProps = {
   itemId: string;
@@ -73,7 +73,7 @@ const ItemsView = () => {
         selectItem={selectItem}
         renameItem={(oldName, newName) => {
           selectItem(newName)
-          RenameEntity("item", oldName, newName)
+          RenameObject("item", oldName, newName)
         }}
         addItem={() => AddJsonFileValue<ItemType>(
           ITEMS_PATH, 

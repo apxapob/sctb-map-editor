@@ -8,7 +8,7 @@ import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue } from '../../state/actions/UpdateText'
 import BlobImage from '../ui/components/BlobImage'
-import { DeleteEntity, RenameEntity } from '../../state/actions/RenameActions'
+import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -132,7 +132,7 @@ const UnitsView = () => {
         selectItem={selectUnit}
         renameItem={(oldName, newName) => {
           selectUnit(newName)
-          RenameEntity("unit", oldName, newName)
+          RenameObject("unit", oldName, newName)
         }}
         addItem={() => AddJsonFileValue<UnitStatsType>(
           UNITS_PATH, 

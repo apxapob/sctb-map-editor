@@ -7,6 +7,7 @@ import { BuffType, BuffsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 import JsonEffectsEditor from '../ui/components/JsonEffectsEditor'
+import { RenameObject } from '../../state/actions/RenameActions'
 
 type BuffsEditorProps = {
   buffId: string;
@@ -52,9 +53,9 @@ const BuffsView = () => {
         items={buffsArray} 
         selectedItemId={selectedBuffId} 
         selectItem={selectBuff}
-        renameItem={(id, newName) => {
+        renameItem={(oldName, newName) => {
           selectBuff(newName)
-          RenameJsonFileValue(BUFFS_PATH, id, newName)
+          RenameObject("buff", oldName, newName)
         }}
         addItem={() => AddJsonFileValue<BuffType>(
           BUFFS_PATH, 

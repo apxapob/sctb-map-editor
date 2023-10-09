@@ -129,7 +129,7 @@ export type UnitDataType = ObjectDataType & {
 }
 
 export type SkillType = {
-  id: string;
+  type: string;
   args: string[];
   mana: number;
   script: string;
@@ -225,7 +225,7 @@ export type EffectType = 'BlockSkills' | {
     args?: string[];
     stat?: StatType;
     delta?: number;
-    id?: string;//skillId
+    id?: string;//skillType
     //skill: SkillType;//custom skill
 
     //Aura params:
