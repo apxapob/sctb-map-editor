@@ -9,8 +9,7 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "react",
-    "promise"
+    "react"
   ],
   "extends": [
     "eslint:recommended",

@@ -8,27 +8,25 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "ace-builds": "^1.23.2",
-    "electron": "^25.2.0",
-    "eslint": "^8.44.0",
-    "mobx": "^6.9.0",
-    "mobx-react-lite": "^3.4.3",
+    "ace-builds": "^1.29.0",
+    "electron": "^27.0.0",
+    "eslint": "^8.51.0",
+    "mobx": "^6.10.2",
+    "mobx-react-lite": "^4.0.5",
     "react": "^18.2.0",
     "react-ace": "^10.1.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.6"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
-    "@types/jest": "^29.5.2",
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "eslint": "^8.44.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.8.4",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5"
   },
   "scripts": {
     "dev": "vite --port=3000 | electron .",
