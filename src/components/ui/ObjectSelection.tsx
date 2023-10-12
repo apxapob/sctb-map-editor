@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import SendToGame from '../../state/actions/SendToGame'
-import { addBuff, isItem, isUnit, removeBuff, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { addBuff, isItem, isUnit, removeBuff, RotateUnits, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
 import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
@@ -60,6 +60,18 @@ const ObjectSelection = () => {
       <div className='hflex gapped'>
         Country: 
         <CountryColorSelector countryId={countryValue} onChange={UpdateUnitsCountry} />
+      </div>
+    }
+
+    {isUnit(mainObj) &&
+      <div className='hflex gapped'>
+        Direction: 
+        <button onClick={() => RotateUnits(1)}>
+        ↻
+        </button>
+        <button onClick={() => RotateUnits(-1)}>
+        ↺
+        </button>
       </div>
     }
     

@@ -40,6 +40,14 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
   UpdateObjects()
 })
 
+export const RotateUnits = action((delta:number) => {
+  SelectedObjects.data.forEach(u => {
+    if (!isUnit(u)) return
+    (u as UnitDataType).dir += delta
+  })
+  UpdateObjects()
+})
+
 export const setBuffTurns = action((idx:number, value:number) => {
   if (Number.isNaN(value)) return
   SelectedObjects.data.forEach(
