@@ -6,7 +6,13 @@ import SendToGame from './SendToGame'
 const TestMap = () => {
   if (MapFiles.status !== 'Loaded' || EditorState.mode === 'play') return
   EditorState.mode = EditorState.mode === 'edit' ? 'test' : 'edit'
-  EditorState.activeTab = 'Field'
+  if(EditorState.mode === "test"){
+    EditorState.beforeTestTab = EditorState.activeTab
+    EditorState.activeTab = 'Field'
+  } else {
+    EditorState.activeTab = EditorState.beforeTestTab
+  }
+  
   SendToGame({ method: 'test_map', data: EditorState.mode })
 }
 

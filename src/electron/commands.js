@@ -427,6 +427,8 @@ trace("Hello World!");
 //Look what's inside:
 trace(vars);
 trace(funcs);
+trace(HexMath);
+trace(Math);
 
 //Sometimes the game waits for a script to return a value.
 //For example, if you return false, it will be considered a failure and any changes made by the script will be reverted.
