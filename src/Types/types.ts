@@ -158,6 +158,7 @@ export type UnitStatsType = ObjectType & {
   detector: number;
   invisible: number;
   maxHp: number;
+  hideHpBar: boolean;
   flying: number;
   skills: string[];
 }

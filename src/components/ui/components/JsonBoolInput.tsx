@@ -7,7 +7,7 @@ import { InputProps } from './JsonStringInput'
 const JsonBoolInput = (
   { filePath, valuePath, title, placeholder, tooltip }:InputProps
 ) => {
-  const value = GetJsonFileValue(filePath, valuePath) as boolean
+  const value = GetJsonFileValue(filePath, valuePath) === true
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
       <span className='view-input-title'>

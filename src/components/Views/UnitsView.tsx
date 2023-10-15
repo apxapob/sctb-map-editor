@@ -9,6 +9,7 @@ import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue } from '../../state/actions/UpdateText'
 import BlobImage from '../ui/components/BlobImage'
 import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
+import JsonBoolInput from '../ui/components/JsonBoolInput'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -54,6 +55,7 @@ const UnitsStatsEditor = ({
     <JsonNumberInput
       placeholder='Range'
       title='Range'
+      tooltip='How far the unit can shoot. Set 0 for meelee units.'
       filePath={UNITS_PATH}
       valuePath={`${unitId}.range`}
       isInteger={true}
@@ -78,6 +80,7 @@ const UnitsStatsEditor = ({
     <JsonNumberInput
       placeholder='Flying height'
       title='Flying height'
+      tooltip='The higher this value, the higher obstacle the unit can fly over.'
       filePath={UNITS_PATH}
       valuePath={`${unitId}.flying`}
       isInteger={true}
@@ -86,6 +89,7 @@ const UnitsStatsEditor = ({
     <JsonNumberInput
       placeholder='Detection range'
       title='Detection range'
+      tooltip='How far the unit can detect invisible enemies.'
       filePath={UNITS_PATH}
       valuePath={`${unitId}.detector`}
       isInteger={true}
@@ -94,12 +98,19 @@ const UnitsStatsEditor = ({
     <JsonNumberInput
       placeholder='Invisibility power'
       title='Invisibility power'
+      tooltip='The higher this value, the closer the unit can get to enemies without losing invisibility.'
       filePath={UNITS_PATH}
       valuePath={`${unitId}.invisible`}
       isInteger={true}
       min={0}
     />
-
+    <JsonBoolInput
+      placeholder='Hide hp bar'
+      title='Hide hp bar'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.hideHpBar`}
+    />
+    
     <JsonArrayInput
       title='Skills'
       filePath={UNITS_PATH}
@@ -137,7 +148,20 @@ const UnitsView = () => {
         addItem={() => AddJsonFileValue<UnitStatsType>(
           UNITS_PATH, 
           'Unit',
-          { type: '', buffs: [], attack: 0, range: 0, speed: 0, vision: 0, detector: 0, invisible: 0, maxHp: 0, flying: 0, skills: [] },
+          { 
+            type: '', 
+            buffs: [], 
+            attack: 0, 
+            range: 0, 
+            speed: 0, 
+            vision: 0, 
+            detector: 0, 
+            invisible: 0, 
+            maxHp: 0, 
+            flying: 0, 
+            skills: [],
+            hideHpBar: false
+          },
           selectUnit
         )}
         deleteItem={id => {
