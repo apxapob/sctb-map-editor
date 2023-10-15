@@ -459,16 +459,16 @@ json2object_reader_BaseParser.prototype = {
 	}
 	,__class__: json2object_reader_BaseParser
 };
-var JsonParser_$0 = function(errors,putils,errorType) {
+var JsonParser_$8471 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_0"] = JsonParser_$0;
-JsonParser_$0.__name__ = "JsonParser_0";
-JsonParser_$0.__super__ = json2object_reader_BaseParser;
-JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8471"] = JsonParser_$8471;
+JsonParser_$8471.__name__ = "JsonParser_8471";
+JsonParser_$8471.__super__ = json2object_reader_BaseParser;
+JsonParser_$8471.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -486,19 +486,19 @@ JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$7(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				this.value.items = this.loadObjectField(($_=new JsonParser_$8478(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
 				break;
 			case "size":
-				this.value.size = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
+				this.value.size = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
 				break;
 			case "tiles":
-				this.value.tiles = this.loadObjectField(($_=new JsonParser_$3(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
+				this.value.tiles = this.loadObjectField(($_=new JsonParser_$8474(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
 				break;
 			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				this.value.units = this.loadObjectField(($_=new JsonParser_$8476(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -508,25 +508,25 @@ JsonParser_$0.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_FieldData.prototype);
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.size = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.size = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.tiles = [];
 		value.units = new haxe_ds_StringMap();
 		value.items = new haxe_ds_StringMap();
 		return value;
 	}
-	,__class__: JsonParser_$0
+	,__class__: JsonParser_$8471
 });
-var JsonParser_$1 = function(errors,putils,errorType) {
+var JsonParser_$8472 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1"] = JsonParser_$1;
-JsonParser_$1.__name__ = "JsonParser_1";
-JsonParser_$1.__super__ = json2object_reader_BaseParser;
-JsonParser_$1.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8472"] = JsonParser_$8472;
+JsonParser_$8472.__name__ = "JsonParser_8472";
+JsonParser_$8472.__super__ = json2object_reader_BaseParser;
+JsonParser_$8472.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"String",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -538,26 +538,287 @@ JsonParser_$1.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = s;
 	}
 	,getAuto: function() {
-		return new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1
+	,__class__: JsonParser_$8472
 });
-var JsonParser_$10 = function(errors,putils,errorType) {
+var JsonParser_$8473 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+	this.value = 0;
+};
+$hxClasses["JsonParser_8473"] = JsonParser_$8473;
+JsonParser_$8473.__name__ = "JsonParser_8473";
+JsonParser_$8473.__super__ = json2object_reader_BaseParser;
+JsonParser_$8473.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Int",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNumber: function(f,pos,variable) {
+		this.value = this.loadJsonInt(f,pos,variable,this.value);
+	}
+	,getAuto: function() {
+		return new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8473
+});
+var JsonParser_$8474 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_10"] = JsonParser_$10;
-JsonParser_$10.__name__ = "JsonParser_10";
-JsonParser_$10.__super__ = json2object_reader_BaseParser;
-JsonParser_$10.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8474"] = JsonParser_$8474;
+JsonParser_$8474.__name__ = "JsonParser_8474";
+JsonParser_$8474.__super__ = json2object_reader_BaseParser;
+JsonParser_$8474.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldTile>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8487(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$8474([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8474
+});
+var JsonParser_$8476 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_8476"] = JsonParser_$8476;
+JsonParser_$8476.__name__ = "JsonParser_8476";
+JsonParser_$8476.__super__ = json2object_reader_BaseParser;
+JsonParser_$8476.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitData>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$8484(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$8476([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8476
+});
+var JsonParser_$8478 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_8478"] = JsonParser_$8478;
+JsonParser_$8478.__name__ = "JsonParser_8478";
+JsonParser_$8478.__super__ = json2object_reader_BaseParser;
+JsonParser_$8478.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemData>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$8479(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$8478([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8478
+});
+var JsonParser_$8479 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_8479"] = JsonParser_$8479;
+JsonParser_$8479.__name__ = "JsonParser_8479";
+JsonParser_$8479.__super__ = json2object_reader_BaseParser;
+JsonParser_$8479.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.ItemData",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["invisible","unpickable","id","type","pos","buffs"],[false,false,false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "buffs":
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$8482(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				break;
+			case "id":
+				this.value.id = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				break;
+			case "invisible":
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				break;
+			case "pos":
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$8481(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				break;
+			case "type":
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				break;
+			case "unpickable":
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_ItemData.prototype);
+		value.invisible = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.unpickable = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$8481([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.buffs = [];
+		return value;
+	}
+	,__class__: JsonParser_$8479
+});
+var JsonParser_$8480 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+	this.value = false;
+};
+$hxClasses["JsonParser_8480"] = JsonParser_$8480;
+JsonParser_$8480.__name__ = "JsonParser_8480";
+JsonParser_$8480.__super__ = json2object_reader_BaseParser;
+JsonParser_$8480.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Bool",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonBool: function(b,pos,variable) {
+		this.value = b;
+	}
+	,getAuto: function() {
+		return new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8480
+});
+var JsonParser_$8481 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_8481"] = JsonParser_$8481;
+JsonParser_$8481.__name__ = "JsonParser_8481";
+JsonParser_$8481.__super__ = json2object_reader_BaseParser;
+JsonParser_$8481.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexCoords",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$10([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8481([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,loadJson: function(json,variable) {
 		if(variable == null) {
@@ -565,18 +826,18 @@ JsonParser_$10.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 		return this.value = model_HexCoords.customParse(json,variable);
 	}
-	,__class__: JsonParser_$10
+	,__class__: JsonParser_$8481
 });
-var JsonParser_$11 = function(errors,putils,errorType) {
+var JsonParser_$8482 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_11"] = JsonParser_$11;
-JsonParser_$11.__name__ = "JsonParser_11";
-JsonParser_$11.__super__ = json2object_reader_BaseParser;
-JsonParser_$11.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8482"] = JsonParser_$8482;
+JsonParser_$8482.__name__ = "JsonParser_8482";
+JsonParser_$8482.__super__ = json2object_reader_BaseParser;
+JsonParser_$8482.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.BuffData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -585,23 +846,23 @@ JsonParser_$11.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$12(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8483(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$11([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8482([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$11
+	,__class__: JsonParser_$8482
 });
-var JsonParser_$12 = function(errors,putils,errorType) {
+var JsonParser_$8483 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_12"] = JsonParser_$12;
-JsonParser_$12.__name__ = "JsonParser_12";
-JsonParser_$12.__super__ = json2object_reader_BaseParser;
-JsonParser_$12.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8483"] = JsonParser_$8483;
+JsonParser_$8483.__name__ = "JsonParser_8483";
+JsonParser_$8483.__super__ = json2object_reader_BaseParser;
+JsonParser_$8483.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.BuffData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -619,10 +880,10 @@ JsonParser_$12.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -632,22 +893,22 @@ JsonParser_$12.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_BuffData.prototype);
-		value.turns = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turns = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$12
+	,__class__: JsonParser_$8483
 });
-var JsonParser_$13 = function(errors,putils,errorType) {
+var JsonParser_$8484 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_13"] = JsonParser_$13;
-JsonParser_$13.__name__ = "JsonParser_13";
-JsonParser_$13.__super__ = json2object_reader_BaseParser;
-JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8484"] = JsonParser_$8484;
+JsonParser_$8484.__name__ = "JsonParser_8484";
+JsonParser_$8484.__super__ = json2object_reader_BaseParser;
+JsonParser_$8484.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.UnitData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -665,37 +926,37 @@ JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "autocast":
-				this.value.autocast = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
+				this.value.autocast = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
 				break;
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$11(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$8482(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "dir":
-				this.value.dir = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
+				this.value.dir = this.loadObjectField(($_=new JsonParser_$8486(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
 				break;
 			case "follow":
-				this.value.follow = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
+				this.value.follow = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
 				break;
 			case "hp":
-				this.value.hp = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
+				this.value.hp = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "orderIdx":
-				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
+				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
 				break;
 			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$10(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$8481(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
 				break;
 			case "rallyPoints":
-				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$14(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
+				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$8485(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -705,31 +966,31 @@ JsonParser_$13.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_UnitData.prototype);
-		value.follow = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.rallyPoints = new JsonParser_$14([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.orderIdx = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.autocast = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.hp = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.dir = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$10([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.follow = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.rallyPoints = new JsonParser_$8485([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.orderIdx = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.autocast = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.hp = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.dir = new JsonParser_$8486([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$8481([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.buffs = [];
 		return value;
 	}
-	,__class__: JsonParser_$13
+	,__class__: JsonParser_$8484
 });
-var JsonParser_$14 = function(errors,putils,errorType) {
+var JsonParser_$8485 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_14"] = JsonParser_$14;
-JsonParser_$14.__name__ = "JsonParser_14";
-JsonParser_$14.__super__ = json2object_reader_BaseParser;
-JsonParser_$14.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8485"] = JsonParser_$8485;
+JsonParser_$8485.__name__ = "JsonParser_8485";
+JsonParser_$8485.__super__ = json2object_reader_BaseParser;
+JsonParser_$8485.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.HexCoords>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -738,29 +999,51 @@ JsonParser_$14.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$10(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8481(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$14([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8485([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$14
+	,__class__: JsonParser_$8485
 });
-var JsonParser_$15 = function(errors,putils,errorType) {
+var JsonParser_$8486 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_15"] = JsonParser_$15;
-JsonParser_$15.__name__ = "JsonParser_15";
-JsonParser_$15.__super__ = json2object_reader_BaseParser;
-JsonParser_$15.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8486"] = JsonParser_$8486;
+JsonParser_$8486.__name__ = "JsonParser_8486";
+JsonParser_$8486.__super__ = json2object_reader_BaseParser;
+JsonParser_$8486.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexDirection",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNumber: function(f,pos,variable) {
+		this.value = model_HexDirection.fromInt(this.loadJsonInt(f,pos,variable,model_HexDirection.toInt(this.value)));
+	}
+	,getAuto: function() {
+		return new JsonParser_$8486([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$8486
+});
+var JsonParser_$8487 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_8487"] = JsonParser_$8487;
+JsonParser_$8487.__name__ = "JsonParser_8487";
+JsonParser_$8487.__super__ = json2object_reader_BaseParser;
+JsonParser_$8487.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldTile",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$15([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8487([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,loadJson: function(json,variable) {
 		if(variable == null) {
@@ -768,18 +1051,18 @@ JsonParser_$15.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 		return this.value = model_FieldTile.customParse(json,variable);
 	}
-	,__class__: JsonParser_$15
+	,__class__: JsonParser_$8487
 });
-var JsonParser_$17 = function(errors,putils,errorType) {
+var JsonParser_$8489 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_17"] = JsonParser_$17;
-JsonParser_$17.__name__ = "JsonParser_17";
-JsonParser_$17.__super__ = json2object_reader_BaseParser;
-JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8489"] = JsonParser_$8489;
+JsonParser_$8489.__name__ = "JsonParser_8489";
+JsonParser_$8489.__super__ = json2object_reader_BaseParser;
+JsonParser_$8489.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -796,7 +1079,7 @@ JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -813,7 +1096,7 @@ JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$52(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8524(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -830,20 +1113,20 @@ JsonParser_$17.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$17([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8489([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$17
+	,__class__: JsonParser_$8489
 });
-var JsonParser_$19 = function(errors,putils,errorType) {
+var JsonParser_$8491 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_19"] = JsonParser_$19;
-JsonParser_$19.__name__ = "JsonParser_19";
-JsonParser_$19.__super__ = json2object_reader_BaseParser;
-JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8491"] = JsonParser_$8491;
+JsonParser_$8491.__name__ = "JsonParser_8491";
+JsonParser_$8491.__super__ = json2object_reader_BaseParser;
+JsonParser_$8491.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -860,7 +1143,7 @@ JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -877,7 +1160,7 @@ JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$50(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8522(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -894,43 +1177,20 @@ JsonParser_$19.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$19([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8491([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$19
+	,__class__: JsonParser_$8491
 });
-var JsonParser_$2 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-	this.value = 0;
-};
-$hxClasses["JsonParser_2"] = JsonParser_$2;
-JsonParser_$2.__name__ = "JsonParser_2";
-JsonParser_$2.__super__ = json2object_reader_BaseParser;
-JsonParser_$2.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Int",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNumber: function(f,pos,variable) {
-		this.value = this.loadJsonInt(f,pos,variable,this.value);
-	}
-	,getAuto: function() {
-		return new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$2
-});
-var JsonParser_$21 = function(errors,putils,errorType) {
+var JsonParser_$8493 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_21"] = JsonParser_$21;
-JsonParser_$21.__name__ = "JsonParser_21";
-JsonParser_$21.__super__ = json2object_reader_BaseParser;
-JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8493"] = JsonParser_$8493;
+JsonParser_$8493.__name__ = "JsonParser_8493";
+JsonParser_$8493.__super__ = json2object_reader_BaseParser;
+JsonParser_$8493.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UpgradeType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -947,7 +1207,7 @@ JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -964,7 +1224,7 @@ JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$48(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8520(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -981,20 +1241,20 @@ JsonParser_$21.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$21([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8493([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$21
+	,__class__: JsonParser_$8493
 });
-var JsonParser_$23 = function(errors,putils,errorType) {
+var JsonParser_$8495 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_23"] = JsonParser_$23;
-JsonParser_$23.__name__ = "JsonParser_23";
-JsonParser_$23.__super__ = json2object_reader_BaseParser;
-JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8495"] = JsonParser_$8495;
+JsonParser_$8495.__name__ = "JsonParser_8495";
+JsonParser_$8495.__super__ = json2object_reader_BaseParser;
+JsonParser_$8495.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.BuffType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1011,7 +1271,7 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1028,7 +1288,7 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$36(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8508(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1045,20 +1305,20 @@ JsonParser_$23.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$23([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8495([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$23
+	,__class__: JsonParser_$8495
 });
-var JsonParser_$25 = function(errors,putils,errorType) {
+var JsonParser_$8497 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_25"] = JsonParser_$25;
-JsonParser_$25.__name__ = "JsonParser_25";
-JsonParser_$25.__super__ = json2object_reader_BaseParser;
-JsonParser_$25.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8497"] = JsonParser_$8497;
+JsonParser_$8497.__name__ = "JsonParser_8497";
+JsonParser_$8497.__super__ = json2object_reader_BaseParser;
+JsonParser_$8497.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SkillType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1075,7 +1335,7 @@ JsonParser_$25.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1092,7 +1352,7 @@ JsonParser_$25.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$33(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8505(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1109,20 +1369,20 @@ JsonParser_$25.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$25([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8497([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$25
+	,__class__: JsonParser_$8497
 });
-var JsonParser_$26 = function(errors,putils,errorType) {
+var JsonParser_$8498 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_26"] = JsonParser_$26;
-JsonParser_$26.__name__ = "JsonParser_26";
-JsonParser_$26.__super__ = json2object_reader_BaseParser;
-JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8498"] = JsonParser_$8498;
+JsonParser_$8498.__name__ = "JsonParser_8498";
+JsonParser_$8498.__super__ = json2object_reader_BaseParser;
+JsonParser_$8498.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.MapInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1140,34 +1400,34 @@ JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "author":
-				this.value.author = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
+				this.value.author = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
 				break;
 			case "countries":
-				this.value.countries = this.loadObjectField(($_=new JsonParser_$28(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
+				this.value.countries = this.loadObjectField(($_=new JsonParser_$8500(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
 				break;
 			case "description":
-				this.value.description = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
+				this.value.description = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "maxPlayers":
-				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
+				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "singlePlayer":
-				this.value.singlePlayer = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"singlePlayer",assigned,this.value.singlePlayer,pos);
+				this.value.singlePlayer = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"singlePlayer",assigned,this.value.singlePlayer,pos);
 				break;
 			case "startField":
-				this.value.startField = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
+				this.value.startField = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
 				break;
 			case "tiles":
-				this.value.tiles = this.loadObjectField(($_=new JsonParser_$29(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
+				this.value.tiles = this.loadObjectField(($_=new JsonParser_$8501(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
 				break;
 			case "version":
-				this.value.version = this.loadObjectField(($_=new JsonParser_$27(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
+				this.value.version = this.loadObjectField(($_=new JsonParser_$8499(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1177,31 +1437,31 @@ JsonParser_$26.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_MapInfo.prototype);
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.description = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.version = new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.author = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.startField = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.singlePlayer = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.maxPlayers = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.description = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.version = new JsonParser_$8499([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.author = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.startField = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.singlePlayer = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.maxPlayers = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.countries = [];
 		value.tiles = [];
 		return value;
 	}
-	,__class__: JsonParser_$26
+	,__class__: JsonParser_$8498
 });
-var JsonParser_$27 = function(errors,putils,errorType) {
+var JsonParser_$8499 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 	this.value = 0;
 };
-$hxClasses["JsonParser_27"] = JsonParser_$27;
-JsonParser_$27.__name__ = "JsonParser_27";
-JsonParser_$27.__super__ = json2object_reader_BaseParser;
-JsonParser_$27.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8499"] = JsonParser_$8499;
+JsonParser_$8499.__name__ = "JsonParser_8499";
+JsonParser_$8499.__super__ = json2object_reader_BaseParser;
+JsonParser_$8499.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1210,20 +1470,20 @@ JsonParser_$27.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = this.loadJsonFloat(f,pos,variable,this.value);
 	}
 	,getAuto: function() {
-		return new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8499([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$27
+	,__class__: JsonParser_$8499
 });
-var JsonParser_$28 = function(errors,putils,errorType) {
+var JsonParser_$8500 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_28"] = JsonParser_$28;
-JsonParser_$28.__name__ = "JsonParser_28";
-JsonParser_$28.__super__ = json2object_reader_BaseParser;
-JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8500"] = JsonParser_$8500;
+JsonParser_$8500.__name__ = "JsonParser_8500";
+JsonParser_$8500.__super__ = json2object_reader_BaseParser;
+JsonParser_$8500.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.CountryInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1232,23 +1492,23 @@ JsonParser_$28.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$31(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8503(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$28([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8500([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$28
+	,__class__: JsonParser_$8500
 });
-var JsonParser_$29 = function(errors,putils,errorType) {
+var JsonParser_$8501 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_29"] = JsonParser_$29;
-JsonParser_$29.__name__ = "JsonParser_29";
-JsonParser_$29.__super__ = json2object_reader_BaseParser;
-JsonParser_$29.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8501"] = JsonParser_$8501;
+JsonParser_$8501.__name__ = "JsonParser_8501";
+JsonParser_$8501.__super__ = json2object_reader_BaseParser;
+JsonParser_$8501.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.TileTypeInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1257,48 +1517,23 @@ JsonParser_$29.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$30(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8502(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$29([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8501([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$29
+	,__class__: JsonParser_$8501
 });
-var JsonParser_$3 = function(errors,putils,errorType) {
+var JsonParser_$8502 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_3"] = JsonParser_$3;
-JsonParser_$3.__name__ = "JsonParser_3";
-JsonParser_$3.__super__ = json2object_reader_BaseParser;
-JsonParser_$3.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldTile>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$15(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$3([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$3
-});
-var JsonParser_$30 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_30"] = JsonParser_$30;
-JsonParser_$30.__name__ = "JsonParser_30";
-JsonParser_$30.__super__ = json2object_reader_BaseParser;
-JsonParser_$30.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8502"] = JsonParser_$8502;
+JsonParser_$8502.__name__ = "JsonParser_8502";
+JsonParser_$8502.__super__ = json2object_reader_BaseParser;
+JsonParser_$8502.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.TileTypeInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1316,13 +1551,13 @@ JsonParser_$30.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			case "image_h":
-				this.value.image_h = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_h",assigned,this.value.image_h,pos);
+				this.value.image_h = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_h",assigned,this.value.image_h,pos);
 				break;
 			case "image_v":
-				this.value.image_v = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_v",assigned,this.value.image_v,pos);
+				this.value.image_v = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_v",assigned,this.value.image_v,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1332,23 +1567,23 @@ JsonParser_$30.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_TileTypeInfo.prototype);
-		value.image_h = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.image_v = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.color = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.image_h = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.image_v = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.color = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$30
+	,__class__: JsonParser_$8502
 });
-var JsonParser_$31 = function(errors,putils,errorType) {
+var JsonParser_$8503 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_31"] = JsonParser_$31;
-JsonParser_$31.__name__ = "JsonParser_31";
-JsonParser_$31.__super__ = json2object_reader_BaseParser;
-JsonParser_$31.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8503"] = JsonParser_$8503;
+JsonParser_$8503.__name__ = "JsonParser_8503";
+JsonParser_$8503.__super__ = json2object_reader_BaseParser;
+JsonParser_$8503.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1366,13 +1601,13 @@ JsonParser_$31.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
 				break;
 			case "minerals":
-				this.value.minerals = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
+				this.value.minerals = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1382,25 +1617,25 @@ JsonParser_$31.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_CountryInfo.prototype);
-		value.color = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minerals = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mana = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.color = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minerals = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mana = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$31
+	,__class__: JsonParser_$8503
 });
-var JsonParser_$33 = function(errors,putils,errorType) {
+var JsonParser_$8505 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_33"] = JsonParser_$33;
-JsonParser_$33.__name__ = "JsonParser_33";
-JsonParser_$33.__super__ = json2object_reader_BaseParser;
-JsonParser_$33.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8505"] = JsonParser_$8505;
+JsonParser_$8505.__name__ = "JsonParser_8505";
+JsonParser_$8505.__super__ = json2object_reader_BaseParser;
+JsonParser_$8505.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ script : String, range : Int, radius : Int, price : Int, mana : Int, id : String, args : haxe.ds.ReadOnlyArray<String> }",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ type : String, script : String, range : Int, radius : Int, price : Int, mana : Int, args : haxe.ds.ReadOnlyArray<String>, areaScript : String }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
@@ -1408,33 +1643,36 @@ JsonParser_$33.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["args","id","mana","price","radius","range","script"],[false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["areaScript","args","mana","price","radius","range","script","type"],[false,false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
 			var field = o[_g];
 			++_g;
 			switch(field.name) {
-			case "args":
-				this.value.args = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
+			case "areaScript":
+				this.value.areaScript = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"areaScript",assigned,this.value.areaScript,pos);
 				break;
-			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+			case "args":
+				this.value.args = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
 				break;
 			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
 				break;
 			case "price":
-				this.value.price = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"price",assigned,this.value.price,pos);
+				this.value.price = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"price",assigned,this.value.price,pos);
 				break;
 			case "radius":
-				this.value.radius = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
+				this.value.radius = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "script":
-				this.value.script = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				this.value.script = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				break;
+			case "type":
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1443,20 +1681,20 @@ JsonParser_$33.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { args : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), id : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mana : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), price : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { areaScript : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), args : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mana : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), price : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$33
+	,__class__: JsonParser_$8505
 });
-var JsonParser_$34 = function(errors,putils,errorType) {
+var JsonParser_$8506 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_34"] = JsonParser_$34;
-JsonParser_$34.__name__ = "JsonParser_34";
-JsonParser_$34.__super__ = json2object_reader_BaseParser;
-JsonParser_$34.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8506"] = JsonParser_$8506;
+JsonParser_$8506.__name__ = "JsonParser_8506";
+JsonParser_$8506.__super__ = json2object_reader_BaseParser;
+JsonParser_$8506.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1465,23 +1703,23 @@ JsonParser_$34.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8472(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$34
+	,__class__: JsonParser_$8506
 });
-var JsonParser_$36 = function(errors,putils,errorType) {
+var JsonParser_$8508 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_36"] = JsonParser_$36;
-JsonParser_$36.__name__ = "JsonParser_36";
-JsonParser_$36.__super__ = json2object_reader_BaseParser;
-JsonParser_$36.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8508"] = JsonParser_$8508;
+JsonParser_$8508.__name__ = "JsonParser_8508";
+JsonParser_$8508.__super__ = json2object_reader_BaseParser;
+JsonParser_$8508.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ type : String, turns : Int, effects : haxe.ds.ReadOnlyArray<model.EffectType> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1499,13 +1737,13 @@ JsonParser_$36.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$37(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$8509(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1514,20 +1752,20 @@ JsonParser_$36.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$8509([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$36
+	,__class__: JsonParser_$8508
 });
-var JsonParser_$37 = function(errors,putils,errorType) {
+var JsonParser_$8509 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_37"] = JsonParser_$37;
-JsonParser_$37.__name__ = "JsonParser_37";
-JsonParser_$37.__super__ = json2object_reader_BaseParser;
-JsonParser_$37.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8509"] = JsonParser_$8509;
+JsonParser_$8509.__name__ = "JsonParser_8509";
+JsonParser_$8509.__super__ = json2object_reader_BaseParser;
+JsonParser_$8509.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<model.EffectType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1536,23 +1774,23 @@ JsonParser_$37.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$38(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8510(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8509([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$37
+	,__class__: JsonParser_$8509
 });
-var JsonParser_$38 = function(errors,putils,errorType) {
+var JsonParser_$8510 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_38"] = JsonParser_$38;
-JsonParser_$38.__name__ = "JsonParser_38";
-JsonParser_$38.__super__ = json2object_reader_BaseParser;
-JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8510"] = JsonParser_$8510;
+JsonParser_$8510.__name__ = "JsonParser_8510";
+JsonParser_$8510.__super__ = json2object_reader_BaseParser;
+JsonParser_$8510.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.EffectType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1600,7 +1838,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __skill = new JsonParser_$33(this.errors,this.putils,2);
+					var __skill = new JsonParser_$8505(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1636,7 +1874,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1672,7 +1910,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __radius = new JsonParser_$2(this.errors,this.putils,2);
+					var __radius = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1684,7 +1922,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __radius1 = __radius.loadJson(_g[0].value,field.name + "." + "radius");
-					var __effects = new JsonParser_$37(this.errors,this.putils,2);
+					var __effects = new JsonParser_$8509(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1696,7 +1934,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __effects1 = __effects.loadJson(_g[0].value,field.name + "." + "effects");
-					var __affects = new JsonParser_$40(this.errors,this.putils,2);
+					var __affects = new JsonParser_$8512(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1708,7 +1946,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __affects1 = __affects.loadJson(_g[0].value,field.name + "." + "affects");
-					var __particles = new JsonParser_$1(this.errors,this.putils,2);
+					var __particles = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1720,7 +1958,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __particles1 = __particles.loadJson(_g[0].value,field.name + "." + "particles");
-					var __color = new JsonParser_$42(this.errors,this.putils,2);
+					var __color = new JsonParser_$8514(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1764,7 +2002,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __stat = new JsonParser_$39(this.errors,this.putils,2);
+					var __stat = new JsonParser_$8511(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1776,7 +2014,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __delta = new JsonParser_$2(this.errors,this.putils,2);
+					var __delta = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1812,7 +2050,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1824,7 +2062,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1860,7 +2098,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1872,7 +2110,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1908,7 +2146,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1920,7 +2158,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1956,7 +2194,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1968,7 +2206,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2004,7 +2242,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2016,7 +2254,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2052,7 +2290,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2064,7 +2302,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2100,7 +2338,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1(this.errors,this.putils,2);
+					var __script = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2112,7 +2350,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$34(this.errors,this.putils,2);
+					var __args = new JsonParser_$8506(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2148,7 +2386,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1(this.errors,this.putils,2);
+					var __id = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2184,7 +2422,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __stat = new JsonParser_$39(this.errors,this.putils,2);
+					var __stat = new JsonParser_$8511(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2196,7 +2434,7 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __value = new JsonParser_$2(this.errors,this.putils,2);
+					var __value = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2221,20 +2459,20 @@ JsonParser_$38.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$38([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8510([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$38
+	,__class__: JsonParser_$8510
 });
-var JsonParser_$39 = function(errors,putils,errorType) {
+var JsonParser_$8511 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_39"] = JsonParser_$39;
-JsonParser_$39.__name__ = "JsonParser_39";
-JsonParser_$39.__super__ = json2object_reader_BaseParser;
-JsonParser_$39.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8511"] = JsonParser_$8511;
+JsonParser_$8511.__name__ = "JsonParser_8511";
+JsonParser_$8511.__super__ = json2object_reader_BaseParser;
+JsonParser_$8511.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.StatType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2358,20 +2596,20 @@ JsonParser_$39.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$39([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8511([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$39
+	,__class__: JsonParser_$8511
 });
-var JsonParser_$40 = function(errors,putils,errorType) {
+var JsonParser_$8512 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_40"] = JsonParser_$40;
-JsonParser_$40.__name__ = "JsonParser_40";
-JsonParser_$40.__super__ = json2object_reader_BaseParser;
-JsonParser_$40.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8512"] = JsonParser_$8512;
+JsonParser_$8512.__name__ = "JsonParser_8512";
+JsonParser_$8512.__super__ = json2object_reader_BaseParser;
+JsonParser_$8512.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.Affects",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2440,20 +2678,20 @@ JsonParser_$40.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$40([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8512([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$40
+	,__class__: JsonParser_$8512
 });
-var JsonParser_$42 = function(errors,putils,errorType) {
+var JsonParser_$8514 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_42"] = JsonParser_$42;
-JsonParser_$42.__name__ = "JsonParser_42";
-JsonParser_$42.__super__ = json2object_reader_BaseParser;
-JsonParser_$42.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8514"] = JsonParser_$8514;
+JsonParser_$8514.__name__ = "JsonParser_8514";
+JsonParser_$8514.__super__ = json2object_reader_BaseParser;
+JsonParser_$8514.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ ?saturation : Null<Float>, ?lightness : Null<Float>, ?hue : Null<Float>, ?gain : Null<{ color : Int, alpha : Float }>, ?contrast : Null<Float> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2471,19 +2709,19 @@ JsonParser_$42.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "contrast":
-				this.value.contrast = this.loadObjectField(($_=new JsonParser_$44(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"contrast",assigned,this.value.contrast,pos);
+				this.value.contrast = this.loadObjectField(($_=new JsonParser_$8516(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"contrast",assigned,this.value.contrast,pos);
 				break;
 			case "gain":
-				this.value.gain = this.loadObjectField(($_=new JsonParser_$46(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"gain",assigned,this.value.gain,pos);
+				this.value.gain = this.loadObjectField(($_=new JsonParser_$8518(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"gain",assigned,this.value.gain,pos);
 				break;
 			case "hue":
-				this.value.hue = this.loadObjectField(($_=new JsonParser_$44(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hue",assigned,this.value.hue,pos);
+				this.value.hue = this.loadObjectField(($_=new JsonParser_$8516(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hue",assigned,this.value.hue,pos);
 				break;
 			case "lightness":
-				this.value.lightness = this.loadObjectField(($_=new JsonParser_$44(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"lightness",assigned,this.value.lightness,pos);
+				this.value.lightness = this.loadObjectField(($_=new JsonParser_$8516(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"lightness",assigned,this.value.lightness,pos);
 				break;
 			case "saturation":
-				this.value.saturation = this.loadObjectField(($_=new JsonParser_$44(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"saturation",assigned,this.value.saturation,pos);
+				this.value.saturation = this.loadObjectField(($_=new JsonParser_$8516(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"saturation",assigned,this.value.saturation,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2492,20 +2730,20 @@ JsonParser_$42.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { contrast : new JsonParser_$44([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), gain : new JsonParser_$46([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hue : new JsonParser_$44([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), lightness : new JsonParser_$44([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), saturation : new JsonParser_$44([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { contrast : new JsonParser_$8516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), gain : new JsonParser_$8518([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hue : new JsonParser_$8516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), lightness : new JsonParser_$8516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), saturation : new JsonParser_$8516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$42
+	,__class__: JsonParser_$8514
 });
-var JsonParser_$44 = function(errors,putils,errorType) {
+var JsonParser_$8516 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_44"] = JsonParser_$44;
-JsonParser_$44.__name__ = "JsonParser_44";
-JsonParser_$44.__super__ = json2object_reader_BaseParser;
-JsonParser_$44.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8516"] = JsonParser_$8516;
+JsonParser_$8516.__name__ = "JsonParser_8516";
+JsonParser_$8516.__super__ = json2object_reader_BaseParser;
+JsonParser_$8516.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2517,20 +2755,20 @@ JsonParser_$44.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = this.loadJsonFloat(f,pos,variable,this.value);
 	}
 	,getAuto: function() {
-		return new JsonParser_$44([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$44
+	,__class__: JsonParser_$8516
 });
-var JsonParser_$46 = function(errors,putils,errorType) {
+var JsonParser_$8518 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_46"] = JsonParser_$46;
-JsonParser_$46.__name__ = "JsonParser_46";
-JsonParser_$46.__super__ = json2object_reader_BaseParser;
-JsonParser_$46.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8518"] = JsonParser_$8518;
+JsonParser_$8518.__name__ = "JsonParser_8518";
+JsonParser_$8518.__super__ = json2object_reader_BaseParser;
+JsonParser_$8518.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ color : Int, alpha : Float }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2548,10 +2786,10 @@ JsonParser_$46.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "alpha":
-				this.value.alpha = this.loadObjectField(($_=new JsonParser_$27(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
+				this.value.alpha = this.loadObjectField(($_=new JsonParser_$8499(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
 				break;
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2560,20 +2798,20 @@ JsonParser_$46.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { alpha : new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { alpha : new JsonParser_$8499([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$46
+	,__class__: JsonParser_$8518
 });
-var JsonParser_$48 = function(errors,putils,errorType) {
+var JsonParser_$8520 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_48"] = JsonParser_$48;
-JsonParser_$48.__name__ = "JsonParser_48";
-JsonParser_$48.__super__ = json2object_reader_BaseParser;
-JsonParser_$48.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8520"] = JsonParser_$8520;
+JsonParser_$8520.__name__ = "JsonParser_8520";
+JsonParser_$8520.__super__ = json2object_reader_BaseParser;
+JsonParser_$8520.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ unitTypes : haxe.ds.ReadOnlyArray<String>, type : String, effects : haxe.ds.ReadOnlyArray<model.EffectType> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2591,13 +2829,13 @@ JsonParser_$48.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$37(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$8509(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unitTypes":
-				this.value.unitTypes = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitTypes",assigned,this.value.unitTypes,pos);
+				this.value.unitTypes = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitTypes",assigned,this.value.unitTypes,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2606,84 +2844,20 @@ JsonParser_$48.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$37([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$8509([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$48
+	,__class__: JsonParser_$8520
 });
-var JsonParser_$5 = function(errors,putils,errorType) {
+var JsonParser_$8522 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_5"] = JsonParser_$5;
-JsonParser_$5.__name__ = "JsonParser_5";
-JsonParser_$5.__super__ = json2object_reader_BaseParser;
-JsonParser_$5.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitData>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$13(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$5([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$5
-});
-var JsonParser_$50 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_50"] = JsonParser_$50;
-JsonParser_$50.__name__ = "JsonParser_50";
-JsonParser_$50.__super__ = json2object_reader_BaseParser;
-JsonParser_$50.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8522"] = JsonParser_$8522;
+JsonParser_$8522.__name__ = "JsonParser_8522";
+JsonParser_$8522.__super__ = json2object_reader_BaseParser;
+JsonParser_$8522.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ unpickable : Bool, type : String, invisible : Int, buffs : haxe.ds.ReadOnlyArray<String> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2701,16 +2875,16 @@ JsonParser_$50.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2719,20 +2893,20 @@ JsonParser_$50.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { buffs : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$50
+	,__class__: JsonParser_$8522
 });
-var JsonParser_$52 = function(errors,putils,errorType) {
+var JsonParser_$8524 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_52"] = JsonParser_$52;
-JsonParser_$52.__name__ = "JsonParser_52";
-JsonParser_$52.__super__ = json2object_reader_BaseParser;
-JsonParser_$52.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8524"] = JsonParser_$8524;
+JsonParser_$8524.__name__ = "JsonParser_8524";
+JsonParser_$8524.__super__ = json2object_reader_BaseParser;
+JsonParser_$8524.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ vision : Int, type : String, speed : Int, skills : haxe.ds.ReadOnlyArray<String>, range : Int, maxHp : Int, invisible : Int, flying : Int, detector : Int, buffs : haxe.ds.ReadOnlyArray<String>, attack : Int }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2750,37 +2924,37 @@ JsonParser_$52.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "attack":
-				this.value.attack = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
+				this.value.attack = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
 				break;
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "detector":
-				this.value.detector = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
+				this.value.detector = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
 				break;
 			case "flying":
-				this.value.flying = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
+				this.value.flying = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "maxHp":
-				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
+				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "skills":
-				this.value.skills = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
+				this.value.skills = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
 				break;
 			case "speed":
-				this.value.speed = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				this.value.speed = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "vision":
-				this.value.vision = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
+				this.value.vision = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2789,20 +2963,20 @@ JsonParser_$52.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { attack : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { attack : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$52
+	,__class__: JsonParser_$8524
 });
-var JsonParser_$54 = function(errors,putils,errorType) {
+var JsonParser_$8526 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_54"] = JsonParser_$54;
-JsonParser_$54.__name__ = "JsonParser_54";
-JsonParser_$54.__super__ = json2object_reader_BaseParser;
-JsonParser_$54.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8526"] = JsonParser_$8526;
+JsonParser_$8526.__name__ = "JsonParser_8526";
+JsonParser_$8526.__super__ = json2object_reader_BaseParser;
+JsonParser_$8526.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SaveInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2819,7 +2993,7 @@ JsonParser_$54.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -2836,7 +3010,7 @@ JsonParser_$54.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$55(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8527(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -2853,20 +3027,20 @@ JsonParser_$54.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$54([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8526([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$54
+	,__class__: JsonParser_$8526
 });
-var JsonParser_$55 = function(errors,putils,errorType) {
+var JsonParser_$8527 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_55"] = JsonParser_$55;
-JsonParser_$55.__name__ = "JsonParser_55";
-JsonParser_$55.__super__ = json2object_reader_BaseParser;
-JsonParser_$55.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8527"] = JsonParser_$8527;
+JsonParser_$8527.__name__ = "JsonParser_8527";
+JsonParser_$8527.__super__ = json2object_reader_BaseParser;
+JsonParser_$8527.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.SaveInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2884,28 +3058,28 @@ JsonParser_$55.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countriesNum":
-				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
+				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
 				break;
 			case "isGameFinished":
-				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
+				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "playersNum":
-				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
+				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
 				break;
 			case "time":
-				this.value.time = this.loadObjectField(($_=new JsonParser_$27(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
+				this.value.time = this.loadObjectField(($_=new JsonParser_$8499(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
 				break;
 			case "turnNum":
-				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
+				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2915,28 +3089,28 @@ JsonParser_$55.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_SaveInfo.prototype);
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.time = new JsonParser_$27([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.playersNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countriesNum = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isGameFinished = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.time = new JsonParser_$8499([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnNum = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.playersNum = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countriesNum = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isGameFinished = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$55
+	,__class__: JsonParser_$8527
 });
-var JsonParser_$56 = function(errors,putils,errorType) {
+var JsonParser_$8528 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_56"] = JsonParser_$56;
-JsonParser_$56.__name__ = "JsonParser_56";
-JsonParser_$56.__super__ = json2object_reader_BaseParser;
-JsonParser_$56.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8528"] = JsonParser_$8528;
+JsonParser_$8528.__name__ = "JsonParser_8528";
+JsonParser_$8528.__super__ = json2object_reader_BaseParser;
+JsonParser_$8528.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.GameData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2954,25 +3128,25 @@ JsonParser_$56.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "curTurn":
-				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
+				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
 				break;
 			case "field":
-				this.value.field = this.loadObjectField(($_=new JsonParser_$0(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
+				this.value.field = this.loadObjectField(($_=new JsonParser_$8471(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "mapName":
-				this.value.mapName = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
+				this.value.mapName = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "players":
-				this.value.players = this.loadObjectField(($_=new JsonParser_$59(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"players",assigned,this.value.players,pos);
+				this.value.players = this.loadObjectField(($_=new JsonParser_$8531(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"players",assigned,this.value.players,pos);
 				break;
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$58(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$8530(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2982,27 +3156,27 @@ JsonParser_$56.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_GameData.prototype);
-		value.mapId = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapName = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.curTurn = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turns = new JsonParser_$58([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.players = new JsonParser_$59([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.field = new JsonParser_$0([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapName = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.curTurn = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turns = new JsonParser_$8530([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.players = new JsonParser_$8531([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.field = new JsonParser_$8471([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$56
+	,__class__: JsonParser_$8528
 });
-var JsonParser_$57 = function(errors,putils,errorType) {
+var JsonParser_$8529 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_57"] = JsonParser_$57;
-JsonParser_$57.__name__ = "JsonParser_57";
-JsonParser_$57.__super__ = json2object_reader_BaseParser;
-JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8529"] = JsonParser_$8529;
+JsonParser_$8529.__name__ = "JsonParser_8529";
+JsonParser_$8529.__super__ = json2object_reader_BaseParser;
+JsonParser_$8529.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3019,7 +3193,7 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$2(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8473(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3036,7 +3210,7 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8472(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3053,20 +3227,20 @@ JsonParser_$57.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$57([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8529([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$57
+	,__class__: JsonParser_$8529
 });
-var JsonParser_$58 = function(errors,putils,errorType) {
+var JsonParser_$8530 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_58"] = JsonParser_$58;
-JsonParser_$58.__name__ = "JsonParser_58";
-JsonParser_$58.__super__ = json2object_reader_BaseParser;
-JsonParser_$58.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8530"] = JsonParser_$8530;
+JsonParser_$8530.__name__ = "JsonParser_8530";
+JsonParser_$8530.__super__ = json2object_reader_BaseParser;
+JsonParser_$8530.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.TurnData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3075,23 +3249,23 @@ JsonParser_$58.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$61(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8533(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$58([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8530([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$58
+	,__class__: JsonParser_$8530
 });
-var JsonParser_$59 = function(errors,putils,errorType) {
+var JsonParser_$8531 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_59"] = JsonParser_$59;
-JsonParser_$59.__name__ = "JsonParser_59";
-JsonParser_$59.__super__ = json2object_reader_BaseParser;
-JsonParser_$59.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8531"] = JsonParser_$8531;
+JsonParser_$8531.__name__ = "JsonParser_8531";
+JsonParser_$8531.__super__ = json2object_reader_BaseParser;
+JsonParser_$8531.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.PlayerData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3100,23 +3274,23 @@ JsonParser_$59.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$60(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8532(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$59([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8531([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$59
+	,__class__: JsonParser_$8531
 });
-var JsonParser_$60 = function(errors,putils,errorType) {
+var JsonParser_$8532 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_60"] = JsonParser_$60;
-JsonParser_$60.__name__ = "JsonParser_60";
-JsonParser_$60.__super__ = json2object_reader_BaseParser;
-JsonParser_$60.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8532"] = JsonParser_$8532;
+JsonParser_$8532.__name__ = "JsonParser_8532";
+JsonParser_$8532.__super__ = json2object_reader_BaseParser;
+JsonParser_$8532.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.PlayerData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3134,22 +3308,22 @@ JsonParser_$60.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "disconnected":
-				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
+				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "isAI":
-				this.value.isAI = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
+				this.value.isAI = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "turnDone":
-				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
+				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$8480(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3159,26 +3333,26 @@ JsonParser_$60.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_PlayerData.prototype);
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.disconnected = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnDone = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isAI = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.disconnected = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnDone = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isAI = new JsonParser_$8480([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$60
+	,__class__: JsonParser_$8532
 });
-var JsonParser_$61 = function(errors,putils,errorType) {
+var JsonParser_$8533 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_61"] = JsonParser_$61;
-JsonParser_$61.__name__ = "JsonParser_61";
-JsonParser_$61.__super__ = json2object_reader_BaseParser;
-JsonParser_$61.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8533"] = JsonParser_$8533;
+JsonParser_$8533.__name__ = "JsonParser_8533";
+JsonParser_$8533.__super__ = json2object_reader_BaseParser;
+JsonParser_$8533.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3196,16 +3370,16 @@ JsonParser_$61.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countries":
-				this.value.countries = this.loadObjectField(($_=new JsonParser_$63(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
+				this.value.countries = this.loadObjectField(($_=new JsonParser_$8535(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
 				break;
 			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$7(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				this.value.items = this.loadObjectField(($_=new JsonParser_$8478(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
 				break;
 			case "microTurns":
-				this.value.microTurns = this.loadObjectField(($_=new JsonParser_$64(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"microTurns",assigned,this.value.microTurns,pos);
+				this.value.microTurns = this.loadObjectField(($_=new JsonParser_$8536(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"microTurns",assigned,this.value.microTurns,pos);
 				break;
 			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$5(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				this.value.units = this.loadObjectField(($_=new JsonParser_$8476(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3221,18 +3395,18 @@ JsonParser_$61.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		value.microTurns = [];
 		return value;
 	}
-	,__class__: JsonParser_$61
+	,__class__: JsonParser_$8533
 });
-var JsonParser_$63 = function(errors,putils,errorType) {
+var JsonParser_$8535 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_63"] = JsonParser_$63;
-JsonParser_$63.__name__ = "JsonParser_63";
-JsonParser_$63.__super__ = json2object_reader_BaseParser;
-JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8535"] = JsonParser_$8535;
+JsonParser_$8535.__name__ = "JsonParser_8535";
+JsonParser_$8535.__super__ = json2object_reader_BaseParser;
+JsonParser_$8535.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, model.CountryData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3249,7 +3423,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$2(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8473(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3266,7 +3440,7 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$73(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8545(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3283,20 +3457,20 @@ JsonParser_$63.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$63([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8535([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$63
+	,__class__: JsonParser_$8535
 });
-var JsonParser_$64 = function(errors,putils,errorType) {
+var JsonParser_$8536 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_64"] = JsonParser_$64;
-JsonParser_$64.__name__ = "JsonParser_64";
-JsonParser_$64.__super__ = json2object_reader_BaseParser;
-JsonParser_$64.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8536"] = JsonParser_$8536;
+JsonParser_$8536.__name__ = "JsonParser_8536";
+JsonParser_$8536.__super__ = json2object_reader_BaseParser;
+JsonParser_$8536.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.MicroTurn>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3305,23 +3479,23 @@ JsonParser_$64.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$65(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8537(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$64([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8536([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$64
+	,__class__: JsonParser_$8536
 });
-var JsonParser_$65 = function(errors,putils,errorType) {
+var JsonParser_$8537 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_65"] = JsonParser_$65;
-JsonParser_$65.__name__ = "JsonParser_65";
-JsonParser_$65.__super__ = json2object_reader_BaseParser;
-JsonParser_$65.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8537"] = JsonParser_$8537;
+JsonParser_$8537.__name__ = "JsonParser_8537";
+JsonParser_$8537.__super__ = json2object_reader_BaseParser;
+JsonParser_$8537.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.MicroTurn",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3339,13 +3513,13 @@ JsonParser_$65.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "acts":
-				this.value.acts = this.loadObjectField(($_=new JsonParser_$66(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
+				this.value.acts = this.loadObjectField(($_=new JsonParser_$8538(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
 				break;
 			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$68(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$8540(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "events":
-				this.value.events = this.loadObjectField(($_=new JsonParser_$67(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
+				this.value.events = this.loadObjectField(($_=new JsonParser_$8539(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3355,23 +3529,23 @@ JsonParser_$65.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_MicroTurn.prototype);
-		value.acts = new JsonParser_$66([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.events = new JsonParser_$67([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.effects = new JsonParser_$68([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.acts = new JsonParser_$8538([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.events = new JsonParser_$8539([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.effects = new JsonParser_$8540([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$65
+	,__class__: JsonParser_$8537
 });
-var JsonParser_$66 = function(errors,putils,errorType) {
+var JsonParser_$8538 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_66"] = JsonParser_$66;
-JsonParser_$66.__name__ = "JsonParser_66";
-JsonParser_$66.__super__ = json2object_reader_BaseParser;
-JsonParser_$66.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8538"] = JsonParser_$8538;
+JsonParser_$8538.__name__ = "JsonParser_8538";
+JsonParser_$8538.__super__ = json2object_reader_BaseParser;
+JsonParser_$8538.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ActionType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3388,7 +3562,7 @@ JsonParser_$66.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3405,7 +3579,7 @@ JsonParser_$66.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$72(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8544(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3422,20 +3596,20 @@ JsonParser_$66.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$66([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8538([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$66
+	,__class__: JsonParser_$8538
 });
-var JsonParser_$67 = function(errors,putils,errorType) {
+var JsonParser_$8539 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_67"] = JsonParser_$67;
-JsonParser_$67.__name__ = "JsonParser_67";
-JsonParser_$67.__super__ = json2object_reader_BaseParser;
-JsonParser_$67.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8539"] = JsonParser_$8539;
+JsonParser_$8539.__name__ = "JsonParser_8539";
+JsonParser_$8539.__super__ = json2object_reader_BaseParser;
+JsonParser_$8539.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.ActionEvent>>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3452,7 +3626,7 @@ JsonParser_$67.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3469,7 +3643,7 @@ JsonParser_$67.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$70(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8542(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3486,20 +3660,20 @@ JsonParser_$67.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$67([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8539([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$67
+	,__class__: JsonParser_$8539
 });
-var JsonParser_$68 = function(errors,putils,errorType) {
+var JsonParser_$8540 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_68"] = JsonParser_$68;
-JsonParser_$68.__name__ = "JsonParser_68";
-JsonParser_$68.__super__ = json2object_reader_BaseParser;
-JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8540"] = JsonParser_$8540;
+JsonParser_$8540.__name__ = "JsonParser_8540";
+JsonParser_$8540.__super__ = json2object_reader_BaseParser;
+JsonParser_$8540.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldEffect>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3508,23 +3682,23 @@ JsonParser_$68.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$69(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8541(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$68([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8540([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$68
+	,__class__: JsonParser_$8540
 });
-var JsonParser_$69 = function(errors,putils,errorType) {
+var JsonParser_$8541 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_69"] = JsonParser_$69;
-JsonParser_$69.__name__ = "JsonParser_69";
-JsonParser_$69.__super__ = json2object_reader_BaseParser;
-JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8541"] = JsonParser_$8541;
+JsonParser_$8541.__name__ = "JsonParser_8541";
+JsonParser_$8541.__super__ = json2object_reader_BaseParser;
+JsonParser_$8541.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldEffect",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3568,7 +3742,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
 						this.parsingThrow();
 					}
-					var __type = new JsonParser_$1(this.errors,this.putils,2);
+					var __type = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3580,7 +3754,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __from = new JsonParser_$10(this.errors,this.putils,2);
+					var __from = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3592,7 +3766,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$10(this.errors,this.putils,2);
+					var __to = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3604,7 +3778,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
-					var __colorAdj = new JsonParser_$42(this.errors,this.putils,2);
+					var __colorAdj = new JsonParser_$8514(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3640,7 +3814,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
 						this.parsingThrow();
 					}
-					var __hex = new JsonParser_$10(this.errors,this.putils,2);
+					var __hex = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3652,7 +3826,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
-					var __oldHeight = new JsonParser_$2(this.errors,this.putils,2);
+					var __oldHeight = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3664,7 +3838,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __oldHeight1 = __oldHeight.loadJson(_g[0].value,field.name + "." + "oldHeight");
-					var __newHeight = new JsonParser_$2(this.errors,this.putils,2);
+					var __newHeight = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3676,7 +3850,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __newHeight1 = __newHeight.loadJson(_g[0].value,field.name + "." + "newHeight");
-					var __oldType = new JsonParser_$2(this.errors,this.putils,2);
+					var __oldType = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3688,7 +3862,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __oldType1 = __oldType.loadJson(_g[0].value,field.name + "." + "oldType");
-					var __newType = new JsonParser_$2(this.errors,this.putils,2);
+					var __newType = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3724,7 +3898,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
 						this.parsingThrow();
 					}
-					var __type = new JsonParser_$1(this.errors,this.putils,2);
+					var __type = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3736,7 +3910,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __hex = new JsonParser_$10(this.errors,this.putils,2);
+					var __hex = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3748,7 +3922,7 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
-					var __colorAdj = new JsonParser_$42(this.errors,this.putils,2);
+					var __colorAdj = new JsonParser_$8514(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3773,84 +3947,20 @@ JsonParser_$69.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$69([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8541([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$69
+	,__class__: JsonParser_$8541
 });
-var JsonParser_$7 = function(errors,putils,errorType) {
+var JsonParser_$8542 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_7"] = JsonParser_$7;
-JsonParser_$7.__name__ = "JsonParser_7";
-JsonParser_$7.__super__ = json2object_reader_BaseParser;
-JsonParser_$7.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemData>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$8(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$7([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$7
-});
-var JsonParser_$70 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_70"] = JsonParser_$70;
-JsonParser_$70.__name__ = "JsonParser_70";
-JsonParser_$70.__super__ = json2object_reader_BaseParser;
-JsonParser_$70.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8542"] = JsonParser_$8542;
+JsonParser_$8542.__name__ = "JsonParser_8542";
+JsonParser_$8542.__super__ = json2object_reader_BaseParser;
+JsonParser_$8542.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.ActionEvent>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3859,23 +3969,23 @@ JsonParser_$70.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$71(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8543(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$70([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8542([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$70
+	,__class__: JsonParser_$8542
 });
-var JsonParser_$71 = function(errors,putils,errorType) {
+var JsonParser_$8543 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_71"] = JsonParser_$71;
-JsonParser_$71.__name__ = "JsonParser_71";
-JsonParser_$71.__super__ = json2object_reader_BaseParser;
-JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8543"] = JsonParser_$8543;
+JsonParser_$8543.__name__ = "JsonParser_8543";
+JsonParser_$8543.__super__ = json2object_reader_BaseParser;
+JsonParser_$8543.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionEvent",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3919,7 +4029,7 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __type = new JsonParser_$1(this.errors,this.putils,2);
+					var __type = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3955,7 +4065,7 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __to = new JsonParser_$2(this.errors,this.putils,2);
+					var __to = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -3991,7 +4101,7 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __d = new JsonParser_$2(this.errors,this.putils,2);
+					var __d = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4027,7 +4137,7 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __m = new JsonParser_$2(this.errors,this.putils,2);
+					var __m = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4063,7 +4173,7 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
 						this.parsingThrow();
 					}
-					var __m = new JsonParser_$2(this.errors,this.putils,2);
+					var __m = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4088,20 +4198,20 @@ JsonParser_$71.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$71([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8543([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$71
+	,__class__: JsonParser_$8543
 });
-var JsonParser_$72 = function(errors,putils,errorType) {
+var JsonParser_$8544 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_72"] = JsonParser_$72;
-JsonParser_$72.__name__ = "JsonParser_72";
-JsonParser_$72.__super__ = json2object_reader_BaseParser;
-JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8544"] = JsonParser_$8544;
+JsonParser_$8544.__name__ = "JsonParser_8544";
+JsonParser_$8544.__super__ = json2object_reader_BaseParser;
+JsonParser_$8544.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4154,7 +4264,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __from = new JsonParser_$10(this.errors,this.putils,2);
+					var __from = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4166,7 +4276,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$10(this.errors,this.putils,2);
+					var __to = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4202,7 +4312,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$2(this.errors,this.putils,2);
+					var __q = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4214,7 +4324,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$2(this.errors,this.putils,2);
+					var __r = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4258,7 +4368,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __unitType = new JsonParser_$1(this.errors,this.putils,2);
+					var __unitType = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4294,7 +4404,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$2(this.errors,this.putils,2);
+					var __q = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4306,7 +4416,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$2(this.errors,this.putils,2);
+					var __r = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4342,7 +4452,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __type = new JsonParser_$1(this.errors,this.putils,2);
+					var __type = new JsonParser_$8472(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4354,7 +4464,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __from = new JsonParser_$10(this.errors,this.putils,2);
+					var __from = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4366,7 +4476,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$10(this.errors,this.putils,2);
+					var __to = new JsonParser_$8481(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4402,7 +4512,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __d = new JsonParser_$2(this.errors,this.putils,2);
+					var __d = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4446,7 +4556,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
 						this.parsingThrow();
 					}
-					var __q = new JsonParser_$2(this.errors,this.putils,2);
+					var __q = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4458,7 +4568,7 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$2(this.errors,this.putils,2);
+					var __r = new JsonParser_$8473(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -4483,20 +4593,20 @@ JsonParser_$72.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$72([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8544([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$72
+	,__class__: JsonParser_$8544
 });
-var JsonParser_$73 = function(errors,putils,errorType) {
+var JsonParser_$8545 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_73"] = JsonParser_$73;
-JsonParser_$73.__name__ = "JsonParser_73";
-JsonParser_$73.__super__ = json2object_reader_BaseParser;
-JsonParser_$73.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8545"] = JsonParser_$8545;
+JsonParser_$8545.__name__ = "JsonParser_8545";
+JsonParser_$8545.__super__ = json2object_reader_BaseParser;
+JsonParser_$8545.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4514,16 +4624,16 @@ JsonParser_$73.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
 				break;
 			case "minerals":
-				this.value.minerals = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
+				this.value.minerals = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
 				break;
 			case "upgrades":
-				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$75(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
+				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$8547(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -4533,24 +4643,24 @@ JsonParser_$73.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_CountryData.prototype);
-		value.id = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minerals = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mana = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minerals = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mana = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.upgrades = new haxe_ds_StringMap();
 		return value;
 	}
-	,__class__: JsonParser_$73
+	,__class__: JsonParser_$8545
 });
-var JsonParser_$75 = function(errors,putils,errorType) {
+var JsonParser_$8547 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_75"] = JsonParser_$75;
-JsonParser_$75.__name__ = "JsonParser_75";
-JsonParser_$75.__super__ = json2object_reader_BaseParser;
-JsonParser_$75.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8547"] = JsonParser_$8547;
+JsonParser_$8547.__name__ = "JsonParser_8547";
+JsonParser_$8547.__super__ = json2object_reader_BaseParser;
+JsonParser_$8547.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<Int>>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4567,7 +4677,7 @@ JsonParser_$75.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4584,7 +4694,7 @@ JsonParser_$75.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$76(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8548(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4601,20 +4711,20 @@ JsonParser_$75.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$75([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8547([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$75
+	,__class__: JsonParser_$8547
 });
-var JsonParser_$76 = function(errors,putils,errorType) {
+var JsonParser_$8548 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_76"] = JsonParser_$76;
-JsonParser_$76.__name__ = "JsonParser_76";
-JsonParser_$76.__super__ = json2object_reader_BaseParser;
-JsonParser_$76.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8548"] = JsonParser_$8548;
+JsonParser_$8548.__name__ = "JsonParser_8548";
+JsonParser_$8548.__super__ = json2object_reader_BaseParser;
+JsonParser_$8548.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Int>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4623,23 +4733,23 @@ JsonParser_$76.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$2(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8473(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$76([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8548([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$76
+	,__class__: JsonParser_$8548
 });
-var JsonParser_$77 = function(errors,putils,errorType) {
+var JsonParser_$8549 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_77"] = JsonParser_$77;
-JsonParser_$77.__name__ = "JsonParser_77";
-JsonParser_$77.__super__ = json2object_reader_BaseParser;
-JsonParser_$77.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8549"] = JsonParser_$8549;
+JsonParser_$8549.__name__ = "JsonParser_8549";
+JsonParser_$8549.__super__ = json2object_reader_BaseParser;
+JsonParser_$8549.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnCache",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4657,28 +4767,28 @@ JsonParser_$77.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "attackTriggers":
-				this.value.attackTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attackTriggers",assigned,this.value.attackTriggers,pos);
+				this.value.attackTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attackTriggers",assigned,this.value.attackTriggers,pos);
 				break;
 			case "deathTriggers":
-				this.value.deathTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"deathTriggers",assigned,this.value.deathTriggers,pos);
+				this.value.deathTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"deathTriggers",assigned,this.value.deathTriggers,pos);
 				break;
 			case "defendTriggers":
-				this.value.defendTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"defendTriggers",assigned,this.value.defendTriggers,pos);
+				this.value.defendTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"defendTriggers",assigned,this.value.defendTriggers,pos);
 				break;
 			case "touchTriggers":
-				this.value.touchTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchTriggers",assigned,this.value.touchTriggers,pos);
+				this.value.touchTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchTriggers",assigned,this.value.touchTriggers,pos);
 				break;
 			case "turnEndTriggers":
-				this.value.turnEndTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnEndTriggers",assigned,this.value.turnEndTriggers,pos);
+				this.value.turnEndTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnEndTriggers",assigned,this.value.turnEndTriggers,pos);
 				break;
 			case "turnStartTriggers":
-				this.value.turnStartTriggers = this.loadObjectField(($_=new JsonParser_$81(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnStartTriggers",assigned,this.value.turnStartTriggers,pos);
+				this.value.turnStartTriggers = this.loadObjectField(($_=new JsonParser_$8553(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnStartTriggers",assigned,this.value.turnStartTriggers,pos);
 				break;
 			case "unitStats":
-				this.value.unitStats = this.loadObjectField(($_=new JsonParser_$79(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitStats",assigned,this.value.unitStats,pos);
+				this.value.unitStats = this.loadObjectField(($_=new JsonParser_$8551(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitStats",assigned,this.value.unitStats,pos);
 				break;
 			case "visionCache":
-				this.value.visionCache = this.loadObjectField(($_=new JsonParser_$83(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"visionCache",assigned,this.value.visionCache,pos);
+				this.value.visionCache = this.loadObjectField(($_=new JsonParser_$8555(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"visionCache",assigned,this.value.visionCache,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -4688,28 +4798,28 @@ JsonParser_$77.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_TurnCache.prototype);
-		value.unitStats = new JsonParser_$79([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.deathTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnStartTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnEndTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.touchTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.attackTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.defendTriggers = new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.visionCache = new JsonParser_$83([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.unitStats = new JsonParser_$8551([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.deathTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnStartTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnEndTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.touchTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.attackTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.defendTriggers = new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.visionCache = new JsonParser_$8555([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$77
+	,__class__: JsonParser_$8549
 });
-var JsonParser_$79 = function(errors,putils,errorType) {
+var JsonParser_$8551 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_79"] = JsonParser_$79;
-JsonParser_$79.__name__ = "JsonParser_79";
-JsonParser_$79.__super__ = json2object_reader_BaseParser;
-JsonParser_$79.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8551"] = JsonParser_$8551;
+JsonParser_$8551.__name__ = "JsonParser_8551";
+JsonParser_$8551.__super__ = json2object_reader_BaseParser;
+JsonParser_$8551.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitStatsData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4726,7 +4836,7 @@ JsonParser_$79.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4743,7 +4853,7 @@ JsonParser_$79.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$87(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8559(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4760,82 +4870,20 @@ JsonParser_$79.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$79([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8551([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$79
+	,__class__: JsonParser_$8551
 });
-var JsonParser_$8 = function(errors,putils,errorType) {
+var JsonParser_$8553 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_8"] = JsonParser_$8;
-JsonParser_$8.__name__ = "JsonParser_8";
-JsonParser_$8.__super__ = json2object_reader_BaseParser;
-JsonParser_$8.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.ItemData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["invisible","unpickable","id","type","pos","buffs"],[false,false,false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$11(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
-				break;
-			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
-				break;
-			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
-				break;
-			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$10(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
-				break;
-			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
-				break;
-			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$9(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_ItemData.prototype);
-		value.invisible = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.unpickable = new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.id = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$10([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.buffs = [];
-		return value;
-	}
-	,__class__: JsonParser_$8
-});
-var JsonParser_$81 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_81"] = JsonParser_$81;
-JsonParser_$81.__name__ = "JsonParser_81";
-JsonParser_$81.__super__ = json2object_reader_BaseParser;
-JsonParser_$81.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8553"] = JsonParser_$8553;
+JsonParser_$8553.__name__ = "JsonParser_8553";
+JsonParser_$8553.__super__ = json2object_reader_BaseParser;
+JsonParser_$8553.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.EventTrigger>>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4852,7 +4900,7 @@ JsonParser_$81.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8472(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4869,7 +4917,7 @@ JsonParser_$81.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$84(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8556(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4886,20 +4934,20 @@ JsonParser_$81.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$81([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8553([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$81
+	,__class__: JsonParser_$8553
 });
-var JsonParser_$83 = function(errors,putils,errorType) {
+var JsonParser_$8555 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_83"] = JsonParser_$83;
-JsonParser_$83.__name__ = "JsonParser_83";
-JsonParser_$83.__super__ = json2object_reader_BaseParser;
-JsonParser_$83.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8555"] = JsonParser_$8555;
+JsonParser_$8555.__name__ = "JsonParser_8555";
+JsonParser_$8555.__super__ = json2object_reader_BaseParser;
+JsonParser_$8555.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, Array<Int>>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4916,7 +4964,7 @@ JsonParser_$83.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$2(this.errors,this.putils,2);
+				var key1 = new JsonParser_$8473(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -4933,7 +4981,7 @@ JsonParser_$83.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$76(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$8548(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -4950,20 +4998,20 @@ JsonParser_$83.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$83([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8555([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$83
+	,__class__: JsonParser_$8555
 });
-var JsonParser_$84 = function(errors,putils,errorType) {
+var JsonParser_$8556 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_84"] = JsonParser_$84;
-JsonParser_$84.__name__ = "JsonParser_84";
-JsonParser_$84.__super__ = json2object_reader_BaseParser;
-JsonParser_$84.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8556"] = JsonParser_$8556;
+JsonParser_$8556.__name__ = "JsonParser_8556";
+JsonParser_$8556.__super__ = json2object_reader_BaseParser;
+JsonParser_$8556.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.EventTrigger>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -4972,23 +5020,23 @@ JsonParser_$84.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$86(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8558(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$84([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8556([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$84
+	,__class__: JsonParser_$8556
 });
-var JsonParser_$86 = function(errors,putils,errorType) {
+var JsonParser_$8558 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_86"] = JsonParser_$86;
-JsonParser_$86.__name__ = "JsonParser_86";
-JsonParser_$86.__super__ = json2object_reader_BaseParser;
-JsonParser_$86.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8558"] = JsonParser_$8558;
+JsonParser_$8558.__name__ = "JsonParser_8558";
+JsonParser_$8558.__super__ = json2object_reader_BaseParser;
+JsonParser_$8558.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ script : String, args : haxe.ds.ReadOnlyArray<String> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -5006,10 +5054,10 @@ JsonParser_$86.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "args":
-				this.value.args = this.loadObjectField(($_=new JsonParser_$34(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
+				this.value.args = this.loadObjectField(($_=new JsonParser_$8506(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
 				break;
 			case "script":
-				this.value.script = this.loadObjectField(($_=new JsonParser_$1(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				this.value.script = this.loadObjectField(($_=new JsonParser_$8472(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -5018,20 +5066,20 @@ JsonParser_$86.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { args : new JsonParser_$34([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { args : new JsonParser_$8506([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$8472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$86
+	,__class__: JsonParser_$8558
 });
-var JsonParser_$87 = function(errors,putils,errorType) {
+var JsonParser_$8559 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_87"] = JsonParser_$87;
-JsonParser_$87.__name__ = "JsonParser_87";
-JsonParser_$87.__super__ = json2object_reader_BaseParser;
-JsonParser_$87.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8559"] = JsonParser_$8559;
+JsonParser_$8559.__name__ = "JsonParser_8559";
+JsonParser_$8559.__super__ = json2object_reader_BaseParser;
+JsonParser_$8559.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.UnitStatsData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -5049,31 +5097,31 @@ JsonParser_$87.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "attack":
-				this.value.attack = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
+				this.value.attack = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
 				break;
 			case "detector":
-				this.value.detector = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
+				this.value.detector = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
 				break;
 			case "flying":
-				this.value.flying = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
+				this.value.flying = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "maxHp":
-				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
+				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "skills":
-				this.value.skills = this.loadObjectField(($_=new JsonParser_$88(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
+				this.value.skills = this.loadObjectField(($_=new JsonParser_$8560(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
 				break;
 			case "speed":
-				this.value.speed = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				this.value.speed = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
 				break;
 			case "vision":
-				this.value.vision = this.loadObjectField(($_=new JsonParser_$2(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
+				this.value.vision = this.loadObjectField(($_=new JsonParser_$8473(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -5083,29 +5131,29 @@ JsonParser_$87.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_UnitStatsData.prototype);
-		value.attack = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.maxHp = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.vision = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.range = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.speed = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.flying = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.detector = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.invisible = new JsonParser_$2([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.skills = new JsonParser_$88([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.attack = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.maxHp = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.vision = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.range = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.speed = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.flying = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.detector = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.invisible = new JsonParser_$8473([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.skills = new JsonParser_$8560([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$87
+	,__class__: JsonParser_$8559
 });
-var JsonParser_$88 = function(errors,putils,errorType) {
+var JsonParser_$8560 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_88"] = JsonParser_$88;
-JsonParser_$88.__name__ = "JsonParser_88";
-JsonParser_$88.__super__ = json2object_reader_BaseParser;
-JsonParser_$88.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_8560"] = JsonParser_$8560;
+JsonParser_$8560.__name__ = "JsonParser_8560";
+JsonParser_$8560.__super__ = json2object_reader_BaseParser;
+JsonParser_$8560.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -5114,46 +5162,23 @@ JsonParser_$88.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$8472(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$88([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$8560([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$88
+	,__class__: JsonParser_$8560
 });
-var JsonParser_$9 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-	this.value = false;
-};
-$hxClasses["JsonParser_9"] = JsonParser_$9;
-JsonParser_$9.__name__ = "JsonParser_9";
-JsonParser_$9.__super__ = json2object_reader_BaseParser;
-JsonParser_$9.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Bool",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonBool: function(b,pos,variable) {
-		this.value = b;
-	}
-	,getAuto: function() {
-		return new JsonParser_$9([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$9
-});
-var JsonWriter_$0 = function(ignoreNullOptionals) {
+var JsonWriter_$5793 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_0"] = JsonWriter_$0;
-JsonWriter_$0.__name__ = "JsonWriter_0";
-JsonWriter_$0.prototype = {
+$hxClasses["JsonWriter_5793"] = JsonWriter_$5793;
+JsonWriter_$5793.__name__ = "JsonWriter_5793";
+JsonWriter_$5793.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5195,7 +5220,7 @@ JsonWriter_$0.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"size\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$3(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$6(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$14(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"size\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$5796(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$5799(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$5808(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -5229,18 +5254,18 @@ JsonWriter_$0.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$0
+	,__class__: JsonWriter_$5793
 };
-var JsonWriter_$1 = function(ignoreNullOptionals) {
+var JsonWriter_$5794 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1"] = JsonWriter_$1;
-JsonWriter_$1.__name__ = "JsonWriter_1";
-JsonWriter_$1.prototype = {
+$hxClasses["JsonWriter_5794"] = JsonWriter_$5794;
+JsonWriter_$5794.__name__ = "JsonWriter_5794";
+JsonWriter_$5794.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5285,646 +5310,18 @@ JsonWriter_$1.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1
+	,__class__: JsonWriter_$5794
 };
-var JsonWriter_$10 = function(ignoreNullOptionals) {
+var JsonWriter_$5795 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_10"] = JsonWriter_$10;
-JsonWriter_$10.__name__ = "JsonWriter_10";
-JsonWriter_$10.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		return (indentFirst ? this.buildIndent(space,level) : "") + (o == null ? "null" : "" + o);
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$10
-};
-var JsonWriter_$11 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_11"] = JsonWriter_$11;
-JsonWriter_$11.__name__ = "JsonWriter_11";
-JsonWriter_$11.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$12(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$11
-};
-var JsonWriter_$12 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_12"] = JsonWriter_$12;
-JsonWriter_$12.__name__ = "JsonWriter_12";
-JsonWriter_$12.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"turns\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$12
-};
-var JsonWriter_$14 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_14"] = JsonWriter_$14;
-JsonWriter_$14.__name__ = "JsonWriter_14";
-JsonWriter_$14.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$15(this.ignoreNullOptionals);
-		var _g = [];
-		var h = o.h;
-		var key_h = h;
-		var key_keys = Object.keys(h);
-		var key_length = key_keys.length;
-		var key_current = 0;
-		while(key_current < key_length) {
-			var key = key_keys[key_current++];
-			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$14
-};
-var JsonWriter_$15 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_15"] = JsonWriter_$15;
-JsonWriter_$15.__name__ = "JsonWriter_15";
-JsonWriter_$15.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"invisible\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$11(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$15
-};
-var JsonWriter_$16 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_16"] = JsonWriter_$16;
-JsonWriter_$16.__name__ = "JsonWriter_16";
-JsonWriter_$16.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"countries\": " + new JsonWriter_$18(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$6(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$14(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$23(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$16
-};
-var JsonWriter_$18 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_18"] = JsonWriter_$18;
-JsonWriter_$18.__name__ = "JsonWriter_18";
-JsonWriter_$18.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$19(this.ignoreNullOptionals);
-		var _g = [];
-		var key = o.keys();
-		while(key.hasNext()) {
-			var key1 = key.next();
-			_g.push(indent + space + "\"" + key1 + "\": " + valueWriter._write(o.h[key1],space,level + 1,false,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$18
-};
-var JsonWriter_$19 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_19"] = JsonWriter_$19;
-JsonWriter_$19.__name__ = "JsonWriter_19";
-JsonWriter_$19.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"minerals\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.minerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"mana\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.mana,space,level + 1,false,onAllOptionalNull),indent + space + "\"upgrades\": " + new JsonWriter_$21(this.ignoreNullOptionals)._write(o.upgrades,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$19
-};
-var JsonWriter_$2 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_2"] = JsonWriter_$2;
-JsonWriter_$2.__name__ = "JsonWriter_2";
-JsonWriter_$2.prototype = {
+$hxClasses["JsonWriter_5795"] = JsonWriter_$5795;
+JsonWriter_$5795.__name__ = "JsonWriter_5795";
+JsonWriter_$5795.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5969,18 +5366,18 @@ JsonWriter_$2.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$2
+	,__class__: JsonWriter_$5795
 };
-var JsonWriter_$21 = function(ignoreNullOptionals) {
+var JsonWriter_$5796 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_21"] = JsonWriter_$21;
-JsonWriter_$21.__name__ = "JsonWriter_21";
-JsonWriter_$21.prototype = {
+$hxClasses["JsonWriter_5796"] = JsonWriter_$5796;
+JsonWriter_$5796.__name__ = "JsonWriter_5796";
+JsonWriter_$5796.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6022,7 +5419,137 @@ JsonWriter_$21.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$22(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5797(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5796
+};
+var JsonWriter_$5797 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5797"] = JsonWriter_$5797;
+JsonWriter_$5797.__name__ = "JsonWriter_5797";
+JsonWriter_$5797.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		return model_FieldTile.customWrite(o);
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5797
+};
+var JsonWriter_$5799 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5799"] = JsonWriter_$5799;
+JsonWriter_$5799.__name__ = "JsonWriter_5799";
+JsonWriter_$5799.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5800(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6046,18 +5573,18 @@ JsonWriter_$21.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$21
+	,__class__: JsonWriter_$5799
 };
-var JsonWriter_$22 = function(ignoreNullOptionals) {
+var JsonWriter_$5800 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_22"] = JsonWriter_$22;
-JsonWriter_$22.__name__ = "JsonWriter_22";
-JsonWriter_$22.prototype = {
+$hxClasses["JsonWriter_5800"] = JsonWriter_$5800;
+JsonWriter_$5800.__name__ = "JsonWriter_5800";
+JsonWriter_$5800.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6099,7 +5626,94 @@ JsonWriter_$22.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$2(this.ignoreNullOptionals);
+		var decl = [indent + space + "\"follow\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$5801(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$5805(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5800
+};
+var JsonWriter_$5801 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5801"] = JsonWriter_$5801;
+JsonWriter_$5801.__name__ = "JsonWriter_5801";
+JsonWriter_$5801.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5802(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6120,18 +5734,130 @@ JsonWriter_$22.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$22
+	,__class__: JsonWriter_$5801
 };
-var JsonWriter_$23 = function(ignoreNullOptionals) {
+var JsonWriter_$5802 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_23"] = JsonWriter_$23;
-JsonWriter_$23.__name__ = "JsonWriter_23";
-JsonWriter_$23.prototype = {
+$hxClasses["JsonWriter_5802"] = JsonWriter_$5802;
+JsonWriter_$5802.__name__ = "JsonWriter_5802";
+JsonWriter_$5802.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		return model_HexCoords.customWrite(o);
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5802
+};
+var JsonWriter_$5803 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5803"] = JsonWriter_$5803;
+JsonWriter_$5803.__name__ = "JsonWriter_5803";
+JsonWriter_$5803.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		return (indentFirst ? this.buildIndent(space,level) : "") + (o == null ? "null" : "" + o);
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5803
+};
+var JsonWriter_$5805 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5805"] = JsonWriter_$5805;
+JsonWriter_$5805.__name__ = "JsonWriter_5805";
+JsonWriter_$5805.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6173,7 +5899,7 @@ JsonWriter_$23.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$24(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5806(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6194,18 +5920,18 @@ JsonWriter_$23.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$23
+	,__class__: JsonWriter_$5805
 };
-var JsonWriter_$24 = function(ignoreNullOptionals) {
+var JsonWriter_$5806 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_24"] = JsonWriter_$24;
-JsonWriter_$24.__name__ = "JsonWriter_24";
-JsonWriter_$24.prototype = {
+$hxClasses["JsonWriter_5806"] = JsonWriter_$5806;
+JsonWriter_$5806.__name__ = "JsonWriter_5806";
+JsonWriter_$5806.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6247,7 +5973,730 @@ JsonWriter_$24.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"acts\": " + new JsonWriter_$25(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$27(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull),indent + space + "\"effects\": " + new JsonWriter_$30(this.ignoreNullOptionals)._write(o.effects,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"turns\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5806
+};
+var JsonWriter_$5808 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5808"] = JsonWriter_$5808;
+JsonWriter_$5808.__name__ = "JsonWriter_5808";
+JsonWriter_$5808.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5809(this.ignoreNullOptionals);
+		var _g = [];
+		var h = o.h;
+		var key_h = h;
+		var key_keys = Object.keys(h);
+		var key_length = key_keys.length;
+		var key_current = 0;
+		while(key_current < key_length) {
+			var key = key_keys[key_current++];
+			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5808
+};
+var JsonWriter_$5809 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5809"] = JsonWriter_$5809;
+JsonWriter_$5809.__name__ = "JsonWriter_5809";
+JsonWriter_$5809.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"invisible\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$5805(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5809
+};
+var JsonWriter_$5810 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5810"] = JsonWriter_$5810;
+JsonWriter_$5810.__name__ = "JsonWriter_5810";
+JsonWriter_$5810.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"countries\": " + new JsonWriter_$5812(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$5799(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$5808(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$5817(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5810
+};
+var JsonWriter_$5812 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5812"] = JsonWriter_$5812;
+JsonWriter_$5812.__name__ = "JsonWriter_5812";
+JsonWriter_$5812.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5813(this.ignoreNullOptionals);
+		var _g = [];
+		var key = o.keys();
+		while(key.hasNext()) {
+			var key1 = key.next();
+			_g.push(indent + space + "\"" + key1 + "\": " + valueWriter._write(o.h[key1],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5812
+};
+var JsonWriter_$5813 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5813"] = JsonWriter_$5813;
+JsonWriter_$5813.__name__ = "JsonWriter_5813";
+JsonWriter_$5813.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"minerals\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.minerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"mana\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.mana,space,level + 1,false,onAllOptionalNull),indent + space + "\"upgrades\": " + new JsonWriter_$5815(this.ignoreNullOptionals)._write(o.upgrades,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5813
+};
+var JsonWriter_$5815 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5815"] = JsonWriter_$5815;
+JsonWriter_$5815.__name__ = "JsonWriter_5815";
+JsonWriter_$5815.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5816(this.ignoreNullOptionals);
+		var _g = [];
+		var h = o.h;
+		var key_h = h;
+		var key_keys = Object.keys(h);
+		var key_length = key_keys.length;
+		var key_current = 0;
+		while(key_current < key_length) {
+			var key = key_keys[key_current++];
+			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5815
+};
+var JsonWriter_$5816 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5816"] = JsonWriter_$5816;
+JsonWriter_$5816.__name__ = "JsonWriter_5816";
+JsonWriter_$5816.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5795(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5816
+};
+var JsonWriter_$5817 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5817"] = JsonWriter_$5817;
+JsonWriter_$5817.__name__ = "JsonWriter_5817";
+JsonWriter_$5817.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$5818(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$5817
+};
+var JsonWriter_$5818 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_5818"] = JsonWriter_$5818;
+JsonWriter_$5818.__name__ = "JsonWriter_5818";
+JsonWriter_$5818.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"acts\": " + new JsonWriter_$5819(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$5821(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull),indent + space + "\"effects\": " + new JsonWriter_$5824(this.ignoreNullOptionals)._write(o.effects,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6281,18 +6730,18 @@ JsonWriter_$24.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$24
+	,__class__: JsonWriter_$5818
 };
-var JsonWriter_$25 = function(ignoreNullOptionals) {
+var JsonWriter_$5819 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_25"] = JsonWriter_$25;
-JsonWriter_$25.__name__ = "JsonWriter_25";
-JsonWriter_$25.prototype = {
+$hxClasses["JsonWriter_5819"] = JsonWriter_$5819;
+JsonWriter_$5819.__name__ = "JsonWriter_5819";
+JsonWriter_$5819.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6334,7 +6783,7 @@ JsonWriter_$25.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$26(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5820(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6358,18 +6807,18 @@ JsonWriter_$25.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$25
+	,__class__: JsonWriter_$5819
 };
-var JsonWriter_$26 = function(ignoreNullOptionals) {
+var JsonWriter_$5820 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_26"] = JsonWriter_$26;
-JsonWriter_$26.__name__ = "JsonWriter_26";
-JsonWriter_$26.prototype = {
+$hxClasses["JsonWriter_5820"] = JsonWriter_$5820;
+JsonWriter_$5820.__name__ = "JsonWriter_5820";
+JsonWriter_$5820.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6415,7 +6864,7 @@ JsonWriter_$26.prototype = {
 		case 0:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Born" + "\": {" + newLine;
@@ -6427,7 +6876,7 @@ JsonWriter_$26.prototype = {
 			return firstIndent + "\"Dead\"";
 		case 2:
 			var unitType = o.unitType;
-			var decl = [indent + space + space + "\"" + "unitType" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(unitType,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "unitType" + "\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(unitType,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Morph" + "\": {" + newLine;
@@ -6438,7 +6887,7 @@ JsonWriter_$26.prototype = {
 		case 3:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Move" + "\": {" + newLine;
@@ -6449,7 +6898,7 @@ JsonWriter_$26.prototype = {
 		case 4:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Throw" + "\": {" + newLine;
@@ -6460,7 +6909,7 @@ JsonWriter_$26.prototype = {
 		case 5:
 			var from = o.from;
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Atk" + "\": {" + newLine;
@@ -6472,7 +6921,7 @@ JsonWriter_$26.prototype = {
 			return firstIndent + "\"Stun\"";
 		case 7:
 			var d = o.d;
-			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Spin" + "\": {" + newLine;
@@ -6484,7 +6933,7 @@ JsonWriter_$26.prototype = {
 			var type = o.type;
 			var from = o.from;
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Ordr" + "\": {" + newLine;
@@ -6500,18 +6949,18 @@ JsonWriter_$26.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$26
+	,__class__: JsonWriter_$5820
 };
-var JsonWriter_$27 = function(ignoreNullOptionals) {
+var JsonWriter_$5821 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_27"] = JsonWriter_$27;
-JsonWriter_$27.__name__ = "JsonWriter_27";
-JsonWriter_$27.prototype = {
+$hxClasses["JsonWriter_5821"] = JsonWriter_$5821;
+JsonWriter_$5821.__name__ = "JsonWriter_5821";
+JsonWriter_$5821.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6553,7 +7002,7 @@ JsonWriter_$27.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$28(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5822(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6577,18 +7026,18 @@ JsonWriter_$27.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$27
+	,__class__: JsonWriter_$5821
 };
-var JsonWriter_$28 = function(ignoreNullOptionals) {
+var JsonWriter_$5822 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_28"] = JsonWriter_$28;
-JsonWriter_$28.__name__ = "JsonWriter_28";
-JsonWriter_$28.prototype = {
+$hxClasses["JsonWriter_5822"] = JsonWriter_$5822;
+JsonWriter_$5822.__name__ = "JsonWriter_5822";
+JsonWriter_$5822.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6630,7 +7079,7 @@ JsonWriter_$28.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$29(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5823(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6651,18 +7100,18 @@ JsonWriter_$28.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$28
+	,__class__: JsonWriter_$5822
 };
-var JsonWriter_$29 = function(ignoreNullOptionals) {
+var JsonWriter_$5823 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_29"] = JsonWriter_$29;
-JsonWriter_$29.__name__ = "JsonWriter_29";
-JsonWriter_$29.prototype = {
+$hxClasses["JsonWriter_5823"] = JsonWriter_$5823;
+JsonWriter_$5823.__name__ = "JsonWriter_5823";
+JsonWriter_$5823.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6707,7 +7156,7 @@ JsonWriter_$29.prototype = {
 		switch(o._hx_index) {
 		case 0:
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "ChangeCntr" + "\": {" + newLine;
@@ -6717,7 +7166,7 @@ JsonWriter_$29.prototype = {
 			return json;
 		case 1:
 			var d = o.d;
-			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Dmg" + "\": {" + newLine;
@@ -6727,7 +7176,7 @@ JsonWriter_$29.prototype = {
 			return json;
 		case 2:
 			var m = o.m;
-			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Mana" + "\": {" + newLine;
@@ -6737,7 +7186,7 @@ JsonWriter_$29.prototype = {
 			return json;
 		case 3:
 			var m = o.m;
-			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Mine" + "\": {" + newLine;
@@ -6747,7 +7196,7 @@ JsonWriter_$29.prototype = {
 			return json;
 		case 4:
 			var type = o.type;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "AddBuff" + "\": {" + newLine;
@@ -6763,18 +7212,18 @@ JsonWriter_$29.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$29
+	,__class__: JsonWriter_$5823
 };
-var JsonWriter_$3 = function(ignoreNullOptionals) {
+var JsonWriter_$5824 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_3"] = JsonWriter_$3;
-JsonWriter_$3.__name__ = "JsonWriter_3";
-JsonWriter_$3.prototype = {
+$hxClasses["JsonWriter_5824"] = JsonWriter_$5824;
+JsonWriter_$5824.__name__ = "JsonWriter_5824";
+JsonWriter_$5824.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6816,7 +7265,7 @@ JsonWriter_$3.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$4(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5825(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6837,92 +7286,18 @@ JsonWriter_$3.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$3
+	,__class__: JsonWriter_$5824
 };
-var JsonWriter_$30 = function(ignoreNullOptionals) {
+var JsonWriter_$5825 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_30"] = JsonWriter_$30;
-JsonWriter_$30.__name__ = "JsonWriter_30";
-JsonWriter_$30.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$31(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$30
-};
-var JsonWriter_$31 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_31"] = JsonWriter_$31;
-JsonWriter_$31.__name__ = "JsonWriter_31";
-JsonWriter_$31.prototype = {
+$hxClasses["JsonWriter_5825"] = JsonWriter_$5825;
+JsonWriter_$5825.__name__ = "JsonWriter_5825";
+JsonWriter_$5825.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6971,7 +7346,7 @@ JsonWriter_$31.prototype = {
 			var newHeight = o.newHeight;
 			var oldType = o.oldType;
 			var newType = o.newType;
-			var decl = [indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldHeight" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(oldHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newHeight" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(newHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldType" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(oldType,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newType" + "\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(newType,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldHeight" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(oldHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newHeight" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(newHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldType" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(oldType,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newType" + "\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(newType,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "LandChange" + "\": {" + newLine;
@@ -6983,7 +7358,7 @@ JsonWriter_$31.prototype = {
 			var type = o.type;
 			var hex = o.hex;
 			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$33(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$5827(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "SimpleEffect" + "\": {" + newLine;
@@ -6996,7 +7371,7 @@ JsonWriter_$31.prototype = {
 			var from = o.from;
 			var to = o.to;
 			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$33(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$5802(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$5827(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "DirectedEffect" + "\": {" + newLine;
@@ -7012,18 +7387,18 @@ JsonWriter_$31.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$31
+	,__class__: JsonWriter_$5825
 };
-var JsonWriter_$33 = function(ignoreNullOptionals) {
+var JsonWriter_$5827 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_33"] = JsonWriter_$33;
-JsonWriter_$33.__name__ = "JsonWriter_33";
-JsonWriter_$33.prototype = {
+$hxClasses["JsonWriter_5827"] = JsonWriter_$5827;
+JsonWriter_$5827.__name__ = "JsonWriter_5827";
+JsonWriter_$5827.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7065,7 +7440,7 @@ JsonWriter_$33.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$35(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$37(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$35(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$35(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$35(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$5829(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$5831(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$5829(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$5829(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$5829(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [o.contrast == null,o.gain == null,o.hue == null,o.lightness == null,o.saturation == null];
 			if(skips.indexOf(false) == -1) {
@@ -7099,18 +7474,18 @@ JsonWriter_$33.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$33
+	,__class__: JsonWriter_$5827
 };
-var JsonWriter_$35 = function(ignoreNullOptionals) {
+var JsonWriter_$5829 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_35"] = JsonWriter_$35;
-JsonWriter_$35.__name__ = "JsonWriter_35";
-JsonWriter_$35.prototype = {
+$hxClasses["JsonWriter_5829"] = JsonWriter_$5829;
+JsonWriter_$5829.__name__ = "JsonWriter_5829";
+JsonWriter_$5829.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7155,18 +7530,18 @@ JsonWriter_$35.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$35
+	,__class__: JsonWriter_$5829
 };
-var JsonWriter_$37 = function(ignoreNullOptionals) {
+var JsonWriter_$5831 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_37"] = JsonWriter_$37;
-JsonWriter_$37.__name__ = "JsonWriter_37";
-JsonWriter_$37.prototype = {
+$hxClasses["JsonWriter_5831"] = JsonWriter_$5831;
+JsonWriter_$5831.__name__ = "JsonWriter_5831";
+JsonWriter_$5831.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7208,7 +7583,7 @@ JsonWriter_$37.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$38(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$5832(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7242,18 +7617,18 @@ JsonWriter_$37.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$37
+	,__class__: JsonWriter_$5831
 };
-var JsonWriter_$38 = function(ignoreNullOptionals) {
+var JsonWriter_$5832 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_38"] = JsonWriter_$38;
-JsonWriter_$38.__name__ = "JsonWriter_38";
-JsonWriter_$38.prototype = {
+$hxClasses["JsonWriter_5832"] = JsonWriter_$5832;
+JsonWriter_$5832.__name__ = "JsonWriter_5832";
+JsonWriter_$5832.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7298,18 +7673,18 @@ JsonWriter_$38.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$38
+	,__class__: JsonWriter_$5832
 };
-var JsonWriter_$39 = function(ignoreNullOptionals) {
+var JsonWriter_$5833 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_39"] = JsonWriter_$39;
-JsonWriter_$39.__name__ = "JsonWriter_39";
-JsonWriter_$39.prototype = {
+$hxClasses["JsonWriter_5833"] = JsonWriter_$5833;
+JsonWriter_$5833.__name__ = "JsonWriter_5833";
+JsonWriter_$5833.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7351,7 +7726,7 @@ JsonWriter_$39.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$40(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$41(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$0(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$5834(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$5835(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$5793(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7385,74 +7760,18 @@ JsonWriter_$39.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$39
+	,__class__: JsonWriter_$5833
 };
-var JsonWriter_$4 = function(ignoreNullOptionals) {
+var JsonWriter_$5834 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_4"] = JsonWriter_$4;
-JsonWriter_$4.__name__ = "JsonWriter_4";
-JsonWriter_$4.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		return model_FieldTile.customWrite(o);
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$4
-};
-var JsonWriter_$40 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_40"] = JsonWriter_$40;
-JsonWriter_$40.__name__ = "JsonWriter_40";
-JsonWriter_$40.prototype = {
+$hxClasses["JsonWriter_5834"] = JsonWriter_$5834;
+JsonWriter_$5834.__name__ = "JsonWriter_5834";
+JsonWriter_$5834.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7494,7 +7813,7 @@ JsonWriter_$40.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$16(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5810(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -7515,18 +7834,18 @@ JsonWriter_$40.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$40
+	,__class__: JsonWriter_$5834
 };
-var JsonWriter_$41 = function(ignoreNullOptionals) {
+var JsonWriter_$5835 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_41"] = JsonWriter_$41;
-JsonWriter_$41.__name__ = "JsonWriter_41";
-JsonWriter_$41.prototype = {
+$hxClasses["JsonWriter_5835"] = JsonWriter_$5835;
+JsonWriter_$5835.__name__ = "JsonWriter_5835";
+JsonWriter_$5835.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7568,7 +7887,7 @@ JsonWriter_$41.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$42(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5836(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -7589,18 +7908,18 @@ JsonWriter_$41.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$41
+	,__class__: JsonWriter_$5835
 };
-var JsonWriter_$42 = function(ignoreNullOptionals) {
+var JsonWriter_$5836 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_42"] = JsonWriter_$42;
-JsonWriter_$42.__name__ = "JsonWriter_42";
-JsonWriter_$42.prototype = {
+$hxClasses["JsonWriter_5836"] = JsonWriter_$5836;
+JsonWriter_$5836.__name__ = "JsonWriter_5836";
+JsonWriter_$5836.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7642,7 +7961,7 @@ JsonWriter_$42.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7676,18 +7995,18 @@ JsonWriter_$42.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$42
+	,__class__: JsonWriter_$5836
 };
-var JsonWriter_$44 = function(ignoreNullOptionals) {
+var JsonWriter_$5838 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_44"] = JsonWriter_$44;
-JsonWriter_$44.__name__ = "JsonWriter_44";
-JsonWriter_$44.prototype = {
+$hxClasses["JsonWriter_5838"] = JsonWriter_$5838;
+JsonWriter_$5838.__name__ = "JsonWriter_5838";
+JsonWriter_$5838.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7729,7 +8048,7 @@ JsonWriter_$44.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$45(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5839(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -7753,18 +8072,18 @@ JsonWriter_$44.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$44
+	,__class__: JsonWriter_$5838
 };
-var JsonWriter_$45 = function(ignoreNullOptionals) {
+var JsonWriter_$5839 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_45"] = JsonWriter_$45;
-JsonWriter_$45.__name__ = "JsonWriter_45";
-JsonWriter_$45.prototype = {
+$hxClasses["JsonWriter_5839"] = JsonWriter_$5839;
+JsonWriter_$5839.__name__ = "JsonWriter_5839";
+JsonWriter_$5839.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7806,7 +8125,7 @@ JsonWriter_$45.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"name\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$38(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"name\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$5832(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$5803(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7840,18 +8159,18 @@ JsonWriter_$45.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$45
+	,__class__: JsonWriter_$5839
 };
-var JsonWriter_$46 = function(ignoreNullOptionals) {
+var JsonWriter_$5840 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_46"] = JsonWriter_$46;
-JsonWriter_$46.__name__ = "JsonWriter_46";
-JsonWriter_$46.prototype = {
+$hxClasses["JsonWriter_5840"] = JsonWriter_$5840;
+JsonWriter_$5840.__name__ = "JsonWriter_5840";
+JsonWriter_$5840.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7893,7 +8212,7 @@ JsonWriter_$46.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5794(this.ignoreNullOptionals);
 		var _g = [];
 		var key = o.keys();
 		while(key.hasNext()) {
@@ -7913,18 +8232,18 @@ JsonWriter_$46.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$46
+	,__class__: JsonWriter_$5840
 };
-var JsonWriter_$47 = function(ignoreNullOptionals) {
+var JsonWriter_$5841 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_47"] = JsonWriter_$47;
-JsonWriter_$47.__name__ = "JsonWriter_47";
-JsonWriter_$47.prototype = {
+$hxClasses["JsonWriter_5841"] = JsonWriter_$5841;
+JsonWriter_$5841.__name__ = "JsonWriter_5841";
+JsonWriter_$5841.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7966,7 +8285,7 @@ JsonWriter_$47.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"unitStats\": " + new JsonWriter_$49(this.ignoreNullOptionals)._write(o.unitStats,space,level + 1,false,onAllOptionalNull),indent + space + "\"deathTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.deathTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnStartTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.turnStartTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnEndTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.turnEndTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.touchTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"attackTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.attackTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"defendTriggers\": " + new JsonWriter_$53(this.ignoreNullOptionals)._write(o.defendTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"visionCache\": " + new JsonWriter_$59(this.ignoreNullOptionals)._write(o.visionCache,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"unitStats\": " + new JsonWriter_$5843(this.ignoreNullOptionals)._write(o.unitStats,space,level + 1,false,onAllOptionalNull),indent + space + "\"deathTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.deathTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnStartTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.turnStartTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnEndTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.turnEndTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.touchTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"attackTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.attackTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"defendTriggers\": " + new JsonWriter_$5847(this.ignoreNullOptionals)._write(o.defendTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"visionCache\": " + new JsonWriter_$5853(this.ignoreNullOptionals)._write(o.visionCache,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8000,18 +8319,18 @@ JsonWriter_$47.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$47
+	,__class__: JsonWriter_$5841
 };
-var JsonWriter_$49 = function(ignoreNullOptionals) {
+var JsonWriter_$5843 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_49"] = JsonWriter_$49;
-JsonWriter_$49.__name__ = "JsonWriter_49";
-JsonWriter_$49.prototype = {
+$hxClasses["JsonWriter_5843"] = JsonWriter_$5843;
+JsonWriter_$5843.__name__ = "JsonWriter_5843";
+JsonWriter_$5843.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8053,7 +8372,7 @@ JsonWriter_$49.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$50(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5844(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -8077,18 +8396,18 @@ JsonWriter_$49.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$49
+	,__class__: JsonWriter_$5843
 };
-var JsonWriter_$50 = function(ignoreNullOptionals) {
+var JsonWriter_$5844 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_50"] = JsonWriter_$50;
-JsonWriter_$50.__name__ = "JsonWriter_50";
-JsonWriter_$50.prototype = {
+$hxClasses["JsonWriter_5844"] = JsonWriter_$5844;
+JsonWriter_$5844.__name__ = "JsonWriter_5844";
+JsonWriter_$5844.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8130,7 +8449,7 @@ JsonWriter_$50.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"attack\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.attack,space,level + 1,false,onAllOptionalNull),indent + space + "\"maxHp\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.maxHp,space,level + 1,false,onAllOptionalNull),indent + space + "\"vision\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.vision,space,level + 1,false,onAllOptionalNull),indent + space + "\"range\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.range,space,level + 1,false,onAllOptionalNull),indent + space + "\"speed\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.speed,space,level + 1,false,onAllOptionalNull),indent + space + "\"flying\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.flying,space,level + 1,false,onAllOptionalNull),indent + space + "\"detector\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.detector,space,level + 1,false,onAllOptionalNull),indent + space + "\"invisible\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"skills\": " + new JsonWriter_$51(this.ignoreNullOptionals)._write(o.skills,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"attack\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.attack,space,level + 1,false,onAllOptionalNull),indent + space + "\"maxHp\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.maxHp,space,level + 1,false,onAllOptionalNull),indent + space + "\"vision\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.vision,space,level + 1,false,onAllOptionalNull),indent + space + "\"range\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.range,space,level + 1,false,onAllOptionalNull),indent + space + "\"speed\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.speed,space,level + 1,false,onAllOptionalNull),indent + space + "\"flying\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.flying,space,level + 1,false,onAllOptionalNull),indent + space + "\"detector\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.detector,space,level + 1,false,onAllOptionalNull),indent + space + "\"invisible\": " + new JsonWriter_$5795(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"skills\": " + new JsonWriter_$5845(this.ignoreNullOptionals)._write(o.skills,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8164,18 +8483,18 @@ JsonWriter_$50.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$50
+	,__class__: JsonWriter_$5844
 };
-var JsonWriter_$51 = function(ignoreNullOptionals) {
+var JsonWriter_$5845 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_51"] = JsonWriter_$51;
-JsonWriter_$51.__name__ = "JsonWriter_51";
-JsonWriter_$51.prototype = {
+$hxClasses["JsonWriter_5845"] = JsonWriter_$5845;
+JsonWriter_$5845.__name__ = "JsonWriter_5845";
+JsonWriter_$5845.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8217,7 +8536,7 @@ JsonWriter_$51.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5794(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -8238,18 +8557,18 @@ JsonWriter_$51.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$51
+	,__class__: JsonWriter_$5845
 };
-var JsonWriter_$53 = function(ignoreNullOptionals) {
+var JsonWriter_$5847 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_53"] = JsonWriter_$53;
-JsonWriter_$53.__name__ = "JsonWriter_53";
-JsonWriter_$53.prototype = {
+$hxClasses["JsonWriter_5847"] = JsonWriter_$5847;
+JsonWriter_$5847.__name__ = "JsonWriter_5847";
+JsonWriter_$5847.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8291,7 +8610,7 @@ JsonWriter_$53.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$54(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5848(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -8315,18 +8634,18 @@ JsonWriter_$53.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$53
+	,__class__: JsonWriter_$5847
 };
-var JsonWriter_$54 = function(ignoreNullOptionals) {
+var JsonWriter_$5848 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_54"] = JsonWriter_$54;
-JsonWriter_$54.__name__ = "JsonWriter_54";
-JsonWriter_$54.prototype = {
+$hxClasses["JsonWriter_5848"] = JsonWriter_$5848;
+JsonWriter_$5848.__name__ = "JsonWriter_5848";
+JsonWriter_$5848.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8368,7 +8687,7 @@ JsonWriter_$54.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$56(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5850(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -8389,18 +8708,18 @@ JsonWriter_$54.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$54
+	,__class__: JsonWriter_$5848
 };
-var JsonWriter_$56 = function(ignoreNullOptionals) {
+var JsonWriter_$5850 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_56"] = JsonWriter_$56;
-JsonWriter_$56.__name__ = "JsonWriter_56";
-JsonWriter_$56.prototype = {
+$hxClasses["JsonWriter_5850"] = JsonWriter_$5850;
+JsonWriter_$5850.__name__ = "JsonWriter_5850";
+JsonWriter_$5850.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8442,7 +8761,7 @@ JsonWriter_$56.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"args\": " + new JsonWriter_$51(this.ignoreNullOptionals)._write(o.args,space,level + 1,false,onAllOptionalNull),indent + space + "\"script\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.script,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"args\": " + new JsonWriter_$5845(this.ignoreNullOptionals)._write(o.args,space,level + 1,false,onAllOptionalNull),indent + space + "\"script\": " + new JsonWriter_$5794(this.ignoreNullOptionals)._write(o.script,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8476,18 +8795,18 @@ JsonWriter_$56.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$56
+	,__class__: JsonWriter_$5850
 };
-var JsonWriter_$59 = function(ignoreNullOptionals) {
+var JsonWriter_$5853 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_59"] = JsonWriter_$59;
-JsonWriter_$59.__name__ = "JsonWriter_59";
-JsonWriter_$59.prototype = {
+$hxClasses["JsonWriter_5853"] = JsonWriter_$5853;
+JsonWriter_$5853.__name__ = "JsonWriter_5853";
+JsonWriter_$5853.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8529,7 +8848,7 @@ JsonWriter_$59.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$22(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$5816(this.ignoreNullOptionals);
 		var _g = [];
 		var key = o.keys();
 		while(key.hasNext()) {
@@ -8549,301 +8868,7 @@ JsonWriter_$59.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$59
-};
-var JsonWriter_$6 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_6"] = JsonWriter_$6;
-JsonWriter_$6.__name__ = "JsonWriter_6";
-JsonWriter_$6.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$7(this.ignoreNullOptionals);
-		var _g = [];
-		var h = o.h;
-		var key_h = h;
-		var key_keys = Object.keys(h);
-		var key_length = key_keys.length;
-		var key_current = 0;
-		while(key_current < key_length) {
-			var key = key_keys[key_current++];
-			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$6
-};
-var JsonWriter_$7 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_7"] = JsonWriter_$7;
-JsonWriter_$7.__name__ = "JsonWriter_7";
-JsonWriter_$7.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"follow\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$8(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$10(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$2(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$9(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$11(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$7
-};
-var JsonWriter_$8 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_8"] = JsonWriter_$8;
-JsonWriter_$8.__name__ = "JsonWriter_8";
-JsonWriter_$8.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$9(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$8
-};
-var JsonWriter_$9 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_9"] = JsonWriter_$9;
-JsonWriter_$9.__name__ = "JsonWriter_9";
-JsonWriter_$9.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		return model_HexCoords.customWrite(o);
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$9
+	,__class__: JsonWriter_$5853
 };
 var Lambda = function() { };
 $hxClasses["Lambda"] = Lambda;
@@ -95897,7 +95922,7 @@ logic_MapCursor.prototype = {
 			var hex = selectedHexes[_g];
 			++_g;
 			var bmp = new h2d_Bitmap(view_ui_screens_Game.gameField.cursorTile,null);
-			bmp.color = new h3d_Vector(0,0,1,0.35);
+			bmp.color = new h3d_Vector(0,0,1,0.55);
 			var hexTile = view_ui_screens_Game.gameField.tiles.h[Std.string(hex) + ""];
 			if(hexTile == null) {
 				continue;
@@ -95925,7 +95950,7 @@ logic_MapCursor.prototype = {
 		if(force == null) {
 			force = false;
 		}
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			this.mapEditorSelection(tileOver,force);
 			return;
 		}
@@ -96071,7 +96096,7 @@ $hxClasses["logic.EventSystem"] = logic_EventSystem;
 logic_EventSystem.__name__ = "logic.EventSystem";
 logic_EventSystem.connect = function(eventType,listener) {
 	if(!logic_JSWorker.IsParent()) {
-		haxe_Log.trace("WORKER: event system disabled in worker. Can't connect event: " + eventType,{ fileName : "src/logic/EventSystem.hx", lineNumber : 51, className : "logic.EventSystem", methodName : "connect"});
+		haxe_Log.trace("WORKER: event system disabled in worker. Can't connect event: " + eventType,{ fileName : "src/logic/EventSystem.hx", lineNumber : 52, className : "logic.EventSystem", methodName : "connect"});
 		return;
 	}
 	if(!Object.prototype.hasOwnProperty.call(logic_EventSystem.listeners.h,eventType)) {
@@ -96125,40 +96150,41 @@ var logic_EventType = $hxEnums["logic.EventType"] = { __ename__:true,__construct
 	,LanguageChanged: {_hx_name:"LanguageChanged",_hx_index:0,__enum__:"logic.EventType",toString:$estr}
 	,EnterFrame: {_hx_name:"EnterFrame",_hx_index:1,__enum__:"logic.EventType",toString:$estr}
 	,CamUpdated: {_hx_name:"CamUpdated",_hx_index:2,__enum__:"logic.EventType",toString:$estr}
-	,FieldEdited: {_hx_name:"FieldEdited",_hx_index:3,__enum__:"logic.EventType",toString:$estr}
-	,SelectionChanged: {_hx_name:"SelectionChanged",_hx_index:4,__enum__:"logic.EventType",toString:$estr}
-	,ObjectUpdated: {_hx_name:"ObjectUpdated",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
-	,OrdersChanged: {_hx_name:"OrdersChanged",_hx_index:6,__enum__:"logic.EventType",toString:$estr}
-	,RallyPointChanged: {_hx_name:"RallyPointChanged",_hx_index:7,__enum__:"logic.EventType",toString:$estr}
-	,AvatarClicked: {_hx_name:"AvatarClicked",_hx_index:8,__enum__:"logic.EventType",toString:$estr}
-	,AvatarRightClicked: {_hx_name:"AvatarRightClicked",_hx_index:9,__enum__:"logic.EventType",toString:$estr}
-	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
-	,FileLoadingStarted: {_hx_name:"FileLoadingStarted",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
-	,SavesListLoaded: {_hx_name:"SavesListLoaded",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
-	,TurnDone: {_hx_name:"TurnDone",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
-	,NewTurnCalculated: {_hx_name:"NewTurnCalculated",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
-	,MapSelected: {_hx_name:"MapSelected",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
-	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
-	,MicroTurnStart: {_hx_name:"MicroTurnStart",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
-	,TurnAnimEnd: {_hx_name:"TurnAnimEnd",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
-	,GameSaved: {_hx_name:"GameSaved",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
-	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
-	,Connected: {_hx_name:"Connected",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
-	,Disconnected: {_hx_name:"Disconnected",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
-	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
-	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
-	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
-	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
-	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:29,__enum__:"logic.EventType",toString:$estr}
-	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:30,__enum__:"logic.EventType",toString:$estr}
-	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:31,__enum__:"logic.EventType",toString:$estr}
-	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:32,__enum__:"logic.EventType",toString:$estr}
-	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:33,__enum__:"logic.EventType",toString:$estr}
+	,AltView: {_hx_name:"AltView",_hx_index:3,__enum__:"logic.EventType",toString:$estr}
+	,FieldEdited: {_hx_name:"FieldEdited",_hx_index:4,__enum__:"logic.EventType",toString:$estr}
+	,SelectionChanged: {_hx_name:"SelectionChanged",_hx_index:5,__enum__:"logic.EventType",toString:$estr}
+	,ObjectUpdated: {_hx_name:"ObjectUpdated",_hx_index:6,__enum__:"logic.EventType",toString:$estr}
+	,OrdersChanged: {_hx_name:"OrdersChanged",_hx_index:7,__enum__:"logic.EventType",toString:$estr}
+	,RallyPointChanged: {_hx_name:"RallyPointChanged",_hx_index:8,__enum__:"logic.EventType",toString:$estr}
+	,AvatarClicked: {_hx_name:"AvatarClicked",_hx_index:9,__enum__:"logic.EventType",toString:$estr}
+	,AvatarRightClicked: {_hx_name:"AvatarRightClicked",_hx_index:10,__enum__:"logic.EventType",toString:$estr}
+	,ScreenResized: {_hx_name:"ScreenResized",_hx_index:11,__enum__:"logic.EventType",toString:$estr}
+	,FileLoadingStarted: {_hx_name:"FileLoadingStarted",_hx_index:12,__enum__:"logic.EventType",toString:$estr}
+	,SavesListLoaded: {_hx_name:"SavesListLoaded",_hx_index:13,__enum__:"logic.EventType",toString:$estr}
+	,TurnDone: {_hx_name:"TurnDone",_hx_index:14,__enum__:"logic.EventType",toString:$estr}
+	,NewTurnCalculated: {_hx_name:"NewTurnCalculated",_hx_index:15,__enum__:"logic.EventType",toString:$estr}
+	,MapSelected: {_hx_name:"MapSelected",_hx_index:16,__enum__:"logic.EventType",toString:$estr}
+	,TurnAnimStart: {_hx_name:"TurnAnimStart",_hx_index:17,__enum__:"logic.EventType",toString:$estr}
+	,MicroTurnStart: {_hx_name:"MicroTurnStart",_hx_index:18,__enum__:"logic.EventType",toString:$estr}
+	,TurnAnimEnd: {_hx_name:"TurnAnimEnd",_hx_index:19,__enum__:"logic.EventType",toString:$estr}
+	,GameSaved: {_hx_name:"GameSaved",_hx_index:20,__enum__:"logic.EventType",toString:$estr}
+	,GameSaveDeleted: {_hx_name:"GameSaveDeleted",_hx_index:21,__enum__:"logic.EventType",toString:$estr}
+	,Connected: {_hx_name:"Connected",_hx_index:22,__enum__:"logic.EventType",toString:$estr}
+	,Disconnected: {_hx_name:"Disconnected",_hx_index:23,__enum__:"logic.EventType",toString:$estr}
+	,OnGetRooms: {_hx_name:"OnGetRooms",_hx_index:24,__enum__:"logic.EventType",toString:$estr}
+	,OnGetPlayers: {_hx_name:"OnGetPlayers",_hx_index:25,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomCreated: {_hx_name:"OnRoomCreated",_hx_index:26,__enum__:"logic.EventType",toString:$estr}
+	,OnRoomEnter: {_hx_name:"OnRoomEnter",_hx_index:27,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerEnter: {_hx_name:"OnPlayerEnter",_hx_index:28,__enum__:"logic.EventType",toString:$estr}
+	,OnPlayerLeft: {_hx_name:"OnPlayerLeft",_hx_index:29,__enum__:"logic.EventType",toString:$estr}
+	,OnChangeName: {_hx_name:"OnChangeName",_hx_index:30,__enum__:"logic.EventType",toString:$estr}
+	,OnChatMessage: {_hx_name:"OnChatMessage",_hx_index:31,__enum__:"logic.EventType",toString:$estr}
+	,OnCountrySelected: {_hx_name:"OnCountrySelected",_hx_index:32,__enum__:"logic.EventType",toString:$estr}
+	,GameStateShared: {_hx_name:"GameStateShared",_hx_index:33,__enum__:"logic.EventType",toString:$estr}
+	,NewRoomOwner: {_hx_name:"NewRoomOwner",_hx_index:34,__enum__:"logic.EventType",toString:$estr}
 };
-logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.FileLoadingStarted,logic_EventType.SavesListLoaded,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.MicroTurnStart,logic_EventType.TurnAnimEnd,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
-logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.FileLoadingStarted,logic_EventType.SavesListLoaded,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.MicroTurnStart,logic_EventType.TurnAnimEnd,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.AltView,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.FileLoadingStarted,logic_EventType.SavesListLoaded,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.MicroTurnStart,logic_EventType.TurnAnimEnd,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
+logic_EventType.__empty_constructs__ = [logic_EventType.LanguageChanged,logic_EventType.EnterFrame,logic_EventType.CamUpdated,logic_EventType.AltView,logic_EventType.FieldEdited,logic_EventType.SelectionChanged,logic_EventType.ObjectUpdated,logic_EventType.OrdersChanged,logic_EventType.RallyPointChanged,logic_EventType.AvatarClicked,logic_EventType.AvatarRightClicked,logic_EventType.ScreenResized,logic_EventType.FileLoadingStarted,logic_EventType.SavesListLoaded,logic_EventType.TurnDone,logic_EventType.NewTurnCalculated,logic_EventType.MapSelected,logic_EventType.TurnAnimStart,logic_EventType.MicroTurnStart,logic_EventType.TurnAnimEnd,logic_EventType.GameSaved,logic_EventType.GameSaveDeleted,logic_EventType.Connected,logic_EventType.Disconnected,logic_EventType.OnGetRooms,logic_EventType.OnGetPlayers,logic_EventType.OnRoomCreated,logic_EventType.OnRoomEnter,logic_EventType.OnPlayerEnter,logic_EventType.OnPlayerLeft,logic_EventType.OnChangeName,logic_EventType.OnChatMessage,logic_EventType.OnCountrySelected,logic_EventType.GameStateShared,logic_EventType.NewRoomOwner];
 var logic_CamSystem = function() { };
 $hxClasses["logic.CamSystem"] = logic_CamSystem;
 logic_CamSystem.__name__ = "logic.CamSystem";
@@ -96167,7 +96193,7 @@ logic_CamSystem.RotateCam = function(dir) {
 		logic_CamSystem.rotationHex = view_ui_screens_Game.gameField.getHexFromPoint(hxd_Window.getInstance().get_width() / 2,hxd_Window.getInstance().get_height() / 2);
 	}
 	model_Store.cam.cursorHex = logic_CamSystem.rotationHex;
-	model_Store.cam.dir = model_HexDirection.sum(model_Store.cam.dir,dir);
+	model_Store.cam.dir = model_HexDirection.sum(model_Store.cam.dir,model_HexDirection.toInt(dir));
 	logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
 };
 logic_CamSystem.CamMoved = function() {
@@ -96415,7 +96441,7 @@ logic_DataBase.saveData = function() {
 	if(logic_DataBase.db == null) {
 		return;
 	}
-	var writer = new JsonWriter_$0();
+	var writer = new JsonWriter_$5793();
 	logic_UnitSystem.copyTurnUnitsToField();
 	logic_ItemSystem.copyTurnItemsToField();
 	var json = writer.write(model_Store.game.field,"  ");
@@ -96483,7 +96509,7 @@ logic_DataBase.parseUnitMap = function() {
 		haxe_Log.trace("No file: " + logic_DataBase.UNITS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 209, className : "logic.DataBase", methodName : "parseUnitMap"});
 		return;
 	}
-	var parser = new JsonParser_$17();
+	var parser = new JsonParser_$8489();
 	logic_DataBase.db.unitsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseItemMap = function() {
@@ -96492,7 +96518,7 @@ logic_DataBase.parseItemMap = function() {
 		haxe_Log.trace("No file: " + logic_DataBase.ITEMS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 219, className : "logic.DataBase", methodName : "parseItemMap"});
 		return;
 	}
-	var parser = new JsonParser_$19();
+	var parser = new JsonParser_$8491();
 	logic_DataBase.db.itemsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseUpgradeMap = function() {
@@ -96501,7 +96527,7 @@ logic_DataBase.parseUpgradeMap = function() {
 		haxe_Log.trace("No file: " + logic_DataBase.UPGRADES_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 229, className : "logic.DataBase", methodName : "parseUpgradeMap"});
 		return;
 	}
-	var parser = new JsonParser_$21();
+	var parser = new JsonParser_$8493();
 	logic_DataBase.db.upgradesMap = parser.fromJson(txt);
 };
 logic_DataBase.parseBuffsMap = function() {
@@ -96510,7 +96536,7 @@ logic_DataBase.parseBuffsMap = function() {
 		haxe_Log.trace("No file: " + logic_DataBase.BUFFS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 239, className : "logic.DataBase", methodName : "parseBuffsMap"});
 		return;
 	}
-	var parser = new JsonParser_$23();
+	var parser = new JsonParser_$8495();
 	logic_DataBase.db.buffsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseSkillsMap = function() {
@@ -96519,7 +96545,7 @@ logic_DataBase.parseSkillsMap = function() {
 		haxe_Log.trace("No file: " + logic_DataBase.SKILLS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 249, className : "logic.DataBase", methodName : "parseSkillsMap"});
 		return;
 	}
-	var parser = new JsonParser_$25();
+	var parser = new JsonParser_$8497();
 	logic_DataBase.db.skillsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseMapInfo = function() {
@@ -96529,7 +96555,7 @@ logic_DataBase.parseMapInfo = function() {
 		return;
 	}
 	logic_LoadSystem.ClearTilesCache();
-	var miParser = new JsonParser_$26();
+	var miParser = new JsonParser_$8498();
 	logic_DataBase.db.mapInfo = miParser.fromJson(txt);
 	logic_LoadSystem.CalcTilesCache(logic_DataBase.db.mapInfo);
 };
@@ -96674,7 +96700,7 @@ logic_FieldSystem.OnTilePressed = function() {
 		result[i] = _this[i].id;
 	}
 	var selected = result;
-	if(!hxd_Key.isDown(17)) {
+	if(!logic_KeySystem.isCtrl()) {
 		model_Store.cam.selectedIds = new haxe_ds_StringMap();
 		if(selected.length == 0) {
 			var selectedItems = logic_ItemSystem.GetItemsFromHex(over);
@@ -96704,7 +96730,7 @@ logic_FieldSystem.RemoveSelection = function(unitId) {
 logic_FieldSystem.LoadField = function(fieldId) {
 	var json = logic_DataBase.getMapFileText("fields/" + fieldId);
 	model_Store.cam.curFieldId = fieldId;
-	var parser = new JsonParser_$0();
+	var parser = new JsonParser_$8471();
 	return parser.fromJson(json);
 };
 logic_FieldSystem.ChangeFieldSize = function(newSize) {
@@ -97848,6 +97874,47 @@ logic_ItemSystem.copyTurnItemsToField = function() {
 		this1.h[key] = value;
 	}
 };
+var logic_KeySystem = function() { };
+$hxClasses["logic.KeySystem"] = logic_KeySystem;
+logic_KeySystem.__name__ = "logic.KeySystem";
+logic_KeySystem.isCtrl = function() {
+	if(!(hxd_Key.isDown(17) || logic_KeySystem.pressedKeys["ControlLeft"] == "down")) {
+		return logic_KeySystem.pressedKeys["ControlRight"] == "down";
+	} else {
+		return true;
+	}
+};
+logic_KeySystem.onEnterFrame = function() {
+	var access = logic_KeySystem.pressedKeys;
+	var _g_access = access;
+	var _g_keys = Reflect.fields(access);
+	var _g_index = 0;
+	while(_g_index < _g_keys.length) {
+		var key = _g_keys[_g_index++];
+		var _g_value = _g_access[key];
+		var _g_key = key;
+		var key1 = _g_key;
+		var value = _g_value;
+		logic_KeySystem.pressedKeys[key1] = "down";
+	}
+};
+logic_KeySystem.isKey = function(keyCode) {
+	if(!(hxd_Key.isDown(keyCode) || hxd_Key.isPressed(keyCode))) {
+		return logic_KeySystem.pressedKeys[keyCode + ""] != null;
+	} else {
+		return true;
+	}
+};
+logic_KeySystem.isPressed = function(keyCode) {
+	if(!hxd_Key.isPressed(keyCode)) {
+		return logic_KeySystem.pressedKeys[keyCode + ""] == "pressed";
+	} else {
+		return true;
+	}
+};
+logic_KeySystem.isReleased = function(keyCode) {
+	return hxd_Key.isReleased(keyCode);
+};
 var logic_LSDSystem = function() { };
 $hxClasses["logic.LSDSystem"] = logic_LSDSystem;
 logic_LSDSystem.__name__ = "logic.LSDSystem";
@@ -97874,7 +97941,7 @@ logic_LSDSystem.GetSaves = function(netGames) {
 	if(json2 == null) {
 		return [];
 	} else {
-		var parser = new JsonParser_$54();
+		var parser = new JsonParser_$8526();
 		saveDB = parser.fromJson(json2);
 	}
 	var res = [];
@@ -97906,7 +97973,7 @@ logic_LSDSystem.Save = function(filename) {
 	if(filename == "") {
 		filename = "No name";
 	}
-	var writer = new JsonWriter_$39();
+	var writer = new JsonWriter_$5833();
 	var json = writer.write(model_Store.game);
 	logic_LSDSystem.SaveString(filename + ".sav",json);
 	var si = new model_SaveInfo(filename,model_Store.game);
@@ -97965,7 +98032,7 @@ logic_LSDSystem.Load = function(filename) {
 	if(json == null) {
 		return null;
 	}
-	var parser = new JsonParser_$56();
+	var parser = new JsonParser_$8528();
 	var result = parser.fromJson(json);
 	var _g = 0;
 	var _g1 = result.turns;
@@ -97978,11 +98045,11 @@ logic_LSDSystem.Load = function(filename) {
 };
 logic_LSDSystem.uncompressGameState = function(compressedStr) {
 	var json = utils_StringUtils.decompress(compressedStr);
-	var parser = new JsonParser_$56();
+	var parser = new JsonParser_$8528();
 	return parser.fromJson(json);
 };
 logic_LSDSystem.getCompressedGameString = function(gd) {
-	var writer = new JsonWriter_$39();
+	var writer = new JsonWriter_$5833();
 	var data = writer.write(gd);
 	var result = utils_StringUtils.compress(data);
 	return result;
@@ -98024,6 +98091,9 @@ logic_LoadSystem.ClearTilesCache = function() {
 	logic_LoadSystem.tileVImages = [];
 };
 logic_LoadSystem.CalcTilesCache = function(mapInfo) {
+	if(!logic_JSWorker.IsParent()) {
+		return;
+	}
 	logic_LoadSystem.tileHImages.push(hxd_Res.get_loader().loadCache("img/tiles/hex_h.png",hxd_res_Image).toTile());
 	logic_LoadSystem.tileVImages.push(hxd_Res.get_loader().loadCache("img/tiles/hex_v.png",hxd_res_Image).toTile());
 	logic_LoadSystem.tileColors.push(new h3d_Vector(1,1,1,0));
@@ -98274,7 +98344,7 @@ logic_MapEditorSystem.isPlayMode = function() {
 logic_MapEditorSystem.isTestMode = function() {
 	return logic_MapEditorSystem.Mode == logic_MapEditorModes.test;
 };
-logic_MapEditorSystem.editorModeOn = function() {
+logic_MapEditorSystem.isEditMode = function() {
 	return logic_MapEditorSystem.Mode == logic_MapEditorModes.edit;
 };
 logic_MapEditorSystem.startNewHistory = function() {
@@ -98365,7 +98435,7 @@ logic_MapEditorSystem.OnTileMouseDown = function() {
 				return;
 			}
 		}
-		if(!hxd_Key.isDown(17)) {
+		if(!logic_KeySystem.isCtrl()) {
 			model_Store.cam.selectedIds = new haxe_ds_StringMap();
 		}
 		var _g = 0;
@@ -98721,7 +98791,7 @@ logic_MovementSystem.CalcPaths = function(td,unit) {
 	var goalDist = logic_HexMath.hexDistance(goal,unit.pos);
 	if(goalDist <= minRange) {
 		if(goalDist > 0) {
-			unit.dir = logic_HexMath.getDir(unit.pos,goal);
+			unit.dir = model_HexDirection.fromInt(logic_HexMath.getDir(unit.pos,goal));
 		}
 		return 0;
 	}
@@ -98733,7 +98803,7 @@ logic_MovementSystem.CalcPaths = function(td,unit) {
 	if(!logic_FieldSystem.isHexAvailable(nextStep,unit,logic_G.get_field())) {
 		return 0;
 	}
-	unit.dir = logic_HexMath.getDir(unit.pos,nextStep);
+	unit.dir = model_HexDirection.fromInt(logic_HexMath.getDir(unit.pos,nextStep));
 	unit.pos = nextStep;
 	var v = model_ActionType.Move(nextStep.q,nextStep.r);
 	td.microTurns[logic_GameSystem.MicroTurnNum].acts.h[unit.id] = v;
@@ -98857,11 +98927,11 @@ logic_MovementSystem.IndividualSpread = function(busyPoints,td) {
 				continue;
 			}
 		}
-		var empty = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),u.pos,u.dir,u.flying());
+		var empty = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),u.pos,model_HexDirection.toInt(u.dir),u.flying());
 		if(empty == null) {
 			haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 167, className : "logic.MovementSystem", methodName : "IndividualSpread"});
 		} else {
-			u.dir = logic_HexMath.getDir(empty,u.pos);
+			u.dir = model_HexDirection.fromInt(logic_HexMath.getDir(empty,u.pos));
 			u.pos = empty;
 			var v = [];
 			busyPoints.h[Std.string(empty) + ""] = v;
@@ -98917,7 +98987,7 @@ logic_MovementSystem.ByCountrySpread = function(busyPoints,td) {
 			if(countryUnits1.length == 0) {
 				continue;
 			}
-			var emptyHex = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),countryUnits1[0].pos,countryUnits1[0].dir,0);
+			var emptyHex = logic_FieldSystem.getNearestEmptyHex(busyPoints,logic_G.get_field(),countryUnits1[0].pos,model_HexDirection.toInt(countryUnits1[0].dir),0);
 			if(emptyHex == null) {
 				haxe_Log.trace("cant find empty hex=(",{ fileName : "src/logic/MovementSystem.hx", lineNumber : 201, className : "logic.MovementSystem", methodName : "ByCountrySpread"});
 				break;
@@ -99278,7 +99348,7 @@ logic_NetSystem.selectCountry = function(playerId,cId) {
 	logic_NetSystem.resetCountryPlayerBind(playerId);
 	logic_NetSystem.currentRoom.countries.h[cId] = playerId;
 	logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
-	var writer = new JsonWriter_$46();
+	var writer = new JsonWriter_$5840();
 	logic_NetSystem.sendToOthers({ action : "SelectedCountries", params : writer.write(logic_NetSystem.currentRoom.countries)});
 };
 logic_NetSystem.onMsgFromPlayer = function(data) {
@@ -99331,7 +99401,7 @@ logic_NetSystem.onMsgFromPlayer = function(data) {
 		logic_OrderSystem.SelectOrder(params.unitId,params.orderIdx,params.autocast);
 		break;
 	case "SelectedCountries":
-		var parser = new JsonParser_$57();
+		var parser = new JsonParser_$8529();
 		logic_NetSystem.currentRoom.countries = parser.fromJson(params);
 		logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
 		break;
@@ -99934,23 +100004,21 @@ logic_ScriptSystem.ExecuteOrder = function(skill,data,targetHex,unit,td) {
 		result[i] = js_Boot.__cast(_this[i].copy() , model_FieldObjectData);
 	}
 	var allClones = result;
-	var targetClones = allClones.slice();
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = allClones.slice();
+	while(_g1 < _g2.length) {
+		var v = _g2[_g1];
+		++_g1;
+		if(v.id != unit.id) {
+			_g.push(v);
+		}
+	}
+	var targetClones = _g;
 	if(Lambda.find(allClones,function(u) {
 		return u.id == unit.id;
 	}) == null) {
 		allClones.push(unitClone);
-	} else {
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = allClones;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(v.id != unit.id) {
-				_g.push(v);
-			}
-		}
-		targetClones = _g;
 	}
 	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : "Skill", turnNum : logic_G.get_turnNum(), actor : unitClone, args : data, targetObjects : targetClones, targetHex : targetHex},allClones,td) != false;
 };
@@ -99981,12 +100049,34 @@ logic_ScriptSystem.ExecuteTrigger = function(eventType,scriptId,args,actor,td,ta
 	}
 	return logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : eventType, turnNum : logic_G.get_turnNum(), actor : actorClone, args : args, targetObjects : targetObjects},allClones,td);
 };
-logic_ScriptSystem.ExecuteScript = function(scriptId,vars,objClones,td) {
+logic_ScriptSystem.CalcArea = function(scriptId,args,targetHex,unit,td) {
+	var unitClone = unit.copy();
+	var result = logic_ScriptSystem.ExecuteScript(scriptId,{ executionType : "Calculate Area", turnNum : logic_G.get_turnNum(), actor : unitClone, args : args, targetHex : targetHex},[unitClone],td,false);
+	if(result == false) {
+		return [];
+	}
+	var _this = js_Boot.__cast(result , Array);
+	var result = new Array(_this.length);
+	var _g = 0;
+	var _g1 = _this.length;
+	while(_g < _g1) {
+		var i = _g++;
+		var hex = _this[i];
+		var tmp = hex.q;
+		var tmp1 = hex.r;
+		result[i] = new model_HexCoords(tmp != null ? tmp : 0,tmp1 != null ? tmp1 : 0);
+	}
+	return result;
+};
+logic_ScriptSystem.ExecuteScript = function(scriptId,vars,objClones,td,applyChanges) {
+	if(applyChanges == null) {
+		applyChanges = true;
+	}
 	var scriptResult = true;
 	try {
 		var interp = new hscript_Interp();
 		interp.variables.h["trace"] = function(v) {
-			haxe_Log.trace(v,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 93, className : "logic.ScriptSystem", methodName : "ExecuteScript"});
+			haxe_Log.trace(v,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 116, className : "logic.ScriptSystem", methodName : "ExecuteScript"});
 		};
 		interp.variables.h["HexMath"] = logic_HexMath;
 		interp.variables.h["Math"] = hxd_Math;
@@ -99999,15 +100089,19 @@ logic_ScriptSystem.ExecuteScript = function(scriptId,vars,objClones,td) {
 			return false;
 		}
 		scriptResult = interp.execute(script);
-		var _g = 0;
-		while(_g < objClones.length) {
-			var clone = objClones[_g];
-			++_g;
-			logic_ScriptSystem.checkDifference(clone,td);
+		if(applyChanges) {
+			var _g = 0;
+			while(_g < objClones.length) {
+				var clone = objClones[_g];
+				++_g;
+				logic_ScriptSystem.checkDifference(clone,td);
+			}
+		} else {
+			return scriptResult;
 		}
 	} catch( _g ) {
 		var e = haxe_Exception.caught(_g);
-		haxe_Log.trace(scriptId,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 111, className : "logic.ScriptSystem", methodName : "ExecuteScript", customParams : ["Script error:",e.get_message()]});
+		haxe_Log.trace(scriptId,{ fileName : "src/logic/ScriptSystem.hx", lineNumber : 135, className : "logic.ScriptSystem", methodName : "ExecuteScript", customParams : ["Script error:",e.get_message()]});
 		return false;
 	}
 	return scriptResult != false;
@@ -100081,8 +100175,10 @@ logic_ScriptSystem.checkUnitDifference = function(clone,td) {
 	}
 	var mt = td.microTurns[td.microTurns.length - 1];
 	if(clone.dir != original.dir) {
-		var v = model_ActionType.Spin(clone.dir);
-		mt.acts.h[clone.id] = v;
+		var this1 = mt.acts;
+		var k = clone.id;
+		var v = model_ActionType.Spin(model_HexDirection.toInt(clone.dir));
+		this1.h[k] = v;
 		original.dir = clone.dir;
 	}
 	var tmp;
@@ -100152,7 +100248,28 @@ logic_ScriptSystem.GetFuncs = function(td,clones) {
 		if(td.countries.h[miner.countryId].mana < 0) {
 			td.countries.h[miner.countryId].mana = 0;
 		}
+	}, getLandType : function(q,r) {
+		var _this = logic_G.get_field();
+		var tmp = _this.tiles[q * _this.size + r];
+		var tmp1 = tmp != null ? tmp.t : null;
+		if(tmp1 != null) {
+			return tmp1;
+		} else {
+			return 0;
+		}
+	}, getLandHeight : function(q,r) {
+		var _this = logic_G.get_field();
+		var tmp = _this.tiles[q * _this.size + r];
+		var tmp1 = tmp != null ? tmp.h : null;
+		if(tmp1 != null) {
+			return tmp1;
+		} else {
+			return 0;
+		}
 	}, getUnits : function(pos,radius) {
+		if(radius == null) {
+			radius = 0;
+		}
 		var _g = [];
 		var _g1 = 0;
 		var _g2 = logic_UnitSystem.GetUnitsFromHex(pos,td,radius);
@@ -100225,7 +100342,7 @@ logic_UnitSystem.GetUnitHitHexes = function(u) {
 	if(u.range() > 0) {
 		return logic_FieldSystem.getBigHex(logic_G.get_field(),u.pos,u.range(),true);
 	}
-	return [logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir)),logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir - 2)),logic_HexMath.getNeibHex(u.pos,model_HexDirection.fromInt(u.dir + 2))];
+	return [logic_HexMath.getNeibHex(u.pos,u.dir),logic_HexMath.getNeibHex(u.pos,model_HexDirection.dif(u.dir,2)),logic_HexMath.getNeibHex(u.pos,model_HexDirection.sum(u.dir,2))];
 };
 logic_UnitSystem.GetUnitsFromHex = function(hex,td,radius) {
 	if(radius == null) {
@@ -100283,8 +100400,8 @@ logic_UnitSystem.ResetUnitsBuffs = function() {
 	logic_MapEditorSystem.sendSelection();
 };
 logic_UnitSystem.UpdateObjects = function(objects) {
-	var uparser = new JsonParser_$13();
-	var iparser = new JsonParser_$8();
+	var uparser = new JsonParser_$8484();
+	var iparser = new JsonParser_$8479();
 	var _g = 0;
 	while(_g < objects.length) {
 		var o = objects[_g];
@@ -100600,7 +100717,7 @@ logic_UnitSystem.buildUnitOnHex = function(td,parent,type,buildHex) {
 	}
 	child.countryId = parent.countryId;
 	child.pos = buildHex;
-	child.dir = logic_HexMath.getDir(parent.pos,child.pos);
+	child.dir = model_HexDirection.fromInt(logic_HexMath.getDir(parent.pos,child.pos));
 	if(parent.rallyPoints.length > 0) {
 		if(parent.speed() > 0) {
 			child.rallyPoints = logic_MovementSystem.FindPath(td,child,parent.rallyPoints[parent.rallyPoints.length - 1],null,false);
@@ -101646,7 +101763,7 @@ model_UnitStatsData.prototype = {
 	,__class__: model_UnitStatsData
 };
 var model_UnitData = function(type,id) {
-	this.dir = 0;
+	this.dir = model_HexDirection.fromInt(0);
 	this.countryId = 0;
 	this.autocast = false;
 	this.orderIdx = -1;
@@ -102763,39 +102880,28 @@ view_ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 			return;
 		}
 		this.handleKeys(dt);
-		var access = utils_IframeEvents.pressedKeys;
-		var _g_access = access;
-		var _g_keys = Reflect.fields(access);
-		var _g_index = 0;
-		while(_g_index < _g_keys.length) {
-			var key = _g_keys[_g_index++];
-			var _g_value = _g_access[key];
-			var _g_key = key;
-			var key1 = _g_key;
-			var value = _g_value;
-			utils_IframeEvents.pressedKeys[key1] = "down";
-		}
+		logic_KeySystem.onEnterFrame();
 	}
 	,handleKeys: function(dt) {
-		if(hxd_Key.isDown(17) || utils_IframeEvents.pressedKeys["ControlLeft"] || utils_IframeEvents.pressedKeys["ControlRight"]) {
+		if(logic_KeySystem.isCtrl()) {
 			this.handleCtrlHotKey();
 			return;
 		}
 		var deltaX = 0.0;
 		var deltaY = 0.0;
-		if(hxd_Key.isDown(87) || utils_IframeEvents.pressedKeys["KeyW"]) {
+		if(logic_KeySystem.isKey(87)) {
 			deltaY += 1200 * dt * Math.sqrt(view_ui_screens_Game.gameField.scaleX);
 		}
-		if(hxd_Key.isDown(83) || utils_IframeEvents.pressedKeys["KeyS"]) {
+		if(logic_KeySystem.isKey(83)) {
 			deltaY -= 1200 * dt * Math.sqrt(view_ui_screens_Game.gameField.scaleX);
 		}
-		if(hxd_Key.isDown(65) || utils_IframeEvents.pressedKeys["KeyA"]) {
+		if(logic_KeySystem.isKey(65)) {
 			deltaX += 1200 * dt * Math.sqrt(view_ui_screens_Game.gameField.scaleX);
 		}
-		if(hxd_Key.isDown(68) || utils_IframeEvents.pressedKeys["KeyD"]) {
+		if(logic_KeySystem.isKey(68)) {
 			deltaX -= 1200 * dt * Math.sqrt(view_ui_screens_Game.gameField.scaleX);
 		}
-		if(hxd_Key.isDown(13) || utils_IframeEvents.pressedKeys["Enter"]) {
+		if(logic_KeySystem.isKey(13)) {
 			if(view_ui_screens_Game.ui.turnEndBtn.visible && view_ui_screens_Game.ui.turnEndBtn.enabled) {
 				view_ui_screens_Game.ui.turnEndBtn.onClick();
 			}
@@ -102815,50 +102921,50 @@ view_ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 				view_ui_screens_Game.ui.selection.startPoint.y += deltaY;
 			}
 		}
-		if(hxd_Key.isPressed(69) || utils_IframeEvents.pressedKeys["KeyE"] == "pressed") {
-			logic_CamSystem.RotateCam(1);
+		if(logic_KeySystem.isPressed(69)) {
+			logic_CamSystem.RotateCam(model_HexDirection.fromInt(1));
 		}
-		if(hxd_Key.isPressed(81) || utils_IframeEvents.pressedKeys["KeyQ"] == "pressed") {
-			logic_CamSystem.RotateCam(-1);
+		if(logic_KeySystem.isPressed(81)) {
+			logic_CamSystem.RotateCam(model_HexDirection.fromInt(-1));
 		}
-		if(hxd_Key.isPressed(33) || utils_IframeEvents.pressedKeys["PageUp"] == "pressed") {
+		if(logic_KeySystem.isPressed(33)) {
 			model_Params.set_animSpeed(model_Params.animSpeed + 1);
 		}
-		if(hxd_Key.isPressed(34) || utils_IframeEvents.pressedKeys["PageDown"] == "pressed") {
+		if(logic_KeySystem.isPressed(34)) {
 			model_Params.set_animSpeed(model_Params.animSpeed - 1);
 		}
-		if(hxd_Key.isPressed(82) || utils_IframeEvents.pressedKeys["KeyR"] == "pressed") {
-			if(!logic_MapEditorSystem.editorModeOn()) {
+		if(logic_KeySystem.isPressed(82)) {
+			if(!logic_MapEditorSystem.isEditMode()) {
 				logic_GameSystem.replayTurn(0);
 			}
 		}
-		if(hxd_Key.isPressed(46)) {
+		if(logic_KeySystem.isPressed(46)) {
 			logic_GameSystem.deleteLastTurn(0);
 		}
-		if(hxd_Key.isPressed(79)) {
+		if(logic_KeySystem.isPressed(79)) {
 			logic_EventSystem.fire(Std.string(logic_EventType.FieldEdited) + "");
 		}
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			this.handleMapEditorKeys();
 		}
 	}
 	,handleMapEditorKeys: function() {
-		if(hxd_Key.isPressed(107) || utils_IframeEvents.pressedKeys["NumpadAdd"] == "pressed") {
+		if(logic_KeySystem.isPressed(107)) {
 			var fh = logic_CamSystem.cursor;
 			fh.set_radius(fh.radius + 1);
 		}
-		if(hxd_Key.isPressed(109) || utils_IframeEvents.pressedKeys["NumpadSubtract"] == "pressed") {
+		if(logic_KeySystem.isPressed(109)) {
 			var fh = logic_CamSystem.cursor;
 			fh.set_radius(fh.radius - 1);
 		}
-		if(hxd_Key.isPressed(219) || utils_IframeEvents.pressedKeys["BracketLeft"] == "pressed") {
+		if(logic_KeySystem.isPressed(219)) {
 			var tools = logic_MapEditorTool.__empty_constructs__.slice();
 			var curIdx = tools.indexOf(logic_CamSystem.cursor.tool);
 			var v = curIdx - 1;
 			var max = tools.length - 1;
 			logic_CamSystem.cursor.set_tool(tools[v < 0 ? 0 : v > max ? max : v]);
 		}
-		if(hxd_Key.isPressed(221) || utils_IframeEvents.pressedKeys["BracketRight"] == "pressed") {
+		if(logic_KeySystem.isPressed(221)) {
 			var tools = logic_MapEditorTool.__empty_constructs__.slice();
 			var curIdx = tools.indexOf(logic_CamSystem.cursor.tool);
 			var v = curIdx + 1;
@@ -102867,11 +102973,11 @@ view_ui_screens_Game.prototype = $extend(h2d_Object.prototype,{
 		}
 	}
 	,handleCtrlHotKey: function() {
-		if(hxd_Key.isPressed(90) || utils_IframeEvents.pressedKeys["KeyZ"] == "pressed") {
+		if(logic_KeySystem.isPressed(90)) {
 			logic_MapEditorSystem.Undo();
 			return;
 		}
-		if(hxd_Key.isPressed(89) || utils_IframeEvents.pressedKeys["KeyY"] == "pressed") {
+		if(logic_KeySystem.isPressed(89)) {
 			logic_MapEditorSystem.Redo();
 			return;
 		}
@@ -103423,7 +103529,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 			var mx = hxd_Window.getInstance().get_mouseX();
 			var my = hxd_Window.getInstance().get_mouseY();
 			logic_CamSystem.cursor.setSelection(_gthis.getHexFromPoint(mx,my));
-			if(logic_MapEditorSystem.editorModeOn() && hxd_Key.isDown(0)) {
+			if(logic_MapEditorSystem.isEditMode() && logic_KeySystem.isKey(0)) {
 				logic_MapEditorSystem.OnTileMouseMove();
 			}
 		};
@@ -103431,7 +103537,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 			if(event.button != 0) {
 				return;
 			}
-			if(logic_MapEditorSystem.editorModeOn()) {
+			if(logic_MapEditorSystem.isEditMode()) {
 				logic_MapEditorSystem.OnTileMouseDown();
 			} else {
 				logic_FieldSystem.OnTilePressed();
@@ -103446,7 +103552,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 		this.interaction.onClick = function(event) {
 			switch(event.button) {
 			case 0:
-				if(logic_MapEditorSystem.editorModeOn()) {
+				if(logic_MapEditorSystem.isEditMode()) {
 					logic_MapEditorSystem.OnTileClick();
 				}
 				break;
@@ -103474,7 +103580,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 				}
 				if(units.length > 0) {
 					logic_UnitSystem.FollowUnit(selectedIds,units[0].id,true);
-				} else if(hxd_Key.isDown(16)) {
+				} else if(logic_KeySystem.isKey(16)) {
 					logic_UnitSystem.AddRP(selectedIds,model_Store.cam.cursorHex,true);
 				} else {
 					logic_UnitSystem.ChangeRP(selectedIds,model_Store.cam.cursorHex,true);
@@ -104258,7 +104364,7 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 		logic_EventSystem.disconnect(Std.string(logic_EventType.EnterFrame) + "",$bind(this,this.update));
 	}
 	,redrawUI: function() {
-		var isMapEditorMode = logic_MapEditorSystem.editorModeOn();
+		var isMapEditorMode = logic_MapEditorSystem.isEditMode();
 		this.bottomPanel.set_visible(!isMapEditorMode);
 		this.turnEndBtn.set_visible(!isMapEditorMode);
 		this.fpsLabel.set_visible(!isMapEditorMode);
@@ -104317,7 +104423,7 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 		if(!this.visible) {
 			return;
 		}
-		if(hxd_Key.isPressed(0)) {
+		if(logic_KeySystem.isPressed(0)) {
 			var mx = hxd_Window.getInstance().get_mouseX();
 			var my = hxd_Window.getInstance().get_mouseY();
 			if(!this.waitingScreen.visible && this.pauseScr.parent == null && (!this.bottomPanel.visible || my < hxd_Window.getInstance().get_height() - 160)) {
@@ -104325,10 +104431,10 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 				this.selection.startPoint = new h2d_col_Point(mx,my);
 			}
 		}
-		if(hxd_Key.isReleased(0)) {
+		if(logic_KeySystem.isReleased(0)) {
 			this.selection.set_visible(false);
 		}
-		if(hxd_Key.isPressed(27)) {
+		if(logic_KeySystem.isPressed(27)) {
 			if(this.pauseScr.parent == null) {
 				this.addChild(this.pauseScr);
 				this.selection.set_visible(false);
@@ -104341,7 +104447,7 @@ view_ui_UserInterface.prototype = $extend(h2d_Object.prototype,{
 				}
 			}
 		}
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			return;
 		}
 		this.fpsLabel.set_text("");
@@ -105293,7 +105399,7 @@ view_ui_SelectionFrame.prototype = $extend(h2d_Graphics.prototype,{
 		if(!this.visible) {
 			return;
 		}
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			var tool = logic_CamSystem.cursor.tool;
 			if(tool._hx_index != 7) {
 				return;
@@ -105326,7 +105432,7 @@ view_ui_SelectionFrame.prototype = $extend(h2d_Graphics.prototype,{
 		this.beginFill(52224,0.1);
 		this.drawRect(frame.xMin,frame.yMin,frame.xMax - frame.xMin,frame.yMax - frame.yMin);
 		this.endFill();
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			logic_MapEditorSystem.SelectObjects(frame);
 		} else {
 			view_ui_screens_Game.gameField.objectsLayer.SelectUnits(frame);
@@ -105498,7 +105604,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 				if(unitView == null) {
 					continue;
 				}
-				unitView.drawSkillRange(skill);
+				unitView.drawSkillArea(skill);
 			}
 		}
 	}
@@ -105584,7 +105690,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 		}
 	}
 	,onSelectionChanged: function() {
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			return;
 		}
 		while(this.avatars.length > 0) {
@@ -105717,6 +105823,9 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 	}
 	,calcAvaGridParams: function() {
 		var avaBlockWidth = this.interaction.width - 2 * this.padding - this.skillBtns.length * (Math.round((160 - 2 * this.padding - 0 * this.gap) / 1) + this.gap);
+		if(avaBlockWidth <= 30) {
+			return [1,1,0];
+		}
 		var rows = 0;
 		var size = 0;
 		var columns = 0;
@@ -105795,7 +105904,7 @@ view_ui_panel_BottomPanel.prototype = $extend(h2d_Graphics.prototype,{
 	}
 	,redraw: function() {
 		this.clear();
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			return;
 		}
 		this.beginFill(0,0.9);
@@ -106028,7 +106137,7 @@ utils_IframeEvents.Init = function() {
 		if(handler != null) {
 			handler(msg);
 		} else {
-			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 103, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
+			haxe_Log.trace("### unknown message received!",{ fileName : "src/utils/IframeEvents.hx", lineNumber : 102, className : "utils.IframeEvents", methodName : "Init", customParams : [event.data]});
 		}
 	};
 };
@@ -106303,80 +106412,51 @@ var view_DirArrow = function(parent) {
 	var dir = 0;
 	while(dir < 0) dir += 12;
 	this.dir = dir % 12;
+	this.radius = 50;
+	this.angle = 0.52359877559829882;
 	h2d_Graphics.call(this,parent);
-	logic_EventSystem.connect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.redraw));
+	this.alpha = logic_MapEditorSystem.isEditMode() ? 1 : 0;
 };
 $hxClasses["view.DirArrow"] = view_DirArrow;
 view_DirArrow.__name__ = "view.DirArrow";
 view_DirArrow.__super__ = h2d_Graphics;
 view_DirArrow.prototype = $extend(h2d_Graphics.prototype,{
-	dir: null
+	angle: null
+	,radius: null
+	,dir: null
 	,set_dir: function(val) {
 		this.dir = val;
 		this.redraw();
 		return this.dir;
 	}
+	,onAdd: function() {
+		h2d_Graphics.prototype.onAdd.call(this);
+		logic_EventSystem.connect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.redraw));
+		logic_EventSystem.connect(Std.string(logic_EventType.AltView) + "",$bind(this,this.onAltView));
+		this.redraw();
+	}
 	,onRemove: function() {
 		h2d_Graphics.prototype.onRemove.call(this);
 		logic_EventSystem.disconnect(Std.string(logic_EventType.CamUpdated) + "",$bind(this,this.redraw));
+		logic_EventSystem.disconnect(Std.string(logic_EventType.AltView) + "",$bind(this,this.onAltView));
+	}
+	,onAltView: function(isOn) {
+		if(isOn) {
+			this.alpha = 1;
+		} else {
+			this.alpha = logic_MapEditorSystem.isEditMode() ? 1 : 0;
+		}
 	}
 	,redraw: function() {
 		this.clear();
-		var camDir = model_HexDirection.sum(this.dir,model_HexDirection.toInt(model_Store.cam.dir));
-		while(model_HexDirection.less(camDir,0)) camDir = model_HexDirection.sum(camDir,6);
+		var resDir = model_HexDirection.sum(this.dir,model_HexDirection.toInt(model_Store.cam.dir));
+		var dirAngle = 3.14159265358979323 * (0.5 + model_HexDirection.divide(resDir,6));
+		var x = model_Params.get_tileWidth() * 0.5 + Math.cos(dirAngle + 3.14159265358979323) * (this.radius + model_Params.get_tileWidth() * 0.24);
+		var y = model_Params.get_tileHeight() * 0.29 + Math.sin(dirAngle + 3.14159265358979323) * (this.radius + model_Params.get_tileWidth() * 0.056);
+		var pieAngle = Math.atan2(model_Params.get_tileHeight() * 0.29 - y,model_Params.get_tileWidth() * 0.5 - x);
 		this.beginFill(16776960,1);
-		var angle = Math.PI * (0.5 + model_HexDirection.divide(camDir,3));
-		this.drawPie(0,0,50,angle - Math.PI / 12,Math.PI / 6);
+		this.drawPie(x,y,this.radius,pieAngle - this.angle / 2,this.angle);
 		this.endFill();
-		switch(model_HexDirection.toInt(camDir)) {
-		case 0:
-			var v = model_Params.get_tileWidth() * 0.5;
-			this.posChanged = true;
-			this.x = v;
-			this.posChanged = true;
-			this.y = 0;
-			break;
-		case 2:
-			var v = model_Params.get_tileWidth() * 0.875;
-			this.posChanged = true;
-			this.x = v;
-			var v = model_Params.get_tileHeight() * 0.125;
-			this.posChanged = true;
-			this.y = v;
-			break;
-		case 4:
-			var v = model_Params.get_tileWidth() * 0.875;
-			this.posChanged = true;
-			this.x = v;
-			var v = model_Params.get_tileHeight() * 0.375;
-			this.posChanged = true;
-			this.y = v;
-			break;
-		case 6:
-			var v = model_Params.get_tileWidth() * 0.5;
-			this.posChanged = true;
-			this.x = v;
-			var v = model_Params.get_tileHeight() * 0.5;
-			this.posChanged = true;
-			this.y = v;
-			break;
-		case 8:
-			var v = model_Params.get_tileWidth() * 0.125;
-			this.posChanged = true;
-			this.x = v;
-			var v = model_Params.get_tileHeight() * 0.375;
-			this.posChanged = true;
-			this.y = v;
-			break;
-		case 10:
-			var v = model_Params.get_tileWidth() * 0.125;
-			this.posChanged = true;
-			this.x = v;
-			var v = model_Params.get_tileHeight() * 0.125;
-			this.posChanged = true;
-			this.y = v;
-			break;
-		}
 	}
 	,__class__: view_DirArrow
 	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_dir:"set_dir"})
@@ -106648,7 +106728,7 @@ view_ItemView.prototype = $extend(view_FieldObject.prototype,{
 			this.updateBmp(data.type);
 		}
 		this.updatePos();
-		if(logic_MapEditorSystem.editorModeOn()) {
+		if(logic_MapEditorSystem.isEditMode()) {
 			this.alpha = Object.prototype.hasOwnProperty.call(logic_ObjectSystem.DragMap.h,this.id) ? 0.5 : 1;
 		}
 		view_ui_screens_Game.gameField.updateObjAuras(data);
@@ -106834,7 +106914,7 @@ view_RallyPoint.prototype = $extend(h2d_Graphics.prototype,{
 var view_UnitView = function(id) {
 	this.skillAreaGroup = [];
 	view_FieldObject.call(this,id);
-	this.dirArrow = new view_DirArrow(this);
+	this.dirArrow = new view_DirArrow();
 	this.lifeBar = new view_ui_LifeBar(this);
 	this.lifeBar.set_width(Math.floor(model_Params.get_tileWidth() / 2));
 	var _this = this.lifeBar;
@@ -106855,6 +106935,7 @@ var view_UnitView = function(id) {
 	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onTurnCalculated));
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnAnimStart) + "",$bind(this,this.onTurnAnimStart));
 	this.onTurnCalculated();
+	this.addChildAt(this.dirArrow,0);
 };
 $hxClasses["view.UnitView"] = view_UnitView;
 view_UnitView.__name__ = "view.UnitView";
@@ -106890,7 +106971,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 	,onOrdersChanged: function() {
 		this.drawSkillRadius();
 	}
-	,drawSkillRange: function(skill) {
+	,drawSkillArea: function(skill) {
 		while(this.skillAreaGroup.length > 0) {
 			var _this = this.skillAreaGroup.pop();
 			if(_this != null && _this.parent != null) {
@@ -106901,36 +106982,22 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			return;
 		}
 		var unit = this.getData();
-		if(unit.totalStats().skills.indexOf(skill.id) == -1) {
+		if(unit.totalStats().skills.indexOf(skill.type) == -1) {
 			return;
 		}
-		var center = unit.pos;
-		if(center == null || skill.range > 1000) {
-			center = unit.pos;
-		}
-		var skill1 = skill.range;
-		var b = unit.speed();
-		var totalRange = skill1 + (2 > b ? b : 2);
-		var neibs = logic_FieldSystem.getBigHex(logic_G.get_field(),center,totalRange,true);
+		var hexes = skill.areaScript == null ? logic_FieldSystem.getBigHex(logic_G.get_field(),unit.pos,skill.range,true) : logic_ScriptSystem.CalcArea(skill.areaScript,skill.args,unit.pos,unit,logic_G.get_turn());
 		var _g = 0;
-		while(_g < neibs.length) {
-			var n = neibs[_g];
+		while(_g < hexes.length) {
+			var n = hexes[_g];
 			++_g;
 			var t = view_ui_screens_Game.gameField.tiles.h[Std.string(n) + ""];
-			if(t != null) {
-				var bmp = new h2d_Bitmap(this.skillAreaTile,null);
-				bmp.color = new h3d_Vector(0,0,0.8,0.35);
-				bmp.posChanged = true;
-				bmp.scaleX *= 0.5;
-				bmp.posChanged = true;
-				bmp.scaleY *= 0.5;
-				bmp.posChanged = true;
-				bmp.x = this.skillAreaTile.width / 4;
-				bmp.posChanged = true;
-				bmp.y = this.skillAreaTile.height / 8;
-				t.addChildAt(bmp,0);
-				this.skillAreaGroup.push(bmp);
+			if(t == null) {
+				continue;
 			}
+			var bmp = new h2d_Bitmap(this.skillAreaTile,null);
+			bmp.color = new h3d_Vector(0,0,1,0.55);
+			t.addChildAt(bmp,0);
+			this.skillAreaGroup.push(bmp);
 		}
 	}
 	,hideSkillRange: function() {
@@ -106981,7 +107048,8 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		this.updateBmp(data.type);
 		this.updateLifeBar();
 		this.updatePos();
-		if(logic_MapEditorSystem.editorModeOn()) {
+		this.dirArrow.set_dir(data.dir);
+		if(logic_MapEditorSystem.isEditMode()) {
 			this.alpha = Object.prototype.hasOwnProperty.call(logic_ObjectSystem.DragMap.h,this.id) ? 0.5 : 1;
 		}
 		view_ui_screens_Game.gameField.updateObjAuras(data);
@@ -107038,7 +107106,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		}
 		this.updatePos(prevData.pos);
 		this.prevPos = prevData.pos;
-		this.dirArrow.set_dir(model_HexDirection.fromInt(prevData.dir));
+		this.dirArrow.set_dir(prevData.dir);
 		this.updateBmp(prevData.type);
 		this.bmp.color = model_Params.CountryColor(prevData.countryId);
 		if(data.flying() > 0) {
@@ -107133,7 +107201,6 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			utils_Tweener.AnimAlpha(this,0,model_Params.microTurnTime());
 		}
 		utils_Tweener.Delay($bind(this,this.TurnAnimsDone),model_Params.microTurnTime());
-		this.dirArrow.set_dir(model_HexDirection.fromInt(data.dir));
 	}
 	,TurnAnimsDone: function() {
 		var curState = this.getData();
@@ -107141,7 +107208,8 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			return;
 		}
 		var isVisible = this.nowVisible();
-		if(!logic_MapEditorSystem.editorModeOn()) {
+		this.dirArrow.set_dir(curState.dir);
+		if(!logic_MapEditorSystem.isEditMode()) {
 			isVisible = isVisible && curState.hp > 0;
 		}
 		this.alpha = isVisible ? 1 : 0;
@@ -107156,7 +107224,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 	}
 	,SpinAnim: function(newDir) {
 		var _gthis = this;
-		var animTime = Math.floor(model_Params.microTurnTime() / 5);
+		var animTime = Math.floor(model_Params.microTurnTime() / 11);
 		while(newDir < 0) newDir += 12;
 		newDir %= 12;
 		var fh = this.dirArrow;
@@ -108487,6 +108555,7 @@ var view_ui_screens_NextPlayerScreen = function(parent) {
 	this.tf = new view_ui_PPText(fnt,this);
 	this.tf.set_text(logic_Locale.get("label_next_turn"));
 	this.tf.set_textAlign(h2d_Align.Center);
+	this.tf.set_filter(new h2d_filter_DropShadow(0,0,0,1,2,2,2,true));
 	this.redraw();
 	logic_EventSystem.connect(Std.string(logic_EventType.TurnDone) + "",$bind(this,this.onNextTurn));
 	logic_EventSystem.connect(Std.string(logic_EventType.NewTurnCalculated) + "",$bind(this,this.onNextTurn));
@@ -108507,7 +108576,7 @@ view_ui_screens_NextPlayerScreen.prototype = $extend(h2d_Graphics.prototype,{
 		logic_EventSystem.disconnect(Std.string(logic_EventType.ScreenResized) + "",$bind(this,this.redraw));
 	}
 	,onNextTurn: function() {
-		if(this.lastPlayeId == model_Store.cam.curPlayerId || logic_MapEditorSystem.editorModeOn() || model_Store.game.players.length == 1) {
+		if(this.lastPlayeId == model_Store.cam.curPlayerId || logic_MapEditorSystem.isEditMode() || model_Store.game.players.length == 1) {
 			this.set_visible(false);
 			return;
 		}
@@ -108671,7 +108740,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 			var i = _g++;
 			var tmp;
 			try {
-				var miParser = new JsonParser_$26();
+				var miParser = new JsonParser_$8498();
 				var mi = miParser.fromJson(list[i]);
 				tmp = mi == null ? null : new view_ui_panel_MapPanel(mi,_gthis.mapsContainer);
 			} catch( _g2 ) {
@@ -108700,7 +108769,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 			}
 		}
 		var fs = new utils_JSFileSystem();
-		var miParser = new JsonParser_$26();
+		var miParser = new JsonParser_$8498();
 		var _this = fs.dir("");
 		var result = new Array(_this.length);
 		var _g = 0;
@@ -109492,12 +109561,12 @@ logic_JSWorker.CALC_CACHE = "CALC_CACHE";
 logic_JSWorker.CALC_TURN = "CALC_TURN";
 logic_JSWorker.COPY_FILE = "COPY_FILE";
 logic_JSWorker.CLEAR = "CLEAR";
-logic_JSWorker.fieldWriter = new JsonWriter_$0();
-logic_JSWorker.fieldParser = new JsonParser_$0();
-logic_JSWorker.turnWriter = new JsonWriter_$16();
-logic_JSWorker.turnParser = new JsonParser_$61();
-logic_JSWorker.cacheWriter = new JsonWriter_$47();
-logic_JSWorker.cacheParser = new JsonParser_$77();
+logic_JSWorker.fieldWriter = new JsonWriter_$5793();
+logic_JSWorker.fieldParser = new JsonParser_$8471();
+logic_JSWorker.turnWriter = new JsonWriter_$5810();
+logic_JSWorker.turnParser = new JsonParser_$8533();
+logic_JSWorker.cacheWriter = new JsonWriter_$5841();
+logic_JSWorker.cacheParser = new JsonParser_$8549();
 logic_EventSystem.listeners = new haxe_ds_StringMap();
 logic_CamSystem.cursor = new logic_MapCursor();
 logic_DataBase.UNITS_PATH = "units.json";
@@ -109508,6 +109577,7 @@ logic_DataBase.BUFFS_PATH = "buffs.json";
 logic_DataBase.INFO_PATH = "info.json";
 logic_GameSystem.MicroTurnNum = -1;
 logic_GameSystem.MovementAllowed = false;
+logic_KeySystem.pressedKeys = { };
 logic_LSDSystem.mapLoadingState = "initialization";
 logic_LSDSystem.mapLoadingStateParam = "";
 logic_LSDSystem.mapLoadingStatePercent = 0.0;
@@ -109960,7 +110030,6 @@ tweenxcore_Easing.amplitude = 1;
 tweenxcore_Easing.period = 0.0003;
 utils_JSFileSystem.cache = new haxe_ds_StringMap();
 utils_StringUtils.startDictSize = 4096;
-utils_IframeEvents.pressedKeys = { };
 utils_IframeEvents.eventHandlers = (function($this) {
 	var $r;
 	var _g = new haxe_ds_StringMap();
@@ -109979,15 +110048,15 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		Main.ChangeScreen(new view_ui_screens_LoadingScreen());
 	};
 	_g.h["keys_pressed"] = function(msg) {
-		utils_IframeEvents.pressedKeys = msg.data;
+		logic_KeySystem.pressedKeys = msg.data;
 	};
 	_g.h["saves_list"] = function(msg) {
-		var parser = new JsonParser_$54();
+		var parser = new JsonParser_$8526();
 		var saveDB = parser.fromJson(msg.data);
 		logic_EventSystem.fire(Std.string(logic_EventType.SavesListLoaded) + "",saveDB);
 	};
 	_g.h["save_file_loaded"] = function(msg) {
-		var parser = new JsonParser_$56();
+		var parser = new JsonParser_$8528();
 		var result = parser.fromJson(msg.data);
 		var _g = 0;
 		var _g1 = result.turns;
