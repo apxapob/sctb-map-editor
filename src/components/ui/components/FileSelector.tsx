@@ -20,19 +20,18 @@ const FileSelector = (
   const files:{ [filename: string]: any; } = MapFiles[fileType || 'text']
 
   const items = Object.keys(files)
-      .filter(filename => filename.startsWith(sourcePath))
-      .map(filename => filename.replace(sourcePath, ''))
-
-  const value = GetJsonFileValue(filePath, valuePath) as string
+    .filter(filename => filename.startsWith(sourcePath))
+    .map(filename => filename.replace(sourcePath, ''))
+  
+  const value = GetJsonFileValue(filePath, valuePath) as string ?? ""
+  if(value){
+    items.unshift("")
+  }
   return <Selector
     value={value}
     style={{ width: width ?? 'unset', margin: 0 }}
     items={items}
-    onSelect={newVal => UpdateJsonFileValue(
-      filePath,
-      valuePath,
-      newVal
-    )}
+    onSelect={newVal => UpdateJsonFileValue(filePath, valuePath, newVal)}
   />
 }
 
