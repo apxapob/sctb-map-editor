@@ -11,6 +11,7 @@ import CreateMap from './CreateMap'
 import SaveChanges from './SaveChanges'
 import TestMap from './TestMap'
 import ToMainScreen from './ToMainScreen'
+import { MapFiles } from '../MapFiles'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
@@ -41,6 +42,9 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'mark_field_unsaved':
       UpdateUnsavedData('Field', 'unsaved')
+      break
+    case 'update_field_size':
+      MapFiles.json[MapFiles.selectedField].size = msg.data.size
       break
     case 'create_map':
       CreateMap()

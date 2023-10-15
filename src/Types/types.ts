@@ -69,6 +69,11 @@ export type GameMessage = {
   data: {
     type: string;
   }
+} | {
+  method: 'update_field_size';
+  data: {
+    size: number;
+  }
 };
 
 export type ToolType = 
