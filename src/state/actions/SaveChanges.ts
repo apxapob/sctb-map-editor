@@ -1,22 +1,26 @@
 import { action } from 'mobx'
-import { MapInfo } from '../../types/types'
+import { MapInfo, TabType } from '../../types/types'
 import { SendToElectron } from '../../utils/messenger'
 import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, TabsState } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendToGame from './SendToGame'
 
-const SaveChanges = ():boolean => {
+const SaveChanges = (tab?:TabType):boolean => {
   if (MapFiles.status !== 'Loaded') return false
+
+  if(!tab){
+    tab = EditorState.activeTab
+  }
   
-  if (EditorState.activeTab === 'Field') {
+  if (tab === 'Field') {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
     SendToGame({ method: 'save_map', data: mapInfo.mapId })
-    TabsState[EditorState.activeTab] = null
+    TabsState[tab] = null
     return true
   }
-  const path = getFilePath(EditorState.activeTab)
-  const text = TabsState[EditorState.activeTab]
+  const path = getFilePath(tab)
+  const text = TabsState[tab]
   if (text === null || text === undefined) return true
 
   try {
@@ -24,8 +28,8 @@ const SaveChanges = ():boolean => {
       JSON.parse(text)
     }
     
-    TabsState[EditorState.activeTab] = null
-    TabsErrors[EditorState.activeTab] = null
+    TabsState[tab] = null
+    TabsErrors[tab] = null
     const data = { text, path }
     SendToElectron({ command: 'SAVE_TEXT_FILE', data })
     OnLoadedText({
@@ -35,7 +39,7 @@ const SaveChanges = ():boolean => {
       text
     }, true)
   } catch (e) {
-    TabsErrors[EditorState.activeTab] = (e as Error).message
+    TabsErrors[tab] = (e as Error).message
     return false
   }
   return true

@@ -7,6 +7,7 @@ import { JsonMode, TabsState } from '../../state/ToolState'
 import ShowMenu from '../../state/actions/ShowMenu'
 import ToggleJsonMode from '../../state/actions/ToggleJsonMode'
 import { CancelUnsavedData } from '../../state/actions/UpdateText'
+import SaveChanges from '../../state/actions/SaveChanges'
 
 export type TabProps = {
   title: TabType;
@@ -20,6 +21,7 @@ const Tab = ({ title, selected }:TabProps) =>
     onContextMenu={e =>
       ShowMenu(e, [
         { title: 'Discard changes', callback: () => CancelUnsavedData(title) },
+        { title: 'Save changes', callback: () => SaveChanges(title) },
         title !== 'Scripts' && title !== 'Particles' && title !== 'Texts' && 
           { title: 'Json mode on/off', callback: () => ToggleJsonMode(title) }
       ])
