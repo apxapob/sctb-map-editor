@@ -7,7 +7,7 @@ import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/Up
 export type FileType = 'text' | 'binary' | 'json' 
 
 type FileSelectorProps = { 
-  sourcePath:string; 
+  filesSourcePath:string; 
   filePath: string; 
   valuePath: string; 
   fileType?: FileType;
@@ -15,13 +15,13 @@ type FileSelectorProps = {
 }
 
 const FileSelector = (
-  { sourcePath, filePath, valuePath, fileType, width } : FileSelectorProps
+  { filesSourcePath, filePath, valuePath, fileType, width } : FileSelectorProps
 ) => {
   const files:{ [filename: string]: any; } = MapFiles[fileType || 'text']
 
   const items = Object.keys(files)
-    .filter(filename => filename.startsWith(sourcePath))
-    .map(filename => filename.replace(sourcePath, ''))
+    .filter(filename => filename.startsWith(filesSourcePath))
+    .map(filename => filename.replace(filesSourcePath, ''))
   
   const value = GetJsonFileValue(filePath, valuePath) as string ?? ""
   if(value){

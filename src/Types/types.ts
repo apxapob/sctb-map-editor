@@ -164,6 +164,7 @@ export type UnitStatsType = ObjectType & {
   invisible: number;
   maxHp: number;
   hideHpBar: boolean;
+  moveAreaScript: string;
   flying: number;
   skills: string[];
 }

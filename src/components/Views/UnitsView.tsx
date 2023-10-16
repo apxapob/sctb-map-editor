@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles, SKILLS_PATH, UNITS_IMAGES_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_IMAGES_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
@@ -10,6 +10,8 @@ import { AddJsonFileValue } from '../../state/actions/UpdateText'
 import BlobImage from '../ui/components/BlobImage'
 import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
+import JsonStringInput from '../ui/components/JsonStringInput'
+import FileSelector from '../ui/components/FileSelector'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -110,6 +112,11 @@ const UnitsStatsEditor = ({
       filePath={UNITS_PATH}
       valuePath={`${unitId}.hideHpBar`}
     />
+    <FileSelector
+      filesSourcePath={SCRIPTS_PATH}
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.moveAreaScript`}
+    />
     
     <JsonArrayInput
       title='Skills'
@@ -160,7 +167,8 @@ const UnitsView = () => {
             maxHp: 0, 
             flying: 0, 
             skills: [],
-            hideHpBar: false
+            hideHpBar: false,
+            moveAreaScript: ''
           },
           selectUnit
         )}

@@ -29,7 +29,7 @@ const SkillsStatsEditor = ({
         Script:
       </span>
       <FileSelector
-        sourcePath={SCRIPTS_PATH}
+        filesSourcePath={SCRIPTS_PATH}
         filePath={SKILLS_PATH}
         valuePath={`${skillType}.script`}
       />
@@ -40,7 +40,7 @@ const SkillsStatsEditor = ({
         Area script:
       </span>
       <FileSelector
-        sourcePath={SCRIPTS_PATH}
+        filesSourcePath={SCRIPTS_PATH}
         filePath={SKILLS_PATH}
         valuePath={`${skillType}.areaScript`}
       />
