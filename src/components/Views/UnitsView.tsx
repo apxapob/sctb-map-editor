@@ -106,16 +106,32 @@ const UnitsStatsEditor = ({
       isInteger={true}
       min={0}
     />
-    <JsonBoolInput
-      placeholder='Hide hp bar'
-      title='Hide hp bar'
+    <JsonNumberInput
+      placeholder='minerals'
+      title='Move cost(minerals)'
+      tooltip='Сost of movement in minerals'
       filePath={UNITS_PATH}
-      valuePath={`${unitId}.hideHpBar`}
+      valuePath={`${unitId}.moveCostMinerals`}
+      isInteger={true}
+    />
+    <JsonNumberInput
+      placeholder='mana'
+      title='Move cost(mana)'
+      tooltip='Сost of movement in mana'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.moveCostMana`}
+      isInteger={true}
     />
     <FileSelector
       filesSourcePath={SCRIPTS_PATH}
       filePath={UNITS_PATH}
       valuePath={`${unitId}.moveAreaScript`}
+    />
+    <JsonBoolInput
+      placeholder='Hide hp bar'
+      title='Hide hp bar'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.hideHpBar`}
     />
     
     <JsonArrayInput

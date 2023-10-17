@@ -25,7 +25,7 @@ const JsonNumberInput = (
     )
   }
   return (
-    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
+    <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start', gap: 6 }} title={tooltip}>
       {title &&
         <span className='view-input-title'>
           {title}
@@ -35,7 +35,7 @@ const JsonNumberInput = (
         type='number'
         inputMode='decimal'
         onChange={onChange}
-        value={value}
+        value={value ?? ""}
         placeholder={placeholder}
       />
     </div>

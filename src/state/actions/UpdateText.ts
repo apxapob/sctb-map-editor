@@ -47,7 +47,7 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
       result = result[nextPathPart]
     }
     if (result === undefined) {
-      console.warn('Wrong value path', valuePath)
+      console.warn('GetJsonFileValue: wrong value path', valuePath)
       return null
     }
   }
