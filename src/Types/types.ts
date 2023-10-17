@@ -137,10 +137,10 @@ export type UnitDataType = ObjectDataType & {
 export type SkillType = {
   type: string;
   args: string[];
-  mana: number;
   script: string;
   areaScript: string;
-  price: number;
+  manaCost: number;
+  mineralsCost: number;
   radius: number;
   range: number;
 }
@@ -161,6 +161,8 @@ export type UnitStatsType = ObjectType & {
   speed: number;
   vision: number;
   detector: number;
+  moveCostMinerals: number;
+  moveCostMana: number;
   invisible: number;
   maxHp: number;
   hideHpBar: boolean;
@@ -177,8 +179,8 @@ export type ItemType = ObjectType & {
 export type OrderType = {
 	type: string;
 	args: string[];
-	price: number;
-	mana: number;
+	manaCost: number;
+  mineralsCost: number;
 	range: number;
   radius: number;
 }

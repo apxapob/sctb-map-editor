@@ -59,14 +59,14 @@ const SkillsStatsEditor = ({
       placeholder='Mana cost'
       title='Mana cost'
       filePath={SKILLS_PATH}
-      valuePath={`${skillType}.mana`}
+      valuePath={`${skillType}.manaCost`}
       isInteger={true}
     />
     <JsonNumberInput
       placeholder='Minerals cost'
       title='Minerals cost'
       filePath={SKILLS_PATH}
-      valuePath={`${skillType}.price`}
+      valuePath={`${skillType}.mineralsCost`}
       isInteger={true}
     />
     <JsonNumberInput
@@ -107,7 +107,7 @@ const SkillsView = () => {
         addItem={() => AddJsonFileValue<SkillType>(
           SKILLS_PATH, 
           'Skill', 
-          { type: 'Skill', args: [], mana: 0, script: '', areaScript: '', price: 0, radius: 0, range: 0 },
+          { type: 'Skill', args: [], manaCost: 0, script: '', areaScript: '', mineralsCost: 0, radius: 0, range: 0 },
           selectSkill
         )}
         deleteItem={id => {
