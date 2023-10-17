@@ -64,7 +64,7 @@ const EffectEditor = observer((
       <div className='effect-param'>
         Script
         <FileSelector
-          sourcePath={SCRIPTS_PATH}
+          filesSourcePath={SCRIPTS_PATH}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.script`}
         />
@@ -123,7 +123,7 @@ const EffectEditor = observer((
       <div className='effect-param'>
         Visual effect
         <FileSelector
-          sourcePath={PARTICLES_PATH}
+          filesSourcePath={PARTICLES_PATH}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.particles`}
         />

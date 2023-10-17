@@ -33,14 +33,14 @@ const TilesOptions = (
           <FileSelector
             width='100%'
             fileType='binary'
-            sourcePath={TILES_IMAGES_PATH}
+            filesSourcePath={TILES_IMAGES_PATH}
             filePath={filePath}
             valuePath={`tiles.${idx}.image_h`}
           />
           <FileSelector
             width='100%'
             fileType='binary'
-            sourcePath={TILES_IMAGES_PATH}
+            filesSourcePath={TILES_IMAGES_PATH}
             filePath={filePath}
             valuePath={`tiles.${idx}.image_v`}
           />
