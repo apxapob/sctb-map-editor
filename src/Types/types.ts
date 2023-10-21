@@ -203,7 +203,8 @@ export const EffectTemplates = {
   OnTurnStart: { script: '', args: [] },//works for items too
   OnTurnEnd: { script: '', args: [] },//works for items too
   OnBuffEnd: { script: '', args: [] },//works for items too
-  OnTouch: { script: '', args: [] },//works only for items
+  OnTouch: { script: '', args: [] },
+  OnTouched: { script: '', args: [] },//works for items too
 
   SetStat: { stat:'', value:0 },
   ChangeStat: { stat:'', delta:0 },
