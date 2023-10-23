@@ -36,15 +36,18 @@ export function InitMessenger() {
         OnLoadingEnd(!message.forEditing)
         break
       case 'LOAD_TEXT_FILE':
+        console.log("@@@ loaded text", message.file)
         OnLoadedText(message)
         break
       case 'LOAD_BINARY_FILE':
+        console.log("@@@ loaded binary", message.file)
         OnLoadedBinary(message)
         break
       case 'LOAD_MAP_ERROR':
         OnLoadingError(message.error)
         break
       case 'LOAD_DIRECTORY':
+        console.log("@@@ loaded dir", message.path)
         OnLoadedDirectory(message)
         break
       case 'DELETED':
