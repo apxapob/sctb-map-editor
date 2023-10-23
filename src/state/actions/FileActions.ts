@@ -98,6 +98,10 @@ export const processTextFile = action((file:string, text:string) => {
 })
 
 export const OnLoadedDirectory = action((c:FSCommandType) => {
+  if(c.path.endsWith("\\")){
+    c.path = c.path.substring(0, c.path.length-1)
+  }
+  console.log("@@@ add to tree", c.path)
   addToTree(c.path, true)
 })
 

@@ -53,7 +53,7 @@ const loadMap = async (mapDir, forEditing = false) => {
     }
     
     for (const dir of dirs) {
-      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.replace(mapDir + '\\', '') })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.replace(mapDir + '\\', '').replace(sharedImgPath, 'img').replaceAll("/", "\\") })
     }
 
     let loaded = 0
@@ -65,7 +65,7 @@ const loadMap = async (mapDir, forEditing = false) => {
           command: 'LOAD_TEXT_FILE', 
           text: fileText, 
           progress: loaded / files.length, 
-          file: file.replace(mapDir + '\\', '')
+          file: file.replace(mapDir + '\\', '').replaceAll("/", "\\")
         })
         loaded++
       } else {
@@ -74,7 +74,7 @@ const loadMap = async (mapDir, forEditing = false) => {
           command: 'LOAD_BINARY_FILE', 
           bytes: fileBytes, 
           progress: loaded / files.length, 
-          file: file.replace(mapDir + '\\', '').replace(sharedImgPath, 'img')
+          file: file.replace(mapDir + '\\', '').replace(sharedImgPath, 'img').replaceAll("/", "\\")
         })
         loaded++
       }
