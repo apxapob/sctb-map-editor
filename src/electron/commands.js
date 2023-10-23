@@ -1,5 +1,7 @@
 const { dialog, shell, app } = require('electron')
 const fs = require('fs')
+const archiver = require('archiver')
+const unzipper = require("unzipper")
 const { sendCommand } = require('./messenger')
 const { compress, decompress } = require('./StringUtils')
 
@@ -18,7 +20,9 @@ const getSaveFilesDirPath = () => {
 
 const loadMap = async (mapDir, forEditing = false) => {
   try {
+    console.log("@@@ load map", mapDir)
     sendCommand({ command: 'LOADING_START' })
+    
     const files = []
     const dirs = []
     const loadDir = async path => {
@@ -35,19 +39,28 @@ const loadMap = async (mapDir, forEditing = false) => {
 
     const sharedImgPath = getSharedImagesDirPath()
     await loadDir(sharedImgPath)
-    await loadDir(mapDir)
+
+    const zip = fs.createReadStream(mapDir).pipe(unzipper.Parse({forceStream: true}));
+    for await (const entry of zip) {
+      if(entry.type === "Directory"){
+        dirs.push(entry.path)
+        entry.autodrain();
+      } else {
+        const content = await entry.buffer()
+        files.push({ content, path: entry.path })
+        console.log("file:", entry.path)
+      }
+    }
     
     for (const dir of dirs) {
-      sendCommand({
-        command: 'LOAD_DIRECTORY', 
-        path: dir.replace(mapDir + '\\', '')
-      })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.replace(mapDir + '\\', '') })
     }
 
     let loaded = 0
-    for (const file of files) {
+    for (const fileEntry of files) {
+      const file = typeof fileEntry === "object" ? fileEntry.path : fileEntry
       if (file.endsWith('.json') || file.endsWith('.hx')) {
-        const fileText = await fs.promises.readFile(file, { encoding: 'utf8' })
+        const fileText = typeof fileEntry === "object" ? fileEntry.content.toString() : await fs.promises.readFile(file, { encoding: 'utf8' })
         sendCommand({
           command: 'LOAD_TEXT_FILE', 
           text: fileText, 
@@ -56,7 +69,7 @@ const loadMap = async (mapDir, forEditing = false) => {
         })
         loaded++
       } else {
-        const fileBytes = await fs.promises.readFile(file)
+        const fileBytes = typeof fileEntry === "object" ? fileEntry.content : await fs.promises.readFile(file)
         sendCommand({ 
           command: 'LOAD_BINARY_FILE', 
           bytes: fileBytes, 
@@ -202,9 +215,7 @@ exports.OPEN_MAP = async ({ data }) => {
 
 exports.EDIT_MAP = async () => {
   const { mainWindow } = require('./main')
-  const dir = dialog.showOpenDialogSync(mainWindow, {
-    properties: ['openDirectory']
-  })
+  const dir = dialog.showOpenDialogSync(mainWindow)//TODO: set filter to .map files
   if (!dir) { return }
   
   await loadMap(dir[0], true)
@@ -220,6 +231,32 @@ exports.SAVE_TEXT_FILE = async ({ data }) => {
     const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
     
     await fs.promises.writeFile(fullPath, text)
+
+    /////////////////
+    console.log("save zip", mapDirectory)
+    const output = fs.createWriteStream(mapDirectory + '.map')
+    const archive = archiver('zip', { zlib: { level: 9 } })
+    output.on('close', function() {
+      console.log(archive.pointer() + ' total bytes');
+      console.log('archiver has been finalized and the output file descriptor has closed.');
+    });
+    output.on('end', function() {
+      console.log('Data has been drained');
+    });
+    archive.on('warning', function(err) {
+      if (err.code === 'ENOENT') {
+        console.log("err", err.message)
+      } else {
+        throw err
+      }
+    })
+    archive.on('error', function(err) {
+      throw err
+    })
+    archive.pipe(output)
+    archive.directory(mapDirectory, false);
+    archive.finalize();
+    //////////////////
   } catch (err) {
     dialog.showErrorBox('File error', err.message)
   }

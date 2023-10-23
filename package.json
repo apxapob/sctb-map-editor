@@ -9,6 +9,8 @@
   "homepage": ".",
   "dependencies": {
     "ace-builds": "^1.29.0",
+    "archiver": "^6.0.1",
+    "unzipper": "^0.10.14",
     "electron": "^27.0.0",
     "eslint": "^8.51.0",
     "mobx": "^6.10.2",
