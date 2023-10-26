@@ -3,7 +3,7 @@ const fs = require('fs')
 const archiver = require('archiver')
 const unzipper = require("unzipper")
 const { sendCommand } = require('./messenger')
-const { compress, decompress } = require('./StringUtils')
+const { compress, decompress, isTextFile } = require('./StringUtils')
 
 let mapDirectory = null
 
@@ -20,61 +20,75 @@ const getSaveFilesDirPath = () => {
 
 const loadMap = async (mapDir, forEditing = false) => {
   try {
-    console.log("@@@ load map", mapDir)
+    mapDir = mapDir.replaceAll("\\", "/")
     sendCommand({ command: 'LOADING_START' })
     
-    const files = []
+    let files = []
     const dirs = []
     const loadDir = async path => {
-      const dirFiles = await fs.promises.readdir(path, { withFileTypes: true })
-      for (const file of dirFiles) {
-        if (file.isDirectory()) {
-          dirs.push(path + '\\' + file.name)
-          await loadDir(path + '\\' + file.name)
+      const entries = await fs.promises.readdir(path, { withFileTypes: true })
+      for (const entry of entries) {
+        const entryPath = path + '\\' + entry.name
+        const entryId = entryPath.replaceAll("\\", "/").replace(mapDir + '/', '').replace(sharedImgPath, 'img')
+        if (entry.isDirectory()) {
+          dirs.push(entryId)
+          await loadDir(entryPath)
         } else {
-          files.push(path + '\\' + file.name)
+          files.push({
+            content: await fs.promises.readFile(entryPath, isTextFile(entryPath) ? { encoding: 'utf8' } : null),
+            path: entryId
+          })
         }
       }
     }
 
     const sharedImgPath = getSharedImagesDirPath()
     await loadDir(sharedImgPath)
-
-    const zip = fs.createReadStream(mapDir).pipe(unzipper.Parse({forceStream: true}));
-    for await (const entry of zip) {
-      if(entry.type === "Directory"){
-        dirs.push(entry.path)
-        entry.autodrain();
-      } else {
-        const content = await entry.buffer()
-        files.push({ content, path: entry.path })
-        console.log("file:", entry.path)
+    if(mapDir.endsWith(".map")){
+      const zip = fs.createReadStream(mapDir).pipe(unzipper.Parse({forceStream: true}));
+      for await (const entry of zip) {
+        if(entry.type === "Directory"){
+          dirs.push(entry.path.substring(0, entry.path.length-1))
+          entry.autodrain();
+        } else {
+          let content = await entry.buffer()
+          
+          if(content.buffer.byteLength !== entry.size && !isTextFile(entry.path)){
+            content = new Uint8Array(content)
+          }
+          files.push({ content, path: entry.path })
+        }
       }
+    } else {
+      await loadDir(mapDir)
     }
-    
+
+    files = files.reverse().filter((f, idx) => {
+      const dupIdx = files.findIndex(f2 => f2.path === f.path)
+      return idx <= dupIdx
+    })
+
     for (const dir of dirs) {
-      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.replace(mapDir + '\\', '').replace(sharedImgPath, 'img').replaceAll("/", "\\") })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir })
     }
 
     let loaded = 0
     for (const fileEntry of files) {
-      const file = typeof fileEntry === "object" ? fileEntry.path : fileEntry
-      if (file.endsWith('.json') || file.endsWith('.hx')) {
-        const fileText = typeof fileEntry === "object" ? fileEntry.content.toString() : await fs.promises.readFile(file, { encoding: 'utf8' })
+      const { content, path } = fileEntry
+      if (isTextFile(path)) {
         sendCommand({
           command: 'LOAD_TEXT_FILE', 
-          text: fileText, 
+          text: content.toString(),
           progress: loaded / files.length, 
-          file: file.replace(mapDir + '\\', '').replaceAll("/", "\\")
+          file: path
         })
         loaded++
       } else {
-        const fileBytes = typeof fileEntry === "object" ? fileEntry.content : await fs.promises.readFile(file)
         sendCommand({ 
           command: 'LOAD_BINARY_FILE', 
-          bytes: fileBytes, 
+          bytes: content, 
           progress: loaded / files.length, 
-          file: file.replace(mapDir + '\\', '').replace(sharedImgPath, 'img').replaceAll("/", "\\")
+          file: path
         })
         loaded++
       }
@@ -213,12 +227,24 @@ exports.OPEN_MAP = async ({ data }) => {
   await loadMap(mapsDirPath + data)
 }
 
+exports.EDIT_MAP_FOLDER = async () => {
+  const { mainWindow } = require('./main')
+  const dirs = dialog.showOpenDialogSync(mainWindow, { properties: ['openDirectory'] })
+  if (!dirs) { return }
+  
+  await loadMap(dirs[0], true)
+}
+
 exports.EDIT_MAP = async () => {
   const { mainWindow } = require('./main')
-  const dir = dialog.showOpenDialogSync(mainWindow)//TODO: set filter to .map files
-  if (!dir) { return }
+  const files = dialog.showOpenDialogSync(mainWindow, {
+    filters: [
+      { name: 'Map files', extensions: ['map'] }
+    ]
+  })
+  if (!files) { return }
   
-  await loadMap(dir[0], true)
+  await loadMap(files[0], true)
 }
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {

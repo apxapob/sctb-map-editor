@@ -1,4 +1,4 @@
-import { action } from 'mobx'
+import { action, toJS } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
@@ -90,7 +90,7 @@ export const processTextFile = action((file:string, text:string) => {
     try {
       MapFiles.json[file] = JSON.parse(text)
     } catch (e) {
-      console.error('Can\'t parse', file, (e as Error).message)
+      console.error('Can\'t parse', file, (e as Error).message, text)
     }
   }
   
@@ -101,7 +101,7 @@ export const OnLoadedDirectory = action((c:FSCommandType) => {
   if(c.path.endsWith("\\")){
     c.path = c.path.substring(0, c.path.length-1)
   }
-  console.log("@@@ add to tree", c.path)
+  
   addToTree(c.path, true)
 })
 

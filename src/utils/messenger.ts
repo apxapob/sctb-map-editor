@@ -1,3 +1,4 @@
+import { toJS } from 'mobx'
 import { EditorState } from '../state/ToolState'
 import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, 
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
@@ -7,6 +8,7 @@ import SendToGame from '../state/actions/SendToGame'
 import TestMap from '../state/actions/TestMap'
 import ToggleJsonMode from '../state/actions/ToggleJsonMode'
 import { CommandType } from '../types/commands'
+import { FilesTree } from '../state/MapFiles'
 
 const { ipcRenderer } = require('electron')
 
@@ -34,20 +36,18 @@ export function InitMessenger() {
         break
       case 'LOADING_END':
         OnLoadingEnd(!message.forEditing)
+        console.log("@@@ loaded", toJS(FilesTree))
         break
       case 'LOAD_TEXT_FILE':
-        console.log("@@@ loaded text", message.file)
         OnLoadedText(message)
         break
       case 'LOAD_BINARY_FILE':
-        console.log("@@@ loaded binary", message.file)
         OnLoadedBinary(message)
         break
       case 'LOAD_MAP_ERROR':
         OnLoadingError(message.error)
         break
       case 'LOAD_DIRECTORY':
-        console.log("@@@ loaded dir", message.path)
         OnLoadedDirectory(message)
         break
       case 'DELETED':

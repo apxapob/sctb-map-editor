@@ -14,3 +14,5 @@ exports.decompress = (compressed) => {
   return do_unzip(compressed)
     .then(buf => buf.toString());
 }
+
+exports.isTextFile = filePath => filePath.endsWith('.json') || filePath.endsWith('.hx') || filePath.endsWith('.txt')

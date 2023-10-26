@@ -1,20 +1,20 @@
 import { observable } from 'mobx'
 import { JSONObject, TabType } from '../types/types'
 
-export const IMAGES_PATH = 'img\\'
-export const TILES_IMAGES_PATH = 'img\\tiles\\'
+export const IMAGES_PATH = 'img/'
+export const TILES_IMAGES_PATH = 'img/tiles/'
 export const UNITS_PATH = 'units.json'
-export const UNITS_IMAGES_PATH = 'img\\units\\'
+export const UNITS_IMAGES_PATH = 'img/units/'
 export const ITEMS_PATH = 'items.json'
-export const ITEMS_IMAGES_PATH = 'img\\items\\'
+export const ITEMS_IMAGES_PATH = 'img/items/'
 export const SKILLS_PATH = 'skills.json'
 export const UPGRADES_PATH = 'upgrades.json'
 export const BUFFS_PATH = 'buffs.json'
 export const INFO_PATH = 'info.json'
-export const FIELDS_PATH = 'fields\\'
-export const TEXTS_PATH = 'locales\\'
-export const SCRIPTS_PATH = 'scripts\\'
-export const PARTICLES_PATH = 'particles\\'
+export const FIELDS_PATH = 'fields/'
+export const TEXTS_PATH = 'locales/'
+export const SCRIPTS_PATH = 'scripts/'
+export const PARTICLES_PATH = 'particles/'
 
 export const getFilePath = (tab:TabType) => {
   switch (tab) {
