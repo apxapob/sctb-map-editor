@@ -39,20 +39,25 @@ exports.loadMapFile = async (path, dirs, files) => {
   }
 }
 
-let unsavedFiles = {}
+let fileChanges = {}
+exports.removeMapFile = (curMapPath, filePath) => {
+  fileChanges[filePath] = null
+  startSaving(curMapPath)
+}
+
 exports.saveMapFile = (curMapPath, filePath, text) => {
-  unsavedFiles[filePath] = text
-  console.log("saving map file", curMapPath, filePath, isSaving)
-  if(!isSaving){
-    startSaving(curMapPath)
-  }
+  fileChanges[filePath] = text
+  startSaving(curMapPath)
 }
 
 let isSaving = false
 const startSaving = async (curMapPath) => {
+  if(isSaving) { return }
   isSaving = true
-  const filesToSave = unsavedFiles
-  unsavedFiles = {}
+
+  console.log("saving map file", curMapPath)
+  const filesToChange = fileChanges
+  fileChanges = {}
 
   const tempName = curMapPath + '_'
   const output = fs.createWriteStream(tempName)
@@ -71,8 +76,11 @@ const startSaving = async (curMapPath) => {
 
   const zip = fs.createReadStream(curMapPath).pipe(unzipper.Parse({ forceStream: true }))
   for await (const entry of zip) {
-    if(filesToSave[entry.path] !== undefined){
-      archive.append(filesToSave[entry.path], { name: entry.path })
+    if(filesToChange[entry.path] !== undefined){
+      const content = filesToChange[entry.path]
+      if(content !== null){
+        archive.append(content, { name: entry.path })
+      }
       entry.autodrain()
     } else {
       const entryBuf = await entry.buffer()
@@ -86,7 +94,7 @@ const startSaving = async (curMapPath) => {
 
   isSaving = false
 
-  if(Object.keys(unsavedFiles).length > 0){
+  if(Object.keys(fileChanges).length > 0){
     startSaving(curMapPath)
   }
 }

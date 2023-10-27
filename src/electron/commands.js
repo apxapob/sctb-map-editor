@@ -2,7 +2,7 @@ const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile, saveMapFile } = require('./loadFuncs')
+const { loadMapDir, loadMapFile, saveMapFile, removeMapFile } = require('./loadFuncs')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -80,7 +80,6 @@ exports.DELETE_SAVE_FILE = async ({ data }) => {
   try {
     const fullPath = getSaveFilesDirPath() + data + '.sav'
     await fs.promises.rm(fullPath)
-
     await UPDATE_SAVES_INFO({ key: data })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)
@@ -249,9 +248,13 @@ exports.MAKE_DIR = async ({ path }) => {
 
 exports.DELETE = async ({ path }) => {
   try {
-    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
-    
-    await shell.trashItem(fullPath)
+    if(isMapFileMode()){
+      removeMapFile(curMapPath, path)
+    } else {
+      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+      await shell.trashItem(fullPath)
+    }
+
     sendCommand({ command: 'DELETED', path })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)
