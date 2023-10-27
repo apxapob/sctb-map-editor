@@ -4,8 +4,10 @@ const archiver = require('archiver')
 const unzipper = require("unzipper")
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
+const { loadMapDir, loadMapFile } = require('./loadFuncs')
 
-let mapDirectory = null
+let curMapPath = null
+const isMapFileMode = () => curMapPath?.endsWith(".map")
 
 const getSharedImagesDirPath = () => {
   return app.isPackaged ? './res/img/' : '../sctb-client/res/img/'
@@ -18,49 +20,21 @@ const getSaveFilesDirPath = () => {
   return app.isPackaged ? './saves/' : '../sctb-client/saves/'
 }
 
-const loadMap = async (mapDir, forEditing = false) => {
+const loadMap = async (mapPath, forEditing = false) => {
   try {
-    mapDir = mapDir.replaceAll("\\", "/")
+    curMapPath = mapPath = mapPath.replaceAll("\\", "/")
     sendCommand({ command: 'LOADING_START' })
     
     let files = []
     const dirs = []
-    const loadDir = async path => {
-      const entries = await fs.promises.readdir(path, { withFileTypes: true })
-      for (const entry of entries) {
-        const entryPath = path + '\\' + entry.name
-        const entryId = entryPath.replaceAll("\\", "/").replace(mapDir + '/', '').replace(sharedImgPath, 'img')
-        if (entry.isDirectory()) {
-          dirs.push(entryId)
-          await loadDir(entryPath)
-        } else {
-          files.push({
-            content: await fs.promises.readFile(entryPath, isTextFile(entryPath) ? { encoding: 'utf8' } : null),
-            path: entryId
-          })
-        }
-      }
-    }
 
     const sharedImgPath = getSharedImagesDirPath()
-    await loadDir(sharedImgPath)
-    if(mapDir.endsWith(".map")){
-      const zip = fs.createReadStream(mapDir).pipe(unzipper.Parse({forceStream: true}));
-      for await (const entry of zip) {
-        if(entry.type === "Directory"){
-          dirs.push(entry.path.substring(0, entry.path.length-1))
-          entry.autodrain();
-        } else {
-          let content = await entry.buffer()
-          
-          if(content.buffer.byteLength !== entry.size && !isTextFile(entry.path)){
-            content = new Uint8Array(content)
-          }
-          files.push({ content, path: entry.path })
-        }
-      }
+    await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, 'img'))
+    
+    if(isMapFileMode()){
+      await loadMapFile(mapPath, dirs, files)
     } else {
-      await loadDir(mapDir)
+      await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''))
     }
 
     files = files.reverse().filter((f, idx) => {
@@ -93,9 +67,9 @@ const loadMap = async (mapDir, forEditing = false) => {
         loaded++
       }
     }
-    mapDirectory = mapDir
     sendCommand({ command: 'LOADING_END', forEditing })
   } catch (err) {
+    curMapPath = null
     console.error(err)
     sendCommand({
       command: 'LOAD_MAP_ERROR', 
@@ -249,48 +223,45 @@ exports.EDIT_MAP = async () => {
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {
   const { path, text } =  data
-  if (!mapDirectory) {
+  if (!curMapPath) {
     console.error('no open map')
     return
   }
   try {
-    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
-    
-    await fs.promises.writeFile(fullPath, text)
-
-    /////////////////
-    console.log("save zip", mapDirectory)
-    const output = fs.createWriteStream(mapDirectory + '.map')
-    const archive = archiver('zip', { zlib: { level: 9 } })
-    output.on('close', function() {
-      console.log(archive.pointer() + ' total bytes');
-      console.log('archiver has been finalized and the output file descriptor has closed.');
-    });
-    output.on('end', function() {
-      console.log('Data has been drained');
-    });
-    archive.on('warning', function(err) {
-      if (err.code === 'ENOENT') {
-        console.log("err", err.message)
-      } else {
-        throw err
-      }
-    })
-    archive.on('error', function(err) {
-      throw err
-    })
-    archive.pipe(output)
-    archive.directory(mapDirectory, false);
-    archive.finalize();
-    //////////////////
+    if(isMapFileMode()){
+      console.log("save zip", curMapPath)
+      const output = fs.createWriteStream(curMapPath + '.map')
+      const archive = archiver('zip', { zlib: { level: 9 } })
+      output.on('close', function() {
+        console.log(archive.pointer() + ' total bytes');
+        console.log('archiver has been finalized and the output file descriptor has closed.');
+      });
+      output.on('end', function() {
+        console.log('Data has been drained');
+      });
+      archive.on('warning', function(err) {
+        if (err.code === 'ENOENT') {
+          console.log("err", err.message)
+        } else {
+          throw err
+        }
+      })
+      archive.on('error', err => console.error(err))
+      archive.pipe(output)
+      archive.directory(curMapPath, false);
+      archive.finalize();
+    } else {
+      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+      await fs.promises.writeFile(fullPath, text)
+    }
   } catch (err) {
-    dialog.showErrorBox('File error', err.message)
+    dialog.showErrorBox('Map save error', err.message)
   }
 }
 
 exports.MAKE_DIR = async ({ path }) => {
   try {
-    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
     
     await fs.promises.mkdir(fullPath)
   } catch (err) {
@@ -300,7 +271,7 @@ exports.MAKE_DIR = async ({ path }) => {
 
 exports.DELETE = async ({ path }) => {
   try {
-    const fullPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
     
     await shell.trashItem(fullPath)
     sendCommand({ command: 'DELETED', path })
@@ -312,12 +283,12 @@ exports.DELETE = async ({ path }) => {
 exports.RENAME = async ({ path, newName }) => {
   try {
     if (!newName) return
-    const oldPath = (mapDirectory + '\\' + path).replaceAll('/', '\\')
+    const oldPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
 
     const parts = path.split('\\')
     parts.pop()
     parts.push(newName)
-    const newPath = (mapDirectory + '\\' + parts.join('\\')).replaceAll('/', '\\')
+    const newPath = (curMapPath + '\\' + parts.join('\\')).replaceAll('/', '\\')
     
     await fs.promises.rename(oldPath, newPath)
     sendCommand({ command: 'RENAMED', path, newName })
