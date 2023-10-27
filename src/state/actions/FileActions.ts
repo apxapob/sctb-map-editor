@@ -49,7 +49,7 @@ export const OnLoadingError = action((errorText:string) => {
 })
 
 const removeFromTree = action((file:string) => {
-  const parts = file.split('\\')
+  const parts = file.split('/')
   let curPart = ''
   let curTree:PathTreeType = FilesTree
   for (let i = 0; i < parts.length; i++) {
@@ -66,7 +66,7 @@ const removeFromTree = action((file:string) => {
 })
 
 const addToTree = action((file:string, isDirectory = false) => {
-  const parts = file.split('\\')
+  const parts = file.split('/')
   let curPart = ''
   let curTree:PathTreeType = FilesTree
   for (let i = 0; i < parts.length; i++) {
@@ -76,7 +76,7 @@ const addToTree = action((file:string, isDirectory = false) => {
         isOpen: true,
         isDirectory: i < parts.length - 1 || isDirectory,
         nodes: {}, 
-        path: curTree.path === '' ? curPart : curTree.path + '\\' + curPart
+        path: curTree.path === '' ? curPart : curTree.path + '/' + curPart
       }
     }
     curTree = curTree.nodes[curPart]
@@ -98,7 +98,7 @@ export const processTextFile = action((file:string, text:string) => {
 })
 
 export const OnLoadedDirectory = action((c:FSCommandType) => {
-  if(c.path.endsWith("\\")){
+  if(c.path.endsWith("\\") || c.path.endsWith("/")){
     c.path = c.path.substring(0, c.path.length-1)
   }
   
@@ -112,7 +112,7 @@ export const OnDeleted = action((c:FSCommandType) => {
   delete MapFiles.json[c.path]
 
   if (
-    c.path === getDirPath(EditorState.activeTab).replace('\\', '')
+    c.path === getDirPath(EditorState.activeTab).replace('/', '')
   ) {
     //deleted one of the main folders in map, let's restore it
     CreateFolder(c.path)
@@ -121,10 +121,10 @@ export const OnDeleted = action((c:FSCommandType) => {
 
 export const OnRenamed = action((c:RenameType) => {
   const oldPath = c.path
-  const pathParts = c.path.split('\\')
+  const pathParts = c.path.split('/')
   pathParts.pop()
   pathParts.push(c.newName)
-  const newPath = pathParts.join('\\')
+  const newPath = pathParts.join('/')
   if (MapFiles.binary[oldPath]) {
     MapFiles.binary[newPath] = MapFiles.binary[oldPath]
     delete MapFiles.binary[oldPath]
@@ -138,7 +138,7 @@ export const OnRenamed = action((c:RenameType) => {
     delete MapFiles.json[oldPath]
   }
 
-  const parts = oldPath.split('\\')
+  const parts = oldPath.split('/')
   let curPart = ''
   let curTree:PathTreeType = FilesTree
   for (let i = 0; i < parts.length; i++) {

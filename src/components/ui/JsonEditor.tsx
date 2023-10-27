@@ -21,7 +21,7 @@ const JsonEditor = () => {
   const tab = EditorState.activeTab
   const error = TabsErrors[tab] ?? null
   const mode = filePath.endsWith('.json') ? 'json' : 'haxe'
-  const dirPath = getDirPath(EditorState.activeTab).replace('\\', '')
+  const dirPath = getDirPath(EditorState.activeTab).replace('/', '')
 
   EditorState.jsonEditorTrigger//just subscribing to the trigger
   

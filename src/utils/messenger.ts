@@ -36,7 +36,6 @@ export function InitMessenger() {
         break
       case 'LOADING_END':
         OnLoadingEnd(!message.forEditing)
-        console.log("@@@ loaded", toJS(FilesTree))
         break
       case 'LOAD_TEXT_FILE':
         OnLoadedText(message)

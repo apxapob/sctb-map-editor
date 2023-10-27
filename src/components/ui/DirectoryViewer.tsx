@@ -236,7 +236,7 @@ const FileAdder = ({
   }, [add])
 
   const createFile = () => {
-    const fullpath = path + '\\' + inputVal
+    const fullpath = path + '/' + inputVal
     if (add === 'file') {
       CreateFile(fullpath)
       fileSelector(fullpath)
