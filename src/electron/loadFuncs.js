@@ -39,8 +39,21 @@ exports.loadMapFile = async (path, dirs, files) => {
   }
 }
 
-exports.saveMapFile = async (curMapPath, filePath, text) => {
-  console.log("saving map file", curMapPath, filePath)
+let unsavedFiles = {}
+exports.saveMapFile = (curMapPath, filePath, text) => {
+  unsavedFiles[filePath] = text
+  console.log("saving map file", curMapPath, filePath, isSaving)
+  if(!isSaving){
+    startSaving(curMapPath)
+  }
+}
+
+let isSaving = false
+const startSaving = async (curMapPath) => {
+  isSaving = true
+  const filesToSave = unsavedFiles
+  unsavedFiles = {}
+
   const tempName = curMapPath + '_'
   const output = fs.createWriteStream(tempName)
   const archive = archiver('zip', { zlib: { level: 9 } })
@@ -58,9 +71,8 @@ exports.saveMapFile = async (curMapPath, filePath, text) => {
 
   const zip = fs.createReadStream(curMapPath).pipe(unzipper.Parse({ forceStream: true }))
   for await (const entry of zip) {
-    if(entry.path === filePath){
-      // append a file from string
-      archive.append(text, { name: filePath })
+    if(filesToSave[entry.path] !== undefined){
+      archive.append(filesToSave[entry.path], { name: entry.path })
       entry.autodrain()
     } else {
       const entryBuf = await entry.buffer()
@@ -71,4 +83,10 @@ exports.saveMapFile = async (curMapPath, filePath, text) => {
   await archive.finalize()
   await fs.promises.rm(curMapPath)
   await fs.promises.rename(tempName, curMapPath)
+
+  isSaving = false
+
+  if(Object.keys(unsavedFiles).length > 0){
+    startSaving(curMapPath)
+  }
 }
