@@ -1,10 +1,8 @@
 const { dialog, shell, app } = require('electron')
 const fs = require('fs')
-const archiver = require('archiver')
-const unzipper = require("unzipper")
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile } = require('./loadFuncs')
+const { loadMapDir, loadMapFile, saveMapFile } = require('./loadFuncs')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -229,27 +227,7 @@ exports.SAVE_TEXT_FILE = async ({ data }) => {
   }
   try {
     if(isMapFileMode()){
-      console.log("save zip", curMapPath)
-      const output = fs.createWriteStream(curMapPath + '.map')
-      const archive = archiver('zip', { zlib: { level: 9 } })
-      output.on('close', function() {
-        console.log(archive.pointer() + ' total bytes');
-        console.log('archiver has been finalized and the output file descriptor has closed.');
-      });
-      output.on('end', function() {
-        console.log('Data has been drained');
-      });
-      archive.on('warning', function(err) {
-        if (err.code === 'ENOENT') {
-          console.log("err", err.message)
-        } else {
-          throw err
-        }
-      })
-      archive.on('error', err => console.error(err))
-      archive.pipe(output)
-      archive.directory(curMapPath, false);
-      archive.finalize();
+      saveMapFile(curMapPath, path, text)
     } else {
       const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
       await fs.promises.writeFile(fullPath, text)
