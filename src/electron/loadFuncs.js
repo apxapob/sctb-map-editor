@@ -45,6 +45,11 @@ exports.removeMapFile = (curMapPath, filePath) => {
   startSaving(curMapPath)
 }
 
+exports.renameMapFile = (curMapPath, oldName, newName) => {
+  fileChanges[oldName] = { newName }
+  startSaving(curMapPath)
+}
+
 exports.saveMapFile = (curMapPath, filePath, text) => {
   fileChanges[filePath] = text
   startSaving(curMapPath)
@@ -77,10 +82,17 @@ const startSaving = async (curMapPath) => {
   const zip = fs.createReadStream(curMapPath).pipe(unzipper.Parse({ forceStream: true }))
   for await (const entry of zip) {
     if(filesToChange[entry.path] !== undefined){
-      const content = filesToChange[entry.path]
-      if(content !== null){
-        archive.append(content, { name: entry.path })
+      const changeInfo = filesToChange[entry.path]
+      if(typeof changeInfo === "string"){//change file contents
+        archive.append(changeInfo, { name: entry.path })
+      } else if(typeof changeInfo === "object"){
+        if(changeInfo?.newName !== undefined){//rename file
+          const entryBuf = await entry.buffer()
+          archive.append(entryBuf, { name: changeInfo.newName })
+          continue
+        }
       }
+      //delete file
       entry.autodrain()
     } else {
       const entryBuf = await entry.buffer()

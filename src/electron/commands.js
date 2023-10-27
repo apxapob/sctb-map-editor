@@ -2,7 +2,7 @@ const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile, saveMapFile, removeMapFile } = require('./loadFuncs')
+const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile } = require('./loadFuncs')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -264,14 +264,20 @@ exports.DELETE = async ({ path }) => {
 exports.RENAME = async ({ path, newName }) => {
   try {
     if (!newName) return
-    const oldPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
 
-    const parts = path.split('\\')
+    const parts = path.split('/')
     parts.pop()
     parts.push(newName)
-    const newPath = (curMapPath + '\\' + parts.join('\\')).replaceAll('/', '\\')
+
+    if(isMapFileMode()){
+      renameMapFile(curMapPath, path, parts.join('/'))
+    } else {
+      const oldPath = (curMapPath + '/' + path).replaceAll('/', '\\')
+      const newPath = (curMapPath + '/' + parts.join('/')).replaceAll('/', '\\')
+      
+      await fs.promises.rename(oldPath, newPath)
+    }
     
-    await fs.promises.rename(oldPath, newPath)
     sendCommand({ command: 'RENAMED', path, newName })
   } catch (err) {
     dialog.showErrorBox('Can\'t rename', err.message)
