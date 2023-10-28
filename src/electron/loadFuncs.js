@@ -40,8 +40,13 @@ exports.loadMapFile = async (path, dirs, files) => {
 }
 
 let fileChanges = {}
-exports.removeMapFile = (curMapPath, filePath) => {
+exports.removeMapFile = (curMapPath, filePath, dirFiles) => {
   fileChanges[filePath] = null
+  if(dirFiles){
+    for(const i in dirFiles){
+      fileChanges[filePath + "/" + dirFiles[i]] = null
+    }
+  }
   startSaving(curMapPath)
 }
 
@@ -83,6 +88,7 @@ const startSaving = async (curMapPath) => {
   for await (const entry of zip) {
     if(filesToChange[entry.path] !== undefined){
       const changeInfo = filesToChange[entry.path]
+      delete filesToChange[entry.path]
       if(typeof changeInfo === "string"){//change file contents
         archive.append(changeInfo, { name: entry.path })
       } else if(typeof changeInfo === "object"){
@@ -92,11 +98,19 @@ const startSaving = async (curMapPath) => {
           continue
         }
       }
+
       //delete file
       entry.autodrain()
     } else {
       const entryBuf = await entry.buffer()
       archive.append(entryBuf, { name: entry.path })
+    }
+  }
+
+  for(const path in filesToChange){
+    const content = filesToChange[path]
+    if(content !== null){
+      archive.append(content, { name: path.includes(".") ? path : path + ".txt" })
     }
   }
 

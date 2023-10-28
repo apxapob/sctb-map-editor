@@ -67,7 +67,8 @@ const getFolderMenuItems = (
     title: 'Delete',
     callback: () => SendToElectron({
       command: 'DELETE',
-      path: tree.path
+      path: tree.path,
+      dirFiles: Object.keys(tree.nodes)
     })
   },
 ]

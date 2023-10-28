@@ -27,6 +27,7 @@ export type LoadingEndType = {
 export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED';
   path: string;
+  dirFiles?: string[];
 }
 
 export type RenameType = {

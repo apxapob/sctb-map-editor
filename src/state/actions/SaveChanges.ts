@@ -49,6 +49,9 @@ export default action(SaveChanges)
 
 export const CreateFile = action((path:string) => {
   const text = path.endsWith('.json') ? '{}' : ''
+  if(!path.includes(".")){
+    path += ".txt"
+  }
   SendToElectron({
     command: 'SAVE_TEXT_FILE',
     data: { path, text }

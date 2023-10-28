@@ -238,18 +238,21 @@ exports.SAVE_TEXT_FILE = async ({ data }) => {
 
 exports.MAKE_DIR = async ({ path }) => {
   try {
-    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
-    
-    await fs.promises.mkdir(fullPath)
+    if(isMapFileMode()){
+      return
+    } else {
+      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+      await fs.promises.mkdir(fullPath)
+    }
   } catch (err) {
     dialog.showErrorBox('Folder creation error', err.message)
   }
 }
 
-exports.DELETE = async ({ path }) => {
+exports.DELETE = async ({ path, dirFiles }) => {
   try {
     if(isMapFileMode()){
-      removeMapFile(curMapPath, path)
+      removeMapFile(curMapPath, path, dirFiles)
     } else {
       const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
       await shell.trashItem(fullPath)
