@@ -11,7 +11,7 @@ const GameCanvas = () => {
   return (
     <iframe id={GameCanvasId} 
       className={`Game-canvas ${editMap ? 'cnv-editor' : ''} ${EditorState.mode !== 'edit' ? 'cnv-game' : ''}`} 
-      src="/game/index.html" frameBorder="0" 
+      src="./game/index.html" frameBorder="0" 
     />
   )
 }

@@ -16,16 +16,16 @@ const createWindow = () => {
   win.setMenu(null)
 
   if(app.isPackaged){
-    win.loadFile('public/index.html')
+    win.loadFile('./dist/index.html')
   } else {
     win.loadURL('http://localhost:3000')
   }
   
   initHotKeys(win)
 
-  if(!app.isPackaged){
+  //if(!app.isPackaged){
     win.webContents.openDevTools()
-  }
+  //}
   
   win.once('ready-to-show', () => win.maximize())
   exports.mainWindow = win
