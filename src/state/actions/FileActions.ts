@@ -17,26 +17,19 @@ export const OnLoadingStart = action(() => {
   SendToGame({ method: 'loading_start' })
 })
 
-export const OnLoadingEnd = action((isPlayMode:boolean) => {
+export const OnLoadingEnd = action((mapId:string, isPlayMode:boolean) => {
   try {
-    if (MapFiles.text[INFO_PATH] !== undefined) {
-      MapFiles.status = 'Loaded'
-      const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
-      if (mapInfo && mapInfo.mapId) {
-        MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
-        SendToGame({ 
-          method: 'show_map', 
-          data: {
-            mapId: mapInfo.mapId,
-            isPlayMode
-          }
-        })
-      } else {
-        OnLoadingError('Invalid info.json file: no mapId')
-      }
-    } else {
-      OnLoadingError('Can\'t find info.json file')
+    MapFiles.status = 'Loaded'
+    const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
+    if (mapInfo && mapInfo.mapId) {
+      MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
     }
+    
+    SendToGame({ 
+      method: 'show_map', 
+      data: { mapId, isPlayMode }
+    })
+    
     EditorState.mode = isPlayMode ? 'play' : 'edit'
   } catch (e:unknown) {
     OnLoadingError('Invalid info.json file: ' + (e as Error).message)
@@ -46,6 +39,7 @@ export const OnLoadingEnd = action((isPlayMode:boolean) => {
 export const OnLoadingError = action((errorText:string) => {
   MapFiles.status = 'Error'
   MapFiles.error = errorText
+  console.error(errorText)
 })
 
 const removeFromTree = action((file:string) => {
@@ -98,6 +92,7 @@ export const processTextFile = action((file:string, text:string) => {
 })
 
 export const OnLoadedDirectory = action((c:FSCommandType) => {
+  if(c.editMode !== true){ return }
   if(c.path.endsWith("\\") || c.path.endsWith("/")){
     c.path = c.path.substring(0, c.path.length-1)
   }
@@ -157,8 +152,10 @@ export const OnRenamed = action((c:RenameType) => {
 })
 
 export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
-  processTextFile(c.file, c.text)
-
+  if(c.editMode){
+    processTextFile(c.file, c.text)
+  }
+  
   SendToGame({
     method: 'load_text_file', 
     data: {
@@ -171,9 +168,10 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
-  MapFiles.binary[c.file] = c.bytes
-
-  addToTree(c.file)
+  if(c.editMode){
+    MapFiles.binary[c.file] = c.bytes
+    addToTree(c.file)
+  }
   SendToGame({
     method: 'load_binary_file', 
     data: {

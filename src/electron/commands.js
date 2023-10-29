@@ -18,9 +18,13 @@ const getSaveFilesDirPath = () => {
   return app.isPackaged ? './saves/' : '../sctb-client/saves/'
 }
 
-const loadMap = async (mapPath, forEditing = false) => {
+const loadMap = async (mapPath, editMode = false) => {
   try {
     curMapPath = mapPath = mapPath.replaceAll("\\", "/")
+    const mapId = mapPath.substring(
+      mapPath.lastIndexOf("/")+1,
+      mapPath.endsWith(".map") ? mapPath.length-4 : undefined
+    )
     sendCommand({ command: 'LOADING_START' })
     
     let files = []
@@ -41,7 +45,7 @@ const loadMap = async (mapPath, forEditing = false) => {
     })
 
     for (const dir of dirs) {
-      sendCommand({ command: 'LOAD_DIRECTORY', path: dir })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir, editMode })
     }
 
     let loaded = 0
@@ -52,7 +56,8 @@ const loadMap = async (mapPath, forEditing = false) => {
           command: 'LOAD_TEXT_FILE', 
           text: content.toString(),
           progress: loaded / files.length, 
-          file: path
+          file: path,
+          editMode
         })
         loaded++
       } else {
@@ -60,12 +65,13 @@ const loadMap = async (mapPath, forEditing = false) => {
           command: 'LOAD_BINARY_FILE', 
           bytes: content, 
           progress: loaded / files.length, 
-          file: path
+          file: path,
+          editMode
         })
         loaded++
       }
     }
-    sendCommand({ command: 'LOADING_END', forEditing })
+    sendCommand({ command: 'LOADING_END', editMode, mapId })
   } catch (err) {
     curMapPath = null
     console.error(err)
@@ -201,7 +207,7 @@ exports.EXIT = () => app.quit()
 
 exports.OPEN_MAP = async ({ data }) => {
   const mapsDirPath = getMapsDirPath()
-  await loadMap(mapsDirPath + data)
+  await loadMap(mapsDirPath + data + ".map")
 }
 
 exports.EDIT_MAP_FOLDER = async () => {

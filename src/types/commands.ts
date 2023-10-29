@@ -21,13 +21,15 @@ export type OpenMapType = {
 
 export type LoadingEndType = {
   command: 'LOADING_END';
-  forEditing: boolean
+  mapId: string;
+  editMode?: boolean;
 }
 
 export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED';
   path: string;
   dirFiles?: string[];
+  editMode?: boolean;
 }
 
 export type RenameType = {
@@ -41,6 +43,7 @@ export type LoadTextCommandType = {
   file: string;
   progress: number;
   text: string;
+  editMode?: boolean;
 } 
 
 export type LoadBinaryCommandType = {
@@ -48,6 +51,7 @@ export type LoadBinaryCommandType = {
   file: string;
   progress: number;
   bytes: Uint8Array;
+  editMode?: boolean;
 }
 
 export type LoadMapErrorType = {

@@ -35,7 +35,7 @@ export function InitMessenger() {
         OnLoadingStart()
         break
       case 'LOADING_END':
-        OnLoadingEnd(!message.forEditing)
+        OnLoadingEnd(message.mapId, !message.editMode)
         break
       case 'LOAD_TEXT_FILE':
         OnLoadedText(message)
@@ -43,11 +43,11 @@ export function InitMessenger() {
       case 'LOAD_BINARY_FILE':
         OnLoadedBinary(message)
         break
-      case 'LOAD_MAP_ERROR':
-        OnLoadingError(message.error)
-        break
       case 'LOAD_DIRECTORY':
         OnLoadedDirectory(message)
+        break
+      case 'LOAD_MAP_ERROR':
+        OnLoadingError(message.error)
         break
       case 'DELETED':
         OnDeleted(message)
