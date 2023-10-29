@@ -171,20 +171,22 @@ const UnitsView = () => {
         addItem={() => AddJsonFileValue<UnitStatsType>(
           UNITS_PATH, 
           'Unit',
-          { 
-            type: '', 
-            buffs: [], 
-            attack: 0, 
-            range: 0, 
-            speed: 0, 
-            vision: 0, 
-            detector: 0, 
-            invisible: 0, 
-            maxHp: 0, 
-            flying: 0, 
+          {
+            type: '',
+            buffs: [],
+            attack: 0,
+            range: 0,
+            speed: 0,
+            vision: 0,
+            detector: 0,
+            invisible: 0,
+            maxHp: 0,
+            flying: 0,
             skills: [],
             hideHpBar: false,
-            moveAreaScript: ''
+            moveAreaScript: '',
+            moveCostMinerals: 0,
+            moveCostMana: 0,
           },
           selectUnit
         )}
