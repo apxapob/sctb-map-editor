@@ -39,6 +39,18 @@ exports.loadMapFile = async (path, dirs, files) => {
   }
 }
 
+exports.loadMapInfo = async (mapFilePath) => {
+  const zip = fs.createReadStream(mapFilePath).pipe(unzipper.Parse({ forceStream: true }))
+  for await (const entry of zip) {
+    if(entry.path !== "info.json"){
+      entry.autodrain()
+    } else {
+      const content = await entry.buffer()
+      return content + ""
+    }
+  }
+}
+
 let fileChanges = {}
 exports.removeMapFile = (curMapPath, filePath, dirFiles) => {
   fileChanges[filePath] = null

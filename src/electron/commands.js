@@ -2,7 +2,7 @@ const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile } = require('./loadFuncs')
+const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo } = require('./loadFuncs')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -167,28 +167,34 @@ exports.LOAD_SAVES_LIST = async () => {
 }
 
 exports.LOAD_MAPS_LIST = async () => {
-  let dirs = []
+  let files = []
   const mapsDirPath = getMapsDirPath()
-  try {  
-    dirs = await fs.promises.readdir(mapsDirPath)
+  try {
+    files = await fs.promises.readdir(mapsDirPath)
   } catch (err) {
     dialog.showErrorBox('Maps directory error:', err.message)
   }
   
-  const maps = []
-  while( dirs.length > 0 ){
-    const dir = mapsDirPath + dirs.pop()
-    try {
-      const fileText = await fs.promises.readFile(dir + '/info.json', { encoding: 'utf8' })
-      maps.push(fileText)
-    } catch (err) {
-      console.error(err)
+  sendCommand({
+    command: 'TO_GAME',
+    data: { 
+      method: 'maps_list', 
+      data: files.filter(f => f.endsWith(".map")).map(f => f.substring(0, f.length-4))
     }
-  }
-  sendCommand({ 
-    command: 'TO_GAME', 
-    data: { method: 'maps_list', data: maps }
   })
+}
+
+exports.LOAD_MAP_INFO = async ({ mapId }) => {
+  try {
+    const mapFilePath = getMapsDirPath() + mapId + ".map"
+    const info = await loadMapInfo(mapFilePath)
+    sendCommand({
+      command: 'TO_GAME',
+      data: { method: 'map_info', mapId, info }
+    })
+  } catch (err) {
+    console.error('Map file error:', err.message)
+  }
 }
 
 exports.EXIT = () => app.quit()
