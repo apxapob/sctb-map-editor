@@ -41,6 +41,7 @@
     "dev": "vite --port=3000 | electron .",
     "build": "tsc && vite build",
     "package": "electron-forge package",
+    "full_deploy": "node full_deploy.mjs",
     "do_not_use": "electron-forge make"
   },
   "eslintConfig": {
