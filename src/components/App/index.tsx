@@ -15,6 +15,7 @@ import ItemsView from '../Views/ItemsView'
 import SkillsView from '../Views/SkillsView'
 import BuffsView from '../Views/BuffsView'
 import UpgradesView from '../Views/UpgradesView'
+import ImagesView from '../Views/ImagesView'
 
 const Views: Record<TabType, () => ReactElement|null> = {
   Field: FieldView,
@@ -27,6 +28,7 @@ const Views: Record<TabType, () => ReactElement|null> = {
   Map: MapView,
   Texts: JsonEditor,
   Particles: JsonEditor,
+  Images: ImagesView,
 }
 
 const App = () => {

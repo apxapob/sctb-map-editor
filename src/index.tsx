@@ -12,20 +12,3 @@ if (container !== null) {
 } else {
   console.error('No root element.')
 }
-
-const times:number[] = []
-const fpsContainer = document.getElementById('fps')
-
-function refreshLoop() {
-  window.requestAnimationFrame(() => {
-    const now = performance.now()
-    while (times.length > 0 && times[0] <= now - 1000) {
-      times.shift()
-    }
-    times.push(now)
-    if (fpsContainer) { fpsContainer.textContent = 'fps: ' + times.length }
-    refreshLoop()
-  })
-}
-
-refreshLoop()

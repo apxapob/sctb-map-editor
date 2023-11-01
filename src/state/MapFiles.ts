@@ -72,6 +72,7 @@ export const MapFiles:{
   selectedLang: string;
   selectedScript: string;
   selectedParticlesFile: string;
+  selectedImageFile: string;
 } = observable({
   binary: {},
   text: {},

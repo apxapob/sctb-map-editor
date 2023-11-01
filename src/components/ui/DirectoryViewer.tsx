@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { OpenFileTree, SelectFieldFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
+import { OpenFileTree, SelectFieldFile, SelectImageFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import { SendToElectron } from '../../utils/messenger'
@@ -16,7 +16,8 @@ export const fileSelectors: {
   'Field': SelectFieldFile,
   'Scripts': SelectScriptFile, 
   'Texts': SelectLangFile, 
-  'Particles': SelectParticlesFile
+  'Particles': SelectParticlesFile,
+  'Images': SelectImageFile,
 }
 
 export type DirectoryViewerProps = {
@@ -177,14 +178,21 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
   </>
 })
 
+const isFileSelected = (path:string) => {
+  switch(EditorState.activeTab){
+    case 'Scripts': return MapFiles.selectedScript === path
+    case 'Texts': return MapFiles.selectedLang === path
+    case 'Particles': return MapFiles.selectedParticlesFile === path
+    case 'Images': return MapFiles.selectedImageFile === path
+    case 'Field': return MapFiles.selectedField === path
+  }
+  return false
+}
+
 const FileItem = observer(
   ({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
-    //TODO: make normal condition
-    const isSelected = 
-      MapFiles.selectedField === tree.path || 
-      MapFiles.selectedScript === tree.path || 
-      MapFiles.selectedLang === tree.path || 
-      MapFiles.selectedParticlesFile === tree.path
+    const isSelected = isFileSelected(tree.path)
+      
     const [isRenaming, setRenaming] = React.useState(false)
 
     const rename = (newName:string) => {

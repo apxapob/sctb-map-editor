@@ -37,3 +37,9 @@ export const SelectParticlesFile = action(
   }
 )
 
+export const SelectImageFile = action(
+  (path:string) => {
+    if (!SaveChanges()) { return }
+    MapFiles.selectedImageFile = path
+  }
+)
