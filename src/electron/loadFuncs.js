@@ -3,6 +3,26 @@ const archiver = require('archiver')
 const unzipper = require("unzipper")
 const { isTextFile } = require('./StringUtils')
 
+exports.makeMapFile = async (mapDir, dest) => {
+  const output = fs.createWriteStream(dest)
+  const archive = archiver('zip', { zlib: { level: 9 } })
+  output.on('close', () => {})
+  output.on('end', () => console.log('Data has been drained'))
+  archive.on('warning', err => {
+    if (err.code === 'ENOENT') {
+      console.log("err", err.message)
+    } else {
+      console.error(err)
+    }
+  })
+  archive.on('error', err => console.error(err))
+  archive.pipe(output)
+
+  archive.directory(mapDir, false)
+
+  await archive.finalize()
+}
+
 const loadMapDir = async (path, dirs, files, replacer) => {
   const entries = await fs.promises.readdir(path, { withFileTypes: true })
   for (const entry of entries) {

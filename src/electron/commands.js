@@ -2,7 +2,7 @@ const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo } = require('./loadFuncs')
+const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo, makeMapFile } = require('./loadFuncs')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -318,8 +318,10 @@ exports.CREATE_MAP = async () => {
     await makeLocaleDir(dir, mapId)
     await makeParticlesDir(dir, mapId)
     await makeScriptsDir(dir, mapId)
-    
-    await loadMap(dir, true)
+    await makeMapFile(dir, dir + ".map")
+
+    await fs.promises.rm(dir, { recursive: true, force: true })
+    await loadMap(dir + ".map", true)
   } catch (err) {
     dialog.showErrorBox('Create directory error', err.message)
   }
