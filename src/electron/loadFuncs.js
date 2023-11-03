@@ -87,8 +87,8 @@ exports.renameMapFile = (curMapPath, oldName, newName) => {
   startSaving(curMapPath)
 }
 
-exports.saveMapFile = (curMapPath, filePath, text) => {
-  fileChanges[filePath] = text
+exports.saveMapFile = (curMapPath, filePath, content) => {
+  fileChanges[filePath] = content
   startSaving(curMapPath)
 }
 

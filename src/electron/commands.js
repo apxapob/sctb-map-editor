@@ -300,6 +300,37 @@ exports.RENAME = async ({ path, newName }) => {
   }
 }
 
+exports.ADD_IMAGE = async ({ path }) => {
+  const { mainWindow } = require('./main')
+  const files = dialog.showOpenDialogSync(mainWindow, {
+    properties: ['multiSelections'],
+    filters: [
+      { name: 'Map files', extensions: ['png'] }
+    ]
+  })
+  if (!files) { return }
+
+  for (const filePath of files){
+    const fileName = filePath.replaceAll("\\", "/").split("/").pop()
+    
+    const bytes = await fs.promises.readFile(filePath)
+    sendCommand({
+      command: 'LOAD_BINARY_FILE', 
+      bytes,
+      progress: 1,
+      file: path + "/" + fileName,
+      editMode: true
+    })
+
+    if(isMapFileMode()){
+      saveMapFile(curMapPath, path + "/" + fileName, bytes)
+    } else {
+      fs.promises.copyFile(filePath, curMapPath + "/" + path + "/" + fileName)
+    }
+  }
+  
+}
+
 exports.CREATE_MAP = async () => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {

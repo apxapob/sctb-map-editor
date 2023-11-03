@@ -10,7 +10,7 @@ const ImagesView = () => {
 
   return <>
     <div className='view-container hflex' style={{ alignItems: 'normal' }}>
-      <DirectoryViewer path={IMAGES_PATH.replace('/', '')} />
+      <DirectoryViewer path={IMAGES_PATH.replace('/', '')} isImages />
       <div className='view-container'>
         <BlobImage path={img} />
       </div>

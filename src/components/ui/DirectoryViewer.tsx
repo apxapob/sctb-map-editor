@@ -22,6 +22,7 @@ export const fileSelectors: {
 
 export type DirectoryViewerProps = {
   path: string;
+  isImages?: boolean;
 }
 
 type AdderType = 'file'|'folder'|null
@@ -29,11 +30,19 @@ type AdderType = 'file'|'folder'|null
 const getFileMenuItems = (
   tree:PathTreeType,
   renameFile: () => void,
-  setAdder: (val:AdderType) => void
+  setAdder: (val:AdderType) => void,
+  isImages?: boolean
 ) => [
-  {
+  !isImages && {
     title: 'New file', 
     callback: () => setAdder('file')
+  },
+  isImages && {
+    title: 'Add Image', 
+    callback: () => SendToElectron({
+      command: 'ADD_IMAGE',
+      path: tree.path.substring(0, tree.path.lastIndexOf("/"))
+    })
   },
   {
     title: 'New folder', 
@@ -54,11 +63,19 @@ const getFileMenuItems = (
 
 const getFolderMenuItems = (
   tree:PathTreeType,
-  setAdder: (val:AdderType) => void
+  setAdder: (val:AdderType) => void,
+  isImages?: boolean
 ) => [
-  {
+  !isImages &&{
     title: 'New file', 
     callback: () => setAdder('file')
+  },
+  isImages && {
+    title: 'Add Image', 
+    callback: () => SendToElectron({
+      command: 'ADD_IMAGE',
+      path: tree.path
+    })
   },
   {
     title: 'New folder', 
@@ -74,7 +91,7 @@ const getFolderMenuItems = (
   },
 ]
 
-const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
+const DirectoryViewer = ({ path, isImages }: DirectoryViewerProps) => {
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
@@ -89,6 +106,7 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   return (
     <div className='dir-viewer-container'>
       <PathTree
+        isImages
         fileSelector={fileSelector}
         tree={mainTree}
         root={null}
@@ -105,11 +123,12 @@ type FilesTreeProps = {
   tree: PathTreeType;
   root: string | null;
   level: number;
+  isImages: boolean;
   fileSelector: (path:string) => void;
   setAdder: (val:AdderType) => void;
 }
 
-const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
+const PathTree = observer(({ tree, root, level, fileSelector, setAdder, isImages }:FilesTreeProps) => {
   const [adder, _] = React.useState<AdderType>(null)
   if(tree.isDirectory || !setAdder){
     setAdder = _
@@ -134,6 +153,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
     })
     .map(nodeKey => 
       <PathTree
+        isImages
         tree={tree.nodes[nodeKey]} 
         root={nodeKey} 
         level={level + 1}
@@ -146,6 +166,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
   return <>
     {root && !tree.isDirectory &&
       <FileItem 
+        isImages
         tree={tree} 
         root={root} 
         level={level} 
@@ -157,7 +178,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
       <>
         <div className='node' 
           style={{ paddingLeft: 2 + 18 * (level - 1) }}
-          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
+          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder, isImages))}
           onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
           {root}
@@ -190,7 +211,7 @@ const isFileSelected = (path:string) => {
 }
 
 const FileItem = observer(
-  ({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
+  ({ tree, root, level, fileSelector, setAdder, isImages }:FilesTreeProps) => {
     const isSelected = isFileSelected(tree.path)
       
     const [isRenaming, setRenaming] = React.useState(false)
@@ -220,7 +241,7 @@ const FileItem = observer(
         style={{ paddingLeft: 4 + 18 * (level - 1) }}
         onDoubleClick={startRenaming}
         tabIndex={0}
-        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}
+        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder, isImages))}
         onClick={() => fileSelector(tree.path)}>
         {root}
       </div>
