@@ -122,7 +122,7 @@ const UnitsStatsEditor = ({
       valuePath={`${unitId}.moveCostMana`}
       isInteger={true}
     />
-    <FileSelector
+    Move Area Script: <FileSelector
       filesSourcePath={SCRIPTS_PATH}
       filePath={UNITS_PATH}
       valuePath={`${unitId}.moveAreaScript`}
