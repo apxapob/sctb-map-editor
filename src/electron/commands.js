@@ -272,8 +272,50 @@ exports.DELETE = async ({ path, dirFiles }) => {
     }
 
     sendCommand({ command: 'DELETED', path })
+    if(!path.startsWith("img/")){ return }
+
+    const sharedImgPath = getSharedImagesDirPath() + path.substring(4)
+    if(fs.existsSync( sharedImgPath )){
+      if( fs.lstatSync(sharedImgPath).isDirectory() ){
+        if(!isMapFileMode()){ fs.promises.mkdir(curMapPath + '\\' + path) }
+        sendCommand({ command: 'LOAD_DIRECTORY', path, editMode: true })
+
+        const dirs = []
+        const files = []
+        await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, path))
+        for (const dir of dirs) {
+          sendCommand({ command: 'LOAD_DIRECTORY', path: dir, editMode: true })
+        }
+        for (const fileEntry of files) {
+          const { content, path } = fileEntry
+          sendCommand({ 
+            command: 'LOAD_BINARY_FILE', 
+            bytes: content, 
+            progress: 1,
+            file: path,
+            editMode: true
+          })
+        }
+        
+        return
+      }
+
+      const bytes = await fs.promises.readFile(sharedImgPath)
+      sendCommand({
+        command: 'LOAD_BINARY_FILE', 
+        bytes,
+        progress: 1,
+        file: path,
+        editMode: true
+      })
+    }
   } catch (err) {
-    dialog.showErrorBox('Can\'t delete', err.message)
+    const sharedImgPath = getSharedImagesDirPath() + path.substring(4)
+    if(fs.existsSync( sharedImgPath )){
+      dialog.showErrorBox('Can\'t delete ' + path, "This file is from the game, not from the map.")
+      return
+    }
+    dialog.showErrorBox('Can\'t delete ' + path, err.message)
   }
 }
 
