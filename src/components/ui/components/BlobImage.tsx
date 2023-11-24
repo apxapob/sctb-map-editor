@@ -4,10 +4,12 @@ import { observer } from 'mobx-react-lite'
 
 type BlobImageProps = {
   path: string;
+  cssClass?: string;
+  containerCssClass?: string;
 }
 
 const BlobImage = ({
-  path
+  path, cssClass, containerCssClass
 }:BlobImageProps) => {
   const ref = useRef<HTMLImageElement>(null)
   const [error, setError] = useState('')
@@ -25,9 +27,9 @@ const BlobImage = ({
     return () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
   }, [path])
 
-  return <div className='blob-image-container'>
+  return <div className={containerCssClass ?? 'blob-image-container'}>
     {buffer 
-      ? <img ref={ref} className='blob-image' onError={() => setError('Invalid image')} />
+      ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
       : 'No Image'
     }
     {error}

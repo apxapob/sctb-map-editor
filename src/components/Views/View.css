@@ -11,6 +11,23 @@
   justify-content: flex-start;
 }
 
+.image-view {
+  min-width: 1px;
+  min-height: 1px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+}
+
+.image-view-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  margin: 8px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+}
+
 .blob-image {
   width: 256px;
 }
