@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_IMAGES_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue } from '../../state/actions/UpdateText'
-import BlobImage from '../ui/components/BlobImage'
 import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
-import JsonStringInput from '../ui/components/JsonStringInput'
 import FileSelector from '../ui/components/FileSelector'
+import ObjectImage from '../ui/components/ObjectImage'
 
 type UnitsStatsEditorProps = {
   unitId: string;
-}
-
-const UnitImage = ({
-  unitId
-}:UnitsStatsEditorProps) => {
-  return <BlobImage path={UNITS_IMAGES_PATH + unitId + '.png'} />
 }
 
 const UnitsStatsEditor = ({
@@ -199,7 +192,7 @@ const UnitsView = () => {
       <div className='unit-container'>
         <UnitsStatsEditor unitId={selectedUnitId} />
         {selectedUnitId &&
-          <UnitImage unitId={selectedUnitId} />
+          <ObjectImage type='unit' objId={selectedUnitId} />
         }
       </div>
     </div>
