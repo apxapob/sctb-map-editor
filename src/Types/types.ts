@@ -120,6 +120,7 @@ export type ObjectDataType = {
   id: string;
   buffs: BuffType[];
   type: string;
+  image: string;
   pos: HexCoords;
 }
 
