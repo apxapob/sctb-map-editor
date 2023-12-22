@@ -12,10 +12,11 @@ type FileSelectorProps = {
   valuePath: string; 
   fileType?: FileType;
   width?: string | number;
+  placeholder?: string;
 }
 
 const FileSelector = (
-  { filesSourcePath, filePath, valuePath, fileType, width } : FileSelectorProps
+  { filesSourcePath, filePath, valuePath, fileType, width, placeholder } : FileSelectorProps
 ) => {
   const files:{ [filename: string]: any; } = MapFiles[fileType || 'text']
 
@@ -23,7 +24,7 @@ const FileSelector = (
     .filter(filename => filename.startsWith(filesSourcePath))
     .map(filename => filename.replace(filesSourcePath, ''))
   
-  const value = GetJsonFileValue(filePath, valuePath) as string ?? ""
+  const value = GetJsonFileValue(filePath, valuePath) as string || placeholder
   if(value){
     items.unshift("")
   }

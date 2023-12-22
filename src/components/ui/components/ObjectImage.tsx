@@ -12,18 +12,28 @@ type ObjectImageProps = {
 
 const ObjectImage = ({ objId, type }:ObjectImageProps) => {
   const valuePath = `${objId}.image`
+  const spriteSheetInfo = `${objId}.spriteSheetInfo`
   const dirPath = type === 'unit' ? UNITS_IMAGES_PATH : ITEMS_IMAGES_PATH
   const infoPath = type === 'unit' ? UNITS_PATH : ITEMS_PATH
 
   const path = dirPath + GetJsonFileValue(infoPath, valuePath)
-  return <div className='vflex' style={{ alignItems: 'center', gap: 0 }}>
-    <BlobImage path={path} />
+  const spriteSheetPath = GetJsonFileValue(infoPath, spriteSheetInfo)
+  return <div className='vflex' style={{ alignItems: 'center' }}>
+    <BlobImage path={path} spriteSheetPath={spriteSheetPath ? (dirPath + spriteSheetPath) : undefined} />
     
     <FileSelector
+      placeholder='Image file'
       filesSourcePath={dirPath}
       filePath={infoPath}
       fileType='binary'
       valuePath={valuePath}
+    />
+    <FileSelector
+      placeholder='Spritesheet info'
+      filesSourcePath={dirPath}
+      filePath={infoPath}
+      fileType='json'
+      valuePath={spriteSheetInfo}
     />
   </div>
 }

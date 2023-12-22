@@ -33,8 +33,10 @@
 }
 
 .blob-image-container {
-  min-width: 261px;
-  min-height: 261px;
+  overflow: clip;
+  position: relative;
+  min-width: 16px;
+  min-height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;

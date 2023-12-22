@@ -2,6 +2,26 @@ export type JSONValue = string | number | boolean | JSONObject | JSONArray
 export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
 
+export type SpriteSheetInfo = {
+  packer:{
+    width: number;
+    height: number;
+    animationFramesNum: number;
+    directions: number;
+  },
+  sprites: {
+    name: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    trimLeft: number;
+    trimTop: number;
+    trimOWidth: number;
+    trimOHeight: number;
+  }[]
+}
+
 export type GameMessage = {
   method: 'init_complete' | 'mark_field_unsaved' | 'reset_units_buffs' | 'to_main_screen' |
           'reset_field' | 'create_map' | 'maps_list' | 'loading_start' | 'save_changes';
@@ -121,6 +141,7 @@ export type ObjectDataType = {
   buffs: BuffType[];
   type: string;
   image: string;
+  spriteSheetInfo?: string;
   pos: HexCoords;
 }
 
