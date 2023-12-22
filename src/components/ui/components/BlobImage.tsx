@@ -53,6 +53,8 @@ const BlobImage = ({
   const [error, setError] = useState('')
 
   const [frame, setFrame] = useState(0)
+  const [maxW, setMaxW] = useState(0)
+  const [maxH, setMaxH] = useState(0)
   const [direction, _setDirection] = useState(0)
   const setDirection = (d:number) => _setDirection((d+12) % 12)
 
@@ -69,22 +71,37 @@ const BlobImage = ({
     return () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
   }, [path])
 
+  useEffect(() => {
+    if(!spriteSheetPath){ return }
+    const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
+    const { animationFramesNum: framesNum, directions } = info.packer
+    let mW = 0, mH = 0
+    const { dir } = getDir(direction, directions)
+    for(let i = 0; i < framesNum; i++){
+      const { w, h } = info.sprites[directions * (i % framesNum) + dir]
+      mW = Math.max(mW, w)
+      mH = Math.max(mH, h)
+    }
+    setMaxW(mW)
+    setMaxH(mH)
+  }, [spriteSheetPath, direction])
+
   try{
     if(spriteSheetPath){
       const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
       const { width, height, animationFramesNum: framesNum, directions } = info.packer
       const { dir, flip } = getDir(direction, directions)
-      const { x, y, w, h, trimLeft, trimTop, trimOHeight, trimOWidth } = info.sprites[directions * (frame % framesNum) + dir]
+      const { x, y, w, h } = info.sprites[directions * (frame % framesNum) + dir]
 
-      setTimeout(() => setFrame((frame+1) % framesNum), 125)
+      setTimeout(() => setFrame((frame+1) % framesNum), 100)
     
-      return <div className={'blob-image-container'} style={{ width: trimOWidth, height: trimOHeight }}>
+      return <div className={'blob-image-container'} style={{ width: maxW, height: maxH }}>
         <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
           {buffer 
             ? <img ref={ref} onError={() => setError('Invalid image')} 
               style={{
-                top: trimTop-y,
-                left: trimLeft-x,
+                top: (maxH-h)/2-y,
+                left: (maxW-w)/2-x,
                 clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
                 position: 'absolute'
               }}
