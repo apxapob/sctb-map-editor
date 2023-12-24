@@ -100,7 +100,7 @@ const BlobImage = ({
           {buffer 
             ? <img ref={ref} onError={() => setError('Invalid image')} 
               style={{
-                top: -y,
+                top: (maxH-h)/2-y,
                 left: (maxW-w)/2-x,
                 clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
                 position: 'absolute'
