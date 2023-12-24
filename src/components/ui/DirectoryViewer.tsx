@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { OpenFileTree, SelectFieldFile, SelectImageFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
+import { OpenFileTree, SelectFieldFile, SelectFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
 import { SendToElectron } from '../../utils/messenger'
@@ -17,12 +17,11 @@ export const fileSelectors: {
   'Scripts': SelectScriptFile, 
   'Texts': SelectLangFile, 
   'Particles': SelectParticlesFile,
-  'Images': SelectImageFile,
+  'Files': SelectFile,
 }
 
 export type DirectoryViewerProps = {
-  path: string;
-  isImages?: boolean;
+  path?: string;
 }
 
 type AdderType = 'file'|'folder'|null
@@ -31,16 +30,15 @@ const getFileMenuItems = (
   tree:PathTreeType,
   renameFile: () => void,
   setAdder: (val:AdderType) => void,
-  isImages?: boolean
 ) => [
-  !isImages && {
+  {
     title: 'New file', 
     callback: () => setAdder('file')
   },
-  isImages && {
-    title: 'Add Image', 
+  {
+    title: 'Add file', 
     callback: () => SendToElectron({
-      command: 'ADD_IMAGE',
+      command: 'ADD_FILE',
       path: tree.path.substring(0, tree.path.lastIndexOf("/"))
     })
   },
@@ -64,16 +62,15 @@ const getFileMenuItems = (
 const getFolderMenuItems = (
   tree:PathTreeType,
   setAdder: (val:AdderType) => void,
-  isImages?: boolean
 ) => [
-  !isImages &&{
+  {
     title: 'New file', 
     callback: () => setAdder('file')
   },
-  isImages && {
-    title: 'Add Image', 
+  {
+    title: 'Add File', 
     callback: () => SendToElectron({
-      command: 'ADD_IMAGE',
+      command: 'ADD_FILE',
       path: tree.path
     })
   },
@@ -91,14 +88,14 @@ const getFolderMenuItems = (
   },
 ]
 
-const DirectoryViewer = ({ path, isImages }: DirectoryViewerProps) => {
+const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
     path: '',
-    nodes: {
+    nodes: path ? {
       [path]: FilesTree.nodes[path]
-    }
+    } : FilesTree.nodes
   }
 
   const fileSelector = fileSelectors[EditorState.activeTab]
@@ -106,7 +103,6 @@ const DirectoryViewer = ({ path, isImages }: DirectoryViewerProps) => {
   return (
     <div className='dir-viewer-container'>
       <PathTree
-        isImages
         fileSelector={fileSelector}
         tree={mainTree}
         root={null}
@@ -123,12 +119,11 @@ type FilesTreeProps = {
   tree: PathTreeType;
   root: string | null;
   level: number;
-  isImages: boolean;
   fileSelector: (path:string) => void;
   setAdder: (val:AdderType) => void;
 }
 
-const PathTree = observer(({ tree, root, level, fileSelector, setAdder, isImages }:FilesTreeProps) => {
+const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
   const [adder, _] = React.useState<AdderType>(null)
   if(tree.isDirectory || !setAdder){
     setAdder = _
@@ -153,7 +148,6 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder, isImages
     })
     .map(nodeKey => 
       <PathTree
-        isImages
         tree={tree.nodes[nodeKey]} 
         root={nodeKey} 
         level={level + 1}
@@ -166,7 +160,6 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder, isImages
   return <>
     {root && !tree.isDirectory &&
       <FileItem 
-        isImages
         tree={tree} 
         root={root} 
         level={level} 
@@ -178,7 +171,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder, isImages
       <>
         <div className='node' 
           style={{ paddingLeft: 2 + 18 * (level - 1) }}
-          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder, isImages))}
+          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
           onClick={() => OpenFileTree(tree)}>
           {tree.isOpen ? '▾📂'  : '▸📁'}
           {root}
@@ -204,14 +197,14 @@ const isFileSelected = (path:string) => {
     case 'Scripts': return MapFiles.selectedScript === path
     case 'Texts': return MapFiles.selectedLang === path
     case 'Particles': return MapFiles.selectedParticlesFile === path
-    case 'Images': return MapFiles.selectedImageFile === path
+    case 'Files': return MapFiles.selectedFile === path
     case 'Field': return MapFiles.selectedField === path
   }
   return false
 }
 
 const FileItem = observer(
-  ({ tree, root, level, fileSelector, setAdder, isImages }:FilesTreeProps) => {
+  ({ tree, root, level, fileSelector, setAdder }:FilesTreeProps) => {
     const isSelected = isFileSelected(tree.path)
       
     const [isRenaming, setRenaming] = React.useState(false)
@@ -241,7 +234,7 @@ const FileItem = observer(
         style={{ paddingLeft: 4 + 18 * (level - 1) }}
         onDoubleClick={startRenaming}
         tabIndex={0}
-        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder, isImages))}
+        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}
         onClick={() => fileSelector(tree.path)}>
         {root}
       </div>

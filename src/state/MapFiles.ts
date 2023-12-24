@@ -1,7 +1,6 @@
 import { observable } from 'mobx'
 import { JSONObject, TabType } from '../types/types'
 
-export const IMAGES_PATH = 'img/'
 export const TILES_IMAGES_PATH = 'img/tiles/'
 export const UNITS_PATH = 'units.json'
 export const UNITS_IMAGES_PATH = 'img/units/'
@@ -72,7 +71,7 @@ export const MapFiles:{
   selectedLang: string;
   selectedScript: string;
   selectedParticlesFile: string;
-  selectedImageFile: string;
+  selectedFile: string;
 } = observable({
   binary: {},
   text: {},
@@ -82,7 +81,8 @@ export const MapFiles:{
   selectedField: '',
   selectedLang: '',
   selectedScript: '',
-  selectedParticlesFile: ''
+  selectedParticlesFile: '',
+  selectedFile: ''
 })
 
 export type PathTreeType = {

@@ -342,12 +342,12 @@ exports.RENAME = async ({ path, newName }) => {
   }
 }
 
-exports.ADD_IMAGE = async ({ path }) => {
+exports.ADD_FILE = async ({ path }) => {
   const { mainWindow } = require('./main')
   const files = dialog.showOpenDialogSync(mainWindow, {
     properties: ['multiSelections'],
     filters: [
-      { name: 'Map files', extensions: ['png'] }
+      { name: 'Map files', extensions: ['json','hx','txt','png'] }
     ]
   })
   if (!files) { return }

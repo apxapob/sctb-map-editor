@@ -26,7 +26,7 @@ export type LoadingEndType = {
 }
 
 export type FSCommandType = {
-  command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED' | 'ADD_IMAGE';
+  command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED' | 'ADD_FILE';
   path: string;
   dirFiles?: string[];
   editMode?: boolean;
