@@ -46,7 +46,7 @@ const JsonEditor = () => {
 
 export default observer(JsonEditor)
 
-const EditorDiv = (props: {
+export const EditorDiv = (props: {
   error: string|null;
   mode: string;
   tab: TabType;
