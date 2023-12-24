@@ -78,7 +78,7 @@ const BlobImage = ({
     let mW = 0, mH = 0
     const { dir } = getDir(direction, directions)
     for(let i = 0; i < framesNum; i++){
-      const { w, h } = info.sprites[directions * (i % framesNum) + dir]
+      const { w, h } = info.sprites[directions * i + dir]
       mW = Math.max(mW, w)
       mH = Math.max(mH, h)
     }
@@ -100,7 +100,7 @@ const BlobImage = ({
           {buffer 
             ? <img ref={ref} onError={() => setError('Invalid image')} 
               style={{
-                top: (maxH-h)/2-y,
+                top: -y,
                 left: (maxW-w)/2-x,
                 clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
                 position: 'absolute'

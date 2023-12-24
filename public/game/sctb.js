@@ -459,16 +459,16 @@ json2object_reader_BaseParser.prototype = {
 	}
 	,__class__: json2object_reader_BaseParser
 };
-var JsonParser_$1710 = function(errors,putils,errorType) {
+var JsonParser_$1425 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1710"] = JsonParser_$1710;
-JsonParser_$1710.__name__ = "JsonParser_1710";
-JsonParser_$1710.__super__ = json2object_reader_BaseParser;
-JsonParser_$1710.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1425"] = JsonParser_$1425;
+JsonParser_$1425.__name__ = "JsonParser_1425";
+JsonParser_$1425.__super__ = json2object_reader_BaseParser;
+JsonParser_$1425.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -486,19 +486,19 @@ JsonParser_$1710.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$1717(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				this.value.items = this.loadObjectField(($_=new JsonParser_$1432(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
 				break;
 			case "size":
-				this.value.size = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
+				this.value.size = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"size",assigned,this.value.size,pos);
 				break;
 			case "tiles":
-				this.value.tiles = this.loadObjectField(($_=new JsonParser_$1713(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
+				this.value.tiles = this.loadObjectField(($_=new JsonParser_$1428(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
 				break;
 			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$1715(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				this.value.units = this.loadObjectField(($_=new JsonParser_$1430(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -508,25 +508,25 @@ JsonParser_$1710.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_FieldData.prototype);
-		value.id = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.size = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.size = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.tiles = [];
 		value.units = new haxe_ds_StringMap();
 		value.items = new haxe_ds_StringMap();
 		return value;
 	}
-	,__class__: JsonParser_$1710
+	,__class__: JsonParser_$1425
 });
-var JsonParser_$1711 = function(errors,putils,errorType) {
+var JsonParser_$1426 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1711"] = JsonParser_$1711;
-JsonParser_$1711.__name__ = "JsonParser_1711";
-JsonParser_$1711.__super__ = json2object_reader_BaseParser;
-JsonParser_$1711.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1426"] = JsonParser_$1426;
+JsonParser_$1426.__name__ = "JsonParser_1426";
+JsonParser_$1426.__super__ = json2object_reader_BaseParser;
+JsonParser_$1426.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"String",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -538,21 +538,21 @@ JsonParser_$1711.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = s;
 	}
 	,getAuto: function() {
-		return new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1711
+	,__class__: JsonParser_$1426
 });
-var JsonParser_$1712 = function(errors,putils,errorType) {
+var JsonParser_$1427 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 	this.value = 0;
 };
-$hxClasses["JsonParser_1712"] = JsonParser_$1712;
-JsonParser_$1712.__name__ = "JsonParser_1712";
-JsonParser_$1712.__super__ = json2object_reader_BaseParser;
-JsonParser_$1712.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1427"] = JsonParser_$1427;
+JsonParser_$1427.__name__ = "JsonParser_1427";
+JsonParser_$1427.__super__ = json2object_reader_BaseParser;
+JsonParser_$1427.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Int",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -561,20 +561,20 @@ JsonParser_$1712.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = this.loadJsonInt(f,pos,variable,this.value);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1712
+	,__class__: JsonParser_$1427
 });
-var JsonParser_$1713 = function(errors,putils,errorType) {
+var JsonParser_$1428 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1713"] = JsonParser_$1713;
-JsonParser_$1713.__name__ = "JsonParser_1713";
-JsonParser_$1713.__super__ = json2object_reader_BaseParser;
-JsonParser_$1713.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1428"] = JsonParser_$1428;
+JsonParser_$1428.__name__ = "JsonParser_1428";
+JsonParser_$1428.__super__ = json2object_reader_BaseParser;
+JsonParser_$1428.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldTile>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -583,23 +583,23 @@ JsonParser_$1713.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1726(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1441(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1713([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1428([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1713
+	,__class__: JsonParser_$1428
 });
-var JsonParser_$1715 = function(errors,putils,errorType) {
+var JsonParser_$1430 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1715"] = JsonParser_$1715;
-JsonParser_$1715.__name__ = "JsonParser_1715";
-JsonParser_$1715.__super__ = json2object_reader_BaseParser;
-JsonParser_$1715.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1430"] = JsonParser_$1430;
+JsonParser_$1430.__name__ = "JsonParser_1430";
+JsonParser_$1430.__super__ = json2object_reader_BaseParser;
+JsonParser_$1430.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -616,7 +616,7 @@ JsonParser_$1715.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -633,7 +633,7 @@ JsonParser_$1715.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1723(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1438(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -650,20 +650,20 @@ JsonParser_$1715.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1715([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1430([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1715
+	,__class__: JsonParser_$1430
 });
-var JsonParser_$1717 = function(errors,putils,errorType) {
+var JsonParser_$1432 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1717"] = JsonParser_$1717;
-JsonParser_$1717.__name__ = "JsonParser_1717";
-JsonParser_$1717.__super__ = json2object_reader_BaseParser;
-JsonParser_$1717.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1432"] = JsonParser_$1432;
+JsonParser_$1432.__name__ = "JsonParser_1432";
+JsonParser_$1432.__super__ = json2object_reader_BaseParser;
+JsonParser_$1432.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -680,7 +680,7 @@ JsonParser_$1717.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -697,7 +697,7 @@ JsonParser_$1717.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1718(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1433(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -714,20 +714,20 @@ JsonParser_$1717.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1717([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1432([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1717
+	,__class__: JsonParser_$1432
 });
-var JsonParser_$1718 = function(errors,putils,errorType) {
+var JsonParser_$1433 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1718"] = JsonParser_$1718;
-JsonParser_$1718.__name__ = "JsonParser_1718";
-JsonParser_$1718.__super__ = json2object_reader_BaseParser;
-JsonParser_$1718.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1433"] = JsonParser_$1433;
+JsonParser_$1433.__name__ = "JsonParser_1433";
+JsonParser_$1433.__super__ = json2object_reader_BaseParser;
+JsonParser_$1433.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.ItemData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -745,22 +745,22 @@ JsonParser_$1718.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1721(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1436(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$1720(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$1435(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -770,27 +770,27 @@ JsonParser_$1718.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_ItemData.prototype);
-		value.invisible = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.unpickable = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.id = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$1720([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.invisible = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.unpickable = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$1435([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.buffs = [];
 		return value;
 	}
-	,__class__: JsonParser_$1718
+	,__class__: JsonParser_$1433
 });
-var JsonParser_$1719 = function(errors,putils,errorType) {
+var JsonParser_$1434 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 	this.value = false;
 };
-$hxClasses["JsonParser_1719"] = JsonParser_$1719;
-JsonParser_$1719.__name__ = "JsonParser_1719";
-JsonParser_$1719.__super__ = json2object_reader_BaseParser;
-JsonParser_$1719.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1434"] = JsonParser_$1434;
+JsonParser_$1434.__name__ = "JsonParser_1434";
+JsonParser_$1434.__super__ = json2object_reader_BaseParser;
+JsonParser_$1434.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Bool",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -799,26 +799,26 @@ JsonParser_$1719.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = b;
 	}
 	,getAuto: function() {
-		return new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1719
+	,__class__: JsonParser_$1434
 });
-var JsonParser_$1720 = function(errors,putils,errorType) {
+var JsonParser_$1435 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1720"] = JsonParser_$1720;
-JsonParser_$1720.__name__ = "JsonParser_1720";
-JsonParser_$1720.__super__ = json2object_reader_BaseParser;
-JsonParser_$1720.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1435"] = JsonParser_$1435;
+JsonParser_$1435.__name__ = "JsonParser_1435";
+JsonParser_$1435.__super__ = json2object_reader_BaseParser;
+JsonParser_$1435.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexCoords",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1720([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1435([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,loadJson: function(json,variable) {
 		if(variable == null) {
@@ -826,18 +826,18 @@ JsonParser_$1720.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 		return this.value = model_HexCoords.customParse(json,variable);
 	}
-	,__class__: JsonParser_$1720
+	,__class__: JsonParser_$1435
 });
-var JsonParser_$1721 = function(errors,putils,errorType) {
+var JsonParser_$1436 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1721"] = JsonParser_$1721;
-JsonParser_$1721.__name__ = "JsonParser_1721";
-JsonParser_$1721.__super__ = json2object_reader_BaseParser;
-JsonParser_$1721.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1436"] = JsonParser_$1436;
+JsonParser_$1436.__name__ = "JsonParser_1436";
+JsonParser_$1436.__super__ = json2object_reader_BaseParser;
+JsonParser_$1436.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.BuffData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -846,23 +846,23 @@ JsonParser_$1721.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1722(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1437(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1721([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1436([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1721
+	,__class__: JsonParser_$1436
 });
-var JsonParser_$1722 = function(errors,putils,errorType) {
+var JsonParser_$1437 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1722"] = JsonParser_$1722;
-JsonParser_$1722.__name__ = "JsonParser_1722";
-JsonParser_$1722.__super__ = json2object_reader_BaseParser;
-JsonParser_$1722.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1437"] = JsonParser_$1437;
+JsonParser_$1437.__name__ = "JsonParser_1437";
+JsonParser_$1437.__super__ = json2object_reader_BaseParser;
+JsonParser_$1437.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.BuffData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -880,10 +880,10 @@ JsonParser_$1722.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -893,22 +893,22 @@ JsonParser_$1722.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_BuffData.prototype);
-		value.turns = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turns = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1722
+	,__class__: JsonParser_$1437
 });
-var JsonParser_$1723 = function(errors,putils,errorType) {
+var JsonParser_$1438 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1723"] = JsonParser_$1723;
-JsonParser_$1723.__name__ = "JsonParser_1723";
-JsonParser_$1723.__super__ = json2object_reader_BaseParser;
-JsonParser_$1723.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1438"] = JsonParser_$1438;
+JsonParser_$1438.__name__ = "JsonParser_1438";
+JsonParser_$1438.__super__ = json2object_reader_BaseParser;
+JsonParser_$1438.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.UnitData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -926,37 +926,37 @@ JsonParser_$1723.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "autocast":
-				this.value.autocast = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
+				this.value.autocast = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"autocast",assigned,this.value.autocast,pos);
 				break;
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1721(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1436(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "dir":
-				this.value.dir = this.loadObjectField(($_=new JsonParser_$1725(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
+				this.value.dir = this.loadObjectField(($_=new JsonParser_$1440(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"dir",assigned,this.value.dir,pos);
 				break;
 			case "follow":
-				this.value.follow = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
+				this.value.follow = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"follow",assigned,this.value.follow,pos);
 				break;
 			case "hp":
-				this.value.hp = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
+				this.value.hp = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hp",assigned,this.value.hp,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "orderIdx":
-				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
+				this.value.orderIdx = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"orderIdx",assigned,this.value.orderIdx,pos);
 				break;
 			case "pos":
-				this.value.pos = this.loadObjectField(($_=new JsonParser_$1720(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
+				this.value.pos = this.loadObjectField(($_=new JsonParser_$1435(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"pos",assigned,this.value.pos,pos);
 				break;
 			case "rallyPoints":
-				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$1724(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
+				this.value.rallyPoints = this.loadObjectField(($_=new JsonParser_$1439(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"rallyPoints",assigned,this.value.rallyPoints,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -966,31 +966,31 @@ JsonParser_$1723.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_UnitData.prototype);
-		value.follow = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.rallyPoints = new JsonParser_$1724([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.orderIdx = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.autocast = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.hp = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.dir = new JsonParser_$1725([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.id = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.type = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.pos = new JsonParser_$1720([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.follow = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.rallyPoints = new JsonParser_$1439([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.orderIdx = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.autocast = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.hp = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.dir = new JsonParser_$1440([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.type = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.pos = new JsonParser_$1435([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.buffs = [];
 		return value;
 	}
-	,__class__: JsonParser_$1723
+	,__class__: JsonParser_$1438
 });
-var JsonParser_$1724 = function(errors,putils,errorType) {
+var JsonParser_$1439 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1724"] = JsonParser_$1724;
-JsonParser_$1724.__name__ = "JsonParser_1724";
-JsonParser_$1724.__super__ = json2object_reader_BaseParser;
-JsonParser_$1724.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1439"] = JsonParser_$1439;
+JsonParser_$1439.__name__ = "JsonParser_1439";
+JsonParser_$1439.__super__ = json2object_reader_BaseParser;
+JsonParser_$1439.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.HexCoords>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -999,23 +999,23 @@ JsonParser_$1724.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1720(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1435(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1724([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1439([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1724
+	,__class__: JsonParser_$1439
 });
-var JsonParser_$1725 = function(errors,putils,errorType) {
+var JsonParser_$1440 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1725"] = JsonParser_$1725;
-JsonParser_$1725.__name__ = "JsonParser_1725";
-JsonParser_$1725.__super__ = json2object_reader_BaseParser;
-JsonParser_$1725.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1440"] = JsonParser_$1440;
+JsonParser_$1440.__name__ = "JsonParser_1440";
+JsonParser_$1440.__super__ = json2object_reader_BaseParser;
+JsonParser_$1440.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.HexDirection",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1024,26 +1024,26 @@ JsonParser_$1725.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = model_HexDirection.fromInt(this.loadJsonInt(f,pos,variable,model_HexDirection.toInt(this.value)));
 	}
 	,getAuto: function() {
-		return new JsonParser_$1725([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1440([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1725
+	,__class__: JsonParser_$1440
 });
-var JsonParser_$1726 = function(errors,putils,errorType) {
+var JsonParser_$1441 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1726"] = JsonParser_$1726;
-JsonParser_$1726.__name__ = "JsonParser_1726";
-JsonParser_$1726.__super__ = json2object_reader_BaseParser;
-JsonParser_$1726.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1441"] = JsonParser_$1441;
+JsonParser_$1441.__name__ = "JsonParser_1441";
+JsonParser_$1441.__super__ = json2object_reader_BaseParser;
+JsonParser_$1441.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldTile",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1726([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1441([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
 	,loadJson: function(json,variable) {
 		if(variable == null) {
@@ -1051,18 +1051,2024 @@ JsonParser_$1726.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 		return this.value = model_FieldTile.customParse(json,variable);
 	}
-	,__class__: JsonParser_$1726
+	,__class__: JsonParser_$1441
 });
-var JsonParser_$1728 = function(errors,putils,errorType) {
+var JsonParser_$1442 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1728"] = JsonParser_$1728;
-JsonParser_$1728.__name__ = "JsonParser_1728";
-JsonParser_$1728.__super__ = json2object_reader_BaseParser;
-JsonParser_$1728.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1442"] = JsonParser_$1442;
+JsonParser_$1442.__name__ = "JsonParser_1442";
+JsonParser_$1442.__super__ = json2object_reader_BaseParser;
+JsonParser_$1442.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnData",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["countries","units","items","microTurns"],[false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "countries":
+				this.value.countries = this.loadObjectField(($_=new JsonParser_$1444(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
+				break;
+			case "items":
+				this.value.items = this.loadObjectField(($_=new JsonParser_$1432(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
+				break;
+			case "microTurns":
+				this.value.microTurns = this.loadObjectField(($_=new JsonParser_$1445(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"microTurns",assigned,this.value.microTurns,pos);
+				break;
+			case "units":
+				this.value.units = this.loadObjectField(($_=new JsonParser_$1430(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_TurnData.prototype);
+		value.countries = new haxe_ds_IntMap();
+		value.units = new haxe_ds_StringMap();
+		value.items = new haxe_ds_StringMap();
+		value.microTurns = [];
+		return value;
+	}
+	,__class__: JsonParser_$1442
+});
+var JsonParser_$1444 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1444"] = JsonParser_$1444;
+JsonParser_$1444.__name__ = "JsonParser_1444";
+JsonParser_$1444.__super__ = json2object_reader_BaseParser;
+JsonParser_$1444.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, model.CountryData>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_IntMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1427(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1461(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1444([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1444
+});
+var JsonParser_$1445 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1445"] = JsonParser_$1445;
+JsonParser_$1445.__name__ = "JsonParser_1445";
+JsonParser_$1445.__super__ = json2object_reader_BaseParser;
+JsonParser_$1445.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.MicroTurn>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1446(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1445([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1445
+});
+var JsonParser_$1446 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1446"] = JsonParser_$1446;
+JsonParser_$1446.__name__ = "JsonParser_1446";
+JsonParser_$1446.__super__ = json2object_reader_BaseParser;
+JsonParser_$1446.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.MicroTurn",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["acts","events","effects"],[false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "acts":
+				this.value.acts = this.loadObjectField(($_=new JsonParser_$1447(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
+				break;
+			case "effects":
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$1449(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				break;
+			case "events":
+				this.value.events = this.loadObjectField(($_=new JsonParser_$1448(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_MicroTurn.prototype);
+		value.acts = new JsonParser_$1447([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.events = new JsonParser_$1448([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.effects = new JsonParser_$1449([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
+	}
+	,__class__: JsonParser_$1446
+});
+var JsonParser_$1447 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1447"] = JsonParser_$1447;
+JsonParser_$1447.__name__ = "JsonParser_1447";
+JsonParser_$1447.__super__ = json2object_reader_BaseParser;
+JsonParser_$1447.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ActionType>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1460(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1447([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1447
+});
+var JsonParser_$1448 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1448"] = JsonParser_$1448;
+JsonParser_$1448.__name__ = "JsonParser_1448";
+JsonParser_$1448.__super__ = json2object_reader_BaseParser;
+JsonParser_$1448.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.ActionEvent>>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1458(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1448([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1448
+});
+var JsonParser_$1449 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1449"] = JsonParser_$1449;
+JsonParser_$1449.__name__ = "JsonParser_1449";
+JsonParser_$1449.__super__ = json2object_reader_BaseParser;
+JsonParser_$1449.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldEffect>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1450(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1449([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1449
+});
+var JsonParser_$1450 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1450"] = JsonParser_$1450;
+JsonParser_$1450.__name__ = "JsonParser_1450";
+JsonParser_$1450.__super__ = json2object_reader_BaseParser;
+JsonParser_$1450.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldEffect",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonString: function(s,pos,variable) {
+		this.errors.push(json2object_Error.IncorrectEnumValue(variable,"FieldEffect",pos));
+		this.parsingThrow();
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		if(o.length != 1) {
+			this.errors.push(json2object_Error.IncorrectType(variable,"FieldEffect",pos));
+			this.parsingThrow();
+		} else {
+			var field = o[0];
+			var _g = o[0].value.value;
+			if(_g._hx_index == 2) {
+				var s0 = _g.fields;
+				switch(field.name) {
+				case "DirectedEffect":
+					var _names = ["type","from","to","colorAdj"];
+					var tmp;
+					if(s0.length == 4) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
+						this.parsingThrow();
+					}
+					var __type = new JsonParser_$1426(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
+					var __from = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
+					var __to = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[2]) {
+							_g.push(v);
+						}
+					}
+					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
+					var __colorAdj = new JsonParser_$1452(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[3]) {
+							_g.push(v);
+						}
+					}
+					var __colorAdj1 = __colorAdj.loadJson(_g[0].value,field.name + "." + "colorAdj");
+					this.value = model_FieldEffect.DirectedEffect(__type1,__from1,__to1,__colorAdj1);
+					break;
+				case "LandChange":
+					var _names = ["hex","oldHeight","newHeight","oldType","newType"];
+					var tmp;
+					if(s0.length == 5) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
+						this.parsingThrow();
+					}
+					var __hex = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
+					var __oldHeight = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __oldHeight1 = __oldHeight.loadJson(_g[0].value,field.name + "." + "oldHeight");
+					var __newHeight = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[2]) {
+							_g.push(v);
+						}
+					}
+					var __newHeight1 = __newHeight.loadJson(_g[0].value,field.name + "." + "newHeight");
+					var __oldType = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[3]) {
+							_g.push(v);
+						}
+					}
+					var __oldType1 = __oldType.loadJson(_g[0].value,field.name + "." + "oldType");
+					var __newType = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[4]) {
+							_g.push(v);
+						}
+					}
+					var __newType1 = __newType.loadJson(_g[0].value,field.name + "." + "newType");
+					this.value = model_FieldEffect.LandChange(__hex1,__oldHeight1,__newHeight1,__oldType1,__newType1);
+					break;
+				case "SimpleEffect":
+					var _names = ["type","hex","colorAdj"];
+					var tmp;
+					if(s0.length == 3) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
+						this.parsingThrow();
+					}
+					var __type = new JsonParser_$1426(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
+					var __hex = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
+					var __colorAdj = new JsonParser_$1452(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[2]) {
+							_g.push(v);
+						}
+					}
+					var __colorAdj1 = __colorAdj.loadJson(_g[0].value,field.name + "." + "colorAdj");
+					this.value = model_FieldEffect.SimpleEffect(__type1,__hex1,__colorAdj1);
+					break;
+				default:
+					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"FieldEffect",pos));
+					this.parsingThrow();
+				}
+			} else {
+				this.errors.push(json2object_Error.IncorrectType(field.name,"FieldEffect",this.putils.convertPosition(field.value.pos)));
+				this.parsingThrow();
+			}
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1450([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1450
+});
+var JsonParser_$1452 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1452"] = JsonParser_$1452;
+JsonParser_$1452.__name__ = "JsonParser_1452";
+JsonParser_$1452.__super__ = json2object_reader_BaseParser;
+JsonParser_$1452.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ ?saturation : Null<Float>, ?lightness : Null<Float>, ?hue : Null<Float>, ?gain : Null<{ color : Int, alpha : Float }>, ?contrast : Null<Float> }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["contrast","gain","hue","lightness","saturation"],[true,true,true,true,true]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "contrast":
+				this.value.contrast = this.loadObjectField(($_=new JsonParser_$1454(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"contrast",assigned,this.value.contrast,pos);
+				break;
+			case "gain":
+				this.value.gain = this.loadObjectField(($_=new JsonParser_$1456(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"gain",assigned,this.value.gain,pos);
+				break;
+			case "hue":
+				this.value.hue = this.loadObjectField(($_=new JsonParser_$1454(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hue",assigned,this.value.hue,pos);
+				break;
+			case "lightness":
+				this.value.lightness = this.loadObjectField(($_=new JsonParser_$1454(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"lightness",assigned,this.value.lightness,pos);
+				break;
+			case "saturation":
+				this.value.saturation = this.loadObjectField(($_=new JsonParser_$1454(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"saturation",assigned,this.value.saturation,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { contrast : new JsonParser_$1454([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), gain : new JsonParser_$1456([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hue : new JsonParser_$1454([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), lightness : new JsonParser_$1454([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), saturation : new JsonParser_$1454([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1452
+});
+var JsonParser_$1454 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1454"] = JsonParser_$1454;
+JsonParser_$1454.__name__ = "JsonParser_1454";
+JsonParser_$1454.__super__ = json2object_reader_BaseParser;
+JsonParser_$1454.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonNumber: function(f,pos,variable) {
+		this.value = this.loadJsonFloat(f,pos,variable,this.value);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1454([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1454
+});
+var JsonParser_$1456 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1456"] = JsonParser_$1456;
+JsonParser_$1456.__name__ = "JsonParser_1456";
+JsonParser_$1456.__super__ = json2object_reader_BaseParser;
+JsonParser_$1456.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ color : Int, alpha : Float }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["alpha","color"],[false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "alpha":
+				this.value.alpha = this.loadObjectField(($_=new JsonParser_$1457(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
+				break;
+			case "color":
+				this.value.color = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { alpha : new JsonParser_$1457([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1456
+});
+var JsonParser_$1457 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+	this.value = 0;
+};
+$hxClasses["JsonParser_1457"] = JsonParser_$1457;
+JsonParser_$1457.__name__ = "JsonParser_1457";
+JsonParser_$1457.__super__ = json2object_reader_BaseParser;
+JsonParser_$1457.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNumber: function(f,pos,variable) {
+		this.value = this.loadJsonFloat(f,pos,variable,this.value);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1457([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1457
+});
+var JsonParser_$1458 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1458"] = JsonParser_$1458;
+JsonParser_$1458.__name__ = "JsonParser_1458";
+JsonParser_$1458.__super__ = json2object_reader_BaseParser;
+JsonParser_$1458.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.ActionEvent>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1459(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1458([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1458
+});
+var JsonParser_$1459 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1459"] = JsonParser_$1459;
+JsonParser_$1459.__name__ = "JsonParser_1459";
+JsonParser_$1459.__super__ = json2object_reader_BaseParser;
+JsonParser_$1459.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionEvent",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonString: function(s,pos,variable) {
+		this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionEvent",pos));
+		this.parsingThrow();
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		if(o.length != 1) {
+			this.errors.push(json2object_Error.IncorrectType(variable,"ActionEvent",pos));
+			this.parsingThrow();
+		} else {
+			var field = o[0];
+			var _g = o[0].value.value;
+			if(_g._hx_index == 2) {
+				var s0 = _g.fields;
+				switch(field.name) {
+				case "AddBuff":
+					var _names = ["type"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
+						this.parsingThrow();
+					}
+					var __type = new JsonParser_$1426(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
+					this.value = model_ActionEvent.AddBuff(__type1);
+					break;
+				case "ChangeCntr":
+					var _names = ["to"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
+						this.parsingThrow();
+					}
+					var __to = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
+					this.value = model_ActionEvent.ChangeCntr(__to1);
+					break;
+				case "Dmg":
+					var _names = ["d"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
+						this.parsingThrow();
+					}
+					var __d = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __d1 = __d.loadJson(_g[0].value,field.name + "." + "d");
+					this.value = model_ActionEvent.Dmg(__d1);
+					break;
+				case "Mana":
+					var _names = ["m"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
+						this.parsingThrow();
+					}
+					var __m = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __m1 = __m.loadJson(_g[0].value,field.name + "." + "m");
+					this.value = model_ActionEvent.Mana(__m1);
+					break;
+				case "Mine":
+					var _names = ["m"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
+						this.parsingThrow();
+					}
+					var __m = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __m1 = __m.loadJson(_g[0].value,field.name + "." + "m");
+					this.value = model_ActionEvent.Mine(__m1);
+					break;
+				default:
+					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionEvent",pos));
+					this.parsingThrow();
+				}
+			} else {
+				this.errors.push(json2object_Error.IncorrectType(field.name,"ActionEvent",this.putils.convertPosition(field.value.pos)));
+				this.parsingThrow();
+			}
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1459([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1459
+});
+var JsonParser_$1460 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1460"] = JsonParser_$1460;
+JsonParser_$1460.__name__ = "JsonParser_1460";
+JsonParser_$1460.__super__ = json2object_reader_BaseParser;
+JsonParser_$1460.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionType",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonString: function(s,pos,variable) {
+		switch(s) {
+		case "Dead":
+			this.value = model_ActionType.Dead;
+			break;
+		case "Stun":
+			this.value = model_ActionType.Stun;
+			break;
+		default:
+			this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionType",pos));
+			this.parsingThrow();
+		}
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		if(o.length != 1) {
+			this.errors.push(json2object_Error.IncorrectType(variable,"ActionType",pos));
+			this.parsingThrow();
+		} else {
+			var field = o[0];
+			var _g = o[0].value.value;
+			if(_g._hx_index == 2) {
+				var s0 = _g.fields;
+				switch(field.name) {
+				case "Atk":
+					var _names = ["from","to"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __from = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
+					var __to = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
+					this.value = model_ActionType.Atk(__from1,__to1);
+					break;
+				case "Born":
+					var _names = ["q","r"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __q = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
+					var __r = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
+					this.value = model_ActionType.Born(__q1,__r1);
+					break;
+				case "Dead":
+					if(s0.length == 0) {
+						this.value = model_ActionType.Dead;
+					} else {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					break;
+				case "Morph":
+					var _names = ["unitType"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __unitType = new JsonParser_$1426(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __unitType1 = __unitType.loadJson(_g[0].value,field.name + "." + "unitType");
+					this.value = model_ActionType.Morph(__unitType1);
+					break;
+				case "Move":
+					var _names = ["q","r"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __q = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
+					var __r = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
+					this.value = model_ActionType.Move(__q1,__r1);
+					break;
+				case "Ordr":
+					var _names = ["type","from","to"];
+					var tmp;
+					if(s0.length == 3) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __type = new JsonParser_$1426(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
+					var __from = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
+					var __to = new JsonParser_$1435(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[2]) {
+							_g.push(v);
+						}
+					}
+					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
+					this.value = model_ActionType.Ordr(__type1,__from1,__to1);
+					break;
+				case "Spin":
+					var _names = ["d"];
+					var tmp;
+					if(s0.length == 1) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __d = new JsonParser_$1440(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __d1 = __d.loadJson(_g[0].value,field.name + "." + "d");
+					this.value = model_ActionType.Spin(__d1);
+					break;
+				case "Stun":
+					if(s0.length == 0) {
+						this.value = model_ActionType.Stun;
+					} else {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					break;
+				case "Throw":
+					var _names = ["q","r"];
+					var tmp;
+					if(s0.length == 2) {
+						var _g = [];
+						var _g1 = 0;
+						var _g2 = s0;
+						while(_g1 < _g2.length) {
+							var v = _g2[_g1];
+							++_g1;
+							if(_names.indexOf(v.name) != -1) {
+								_g.push(v);
+							}
+						}
+						tmp = _g.length != s0.length;
+					} else {
+						tmp = true;
+					}
+					if(tmp) {
+						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
+						this.parsingThrow();
+					}
+					var __q = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[0]) {
+							_g.push(v);
+						}
+					}
+					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
+					var __r = new JsonParser_$1427(this.errors,this.putils,2);
+					var _g = [];
+					var _g1 = 0;
+					var _g2 = s0;
+					while(_g1 < _g2.length) {
+						var v = _g2[_g1];
+						++_g1;
+						if(v.name == _names[1]) {
+							_g.push(v);
+						}
+					}
+					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
+					this.value = model_ActionType.Throw(__q1,__r1);
+					break;
+				default:
+					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionType",pos));
+					this.parsingThrow();
+				}
+			} else {
+				this.errors.push(json2object_Error.IncorrectType(field.name,"ActionType",this.putils.convertPosition(field.value.pos)));
+				this.parsingThrow();
+			}
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1460([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1460
+});
+var JsonParser_$1461 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1461"] = JsonParser_$1461;
+JsonParser_$1461.__name__ = "JsonParser_1461";
+JsonParser_$1461.__super__ = json2object_reader_BaseParser;
+JsonParser_$1461.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryData",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["id","minerals","mana","upgrades"],[false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "id":
+				this.value.id = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				break;
+			case "mana":
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				break;
+			case "minerals":
+				this.value.minerals = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
+				break;
+			case "upgrades":
+				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$1463(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_CountryData.prototype);
+		value.id = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minerals = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mana = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.upgrades = new haxe_ds_StringMap();
+		return value;
+	}
+	,__class__: JsonParser_$1461
+});
+var JsonParser_$1463 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1463"] = JsonParser_$1463;
+JsonParser_$1463.__name__ = "JsonParser_1463";
+JsonParser_$1463.__super__ = json2object_reader_BaseParser;
+JsonParser_$1463.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<Int>>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1464(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1463([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1463
+});
+var JsonParser_$1464 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1464"] = JsonParser_$1464;
+JsonParser_$1464.__name__ = "JsonParser_1464";
+JsonParser_$1464.__super__ = json2object_reader_BaseParser;
+JsonParser_$1464.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Int>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1427(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1464([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1464
+});
+var JsonParser_$1465 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1465"] = JsonParser_$1465;
+JsonParser_$1465.__name__ = "JsonParser_1465";
+JsonParser_$1465.__super__ = json2object_reader_BaseParser;
+JsonParser_$1465.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnCache",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["unitStats","deathTriggers","turnStartTriggers","turnEndTriggers","touchTriggers","touchedTriggers","attackTriggers","defendTriggers","visionCache"],[false,false,false,false,false,false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "attackTriggers":
+				this.value.attackTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attackTriggers",assigned,this.value.attackTriggers,pos);
+				break;
+			case "deathTriggers":
+				this.value.deathTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"deathTriggers",assigned,this.value.deathTriggers,pos);
+				break;
+			case "defendTriggers":
+				this.value.defendTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"defendTriggers",assigned,this.value.defendTriggers,pos);
+				break;
+			case "touchTriggers":
+				this.value.touchTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchTriggers",assigned,this.value.touchTriggers,pos);
+				break;
+			case "touchedTriggers":
+				this.value.touchedTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchedTriggers",assigned,this.value.touchedTriggers,pos);
+				break;
+			case "turnEndTriggers":
+				this.value.turnEndTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnEndTriggers",assigned,this.value.turnEndTriggers,pos);
+				break;
+			case "turnStartTriggers":
+				this.value.turnStartTriggers = this.loadObjectField(($_=new JsonParser_$1469(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnStartTriggers",assigned,this.value.turnStartTriggers,pos);
+				break;
+			case "unitStats":
+				this.value.unitStats = this.loadObjectField(($_=new JsonParser_$1467(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitStats",assigned,this.value.unitStats,pos);
+				break;
+			case "visionCache":
+				this.value.visionCache = this.loadObjectField(($_=new JsonParser_$1471(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"visionCache",assigned,this.value.visionCache,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_TurnCache.prototype);
+		value.unitStats = new JsonParser_$1467([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.deathTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnStartTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnEndTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.touchTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.touchedTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.attackTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.defendTriggers = new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.visionCache = new JsonParser_$1471([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
+	}
+	,__class__: JsonParser_$1465
+});
+var JsonParser_$1467 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1467"] = JsonParser_$1467;
+JsonParser_$1467.__name__ = "JsonParser_1467";
+JsonParser_$1467.__super__ = json2object_reader_BaseParser;
+JsonParser_$1467.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitStatsData>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1476(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1467([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1467
+});
+var JsonParser_$1469 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1469"] = JsonParser_$1469;
+JsonParser_$1469.__name__ = "JsonParser_1469";
+JsonParser_$1469.__super__ = json2object_reader_BaseParser;
+JsonParser_$1469.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.EventTrigger>>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_StringMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1472(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1469([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1469
+});
+var JsonParser_$1471 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1471"] = JsonParser_$1471;
+JsonParser_$1471.__name__ = "JsonParser_1471";
+JsonParser_$1471.__super__ = json2object_reader_BaseParser;
+JsonParser_$1471.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, Array<Int>>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		this.value = new haxe_ds_IntMap();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			var this1 = this.value;
+			var key;
+			try {
+				var key1 = new JsonParser_$1427(this.errors,this.putils,2);
+				var _this = this.putils;
+				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
+			} catch( _g1 ) {
+				var _g2 = haxe_Exception.caught(_g1).unwrap();
+				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
+					var e = _g2;
+					if(e != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e);
+					}
+					continue;
+				} else {
+					throw _g1;
+				}
+			}
+			var value;
+			try {
+				value = new JsonParser_$1464(this.errors,this.putils,2).loadJson(field.value,field.name);
+			} catch( _g3 ) {
+				var _g4 = haxe_Exception.caught(_g3).unwrap();
+				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
+					var e1 = _g4;
+					if(e1 != json2object_InternalError.ParsingThrow) {
+						throw haxe_Exception.thrown(e1);
+					}
+					continue;
+				} else {
+					throw _g3;
+				}
+			}
+			this1.h[key] = value;
+		}
+	}
+	,getAuto: function() {
+		return new JsonParser_$1471([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1471
+});
+var JsonParser_$1472 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1472"] = JsonParser_$1472;
+JsonParser_$1472.__name__ = "JsonParser_1472";
+JsonParser_$1472.__super__ = json2object_reader_BaseParser;
+JsonParser_$1472.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.EventTrigger>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1474(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1472([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1472
+});
+var JsonParser_$1474 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1474"] = JsonParser_$1474;
+JsonParser_$1474.__name__ = "JsonParser_1474";
+JsonParser_$1474.__super__ = json2object_reader_BaseParser;
+JsonParser_$1474.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ script : String, args : haxe.ds.ReadOnlyArray<String> }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["args","script"],[false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "args":
+				this.value.args = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
+				break;
+			case "script":
+				this.value.script = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { args : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1474
+});
+var JsonParser_$1475 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1475"] = JsonParser_$1475;
+JsonParser_$1475.__name__ = "JsonParser_1475";
+JsonParser_$1475.__super__ = json2object_reader_BaseParser;
+JsonParser_$1475.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<String>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1426(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1475
+});
+var JsonParser_$1476 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1476"] = JsonParser_$1476;
+JsonParser_$1476.__name__ = "JsonParser_1476";
+JsonParser_$1476.__super__ = json2object_reader_BaseParser;
+JsonParser_$1476.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"model.UnitStatsData",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["attack","maxHp","vision","range","speed","flying","moveCostMinerals","moveCostMana","detector","invisible","skills"],[false,false,false,false,false,false,false,false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "attack":
+				this.value.attack = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
+				break;
+			case "detector":
+				this.value.detector = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
+				break;
+			case "flying":
+				this.value.flying = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
+				break;
+			case "invisible":
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				break;
+			case "maxHp":
+				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
+				break;
+			case "moveCostMana":
+				this.value.moveCostMana = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMana",assigned,this.value.moveCostMana,pos);
+				break;
+			case "moveCostMinerals":
+				this.value.moveCostMinerals = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMinerals",assigned,this.value.moveCostMinerals,pos);
+				break;
+			case "range":
+				this.value.range = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				break;
+			case "skills":
+				this.value.skills = this.loadObjectField(($_=new JsonParser_$1477(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
+				break;
+			case "speed":
+				this.value.speed = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				break;
+			case "vision":
+				this.value.vision = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		var value = Object.create(model_UnitStatsData.prototype);
+		value.attack = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.maxHp = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.vision = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.range = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.speed = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.flying = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.moveCostMinerals = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.moveCostMana = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.detector = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.invisible = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.skills = new JsonParser_$1477([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return value;
+	}
+	,__class__: JsonParser_$1476
+});
+var JsonParser_$1477 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1477"] = JsonParser_$1477;
+JsonParser_$1477.__name__ = "JsonParser_1477";
+JsonParser_$1477.__super__ = json2object_reader_BaseParser;
+JsonParser_$1477.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"Array<String>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1426(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1477([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1477
+});
+var JsonParser_$1479 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1479"] = JsonParser_$1479;
+JsonParser_$1479.__name__ = "JsonParser_1479";
+JsonParser_$1479.__super__ = json2object_reader_BaseParser;
+JsonParser_$1479.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1079,7 +3085,7 @@ JsonParser_$1728.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1096,7 +3102,7 @@ JsonParser_$1728.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1763(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1506(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1113,20 +3119,20 @@ JsonParser_$1728.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1728([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1479([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1728
+	,__class__: JsonParser_$1479
 });
-var JsonParser_$1730 = function(errors,putils,errorType) {
+var JsonParser_$1481 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1730"] = JsonParser_$1730;
-JsonParser_$1730.__name__ = "JsonParser_1730";
-JsonParser_$1730.__super__ = json2object_reader_BaseParser;
-JsonParser_$1730.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1481"] = JsonParser_$1481;
+JsonParser_$1481.__name__ = "JsonParser_1481";
+JsonParser_$1481.__super__ = json2object_reader_BaseParser;
+JsonParser_$1481.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ItemType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1143,7 +3149,7 @@ JsonParser_$1730.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1160,7 +3166,7 @@ JsonParser_$1730.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1761(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1504(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1177,20 +3183,20 @@ JsonParser_$1730.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1730([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1481([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1730
+	,__class__: JsonParser_$1481
 });
-var JsonParser_$1732 = function(errors,putils,errorType) {
+var JsonParser_$1483 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1732"] = JsonParser_$1732;
-JsonParser_$1732.__name__ = "JsonParser_1732";
-JsonParser_$1732.__super__ = json2object_reader_BaseParser;
-JsonParser_$1732.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1483"] = JsonParser_$1483;
+JsonParser_$1483.__name__ = "JsonParser_1483";
+JsonParser_$1483.__super__ = json2object_reader_BaseParser;
+JsonParser_$1483.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UpgradeType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1207,7 +3213,7 @@ JsonParser_$1732.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1224,7 +3230,7 @@ JsonParser_$1732.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1759(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1502(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1241,20 +3247,20 @@ JsonParser_$1732.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1732([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1483([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1732
+	,__class__: JsonParser_$1483
 });
-var JsonParser_$1734 = function(errors,putils,errorType) {
+var JsonParser_$1485 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1734"] = JsonParser_$1734;
-JsonParser_$1734.__name__ = "JsonParser_1734";
-JsonParser_$1734.__super__ = json2object_reader_BaseParser;
-JsonParser_$1734.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1485"] = JsonParser_$1485;
+JsonParser_$1485.__name__ = "JsonParser_1485";
+JsonParser_$1485.__super__ = json2object_reader_BaseParser;
+JsonParser_$1485.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.BuffType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1271,7 +3277,7 @@ JsonParser_$1734.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1288,7 +3294,7 @@ JsonParser_$1734.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1747(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1496(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1305,20 +3311,20 @@ JsonParser_$1734.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1734([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1485([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1734
+	,__class__: JsonParser_$1485
 });
-var JsonParser_$1736 = function(errors,putils,errorType) {
+var JsonParser_$1487 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1736"] = JsonParser_$1736;
-JsonParser_$1736.__name__ = "JsonParser_1736";
-JsonParser_$1736.__super__ = json2object_reader_BaseParser;
-JsonParser_$1736.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1487"] = JsonParser_$1487;
+JsonParser_$1487.__name__ = "JsonParser_1487";
+JsonParser_$1487.__super__ = json2object_reader_BaseParser;
+JsonParser_$1487.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SkillType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1335,7 +3341,7 @@ JsonParser_$1736.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -1352,7 +3358,7 @@ JsonParser_$1736.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1744(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1494(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -1369,20 +3375,20 @@ JsonParser_$1736.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1736([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1487([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1736
+	,__class__: JsonParser_$1487
 });
-var JsonParser_$1737 = function(errors,putils,errorType) {
+var JsonParser_$1488 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1737"] = JsonParser_$1737;
-JsonParser_$1737.__name__ = "JsonParser_1737";
-JsonParser_$1737.__super__ = json2object_reader_BaseParser;
-JsonParser_$1737.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1488"] = JsonParser_$1488;
+JsonParser_$1488.__name__ = "JsonParser_1488";
+JsonParser_$1488.__super__ = json2object_reader_BaseParser;
+JsonParser_$1488.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.MapInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1400,34 +3406,34 @@ JsonParser_$1737.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "author":
-				this.value.author = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
+				this.value.author = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"author",assigned,this.value.author,pos);
 				break;
 			case "countries":
-				this.value.countries = this.loadObjectField(($_=new JsonParser_$1739(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
+				this.value.countries = this.loadObjectField(($_=new JsonParser_$1489(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
 				break;
 			case "description":
-				this.value.description = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
+				this.value.description = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"description",assigned,this.value.description,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "maxPlayers":
-				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
+				this.value.maxPlayers = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxPlayers",assigned,this.value.maxPlayers,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "singlePlayer":
-				this.value.singlePlayer = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"singlePlayer",assigned,this.value.singlePlayer,pos);
+				this.value.singlePlayer = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"singlePlayer",assigned,this.value.singlePlayer,pos);
 				break;
 			case "startField":
-				this.value.startField = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
+				this.value.startField = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"startField",assigned,this.value.startField,pos);
 				break;
 			case "tiles":
-				this.value.tiles = this.loadObjectField(($_=new JsonParser_$1740(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
+				this.value.tiles = this.loadObjectField(($_=new JsonParser_$1490(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"tiles",assigned,this.value.tiles,pos);
 				break;
 			case "version":
-				this.value.version = this.loadObjectField(($_=new JsonParser_$1738(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
+				this.value.version = this.loadObjectField(($_=new JsonParser_$1457(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"version",assigned,this.value.version,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1437,53 +3443,30 @@ JsonParser_$1737.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_MapInfo.prototype);
-		value.mapId = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.description = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.version = new JsonParser_$1738([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.author = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.startField = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.singlePlayer = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.maxPlayers = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.description = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.version = new JsonParser_$1457([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.author = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.startField = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.singlePlayer = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.maxPlayers = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		value.countries = [];
 		value.tiles = [];
 		return value;
 	}
-	,__class__: JsonParser_$1737
+	,__class__: JsonParser_$1488
 });
-var JsonParser_$1738 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-	this.value = 0;
-};
-$hxClasses["JsonParser_1738"] = JsonParser_$1738;
-JsonParser_$1738.__name__ = "JsonParser_1738";
-JsonParser_$1738.__super__ = json2object_reader_BaseParser;
-JsonParser_$1738.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNumber: function(f,pos,variable) {
-		this.value = this.loadJsonFloat(f,pos,variable,this.value);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1738([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1738
-});
-var JsonParser_$1739 = function(errors,putils,errorType) {
+var JsonParser_$1489 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1739"] = JsonParser_$1739;
-JsonParser_$1739.__name__ = "JsonParser_1739";
-JsonParser_$1739.__super__ = json2object_reader_BaseParser;
-JsonParser_$1739.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1489"] = JsonParser_$1489;
+JsonParser_$1489.__name__ = "JsonParser_1489";
+JsonParser_$1489.__super__ = json2object_reader_BaseParser;
+JsonParser_$1489.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.CountryInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1492,23 +3475,23 @@ JsonParser_$1739.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1742(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1492(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1739([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1489([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1739
+	,__class__: JsonParser_$1489
 });
-var JsonParser_$1740 = function(errors,putils,errorType) {
+var JsonParser_$1490 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1740"] = JsonParser_$1740;
-JsonParser_$1740.__name__ = "JsonParser_1740";
-JsonParser_$1740.__super__ = json2object_reader_BaseParser;
-JsonParser_$1740.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1490"] = JsonParser_$1490;
+JsonParser_$1490.__name__ = "JsonParser_1490";
+JsonParser_$1490.__super__ = json2object_reader_BaseParser;
+JsonParser_$1490.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.TileTypeInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1517,23 +3500,23 @@ JsonParser_$1740.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1741(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1491(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1740([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1490([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1740
+	,__class__: JsonParser_$1490
 });
-var JsonParser_$1741 = function(errors,putils,errorType) {
+var JsonParser_$1491 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1741"] = JsonParser_$1741;
-JsonParser_$1741.__name__ = "JsonParser_1741";
-JsonParser_$1741.__super__ = json2object_reader_BaseParser;
-JsonParser_$1741.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1491"] = JsonParser_$1491;
+JsonParser_$1491.__name__ = "JsonParser_1491";
+JsonParser_$1491.__super__ = json2object_reader_BaseParser;
+JsonParser_$1491.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.TileTypeInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1551,13 +3534,13 @@ JsonParser_$1741.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			case "image_h":
-				this.value.image_h = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_h",assigned,this.value.image_h,pos);
+				this.value.image_h = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_h",assigned,this.value.image_h,pos);
 				break;
 			case "image_v":
-				this.value.image_v = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_v",assigned,this.value.image_v,pos);
+				this.value.image_v = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image_v",assigned,this.value.image_v,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1567,23 +3550,23 @@ JsonParser_$1741.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_TileTypeInfo.prototype);
-		value.image_h = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.image_v = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.color = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.image_h = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.image_v = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.color = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1741
+	,__class__: JsonParser_$1491
 });
-var JsonParser_$1742 = function(errors,putils,errorType) {
+var JsonParser_$1492 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1742"] = JsonParser_$1742;
-JsonParser_$1742.__name__ = "JsonParser_1742";
-JsonParser_$1742.__super__ = json2object_reader_BaseParser;
-JsonParser_$1742.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1492"] = JsonParser_$1492;
+JsonParser_$1492.__name__ = "JsonParser_1492";
+JsonParser_$1492.__super__ = json2object_reader_BaseParser;
+JsonParser_$1492.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1601,13 +3584,13 @@ JsonParser_$1742.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
+				this.value.color = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
 				break;
 			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
+				this.value.mana = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
 				break;
 			case "minerals":
-				this.value.minerals = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
+				this.value.minerals = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1617,23 +3600,23 @@ JsonParser_$1742.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_CountryInfo.prototype);
-		value.color = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minerals = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mana = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.color = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.minerals = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mana = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1742
+	,__class__: JsonParser_$1492
 });
-var JsonParser_$1744 = function(errors,putils,errorType) {
+var JsonParser_$1494 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1744"] = JsonParser_$1744;
-JsonParser_$1744.__name__ = "JsonParser_1744";
-JsonParser_$1744.__super__ = json2object_reader_BaseParser;
-JsonParser_$1744.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1494"] = JsonParser_$1494;
+JsonParser_$1494.__name__ = "JsonParser_1494";
+JsonParser_$1494.__super__ = json2object_reader_BaseParser;
+JsonParser_$1494.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ type : String, script : String, range : Int, radius : Int, mineralsCost : Int, manaCost : Int, args : haxe.ds.ReadOnlyArray<String>, areaScript : String }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1651,28 +3634,28 @@ JsonParser_$1744.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "areaScript":
-				this.value.areaScript = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"areaScript",assigned,this.value.areaScript,pos);
+				this.value.areaScript = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"areaScript",assigned,this.value.areaScript,pos);
 				break;
 			case "args":
-				this.value.args = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
+				this.value.args = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
 				break;
 			case "manaCost":
-				this.value.manaCost = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"manaCost",assigned,this.value.manaCost,pos);
+				this.value.manaCost = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"manaCost",assigned,this.value.manaCost,pos);
 				break;
 			case "mineralsCost":
-				this.value.mineralsCost = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mineralsCost",assigned,this.value.mineralsCost,pos);
+				this.value.mineralsCost = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mineralsCost",assigned,this.value.mineralsCost,pos);
 				break;
 			case "radius":
-				this.value.radius = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
+				this.value.radius = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"radius",assigned,this.value.radius,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "script":
-				this.value.script = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
+				this.value.script = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1681,45 +3664,20 @@ JsonParser_$1744.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { areaScript : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), args : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), manaCost : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mineralsCost : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { areaScript : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), args : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), manaCost : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), mineralsCost : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), radius : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$1744
+	,__class__: JsonParser_$1494
 });
-var JsonParser_$1745 = function(errors,putils,errorType) {
+var JsonParser_$1496 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1745"] = JsonParser_$1745;
-JsonParser_$1745.__name__ = "JsonParser_1745";
-JsonParser_$1745.__super__ = json2object_reader_BaseParser;
-JsonParser_$1745.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<String>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1711(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1745
-});
-var JsonParser_$1747 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1747"] = JsonParser_$1747;
-JsonParser_$1747.__name__ = "JsonParser_1747";
-JsonParser_$1747.__super__ = json2object_reader_BaseParser;
-JsonParser_$1747.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1496"] = JsonParser_$1496;
+JsonParser_$1496.__name__ = "JsonParser_1496";
+JsonParser_$1496.__super__ = json2object_reader_BaseParser;
+JsonParser_$1496.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ type : String, turns : Int, effects : haxe.ds.ReadOnlyArray<model.EffectType> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1737,13 +3695,13 @@ JsonParser_$1747.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$1748(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$1497(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -1752,20 +3710,20 @@ JsonParser_$1747.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$1748([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$1497([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), turns : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$1747
+	,__class__: JsonParser_$1496
 });
-var JsonParser_$1748 = function(errors,putils,errorType) {
+var JsonParser_$1497 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1748"] = JsonParser_$1748;
-JsonParser_$1748.__name__ = "JsonParser_1748";
-JsonParser_$1748.__super__ = json2object_reader_BaseParser;
-JsonParser_$1748.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1497"] = JsonParser_$1497;
+JsonParser_$1497.__name__ = "JsonParser_1497";
+JsonParser_$1497.__super__ = json2object_reader_BaseParser;
+JsonParser_$1497.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<model.EffectType>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1774,23 +3732,23 @@ JsonParser_$1748.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1749(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1498(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1748([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1497([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1748
+	,__class__: JsonParser_$1497
 });
-var JsonParser_$1749 = function(errors,putils,errorType) {
+var JsonParser_$1498 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1749"] = JsonParser_$1749;
-JsonParser_$1749.__name__ = "JsonParser_1749";
-JsonParser_$1749.__super__ = json2object_reader_BaseParser;
-JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1498"] = JsonParser_$1498;
+JsonParser_$1498.__name__ = "JsonParser_1498";
+JsonParser_$1498.__super__ = json2object_reader_BaseParser;
+JsonParser_$1498.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.EffectType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -1843,7 +3801,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __skill = new JsonParser_$1744(this.errors,this.putils,2);
+					var __skill = new JsonParser_$1494(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1879,7 +3837,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1711(this.errors,this.putils,2);
+					var __id = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1915,7 +3873,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __radius = new JsonParser_$1712(this.errors,this.putils,2);
+					var __radius = new JsonParser_$1427(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1927,7 +3885,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __radius1 = __radius.loadJson(_g[0].value,field.name + "." + "radius");
-					var __effects = new JsonParser_$1748(this.errors,this.putils,2);
+					var __effects = new JsonParser_$1497(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1939,7 +3897,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __effects1 = __effects.loadJson(_g[0].value,field.name + "." + "effects");
-					var __affects = new JsonParser_$1751(this.errors,this.putils,2);
+					var __affects = new JsonParser_$1500(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1951,7 +3909,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __affects1 = __affects.loadJson(_g[0].value,field.name + "." + "affects");
-					var __particles = new JsonParser_$1711(this.errors,this.putils,2);
+					var __particles = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -1963,7 +3921,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __particles1 = __particles.loadJson(_g[0].value,field.name + "." + "particles");
-					var __color = new JsonParser_$1753(this.errors,this.putils,2);
+					var __color = new JsonParser_$1452(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2015,7 +3973,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __stat = new JsonParser_$1750(this.errors,this.putils,2);
+					var __stat = new JsonParser_$1499(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2027,7 +3985,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __delta = new JsonParser_$1712(this.errors,this.putils,2);
+					var __delta = new JsonParser_$1427(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2063,7 +4021,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2075,7 +4033,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2111,7 +4069,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2123,7 +4081,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2159,7 +4117,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2171,7 +4129,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2207,7 +4165,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2219,7 +4177,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2255,7 +4213,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2267,7 +4225,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2303,7 +4261,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2315,7 +4273,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2351,7 +4309,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2363,7 +4321,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2399,7 +4357,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __script = new JsonParser_$1711(this.errors,this.putils,2);
+					var __script = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2411,7 +4369,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __script1 = __script.loadJson(_g[0].value,field.name + "." + "script");
-					var __args = new JsonParser_$1745(this.errors,this.putils,2);
+					var __args = new JsonParser_$1475(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2447,7 +4405,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __id = new JsonParser_$1711(this.errors,this.putils,2);
+					var __id = new JsonParser_$1426(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2483,7 +4441,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"EffectType",pos));
 						this.parsingThrow();
 					}
-					var __stat = new JsonParser_$1750(this.errors,this.putils,2);
+					var __stat = new JsonParser_$1499(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2495,7 +4453,7 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 						}
 					}
 					var __stat1 = __stat.loadJson(_g[0].value,field.name + "." + "stat");
-					var __value = new JsonParser_$1712(this.errors,this.putils,2);
+					var __value = new JsonParser_$1427(this.errors,this.putils,2);
 					var _g = [];
 					var _g1 = 0;
 					var _g2 = s0;
@@ -2520,20 +4478,20 @@ JsonParser_$1749.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1749([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1498([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1749
+	,__class__: JsonParser_$1498
 });
-var JsonParser_$1750 = function(errors,putils,errorType) {
+var JsonParser_$1499 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1750"] = JsonParser_$1750;
-JsonParser_$1750.__name__ = "JsonParser_1750";
-JsonParser_$1750.__super__ = json2object_reader_BaseParser;
-JsonParser_$1750.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1499"] = JsonParser_$1499;
+JsonParser_$1499.__name__ = "JsonParser_1499";
+JsonParser_$1499.__super__ = json2object_reader_BaseParser;
+JsonParser_$1499.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.StatType",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2679,20 +4637,20 @@ JsonParser_$1750.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1750([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1499([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1750
+	,__class__: JsonParser_$1499
 });
-var JsonParser_$1751 = function(errors,putils,errorType) {
+var JsonParser_$1500 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1751"] = JsonParser_$1751;
-JsonParser_$1751.__name__ = "JsonParser_1751";
-JsonParser_$1751.__super__ = json2object_reader_BaseParser;
-JsonParser_$1751.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1500"] = JsonParser_$1500;
+JsonParser_$1500.__name__ = "JsonParser_1500";
+JsonParser_$1500.__super__ = json2object_reader_BaseParser;
+JsonParser_$1500.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.Affects",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2761,140 +4719,20 @@ JsonParser_$1751.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1751([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1500([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1751
+	,__class__: JsonParser_$1500
 });
-var JsonParser_$1753 = function(errors,putils,errorType) {
+var JsonParser_$1502 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1753"] = JsonParser_$1753;
-JsonParser_$1753.__name__ = "JsonParser_1753";
-JsonParser_$1753.__super__ = json2object_reader_BaseParser;
-JsonParser_$1753.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ ?saturation : Null<Float>, ?lightness : Null<Float>, ?hue : Null<Float>, ?gain : Null<{ color : Int, alpha : Float }>, ?contrast : Null<Float> }",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["contrast","gain","hue","lightness","saturation"],[true,true,true,true,true]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "contrast":
-				this.value.contrast = this.loadObjectField(($_=new JsonParser_$1755(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"contrast",assigned,this.value.contrast,pos);
-				break;
-			case "gain":
-				this.value.gain = this.loadObjectField(($_=new JsonParser_$1757(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"gain",assigned,this.value.gain,pos);
-				break;
-			case "hue":
-				this.value.hue = this.loadObjectField(($_=new JsonParser_$1755(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hue",assigned,this.value.hue,pos);
-				break;
-			case "lightness":
-				this.value.lightness = this.loadObjectField(($_=new JsonParser_$1755(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"lightness",assigned,this.value.lightness,pos);
-				break;
-			case "saturation":
-				this.value.saturation = this.loadObjectField(($_=new JsonParser_$1755(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"saturation",assigned,this.value.saturation,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		return { contrast : new JsonParser_$1755([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), gain : new JsonParser_$1757([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hue : new JsonParser_$1755([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), lightness : new JsonParser_$1755([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), saturation : new JsonParser_$1755([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
-	}
-	,__class__: JsonParser_$1753
-});
-var JsonParser_$1755 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1755"] = JsonParser_$1755;
-JsonParser_$1755.__name__ = "JsonParser_1755";
-JsonParser_$1755.__super__ = json2object_reader_BaseParser;
-JsonParser_$1755.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Float",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonNumber: function(f,pos,variable) {
-		this.value = this.loadJsonFloat(f,pos,variable,this.value);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1755([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1755
-});
-var JsonParser_$1757 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1757"] = JsonParser_$1757;
-JsonParser_$1757.__name__ = "JsonParser_1757";
-JsonParser_$1757.__super__ = json2object_reader_BaseParser;
-JsonParser_$1757.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ color : Int, alpha : Float }",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["alpha","color"],[false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "alpha":
-				this.value.alpha = this.loadObjectField(($_=new JsonParser_$1738(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"alpha",assigned,this.value.alpha,pos);
-				break;
-			case "color":
-				this.value.color = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"color",assigned,this.value.color,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		return { alpha : new JsonParser_$1738([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), color : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
-	}
-	,__class__: JsonParser_$1757
-});
-var JsonParser_$1759 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1759"] = JsonParser_$1759;
-JsonParser_$1759.__name__ = "JsonParser_1759";
-JsonParser_$1759.__super__ = json2object_reader_BaseParser;
-JsonParser_$1759.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1502"] = JsonParser_$1502;
+JsonParser_$1502.__name__ = "JsonParser_1502";
+JsonParser_$1502.__super__ = json2object_reader_BaseParser;
+JsonParser_$1502.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"{ unitTypes : haxe.ds.ReadOnlyArray<String>, type : String, effects : haxe.ds.ReadOnlyArray<model.EffectType> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -2912,13 +4750,13 @@ JsonParser_$1759.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$1748(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
+				this.value.effects = this.loadObjectField(($_=new JsonParser_$1497(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unitTypes":
-				this.value.unitTypes = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitTypes",assigned,this.value.unitTypes,pos);
+				this.value.unitTypes = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitTypes",assigned,this.value.unitTypes,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2927,22 +4765,22 @@ JsonParser_$1759.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { effects : new JsonParser_$1748([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { effects : new JsonParser_$1497([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unitTypes : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$1759
+	,__class__: JsonParser_$1502
 });
-var JsonParser_$1761 = function(errors,putils,errorType) {
+var JsonParser_$1504 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1761"] = JsonParser_$1761;
-JsonParser_$1761.__name__ = "JsonParser_1761";
-JsonParser_$1761.__super__ = json2object_reader_BaseParser;
-JsonParser_$1761.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1504"] = JsonParser_$1504;
+JsonParser_$1504.__name__ = "JsonParser_1504";
+JsonParser_$1504.__super__ = json2object_reader_BaseParser;
+JsonParser_$1504.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ unpickable : Bool, type : String, invisible : Int, buffs : haxe.ds.ReadOnlyArray<String> }",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ unpickable : Bool, type : String, spriteSheetInfo : String, invisible : Int, image : String, buffs : haxe.ds.ReadOnlyArray<String> }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
@@ -2950,7 +4788,7 @@ JsonParser_$1761.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["buffs","invisible","type","unpickable"],[false,false,false,false]);
+		this.objectSetupAssign(assigned,["buffs","image","invisible","spriteSheetInfo","type","unpickable"],[false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -2958,16 +4796,22 @@ JsonParser_$1761.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				break;
+			case "image":
+				this.value.image = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image",assigned,this.value.image,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				break;
+			case "spriteSheetInfo":
+				this.value.spriteSheetInfo = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"spriteSheetInfo",assigned,this.value.spriteSheetInfo,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "unpickable":
-				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
+				this.value.unpickable = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unpickable",assigned,this.value.unpickable,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -2976,22 +4820,22 @@ JsonParser_$1761.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { buffs : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { buffs : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), image : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), spriteSheetInfo : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), unpickable : new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$1761
+	,__class__: JsonParser_$1504
 });
-var JsonParser_$1763 = function(errors,putils,errorType) {
+var JsonParser_$1506 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1763"] = JsonParser_$1763;
-JsonParser_$1763.__name__ = "JsonParser_1763";
-JsonParser_$1763.__super__ = json2object_reader_BaseParser;
-JsonParser_$1763.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1506"] = JsonParser_$1506;
+JsonParser_$1506.__name__ = "JsonParser_1506";
+JsonParser_$1506.__super__ = json2object_reader_BaseParser;
+JsonParser_$1506.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ vision : Int, type : String, speed : Int, skills : haxe.ds.ReadOnlyArray<String>, range : Int, moveCostMinerals : Int, moveCostMana : Int, moveAreaScript : String, maxHp : Int, invisible : Int, hideHpBar : Bool, flying : Int, detector : Int, buffs : haxe.ds.ReadOnlyArray<String>, attack : Int }",pos));
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ vision : Int, type : String, spriteSheetInfo : String, speed : Int, skills : haxe.ds.ReadOnlyArray<String>, range : Int, moveCostMinerals : Int, moveCostMana : Int, moveAreaScript : String, maxHp : Int, invisible : Int, image : String, hideHpBar : Bool, flying : Int, detector : Int, buffs : haxe.ds.ReadOnlyArray<String>, attack : Int }",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
 	}
 	,loadJsonNull: function(pos,variable) {
@@ -2999,7 +4843,7 @@ JsonParser_$1763.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,loadJsonObject: function(o,pos,variable) {
 		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["attack","buffs","detector","flying","hideHpBar","invisible","maxHp","moveAreaScript","moveCostMana","moveCostMinerals","range","skills","speed","type","vision"],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
+		this.objectSetupAssign(assigned,["attack","buffs","detector","flying","hideHpBar","image","invisible","maxHp","moveAreaScript","moveCostMana","moveCostMinerals","range","skills","speed","spriteSheetInfo","type","vision"],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
 		this.value = this.getAuto();
 		var _g = 0;
 		while(_g < o.length) {
@@ -3007,49 +4851,55 @@ JsonParser_$1763.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "attack":
-				this.value.attack = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
+				this.value.attack = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
 				break;
 			case "buffs":
-				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
+				this.value.buffs = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"buffs",assigned,this.value.buffs,pos);
 				break;
 			case "detector":
-				this.value.detector = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
+				this.value.detector = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
 				break;
 			case "flying":
-				this.value.flying = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
+				this.value.flying = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
 				break;
 			case "hideHpBar":
-				this.value.hideHpBar = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hideHpBar",assigned,this.value.hideHpBar,pos);
+				this.value.hideHpBar = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"hideHpBar",assigned,this.value.hideHpBar,pos);
+				break;
+			case "image":
+				this.value.image = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"image",assigned,this.value.image,pos);
 				break;
 			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
+				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
 				break;
 			case "maxHp":
-				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
+				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
 				break;
 			case "moveAreaScript":
-				this.value.moveAreaScript = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveAreaScript",assigned,this.value.moveAreaScript,pos);
+				this.value.moveAreaScript = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveAreaScript",assigned,this.value.moveAreaScript,pos);
 				break;
 			case "moveCostMana":
-				this.value.moveCostMana = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMana",assigned,this.value.moveCostMana,pos);
+				this.value.moveCostMana = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMana",assigned,this.value.moveCostMana,pos);
 				break;
 			case "moveCostMinerals":
-				this.value.moveCostMinerals = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMinerals",assigned,this.value.moveCostMinerals,pos);
+				this.value.moveCostMinerals = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMinerals",assigned,this.value.moveCostMinerals,pos);
 				break;
 			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
+				this.value.range = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
 				break;
 			case "skills":
-				this.value.skills = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
+				this.value.skills = this.loadObjectField(($_=new JsonParser_$1475(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
 				break;
 			case "speed":
-				this.value.speed = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				this.value.speed = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
+				break;
+			case "spriteSheetInfo":
+				this.value.spriteSheetInfo = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"spriteSheetInfo",assigned,this.value.spriteSheetInfo,pos);
 				break;
 			case "type":
-				this.value.type = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
+				this.value.type = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"type",assigned,this.value.type,pos);
 				break;
 			case "vision":
-				this.value.vision = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
+				this.value.vision = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3058,20 +4908,201 @@ JsonParser_$1763.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.objectErrors(assigned,pos);
 	}
 	,getAuto: function() {
-		return { attack : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hideHpBar : new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveAreaScript : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveCostMana : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveCostMinerals : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+		return { attack : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), buffs : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), detector : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), flying : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), hideHpBar : new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), image : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), invisible : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), maxHp : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveAreaScript : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveCostMana : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), moveCostMinerals : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), range : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), skills : new JsonParser_$1475([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), speed : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), spriteSheetInfo : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), type : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), vision : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
 	}
-	,__class__: JsonParser_$1763
+	,__class__: JsonParser_$1506
 });
-var JsonParser_$1765 = function(errors,putils,errorType) {
+var JsonParser_$1508 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1765"] = JsonParser_$1765;
-JsonParser_$1765.__name__ = "JsonParser_1765";
-JsonParser_$1765.__super__ = json2object_reader_BaseParser;
-JsonParser_$1765.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1508"] = JsonParser_$1508;
+JsonParser_$1508.__name__ = "JsonParser_1508";
+JsonParser_$1508.__super__ = json2object_reader_BaseParser;
+JsonParser_$1508.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ sprites : haxe.ds.ReadOnlyArray<{ y : Int, x : Int, w : Int, trimTop : Int, trimOWidth : Int, trimOHeight : Int, trimLeft : Int, name : String, h : Int }>, packer : { width : Int, height : Int, directions : Int, animationFramesNum : Int } }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["packer","sprites"],[false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "packer":
+				this.value.packer = this.loadObjectField(($_=new JsonParser_$1509(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"packer",assigned,this.value.packer,pos);
+				break;
+			case "sprites":
+				this.value.sprites = this.loadObjectField(($_=new JsonParser_$1510(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"sprites",assigned,this.value.sprites,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { packer : new JsonParser_$1509([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), sprites : new JsonParser_$1510([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1508
+});
+var JsonParser_$1509 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1509"] = JsonParser_$1509;
+JsonParser_$1509.__name__ = "JsonParser_1509";
+JsonParser_$1509.__super__ = json2object_reader_BaseParser;
+JsonParser_$1509.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ width : Int, height : Int, directions : Int, animationFramesNum : Int }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["animationFramesNum","directions","height","width"],[false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "animationFramesNum":
+				this.value.animationFramesNum = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"animationFramesNum",assigned,this.value.animationFramesNum,pos);
+				break;
+			case "directions":
+				this.value.directions = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"directions",assigned,this.value.directions,pos);
+				break;
+			case "height":
+				this.value.height = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"height",assigned,this.value.height,pos);
+				break;
+			case "width":
+				this.value.width = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"width",assigned,this.value.width,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { animationFramesNum : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), directions : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), height : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), width : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1509
+});
+var JsonParser_$1510 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1510"] = JsonParser_$1510;
+JsonParser_$1510.__name__ = "JsonParser_1510";
+JsonParser_$1510.__super__ = json2object_reader_BaseParser;
+JsonParser_$1510.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.ReadOnlyArray<{ y : Int, x : Int, w : Int, trimTop : Int, trimOWidth : Int, trimOHeight : Int, trimLeft : Int, name : String, h : Int }>",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonArray: function(a,pos,variable) {
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1511(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+	}
+	,getAuto: function() {
+		return new JsonParser_$1510([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+	}
+	,__class__: JsonParser_$1510
+});
+var JsonParser_$1511 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1511"] = JsonParser_$1511;
+JsonParser_$1511.__name__ = "JsonParser_1511";
+JsonParser_$1511.__super__ = json2object_reader_BaseParser;
+JsonParser_$1511.prototype = $extend(json2object_reader_BaseParser.prototype,{
+	onIncorrectType: function(pos,variable) {
+		this.errors.push(json2object_Error.IncorrectType(variable,"{ y : Int, x : Int, w : Int, trimTop : Int, trimOWidth : Int, trimOHeight : Int, trimLeft : Int, name : String, h : Int }",pos));
+		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
+	}
+	,loadJsonNull: function(pos,variable) {
+		this.value = null;
+	}
+	,loadJsonObject: function(o,pos,variable) {
+		var assigned = new haxe_ds_StringMap();
+		this.objectSetupAssign(assigned,["h","name","trimLeft","trimOHeight","trimOWidth","trimTop","w","x","y"],[false,false,false,false,false,false,false,false,false]);
+		this.value = this.getAuto();
+		var _g = 0;
+		while(_g < o.length) {
+			var field = o[_g];
+			++_g;
+			switch(field.name) {
+			case "h":
+				this.value.h = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"h",assigned,this.value.h,pos);
+				break;
+			case "name":
+				this.value.name = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				break;
+			case "trimLeft":
+				this.value.trimLeft = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"trimLeft",assigned,this.value.trimLeft,pos);
+				break;
+			case "trimOHeight":
+				this.value.trimOHeight = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"trimOHeight",assigned,this.value.trimOHeight,pos);
+				break;
+			case "trimOWidth":
+				this.value.trimOWidth = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"trimOWidth",assigned,this.value.trimOWidth,pos);
+				break;
+			case "trimTop":
+				this.value.trimTop = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"trimTop",assigned,this.value.trimTop,pos);
+				break;
+			case "w":
+				this.value.w = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"w",assigned,this.value.w,pos);
+				break;
+			case "x":
+				this.value.x = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"x",assigned,this.value.x,pos);
+				break;
+			case "y":
+				this.value.y = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"y",assigned,this.value.y,pos);
+				break;
+			default:
+				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
+			}
+		}
+		this.objectErrors(assigned,pos);
+	}
+	,getAuto: function() {
+		return { h : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), name : new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), trimLeft : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), trimOHeight : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), trimOWidth : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), trimTop : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), w : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), x : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), y : new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
+	}
+	,__class__: JsonParser_$1511
+});
+var JsonParser_$1513 = function(errors,putils,errorType) {
+	if(errorType == null) {
+		errorType = 0;
+	}
+	json2object_reader_BaseParser.call(this,errors,putils,errorType);
+};
+$hxClasses["JsonParser_1513"] = JsonParser_$1513;
+JsonParser_$1513.__name__ = "JsonParser_1513";
+JsonParser_$1513.__super__ = json2object_reader_BaseParser;
+JsonParser_$1513.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.SaveInfo>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3088,7 +5119,7 @@ JsonParser_$1765.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1426(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3105,7 +5136,7 @@ JsonParser_$1765.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1766(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1514(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3122,20 +5153,20 @@ JsonParser_$1765.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1765([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1513([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1765
+	,__class__: JsonParser_$1513
 });
-var JsonParser_$1766 = function(errors,putils,errorType) {
+var JsonParser_$1514 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1766"] = JsonParser_$1766;
-JsonParser_$1766.__name__ = "JsonParser_1766";
-JsonParser_$1766.__super__ = json2object_reader_BaseParser;
-JsonParser_$1766.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1514"] = JsonParser_$1514;
+JsonParser_$1514.__name__ = "JsonParser_1514";
+JsonParser_$1514.__super__ = json2object_reader_BaseParser;
+JsonParser_$1514.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.SaveInfo",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3153,28 +5184,28 @@ JsonParser_$1766.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countriesNum":
-				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
+				this.value.countriesNum = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countriesNum",assigned,this.value.countriesNum,pos);
 				break;
 			case "isGameFinished":
-				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
+				this.value.isGameFinished = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isGameFinished",assigned,this.value.isGameFinished,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "playersNum":
-				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
+				this.value.playersNum = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"playersNum",assigned,this.value.playersNum,pos);
 				break;
 			case "time":
-				this.value.time = this.loadObjectField(($_=new JsonParser_$1738(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
+				this.value.time = this.loadObjectField(($_=new JsonParser_$1457(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"time",assigned,this.value.time,pos);
 				break;
 			case "turnNum":
-				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
+				this.value.turnNum = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnNum",assigned,this.value.turnNum,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3184,28 +5215,28 @@ JsonParser_$1766.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_SaveInfo.prototype);
-		value.name = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapId = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.time = new JsonParser_$1738([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnNum = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.playersNum = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countriesNum = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isGameFinished = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.time = new JsonParser_$1457([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnNum = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.playersNum = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countriesNum = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isGameFinished = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1766
+	,__class__: JsonParser_$1514
 });
-var JsonParser_$1767 = function(errors,putils,errorType) {
+var JsonParser_$1515 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1767"] = JsonParser_$1767;
-JsonParser_$1767.__name__ = "JsonParser_1767";
-JsonParser_$1767.__super__ = json2object_reader_BaseParser;
-JsonParser_$1767.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1515"] = JsonParser_$1515;
+JsonParser_$1515.__name__ = "JsonParser_1515";
+JsonParser_$1515.__super__ = json2object_reader_BaseParser;
+JsonParser_$1515.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.GameData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3223,25 +5254,25 @@ JsonParser_$1767.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "curTurn":
-				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
+				this.value.curTurn = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"curTurn",assigned,this.value.curTurn,pos);
 				break;
 			case "field":
-				this.value.field = this.loadObjectField(($_=new JsonParser_$1710(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
+				this.value.field = this.loadObjectField(($_=new JsonParser_$1425(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"field",assigned,this.value.field,pos);
 				break;
 			case "mapId":
-				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
+				this.value.mapId = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapId",assigned,this.value.mapId,pos);
 				break;
 			case "mapName":
-				this.value.mapName = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
+				this.value.mapName = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mapName",assigned,this.value.mapName,pos);
 				break;
 			case "netGame":
-				this.value.netGame = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
+				this.value.netGame = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"netGame",assigned,this.value.netGame,pos);
 				break;
 			case "players":
-				this.value.players = this.loadObjectField(($_=new JsonParser_$1770(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"players",assigned,this.value.players,pos);
+				this.value.players = this.loadObjectField(($_=new JsonParser_$1518(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"players",assigned,this.value.players,pos);
 				break;
 			case "turns":
-				this.value.turns = this.loadObjectField(($_=new JsonParser_$1769(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
+				this.value.turns = this.loadObjectField(($_=new JsonParser_$1517(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turns",assigned,this.value.turns,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3251,27 +5282,27 @@ JsonParser_$1767.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_GameData.prototype);
-		value.mapId = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mapName = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.netGame = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.curTurn = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turns = new JsonParser_$1769([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.players = new JsonParser_$1770([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.field = new JsonParser_$1710([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapId = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.mapName = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.netGame = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.curTurn = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turns = new JsonParser_$1517([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.players = new JsonParser_$1518([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.field = new JsonParser_$1425([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1767
+	,__class__: JsonParser_$1515
 });
-var JsonParser_$1768 = function(errors,putils,errorType) {
+var JsonParser_$1516 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1768"] = JsonParser_$1768;
-JsonParser_$1768.__name__ = "JsonParser_1768";
-JsonParser_$1768.__super__ = json2object_reader_BaseParser;
-JsonParser_$1768.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1516"] = JsonParser_$1516;
+JsonParser_$1516.__name__ = "JsonParser_1516";
+JsonParser_$1516.__super__ = json2object_reader_BaseParser;
+JsonParser_$1516.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, String>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3288,7 +5319,7 @@ JsonParser_$1768.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			var this1 = this.value;
 			var key;
 			try {
-				var key1 = new JsonParser_$1712(this.errors,this.putils,2);
+				var key1 = new JsonParser_$1427(this.errors,this.putils,2);
 				var _this = this.putils;
 				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
 			} catch( _g1 ) {
@@ -3305,7 +5336,7 @@ JsonParser_$1768.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			}
 			var value;
 			try {
-				value = new JsonParser_$1711(this.errors,this.putils,2).loadJson(field.value,field.name);
+				value = new JsonParser_$1426(this.errors,this.putils,2).loadJson(field.value,field.name);
 			} catch( _g3 ) {
 				var _g4 = haxe_Exception.caught(_g3).unwrap();
 				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
@@ -3322,20 +5353,20 @@ JsonParser_$1768.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		}
 	}
 	,getAuto: function() {
-		return new JsonParser_$1768([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1516([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1768
+	,__class__: JsonParser_$1516
 });
-var JsonParser_$1769 = function(errors,putils,errorType) {
+var JsonParser_$1517 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1769"] = JsonParser_$1769;
-JsonParser_$1769.__name__ = "JsonParser_1769";
-JsonParser_$1769.__super__ = json2object_reader_BaseParser;
-JsonParser_$1769.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1517"] = JsonParser_$1517;
+JsonParser_$1517.__name__ = "JsonParser_1517";
+JsonParser_$1517.__super__ = json2object_reader_BaseParser;
+JsonParser_$1517.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.TurnData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3344,23 +5375,23 @@ JsonParser_$1769.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1772(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1442(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1769([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1517([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1769
+	,__class__: JsonParser_$1517
 });
-var JsonParser_$1770 = function(errors,putils,errorType) {
+var JsonParser_$1518 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1770"] = JsonParser_$1770;
-JsonParser_$1770.__name__ = "JsonParser_1770";
-JsonParser_$1770.__super__ = json2object_reader_BaseParser;
-JsonParser_$1770.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1518"] = JsonParser_$1518;
+JsonParser_$1518.__name__ = "JsonParser_1518";
+JsonParser_$1518.__super__ = json2object_reader_BaseParser;
+JsonParser_$1518.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.PlayerData>",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3369,23 +5400,23 @@ JsonParser_$1770.prototype = $extend(json2object_reader_BaseParser.prototype,{
 		this.value = null;
 	}
 	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1771(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
+		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1519(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
 	}
 	,getAuto: function() {
-		return new JsonParser_$1770([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		return new JsonParser_$1518([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 	}
-	,__class__: JsonParser_$1770
+	,__class__: JsonParser_$1518
 });
-var JsonParser_$1771 = function(errors,putils,errorType) {
+var JsonParser_$1519 = function(errors,putils,errorType) {
 	if(errorType == null) {
 		errorType = 0;
 	}
 	json2object_reader_BaseParser.call(this,errors,putils,errorType);
 };
-$hxClasses["JsonParser_1771"] = JsonParser_$1771;
-JsonParser_$1771.__name__ = "JsonParser_1771";
-JsonParser_$1771.__super__ = json2object_reader_BaseParser;
-JsonParser_$1771.prototype = $extend(json2object_reader_BaseParser.prototype,{
+$hxClasses["JsonParser_1519"] = JsonParser_$1519;
+JsonParser_$1519.__name__ = "JsonParser_1519";
+JsonParser_$1519.__super__ = json2object_reader_BaseParser;
+JsonParser_$1519.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	onIncorrectType: function(pos,variable) {
 		this.errors.push(json2object_Error.IncorrectType(variable,"model.PlayerData",pos));
 		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
@@ -3403,22 +5434,22 @@ JsonParser_$1771.prototype = $extend(json2object_reader_BaseParser.prototype,{
 			++_g;
 			switch(field.name) {
 			case "countryId":
-				this.value.countryId = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
+				this.value.countryId = this.loadObjectField(($_=new JsonParser_$1427(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countryId",assigned,this.value.countryId,pos);
 				break;
 			case "disconnected":
-				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
+				this.value.disconnected = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"disconnected",assigned,this.value.disconnected,pos);
 				break;
 			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
+				this.value.id = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
 				break;
 			case "isAI":
-				this.value.isAI = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
+				this.value.isAI = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"isAI",assigned,this.value.isAI,pos);
 				break;
 			case "name":
-				this.value.name = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
+				this.value.name = this.loadObjectField(($_=new JsonParser_$1426(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"name",assigned,this.value.name,pos);
 				break;
 			case "turnDone":
-				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$1719(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
+				this.value.turnDone = this.loadObjectField(($_=new JsonParser_$1434(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnDone",assigned,this.value.turnDone,pos);
 				break;
 			default:
 				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
@@ -3428,1864 +5459,26 @@ JsonParser_$1771.prototype = $extend(json2object_reader_BaseParser.prototype,{
 	}
 	,getAuto: function() {
 		var value = Object.create(model_PlayerData.prototype);
-		value.id = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.name = new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.disconnected = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnDone = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.isAI = new JsonParser_$1719([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.countryId = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.id = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.name = new JsonParser_$1426([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.disconnected = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.turnDone = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.isAI = new JsonParser_$1434([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
+		value.countryId = new JsonParser_$1427([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
 		return value;
 	}
-	,__class__: JsonParser_$1771
+	,__class__: JsonParser_$1519
 });
-var JsonParser_$1772 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1772"] = JsonParser_$1772;
-JsonParser_$1772.__name__ = "JsonParser_1772";
-JsonParser_$1772.__super__ = json2object_reader_BaseParser;
-JsonParser_$1772.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["countries","units","items","microTurns"],[false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "countries":
-				this.value.countries = this.loadObjectField(($_=new JsonParser_$1774(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"countries",assigned,this.value.countries,pos);
-				break;
-			case "items":
-				this.value.items = this.loadObjectField(($_=new JsonParser_$1717(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"items",assigned,this.value.items,pos);
-				break;
-			case "microTurns":
-				this.value.microTurns = this.loadObjectField(($_=new JsonParser_$1775(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"microTurns",assigned,this.value.microTurns,pos);
-				break;
-			case "units":
-				this.value.units = this.loadObjectField(($_=new JsonParser_$1715(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"units",assigned,this.value.units,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_TurnData.prototype);
-		value.countries = new haxe_ds_IntMap();
-		value.units = new haxe_ds_StringMap();
-		value.items = new haxe_ds_StringMap();
-		value.microTurns = [];
-		return value;
-	}
-	,__class__: JsonParser_$1772
-});
-var JsonParser_$1774 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1774"] = JsonParser_$1774;
-JsonParser_$1774.__name__ = "JsonParser_1774";
-JsonParser_$1774.__super__ = json2object_reader_BaseParser;
-JsonParser_$1774.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, model.CountryData>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_IntMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1712(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1784(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1774([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1774
-});
-var JsonParser_$1775 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1775"] = JsonParser_$1775;
-JsonParser_$1775.__name__ = "JsonParser_1775";
-JsonParser_$1775.__super__ = json2object_reader_BaseParser;
-JsonParser_$1775.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.MicroTurn>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1776(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1775([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1775
-});
-var JsonParser_$1776 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1776"] = JsonParser_$1776;
-JsonParser_$1776.__name__ = "JsonParser_1776";
-JsonParser_$1776.__super__ = json2object_reader_BaseParser;
-JsonParser_$1776.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.MicroTurn",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["acts","events","effects"],[false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "acts":
-				this.value.acts = this.loadObjectField(($_=new JsonParser_$1777(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"acts",assigned,this.value.acts,pos);
-				break;
-			case "effects":
-				this.value.effects = this.loadObjectField(($_=new JsonParser_$1779(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"effects",assigned,this.value.effects,pos);
-				break;
-			case "events":
-				this.value.events = this.loadObjectField(($_=new JsonParser_$1778(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"events",assigned,this.value.events,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_MicroTurn.prototype);
-		value.acts = new JsonParser_$1777([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.events = new JsonParser_$1778([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.effects = new JsonParser_$1779([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
-	}
-	,__class__: JsonParser_$1776
-});
-var JsonParser_$1777 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1777"] = JsonParser_$1777;
-JsonParser_$1777.__name__ = "JsonParser_1777";
-JsonParser_$1777.__super__ = json2object_reader_BaseParser;
-JsonParser_$1777.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.ActionType>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1783(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1777([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1777
-});
-var JsonParser_$1778 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1778"] = JsonParser_$1778;
-JsonParser_$1778.__name__ = "JsonParser_1778";
-JsonParser_$1778.__super__ = json2object_reader_BaseParser;
-JsonParser_$1778.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.ActionEvent>>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1781(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1778([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1778
-});
-var JsonParser_$1779 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1779"] = JsonParser_$1779;
-JsonParser_$1779.__name__ = "JsonParser_1779";
-JsonParser_$1779.__super__ = json2object_reader_BaseParser;
-JsonParser_$1779.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.FieldEffect>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1780(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1779([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1779
-});
-var JsonParser_$1780 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1780"] = JsonParser_$1780;
-JsonParser_$1780.__name__ = "JsonParser_1780";
-JsonParser_$1780.__super__ = json2object_reader_BaseParser;
-JsonParser_$1780.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.FieldEffect",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonString: function(s,pos,variable) {
-		this.errors.push(json2object_Error.IncorrectEnumValue(variable,"FieldEffect",pos));
-		this.parsingThrow();
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		if(o.length != 1) {
-			this.errors.push(json2object_Error.IncorrectType(variable,"FieldEffect",pos));
-			this.parsingThrow();
-		} else {
-			var field = o[0];
-			var _g = o[0].value.value;
-			if(_g._hx_index == 2) {
-				var s0 = _g.fields;
-				switch(field.name) {
-				case "DirectedEffect":
-					var _names = ["type","from","to","colorAdj"];
-					var tmp;
-					if(s0.length == 4) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
-						this.parsingThrow();
-					}
-					var __type = new JsonParser_$1711(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __from = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[2]) {
-							_g.push(v);
-						}
-					}
-					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
-					var __colorAdj = new JsonParser_$1753(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[3]) {
-							_g.push(v);
-						}
-					}
-					var __colorAdj1 = __colorAdj.loadJson(_g[0].value,field.name + "." + "colorAdj");
-					this.value = model_FieldEffect.DirectedEffect(__type1,__from1,__to1,__colorAdj1);
-					break;
-				case "LandChange":
-					var _names = ["hex","oldHeight","newHeight","oldType","newType"];
-					var tmp;
-					if(s0.length == 5) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
-						this.parsingThrow();
-					}
-					var __hex = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
-					var __oldHeight = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __oldHeight1 = __oldHeight.loadJson(_g[0].value,field.name + "." + "oldHeight");
-					var __newHeight = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[2]) {
-							_g.push(v);
-						}
-					}
-					var __newHeight1 = __newHeight.loadJson(_g[0].value,field.name + "." + "newHeight");
-					var __oldType = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[3]) {
-							_g.push(v);
-						}
-					}
-					var __oldType1 = __oldType.loadJson(_g[0].value,field.name + "." + "oldType");
-					var __newType = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[4]) {
-							_g.push(v);
-						}
-					}
-					var __newType1 = __newType.loadJson(_g[0].value,field.name + "." + "newType");
-					this.value = model_FieldEffect.LandChange(__hex1,__oldHeight1,__newHeight1,__oldType1,__newType1);
-					break;
-				case "SimpleEffect":
-					var _names = ["type","hex","colorAdj"];
-					var tmp;
-					if(s0.length == 3) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"FieldEffect",pos));
-						this.parsingThrow();
-					}
-					var __type = new JsonParser_$1711(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __hex = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __hex1 = __hex.loadJson(_g[0].value,field.name + "." + "hex");
-					var __colorAdj = new JsonParser_$1753(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[2]) {
-							_g.push(v);
-						}
-					}
-					var __colorAdj1 = __colorAdj.loadJson(_g[0].value,field.name + "." + "colorAdj");
-					this.value = model_FieldEffect.SimpleEffect(__type1,__hex1,__colorAdj1);
-					break;
-				default:
-					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"FieldEffect",pos));
-					this.parsingThrow();
-				}
-			} else {
-				this.errors.push(json2object_Error.IncorrectType(field.name,"FieldEffect",this.putils.convertPosition(field.value.pos)));
-				this.parsingThrow();
-			}
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1780([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1780
-});
-var JsonParser_$1781 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1781"] = JsonParser_$1781;
-JsonParser_$1781.__name__ = "JsonParser_1781";
-JsonParser_$1781.__super__ = json2object_reader_BaseParser;
-JsonParser_$1781.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.ActionEvent>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1782(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1781([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1781
-});
-var JsonParser_$1782 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1782"] = JsonParser_$1782;
-JsonParser_$1782.__name__ = "JsonParser_1782";
-JsonParser_$1782.__super__ = json2object_reader_BaseParser;
-JsonParser_$1782.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionEvent",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonString: function(s,pos,variable) {
-		this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionEvent",pos));
-		this.parsingThrow();
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		if(o.length != 1) {
-			this.errors.push(json2object_Error.IncorrectType(variable,"ActionEvent",pos));
-			this.parsingThrow();
-		} else {
-			var field = o[0];
-			var _g = o[0].value.value;
-			if(_g._hx_index == 2) {
-				var s0 = _g.fields;
-				switch(field.name) {
-				case "AddBuff":
-					var _names = ["type"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
-						this.parsingThrow();
-					}
-					var __type = new JsonParser_$1711(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					this.value = model_ActionEvent.AddBuff(__type1);
-					break;
-				case "ChangeCntr":
-					var _names = ["to"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
-						this.parsingThrow();
-					}
-					var __to = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
-					this.value = model_ActionEvent.ChangeCntr(__to1);
-					break;
-				case "Dmg":
-					var _names = ["d"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
-						this.parsingThrow();
-					}
-					var __d = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __d1 = __d.loadJson(_g[0].value,field.name + "." + "d");
-					this.value = model_ActionEvent.Dmg(__d1);
-					break;
-				case "Mana":
-					var _names = ["m"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
-						this.parsingThrow();
-					}
-					var __m = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __m1 = __m.loadJson(_g[0].value,field.name + "." + "m");
-					this.value = model_ActionEvent.Mana(__m1);
-					break;
-				case "Mine":
-					var _names = ["m"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionEvent",pos));
-						this.parsingThrow();
-					}
-					var __m = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __m1 = __m.loadJson(_g[0].value,field.name + "." + "m");
-					this.value = model_ActionEvent.Mine(__m1);
-					break;
-				default:
-					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionEvent",pos));
-					this.parsingThrow();
-				}
-			} else {
-				this.errors.push(json2object_Error.IncorrectType(field.name,"ActionEvent",this.putils.convertPosition(field.value.pos)));
-				this.parsingThrow();
-			}
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1782([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1782
-});
-var JsonParser_$1783 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1783"] = JsonParser_$1783;
-JsonParser_$1783.__name__ = "JsonParser_1783";
-JsonParser_$1783.__super__ = json2object_reader_BaseParser;
-JsonParser_$1783.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.ActionType",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonString: function(s,pos,variable) {
-		switch(s) {
-		case "Dead":
-			this.value = model_ActionType.Dead;
-			break;
-		case "Stun":
-			this.value = model_ActionType.Stun;
-			break;
-		default:
-			this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionType",pos));
-			this.parsingThrow();
-		}
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		if(o.length != 1) {
-			this.errors.push(json2object_Error.IncorrectType(variable,"ActionType",pos));
-			this.parsingThrow();
-		} else {
-			var field = o[0];
-			var _g = o[0].value.value;
-			if(_g._hx_index == 2) {
-				var s0 = _g.fields;
-				switch(field.name) {
-				case "Atk":
-					var _names = ["from","to"];
-					var tmp;
-					if(s0.length == 2) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __from = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
-					this.value = model_ActionType.Atk(__from1,__to1);
-					break;
-				case "Born":
-					var _names = ["q","r"];
-					var tmp;
-					if(s0.length == 2) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __q = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
-					this.value = model_ActionType.Born(__q1,__r1);
-					break;
-				case "Dead":
-					if(s0.length == 0) {
-						this.value = model_ActionType.Dead;
-					} else {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					break;
-				case "Morph":
-					var _names = ["unitType"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __unitType = new JsonParser_$1711(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __unitType1 = __unitType.loadJson(_g[0].value,field.name + "." + "unitType");
-					this.value = model_ActionType.Morph(__unitType1);
-					break;
-				case "Move":
-					var _names = ["q","r"];
-					var tmp;
-					if(s0.length == 2) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __q = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
-					this.value = model_ActionType.Move(__q1,__r1);
-					break;
-				case "Ordr":
-					var _names = ["type","from","to"];
-					var tmp;
-					if(s0.length == 3) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __type = new JsonParser_$1711(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __type1 = __type.loadJson(_g[0].value,field.name + "." + "type");
-					var __from = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __from1 = __from.loadJson(_g[0].value,field.name + "." + "from");
-					var __to = new JsonParser_$1720(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[2]) {
-							_g.push(v);
-						}
-					}
-					var __to1 = __to.loadJson(_g[0].value,field.name + "." + "to");
-					this.value = model_ActionType.Ordr(__type1,__from1,__to1);
-					break;
-				case "Spin":
-					var _names = ["d"];
-					var tmp;
-					if(s0.length == 1) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __d = new JsonParser_$1725(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __d1 = __d.loadJson(_g[0].value,field.name + "." + "d");
-					this.value = model_ActionType.Spin(__d1);
-					break;
-				case "Stun":
-					if(s0.length == 0) {
-						this.value = model_ActionType.Stun;
-					} else {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					break;
-				case "Throw":
-					var _names = ["q","r"];
-					var tmp;
-					if(s0.length == 2) {
-						var _g = [];
-						var _g1 = 0;
-						var _g2 = s0;
-						while(_g1 < _g2.length) {
-							var v = _g2[_g1];
-							++_g1;
-							if(_names.indexOf(v.name) != -1) {
-								_g.push(v);
-							}
-						}
-						tmp = _g.length != s0.length;
-					} else {
-						tmp = true;
-					}
-					if(tmp) {
-						this.errors.push(json2object_Error.InvalidEnumConstructor(field.name,"ActionType",pos));
-						this.parsingThrow();
-					}
-					var __q = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[0]) {
-							_g.push(v);
-						}
-					}
-					var __q1 = __q.loadJson(_g[0].value,field.name + "." + "q");
-					var __r = new JsonParser_$1712(this.errors,this.putils,2);
-					var _g = [];
-					var _g1 = 0;
-					var _g2 = s0;
-					while(_g1 < _g2.length) {
-						var v = _g2[_g1];
-						++_g1;
-						if(v.name == _names[1]) {
-							_g.push(v);
-						}
-					}
-					var __r1 = __r.loadJson(_g[0].value,field.name + "." + "r");
-					this.value = model_ActionType.Throw(__q1,__r1);
-					break;
-				default:
-					this.errors.push(json2object_Error.IncorrectEnumValue(variable,"ActionType",pos));
-					this.parsingThrow();
-				}
-			} else {
-				this.errors.push(json2object_Error.IncorrectType(field.name,"ActionType",this.putils.convertPosition(field.value.pos)));
-				this.parsingThrow();
-			}
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1783([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1783
-});
-var JsonParser_$1784 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1784"] = JsonParser_$1784;
-JsonParser_$1784.__name__ = "JsonParser_1784";
-JsonParser_$1784.__super__ = json2object_reader_BaseParser;
-JsonParser_$1784.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.CountryData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["id","minerals","mana","upgrades"],[false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "id":
-				this.value.id = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"id",assigned,this.value.id,pos);
-				break;
-			case "mana":
-				this.value.mana = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"mana",assigned,this.value.mana,pos);
-				break;
-			case "minerals":
-				this.value.minerals = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"minerals",assigned,this.value.minerals,pos);
-				break;
-			case "upgrades":
-				this.value.upgrades = this.loadObjectField(($_=new JsonParser_$1786(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"upgrades",assigned,this.value.upgrades,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_CountryData.prototype);
-		value.id = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.minerals = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.mana = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.upgrades = new haxe_ds_StringMap();
-		return value;
-	}
-	,__class__: JsonParser_$1784
-});
-var JsonParser_$1786 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1786"] = JsonParser_$1786;
-JsonParser_$1786.__name__ = "JsonParser_1786";
-JsonParser_$1786.__super__ = json2object_reader_BaseParser;
-JsonParser_$1786.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<Int>>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1787(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1786([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1786
-});
-var JsonParser_$1787 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1787"] = JsonParser_$1787;
-JsonParser_$1787.__name__ = "JsonParser_1787";
-JsonParser_$1787.__super__ = json2object_reader_BaseParser;
-JsonParser_$1787.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<Int>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1712(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1787([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1787
-});
-var JsonParser_$1788 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1788"] = JsonParser_$1788;
-JsonParser_$1788.__name__ = "JsonParser_1788";
-JsonParser_$1788.__super__ = json2object_reader_BaseParser;
-JsonParser_$1788.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.TurnCache",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["unitStats","deathTriggers","turnStartTriggers","turnEndTriggers","touchTriggers","touchedTriggers","attackTriggers","defendTriggers","visionCache"],[false,false,false,false,false,false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "attackTriggers":
-				this.value.attackTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attackTriggers",assigned,this.value.attackTriggers,pos);
-				break;
-			case "deathTriggers":
-				this.value.deathTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"deathTriggers",assigned,this.value.deathTriggers,pos);
-				break;
-			case "defendTriggers":
-				this.value.defendTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"defendTriggers",assigned,this.value.defendTriggers,pos);
-				break;
-			case "touchTriggers":
-				this.value.touchTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchTriggers",assigned,this.value.touchTriggers,pos);
-				break;
-			case "touchedTriggers":
-				this.value.touchedTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"touchedTriggers",assigned,this.value.touchedTriggers,pos);
-				break;
-			case "turnEndTriggers":
-				this.value.turnEndTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnEndTriggers",assigned,this.value.turnEndTriggers,pos);
-				break;
-			case "turnStartTriggers":
-				this.value.turnStartTriggers = this.loadObjectField(($_=new JsonParser_$1792(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"turnStartTriggers",assigned,this.value.turnStartTriggers,pos);
-				break;
-			case "unitStats":
-				this.value.unitStats = this.loadObjectField(($_=new JsonParser_$1790(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"unitStats",assigned,this.value.unitStats,pos);
-				break;
-			case "visionCache":
-				this.value.visionCache = this.loadObjectField(($_=new JsonParser_$1794(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"visionCache",assigned,this.value.visionCache,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_TurnCache.prototype);
-		value.unitStats = new JsonParser_$1790([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.deathTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnStartTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.turnEndTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.touchTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.touchedTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.attackTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.defendTriggers = new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.visionCache = new JsonParser_$1794([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
-	}
-	,__class__: JsonParser_$1788
-});
-var JsonParser_$1790 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1790"] = JsonParser_$1790;
-JsonParser_$1790.__name__ = "JsonParser_1790";
-JsonParser_$1790.__super__ = json2object_reader_BaseParser;
-JsonParser_$1790.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, model.UnitStatsData>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1798(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1790([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1790
-});
-var JsonParser_$1792 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1792"] = JsonParser_$1792;
-JsonParser_$1792.__name__ = "JsonParser_1792";
-JsonParser_$1792.__super__ = json2object_reader_BaseParser;
-JsonParser_$1792.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<String, Array<model.EventTrigger>>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_StringMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1711(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JString(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1795(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1792([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1792
-});
-var JsonParser_$1794 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1794"] = JsonParser_$1794;
-JsonParser_$1794.__name__ = "JsonParser_1794";
-JsonParser_$1794.__super__ = json2object_reader_BaseParser;
-JsonParser_$1794.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"haxe.ds.Map<Int, Array<Int>>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		this.value = new haxe_ds_IntMap();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			var this1 = this.value;
-			var key;
-			try {
-				var key1 = new JsonParser_$1712(this.errors,this.putils,2);
-				var _this = this.putils;
-				key = key1.loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNumber(field.name),new hxjsonast_Position(pos.file,pos.min - 1,pos.max - 1)),variable);
-			} catch( _g1 ) {
-				var _g2 = haxe_Exception.caught(_g1).unwrap();
-				if(js_Boot.__instanceof(_g2,json2object_InternalError)) {
-					var e = _g2;
-					if(e != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e);
-					}
-					continue;
-				} else {
-					throw _g1;
-				}
-			}
-			var value;
-			try {
-				value = new JsonParser_$1787(this.errors,this.putils,2).loadJson(field.value,field.name);
-			} catch( _g3 ) {
-				var _g4 = haxe_Exception.caught(_g3).unwrap();
-				if(js_Boot.__instanceof(_g4,json2object_InternalError)) {
-					var e1 = _g4;
-					if(e1 != json2object_InternalError.ParsingThrow) {
-						throw haxe_Exception.thrown(e1);
-					}
-					continue;
-				} else {
-					throw _g3;
-				}
-			}
-			this1.h[key] = value;
-		}
-	}
-	,getAuto: function() {
-		return new JsonParser_$1794([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1794
-});
-var JsonParser_$1795 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1795"] = JsonParser_$1795;
-JsonParser_$1795.__name__ = "JsonParser_1795";
-JsonParser_$1795.__super__ = json2object_reader_BaseParser;
-JsonParser_$1795.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<model.EventTrigger>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1797(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1795([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1795
-});
-var JsonParser_$1797 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1797"] = JsonParser_$1797;
-JsonParser_$1797.__name__ = "JsonParser_1797";
-JsonParser_$1797.__super__ = json2object_reader_BaseParser;
-JsonParser_$1797.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"{ script : String, args : haxe.ds.ReadOnlyArray<String> }",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["args","script"],[false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "args":
-				this.value.args = this.loadObjectField(($_=new JsonParser_$1745(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"args",assigned,this.value.args,pos);
-				break;
-			case "script":
-				this.value.script = this.loadObjectField(($_=new JsonParser_$1711(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"script",assigned,this.value.script,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		return { args : new JsonParser_$1745([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1))), script : new JsonParser_$1711([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)))};
-	}
-	,__class__: JsonParser_$1797
-});
-var JsonParser_$1798 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1798"] = JsonParser_$1798;
-JsonParser_$1798.__name__ = "JsonParser_1798";
-JsonParser_$1798.__super__ = json2object_reader_BaseParser;
-JsonParser_$1798.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"model.UnitStatsData",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonObject: function(o,pos,variable) {
-		var assigned = new haxe_ds_StringMap();
-		this.objectSetupAssign(assigned,["attack","maxHp","vision","range","speed","flying","moveCostMinerals","moveCostMana","detector","invisible","skills"],[false,false,false,false,false,false,false,false,false,false,false]);
-		this.value = this.getAuto();
-		var _g = 0;
-		while(_g < o.length) {
-			var field = o[_g];
-			++_g;
-			switch(field.name) {
-			case "attack":
-				this.value.attack = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"attack",assigned,this.value.attack,pos);
-				break;
-			case "detector":
-				this.value.detector = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"detector",assigned,this.value.detector,pos);
-				break;
-			case "flying":
-				this.value.flying = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"flying",assigned,this.value.flying,pos);
-				break;
-			case "invisible":
-				this.value.invisible = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"invisible",assigned,this.value.invisible,pos);
-				break;
-			case "maxHp":
-				this.value.maxHp = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"maxHp",assigned,this.value.maxHp,pos);
-				break;
-			case "moveCostMana":
-				this.value.moveCostMana = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMana",assigned,this.value.moveCostMana,pos);
-				break;
-			case "moveCostMinerals":
-				this.value.moveCostMinerals = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"moveCostMinerals",assigned,this.value.moveCostMinerals,pos);
-				break;
-			case "range":
-				this.value.range = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"range",assigned,this.value.range,pos);
-				break;
-			case "skills":
-				this.value.skills = this.loadObjectField(($_=new JsonParser_$1799(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"skills",assigned,this.value.skills,pos);
-				break;
-			case "speed":
-				this.value.speed = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"speed",assigned,this.value.speed,pos);
-				break;
-			case "vision":
-				this.value.vision = this.loadObjectField(($_=new JsonParser_$1712(this.errors,this.putils,1),$bind($_,$_.loadJson)),field,"vision",assigned,this.value.vision,pos);
-				break;
-			default:
-				this.errors.push(json2object_Error.UnknownVariable(field.name,this.putils.convertPosition(field.namePos)));
-			}
-		}
-		this.objectErrors(assigned,pos);
-	}
-	,getAuto: function() {
-		var value = Object.create(model_UnitStatsData.prototype);
-		value.attack = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.maxHp = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.vision = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.range = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.speed = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.flying = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.moveCostMinerals = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.moveCostMana = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.detector = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.invisible = new JsonParser_$1712([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		value.skills = new JsonParser_$1799([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-		return value;
-	}
-	,__class__: JsonParser_$1798
-});
-var JsonParser_$1799 = function(errors,putils,errorType) {
-	if(errorType == null) {
-		errorType = 0;
-	}
-	json2object_reader_BaseParser.call(this,errors,putils,errorType);
-};
-$hxClasses["JsonParser_1799"] = JsonParser_$1799;
-JsonParser_$1799.__name__ = "JsonParser_1799";
-JsonParser_$1799.__super__ = json2object_reader_BaseParser;
-JsonParser_$1799.prototype = $extend(json2object_reader_BaseParser.prototype,{
-	onIncorrectType: function(pos,variable) {
-		this.errors.push(json2object_Error.IncorrectType(variable,"Array<String>",pos));
-		json2object_reader_BaseParser.prototype.onIncorrectType.call(this,pos,variable);
-	}
-	,loadJsonNull: function(pos,variable) {
-		this.value = null;
-	}
-	,loadJsonArray: function(a,pos,variable) {
-		this.value = this.loadJsonArrayValue(a,($_=new JsonParser_$1711(this.errors,this.putils,2),$bind($_,$_.loadJson)),variable);
-	}
-	,getAuto: function() {
-		return new JsonParser_$1799([],this.putils,0).loadJson(new hxjsonast_Json(hxjsonast_JsonValue.JNull,new hxjsonast_Position("",0,1)));
-	}
-	,__class__: JsonParser_$1799
-});
-var JsonWriter_$1178 = function(ignoreNullOptionals) {
+var JsonWriter_$930 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1178"] = JsonWriter_$1178;
-JsonWriter_$1178.__name__ = "JsonWriter_1178";
-JsonWriter_$1178.prototype = {
+$hxClasses["JsonWriter_930"] = JsonWriter_$930;
+JsonWriter_$930.__name__ = "JsonWriter_930";
+JsonWriter_$930.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5327,7 +5520,7 @@ JsonWriter_$1178.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"size\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$1181(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$1184(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$1193(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"size\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.size,space,level + 1,false,onAllOptionalNull),indent + space + "\"tiles\": " + new JsonWriter_$933(this.ignoreNullOptionals)._write(o.tiles,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$936(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$945(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -5361,18 +5554,18 @@ JsonWriter_$1178.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1178
+	,__class__: JsonWriter_$930
 };
-var JsonWriter_$1179 = function(ignoreNullOptionals) {
+var JsonWriter_$931 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1179"] = JsonWriter_$1179;
-JsonWriter_$1179.__name__ = "JsonWriter_1179";
-JsonWriter_$1179.prototype = {
+$hxClasses["JsonWriter_931"] = JsonWriter_$931;
+JsonWriter_$931.__name__ = "JsonWriter_931";
+JsonWriter_$931.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5417,18 +5610,18 @@ JsonWriter_$1179.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1179
+	,__class__: JsonWriter_$931
 };
-var JsonWriter_$1180 = function(ignoreNullOptionals) {
+var JsonWriter_$932 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1180"] = JsonWriter_$1180;
-JsonWriter_$1180.__name__ = "JsonWriter_1180";
-JsonWriter_$1180.prototype = {
+$hxClasses["JsonWriter_932"] = JsonWriter_$932;
+JsonWriter_$932.__name__ = "JsonWriter_932";
+JsonWriter_$932.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5473,18 +5666,18 @@ JsonWriter_$1180.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1180
+	,__class__: JsonWriter_$932
 };
-var JsonWriter_$1181 = function(ignoreNullOptionals) {
+var JsonWriter_$933 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1181"] = JsonWriter_$1181;
-JsonWriter_$1181.__name__ = "JsonWriter_1181";
-JsonWriter_$1181.prototype = {
+$hxClasses["JsonWriter_933"] = JsonWriter_$933;
+JsonWriter_$933.__name__ = "JsonWriter_933";
+JsonWriter_$933.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5526,7 +5719,7 @@ JsonWriter_$1181.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1182(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$934(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -5547,18 +5740,18 @@ JsonWriter_$1181.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1181
+	,__class__: JsonWriter_$933
 };
-var JsonWriter_$1182 = function(ignoreNullOptionals) {
+var JsonWriter_$934 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1182"] = JsonWriter_$1182;
-JsonWriter_$1182.__name__ = "JsonWriter_1182";
-JsonWriter_$1182.prototype = {
+$hxClasses["JsonWriter_934"] = JsonWriter_$934;
+JsonWriter_$934.__name__ = "JsonWriter_934";
+JsonWriter_$934.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5603,18 +5796,18 @@ JsonWriter_$1182.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1182
+	,__class__: JsonWriter_$934
 };
-var JsonWriter_$1184 = function(ignoreNullOptionals) {
+var JsonWriter_$936 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1184"] = JsonWriter_$1184;
-JsonWriter_$1184.__name__ = "JsonWriter_1184";
-JsonWriter_$1184.prototype = {
+$hxClasses["JsonWriter_936"] = JsonWriter_$936;
+JsonWriter_$936.__name__ = "JsonWriter_936";
+JsonWriter_$936.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5656,7 +5849,7 @@ JsonWriter_$1184.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1185(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$937(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -5680,18 +5873,18 @@ JsonWriter_$1184.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1184
+	,__class__: JsonWriter_$936
 };
-var JsonWriter_$1185 = function(ignoreNullOptionals) {
+var JsonWriter_$937 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1185"] = JsonWriter_$1185;
-JsonWriter_$1185.__name__ = "JsonWriter_1185";
-JsonWriter_$1185.prototype = {
+$hxClasses["JsonWriter_937"] = JsonWriter_$937;
+JsonWriter_$937.__name__ = "JsonWriter_937";
+JsonWriter_$937.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5733,7 +5926,7 @@ JsonWriter_$1185.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"follow\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$1186(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$1190(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"follow\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.follow,space,level + 1,false,onAllOptionalNull),indent + space + "\"rallyPoints\": " + new JsonWriter_$938(this.ignoreNullOptionals)._write(o.rallyPoints,space,level + 1,false,onAllOptionalNull),indent + space + "\"orderIdx\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.orderIdx,space,level + 1,false,onAllOptionalNull),indent + space + "\"autocast\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.autocast,space,level + 1,false,onAllOptionalNull),indent + space + "\"hp\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.hp,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull),indent + space + "\"dir\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.dir,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$942(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -5767,18 +5960,18 @@ JsonWriter_$1185.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1185
+	,__class__: JsonWriter_$937
 };
-var JsonWriter_$1186 = function(ignoreNullOptionals) {
+var JsonWriter_$938 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1186"] = JsonWriter_$1186;
-JsonWriter_$1186.__name__ = "JsonWriter_1186";
-JsonWriter_$1186.prototype = {
+$hxClasses["JsonWriter_938"] = JsonWriter_$938;
+JsonWriter_$938.__name__ = "JsonWriter_938";
+JsonWriter_$938.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5820,7 +6013,7 @@ JsonWriter_$1186.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1187(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$939(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -5841,18 +6034,18 @@ JsonWriter_$1186.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1186
+	,__class__: JsonWriter_$938
 };
-var JsonWriter_$1187 = function(ignoreNullOptionals) {
+var JsonWriter_$939 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1187"] = JsonWriter_$1187;
-JsonWriter_$1187.__name__ = "JsonWriter_1187";
-JsonWriter_$1187.prototype = {
+$hxClasses["JsonWriter_939"] = JsonWriter_$939;
+JsonWriter_$939.__name__ = "JsonWriter_939";
+JsonWriter_$939.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5897,18 +6090,18 @@ JsonWriter_$1187.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1187
+	,__class__: JsonWriter_$939
 };
-var JsonWriter_$1188 = function(ignoreNullOptionals) {
+var JsonWriter_$940 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1188"] = JsonWriter_$1188;
-JsonWriter_$1188.__name__ = "JsonWriter_1188";
-JsonWriter_$1188.prototype = {
+$hxClasses["JsonWriter_940"] = JsonWriter_$940;
+JsonWriter_$940.__name__ = "JsonWriter_940";
+JsonWriter_$940.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -5953,18 +6146,18 @@ JsonWriter_$1188.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1188
+	,__class__: JsonWriter_$940
 };
-var JsonWriter_$1190 = function(ignoreNullOptionals) {
+var JsonWriter_$942 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1190"] = JsonWriter_$1190;
-JsonWriter_$1190.__name__ = "JsonWriter_1190";
-JsonWriter_$1190.prototype = {
+$hxClasses["JsonWriter_942"] = JsonWriter_$942;
+JsonWriter_$942.__name__ = "JsonWriter_942";
+JsonWriter_$942.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6006,7 +6199,7 @@ JsonWriter_$1190.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1191(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$943(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6027,18 +6220,18 @@ JsonWriter_$1190.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1190
+	,__class__: JsonWriter_$942
 };
-var JsonWriter_$1191 = function(ignoreNullOptionals) {
+var JsonWriter_$943 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1191"] = JsonWriter_$1191;
-JsonWriter_$1191.__name__ = "JsonWriter_1191";
-JsonWriter_$1191.prototype = {
+$hxClasses["JsonWriter_943"] = JsonWriter_$943;
+JsonWriter_$943.__name__ = "JsonWriter_943";
+JsonWriter_$943.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6080,7 +6273,7 @@ JsonWriter_$1191.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"turns\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"turns\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6114,18 +6307,18 @@ JsonWriter_$1191.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1191
+	,__class__: JsonWriter_$943
 };
-var JsonWriter_$1193 = function(ignoreNullOptionals) {
+var JsonWriter_$945 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1193"] = JsonWriter_$1193;
-JsonWriter_$1193.__name__ = "JsonWriter_1193";
-JsonWriter_$1193.prototype = {
+$hxClasses["JsonWriter_945"] = JsonWriter_$945;
+JsonWriter_$945.__name__ = "JsonWriter_945";
+JsonWriter_$945.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6167,7 +6360,7 @@ JsonWriter_$1193.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1194(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$946(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6191,18 +6384,18 @@ JsonWriter_$1193.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1193
+	,__class__: JsonWriter_$945
 };
-var JsonWriter_$1194 = function(ignoreNullOptionals) {
+var JsonWriter_$946 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1194"] = JsonWriter_$1194;
-JsonWriter_$1194.__name__ = "JsonWriter_1194";
-JsonWriter_$1194.prototype = {
+$hxClasses["JsonWriter_946"] = JsonWriter_$946;
+JsonWriter_$946.__name__ = "JsonWriter_946";
+JsonWriter_$946.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6244,7 +6437,7 @@ JsonWriter_$1194.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"invisible\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$1190(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"invisible\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"unpickable\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.unpickable,space,level + 1,false,onAllOptionalNull),indent + space + "\"id\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"type\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.type,space,level + 1,false,onAllOptionalNull),indent + space + "\"pos\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(o.pos,space,level + 1,false,onAllOptionalNull),indent + space + "\"buffs\": " + new JsonWriter_$942(this.ignoreNullOptionals)._write(o.buffs,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6278,18 +6471,18 @@ JsonWriter_$1194.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1194
+	,__class__: JsonWriter_$946
 };
-var JsonWriter_$1195 = function(ignoreNullOptionals) {
+var JsonWriter_$947 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1195"] = JsonWriter_$1195;
-JsonWriter_$1195.__name__ = "JsonWriter_1195";
-JsonWriter_$1195.prototype = {
+$hxClasses["JsonWriter_947"] = JsonWriter_$947;
+JsonWriter_$947.__name__ = "JsonWriter_947";
+JsonWriter_$947.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6331,7 +6524,7 @@ JsonWriter_$1195.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"countries\": " + new JsonWriter_$1197(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$1184(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$1193(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$1202(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"countries\": " + new JsonWriter_$949(this.ignoreNullOptionals)._write(o.countries,space,level + 1,false,onAllOptionalNull),indent + space + "\"units\": " + new JsonWriter_$936(this.ignoreNullOptionals)._write(o.units,space,level + 1,false,onAllOptionalNull),indent + space + "\"items\": " + new JsonWriter_$945(this.ignoreNullOptionals)._write(o.items,space,level + 1,false,onAllOptionalNull),indent + space + "\"microTurns\": " + new JsonWriter_$954(this.ignoreNullOptionals)._write(o.microTurns,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6365,18 +6558,18 @@ JsonWriter_$1195.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1195
+	,__class__: JsonWriter_$947
 };
-var JsonWriter_$1197 = function(ignoreNullOptionals) {
+var JsonWriter_$949 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1197"] = JsonWriter_$1197;
-JsonWriter_$1197.__name__ = "JsonWriter_1197";
-JsonWriter_$1197.prototype = {
+$hxClasses["JsonWriter_949"] = JsonWriter_$949;
+JsonWriter_$949.__name__ = "JsonWriter_949";
+JsonWriter_$949.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6418,7 +6611,7 @@ JsonWriter_$1197.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1198(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$950(this.ignoreNullOptionals);
 		var _g = [];
 		var key = o.keys();
 		while(key.hasNext()) {
@@ -6438,18 +6631,18 @@ JsonWriter_$1197.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1197
+	,__class__: JsonWriter_$949
 };
-var JsonWriter_$1198 = function(ignoreNullOptionals) {
+var JsonWriter_$950 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1198"] = JsonWriter_$1198;
-JsonWriter_$1198.__name__ = "JsonWriter_1198";
-JsonWriter_$1198.prototype = {
+$hxClasses["JsonWriter_950"] = JsonWriter_$950;
+JsonWriter_$950.__name__ = "JsonWriter_950";
+JsonWriter_$950.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6491,7 +6684,7 @@ JsonWriter_$1198.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"minerals\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.minerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"mana\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.mana,space,level + 1,false,onAllOptionalNull),indent + space + "\"upgrades\": " + new JsonWriter_$1200(this.ignoreNullOptionals)._write(o.upgrades,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"minerals\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.minerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"mana\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.mana,space,level + 1,false,onAllOptionalNull),indent + space + "\"upgrades\": " + new JsonWriter_$952(this.ignoreNullOptionals)._write(o.upgrades,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6525,18 +6718,18 @@ JsonWriter_$1198.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1198
+	,__class__: JsonWriter_$950
 };
-var JsonWriter_$1200 = function(ignoreNullOptionals) {
+var JsonWriter_$952 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1200"] = JsonWriter_$1200;
-JsonWriter_$1200.__name__ = "JsonWriter_1200";
-JsonWriter_$1200.prototype = {
+$hxClasses["JsonWriter_952"] = JsonWriter_$952;
+JsonWriter_$952.__name__ = "JsonWriter_952";
+JsonWriter_$952.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6578,7 +6771,7 @@ JsonWriter_$1200.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1201(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$953(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6602,18 +6795,18 @@ JsonWriter_$1200.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1200
+	,__class__: JsonWriter_$952
 };
-var JsonWriter_$1201 = function(ignoreNullOptionals) {
+var JsonWriter_$953 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1201"] = JsonWriter_$1201;
-JsonWriter_$1201.__name__ = "JsonWriter_1201";
-JsonWriter_$1201.prototype = {
+$hxClasses["JsonWriter_953"] = JsonWriter_$953;
+JsonWriter_$953.__name__ = "JsonWriter_953";
+JsonWriter_$953.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6655,7 +6848,7 @@ JsonWriter_$1201.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1180(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$932(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6676,18 +6869,18 @@ JsonWriter_$1201.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1201
+	,__class__: JsonWriter_$953
 };
-var JsonWriter_$1202 = function(ignoreNullOptionals) {
+var JsonWriter_$954 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1202"] = JsonWriter_$1202;
-JsonWriter_$1202.__name__ = "JsonWriter_1202";
-JsonWriter_$1202.prototype = {
+$hxClasses["JsonWriter_954"] = JsonWriter_$954;
+JsonWriter_$954.__name__ = "JsonWriter_954";
+JsonWriter_$954.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6729,7 +6922,7 @@ JsonWriter_$1202.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1203(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$955(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -6750,18 +6943,18 @@ JsonWriter_$1202.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1202
+	,__class__: JsonWriter_$954
 };
-var JsonWriter_$1203 = function(ignoreNullOptionals) {
+var JsonWriter_$955 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1203"] = JsonWriter_$1203;
-JsonWriter_$1203.__name__ = "JsonWriter_1203";
-JsonWriter_$1203.prototype = {
+$hxClasses["JsonWriter_955"] = JsonWriter_$955;
+JsonWriter_$955.__name__ = "JsonWriter_955";
+JsonWriter_$955.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6803,7 +6996,7 @@ JsonWriter_$1203.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"acts\": " + new JsonWriter_$1204(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$1207(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull),indent + space + "\"effects\": " + new JsonWriter_$1210(this.ignoreNullOptionals)._write(o.effects,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"acts\": " + new JsonWriter_$956(this.ignoreNullOptionals)._write(o.acts,space,level + 1,false,onAllOptionalNull),indent + space + "\"events\": " + new JsonWriter_$959(this.ignoreNullOptionals)._write(o.events,space,level + 1,false,onAllOptionalNull),indent + space + "\"effects\": " + new JsonWriter_$962(this.ignoreNullOptionals)._write(o.effects,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -6837,18 +7030,18 @@ JsonWriter_$1203.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1203
+	,__class__: JsonWriter_$955
 };
-var JsonWriter_$1204 = function(ignoreNullOptionals) {
+var JsonWriter_$956 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1204"] = JsonWriter_$1204;
-JsonWriter_$1204.__name__ = "JsonWriter_1204";
-JsonWriter_$1204.prototype = {
+$hxClasses["JsonWriter_956"] = JsonWriter_$956;
+JsonWriter_$956.__name__ = "JsonWriter_956";
+JsonWriter_$956.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6890,7 +7083,7 @@ JsonWriter_$1204.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1205(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$957(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -6914,18 +7107,18 @@ JsonWriter_$1204.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1204
+	,__class__: JsonWriter_$956
 };
-var JsonWriter_$1205 = function(ignoreNullOptionals) {
+var JsonWriter_$957 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1205"] = JsonWriter_$1205;
-JsonWriter_$1205.__name__ = "JsonWriter_1205";
-JsonWriter_$1205.prototype = {
+$hxClasses["JsonWriter_957"] = JsonWriter_$957;
+JsonWriter_$957.__name__ = "JsonWriter_957";
+JsonWriter_$957.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -6971,7 +7164,7 @@ JsonWriter_$1205.prototype = {
 		case 0:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Born" + "\": {" + newLine;
@@ -6983,7 +7176,7 @@ JsonWriter_$1205.prototype = {
 			return firstIndent + "\"Dead\"";
 		case 2:
 			var unitType = o.unitType;
-			var decl = [indent + space + space + "\"" + "unitType" + "\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(unitType,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "unitType" + "\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(unitType,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Morph" + "\": {" + newLine;
@@ -6994,7 +7187,7 @@ JsonWriter_$1205.prototype = {
 		case 3:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Move" + "\": {" + newLine;
@@ -7005,7 +7198,7 @@ JsonWriter_$1205.prototype = {
 		case 4:
 			var q = o.q;
 			var r = o.r;
-			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "q" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(q,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "r" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(r,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Throw" + "\": {" + newLine;
@@ -7016,7 +7209,7 @@ JsonWriter_$1205.prototype = {
 		case 5:
 			var from = o.from;
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Atk" + "\": {" + newLine;
@@ -7028,7 +7221,7 @@ JsonWriter_$1205.prototype = {
 			return firstIndent + "\"Stun\"";
 		case 7:
 			var d = o.d;
-			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(model_HexDirection.toInt(d),space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(model_HexDirection.toInt(d),space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Spin" + "\": {" + newLine;
@@ -7040,7 +7233,7 @@ JsonWriter_$1205.prototype = {
 			var type = o.type;
 			var from = o.from;
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Ordr" + "\": {" + newLine;
@@ -7056,18 +7249,18 @@ JsonWriter_$1205.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1205
+	,__class__: JsonWriter_$957
 };
-var JsonWriter_$1207 = function(ignoreNullOptionals) {
+var JsonWriter_$959 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1207"] = JsonWriter_$1207;
-JsonWriter_$1207.__name__ = "JsonWriter_1207";
-JsonWriter_$1207.prototype = {
+$hxClasses["JsonWriter_959"] = JsonWriter_$959;
+JsonWriter_$959.__name__ = "JsonWriter_959";
+JsonWriter_$959.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7109,7 +7302,7 @@ JsonWriter_$1207.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1208(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$960(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -7133,18 +7326,18 @@ JsonWriter_$1207.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1207
+	,__class__: JsonWriter_$959
 };
-var JsonWriter_$1208 = function(ignoreNullOptionals) {
+var JsonWriter_$960 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1208"] = JsonWriter_$1208;
-JsonWriter_$1208.__name__ = "JsonWriter_1208";
-JsonWriter_$1208.prototype = {
+$hxClasses["JsonWriter_960"] = JsonWriter_$960;
+JsonWriter_$960.__name__ = "JsonWriter_960";
+JsonWriter_$960.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7186,7 +7379,7 @@ JsonWriter_$1208.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1209(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$961(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -7207,18 +7400,18 @@ JsonWriter_$1208.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1208
+	,__class__: JsonWriter_$960
 };
-var JsonWriter_$1209 = function(ignoreNullOptionals) {
+var JsonWriter_$961 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1209"] = JsonWriter_$1209;
-JsonWriter_$1209.__name__ = "JsonWriter_1209";
-JsonWriter_$1209.prototype = {
+$hxClasses["JsonWriter_961"] = JsonWriter_$961;
+JsonWriter_$961.__name__ = "JsonWriter_961";
+JsonWriter_$961.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7263,7 +7456,7 @@ JsonWriter_$1209.prototype = {
 		switch(o._hx_index) {
 		case 0:
 			var to = o.to;
-			var decl = [indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "ChangeCntr" + "\": {" + newLine;
@@ -7273,7 +7466,7 @@ JsonWriter_$1209.prototype = {
 			return json;
 		case 1:
 			var d = o.d;
-			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "d" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(d,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Dmg" + "\": {" + newLine;
@@ -7283,7 +7476,7 @@ JsonWriter_$1209.prototype = {
 			return json;
 		case 2:
 			var m = o.m;
-			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Mana" + "\": {" + newLine;
@@ -7293,7 +7486,7 @@ JsonWriter_$1209.prototype = {
 			return json;
 		case 3:
 			var m = o.m;
-			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "m" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(m,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "Mine" + "\": {" + newLine;
@@ -7303,7 +7496,7 @@ JsonWriter_$1209.prototype = {
 			return json;
 		case 4:
 			var type = o.type;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "AddBuff" + "\": {" + newLine;
@@ -7319,18 +7512,18 @@ JsonWriter_$1209.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1209
+	,__class__: JsonWriter_$961
 };
-var JsonWriter_$1210 = function(ignoreNullOptionals) {
+var JsonWriter_$962 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1210"] = JsonWriter_$1210;
-JsonWriter_$1210.__name__ = "JsonWriter_1210";
-JsonWriter_$1210.prototype = {
+$hxClasses["JsonWriter_962"] = JsonWriter_$962;
+JsonWriter_$962.__name__ = "JsonWriter_962";
+JsonWriter_$962.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7372,7 +7565,7 @@ JsonWriter_$1210.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1211(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$963(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -7393,18 +7586,18 @@ JsonWriter_$1210.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1210
+	,__class__: JsonWriter_$962
 };
-var JsonWriter_$1211 = function(ignoreNullOptionals) {
+var JsonWriter_$963 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1211"] = JsonWriter_$1211;
-JsonWriter_$1211.__name__ = "JsonWriter_1211";
-JsonWriter_$1211.prototype = {
+$hxClasses["JsonWriter_963"] = JsonWriter_$963;
+JsonWriter_$963.__name__ = "JsonWriter_963";
+JsonWriter_$963.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7453,7 +7646,7 @@ JsonWriter_$1211.prototype = {
 			var newHeight = o.newHeight;
 			var oldType = o.oldType;
 			var newType = o.newType;
-			var decl = [indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldHeight" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(oldHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newHeight" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(newHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldType" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(oldType,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newType" + "\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(newType,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldHeight" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(oldHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newHeight" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(newHeight,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "oldType" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(oldType,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "newType" + "\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(newType,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "LandChange" + "\": {" + newLine;
@@ -7465,7 +7658,7 @@ JsonWriter_$1211.prototype = {
 			var type = o.type;
 			var hex = o.hex;
 			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$1213(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "hex" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(hex,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$965(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "SimpleEffect" + "\": {" + newLine;
@@ -7478,7 +7671,7 @@ JsonWriter_$1211.prototype = {
 			var from = o.from;
 			var to = o.to;
 			var colorAdj = o.colorAdj;
-			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$1187(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$1213(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
+			var decl = [indent + space + space + "\"" + "type" + "\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(type,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "from" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(from,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "to" + "\": " + new JsonWriter_$939(this.ignoreNullOptionals)._write(to,space,level + 2,false,onAllOptionalNull),indent + space + space + "\"" + "colorAdj" + "\": " + new JsonWriter_$965(this.ignoreNullOptionals)._write(colorAdj,space,level + 2,false,onAllOptionalNull)];
 			var newLine = space != "" && decl.length > 0 ? "\n" : "";
 			var json = firstIndent + "{" + newLine;
 			json += indent + space + "\"" + "DirectedEffect" + "\": {" + newLine;
@@ -7494,18 +7687,18 @@ JsonWriter_$1211.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1211
+	,__class__: JsonWriter_$963
 };
-var JsonWriter_$1213 = function(ignoreNullOptionals) {
+var JsonWriter_$965 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1213"] = JsonWriter_$1213;
-JsonWriter_$1213.__name__ = "JsonWriter_1213";
-JsonWriter_$1213.prototype = {
+$hxClasses["JsonWriter_965"] = JsonWriter_$965;
+JsonWriter_$965.__name__ = "JsonWriter_965";
+JsonWriter_$965.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7547,7 +7740,7 @@ JsonWriter_$1213.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$1215(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$1217(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$1215(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$1215(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$1215(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"contrast\": " + new JsonWriter_$967(this.ignoreNullOptionals)._write(o.contrast,space,level + 1,false,onAllOptionalNull),indent + space + "\"gain\": " + new JsonWriter_$969(this.ignoreNullOptionals)._write(o.gain,space,level + 1,false,onAllOptionalNull),indent + space + "\"hue\": " + new JsonWriter_$967(this.ignoreNullOptionals)._write(o.hue,space,level + 1,false,onAllOptionalNull),indent + space + "\"lightness\": " + new JsonWriter_$967(this.ignoreNullOptionals)._write(o.lightness,space,level + 1,false,onAllOptionalNull),indent + space + "\"saturation\": " + new JsonWriter_$967(this.ignoreNullOptionals)._write(o.saturation,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [o.contrast == null,o.gain == null,o.hue == null,o.lightness == null,o.saturation == null];
 			if(skips.indexOf(false) == -1) {
@@ -7581,18 +7774,18 @@ JsonWriter_$1213.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1213
+	,__class__: JsonWriter_$965
 };
-var JsonWriter_$1215 = function(ignoreNullOptionals) {
+var JsonWriter_$967 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1215"] = JsonWriter_$1215;
-JsonWriter_$1215.__name__ = "JsonWriter_1215";
-JsonWriter_$1215.prototype = {
+$hxClasses["JsonWriter_967"] = JsonWriter_$967;
+JsonWriter_$967.__name__ = "JsonWriter_967";
+JsonWriter_$967.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7637,18 +7830,18 @@ JsonWriter_$1215.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1215
+	,__class__: JsonWriter_$967
 };
-var JsonWriter_$1217 = function(ignoreNullOptionals) {
+var JsonWriter_$969 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1217"] = JsonWriter_$1217;
-JsonWriter_$1217.__name__ = "JsonWriter_1217";
-JsonWriter_$1217.prototype = {
+$hxClasses["JsonWriter_969"] = JsonWriter_$969;
+JsonWriter_$969.__name__ = "JsonWriter_969";
+JsonWriter_$969.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7690,7 +7883,7 @@ JsonWriter_$1217.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$1218(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"alpha\": " + new JsonWriter_$970(this.ignoreNullOptionals)._write(o.alpha,space,level + 1,false,onAllOptionalNull),indent + space + "\"color\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.color,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false];
 			if(skips.indexOf(false) == -1) {
@@ -7724,18 +7917,18 @@ JsonWriter_$1217.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1217
+	,__class__: JsonWriter_$969
 };
-var JsonWriter_$1218 = function(ignoreNullOptionals) {
+var JsonWriter_$970 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1218"] = JsonWriter_$1218;
-JsonWriter_$1218.__name__ = "JsonWriter_1218";
-JsonWriter_$1218.prototype = {
+$hxClasses["JsonWriter_970"] = JsonWriter_$970;
+JsonWriter_$970.__name__ = "JsonWriter_970";
+JsonWriter_$970.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7780,18 +7973,18 @@ JsonWriter_$1218.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1218
+	,__class__: JsonWriter_$970
 };
-var JsonWriter_$1219 = function(ignoreNullOptionals) {
+var JsonWriter_$971 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1219"] = JsonWriter_$1219;
-JsonWriter_$1219.__name__ = "JsonWriter_1219";
-JsonWriter_$1219.prototype = {
+$hxClasses["JsonWriter_971"] = JsonWriter_$971;
+JsonWriter_$971.__name__ = "JsonWriter_971";
+JsonWriter_$971.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -7833,566 +8026,7 @@ JsonWriter_$1219.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$1220(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$1221(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$1178(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1219
-};
-var JsonWriter_$1220 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1220"] = JsonWriter_$1220;
-JsonWriter_$1220.__name__ = "JsonWriter_1220";
-JsonWriter_$1220.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$1195(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1220
-};
-var JsonWriter_$1221 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1221"] = JsonWriter_$1221;
-JsonWriter_$1221.__name__ = "JsonWriter_1221";
-JsonWriter_$1221.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$1222(this.ignoreNullOptionals);
-		var _g = [];
-		var _g1 = 0;
-		while(_g1 < o.length) {
-			var element = o[_g1];
-			++_g1;
-			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && o.length > 0 ? "\n" : "";
-		var json = firstIndent + "[" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "]";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1221
-};
-var JsonWriter_$1222 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1222"] = JsonWriter_$1222;
-JsonWriter_$1222.__name__ = "JsonWriter_1222";
-JsonWriter_$1222.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"id\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1222
-};
-var JsonWriter_$1224 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1224"] = JsonWriter_$1224;
-JsonWriter_$1224.__name__ = "JsonWriter_1224";
-JsonWriter_$1224.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$1225(this.ignoreNullOptionals);
-		var _g = [];
-		var h = o.h;
-		var key_h = h;
-		var key_keys = Object.keys(h);
-		var key_length = key_keys.length;
-		var key_current = 0;
-		while(key_current < key_length) {
-			var key = key_keys[key_current++];
-			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1224
-};
-var JsonWriter_$1225 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1225"] = JsonWriter_$1225;
-JsonWriter_$1225.__name__ = "JsonWriter_1225";
-JsonWriter_$1225.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"name\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$1218(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$1188(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
-		if(this.ignoreNullOptionals) {
-			var skips = [false,false,false,false,false,false,false,false];
-			if(skips.indexOf(false) == -1) {
-				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
-			} else {
-				var _g = [];
-				var _g1 = 0;
-				var _g2 = decl.length;
-				while(_g1 < _g2) {
-					var i = _g1++;
-					var decl1;
-					if(skips[i]) {
-						continue;
-					} else {
-						decl1 = decl[i];
-					}
-					_g.push(decl1);
-				}
-				decl = _g;
-			}
-		}
-		var newLine = space != "" && decl.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += decl.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1225
-};
-var JsonWriter_$1226 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1226"] = JsonWriter_$1226;
-JsonWriter_$1226.__name__ = "JsonWriter_1226";
-JsonWriter_$1226.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var valueWriter = new JsonWriter_$1179(this.ignoreNullOptionals);
-		var _g = [];
-		var key = o.keys();
-		while(key.hasNext()) {
-			var key1 = key.next();
-			_g.push(indent + space + "\"" + key1 + "\": " + valueWriter._write(o.h[key1],space,level + 1,false,onAllOptionalNull));
-		}
-		var values = _g;
-		var newLine = space != "" && values.length > 0 ? "\n" : "";
-		var json = firstIndent + "{" + newLine;
-		json += values.join("," + newLine) + newLine;
-		json += indent + "}";
-		return json;
-	}
-	,write: function(o,space) {
-		if(space == null) {
-			space = "";
-		}
-		return this._write(o,space,0,false);
-	}
-	,__class__: JsonWriter_$1226
-};
-var JsonWriter_$1227 = function(ignoreNullOptionals) {
-	if(ignoreNullOptionals == null) {
-		ignoreNullOptionals = false;
-	}
-	this.shouldQuote = true;
-	this.ignoreNullOptionals = ignoreNullOptionals;
-};
-$hxClasses["JsonWriter_1227"] = JsonWriter_$1227;
-JsonWriter_$1227.__name__ = "JsonWriter_1227";
-JsonWriter_$1227.prototype = {
-	ignoreNullOptionals: null
-	,shouldQuote: null
-	,quote: function(str) {
-		if(this.shouldQuote) {
-			return json2object_writer_StringUtils.quote(str);
-		} else {
-			return str;
-		}
-	}
-	,dontQuote: function() {
-		this.shouldQuote = false;
-		return this;
-	}
-	,buildIndent: function(space,level) {
-		if(level == 0) {
-			return "";
-		}
-		var buff_b = "";
-		var _g = 0;
-		var _g1 = level;
-		while(_g < _g1) {
-			var i = _g++;
-			buff_b += space == null ? "null" : "" + space;
-		}
-		return buff_b;
-	}
-	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
-		if(indentFirst == null) {
-			indentFirst = false;
-		}
-		if(level == null) {
-			level = 0;
-		}
-		if(space == null) {
-			space = "";
-		}
-		var indent = this.buildIndent(space,level);
-		var firstIndent = indentFirst ? indent : "";
-		if(o == null) {
-			return firstIndent + "null";
-		}
-		var decl = [indent + space + "\"unitStats\": " + new JsonWriter_$1229(this.ignoreNullOptionals)._write(o.unitStats,space,level + 1,false,onAllOptionalNull),indent + space + "\"deathTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.deathTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnStartTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.turnStartTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnEndTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.turnEndTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.touchTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchedTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.touchedTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"attackTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.attackTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"defendTriggers\": " + new JsonWriter_$1233(this.ignoreNullOptionals)._write(o.defendTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"visionCache\": " + new JsonWriter_$1239(this.ignoreNullOptionals)._write(o.visionCache,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"unitStats\": " + new JsonWriter_$973(this.ignoreNullOptionals)._write(o.unitStats,space,level + 1,false,onAllOptionalNull),indent + space + "\"deathTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.deathTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnStartTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.turnStartTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnEndTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.turnEndTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.touchTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"touchedTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.touchedTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"attackTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.attackTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"defendTriggers\": " + new JsonWriter_$977(this.ignoreNullOptionals)._write(o.defendTriggers,space,level + 1,false,onAllOptionalNull),indent + space + "\"visionCache\": " + new JsonWriter_$983(this.ignoreNullOptionals)._write(o.visionCache,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8426,18 +8060,18 @@ JsonWriter_$1227.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1227
+	,__class__: JsonWriter_$971
 };
-var JsonWriter_$1229 = function(ignoreNullOptionals) {
+var JsonWriter_$973 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1229"] = JsonWriter_$1229;
-JsonWriter_$1229.__name__ = "JsonWriter_1229";
-JsonWriter_$1229.prototype = {
+$hxClasses["JsonWriter_973"] = JsonWriter_$973;
+JsonWriter_$973.__name__ = "JsonWriter_973";
+JsonWriter_$973.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8479,7 +8113,7 @@ JsonWriter_$1229.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1230(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$974(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -8503,18 +8137,18 @@ JsonWriter_$1229.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1229
+	,__class__: JsonWriter_$973
 };
-var JsonWriter_$1230 = function(ignoreNullOptionals) {
+var JsonWriter_$974 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1230"] = JsonWriter_$1230;
-JsonWriter_$1230.__name__ = "JsonWriter_1230";
-JsonWriter_$1230.prototype = {
+$hxClasses["JsonWriter_974"] = JsonWriter_$974;
+JsonWriter_$974.__name__ = "JsonWriter_974";
+JsonWriter_$974.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8556,7 +8190,7 @@ JsonWriter_$1230.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"attack\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.attack,space,level + 1,false,onAllOptionalNull),indent + space + "\"maxHp\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.maxHp,space,level + 1,false,onAllOptionalNull),indent + space + "\"vision\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.vision,space,level + 1,false,onAllOptionalNull),indent + space + "\"range\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.range,space,level + 1,false,onAllOptionalNull),indent + space + "\"speed\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.speed,space,level + 1,false,onAllOptionalNull),indent + space + "\"flying\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.flying,space,level + 1,false,onAllOptionalNull),indent + space + "\"moveCostMinerals\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.moveCostMinerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"moveCostMana\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.moveCostMana,space,level + 1,false,onAllOptionalNull),indent + space + "\"detector\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.detector,space,level + 1,false,onAllOptionalNull),indent + space + "\"invisible\": " + new JsonWriter_$1180(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"skills\": " + new JsonWriter_$1231(this.ignoreNullOptionals)._write(o.skills,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"attack\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.attack,space,level + 1,false,onAllOptionalNull),indent + space + "\"maxHp\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.maxHp,space,level + 1,false,onAllOptionalNull),indent + space + "\"vision\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.vision,space,level + 1,false,onAllOptionalNull),indent + space + "\"range\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.range,space,level + 1,false,onAllOptionalNull),indent + space + "\"speed\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.speed,space,level + 1,false,onAllOptionalNull),indent + space + "\"flying\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.flying,space,level + 1,false,onAllOptionalNull),indent + space + "\"moveCostMinerals\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.moveCostMinerals,space,level + 1,false,onAllOptionalNull),indent + space + "\"moveCostMana\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.moveCostMana,space,level + 1,false,onAllOptionalNull),indent + space + "\"detector\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.detector,space,level + 1,false,onAllOptionalNull),indent + space + "\"invisible\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.invisible,space,level + 1,false,onAllOptionalNull),indent + space + "\"skills\": " + new JsonWriter_$975(this.ignoreNullOptionals)._write(o.skills,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false,false,false,false,false,false,false,false,false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8590,18 +8224,18 @@ JsonWriter_$1230.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1230
+	,__class__: JsonWriter_$974
 };
-var JsonWriter_$1231 = function(ignoreNullOptionals) {
+var JsonWriter_$975 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1231"] = JsonWriter_$1231;
-JsonWriter_$1231.__name__ = "JsonWriter_1231";
-JsonWriter_$1231.prototype = {
+$hxClasses["JsonWriter_975"] = JsonWriter_$975;
+JsonWriter_$975.__name__ = "JsonWriter_975";
+JsonWriter_$975.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8643,7 +8277,7 @@ JsonWriter_$1231.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1179(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$931(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -8664,18 +8298,18 @@ JsonWriter_$1231.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1231
+	,__class__: JsonWriter_$975
 };
-var JsonWriter_$1233 = function(ignoreNullOptionals) {
+var JsonWriter_$977 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1233"] = JsonWriter_$1233;
-JsonWriter_$1233.__name__ = "JsonWriter_1233";
-JsonWriter_$1233.prototype = {
+$hxClasses["JsonWriter_977"] = JsonWriter_$977;
+JsonWriter_$977.__name__ = "JsonWriter_977";
+JsonWriter_$977.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8717,7 +8351,7 @@ JsonWriter_$1233.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1234(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$978(this.ignoreNullOptionals);
 		var _g = [];
 		var h = o.h;
 		var key_h = h;
@@ -8741,18 +8375,18 @@ JsonWriter_$1233.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1233
+	,__class__: JsonWriter_$977
 };
-var JsonWriter_$1234 = function(ignoreNullOptionals) {
+var JsonWriter_$978 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1234"] = JsonWriter_$1234;
-JsonWriter_$1234.__name__ = "JsonWriter_1234";
-JsonWriter_$1234.prototype = {
+$hxClasses["JsonWriter_978"] = JsonWriter_$978;
+JsonWriter_$978.__name__ = "JsonWriter_978";
+JsonWriter_$978.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8794,7 +8428,7 @@ JsonWriter_$1234.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1236(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$980(this.ignoreNullOptionals);
 		var _g = [];
 		var _g1 = 0;
 		while(_g1 < o.length) {
@@ -8815,18 +8449,18 @@ JsonWriter_$1234.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1234
+	,__class__: JsonWriter_$978
 };
-var JsonWriter_$1236 = function(ignoreNullOptionals) {
+var JsonWriter_$980 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1236"] = JsonWriter_$1236;
-JsonWriter_$1236.__name__ = "JsonWriter_1236";
-JsonWriter_$1236.prototype = {
+$hxClasses["JsonWriter_980"] = JsonWriter_$980;
+JsonWriter_$980.__name__ = "JsonWriter_980";
+JsonWriter_$980.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8868,7 +8502,7 @@ JsonWriter_$1236.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var decl = [indent + space + "\"args\": " + new JsonWriter_$1231(this.ignoreNullOptionals)._write(o.args,space,level + 1,false,onAllOptionalNull),indent + space + "\"script\": " + new JsonWriter_$1179(this.ignoreNullOptionals)._write(o.script,space,level + 1,false,onAllOptionalNull)];
+		var decl = [indent + space + "\"args\": " + new JsonWriter_$975(this.ignoreNullOptionals)._write(o.args,space,level + 1,false,onAllOptionalNull),indent + space + "\"script\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.script,space,level + 1,false,onAllOptionalNull)];
 		if(this.ignoreNullOptionals) {
 			var skips = [false,false];
 			if(skips.indexOf(false) == -1) {
@@ -8902,18 +8536,18 @@ JsonWriter_$1236.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1236
+	,__class__: JsonWriter_$980
 };
-var JsonWriter_$1239 = function(ignoreNullOptionals) {
+var JsonWriter_$983 = function(ignoreNullOptionals) {
 	if(ignoreNullOptionals == null) {
 		ignoreNullOptionals = false;
 	}
 	this.shouldQuote = true;
 	this.ignoreNullOptionals = ignoreNullOptionals;
 };
-$hxClasses["JsonWriter_1239"] = JsonWriter_$1239;
-JsonWriter_$1239.__name__ = "JsonWriter_1239";
-JsonWriter_$1239.prototype = {
+$hxClasses["JsonWriter_983"] = JsonWriter_$983;
+JsonWriter_$983.__name__ = "JsonWriter_983";
+JsonWriter_$983.prototype = {
 	ignoreNullOptionals: null
 	,shouldQuote: null
 	,quote: function(str) {
@@ -8955,7 +8589,7 @@ JsonWriter_$1239.prototype = {
 		if(o == null) {
 			return firstIndent + "null";
 		}
-		var valueWriter = new JsonWriter_$1201(this.ignoreNullOptionals);
+		var valueWriter = new JsonWriter_$953(this.ignoreNullOptionals);
 		var _g = [];
 		var key = o.keys();
 		while(key.hasNext()) {
@@ -8975,7 +8609,566 @@ JsonWriter_$1239.prototype = {
 		}
 		return this._write(o,space,0,false);
 	}
-	,__class__: JsonWriter_$1239
+	,__class__: JsonWriter_$983
+};
+var JsonWriter_$984 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_984"] = JsonWriter_$984;
+JsonWriter_$984.__name__ = "JsonWriter_984";
+JsonWriter_$984.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"mapId\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapName\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.mapName,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull),indent + space + "\"curTurn\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.curTurn,space,level + 1,false,onAllOptionalNull),indent + space + "\"turns\": " + new JsonWriter_$985(this.ignoreNullOptionals)._write(o.turns,space,level + 1,false,onAllOptionalNull),indent + space + "\"players\": " + new JsonWriter_$986(this.ignoreNullOptionals)._write(o.players,space,level + 1,false,onAllOptionalNull),indent + space + "\"field\": " + new JsonWriter_$930(this.ignoreNullOptionals)._write(o.field,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$984
+};
+var JsonWriter_$985 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_985"] = JsonWriter_$985;
+JsonWriter_$985.__name__ = "JsonWriter_985";
+JsonWriter_$985.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$947(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$985
+};
+var JsonWriter_$986 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_986"] = JsonWriter_$986;
+JsonWriter_$986.__name__ = "JsonWriter_986";
+JsonWriter_$986.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$987(this.ignoreNullOptionals);
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < o.length) {
+			var element = o[_g1];
+			++_g1;
+			_g.push(valueWriter._write(element,space,level + 1,true,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && o.length > 0 ? "\n" : "";
+		var json = firstIndent + "[" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "]";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$986
+};
+var JsonWriter_$987 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_987"] = JsonWriter_$987;
+JsonWriter_$987.__name__ = "JsonWriter_987";
+JsonWriter_$987.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"id\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.id,space,level + 1,false,onAllOptionalNull),indent + space + "\"name\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"disconnected\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.disconnected,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnDone\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.turnDone,space,level + 1,false,onAllOptionalNull),indent + space + "\"isAI\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.isAI,space,level + 1,false,onAllOptionalNull),indent + space + "\"countryId\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.countryId,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$987
+};
+var JsonWriter_$989 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_989"] = JsonWriter_$989;
+JsonWriter_$989.__name__ = "JsonWriter_989";
+JsonWriter_$989.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$990(this.ignoreNullOptionals);
+		var _g = [];
+		var h = o.h;
+		var key_h = h;
+		var key_keys = Object.keys(h);
+		var key_length = key_keys.length;
+		var key_current = 0;
+		while(key_current < key_length) {
+			var key = key_keys[key_current++];
+			_g.push(indent + space + "\"" + key + "\": " + valueWriter._write(o.h[key],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$989
+};
+var JsonWriter_$990 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_990"] = JsonWriter_$990;
+JsonWriter_$990.__name__ = "JsonWriter_990";
+JsonWriter_$990.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var decl = [indent + space + "\"name\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.name,space,level + 1,false,onAllOptionalNull),indent + space + "\"mapId\": " + new JsonWriter_$931(this.ignoreNullOptionals)._write(o.mapId,space,level + 1,false,onAllOptionalNull),indent + space + "\"time\": " + new JsonWriter_$970(this.ignoreNullOptionals)._write(o.time,space,level + 1,false,onAllOptionalNull),indent + space + "\"turnNum\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.turnNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"playersNum\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.playersNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"countriesNum\": " + new JsonWriter_$932(this.ignoreNullOptionals)._write(o.countriesNum,space,level + 1,false,onAllOptionalNull),indent + space + "\"isGameFinished\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.isGameFinished,space,level + 1,false,onAllOptionalNull),indent + space + "\"netGame\": " + new JsonWriter_$940(this.ignoreNullOptionals)._write(o.netGame,space,level + 1,false,onAllOptionalNull)];
+		if(this.ignoreNullOptionals) {
+			var skips = [false,false,false,false,false,false,false,false];
+			if(skips.indexOf(false) == -1) {
+				decl = onAllOptionalNull != null ? [onAllOptionalNull()] : [];
+			} else {
+				var _g = [];
+				var _g1 = 0;
+				var _g2 = decl.length;
+				while(_g1 < _g2) {
+					var i = _g1++;
+					var decl1;
+					if(skips[i]) {
+						continue;
+					} else {
+						decl1 = decl[i];
+					}
+					_g.push(decl1);
+				}
+				decl = _g;
+			}
+		}
+		var newLine = space != "" && decl.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += decl.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$990
+};
+var JsonWriter_$991 = function(ignoreNullOptionals) {
+	if(ignoreNullOptionals == null) {
+		ignoreNullOptionals = false;
+	}
+	this.shouldQuote = true;
+	this.ignoreNullOptionals = ignoreNullOptionals;
+};
+$hxClasses["JsonWriter_991"] = JsonWriter_$991;
+JsonWriter_$991.__name__ = "JsonWriter_991";
+JsonWriter_$991.prototype = {
+	ignoreNullOptionals: null
+	,shouldQuote: null
+	,quote: function(str) {
+		if(this.shouldQuote) {
+			return json2object_writer_StringUtils.quote(str);
+		} else {
+			return str;
+		}
+	}
+	,dontQuote: function() {
+		this.shouldQuote = false;
+		return this;
+	}
+	,buildIndent: function(space,level) {
+		if(level == 0) {
+			return "";
+		}
+		var buff_b = "";
+		var _g = 0;
+		var _g1 = level;
+		while(_g < _g1) {
+			var i = _g++;
+			buff_b += space == null ? "null" : "" + space;
+		}
+		return buff_b;
+	}
+	,_write: function(o,space,level,indentFirst,onAllOptionalNull) {
+		if(indentFirst == null) {
+			indentFirst = false;
+		}
+		if(level == null) {
+			level = 0;
+		}
+		if(space == null) {
+			space = "";
+		}
+		var indent = this.buildIndent(space,level);
+		var firstIndent = indentFirst ? indent : "";
+		if(o == null) {
+			return firstIndent + "null";
+		}
+		var valueWriter = new JsonWriter_$931(this.ignoreNullOptionals);
+		var _g = [];
+		var key = o.keys();
+		while(key.hasNext()) {
+			var key1 = key.next();
+			_g.push(indent + space + "\"" + key1 + "\": " + valueWriter._write(o.h[key1],space,level + 1,false,onAllOptionalNull));
+		}
+		var values = _g;
+		var newLine = space != "" && values.length > 0 ? "\n" : "";
+		var json = firstIndent + "{" + newLine;
+		json += values.join("," + newLine) + newLine;
+		json += indent + "}";
+		return json;
+	}
+	,write: function(o,space) {
+		if(space == null) {
+			space = "";
+		}
+		return this._write(o,space,0,false);
+	}
+	,__class__: JsonWriter_$991
 };
 var Lambda = function() { };
 $hxClasses["Lambda"] = Lambda;
@@ -9348,7 +9541,7 @@ Main.prototype = $extend(hxd_App.prototype,{
 		utils_Tweener.init();
 		Main.mainScene = this.s2d;
 		Main.mainScene.ctx.defaultSmooth = true;
-		hxd_Timer.smoothFactor = 0.2;
+		hxd_Timer.smoothFactor = 0.99;
 		if(utils_IframeEvents.isInIframe()) {
 			utils_IframeEvents.Init();
 		}
@@ -69651,11 +69844,9 @@ hxd_clipper__$Clipper_ClipperBase.prototype = {
 	}
 	,addPolygons: function(ppg,polyType) {
 		var result = false;
-		var _g_i = 0;
-		var _g_a = ppg;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(ppg);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			if(this.addPolygon(p,polyType)) {
 				result = true;
 			}
@@ -72014,11 +72205,9 @@ hxd_clipper_Clipper.prototype = $extend(hxd_clipper__$Clipper_ClipperBase.protot
 		}
 	}
 	,reversePolygons: function(polys) {
-		var _g_i = 0;
-		var _g_a = polys;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(polys);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			h2d_col_IPolygon.reverse(p);
 		}
 	}
@@ -73038,11 +73227,9 @@ hxd_clipper_ClipperOffset.prototype = {
 		}
 	}
 	,addPolygons: function(pols,joinType,endType) {
-		var _g_i = 0;
-		var _g_a = pols;
-		var _g_l = _g_a.length;
-		while(_g_i < _g_l) {
-			var p = _g_a[_g_i++];
+		var _g = new hxd_impl_ArrayIterator_$h2d_$col_$IPolygon(pols);
+		while(_g.i < _g.l) {
+			var p = _g.a[_g.i++];
 			this.addPolygon(p,joinType,endType);
 		}
 	}
@@ -77364,30 +77551,6 @@ hxd_fs_LoadedBitmap.toBitmap = function(this1) {
 };
 hxd_fs_LoadedBitmap.toNative = function(this1) {
 	return this1;
-};
-var hxd_fs_LocalFileSystem = function(dir) {
-	throw haxe_Exception.thrown("Local file system is not supported for this platform");
-};
-$hxClasses["hxd.fs.LocalFileSystem"] = hxd_fs_LocalFileSystem;
-hxd_fs_LocalFileSystem.__name__ = "hxd.fs.LocalFileSystem";
-hxd_fs_LocalFileSystem.__interfaces__ = [hxd_fs_FileSystem];
-hxd_fs_LocalFileSystem.prototype = {
-	baseDir: null
-	,exists: function(path) {
-		return false;
-	}
-	,get: function(path) {
-		return null;
-	}
-	,getRoot: function() {
-		return null;
-	}
-	,dispose: function() {
-	}
-	,dir: function(path) {
-		return null;
-	}
-	,__class__: hxd_fs_LocalFileSystem
 };
 var hxd_fs_NotFound = function(path) {
 	this.path = path;
@@ -96110,7 +96273,7 @@ logic_MapCursor.prototype = {
 			++_g;
 			var bmp = new h2d_Bitmap(view_ui_screens_Game.gameField.cursorTile,null);
 			bmp.color = new h3d_Vector(0,0,1,0.55);
-			var hexTile = view_ui_screens_Game.gameField.tiles.h[Std.string(hex) + ""];
+			var hexTile = view_ui_screens_Game.gameField.tiles.get(hex.q,hex.r);
 			if(hexTile == null) {
 				continue;
 			}
@@ -96401,6 +96564,7 @@ logic_CamSystem.PushCamState = function() {
 	this1.h[key] = state;
 };
 logic_CamSystem.PopCamState = function() {
+	logic_CamSystem.rotationHex = null;
 	var this1 = model_Store.cam.positions;
 	var key = logic_G.get_curPlayer().id;
 	var state = this1.h[key];
@@ -96438,7 +96602,7 @@ logic_CamSystem.PopCamState = function() {
 		_this.scaleX = v;
 		_this.posChanged = true;
 		_this.scaleY = v;
-		logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "");
+		logic_EventSystem.fire(Std.string(logic_EventType.CamUpdated) + "",false);
 	}
 };
 var logic_CountrySystem = function() { };
@@ -96530,6 +96694,7 @@ logic_CountrySystem.addUpgrade = function(countryId,upgrade,td) {
 	return true;
 };
 var logic_DataBase = function() {
+	this.spritesheetMap = new haxe_ds_StringMap();
 	this.upgradesMap = new haxe_ds_StringMap();
 	this.buffsMap = new haxe_ds_StringMap();
 	this.itemsMap = new haxe_ds_StringMap();
@@ -96579,6 +96744,20 @@ logic_DataBase.getMapFileText = function(path) {
 		return null;
 	}
 	var result = logic_DataBase.mapFiles.load(path).toText();
+	return result;
+};
+logic_DataBase.GetObjSpriteSheetInfo = function(type,path) {
+	var result = logic_DataBase.db.spritesheetMap.h[type + path];
+	if(result != null) {
+		return result;
+	}
+	var txt = logic_DataBase.getMapFileText(path);
+	if(txt == null) {
+		return null;
+	}
+	var parser = new JsonParser_$1508();
+	result = parser.fromJson(txt);
+	logic_DataBase.db.spritesheetMap.h[type + path] = result;
 	return result;
 };
 logic_DataBase.workerUpdate = function() {
@@ -96645,7 +96824,7 @@ logic_DataBase.saveData = function() {
 	if(logic_DataBase.db == null) {
 		return;
 	}
-	var writer = new JsonWriter_$1178();
+	var writer = new JsonWriter_$930();
 	logic_UnitSystem.copyTurnUnitsToField();
 	logic_ItemSystem.copyTurnItemsToField();
 	var json = writer.write(model_Store.game.field,"  ");
@@ -96710,56 +96889,56 @@ logic_DataBase.onNeedRefresh = function(path) {
 logic_DataBase.parseUnitMap = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.UNITS_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.UNITS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 211, className : "logic.DataBase", methodName : "parseUnitMap"});
+		haxe_Log.trace("No file: " + logic_DataBase.UNITS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 221, className : "logic.DataBase", methodName : "parseUnitMap"});
 		return;
 	}
-	var parser = new JsonParser_$1728();
+	var parser = new JsonParser_$1479();
 	logic_DataBase.db.unitsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseItemMap = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.ITEMS_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.ITEMS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 221, className : "logic.DataBase", methodName : "parseItemMap"});
+		haxe_Log.trace("No file: " + logic_DataBase.ITEMS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 231, className : "logic.DataBase", methodName : "parseItemMap"});
 		return;
 	}
-	var parser = new JsonParser_$1730();
+	var parser = new JsonParser_$1481();
 	logic_DataBase.db.itemsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseUpgradeMap = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.UPGRADES_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.UPGRADES_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 231, className : "logic.DataBase", methodName : "parseUpgradeMap"});
+		haxe_Log.trace("No file: " + logic_DataBase.UPGRADES_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 241, className : "logic.DataBase", methodName : "parseUpgradeMap"});
 		return;
 	}
-	var parser = new JsonParser_$1732();
+	var parser = new JsonParser_$1483();
 	logic_DataBase.db.upgradesMap = parser.fromJson(txt);
 };
 logic_DataBase.parseBuffsMap = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.BUFFS_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.BUFFS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 241, className : "logic.DataBase", methodName : "parseBuffsMap"});
+		haxe_Log.trace("No file: " + logic_DataBase.BUFFS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 251, className : "logic.DataBase", methodName : "parseBuffsMap"});
 		return;
 	}
-	var parser = new JsonParser_$1734();
+	var parser = new JsonParser_$1485();
 	logic_DataBase.db.buffsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseSkillsMap = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.SKILLS_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.SKILLS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 251, className : "logic.DataBase", methodName : "parseSkillsMap"});
+		haxe_Log.trace("No file: " + logic_DataBase.SKILLS_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 261, className : "logic.DataBase", methodName : "parseSkillsMap"});
 		return;
 	}
-	var parser = new JsonParser_$1736();
+	var parser = new JsonParser_$1487();
 	logic_DataBase.db.skillsMap = parser.fromJson(txt);
 };
 logic_DataBase.parseMapInfo = function() {
 	var txt = logic_DataBase.getMapFileText(logic_DataBase.INFO_PATH);
 	if(txt == null) {
-		haxe_Log.trace("No file: " + logic_DataBase.INFO_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 261, className : "logic.DataBase", methodName : "parseMapInfo"});
+		haxe_Log.trace("No file: " + logic_DataBase.INFO_PATH,{ fileName : "src/logic/DataBase.hx", lineNumber : 271, className : "logic.DataBase", methodName : "parseMapInfo"});
 		return;
 	}
 	logic_LoadSystem.ClearTilesCache();
-	var miParser = new JsonParser_$1737();
+	var miParser = new JsonParser_$1488();
 	logic_DataBase.db.mapInfo = miParser.fromJson(txt);
 	logic_LoadSystem.CalcTilesCache(logic_DataBase.db.mapInfo);
 };
@@ -96770,6 +96949,7 @@ logic_DataBase.prototype = {
 	,itemsMap: null
 	,buffsMap: null
 	,upgradesMap: null
+	,spritesheetMap: null
 	,mapInfo: null
 	,__class__: logic_DataBase
 };
@@ -96934,7 +97114,7 @@ logic_FieldSystem.RemoveSelection = function(unitId) {
 logic_FieldSystem.LoadField = function(fieldId) {
 	var json = logic_DataBase.getMapFileText("fields/" + fieldId);
 	model_Store.cam.curFieldId = fieldId;
-	var parser = new JsonParser_$1710();
+	var parser = new JsonParser_$1425();
 	return parser.fromJson(json);
 };
 logic_FieldSystem.ChangeFieldSize = function(newSize) {
@@ -98182,7 +98362,7 @@ logic_LSDSystem.GetSaves = function(netGames) {
 	if(json2 == null) {
 		return [];
 	} else {
-		var parser = new JsonParser_$1765();
+		var parser = new JsonParser_$1513();
 		saveDB = parser.fromJson(json2);
 	}
 	var res = [];
@@ -98214,7 +98394,7 @@ logic_LSDSystem.Save = function(filename) {
 	if(filename == "") {
 		filename = "No name";
 	}
-	var writer = new JsonWriter_$1219();
+	var writer = new JsonWriter_$984();
 	var json = writer.write(model_Store.game);
 	logic_LSDSystem.SaveString(filename + ".sav",json);
 	var si = new model_SaveInfo(filename,model_Store.game);
@@ -98273,7 +98453,7 @@ logic_LSDSystem.Load = function(filename) {
 	if(json == null) {
 		return null;
 	}
-	var parser = new JsonParser_$1767();
+	var parser = new JsonParser_$1515();
 	var result = parser.fromJson(json);
 	var _g = 0;
 	var _g1 = result.turns;
@@ -98286,11 +98466,11 @@ logic_LSDSystem.Load = function(filename) {
 };
 logic_LSDSystem.uncompressGameState = function(compressedStr) {
 	var json = utils_StringUtils.decompress(compressedStr);
-	var parser = new JsonParser_$1767();
+	var parser = new JsonParser_$1515();
 	return parser.fromJson(json);
 };
 logic_LSDSystem.getCompressedGameString = function(gd) {
-	var writer = new JsonWriter_$1219();
+	var writer = new JsonWriter_$984();
 	var data = writer.write(gd);
 	var result = utils_StringUtils.compress(data);
 	return result;
@@ -98370,10 +98550,10 @@ logic_LoadSystem.getTileColor = function(q,r) {
 	return tmp[_this.tiles[q * _this.size + r].t];
 };
 logic_LoadSystem.GetUnitTile = function(type) {
-	return logic_LoadSystem.GetObjectTile("img/units/" + type + ".png");
+	return logic_LoadSystem.GetObjectTile("img/units/" + logic_DataBase.getUnit(type).image);
 };
 logic_LoadSystem.GetItemTile = function(type) {
-	return logic_LoadSystem.GetObjectTile("img/items/" + type + ".png");
+	return logic_LoadSystem.GetObjectTile("img/items/" + logic_DataBase.getItem(type).image);
 };
 logic_LoadSystem.GetTileImage = function(tile,isHorizontal) {
 	var path = "img/tiles/" + tile;
@@ -98390,6 +98570,22 @@ logic_LoadSystem.GetTileImage = function(tile,isHorizontal) {
 		}
 	}
 	return logic_LoadSystem.objTiles.h[path];
+};
+logic_LoadSystem.GetUnitSpriteSheetInfo = function(type) {
+	var tmp = logic_DataBase.getUnit(type);
+	var path = tmp != null ? tmp.spriteSheetInfo : null;
+	if(path == null) {
+		return null;
+	}
+	return logic_DataBase.GetObjSpriteSheetInfo(type,"img/units/" + path);
+};
+logic_LoadSystem.GetItemSpriteSheetInfo = function(type) {
+	var tmp = logic_DataBase.getItem(type);
+	var path = tmp != null ? tmp.spriteSheetInfo : null;
+	if(path == null) {
+		return null;
+	}
+	return logic_DataBase.GetObjSpriteSheetInfo(type,"img/items/" + path);
 };
 logic_LoadSystem.GetScript = function(scriptId) {
 	if(logic_LoadSystem.scriptsCache.h[scriptId] == null) {
@@ -99723,7 +99919,7 @@ logic_NetSystem.selectCountry = function(playerId,cId) {
 	logic_NetSystem.resetCountryPlayerBind(playerId);
 	logic_NetSystem.currentRoom.countries.h[cId] = playerId;
 	logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
-	var writer = new JsonWriter_$1226();
+	var writer = new JsonWriter_$991();
 	logic_NetSystem.sendToOthers({ action : "SelectedCountries", params : writer.write(logic_NetSystem.currentRoom.countries)});
 };
 logic_NetSystem.onMsgFromPlayer = function(data) {
@@ -99776,7 +99972,7 @@ logic_NetSystem.onMsgFromPlayer = function(data) {
 		logic_OrderSystem.SelectOrder(params.unitId,params.orderIdx,params.autocast);
 		break;
 	case "SelectedCountries":
-		var parser = new JsonParser_$1768();
+		var parser = new JsonParser_$1516();
 		logic_NetSystem.currentRoom.countries = parser.fromJson(params);
 		logic_EventSystem.fire(Std.string(logic_EventType.OnCountrySelected) + "");
 		break;
@@ -100701,8 +100897,8 @@ logic_UnitSystem.ResetUnitsBuffs = function() {
 	logic_MapEditorSystem.sendSelection();
 };
 logic_UnitSystem.UpdateObjects = function(objects) {
-	var uparser = new JsonParser_$1723();
-	var iparser = new JsonParser_$1718();
+	var uparser = new JsonParser_$1438();
+	var iparser = new JsonParser_$1433();
 	var _g = 0;
 	while(_g < objects.length) {
 		var o = objects[_g];
@@ -103680,8 +103876,8 @@ view_HexField.prototype = $extend(h2d_Graphics.prototype,{
 	,isTileOffScreen: function(globalPos) {
 		var scrHalfW = hxd_Window.getInstance().get_width() >> 1;
 		var scrHalfH = hxd_Window.getInstance().get_height() >> 1;
-		if(!(Math.abs(globalPos.x - scrHalfW) > scrHalfW + this.scaleX * model_Params.get_tileWidth() * 1.2)) {
-			return Math.abs(globalPos.y - scrHalfH) > scrHalfH + this.scaleY * model_Params.get_tileHeight() * 2;
+		if(!(Math.abs(globalPos.x - scrHalfW) > scrHalfW + this.scaleX * model_Params.get_tileWidth() * 2.25)) {
+			return Math.abs(globalPos.y - scrHalfH) > scrHalfH + this.scaleY * model_Params.get_tileHeight() * 2.25;
 		} else {
 			return true;
 		}
@@ -103952,8 +104148,8 @@ view_Minimap.prototype = $extend(view_HexField.prototype,{
 var view_GameField = function(parent) {
 	this.lastPos = new h2d_col_Point(-99999,-99999);
 	this.auraVisuals = new haxe_ds_StringMap();
-	this.tiles = new haxe_ds_StringMap();
 	view_HexField.call(this,parent);
+	this.tiles = new view_TilesMap(logic_G.get_field().size);
 	this.tilesLayer = new h2d_Object(this);
 	this.interaction = new h2d_Interactive(0,0,this);
 	this.interaction.enableRightButton = true;
@@ -104070,13 +104266,12 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 			var _g3 = logic_G.get_field().size;
 			while(_g2 < _g3) {
 				var r = _g2++;
-				var hex = new model_HexCoords(q,r);
-				var tile = this.tiles.h[Std.string(hex) + ""];
+				var tile = this.tiles.get(q,r);
 				if(tile == null) {
 					continue;
 				}
 				tile.color = this.getHexColor(q,r,logic_G.get_prevTurnNum());
-				var tilePos = this.getTileCoords(hex.q,hex.r);
+				var tilePos = this.getTileCoords(q,r);
 				tile.posChanged = true;
 				tile.x = tilePos.x;
 				tile.posChanged = true;
@@ -104104,7 +104299,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 							var oldType = effect.oldType;
 							var newType = effect.newType;
 							logic_FieldSystem.setTileParams(hex,newH,newType,logic_G.get_field());
-							var tile = _gthis.tiles.h[Std.string(hex) + ""];
+							var tile = _gthis.tiles.get(hex.q,hex.r);
 							if(tile != null) {
 								utils_Tweener.removeAllTweens(tile);
 								_gthis.animateTileChange(hex,tile);
@@ -104117,7 +104312,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 							if(!logic_VisionSystem.isHexVisible(hex1,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
 								continue;
 							}
-							var tile1 = _gthis.tiles.h[Std.string(hex1) + ""];
+							var tile1 = _gthis.tiles.get(hex1.q,hex1.r);
 							if(tile1 == null) {
 								continue;
 							}
@@ -104131,8 +104326,8 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 							if(!logic_VisionSystem.isHexVisible(to,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId) && !logic_VisionSystem.isHexVisible(from,logic_G.get_curPlayer() == null ? 0 : logic_G.get_curPlayer().countryId)) {
 								continue;
 							}
-							var fromTile = _gthis.tiles.h[Std.string(from) + ""];
-							var toTile = _gthis.tiles.h[Std.string(to) + ""];
+							var fromTile = _gthis.tiles.get(from.q,from.r);
+							var toTile = _gthis.tiles.get(to.q,to.r);
 							if(fromTile == null || toTile == null) {
 								continue;
 							}
@@ -104189,7 +104384,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 			while(_g < auras.length) {
 				var piece = auras[_g];
 				++_g;
-				var tile = this.tiles.h[Std.string(piece.pos) + ""];
+				var tile = this.tiles.get(piece.pos.q,piece.pos.r);
 				if(tile == null) {
 					continue;
 				}
@@ -104307,6 +104502,9 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 		this.updateAuras();
 	}
 	,onFieldEdited: function(tool) {
+		if(logic_G.get_field().size != this.tiles.size) {
+			this.tiles.setSize(logic_G.get_field().size);
+		}
 		logic_CamSystem.cursor.setMouseOver(model_Store.cam.cursorHex,true);
 		if(tool == null) {
 			this.updateDrawing(true);
@@ -104329,8 +104527,15 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 			this.updateDrawing(true);
 		}
 	}
-	,onCamUpdated: function() {
-		this.centerToHex(model_Store.cam.cursorHex);
+	,onCamUpdated: function(needCentering) {
+		if(needCentering == null) {
+			needCentering = true;
+		}
+		if(needCentering) {
+			this.centerToHex(model_Store.cam.cursorHex);
+		} else {
+			this.updateDrawing(true);
+		}
 		logic_CamSystem.cursor.setMouseOver(new model_HexCoords(-1,-1));
 	}
 	,getCenterHex: function() {
@@ -104358,20 +104563,20 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 		var tmp1;
 		if(!force) {
 			var f = this.lastPos.x - this.x;
-			tmp1 = (f < 0 ? -f : f) < this.scaleX * model_Params.get_tileWidth();
+			tmp1 = (f < 0 ? -f : f) < 2 * this.scaleX * model_Params.get_tileWidth();
 		} else {
 			tmp1 = false;
 		}
 		if(tmp1) {
 			var f = this.lastPos.y - this.y;
-			tmp = (f < 0 ? -f : f) < this.scaleY * model_Params.get_tileHeight();
+			tmp = (f < 0 ? -f : f) < 2 * this.scaleY * model_Params.get_tileHeight();
 		} else {
 			tmp = false;
 		}
 		if(tmp) {
 			return;
 		}
-		if(this.scaleX < 0.2) {
+		if(this.scaleX < 0.25) {
 			view_ui_screens_Game.minimap.redraw();
 			view_ui_screens_Game.minimap.set_visible(true);
 			this.tilesLayer.set_visible(false);
@@ -104386,7 +104591,7 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 	}
 	,drawVisibleTiles: function() {
 		this.tilesLayer.removeChildren();
-		this.tiles.h = Object.create(null);
+		this.tiles.clear();
 		view_HexField.prototype.drawVisibleTiles.call(this);
 		var rect = this.tilesLayer.getBounds(this);
 		var _this = this.interaction;
@@ -104425,10 +104630,10 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 		bmp.posChanged = true;
 		bmp.y = coords.y;
 		bmp.color = this.getHexColor(q,r,logic_G.get_turnNum());
-		this.tiles.h[q + "_" + r] = bmp;
+		this.tiles.set(q,r,bmp);
 	}
 	,updateTile: function(hex) {
-		var bmp = this.tiles.h[Std.string(hex) + ""];
+		var bmp = this.tiles.get(hex.q,hex.r);
 		if(bmp == null) {
 			return;
 		}
@@ -104569,6 +104774,31 @@ view_GameField.prototype = $extend(view_HexField.prototype,{
 	}
 	,__class__: view_GameField
 });
+var view_TilesMap = function(fieldSize) {
+	this.size = fieldSize;
+	this.clear();
+};
+$hxClasses["view.TilesMap"] = view_TilesMap;
+view_TilesMap.__name__ = "view.TilesMap";
+view_TilesMap.prototype = {
+	size: null
+	,tiles: null
+	,setSize: function(newSize) {
+		this.size = newSize;
+		this.tiles.length = this.size * this.size;
+	}
+	,clear: function() {
+		this.tiles = [];
+		this.tiles.length = this.size * this.size;
+	}
+	,set: function(q,r,bmp) {
+		this.tiles[q * this.size + r] = bmp;
+	}
+	,get: function(q,r) {
+		return this.tiles[q * this.size + r];
+	}
+	,__class__: view_TilesMap
+};
 var view_ObjectsLayer = function() {
 	this.objectViews = new haxe_ds_StringMap();
 };
@@ -106881,6 +107111,145 @@ utils_Utils.rectOverlap = function(A,B) {
 		return false;
 	}
 };
+var view_AnimatedSprite = function(image,spritesInfo,updateTileCallback) {
+	this.n = -1;
+	this.info = spritesInfo;
+	this.callback = updateTileCallback;
+	var _this = this.info.sprites;
+	var result = new Array(_this.length);
+	var _g = 0;
+	var _g1 = _this.length;
+	while(_g < _g1) {
+		var i = _g++;
+		var frame = _this[i];
+		result[i] = { tile : image.sub(frame.x,frame.y,frame.w,frame.h), widthPercent : 1.0, flip : false};
+	}
+	this.sprites = result;
+	var directions = this.info.packer.directions;
+	var _g = 0;
+	var _g1 = directions;
+	while(_g < _g1) {
+		var dir = _g++;
+		var mW = 0;
+		var _g2 = 0;
+		var _g3 = this.info.packer.animationFramesNum;
+		while(_g2 < _g3) {
+			var i = _g2++;
+			var sprite = this.info.sprites[directions * i + dir];
+			var b = sprite.w;
+			if(mW < b) {
+				mW = b;
+			}
+		}
+		var _g4 = 0;
+		var _g5 = this.info.packer.animationFramesNum;
+		while(_g4 < _g5) {
+			var i1 = _g4++;
+			var s = this.sprites[directions * i1 + dir];
+			s.widthPercent = s.tile.width / mW;
+		}
+	}
+	logic_EventSystem.connect(Std.string(logic_EventType.CamUpdated) + "",this.callback);
+};
+$hxClasses["view.AnimatedSprite"] = view_AnimatedSprite;
+view_AnimatedSprite.__name__ = "view.AnimatedSprite";
+view_AnimatedSprite.getDir = function(d,directions) {
+	switch(directions) {
+	case 1:
+		return { dir : 0, flip : false};
+	case 3:
+		if(d == 11 || d < 2) {
+			return { dir : 0, flip : false};
+		} else if(d < 5) {
+			return { dir : 1, flip : false};
+		} else if(d < 8) {
+			return { dir : 2, flip : false};
+		} else {
+			return { dir : 1, flip : true};
+		}
+		break;
+	case 4:
+		if(d == 11 || d < 2) {
+			return { dir : 0, flip : false};
+		} else if(d < 5) {
+			return { dir : 1, flip : false};
+		} else if(d < 8) {
+			return { dir : 2, flip : false};
+		} else {
+			return { dir : 3, flip : false};
+		}
+		break;
+	case 5:
+		if(d < 1) {
+			return { dir : 0, flip : false};
+		} else if(d < 3) {
+			return { dir : 1, flip : false};
+		} else if(d < 4) {
+			return { dir : 2, flip : false};
+		} else if(d < 6) {
+			return { dir : 3, flip : false};
+		} else if(d < 7) {
+			return { dir : 4, flip : false};
+		} else if(d < 9) {
+			return { dir : 3, flip : true};
+		} else if(d < 10) {
+			return { dir : 2, flip : true};
+		} else {
+			return { dir : 1, flip : true};
+		}
+		break;
+	case 7:
+		if(d < 7) {
+			return { dir : d, flip : false};
+		} else {
+			return { dir : 12 - d, flip : true};
+		}
+		break;
+	case 8:
+		if(d < 1) {
+			return { dir : 0, flip : false};
+		} else if(d < 3) {
+			return { dir : 1, flip : false};
+		} else if(d < 4) {
+			return { dir : 2, flip : false};
+		} else if(d < 6) {
+			return { dir : 3, flip : false};
+		} else if(d < 7) {
+			return { dir : 4, flip : false};
+		} else if(d < 9) {
+			return { dir : 5, flip : false};
+		} else if(d < 10) {
+			return { dir : 6, flip : false};
+		} else {
+			return { dir : 7, flip : false};
+		}
+		break;
+	}
+	return { dir : d, flip : false};
+};
+view_AnimatedSprite.prototype = {
+	info: null
+	,sprites: null
+	,n: null
+	,animData: null
+	,callback: null
+	,tick: function() {
+		this.callback();
+		this.animData = utils_Tweener.Delay($bind(this,this.tick),50 * model_Params.animSpeed);
+	}
+	,getSpriteInfo: function(dir) {
+		this.n = (this.n + 1) % this.info.packer.animationFramesNum;
+		var dirInfo = view_AnimatedSprite.getDir(model_HexDirection.toInt(dir),this.info.packer.directions);
+		var res = this.sprites[this.info.packer.directions * this.n + dirInfo.dir];
+		res.flip = dirInfo.flip;
+		return res;
+	}
+	,dispose: function() {
+		utils_Tweener.Cancel(this.animData);
+		logic_EventSystem.disconnect(Std.string(logic_EventType.CamUpdated) + "",this.callback);
+	}
+	,__class__: view_AnimatedSprite
+};
 var view_DirArrow = function(parent) {
 	var dir = 0;
 	while(dir < 0) dir += 12;
@@ -106955,7 +107324,8 @@ $hxClasses["view.FieldObject"] = view_FieldObject;
 view_FieldObject.__name__ = "view.FieldObject";
 view_FieldObject.__super__ = h2d_Object;
 view_FieldObject.prototype = $extend(h2d_Object.prototype,{
-	bmp: null
+	anim: null
+	,bmp: null
 	,selectionBmp: null
 	,prevPos: null
 	,id: null
@@ -106968,6 +107338,8 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 	,getData: null
 	,getPrevData: null
 	,getBmpTile: null
+	,getSpritesheetInfo: null
+	,setAnimTile: null
 	,animAct: null
 	,PushesPhase: null
 	,wasVisible: null
@@ -106998,11 +107370,51 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 		}
 	}
 	,updateBmp: function(type) {
-		this.bmp.set_tile(this.getBmpTile(type));
-		var pos = this.getBmpY();
+		var _gthis = this;
 		if(utils_Tweener.hasAnims(this.bmp)) {
 			utils_Tweener.removeAllTweens(this.bmp);
 		}
+		var tmp = this.anim;
+		if(tmp != null) {
+			tmp.dispose();
+		}
+		this.anim = null;
+		var spritesData = this.getSpritesheetInfo(type);
+		if(spritesData != null) {
+			this.anim = new view_AnimatedSprite(this.getBmpTile(type),spritesData,function() {
+				var sprInfo = _gthis.setAnimTile();
+				_gthis.bmp.set_width(model_Params.get_tileWidth() * 0.8 * sprInfo.widthPercent);
+				if(sprInfo.flip) {
+					var _this = _gthis.bmp;
+					_this.posChanged = true;
+					_this.scaleX = -1;
+					var _this = _gthis.bmp;
+					var v = (model_Params.get_tileWidth() + _gthis.bmp.width) / 2;
+					_this.posChanged = true;
+					_this.x = v;
+				} else {
+					var _this = _gthis.bmp;
+					_this.posChanged = true;
+					_this.scaleX = 1;
+					var _this = _gthis.bmp;
+					var v = (model_Params.get_tileWidth() - _gthis.bmp.width) / 2;
+					_this.posChanged = true;
+					_this.x = v;
+				}
+			});
+			this.anim.tick();
+		} else {
+			this.bmp.set_tile(this.getBmpTile(type));
+			this.bmp.set_width(model_Params.get_tileWidth() * 0.8);
+			var _this = this.bmp;
+			_this.posChanged = true;
+			_this.scaleX = 1;
+			var _this = this.bmp;
+			var v = (model_Params.get_tileWidth() - this.bmp.width) / 2;
+			_this.posChanged = true;
+			_this.x = v;
+		}
+		var pos = this.getBmpY();
 		var _this = this.bmp;
 		_this.posChanged = true;
 		_this.y = pos;
@@ -107029,7 +107441,7 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 				pos = this.prevPos;
 			}
 		}
-		var tile = view_ui_screens_Game.gameField.tiles.h[pos.q + "_" + pos.r];
+		var tile = view_ui_screens_Game.gameField.tiles.get(pos.q,pos.r);
 		if(tile == null) {
 			return null;
 		}
@@ -107076,9 +107488,9 @@ view_FieldObject.prototype = $extend(h2d_Object.prototype,{
 			var anim = anims[_g];
 			++_g;
 			var fromHex = anim.fromHex;
-			var fromTile = view_ui_screens_Game.gameField.tiles.h[fromHex.q + "_" + fromHex.r];
+			var fromTile = view_ui_screens_Game.gameField.tiles.get(fromHex.q,fromHex.r);
 			var toHex = anim.toHex;
-			var toTile = view_ui_screens_Game.gameField.tiles.h[toHex.q + "_" + toHex.r];
+			var toTile = view_ui_screens_Game.gameField.tiles.get(toHex.q,toHex.r);
 			if(fromTile == null && toTile == null) {
 				continue;
 			}
@@ -107370,7 +107782,7 @@ view_ItemView.prototype = $extend(view_FieldObject.prototype,{
 	}
 	,moveAnim: function(newPos,animTime) {
 		var _gthis = this;
-		var nextTile = view_ui_screens_Game.gameField.tiles.h[Std.string(newPos) + ""];
+		var nextTile = view_ui_screens_Game.gameField.tiles.get(newPos.q,newPos.r);
 		if(nextTile == this.parent || nextTile == null) {
 			return;
 		}
@@ -107386,7 +107798,7 @@ view_ItemView.prototype = $extend(view_FieldObject.prototype,{
 			var nextPos = nextTile.localToGlobal();
 			nextPos = this.parent.globalToLocal(nextPos);
 			var callback = function() {
-				utils_Utils.Reparent(_gthis,view_ui_screens_Game.gameField.tiles.h[Std.string(newPos) + ""]);
+				utils_Utils.Reparent(_gthis,view_ui_screens_Game.gameField.tiles.get(newPos.q,newPos.r));
 				_gthis.posChanged = true;
 				var v = _gthis.y = 0;
 				_gthis.posChanged = true;
@@ -107405,6 +107817,14 @@ view_ItemView.prototype = $extend(view_FieldObject.prototype,{
 	}
 	,getBmpTile: function(type) {
 		return logic_LoadSystem.GetItemTile(type);
+	}
+	,getSpritesheetInfo: function(type) {
+		return logic_LoadSystem.GetItemSpriteSheetInfo(type);
+	}
+	,setAnimTile: function() {
+		var sprInfo = this.anim.getSpriteInfo(model_Store.cam.dir);
+		this.bmp.set_tile(sprInfo.tile);
+		return sprInfo;
 	}
 	,__class__: view_ItemView
 });
@@ -107573,6 +107993,14 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 	,getBmpTile: function(type) {
 		return logic_LoadSystem.GetUnitTile(type);
 	}
+	,getSpritesheetInfo: function(type) {
+		return logic_LoadSystem.GetUnitSpriteSheetInfo(type);
+	}
+	,setAnimTile: function() {
+		var sprInfo = this.anim.getSpriteInfo(model_HexDirection.sum(this.getData().dir,model_HexDirection.toInt(model_Store.cam.dir)));
+		this.bmp.set_tile(sprInfo.tile);
+		return sprInfo;
+	}
 	,onOrdersChanged: function() {
 		this.rallyPoint.redraw();
 	}
@@ -107581,7 +108009,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 		while(_g < hexes.length) {
 			var n = hexes[_g];
 			++_g;
-			var t = view_ui_screens_Game.gameField.tiles.h[Std.string(n) + ""];
+			var t = view_ui_screens_Game.gameField.tiles.get(n.q,n.r);
 			if(t == null) {
 				continue;
 			}
@@ -107877,7 +108305,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			return;
 		}
 		var animTime = Math.floor(model_Params.microTurnTime() / 2);
-		var fightTile = view_ui_screens_Game.gameField.tiles.h[Std.string(toHex) + ""];
+		var fightTile = view_ui_screens_Game.gameField.tiles.get(toHex.q,toHex.r);
 		if(fightTile != null && view_ui_screens_Game.gameField.tilesLayer.getChildIndex(fightTile) > view_ui_screens_Game.gameField.tilesLayer.getChildIndex(this.parent)) {
 			utils_Utils.Reparent(this,fightTile);
 			var curPos = new h2d_col_Point(this.x,this.y);
@@ -107901,7 +108329,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			isJump = false;
 		}
 		var _gthis = this;
-		var nextTile = view_ui_screens_Game.gameField.tiles.h[Std.string(newPos) + ""];
+		var nextTile = view_ui_screens_Game.gameField.tiles.get(newPos.q,newPos.r);
 		if(nextTile == this.parent || nextTile == null) {
 			return;
 		}
@@ -107924,7 +108352,7 @@ view_UnitView.prototype = $extend(view_FieldObject.prototype,{
 			var nextPos = nextTile.localToGlobal();
 			nextPos = this.parent.globalToLocal(nextPos);
 			var callback = function() {
-				utils_Utils.Reparent(_gthis,view_ui_screens_Game.gameField.tiles.h[Std.string(newPos) + ""]);
+				utils_Utils.Reparent(_gthis,view_ui_screens_Game.gameField.tiles.get(newPos.q,newPos.r));
 				_gthis.posChanged = true;
 				var v = _gthis.y = 0;
 				_gthis.posChanged = true;
@@ -108161,13 +108589,13 @@ view_ui_panel_CountrySelector.prototype = $extend(h2d_Graphics.prototype,{
 	,__class__: view_ui_panel_CountrySelector
 	,__properties__: $extend(h2d_Graphics.prototype.__properties__,{set_height:"set_height",get_height:"get_height",set_width:"set_width",get_width:"get_width",set_countryColor:"set_countryColor"})
 });
-var view_ui_panel_MapPanel = function(mi,parent) {
+var view_ui_panel_MapPanel = function(mapId,parent) {
 	this.isSelected = false;
 	this.isDown = false;
 	this.isOver = false;
 	var _gthis = this;
 	h2d_Graphics.call(this,parent);
-	this.info = mi;
+	this.mapId = mapId;
 	this.interaction = new h2d_Interactive(0,0,this);
 	this.interaction.onOver = function(e) {
 		_gthis.isOver = true;
@@ -108187,16 +108615,17 @@ var view_ui_panel_MapPanel = function(mi,parent) {
 		_gthis.redraw();
 	};
 	this.interaction.onClick = function(e) {
-		logic_EventSystem.fire(Std.string(logic_EventType.MapSelected) + "",_gthis.info);
+		if(_gthis.info == null) {
+			utils_IframeEvents.Send({ method : "to_electron", data : { command : "LOAD_MAP_INFO", mapId : mapId}});
+		}
+		logic_EventSystem.fire(Std.string(logic_EventType.MapSelected) + "",mapId);
 	};
 	var fnt2 = hxd_Res.get_loader().loadCache("font33.fnt",hxd_res_BitmapFont).toFont();
 	this.title = new view_ui_PPText(fnt2,this);
-	var name = this.info.name != null ? this.info.name : this.info.mapId;
-	this.title.set_text(name);
+	this.title.set_text(mapId);
 	var fnt1 = hxd_Res.get_loader().loadCache("font11.fnt",hxd_res_BitmapFont).toFont();
 	this.descr = new view_ui_PPText(fnt1,this);
-	this.descr.set_text(this.info.description);
-	this.set_height(85);
+	this.set_height(42);
 	logic_EventSystem.connect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
 };
 $hxClasses["view.ui.panel.MapPanel"] = view_ui_panel_MapPanel;
@@ -108206,6 +108635,7 @@ view_ui_panel_MapPanel.prototype = $extend(h2d_Graphics.prototype,{
 	interaction: null
 	,title: null
 	,descr: null
+	,mapId: null
 	,info: null
 	,isOver: null
 	,isDown: null
@@ -108214,8 +108644,8 @@ view_ui_panel_MapPanel.prototype = $extend(h2d_Graphics.prototype,{
 		h2d_Graphics.prototype.onRemove.call(this);
 		logic_EventSystem.disconnect(Std.string(logic_EventType.MapSelected) + "",$bind(this,this.onMapSelected));
 	}
-	,onMapSelected: function(mi) {
-		var newVal = this.info == mi;
+	,onMapSelected: function(mapId) {
+		var newVal = this.mapId == mapId;
 		if(this.isSelected == newVal) {
 			return;
 		}
@@ -108320,18 +108750,18 @@ var view_ui_panel_PlayerPanel = function(startName,countryColor,countryId,isHuma
 	this.countryColor = countryColor;
 	this.interaction = new h2d_Interactive(0,0,this);
 	this.removeBtn = new view_ui_Btn(this);
-	this.removeBtn.set_label("X");
-	this.removeBtn.set_width(30);
+	this.removeBtn.set_label(logic_Locale.get("noone"));
+	this.removeBtn.set_width(78);
 	this.removeBtn.set_height(30);
 	this.removeBtn.onClick = $bind(this,this.disable);
 	this.humanBtn = new view_ui_Btn(this);
-	this.humanBtn.set_label("Hum");
-	this.humanBtn.set_width(30);
+	this.humanBtn.set_label(logic_Locale.get("human"));
+	this.humanBtn.set_width(78);
 	this.humanBtn.set_height(30);
 	this.humanBtn.onClick = $bind(this,this.makeHuman);
 	this.aiBtn = new view_ui_Btn(this);
-	this.aiBtn.set_label("AI");
-	this.aiBtn.set_width(30);
+	this.aiBtn.set_label(logic_Locale.get("ai"));
+	this.aiBtn.set_width(78);
 	this.aiBtn.set_height(30);
 	this.aiBtn.onClick = $bind(this,this.makeAI);
 	this.title = new view_ui_panel_InputPanel(100,30,this);
@@ -109264,7 +109694,7 @@ var view_ui_screens_SelectMapScreen = function(parent) {
 	this.startBtn.set_enabled(false);
 	this.startBtn.onClick = function() {
 		model_Store.playerSettings = _gthis.getPlayerSettings();
-		Main.StartNewGame(_gthis.selectedMap.mapId);
+		Main.StartNewGame(_gthis.selectedMapId);
 	};
 	var fnt = hxd_Res.get_loader().loadCache("font22.fnt",hxd_res_BitmapFont).toFont();
 	this.mapTitle = new view_ui_PPText(fnt,this);
@@ -109289,7 +109719,20 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 	,playerList: null
 	,mapTitle: null
 	,mapParams: null
-	,selectedMap: null
+	,selectedMapId: null
+	,selectedMapInfo: null
+	,get_selectedMapInfo: function() {
+		var _g = 0;
+		var _g1 = this.mapList.length;
+		while(_g < _g1) {
+			var i = _g++;
+			var panel = this.mapList[i];
+			if(panel.mapId == this.selectedMapId) {
+				return panel.info;
+			}
+		}
+		return null;
+	}
 	,getPlayerSettings: function() {
 		var playerSettings = [];
 		var _g = 0;
@@ -109310,7 +109753,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 		logic_EventSystem.disconnect(Std.string(logic_EventType.OnPlayerEnter) + "",$bind(this,this.onPlayerChange));
 	}
 	,onPlayerChange: function() {
-		if(this.selectedMap == null) {
+		if(this.selectedMapId == null) {
 			this.startBtn.set_enabled(false);
 			return;
 		}
@@ -109328,25 +109771,31 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 				}
 			}
 		}
-		if(this.selectedMap.singlePlayer) {
+		var mi = this.get_selectedMapInfo();
+		if(mi == null) {
+			this.startBtn.set_enabled(false);
+		} else if(mi.singlePlayer) {
 			this.startBtn.set_enabled(humPlayers > 0);
 		} else {
 			this.startBtn.set_enabled(humPlayers > 0 && allPlayers > 1);
 		}
 	}
-	,onMapSelected: function(mi) {
-		this.selectedMap = mi;
+	,onMapSelected: function(mapId) {
+		this.selectedMapId = mapId;
 		while(this.playerList.length > 0) {
 			var _this = this.playerList.pop();
 			if(_this != null && _this.parent != null) {
 				_this.parent.removeChild(_this);
 			}
 		}
-		var _g = 0;
-		var _g1 = mi.maxPlayers;
-		while(_g < _g1) {
-			var i = _g++;
-			this.playerList.push(new view_ui_panel_PlayerPanel(logic_Locale.get("player") + " " + (i + 1),mi.countries[i].color,i + 1,i == 0 || i == 1 && !mi.singlePlayer,this.playersContainer));
+		var mi = this.get_selectedMapInfo();
+		if(mi != null) {
+			var _g = 0;
+			var _g1 = mi.maxPlayers;
+			while(_g < _g1) {
+				var i = _g++;
+				this.playerList.push(new view_ui_panel_PlayerPanel(logic_Locale.get("player") + " " + (i + 1),mi.countries[i].color,i + 1,i == 0 || i == 1 && !mi.singlePlayer,this.playersContainer));
+			}
 		}
 		this.redraw();
 	}
@@ -109360,75 +109809,28 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 		var _g1 = list.length;
 		while(_g < _g1) {
 			var i = _g++;
-			var tmp;
-			try {
-				var miParser = new JsonParser_$1737();
-				var mi = miParser.fromJson(list[i]);
-				tmp = mi == null ? null : new view_ui_panel_MapPanel(mi,_gthis.mapsContainer);
-			} catch( _g2 ) {
-				tmp = null;
-			}
-			result[i] = tmp;
+			result[i] = new view_ui_panel_MapPanel(list[i],_gthis.mapsContainer);
 		}
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = result;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(v != null) {
-				_g.push(v);
-			}
-		}
-		this.mapList = _g;
+		this.mapList = result;
 		this.redraw();
 	}
 	,updateMapsList: function() {
-		while(this.mapList.length > 0) {
-			var _this = this.mapList.pop();
-			if(_this != null && _this.parent != null) {
-				_this.parent.removeChild(_this);
-			}
-		}
-		var fs = new utils_JSFileSystem();
-		var miParser = new JsonParser_$1737();
-		var _this = fs.dir("");
-		var result = new Array(_this.length);
+	}
+	,setMapInfo: function(mapId,info) {
+		var miParser = new JsonParser_$1488();
+		var mapInfo = miParser.fromJson(info);
 		var _g = 0;
-		var _g1 = _this.length;
-		while(_g < _g1) {
-			var i = _g++;
-			var file = _this[i];
-			var tmp;
-			try {
-				if(!fs.exists(file.name + "/info.json")) {
-					tmp = null;
-				} else {
-					var json = fs.get(file.name + "/info.json").getText();
-					tmp = miParser.fromJson(json);
-				}
-			} catch( _g2 ) {
-				tmp = null;
-			}
-			result[i] = tmp;
-		}
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = result;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(v != null) {
-				_g.push(v);
-			}
-		}
-		var maps = _g;
-		var _g = 0;
-		while(_g < maps.length) {
-			var i = maps[_g];
+		var _g1 = this.mapList;
+		while(_g < _g1.length) {
+			var mapPanel = _g1[_g];
 			++_g;
-			var panel = new view_ui_panel_MapPanel(i,this.mapsContainer);
-			this.mapList.push(panel);
+			if(mapPanel.mapId == mapId) {
+				mapPanel.info = mapInfo;
+				if(this.selectedMapId == mapId) {
+					this.onMapSelected(this.selectedMapId);
+				}
+				return;
+			}
 		}
 	}
 	,redraw: function() {
@@ -109463,12 +109865,17 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 			panel.posChanged = true;
 			panel.y = v;
 		}
-		this.mapParams.set_visible(this.mapTitle.set_visible(this.playersContainer.set_visible(this.startBtn.set_enabled(this.selectedMap != null))));
-		if(this.selectedMap == null) {
+		this.mapParams.set_visible(this.mapTitle.set_visible(this.playersContainer.set_visible(this.startBtn.set_enabled(this.selectedMapId != null))));
+		if(this.selectedMapId == null) {
 			return;
 		}
-		this.mapTitle.set_text(this.selectedMap.name);
-		this.mapParams.set_text("ID: " + this.selectedMap.mapId + "\r\nplayers: from " + (this.selectedMap.singlePlayer ? 1 : 2) + " to " + this.selectedMap.maxPlayers + "\r\nversion: " + this.selectedMap.version + "\r\nAuthor: " + this.selectedMap.author);
+		var mi = this.get_selectedMapInfo();
+		this.mapTitle.set_text(this.selectedMapId);
+		if(mi != null) {
+			this.mapParams.set_text("ID: " + this.selectedMapId + "\r\nplayers: from " + (mi.singlePlayer ? 1 : 2) + " to " + mi.maxPlayers + "\r\nversion: " + mi.version + "\r\nAuthor: " + mi.author);
+		} else {
+			this.mapParams.set_text(logic_Locale.get("loading") + "...");
+		}
 		var _this = this.mapTitle;
 		_this.posChanged = true;
 		_this.x = this.startBtn.x;
@@ -109494,7 +109901,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 		var tmp = hxd_Window.getInstance().get_height() - this.playersContainer.y - this.startBtn.height - 32;
 		this.playersContainer.height = Math.round(tmp);
 		this.playersContainer.updateIntZone();
-		var cantRemovePlayers = this.playerList.length == 1 || this.playerList.length == 2 && !this.selectedMap.singlePlayer;
+		var cantRemovePlayers = this.playerList.length == 1 || this.playerList.length == 2 && !(mi != null ? mi.singlePlayer : null);
 		var _g = 0;
 		var _g1 = this.playerList.length;
 		while(_g < _g1) {
@@ -109509,6 +109916,7 @@ view_ui_screens_SelectMapScreen.prototype = $extend(view_ui_screens_BaseScreen.p
 		}
 	}
 	,__class__: view_ui_screens_SelectMapScreen
+	,__properties__: $extend(view_ui_screens_BaseScreen.prototype.__properties__,{get_selectedMapInfo:"get_selectedMapInfo"})
 });
 var view_ui_screens_WaitForPlayersScreen = function(parent) {
 	h2d_Graphics.call(this,parent);
@@ -109602,7 +110010,7 @@ var Float = Number;
 var Bool = Boolean;
 var Class = { };
 var Enum = { };
-haxe_Resource.content = [{ name : "R_img_hex_highlight_png", data : "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"},{ name : "R_locales_en_json", data : "ew0KICAibGFuZyI6ICJFbmdsaXNoIiwNCg0KICAiaW5pdGlhbGl6YXRpb24iOiJJbml0aWFsaXphdGlvbiIsDQogICJsb2FkaW5nIjoiTG9hZGluZyIsDQogICJidXR0b25fc2luZ2xlX3BsYXllciI6Ik5ldyBnYW1lIiwNCiAgImJ1dHRvbl9tdWx0aV9wbGF5ZXIiOiJOZXQgZ2FtZSIsDQogICJsYWJlbF9sb2FkX2dhbWUiOiJMb2FkIGdhbWUiLA0KICAibGFiZWxfc2F2ZV9nYW1lIjoiU2F2ZSBnYW1lIiwNCiAgImxhYmVsX3NhdmVfbWFwIjoiU2F2ZSBtYXAiLA0KICAibGFiZWxfdGVzdF9tYXAiOiJUZXN0IG1hcCIsDQogICJsYWJlbF9vdmVyd3JpdGUiOiJPdmVyd3JpdGUiLA0KICAibGFiZWxfZGVsZXRlIjoiRGVsZXRlIiwNCiAgImxhYmVsX2xvYWQiOiJMb2FkIiwNCiAgImxhYmVsX25ld19tYXAiOiAiQ3JlYXRlIG1hcCIsDQogICJsYWJlbF9lZGl0X21hcCI6ICJFZGl0IG1hcCIsDQogICJ0aXRsZSI6IlRCVEJTIiwNCiAgInR1cm4iOiJUdXJuIiwNCiAgInR1cm5zIjoidHVybnMiLA0KICAicGxheWVycyI6InBsYXllcnMiLA0KICAicGxheWVyIjoiUGxheWVyIiwNCiAgImFkZCI6IkFkZCIsDQogICJsYWJlbF93YWl0X2Zvcl9wbGF5ZXJzIjoiV2FpdGluZyBmb3Igb3RoZXIgcGxheWVycyIsDQogICJsYWJlbF9vayI6Ik9LIiwNCiAgImxhYmVsX25leHRfdHVybiI6Ik5leHQgdHVybiIsDQogICJsYWJlbF9uZXh0X21vdmUiOiJOZXh0IG1vdmUiLA0KICAibGFiZWxfZW5kX3R1cm4iOiJFbmQgdHVybiIsDQogICJjYWxjdWxhdGluZ190dXJuIjogIkNhbGN1bGF0aW5nLi4uIiwNCiAgInR1cm5fYW5pbWF0aW9uIjogIlR1cm4gYW5pbWF0aW9uIiwNCiAgImxhYmVsX21pbmVyYWxzIjoiTWluZXJhbHM6IHtudW1iZXJ9IiwNCiAgImxhYmVsX21hbmEiOiJNYW5hOiB7bnVtYmVyfSIsDQogICJtaW5lcmFscyI6Im1pbmVyYWxzIiwNCiAgIm1hbmEiOiJtYW5hIiwNCiAgImxhYmVsX2NvbnRpbnVlIjoiQ29udGludWUiLA0KICAibGFiZWxfdG9fbWFpbl9tZW51IjoiVG8gbWFpbiBtZW51IiwNCiAgImxhYmVsX3RvX2Rlc2t0b3AiOiJUbyBkZXNrdG9wIiwNCiAgImxhYmVsX2NyZWF0ZV9uZXdfc2F2ZSI6ImNyZWF0ZSBuZXcgc2F2ZSBmaWxlIiwNCiAgImxhYmVsX2Nvbm5lY3RpbmciOiJjb25uZWN0aW5nLi4uIiwNCiAgImxhYmVsX2NyZWF0ZV9nYW1lIjoiQ3JlYXRlIGdhbWUiLA0KICAibGFiZWxfam9pbl9nYW1lIjoiSm9pbiBnYW1lIiwNCiAgImxhYmVsX3lvdXJfbmFtZSI6IllvdXIgbmFtZToiLA0KICAibGFiZWxfY29ubmVjdGlvbl9lcnJvciI6IkNvbm5lY3Rpb24gZXJyb3IiLA0KICAibGFiZWxfZ2FtZV9zdGFydGVkIjoiZ2FtZSBzdGFydGVkIiwNCiAgImxhYmVsX2xvYWRlZF9nYW1lIjoibG9hZGVkIGdhbWUiLA0KICAibGFiZWxfbmV3X2dhbWUiOiJuZXcgZ2FtZSIsDQogICJsYWJlbF9sZWF2ZSI6IkxlYXZlIiwNCiAgImxhYmVsX3N0YXJ0X2dhbWUiOiJTdGFydCBnYW1lIiwNCiAgIm1zZ19uZXdfcm9vbV9vd25lciI6Ik5ldyBob3N0IC0ge3BsYXllcn0iLA0KICAibGFiZWxfY2xpY2tfdG9fc2VsZWN0IjoiY2xpY2sgdG8gc2VsZWN0IiwNCiAgInN0YXRfaHAiOiJIUCIsDQogICJzdGF0X2F0dGFjayI6IkF0dGFjayIsDQogICJzdGF0X3NwZWVkIjoiU3BlZWQiLA0KICAic3RhdF9yYW5nZSI6IkF0dGFjayByYW5nZSIsDQoNCiAgInNraWxsX3N0YXRfcmFuZ2UiOiJSYW5nZToge259IiwNCiAgInNraWxsX3N0YXRfcmFkaXVzIjoiUmFkaXVzOiB7bn0iLA0KDQogICJsYWJlbF9jb250cm9scyI6IkNvbnRyb2xzIiwNCiAgImxhYmVsX2NvbnRyb2xzX2Rlc2NyIjoiVyxBLFMsRCAtIG1vdmUgY2FtZXJhXG5RLEUgLSByb3RhdGUgY2FtZXJhXG5Nb3VzZSB3aGVlbCAtIHpvb21cblBhZ2UgVXAsIFBhZ2UgRG93biAtIGNoYW5nZSBhbmltYXRpb24gc3BlZWRcblIgLSByZXBlYXQgdHVybiBhbmltYXRpb25cbkxlZnQgbW91c2UgYnV0dG9uIC0gc2VsZWN0IHVuaXRzXG5SaWdodCBtb3VzZSBidXR0b24gLSBjaG9vc2UgdGFyZ2V0IGZvciBzZWxlY3RlZCB1bml0c1xuRVNDIC0gc2hvdyBtZW51Ig0KfQ0K"},{ name : "R_locales_ru_json", data : "ew0KICAibGFuZyI6ICLQoNGD0YHRgdC60LjQuSIsDQoNCiAgImluaXRpYWxpemF0aW9uIjoi0JjQvdC40YbQuNCw0LvQuNC30LDRhtC40Y8iLA0KICAibG9hZGluZyI6ItCX0LDQs9GA0YPQt9C60LAiLA0KICAiYnV0dG9uX3NpbmdsZV9wbGF5ZXIiOiLQndC+0LLQsNGPINC40LPRgNCwIiwNCiAgImJ1dHRvbl9tdWx0aV9wbGF5ZXIiOiLQodC10YLQtdCy0LDRjyDQuNCz0YDQsCIsDQogICJsYWJlbF9sb2FkX2dhbWUiOiLQl9Cw0LPRgNGD0LfQuNGC0Ywg0LjQs9GA0YMiLA0KICAibGFiZWxfc2F2ZV9nYW1lIjoi0KHQvtGF0YDQsNC90LjRgtGMINC40LPRgNGDIiwNCiAgImxhYmVsX3NhdmVfbWFwIjoi0KHQvtGF0YDQsNC90LjRgtGMINC60LDRgNGC0YMiLA0KICAibGFiZWxfdGVzdF9tYXAiOiLQn9GA0L7RgtC10YHRgtC40YDQvtCy0LDRgtGMINC60LDRgNGC0YMiLA0KICAibGFiZWxfb3ZlcndyaXRlIjoi0J/QtdGA0LXQt9Cw0L/QuNGB0LDRgtGMIiwNCiAgImxhYmVsX2RlbGV0ZSI6ItCj0LTQsNC70LjRgtGMIiwNCiAgImxhYmVsX2xvYWQiOiLQl9Cw0LPRgNGD0LfQuNGC0YwiLA0KICAibGFiZWxfbmV3X21hcCI6ICLQodC+0LfQtNCw0YLRjCDQutCw0YDRgtGDIiwNCiAgImxhYmVsX2VkaXRfbWFwIjogItCg0LXQtNCw0LrRgtC40YDQvtCy0LDRgtGMINC60LDRgNGC0YMiLA0KICAidGl0bGUiOiJUQlRCUyIsDQogICJ0dXJuIjoi0KXQvtC0IiwNCiAgInR1cm5zIjoi0YXQvtC00L7QsiIsDQogICJwbGF5ZXJzIjoi0LjQs9GA0L7QutC+0LIiLA0KICAicGxheWVyIjoi0JjQs9GA0L7QuiIsDQogICJhZGQiOiLQlNC+0LHQsNCy0LjRgtGMIiwNCiAgImxhYmVsX3dhaXRfZm9yX3BsYXllcnMiOiLQltC00ZHQvCDQtNGA0YPQs9C40YUg0LjQs9GA0L7QutC+0LIiLA0KICAibGFiZWxfb2siOiJPSyIsDQogICJsYWJlbF9uZXh0X3R1cm4iOiLQodC70LXQtNGD0Y7RidC40Lkg0YXQvtC0IiwNCiAgImxhYmVsX25leHRfbW92ZSI6ItCi0LXQv9C10YDRjCDRhdC+0LTQuNGCIiwNCiAgImxhYmVsX2VuZF90dXJuIjoi0JfQsNC60L7QvdGH0LjRgtGMINGF0L7QtCIsDQogICJjYWxjdWxhdGluZ190dXJuIjogItCf0YDQvtGB0YfQtdGCINGF0L7QtNCwLi4uIiwNCiAgInR1cm5fYW5pbWF0aW9uIjogItCQ0L3QuNC80LDRhtC40Y8g0YXQvtC00LAiLA0KICAibGFiZWxfbWluZXJhbHMiOiLQnNC40L3QtdGA0LDQu9GLOiB7bnVtYmVyfSIsDQogICJsYWJlbF9tYW5hIjoi0JzQsNC90LA6IHtudW1iZXJ9IiwNCiAgIm1pbmVyYWxzIjoi0LzQuNC90LXRgNCw0LvQvtCyIiwNCiAgIm1hbmEiOiLQvNCw0L3RiyIsDQogICJsYWJlbF9jb250aW51ZSI6ItCf0YDQvtC00L7Qu9C20LjRgtGMIiwNCiAgImxhYmVsX3RvX21haW5fbWVudSI6ItCSINCz0LvQsNCy0L3QvtC1INC80LXQvdGOIiwNCiAgImxhYmVsX3RvX2Rlc2t0b3AiOiLQndCwINGA0LDQsdC+0YfQuNC5INGB0YLQvtC7IiwNCiAgImxhYmVsX2NyZWF0ZV9uZXdfc2F2ZSI6ItGB0L7Qt9C00LDRgtGMINC90L7QstC+0LUg0YHQvtGF0YDQsNC90LXQvdC40LUiLA0KICAibGFiZWxfY29ubmVjdGluZyI6ItGB0L7QtdC00LjQvdC10L3QuNC1Li4uIiwNCiAgImxhYmVsX2NyZWF0ZV9nYW1lIjoi0KHQvtC30LTQsNGC0Ywg0LjQs9GA0YMiLA0KICAibGFiZWxfam9pbl9nYW1lIjoi0J/RgNC40YHQvtC10LTQuNC90LjRgtGM0YHRjyIsDQogICJsYWJlbF95b3VyX25hbWUiOiLQktCw0YjQtSDQuNC80Y86IiwNCiAgImxhYmVsX2Nvbm5lY3Rpb25fZXJyb3IiOiLQntGI0LjQsdC60LAg0YHQvtC10LTQuNC90LXQvdC40Y8iLA0KICAibGFiZWxfZ2FtZV9zdGFydGVkIjoi0LjQs9GA0LAg0L3QsNGH0LDQu9Cw0YHRjCIsDQogICJsYWJlbF9sb2FkZWRfZ2FtZSI6ItC30LDQs9GA0YPQttC10L3QvdCw0Y8g0LjQs9GA0LAiLA0KICAibGFiZWxfbmV3X2dhbWUiOiLQvdC+0LLQsNGPINC40LPRgNCwIiwNCiAgImxhYmVsX2xlYXZlIjoi0JLRi9C50YLQuCIsDQogICJsYWJlbF9zdGFydF9nYW1lIjoi0J3QsNGH0LDRgtGMINC40LPRgNGDIiwNCiAgIm1zZ19uZXdfcm9vbV9vd25lciI6ItCd0L7QstGL0Lkg0YXQvtGB0YIgLSB7cGxheWVyfSIsDQogICJsYWJlbF9jbGlja190b19zZWxlY3QiOiLQstGL0LHRgNCw0YLRjCIsDQogICJzdGF0X2hwIjoi0KXQnyIsDQogICJzdGF0X2F0dGFjayI6ItCQ0YLQsNC60LAiLA0KICAic3RhdF9zcGVlZCI6ItCh0LrQvtGA0L7RgdGC0YwiLA0KICAic3RhdF9yYW5nZSI6ItCU0LDQu9GM0L3QvtGB0YLRjCDQsNGC0LDQutC4IiwNCiAgDQogICJza2lsbF9zdGF0X3JhbmdlIjoi0JTQsNC70YzQvdC+0YHRgtGMOiB7bn0iLA0KICAic2tpbGxfc3RhdF9yYWRpdXMiOiLQoNCw0LTQuNGD0YE6IHtufSIsDQoNCiAgImxhYmVsX2NvbnRyb2xzIjoi0KPQv9GA0LDQstC70LXQvdC40LUiLA0KICAibGFiZWxfY29udHJvbHNfZGVzY3IiOiJXLEEsUyxEIC0g0LTQstC40LPQsNGC0Ywg0LrQsNC80LXRgNGDXG5RLEUgLSDQstGA0LDRidCw0YLRjCDQutCw0LzQtdGA0YNcbtCa0L7Qu9C10YHQviDQvNGL0YjQuCAtINC80LXQvdGP0YLRjCDQvNCw0YHRiNGC0LDQsVxuUGFnZSBVcCwgUGFnZSBEb3duIC0g0LzQtdC90Y/RgtGMINGB0LrQvtGA0L7RgdGC0Ywg0LDQvdC40LzQsNGG0LjQuFxuUiAtINC/0L7QstGC0L7RgNC40YLRjCDQsNC90LjQvNCw0YbQuNGOINGF0L7QtNCwXG7Qm9C10LLQsNGPINC60L3QvtC/0LrQsCDQvNGL0YjQuCAtINCy0YvQsdC40YDQsNGC0Ywg0Y7QvdC40YLRi1xu0J/RgNCw0LLQsNGPINC60L3QvtC/0LrQsCDQvNGL0YjQuCAtINC/0L7RgdGC0LDQstC40YLRjCDRhtC10LvRjCDQtNC70Y8g0LLRi9Cx0YDQsNC90L3Ri9GFINGO0L3QuNGC0L7QslxuRVNDIC0g0L/QvtC60LDQt9Cw0YLRjCDQvNC10L3RjiINCn0NCg"},{ name : "R_outline_font33_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmff/xIAb3V0bGluZV9mb250MzMucG5nKgAhAD8AAADvAAAAAABuARkAIAD6/wUAEAAAAAAAtgAAANkA3QAeACAA//8FABoAAAAAADIAAAD4AN0AHgAgAP//BQAaAAAAAABQAAAAsgEaAR4AIAD//wUAGgAAAAAAbAAAACYBYQESACAA//8FAA4AAAAAAKYAAAAWAAAADgAvAP////8KAAAAAAB4AQAAPgAtAB4AKQD///z/GgAAAAAAHAQAAAAALAEeACAA//8FABoAAAAAAGgAAAA2AZYAHgAgAP//BQAaAAAAAAAjBAAAVQE7AR4AIAD//wUAGgAAAAAAkQQAAJUAhgEYABwA//8JABQAAAAAADEAAACSAGUBFQAgAP//BQASAAAAAAA0AAAAAADJAB4AIAD//wUAGgAAAAAALAQAAAAATQEeACAA//8FABoAAAAAABkgAABaAcoBEgARAPz/BQALAAAAAADIAAAAQgEAAB4AKQD///z/GgAAAAAAJgQAAL0AVAAhACUA//8FAB0AAAAAANsAAACfAQAAHgApAP///P8aAAAAAAD6AAAA1gF1AB4AIAD//wUAGgAAAAAAPgAAAN0BXAEYAB0A//8IABQAAAAAAGcAAAAXAZsAHgAgAP//DgAaAAAAAABFBAAAYACsAR4AFwD//w4AGgAAAAAAGCAAAEcBygESABEA//8FAA4AAAAAAGYAAAA0AG4BGAAgAP//BQAUAAAAAABqAAAA+wBUABgAIwD//wUAFAAAAAAAzgAAABwAXQAbACkA///8/xcAAAAAAB8EAABdACkBHgAgAP//BQAaAAAAAAAwBAAAWAGTAR4AFwD//w4AGgAAAAAANwQAAD4AxQEeABcA//8OABoAAAAAAG8AAAAaAZoBHgAXAP//DgAaAAAAAABKBAAAmAF6ASMAFwD//w4AHwAAAAAAIQQAAJsAHwEeACAA//8FABoAAAAAAAcEAACyASoAHQApAP///P8ZAAAAAABSAAAAPgBNAR4AIAD//wUAGgAAAAAAMgQAAJYBkgEeABcA//8OABoAAAAAAFkAAACYAXUAHgAgAP//BQAaAAAAAADdAAAAYQEAAB4AKQD///z/GgAAAAAAJQQAABcBHwEeACAA//8FABoAAAAAADgAAACyAdgAHgAgAP//BQAaAAAAAABPAAAAkwEaAR4AIAD//wUAGgAAAAAA2QAAAJsAKgAeACkA///8/xoAAAAAAB4EAAA+ACwBHgAgAP//BQAaAAAAAABDBAAA2QBAAR4AIAD//w4AGgAAAAAApAAAAOAAggEdABgA//8JABkAAAAAAEYEAABzAIwBIQAcAP//DgAdAAAAAAAcIAAArgDZARsAEQD//wUAFwAAAAAAeQAAABcBvAAeACAA//8OABoAAAAAANgAAACTAbcAHgAgAP//BQAaAAAAAABlAAAAVQGyAR4AFwD//w4AGgAAAAAAqAAAAG0BygEYAA4A//8FABQAAAAAANEAAAB0ASoAHgApAP///P8aAAAAAABFAAAA+AD+AB4AIAD//wUAGgAAAAAAzQAAAAAAXQAbACkA///8/xcAAAAAADUEAAAAAMUBHgAXAP//DgAaAAAAAADJAAAAgAEAAB4AKQD///z/GgAAAAAAzAAAANABKgAbACkA///8/xcAAAAAAOsAAABVAZYAHgAgAP//BQAaAAAAAAD2AAAAHwCoAB4AIAD//wUAGgAAAAAASQQAACwAjwEkABwA//8OACAAAAAAAE0EAAD4ALQBHgAXAP//DgAaAAAAAADLAAAAXQAqAB4AKQD///z/GgAAAAAAYAAAAOoBqgEVABEA//8FABIAAAAAAMMAAADGAAAAHgApAP///P8aAAAAAAAoBAAAAACHACQAIAD//wUAIAAAAAAAPAQAALoAuwEeABcA//8OABoAAAAAAC0AAACGAcMBFQAMAP//DwASAAAAAAA2AAAAdAHYAB4AIAD//wUAGgAAAAAAFQQAAFUBtwAeACAA//8FABoAAAAAAE4AAAB0ARoBHgAgAP//BQAaAAAAAAB8AAAA7AEqAA8AJgD//wUACwAAAAAAdgAAAHwAxAEeABcA//8OABoAAAAAACkEAABzAFQAJwAlAP//BQAjAAAAAABRAAAA0QEaAR4AIAD//wUAGgAAAAAA7AAAABMBYQESACAA/P8FAAsAAAAAAE0AAAA2ARoBHgAgAP//BQAaAAAAAAAbBAAAPgALAR4AIAD//wUAGgAAAAAA8gAAALoAmwAeACAA//8FABoAAAAAAEYAAAAXAf4AHgAgAP//BQAaAAAAAAAxBAAAfABEAR4AIAD//wUAGgAAAAAABAQAAHwA4QAeACAA//8FABoAAAAAAD8EAAC1AZIBHgAXAP//DgAaAAAAAABeAAAAjwDcAR4AEQD//wUAGgAAAAAAbQAAAPsAmwEeABcA//8OABoAAAAAACQAAAAlAAAAHgAsAP////8aAAAAAABMAAAAdAE7ARsAIAD//wUAFwAAAAAAxQAAACMBAAAeACkA///8/xoAAAAAAOcAAAC+AVwBHgAdAP//DgAaAAAAAAD1AAAAPgCoAB4AIAD//wUAGgAAAAAAOQAAANEB2AAeACAA//8FABoAAAAAAEQAAADZAP4AHgAgAP//BQAaAAAAAADVAAAA+AAqAB4AKQD///z/GgAAAAAAegAAAJ4AowEeABcA//8OABoAAAAAALUAAAAaAXUAIAAgAP3/DgAaAAAAAADtAAAAAAFhARIAIAD//wUADgAAAAAAHSAAAMoA0wEbABEA/P8FABQAAAAAAFUAAAA7AXUAHgAgAP//BQAaAAAAAABkAAAA2QCbAB4AIAD//wUAGgAAAAAAEAQAAF0A5wAeACAA//8FABoAAAAAAGIAAACbAJsAHgAgAP//BQAaAAAAAABpAAAA8AHYAA8AIAD//wUACwAAAAAA1gAAANkAKgAeACkA///8/xoAAAAAADQEAABRAI8BIQAcAP//DgAdAAAAAACsIAAASgCEACMAIAD9/wUAHQAAAAAAygAAAN0BAAAeACkA///8/xoAAAAAAOEAAACbALwAHgAgAP//BQAaAAAAAAD3AAAAzgGqARsAFwD//wsAFwAAAAAAAQQAAAQBAAAeACkA///8/xoAAAAAAD8AAAA2AbcAHgAgAP//BQAaAAAAAADcAAAAfAAqAB4AKQD///z/GgAAAAAAMwAAADYB2AAeACAA//8FABoAAAAAAGsAAADkATsBGwAgAP//BQAXAAAAAADAAAAAkwEqAB4AKQD///z/GgAAAAAA0wAAADYBKgAeACkA///8/xoAAAAAAH0AAABmAGsBFQAgAP//BQASAAAAAAASBAAAHwDqAB4AIAD//wUAGgAAAAAARwQAAEEArAEeABcA//8OABoAAAAAAPkAAAAAAKgAHgAgAP//BQAaAAAAAAA5BAAAmwBAAR4AIAD//wUAGgAAAAAALgQAABQBVAApACAA//8FACUAAAAAACAAAADzAZIBCwAJAPv/JQANAAAAAADjAAAAXQDGAB4AIAD//wUAGgAAAAAAWgAAALcBdQAeACAA//8FABoAAAAAAOQAAAA+AMkAHgAgAP//BQAaAAAAAAAgBAAAfAAjAR4AIAD//wUAGgAAAAAA4gAAAHwAwAAeACAA//8FABoAAAAAABYEAAD4AHoAIQAgAP//BQAdAAAAAAAoAAAA6gBhARUAIAD//wUAEgAAAAAAxwAAAFQAVwAeACYA//8FABoAAAAAANIAAABVASoAHgApAP///P8aAAAAAABDAAAAugD+AB4AIAD//wUAGgAAAAAASwQAAHMBegEkABcA//8OACAAAAAAADcAAACTAdgAHgAgAP//BQAaAAAAAAB1AAAA1AGSAR4AFwD//w4AGgAAAAAAKgQAAG4AfgAjACAA//8FAB8AAAAAAG4AAAAXAbMBHgAXAP//DgAaAAAAAADBAAAAiAAAAB4AKQD///z/GgAAAAAA0AAAANYAegAhACAA//8FAB0AAAAAACcEAABVARoBHgAgAP//BQAaAAAAAABEBAAARAAAACQAKQD//wUAIAAAAAAAPAAAAAAAjwEYAB0A//8IABQAAAAAADsAAAAZAI8BEgAdAPz/CwALAAAAAAClAAAAsgG3AB4AIAD//wUAGgAAAAAAuwAAAFUBXAEkAB0A//8IACAAAAAAAPQAAABdAKUAHgAgAP//BQAaAAAAAAA7BAAAHwDFAR4AFwD//w4AGgAAAAAAoQAAAPABlgAPACAA//8FAAsAAAAAAMQAAADlAAAAHgApAP///P8aAAAAAADfAAAA2QC8AB4AIAD//wUAGgAAAAAAIiEAAGoA3AEkABQA//8FACAAAAAAAAYEAACsATsBGwAgAP//BQAXAAAAAAB0AAAATQBuARgAIAD//wUAFAAAAAAA8wAAAHwAnwAeACAA//8FABoAAAAAABMEAADIATsBGwAgAP//BQAXAAAAAAAzBAAAUQDdARgAFwD//w4AFAAAAAAAwgAAAKcAAAAeACkA///8/xoAAAAAAC8EAABdAEoBHgAgAP//BQAaAAAAAAAmAAAAkgB6ACEAIAD//wUAHQAAAAAAPQAAAAIBzAEYABEA//8OABQAAAAAANQAAAAXASoAHgApAP///P8aAAAAAABXAAAA3gFUACEAIAD//wUAHQAAAAAAcQAAAB8AyQAeACAA//8OABoAAAAAABQEAACbAFQAIQAlAP//BQAdAAAAAAA6AAAA8AH5AA8AGgD//wsACwAAAAAAVAAAADYBOwEeACAA//8FABoAAAAAAKoAAADKAIIBFQAZAP//BQASAAAAAAA+BAAAmwDBAR4AFwD//w4AGgAAAAAAqwAAAHoBXAEkAB0A//8IACAAAAAAACIAAAAbAcsBGAARAP//BQAUAAAAAABKAAAA0QH5AB4AIAD//wUAGgAAAAAAcAAAANEBtwAeACAA//8OABoAAAAAAP8AAAC+AQAAHgApAP//BQAaAAAAAABLAAAA+AAfAR4AIAD//wUAGgAAAAAAewAAAHwAZQEVACAA//8FABIAAAAAADAAAAC6AN0AHgAgAP//BQAaAAAAAADxAAAA+ACbAB4AIAD//wUAGgAAAAAA+wAAAB8ACwEeACAA//8FABoAAAAAAEAEAAC6AEABHgAgAP//DgAaAAAAAACpAAAAJQCHACQAIAD//wUAIAAAAAAATAQAANkAtQEeABcA//8OABoAAAAAAEcAAAA2AfkAHgAgAP//BQAaAAAAAADqAAAAdAGWAB4AIAD//wUAGgAAAAAAQgQAABwA3QEbABcA//8OABcAAAAAANcAAAA4AN0BGAAXAP//CAAUAAAAAADeAAAA+AC8AB4AIAD//wUAGgAAAAAAGQQAALoAKgAeACkA///8/xoAAAAAABEEAAA+AOoAHgAgAP//BQAaAAAAAAA1AAAAVQHYAB4AIAD//wUAGgAAAAAA8AAAALQAegAhACAA//8FAB0AAAAAAEgEAADeAXoBIQAXAP//DgAdAAAAAABBAAAAfAACAR4AIAD//wUAGgAAAAAAvwAAABcB3QAeACAA//8FABoAAAAAANoAAABpAAAAHgApAP///P8aAAAAAABOBAAASwF7AScAFwD//w4AIwAAAAAALwAAAJsA3QAeACAA//8FABoAAAAAAEkAAACQATsBGwAgAP//BQAXAAAAAAAaBAAAsgH5AB4AIAD//wUAGgAAAAAAUQQAABcBQAEeACAA//8FABoAAAAAACwAAAA0AcsBEgARAPz/FwALAAAAAAA2BAAAAACtASEAFwD//w4AHQAAAAAAWwAAANQAYQEVACAA//8FABIAAAAAAHgAAAC9AJ0BHgAXAP//DgAaAAAAAABhAAAAkwGqAR4AFwD//w4AGgAAAAAA/////wAAAAAVADIAAgD8/xUAAAAAAKIAAACfAVwBHgAdAP//CwAaAAAAAACjAAAAdAG3AB4AIAD//wUAGgAAAAAA5gAAABoBggEwABcA//8OACwAAAAAAEEEAADcAJwBHgAXAP//DgAaAAAAAABIAAAAkwH5AB4AIAD//wUAGgAAAAAAYwAAAHQBqwEeABcA//8OABoAAAAAAHIAAACyAaoBGwAXAP//DgAXAAAAAAAdBAAAHwAsAR4AIAD//wUAGgAAAAAALQQAAB8ATQEeACAA//8FABoAAAAAACEAAADwAbcADwAgAP//BQALAAAAAAAlAAAAAADqAB4AIAD//wUAGgAAAAAAQAAAAF0ACAEeACAA//8FABoAAAAAAD0EAAB/AKkBHgAXAP//DgAaAAAAAABdAAAAvgBhARUAIAD//wUAEgAAAAAAdwAAADkBmgEeABcA//8OABoAAAAAAPwAAAAAAAsBHgAgAP//BQAaAAAAAAAYBAAAdAH5AB4AIAD//wUAGgAAAAAA+AAAACIArQEeABcA//8OABoAAAAAACQEAACOAVQAJwAgAP//BQAjAAAAAAApAAAAqABhARUAIAD//wUAEgAAAAAATwQAADYBsgEeABcA//8OABoAAAAAAOkAAACTAZYAHgAgAP//BQAaAAAAAABfAAAAnAHCARgACwD//xoAFAAAAAAAxgAAAGYBVAAnACAA//8FACMAAAAAAOgAAACyAZYAHgAgAP//BQAaAAAAAABcAAAA2QAfAR4AIAD//wUAGgAAAAAAcwAAAHcBkgEeABcA//8OABoAAAAAACoAAAC8AXoBIQAXAP//CAAdAAAAAAD9AAAAHwAwAB4AKQD//wUAGgAAAAAA4AAAALoAvAAeACAA//8FABoAAAAAADoEAAAAAN0BGwAXAP//DgAXAAAAAADlAAAA0QGWAB4AIAD//wUAGgAAAAAA/gAAAAAAMwAeACkA//8FABoAAAAAABcEAABVAfkAHgAgAP//BQAaAAAAAAAuAAAA8AEmAQ8ADgD//xcACwAAAAAAsQAAADkBXAEbAB4A//8GABcAAAAAACcAAADwARQBDwARAP//BQALAAAAAABCAAAAmwD+AB4AIAD//wUAGgAAAAAAUwAAAPgAQAEeACAA//8FABoAAAAAAM8AAAA4AFoAGwApAP///P8XAAAAAAAiBAAAugAfAR4AIAD//wUAGgAAAAAAkAQAAN8AVAAbACUA//8AABcAAAAAAFgAAAB5AXUAHgAgAP//BQAaAAAAAAAjAAAAPgFUACcAIAD//wUAIwAAAAAArgAAAK4AggEbABoA//8FABcAAAAAAO4AAAAaAG4BGQAgAPr/BQAQAAAAAAA4BAAAXQDEAR4AFwD//w4AGgAAAAAAfgAAAOYAzQEbABEA//8LABcAAAAAACsEAAC2AVQAJwAgAP//BQAjAAAAAAArAAAA/gCCARsAGAD//wkAFwAAAAAAVgAAAFoBdQAeACAA//8FABoAAAAAAAAAAAA"},{ name : "R_img_shoot_png", data : "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAYNSURBVFhHxZdZb1ZVFIZXaUsnOk/0o/wlhGiJwwUJ3EGi/BSVRK7EEL0RJFb9SZ3niba0tD0+zz57d0hLi8bEFdZ3vp7vnLXeNb1r01RVVfyf8s8A3LlTRXtbxPXWiGb02jVu8v4RenAQsb8fsfcu4s+/muoXrpaPA/DpZ1V0d0V0dEa0twPgekSLIPDj60dHJwDe7Ubs7ES83Y548+ZKIJcD+OReFf09Ed3ojRsRXYIQAFlobckZQA4B8F4AezWAbQFsRWyi6xsRf0x+EMiHAUzcr2KgP6JPFUA3KoCOiDZAJADNOQOHAHhP+gFg9DtEv6XzTXQ9Ym014vXrC0FcDOCLz6sYHIzoRwf7InoB0SMIAHSi9kGLZSADpQTvTT/1T9G/JXqdE73OV1cilpcjfn11DsR5APeJfGQ4YmgEHYgYEAgAenspBWXoRFMZAGAGmnj/AADH9Sf6DdNv5Ghyji4BYHkx4tXZTJwFcO9uFaOjEaM4H+Y6PEQG0AGA9JOJlAUA6HyPlNt4toFA2siKJbD2Gzn1K2voUh39Is4XFyIWuE6e9ETuoix9OLHm/TlynQtilIyM3gQAWTDC6Rl0OmIGnUL9ewbdIQOW6ybPjhDACO8OGYQBoH2omTwlJxmYmKhirBExxsuqRszGiKUAwAERrxLRJnV1xEy3nW8sckIHGbBRdaAj+2OZ6I14gcjn1blaZ2cjfqtH9CQDXaTWWXfkjDQZytnYx/mCxjAyN19Hbgamp+oM+LdGNe4zy+ghk5GixoZTZPm6Adil4itLDeAute9ivGwwO906+0Iv2sK4redOXgLEPAAEMY3DqVIKrnNGh+MlIl7h2TWy1UqvaKObYGxgHSc/+JBVjwHYQO38YHd3+gCMJxjRFjLRoIYXASGA2ezcLMwAZg7n/uYzqzxvE9qQhcC6tInt9symKlIDsKvld4EkMPmBFrp7h5kuc13GaglnpjwBMHq+2+X+tobzLfvE9+gVWbOQl/zRjq821OwgNQDTLLerrWp+yLGSXFQZbtsRw7jjZa1LBmy0Vcrk+OnYZ3d5Zz+rNg3Sa/KDP5kUqQHI6c5yc7lmPaCRbCZpNlFtZjuzYoqN3HJs4Nx7/iYh+awc4ftq2pzYS5p95D1SfzoQMppfmtRyD4bjX+Zbv9Ti6LqCXUKqP6XX/cjf/fC5dN+/lWL/5GYNQC6vNJQjLtdrlga0KW2k0DRaGtey3Z34Aq5wYmyw69TZXjK9prk5v39INrSZVNAA8DtSAyipkmzSXkelWh2mxsGwjWQnO1LOt0x361bEOCpZST49ueNTt9t0ggZQKWFSbAtIRWoAaZOh5USzB8t5VRxJ5zfxAlQ9CLG4rBpjEbfHAXGbTMCggpC++5z57ppPnHdLtJvt2dSeGfTz8y+pBjWAXW7q1AfVcqKxo2XGPgy6J1zRwziXphtGj/NxQIwDQNp2b7jCzUYiH97bylOxrW1AJB85OKQGMPl7U1okaZfjeEtlpFSbRYNpMRXnRG/6zYDaMBPcc2GZHZePmbLe2pDMtgGyjd0EBD9Zzq7jp09ZSBi6iY65iIriXHAuI3lAY0ZivwjQprPmZRl5krJnpGV3yKL0DW8kuub7d9/WI4DUGSgiWslkgxmXetVVdrmHCR0YvfVuoKY+ZYBMmA21we9mQSJzbyy7Q1DtbKCyqSx5Ss6fiB4/5kRE1J4B0qmImhqRpyK3pNzuyEpKjqoiaTmChuNZ0JWdaBvnKx5GDCKv5efPj6NXzgNQvvm6SmeA5BwtR7IeUuwoygNGKXNW2EtsmWnbHjJSS5UyWECQkWfPzjhXLgbw1ZccSj3N0Ew2oMexdDTPAFwszrd0qkkBeGYoO8POTyAsJQAsxbPvzzlXLgZQ5MmTKo2fqTf6Gzn6dCwHgP8xOUItSeISsmBzOr6CEMA6WfjhbNpPy+UAlEcPq/owavQQi+eGtE7p/CZqrxwxDU5EWlaOsiByL7z46YPOlasBFHn4iFMT0TsNUnTi+dwDxwAsA87llBc/Xuq4yMcDOC0PHlT1sjH9aNqKAHj58qOcnpZ/B+A/k4i/AfiUBar3AjOeAAAAAElFTkSuQmCC"},{ name : "R_font22_png", data : "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QEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAk9H8wVmWdi6DjbAAAAABJRU5ErkJggg"},{ name : "R_img_txt_cursor_png", data : "iVBORw0KGgoAAAANSUhEUgAAAAIAAAAeCAIAAACJwFiTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAWSURBVBhXY/z//z8DAwMTEA8LioEBAIccAznI8jj2AAAAAElFTkSuQmCC"},{ name : "R_outline_font33_png", data : "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"},{ name : "R_font11_png", data : "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"},{ name : "R_img_cursor_png", data : "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"},{ name : "R_font33_fnt", data : "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AAAAAOQAAAAWAM8AFQAYAAMACQAZAAAAAABBAAAAbgCPABUAGAADAAkAGQAAAAAAEwQAAFgA9gASABgAAwAJABYAAAAAAOUAAAAsAM8AFQAYAAMACQAZAAAAAABCAAAAhACPABUAGAADAAkAGQAAAAAAFAQAAH8BIgAYAB0AAwAJABwAAAAAABggAACiAEEBCQAJAAMACQANAAAAAADmAAAAbwEJAScADwADABIAKwAAAAAAQwAAAJoAjwAVABgAAwAJABkAAAAAABUEAAA0AdoAFQAYAAMACQAZAAAAAAAZIAAArABBAQkACQAAAAkACgAAAAAA5wAAADIAGgEVABUAAwASABkAAAAAAEQAAACwAI8AFQAYAAMACQAZAAAAAAAWBAAAKgFdABgAGAADAAkAHAAAAAAA6AAAAEIAzQAVABgAAwAJABkAAAAAAEUAAADGAI8AFQAYAAMACQAZAAAAAAAXBAAASgHaABUAGAADAAkAGQAAAAAA6QAAAFgAxAAVABgAAwAJABkAAAAAAEYAAADcAI8AFQAYAAMACQAZAAAAAAAYBAAAYAHXABUAGAADAAkAGQAAAAAAHCAAADIAUAESAAkAAwAJABYAAAAAAOoAAABuAMEAFQAYAAMACQAZAAAAAABHAAAAGACEABUAGAADAAkAGQAAAAAAGQQAALMAAAAVACEAAwAAABkAAAAAAB0gAABFAFABEgAJAAAACQATAAAAAADrAAAAhADBABUAGAADAAkAGQAAAAAASAAAAPIAjwAVABgAAwAJABkAAAAAABoEAAB2AdYAFQAYAAMACQAZAAAAAADsAAAAjgHvAAkAGAAAAAkACgAAAAAASQAAAGsA9gASABgAAwAJABYAAAAAABsEAACMAdYAFQAYAAMACQAZAAAAAABKAAAACAGPABUAGAADAAkAGQAAAAAAHAQAAKIB1gAVABgAAwAJABkAAAAAAO0AAACYAe8ACQAYAAMACQANAAAAAABLAAAAHgGPABUAGAADAAkAGQAAAAAAHQQAALgB1gAVABgAAwAJABkAAAAAAO4AAADuAPMAEAAYAP7/CQAPAAAAAABMAAAApADzABIAGAADAAkAFgAAAAAAHgQAAM4B1gAVABgAAwAJABkAAAAAAO8AAAD/APMAEAAYAP7/CQAPAAAAAABNAAAANAGPABUAGAADAAkAGQAAAAAAHwQAAOQB1gAVABgAAwAJABkAAAAAAPAAAADAAVkAGAAYAAMACQAcAAAAAABOAAAASgGPABUAGAADAAkAGQAAAAAAIAQAAAAAAQEVABgAAwAJABkAAAAAAPEAAACwAMEAFQAYAAMACQAZAAAAAAAhBAAAFgABARUAGAADAAkAGQAAAAAA8gAAAMYAwQAVABgAAwAJABkAAAAAAE8AAABgAYwAFQAYAAMACQAZAAAAAAAiBAAALAABARUAGAADAAkAGQAAAAAA8wAAANwAwQAVABgAAwAJABkAAAAAAFAAAAB2AYsAFQAYAAMACQAZAAAAAAAjBAAAQgD/ABUAGAADAAkAGQAAAAAA9AAAAPIAwQAVABgAAwAJABkAAAAAAFEAAACMAYsAFQAYAAMACQAZAAAAAAAkBAAAFQFEAB4AGAADAAkAIgAAAAAA9QAAAAgBwQAVABgAAwAJABkAAAAAAFIAAACiAYsAFQAYAAMACQAZAAAAAAAlBAAALgCCABUAGAADAAkAGQAAAAAA9gAAAB4BwQAVABgAAwAJABkAAAAAAFMAAAC4AYsAFQAYAAMACQAZAAAAAAAmBAAAsQEiABgAHQADAAkAHAAAAAAA9wAAALIBKAESAA8AAwAPABYAAAAAAFQAAADOAYsAFQAYAAMACQAZAAAAAAAnBAAARAB5ABUAGAADAAkAGQAAAAAA+AAAAPIAMQEVAA8AAwASABkAAAAAAFUAAADkAYsAFQAYAAMACQAZAAAAAAAoBAAAVABdABsAGAADAAkAHwAAAAAA+QAAADQBwQAVABgAAwAJABkAAAAAAFYAAAAAALYAFQAYAAMACQAZAAAAAAApBAAARAEiAB4AHQADAAkAIgAAAAAA+gAAAEoBwQAVABgAAwAJABkAAAAAAFcAAACOAVkAGAAYAAMACQAcAAAAAAAqBAAAjABdABoAGAADAAkAHgAAAAAA+wAAAGABvgAVABgAAwAJABkAAAAAAFgAAAAWALYAFQAYAAMACQAZAAAAAAArBAAAUwFAAB4AGAADAAkAIgAAAAAA/AAAAHYBvQAVABgAAwAJABkAAAAAAFkAAAAsALYAFQAYAAMACQAZAAAAAAAsBAAAcAB2ABUAGAADAAkAGQAAAAAA/QAAAFgAIgAVACEAAwAJABkAAAAAAFoAAABCALQAFQAYAAMACQAZAAAAAAAtBAAAmgDBABUAGAADAAkAGQAAAAAA/gAAAG4AIgAVACEAAwAJABkAAAAAAFsAAABnAfAADAAYAAMACQARAAAAAAAuBAAA9ABEACAAGAADAAkAJAAAAAAA/wAAALsBAAAVACEAAwAJABkAAAAAAFwAAABYAKsAFQAYAAMACQAZAAAAAAAvBAAAhgB2ABUAGAADAAkAGQAAAAAAXQAAAE0B8wAMABgAAwAJABEAAAAAADAEAACEADQBFQAPAAMAEgAZAAAAAABeAAAAHABQARUACQADAAkAGQAAAAAAMQQAAJwAdgAVABgAAwAJABkAAAAAAF8AAABEAJIADwADAAMAHgATAAAAAAAyBAAA3AAxARUADwADABIAGQAAAAAAYAAAAIsARAEMAAkAAwAJABEAAAAAADMEAADYASgBDwAPAAMAEgATAAAAAABhAAAAdgEtARUADwADABIAGQAAAAAANAQAALMADAEYABQAAwASABwAAAAAAJEDAACMAb0AFQAYAAMACQAZAAAAAABiAAAAbgCoABUAGAADAAkAGQAAAAAANQQAAMYAMQEVAA8AAwASABkAAAAAAP////8AAAAADAAqAAYAAAAUAAAAAACSAwAAogG9ABUAGAADAAkAGQAAAAAAYwAAADsBHgEVAA8AAwASABkAAAAAADYEAACeACEBGAAPAAMAEgAcAAAAAACTAwAAkQDzABIAGAADAAkAFgAAAAAAZAAAAIQAqAAVABgAAwAJABkAAAAAADcEAACwADEBFQAPAAMAEgAZAAAAAACUAwAANAFBAB4AGAADAAkAIgAAAAAAZQAAADQBLwEVAA8AAwASABkAAAAAADgEAACaADEBFQAPAAMAEgAZAAAAAACVAwAAuAG9ABUAGAADAAkAGQAAAAAAZgAAADAB8wAPABgAAwAJABMAAAAAADkEAACyAHYAFQAYAAMACQAZAAAAAACWAwAAzgG9ABUAGAADAAkAGQAAAAAAZwAAAJoAqAAVABgAAwASABkAAAAAADoEAACMASkBEgAPAAMAEgAWAAAAAACXAwAA5AG9ABUAGAADAAkAGQAAAAAAaAAAALAAqAAVABgAAwAJABkAAAAAADsEAABuADQBFQAPAAMAEgAZAAAAAACYAwAAAADoABUAGAADAAkAGQAAAAAAaQAAAKwB7wAGABgAAwAJAAoAAAAAADwEAAAsAEABFQAPAAMAEgAZAAAAAACZAwAAygDzABIAGAADAAkAFgAAAAAAagAAABMATQAPABsAAwAJABMAAAAAAD0EAAAWAEABFQAPAAMAEgAZAAAAAACaAwAAFgDoABUAGAADAAkAGQAAAAAAawAAALcA8wASABgAAwAJABYAAAAAAD4EAAC/ARgBFQAPAAMAEgAZAAAAAACbAwAAkQFAAB4AGAADAAkAIgAAAAAAbAAAAKIB7wAJABgAAwAJAA0AAAAAAD8EAABnAR0BFQAPAAMAEgAZAAAAAACcAwAALADoABUAGAADAAkAGQAAAAAAbQAAAA8BIQEVAA8AAwASABkAAAAAAEAEAADIAHYAFQAYAAMAEgAZAAAAAACdAwAAQgDmABUAGAADAAkAGQAAAAAAbgAAAFgAPgEVAA8AAwASABkAAAAAAEEEAAB9ARkBFQAPAAMAEgAZAAAAAACeAwAAWADdABUAGAADAAkAGQAAAAAAbwAAAAgBMQEVAA8AAwASABkAAAAAAEIEAADrARUBEgAPAAMAEgAWAAAAAACfAwAAbgDaABUAGAADAAkAGQAAAAAAcAAAAMYAqAAVABgAAwASABkAAAAAAEMEAADeAHYAFQAYAAMAEgAZAAAAAACgAwAAAABrABsAGAADAAkAHwAAAAAAcQAAANwAqAAVABgAAwASABkAAAAAAEQEAAApAAAAGwAhAAMACQAfAAAAAAChAwAAhADaABUAGAADAAkAGQAAAAAAcgAAAJ8BKQESAA8AAwASABYAAAAAAEUEAAAlAR8BFQAPAAMAEgAZAAAAAABzAAAAHgExARUADwADABIAGQAAAAAARgQAAJoADAEYABQAAwASABwAAAAAAKMDAACaANoAFQAYAAMACQAZAAAAAAB0AAAAEAHzAA8AGAADAAkAEwAAAAAARwQAAFEBHQEVAA8AAwASABkAAAAAAKQDAACwANoAFQAYAAMACQAZAAAAAAB1AAAASgEuARUADwADABIAGQAAAAAASAQAAFMALgEYAA8AAwASABwAAAAAAKUDAADPAUAAGwAYAAMACQAfAAAAAAB2AAAAzQAhARUADwADABIAGQAAAAAASQQAAGIADwEbABQAAwASAB8AAAAAAKYDAAAcAGkAGwAYAAMACQAfAAAAAAB3AAAAqQEYARUADwADABIAGQAAAAAASgQAADgAMAEaAA8AAwASAB4AAAAAAKcDAADGANoAFQAYAAMACQAZAAAAAAB4AAAAAABAARUADwADABIAGQAAAAAASwQAAAAAMAEbAA8AAwASAB8AAAAAAKgDAABsAEQAIQAYAAMACQAlAAAAAAB5AAAA8gCoABUAGAADABIAGQAAAAAATAQAAJMBGQEVAA8AAwASABkAAAAAAKkDAADSAEQAIQAYAAMACQAlAAAAAAB6AAAA+QAhARUADwADABIAGQAAAAAATQQAALcAIQEVAA8AAwASABkAAAAAAHsAAABaAfMADAAYAAMACQARAAAAAABOBAAA2wEFAR4ADwADABIAIgAAAAAAfAAAAD0BIgAGAB4AAwAJAAoAAAAAAE8EAADVARgBFQAPAAMAEgAZAAAAAAB9AAAA8QFZAAwAGAADAAkAEQAAAAAAUAQAAPQAdgAVABgAAwAJABkAAAAAAH4AAABYAE4BEgAJAAMADwAWAAAAAABRBAAACgF2ABUAGAADAAkAGQAAAAAAUwQAACAB8wAPABgAAwAJABMAAAAAALEDAADjACEBFQAPAAMAEgAZAAAAAABUBAAAQgBAARUADwADABIAGQAAAAAAsgMAAHkBAAAVACEAAwAJABkAAAAAAFYEAAD5ASIABgAYAAMACQAKAAAAAABXBAAA3QDzABAAGAD+/wkADwAAAAAAWQQAALkBCAEhAA8AAwASACUAAAAAAFoEAACXAQgBIQAPAAMAEgAlAAAAAABbBAAAXAFZABgAGAAAAAkAGQAAAAAAXAQAAH4A8wASABgAAwAJABYAAAAAAF0EAABMAXMAFQAYAAMACQAZAAAAAABeBAAAmgAiABUAIQADAAkAGQAAAAAAoQAAALMB7wAGABgAAwAJAAoAAAAAAKIAAAAcABoBFQAVAAMADwAZAAAAAAAAAAAA"},{ name : "R_font11_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmf1/woAZm9udDExLnBuZw4ACwA/AAAAowAAALAAJwAHAAgAAQADAAgAAAAAAKQAAACoAEIABwAGAAEABAAIAAAAAAClAAAAuAAnAAcACAABAAMACAAAAAAApgAAAAUAAAACAA0AAQABAAMAAAAAAKcAAADAACcABwAIAAEAAwAIAAAAAACoAAAArwBPAAUAAgABAAMABgAAAAAAIiEAAGgAUgAJAAQAAQADAAoAAAAAAKkAAABxABcACQAIAAEAAwAKAAAAAACqAAAAvgBCAAQABgABAAMABgAAAAAAqwAAAE0ARAAJAAcAAQAEAAoAAAAAAK4AAACwAEIABgAGAAEAAwAHAAAAAACxAAAA3gA5AAYACAABAAMABwAAAAAAtQAAAIUAFQAIAAgAAAAGAAgAAAAAALYAAADIACcABwAIAAEAAwAIAAAAAAC7AAAALwBFAAkABwABAAQACgAAAAAAkAQAAHUADAAGAAoAAQABAAcAAAAAAJEEAACeAEIABQAHAAEABAAGAAAAAAC/AAAA0AAnAAcACAABAAMACAAAAAAAkgQAAKAAHgAHAAgAAAADAAcAAAAAAMAAAADSAAAABwALAAEAAAAIAAAAAACTBAAAVQBSAAYABQAAAAYABgAAAAAAwQAAAAAADwAHAAsAAQAAAAgAAAAAAMIAAACyAAAABwALAAEAAAAIAAAAAADDAAAAwgAAAAcACwABAAAACAAAAAAAIAAAAAsAIgADAAEA//8NAAQAAAAAAJYEAAA3AAwACQAKAAEAAwAKAAAAAADEAAAAygAAAAcACwABAAAACAAAAAAAIQAAACwARQACAAgAAQADAAMAAAAAAJcEAAA5AEQACQAHAAEABgAKAAAAAADFAAAA6gAAAAcACwABAAAACAAAAAAAIgAAAI8AUgAFAAMAAQADAAYAAAAAAAD7AAArABgACQAIAAEAAwAKAAAAAADGAAAAFgAYAAoACAABAAMACwAAAAAAIwAAAAAAGwAKAAgAAQADAAsAAAAAAAH7AACoAB4ABwAIAAEAAwAIAAAAAADHAAAAbQAMAAcACgABAAMACAAAAAAAJAAAAAgAAAAHAAwAAQABAAgAAAAAAAL7AADWABUACAAIAAEAAwAJAAAAAAAD+wAAqAAMAAsACAABAAMADAAAAAAA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AwAIAAAAAAAtBAAAQAAyAAcACAABAAMACAAAAAAA/gAAAOIAAAAHAAsAAQADAAgAAAAAAFsAAAD3ADkABAAIAAEAAwAGAAAAAAAuBAAAwAAMAAsACAABAAMADAAAAAAA/wAAAKIAAAAHAAsAAQADAAgAAAAAAFwAAABwACkABwAIAAEAAwAIAAAAAAAvBAAAEAAiAAcACAABAAMACAAAAAAAXQAAABkARQAEAAgAAQADAAYAAAAAADAEAAAIAFcABwAFAAEABgAIAAAAAABeAAAAcgBSAAcAAwABAAMACAAAAAAAMQQAABgAIQAHAAgAAQADAAgAAAAAAF8AAACLAEoABQABAAEACgAGAAAAAAAyBAAAAABXAAcABQABAAYACAAAAAAAYAAAAJsAUAAEAAMAAQADAAYAAAAAADMEAABcAFIABQAFAAEABgAGAAAAAABhAAAAQQBMAAcABQABAAYACAAAAAAANAQAAFcARAAIAAcAAQAGAAkAAAAAAJEDAACYADAABwAIAAEAAwAIAAAAAABiAAAAeAApAAcACAABAAMACAAAAAAANQQAAPEASAAHAAUAAQAGAAgAAAAAAP////8AAAAABAAOAAIAAAAHAAAAAACSAwAAoAAwAAcACAABAAMACAAAAAAAYwAAADgAUwAHAAUAAQAGAAgAAAAAADYEAAAwAE0ACAAFAAEABgAJAAAAAACTAwAAnwA5AAYACAABAAMABwAAAAAAZAAAAIAAKQAHAAgAAQADAAgAAAAAADcEAADpAEgABwAFAAEABgAIAAAAAACUAwAA4wAMAAoACAABAAMACwAAAAAAZQAAACgAVAAHAAUAAQAGAAgAAAAAADgEAADhAEgABwAFAAEABgAIAAAAAACVAwAAqAAwAAcACAABAAMACAAAAAAAZgAAAOsAOQAFAAgAAQADAAYAAAAAADkEAAAgACEABwAIAAEAAwAIAAAAAACWAwAAsAAwAAcACAABAAMACAAAAAAAZwAAAIgAJwAHAAgAAQAGAAgAAAAAADoEAABAAFIABgAFAAEABgAHAAAAAACXAwAAuAAwAAcACAABAAMACAAAAAAAaAAAAJAAJwAHAAgAAQADAAgAAAAAADsEAADRAEgABwAFAAEABgAIAAAAAACYAwAAwAAwAAcACAABAAMACAAAAAAAaQAAAP0AAAACAAgA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"},{ name : "R_img_tiles_hex_h_png", data : "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"},{ name : "R_img_ring_png", data : "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"},{ name : "R_img_tiles_hex_v_png", data : "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"},{ name : "R_font22_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmfq/woAZm9udDIyLnBuZxwAFgA/AAAAowAAAMMATQAOABAAAgAGABEAAAAAAKQAAAAsAYgADQAKAAIACQAQAAAAAAClAAAA0gBMAA4AEAACAAYAEQAAAAAApgAAAAkAAAADABoAAgACAAYAAAAAAKcAAADhAEoADgAQAAIABgARAAAAAACoAAAAIwCiAAoABAACAAYADQAAAAAAIiEAAJ4BhgASAAgAAgAGABUAAAAAAKkAAABfACsAEgAQAAIABgAVAAAAAACqAAAAaACAAAgACwACAAYACwAAAAAAqwAAAGUBbAASAA4AAgAIABUAAAAAAK4AAABbAIAADAAMAAIABgAPAAAAAACxAAAAqQFsAAwADgACAAcADwAAAAAAtQAAAEIBKAAPABAAAQAMABEAAAAAALYAAADwAEoADgAQAAIABgARAAAAAAC7AAAAeAFsABIADgACAAgAFQAAAAAAkAQAALYAFwAMABMAAgADAA8AAAAAAJEEAABQAIEACgANAAIACQANAAAAAAC/AAAA/wBKAA4AEAACAAYAEQAAAAAAkgQAAMMAPAAOABAAAAAGAA8AAAAAAMAAAACIAQAADgAWAAIAAAARAAAAAACTBAAAbgGGAAwACgAAAAwADQAAAAAAwQAAAC8AAAAOABYAAgAAABEAAAAAAMIAAABMAQAADgAWAAIAAAARAAAAAADDAAAAagEAAA4AFgACAAAAEQAAAAAAIAAAAAkAGwADAAEA//8bAAgAAAAAAJYEAABQABcAEgATAAIABgAVAAAAAADEAAAAeQEAAA4AFgACAAAAEQAAAAAAIQAAAGABbAAEABAAAgAGAAcAAAAAAJcEAADTAWwAEgANAAIADAAVAAAAAADFAAAAtQEAAA4AFgACAAAAEQAAAAAAIgAAAOcBhQAKAAYAAgAGAA0AAAAAAAD7AAA5ACwAEgAQAAIABgAVAAAAAADGAAAA2gEXABQAEAACAAYAFwAAAAAAIwAAALABFwAUABAAAgAGABcAAAAAAAH7AADSADsADgAQAAIABgARAAAAAADHAAAAJwAXAA4AFAACAAYAEQAAAAAAJAAAAA0AAAAOABgAAgACABEAAAAAAAL7AAC6ACsAEAAQAAIABgATAAAAAAAD+wAAFgEXABYAEAACAAYAGQAAAAAAmgQAAJYAFwAQABMAAgAGABMAAAAAAMgAAAA9AQAADgAWAAIAAAARAAAAAAAlAAAAjwEoAA4AEAACAAYAEQAAAAAABPsAAM4AFwAYABAAAgAGABsAAAAAAJsEAAAzAIUADwANAAIADAASAAAAAADJAAAAHwEAAA4AFgACAAAAEQAAAAAAJgAAAO8BFwAQABAAAgAGABMAAAAAAJwEAAAgASgAEAAQAAIABgATAAAAAADKAAAAWwEAAA4AFgACAAAAEQAAAAAAJwAAAB4AogAEAAYAAgAGAAcAAAAAAJ0EAABpAXsADgAKAAIADAARAAAAAADLAAAA1AAAAA4AFgACAAAAEQAAAAAAKAAAAAQBbAAIABAAAgAGAAsAAAAAAJ4EAAD+ACgAEAAQAAAABgARAAAAAADMAAAADQAZAAwAFgACAAAADwAAAAAAKQAAAA0BbAAIABAAAgAGAAsAAAAAAJ8EAABSASgADwAQAAAABgAQAAAAAADNAAAAAAAdAAwAFgACAAAADwAAAAAAKgAAABgBfQAQAAoAAgAIABMAAAAAAKAEAACoACsAEQAQAAIABgAUAAAAAADOAAAAGgAZAAwAFgACAAAADwAAAAAAKwAAADoBiAAMAAoAAgAJAA8AAAAAAM8AAADwAQAADAAWAAIAAAAPAAAAAAAsAAAACQCiAAYABgAAABIABwAAAAAAoQQAADoBfQAQAAoAAgAMABMAAAAAANAAAADcACgAEAAQAAIABgATAAAAAAAtAAAAEwBBAAgAAgACAA0ACwAAAAAAogQAAHQAFwAQABMAAgAGABMAAAAAANEAAADFAAAADgAWAAIAAAARAAAAAAAuAAAALgCeAAQABAACABIABwAAAAAAowQAABEAiQAQAA0AAgAMABMAAAAAAAEEAADjAAAADgAWAAIAAAARAAAAAADSAAAAtgAAAA4AFgACAAAAEQAAAAAALwAAAB4AQQAOABAAAgAGABEAAAAAAKQEAACWACsAEQAQAAIABgAUAAAAAADTAAAApwAAAA4AFgACAAAAEQAAAAAAMAAAAC0AQQAOABAAAgAGABEAAAAAAKUEAADiAH8AEgAKAAIADAAVAAAAAADUAAAAmAAAAA4AFgACAAAAEQAAAAAAMQAAAB8BbAAIABAAAgAGAAsAAAAAAHgBAAA+AAAADgAWAAIAAAARAAAAAADVAAAAXAAAAA4AFgACAAAAEQAAAAAAMgAAAEsAPQAOABAAAgAGABEAAAAAAAQEAABZAVsADgAQAAIABgARAAAAAACsIAAAhAArABEAEAABAAYAEwAAAAAA1gAAAE0AAAAOABYAAgAAABEAAAAAADMAAABaADwADgAQAAIABgARAAAAAADXAAAAkwGGAAoACgACAAgADQAAAAAANAAAAGkAPAAOABAAAgAGABEAAAAAAAYEAACbAG8ADAAQAAIABgAPAAAAAADYAAAADgFKAA4AEAACAAYAEQAAAAAANQAAAHgAPAAOABAAAgAGABEAAAAAAAcEAADiAQAADQAWAAIAAAAQAAAAAADZAAAA0wEAAA4AFgACAAAAEQAAAAAANgAAAIcAPAAOABAAAgAGABEAAAAAANoAAABrAAAADgAWAAIAAAARAAAAAAA3AAAAlgA8AA4AEAACAAYAEQAAAAAArAQAAKcAFwAOABMAAgAGABEAAAAAAAkEAADnABcAFwAQAAIABgAaAAAAAADbAAAAiQAAAA4AFgACAAAAEQAAAAAAOAAAAKUAPAAOABAAAgAGABEAAAAAAK0EAABDAIEADAANAAIADAAPAAAAAAAKBAAALQEXABYAEAACAAYAGQAAAAAA3AAAAPIAAAAOABYAAgAAABEAAAAAADkAAAC0ADwADgAQAAIABgARAAAAAADdAAAAEAEAAA4AFgACAAAAEQAAAAAAOgAAAPkBbAAEAAwAAgAKAAcAAAAAAN4AAAAdAUoADgAQAAIABgARAAAAAAA7AAAAzAFsAAYADgAAAAoABwAAAAAA3wAAACwBSgAOABAAAgAGABEAAAAAADwAAAC2AWwACgAOAAIACAANAAAAAADgAAAAOwFKAA4AEAACAAYAEQAAAAAAPQAAAPIBhQAKAAYAAgAMAA0AAAAAAOEAAABKAUoADgAQAAIABgARAAAAAAA+AAAAwQFsAAoADgACAAgADQAAAAAAEAQAAGgBWwAOABAAAgAGABEAAAAAAOIAAABZAUoADgAQAAIABgARAAAAAAA/AAAA4QA5AA4AEAACAAYAEQAAAAAAEQQAAHcBWwAOABAAAgAGABEAAAAAAOMAAABoAUoADgAQAAIABgARAAAAAABAAAAA8AA5AA4AEAACAAYAEQAAAAAAEgQAAIYBWwAOABAAAgAGABEAAAAAAOQAAAB3AUoADgAQAAIABgARAAAAAABBAAAA/wA5AA4AEAACAAYAEQAAAAAAEwQAAI4AbwAMABAAAgAGAA8AAAAAAOUAAACGAUoADgAQAAIABgARAAAAAABCAAAADgE5AA4AEAACAAYAEQAAAAAAFAQAAGMAFwAQABMAAgAGABMAAAAAABggAAAQAKIABgAGAAIABgAJAAAAAADmAAAAcQCAABoACgACAAwAHQAAAAAAQwAAAB0BOQAOABAAAgAGABEAAAAAABUEAACVAVsADgAQAAIABgARAAAAAAAZIAAAFwCiAAYABgAAAAYABwAAAAAA5wAAAJoBbAAOAA4AAgAMABEAAAAAAEQAAAAsATkADgAQAAIABgARAAAAAAAWBAAAywAqABAAEAACAAYAEwAAAAAA6AAAAJUBSgAOABAAAgAGABEAAAAAAEUAAAA7ATkADgAQAAIABgARAAAAAAAXBAAApAFbAA4AEAACAAYAEQAAAAAA6QAAAKQBSgAOABAAAgAGABEAAAAAAEYAAABKATkADgAQAAIABgARAAAAAAAYBAAAswFbAA4AEAACAAYAEQAAAAAAHCAAAM0BhgAMAAYAAgAGAA8AAAAAAOoAAACzAUoADgAQAAIABgARAAAAAABHAAAAYgEoAA4AEAACAAYAEQAAAAAAGQQAAHoAAAAOABYAAgAAABEAAAAAAB0gAADaAYYADAAGAAAABgANAAAAAADrAAAAwgFKAA4AEAACAAYAEQAAAAAASAAAAFkBOQAOABAAAgAGABEAAAAAABoEAADCAVsADgAQAAIABgARAAAAAADsAAAAQwFsAAYAEAAAAAYABwAAAAAASQAAAIEAbwAMABAAAgAGAA8AAAAAABsEAADRAVsADgAQAAIABgARAAAAAABKAAAAaAE5AA4AEAACAAYAEQAAAAAAHAQAAOABWwAOABAAAgAGABEAAAAAAO0AAAD4ASgABgAQAAIABgAJAAAAAABLAAAAdwE5AA4AEAACAAYAEQAAAAAAHQQAAO8BWwAOABAAAgAGABEAAAAAAO4AAAD5AGwACgAQAP//BgAKAAAAAABMAAAAdABvAAwAEAACAAYADwAAAAAAHgQAAAAAeAAOABAAAgAGABEAAAAAAO8AAADuAGwACgAQAP//BgAKAAAAAABNAAAAhgE5AA4AEAACAAYAEQAAAAAAHwQAAA8AeAAOABAAAgAGABEAAAAAAPAAAAAxASgAEAAQAAIABgATAAAAAABOAAAAlQE5AA4AEAACAAYAEQAAAAAAIAQAAB4AdAAOABAAAgAGABEAAAAAAPEAAADgAUoADgAQAAIABgARAAAAAAAhBAAALQB0AA4AEAACAAYAEQAAAAAA8gAAAO8BSgAOABAAAgAGABEAAAAAAE8AAACkATkADgAQAAIABgARAAAAAAAiBAAAPABwAA4AEAACAAYAEQAAAAAA8wAAAAAAZwAOABAAAgAGABEAAAAAAFAAAACzATkADgAQAAIABgARAAAAAAAjBAAASwBwAA4AEAACAAYAEQAAAAAA9AAAAA8AZwAOABAAAgAGABEAAAAAAFEAAADCATkADgAQAAIABgARAAAAAAAkBAAAcQEXABQAEAACAAYAFwAAAAAA9QAAAB4AYwAOABAAAgAGABEAAAAAAFIAAADRATkADgAQAAIABgARAAAAAAAlBAAAcQEoAA4AEAACAAYAEQAAAAAA9gAAAC0AYwAOABAAAgAGABEAAAAAAFMAAADgATkADgAQAAIABgARAAAAAAAmBAAAhQAXABAAEwACAAYAEwAAAAAA9wAAAHsBhgAMAAoAAgAKAA8AAAAAAFQAAADvATkADgAQAAIABgARAAAAAAAnBAAAgAEoAA4AEAACAAYAEQAAAAAA+AAAADwAkwAOAAoAAgAMABEAAAAAAFUAAAAAAFYADgAQAAIABgARAAAAAAAoBAAATAArABIAEAACAAYAFQAAAAAA+QAAADwAXwAOABAAAgAGABEAAAAAAFYAAAAPAFYADgAQAAIABgARAAAAAAApBAAAOwAXABQAEwACAAYAFwAAAAAA+gAAAEsAXwAOABAAAgAGABEAAAAAAFcAAAAPASgAEAAQAAIABgATAAAAAAAqBAAAcgArABEAEAACAAYAFAAAAAAA+wAAAFoAXgAOABAAAgAGABEAAAAAAFgAAAAeAFIADgAQAAIABgARAAAAAAArBAAAmwEXABQAEAACAAYAFwAAAAAA/AAAAGkAXgAOABAAAgAGABEAAAAAAFkAAAAtAFIADgAQAAIABgARAAAAAAAsBAAAngEoAA4AEAACAAYAEQAAAAAA/QAAAJcBAAAOABYAAgAGABEAAAAAAFoAAAA8AE4ADgAQAAIABgARAAAAAAAtBAAA0QFKAA4AEAACAAYAEQAAAAAA/gAAAKYBAAAOABYAAgAGABEAAAAAAFsAAAAxAWwACAAQAAIABgALAAAAAAAuBAAAWwEXABUAEAACAAYAGAAAAAAA/wAAAC4BAAAOABYAAgAGABEAAAAAAFwAAABLAE4ADgAQAAIABgARAAAAAAAvBAAArQEoAA4AEAACAAYAEQAAAAAAXQAAACgBbAAIABAAAgAGAAsAAAAAADAEAADhAIsADgAKAAIADAARAAAAAABeAAAAsQGGAA4ABgACAAYAEQAAAAAAMQQAALwBKAAOABAAAgAGABEAAAAAAF8AAAAnACwACgACAAIAFAANAAAAAAAyBAAA0gCLAA4ACgACAAwAEQAAAAAAYAAAAAAAogAIAAYAAgAGAAsAAAAAADMEAACIAYYACgAKAAIADAANAAAAAABhAAAAeAF7AA4ACgACAAwAEQAAAAAANAQAAAAAiQAQAA0AAgAMABMAAAAAAJEDAAB4AF4ADgAQAAIABgARAAAAAABiAAAAWgBNAA4AEAACAAYAEQAAAAAANQQAAMMAiwAOAAoAAgAMABEAAAAAAP////8AAAAACAAcAAQAAAANAAAAAACSAwAAhwBeAA4AEAACAAYAEQAAAAAAYwAAAFoBfQAOAAoAAgAMABEAAAAAADYEAAAHAX0AEAAKAAIADAATAAAAAACTAwAAZwBvAAwAEAACAAYADwAAAAAAZAAAAGkATQAOABAAAgAGABEAAAAAADcEAAC0AIsADgAKAAIADAARAAAAAACUAwAAhgEXABQAEAACAAYAFwAAAAAAZQAAAA4BiAAOAAoAAgAMABEAAAAAADgEAAClAIsADgAKAAIADAARAAAAAACVAwAAlgBeAA4AEAACAAYAEQAAAAAAZgAAANgAbgAKABAAAgAGAA0AAAAAADkEAADLASgADgAQAAIABgARAAAAAACWAwAApQBeAA4AEAACAAYAEQAAAAAAZwAAAHgATQAOABAAAgAMABEAAAAAADoEAABUAYgADAAKAAIADAAPAAAAAACXAwAAtABeAA4AEAACAAYAEQAAAAAAaAAAAIcATQAOABAAAgAGABEAAAAAADsEAACHAIsADgAKAAIADAARAAAAAACYAwAAwwBeAA4AEAACAAYAEQAAAAAAaQAAAFEBbAAEABAA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"},{ name : "R_img_no_image_png", data : "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"},{ name : "R_font33_png", data : "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"},{ name : "R_img_dmg_effect_png", data : "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"}];
+haxe_Resource.content = [{ name : "R_img_hex_highlight_png", data : "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"},{ name : "R_locales_en_json", data : "ew0KICAibGFuZyI6ICJFbmdsaXNoIiwNCg0KICAiaW5pdGlhbGl6YXRpb24iOiJJbml0aWFsaXphdGlvbiIsDQogICJsb2FkaW5nIjoiTG9hZGluZyIsDQogICJidXR0b25fc2luZ2xlX3BsYXllciI6Ik5ldyBnYW1lIiwNCiAgImJ1dHRvbl9tdWx0aV9wbGF5ZXIiOiJOZXQgZ2FtZSIsDQogICJsYWJlbF9sb2FkX2dhbWUiOiJMb2FkIGdhbWUiLA0KICAibGFiZWxfc2F2ZV9nYW1lIjoiU2F2ZSBnYW1lIiwNCiAgImxhYmVsX3NhdmVfbWFwIjoiU2F2ZSBtYXAiLA0KICAibGFiZWxfdGVzdF9tYXAiOiJUZXN0IG1hcCIsDQogICJsYWJlbF9vdmVyd3JpdGUiOiJPdmVyd3JpdGUiLA0KICAibGFiZWxfZGVsZXRlIjoiRGVsZXRlIiwNCiAgImxhYmVsX2xvYWQiOiJMb2FkIiwNCiAgImxhYmVsX25ld19tYXAiOiAiQ3JlYXRlIG1hcCIsDQogICJsYWJlbF9lZGl0X21hcCI6ICJFZGl0IG1hcCIsDQogICJub29uZSI6Ik5vb25lIiwNCiAgImh1bWFuIjoiSHVtYW4iLA0KICAiYWkiOiJBSSIsDQogICJ0aXRsZSI6IlRCVEJTIiwNCiAgInR1cm4iOiJUdXJuIiwNCiAgInR1cm5zIjoidHVybnMiLA0KICAicGxheWVycyI6InBsYXllcnMiLA0KICAicGxheWVyIjoiUGxheWVyIiwNCiAgImFkZCI6IkFkZCIsDQogICJsYWJlbF93YWl0X2Zvcl9wbGF5ZXJzIjoiV2FpdGluZyBmb3Igb3RoZXIgcGxheWVycyIsDQogICJsYWJlbF9vayI6Ik9LIiwNCiAgImxhYmVsX25leHRfdHVybiI6Ik5leHQgdHVybiIsDQogICJsYWJlbF9uZXh0X21vdmUiOiJOZXh0IG1vdmUiLA0KICAibGFiZWxfZW5kX3R1cm4iOiJFbmQgdHVybiIsDQogICJjYWxjdWxhdGluZ190dXJuIjogIkNhbGN1bGF0aW5nLi4uIiwNCiAgInR1cm5fYW5pbWF0aW9uIjogIlR1cm4gYW5pbWF0aW9uIiwNCiAgImxhYmVsX21pbmVyYWxzIjoiTWluZXJhbHM6IHtudW1iZXJ9IiwNCiAgImxhYmVsX21hbmEiOiJNYW5hOiB7bnVtYmVyfSIsDQogICJtaW5lcmFscyI6Im1pbmVyYWxzIiwNCiAgIm1hbmEiOiJtYW5hIiwNCiAgImxhYmVsX2NvbnRpbnVlIjoiQ29udGludWUiLA0KICAibGFiZWxfdG9fbWFpbl9tZW51IjoiVG8gbWFpbiBtZW51IiwNCiAgImxhYmVsX3RvX2Rlc2t0b3AiOiJUbyBkZXNrdG9wIiwNCiAgImxhYmVsX2NyZWF0ZV9uZXdfc2F2ZSI6ImNyZWF0ZSBuZXcgc2F2ZSBmaWxlIiwNCiAgImxhYmVsX2Nvbm5lY3RpbmciOiJjb25uZWN0aW5nLi4uIiwNCiAgImxhYmVsX2NyZWF0ZV9nYW1lIjoiQ3JlYXRlIGdhbWUiLA0KICAibGFiZWxfam9pbl9nYW1lIjoiSm9pbiBnYW1lIiwNCiAgImxhYmVsX3lvdXJfbmFtZSI6IllvdXIgbmFtZToiLA0KICAibGFiZWxfY29ubmVjdGlvbl9lcnJvciI6IkNvbm5lY3Rpb24gZXJyb3IiLA0KICAibGFiZWxfZ2FtZV9zdGFydGVkIjoiZ2FtZSBzdGFydGVkIiwNCiAgImxhYmVsX2xvYWRlZF9nYW1lIjoibG9hZGVkIGdhbWUiLA0KICAibGFiZWxfbmV3X2dhbWUiOiJuZXcgZ2FtZSIsDQogICJsYWJlbF9sZWF2ZSI6IkxlYXZlIiwNCiAgImxhYmVsX3N0YXJ0X2dhbWUiOiJTdGFydCBnYW1lIiwNCiAgIm1zZ19uZXdfcm9vbV9vd25lciI6Ik5ldyBob3N0IC0ge3BsYXllcn0iLA0KICAibGFiZWxfY2xpY2tfdG9fc2VsZWN0IjoiY2xpY2sgdG8gc2VsZWN0IiwNCiAgInN0YXRfaHAiOiJIUCIsDQogICJzdGF0X2F0dGFjayI6IkF0dGFjayIsDQogICJzdGF0X3NwZWVkIjoiU3BlZWQiLA0KICAic3RhdF9yYW5nZSI6IkF0dGFjayByYW5nZSIsDQoNCiAgInNraWxsX3N0YXRfcmFuZ2UiOiJSYW5nZToge259IiwNCiAgInNraWxsX3N0YXRfcmFkaXVzIjoiUmFkaXVzOiB7bn0iLA0KDQogICJsYWJlbF9jb250cm9scyI6IkNvbnRyb2xzIiwNCiAgImxhYmVsX2NvbnRyb2xzX2Rlc2NyIjoiVyxBLFMsRCAtIG1vdmUgY2FtZXJhXG5RLEUgLSByb3RhdGUgY2FtZXJhXG5Nb3VzZSB3aGVlbCAtIHpvb21cblBhZ2UgVXAsIFBhZ2UgRG93biAtIGNoYW5nZSBhbmltYXRpb24gc3BlZWRcblIgLSByZXBlYXQgdHVybiBhbmltYXRpb25cbkxlZnQgbW91c2UgYnV0dG9uIC0gc2VsZWN0IHVuaXRzXG5SaWdodCBtb3VzZSBidXR0b24gLSBjaG9vc2UgdGFyZ2V0IGZvciBzZWxlY3RlZCB1bml0c1xuRVNDIC0gc2hvdyBtZW51Ig0KfQ0K"},{ name : "R_locales_ru_json", data : "ew0KICAibGFuZyI6ICLQoNGD0YHRgdC60LjQuSIsDQoNCiAgImluaXRpYWxpemF0aW9uIjoi0JjQvdC40YbQuNCw0LvQuNC30LDRhtC40Y8iLA0KICAibG9hZGluZyI6ItCX0LDQs9GA0YPQt9C60LAiLA0KICAiYnV0dG9uX3NpbmdsZV9wbGF5ZXIiOiLQndC+0LLQsNGPINC40LPRgNCwIiwNCiAgImJ1dHRvbl9tdWx0aV9wbGF5ZXIiOiLQodC10YLQtdCy0LDRjyDQuNCz0YDQsCIsDQogICJsYWJlbF9sb2FkX2dhbWUiOiLQl9Cw0LPRgNGD0LfQuNGC0Ywg0LjQs9GA0YMiLA0KICAibGFiZWxfc2F2ZV9nYW1lIjoi0KHQvtGF0YDQsNC90LjRgtGMINC40LPRgNGDIiwNCiAgImxhYmVsX3NhdmVfbWFwIjoi0KHQvtGF0YDQsNC90LjRgtGMINC60LDRgNGC0YMiLA0KICAibGFiZWxfdGVzdF9tYXAiOiLQn9GA0L7RgtC10YHRgtC40YDQvtCy0LDRgtGMINC60LDRgNGC0YMiLA0KICAibGFiZWxfb3ZlcndyaXRlIjoi0J/QtdGA0LXQt9Cw0L/QuNGB0LDRgtGMIiwNCiAgImxhYmVsX2RlbGV0ZSI6ItCj0LTQsNC70LjRgtGMIiwNCiAgImxhYmVsX2xvYWQiOiLQl9Cw0LPRgNGD0LfQuNGC0YwiLA0KICAibGFiZWxfbmV3X21hcCI6ICLQodC+0LfQtNCw0YLRjCDQutCw0YDRgtGDIiwNCiAgImxhYmVsX2VkaXRfbWFwIjogItCg0LXQtNCw0LrRgtC40YDQvtCy0LDRgtGMINC60LDRgNGC0YMiLA0KICAibm9vbmUiOiLQndC40LrRgtC+IiwNCiAgImh1bWFuIjoi0KfQtdC70L7QstC10LoiLA0KICAiYWkiOiLQmNCYIiwNCiAgInRpdGxlIjoiVEJUQlMiLA0KICAidHVybiI6ItCl0L7QtCIsDQogICJ0dXJucyI6ItGF0L7QtNC+0LIiLA0KICAicGxheWVycyI6ItC40LPRgNC+0LrQvtCyIiwNCiAgInBsYXllciI6ItCY0LPRgNC+0LoiLA0KICAiYWRkIjoi0JTQvtCx0LDQstC40YLRjCIsDQogICJsYWJlbF93YWl0X2Zvcl9wbGF5ZXJzIjoi0JbQtNGR0Lwg0LTRgNGD0LPQuNGFINC40LPRgNC+0LrQvtCyIiwNCiAgImxhYmVsX29rIjoiT0siLA0KICAibGFiZWxfbmV4dF90dXJuIjoi0KHQu9C10LTRg9GO0YnQuNC5INGF0L7QtCIsDQogICJsYWJlbF9uZXh0X21vdmUiOiLQotC10L/QtdGA0Ywg0YXQvtC00LjRgiIsDQogICJsYWJlbF9lbmRfdHVybiI6ItCX0LDQutC+0L3Rh9C40YLRjCDRhdC+0LQiLA0KICAiY2FsY3VsYXRpbmdfdHVybiI6ICLQn9GA0L7RgdGH0LXRgiDRhdC+0LTQsC4uLiIsDQogICJ0dXJuX2FuaW1hdGlvbiI6ICLQkNC90LjQvNCw0YbQuNGPINGF0L7QtNCwIiwNCiAgImxhYmVsX21pbmVyYWxzIjoi0JzQuNC90LXRgNCw0LvRizoge251bWJlcn0iLA0KICAibGFiZWxfbWFuYSI6ItCc0LDQvdCwOiB7bnVtYmVyfSIsDQogICJtaW5lcmFscyI6ItC80LjQvdC10YDQsNC70L7QsiIsDQogICJtYW5hIjoi0LzQsNC90YsiLA0KICAibGFiZWxfY29udGludWUiOiLQn9GA0L7QtNC+0LvQttC40YLRjCIsDQogICJsYWJlbF90b19tYWluX21lbnUiOiLQkiDQs9C70LDQstC90L7QtSDQvNC10L3RjiIsDQogICJsYWJlbF90b19kZXNrdG9wIjoi0J3QsCDRgNCw0LHQvtGH0LjQuSDRgdGC0L7QuyIsDQogICJsYWJlbF9jcmVhdGVfbmV3X3NhdmUiOiLRgdC+0LfQtNCw0YLRjCDQvdC+0LLQvtC1INGB0L7RhdGA0LDQvdC10L3QuNC1IiwNCiAgImxhYmVsX2Nvbm5lY3RpbmciOiLRgdC+0LXQtNC40L3QtdC90LjQtS4uLiIsDQogICJsYWJlbF9jcmVhdGVfZ2FtZSI6ItCh0L7Qt9C00LDRgtGMINC40LPRgNGDIiwNCiAgImxhYmVsX2pvaW5fZ2FtZSI6ItCf0YDQuNGB0L7QtdC00LjQvdC40YLRjNGB0Y8iLA0KICAibGFiZWxfeW91cl9uYW1lIjoi0JLQsNGI0LUg0LjQvNGPOiIsDQogICJsYWJlbF9jb25uZWN0aW9uX2Vycm9yIjoi0J7RiNC40LHQutCwINGB0L7QtdC00LjQvdC10L3QuNGPIiwNCiAgImxhYmVsX2dhbWVfc3RhcnRlZCI6ItC40LPRgNCwINC90LDRh9Cw0LvQsNGB0YwiLA0KICAibGFiZWxfbG9hZGVkX2dhbWUiOiLQt9Cw0LPRgNGD0LbQtdC90L3QsNGPINC40LPRgNCwIiwNCiAgImxhYmVsX25ld19nYW1lIjoi0L3QvtCy0LDRjyDQuNCz0YDQsCIsDQogICJsYWJlbF9sZWF2ZSI6ItCS0YvQudGC0LgiLA0KICAibGFiZWxfc3RhcnRfZ2FtZSI6ItCd0LDRh9Cw0YLRjCDQuNCz0YDRgyIsDQogICJtc2dfbmV3X3Jvb21fb3duZXIiOiLQndC+0LLRi9C5INGF0L7RgdGCIC0ge3BsYXllcn0iLA0KICAibGFiZWxfY2xpY2tfdG9fc2VsZWN0Ijoi0LLRi9Cx0YDQsNGC0YwiLA0KICAic3RhdF9ocCI6ItCl0J8iLA0KICAic3RhdF9hdHRhY2siOiLQkNGC0LDQutCwIiwNCiAgInN0YXRfc3BlZWQiOiLQodC60L7RgNC+0YHRgtGMIiwNCiAgInN0YXRfcmFuZ2UiOiLQlNCw0LvRjNC90L7RgdGC0Ywg0LDRgtCw0LrQuCIsDQogIA0KICAic2tpbGxfc3RhdF9yYW5nZSI6ItCU0LDQu9GM0L3QvtGB0YLRjDoge259IiwNCiAgInNraWxsX3N0YXRfcmFkaXVzIjoi0KDQsNC00LjRg9GBOiB7bn0iLA0KDQogICJsYWJlbF9jb250cm9scyI6ItCj0L/RgNCw0LLQu9C10L3QuNC1IiwNCiAgImxhYmVsX2NvbnRyb2xzX2Rlc2NyIjoiVyxBLFMsRCAtINC00LLQuNCz0LDRgtGMINC60LDQvNC10YDRg1xuUSxFIC0g0LLRgNCw0YnQsNGC0Ywg0LrQsNC80LXRgNGDXG7QmtC+0LvQtdGB0L4g0LzRi9GI0LggLSDQvNC10L3Rj9GC0Ywg0LzQsNGB0YjRgtCw0LFcblBhZ2UgVXAsIFBhZ2UgRG93biAtINC80LXQvdGP0YLRjCDRgdC60L7RgNC+0YHRgtGMINCw0L3QuNC80LDRhtC40LhcblIgLSDQv9C+0LLRgtC+0YDQuNGC0Ywg0LDQvdC40LzQsNGG0LjRjiDRhdC+0LTQsFxu0JvQtdCy0LDRjyDQutC90L7Qv9C60LAg0LzRi9GI0LggLSDQstGL0LHQuNGA0LDRgtGMINGO0L3QuNGC0YtcbtCf0YDQsNCy0LDRjyDQutC90L7Qv9C60LAg0LzRi9GI0LggLSDQv9C+0YHRgtCw0LLQuNGC0Ywg0YbQtdC70Ywg0LTQu9GPINCy0YvQsdGA0LDQvdC90YvRhSDRjtC90LjRgtC+0LJcbkVTQyAtINC/0L7QutCw0LfQsNGC0Ywg0LzQtdC90Y4iDQp9DQo"},{ name : "R_outline_font33_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmff/xIAb3V0bGluZV9mb250MzMucG5nKgAhAD8AAADvAAAAAABuARkAIAD6/wUAEAAAAAAAtgAAANkA3QAeACAA//8FABoAAAAAADIAAAD4AN0AHgAgAP//BQAaAAAAAABQAAAAsgEaAR4AIAD//wUAGgAAAAAAbAAAACYBYQESACAA//8FAA4AAAAAAKYAAAAWAAAADgAvAP////8KAAAAAAB4AQAAPgAtAB4AKQD///z/GgAAAAAAHAQAAAAALAEeACAA//8FABoAAAAAAGgAAAA2AZYAHgAgAP//BQAaAAAAAAAjBAAAVQE7AR4AIAD//wUAGgAAAAAAkQQAAJUAhgEYABwA//8JABQAAAAAADEAAACSAGUBFQAgAP//BQASAAAAAAA0AAAAAADJAB4AIAD//wUAGgAAAAAALAQAAAAATQEeACAA//8FABoAAAAAABkgAABaAcoBEgARAPz/BQALAAAAAADIAAAAQgEAAB4AKQD///z/GgAAAAAAJgQAAL0AVAAhACUA//8FAB0AAAAAANsAAACfAQAAHgApAP///P8aAAAAAAD6AAAA1gF1AB4AIAD//wUAGgAAAAAAPgAAAN0BXAEYAB0A//8IABQAAAAAAGcAAAAXAZsAHgAgAP//DgAaAAAAAABFBAAAYACsAR4AFwD//w4AGgAAAAAAGCAAAEcBygESABEA//8FAA4AAAAAAGYAAAA0AG4BGAAgAP//BQAUAAAAAABqAAAA+wBUABgAIwD//wUAFAAAAAAAzgAAABwAXQAbACkA///8/xcAAAAAAB8EAABdACkBHgAgAP//BQAaAAAAAAAwBAAAWAGTAR4AFwD//w4AGgAAAAAANwQAAD4AxQEeABcA//8OABoAAAAAAG8AAAAaAZoBHgAXAP//DgAaAAAAAABKBAAAmAF6ASMAFwD//w4AHwAAAAAAIQQAAJsAHwEeACAA//8FABoAAAAAAAcEAACyASoAHQApAP///P8ZAAAAAABSAAAAPgBNAR4AIAD//wUAGgAAAAAAMgQAAJYBkgEeABcA//8OABoAAAAAAFkAAACYAXUAHgAgAP//BQAaAAAAAADdAAAAYQEAAB4AKQD///z/GgAAAAAAJQQAABcBHwEeACAA//8FABoAAAAAADgAAACyAdgAHgAgAP//BQAaAAAAAABPAAAAkwEaAR4AIAD//wUAGgAAAAAA2QAAAJsAKgAeACkA///8/xoAAAAAAB4EAAA+ACwBHgAgAP//BQAaAAAAAABDBAAA2QBAAR4AIAD//w4AGgAAAAAApAAAAOAAggEdABgA//8JABkAAAAAAEYEAABzAIwBIQAcAP//DgAdAAAAAAAcIAAArgDZARsAEQD//wUAFwAAAAAAeQAAABcBvAAeACAA//8OABoAAAAAANgAAACTAbcAHgAgAP//BQAaAAAAAABlAAAAVQGyAR4AFwD//w4AGgAAAAAAqAAAAG0BygEYAA4A//8FABQAAAAAANEAAAB0ASoAHgApAP///P8aAAAAAABFAAAA+AD+AB4AIAD//wUAGgAAAAAAzQAAAAAAXQAbACkA///8/xcAAAAAADUEAAAAAMUBHgAXAP//DgAaAAAAAADJAAAAgAEAAB4AKQD///z/GgAAAAAAzAAAANABKgAbACkA///8/xcAAAAAAOsAAABVAZYAHgAgAP//BQAaAAAAAAD2AAAAHwCoAB4AIAD//wUAGgAAAAAASQQAACwAjwEkABwA//8OACAAAAAAAE0EAAD4ALQBHgAXAP//DgAaAAAAAADLAAAAXQAqAB4AKQD///z/GgAAAAAAYAAAAOoBqgEVABEA//8FABIAAAAAAMMAAADGAAAAHgApAP///P8aAAAAAAAoBAAAAACHACQAIAD//wUAIAAAAAAAPAQAALoAuwEeABcA//8OABoAAAAAAC0AAACGAcMBFQAMAP//DwASAAAAAAA2AAAAdAHYAB4AIAD//wUAGgAAAAAAFQQAAFUBtwAeACAA//8FABoAAAAAAE4AAAB0ARoBHgAgAP//BQAaAAAAAAB8AAAA7AEqAA8AJgD//wUACwAAAAAAdgAAAHwAxAEeABcA//8OABoAAAAAACkEAABzAFQAJwAlAP//BQAjAAAAAABRAAAA0QEaAR4AIAD//wUAGgAAAAAA7AAAABMBYQESACAA/P8FAAsAAAAAAE0AAAA2ARoBHgAgAP//BQAaAAAAAAAbBAAAPgALAR4AIAD//wUAGgAAAAAA8gAAALoAmwAeACAA//8FABoAAAAAAEYAAAAXAf4AHgAgAP//BQAaAAAAAAAxBAAAfABEAR4AIAD//wUAGgAAAAAABAQAAHwA4QAeACAA//8FABoAAAAAAD8EAAC1AZIBHgAXAP//DgAaAAAAAABeAAAAjwDcAR4AEQD//wUAGgAAAAAAbQAAAPsAmwEeABcA//8OABoAAAAAACQAAAAlAAAAHgAsAP////8aAAAAAABMAAAAdAE7ARsAIAD//wUAFwAAAAAAxQAAACMBAAAeACkA///8/xoAAAAAAOcAAAC+AVwBHgAdAP//DgAaAAAAAAD1AAAAPgCoAB4AIAD//wUAGgAAAAAAOQAAANEB2AAeACAA//8FABoAAAAAAEQAAADZAP4AHgAgAP//BQAaAAAAAADVAAAA+AAqAB4AKQD///z/GgAAAAAAegAAAJ4AowEeABcA//8OABoAAAAAALUAAAAaAXUAIAAgAP3/DgAaAAAAAADtAAAAAAFhARIAIAD//wUADgAAAAAAHSAAAMoA0wEbABEA/P8FABQAAAAAAFUAAAA7AXUAHgAgAP//BQAaAAAAAABkAAAA2QCbAB4AIAD//wUAGgAAAAAAEAQAAF0A5wAeACAA//8FABoAAAAAAGIAAACbAJsAHgAgAP//BQAaAAAAAABpAAAA8AHYAA8AIAD//wUACwAAAAAA1gAAANkAKgAeACkA///8/xoAAAAAADQEAABRAI8BIQAcAP//DgAdAAAAAACsIAAASgCEACMAIAD9/wUAHQAAAAAAygAAAN0BAAAeACkA///8/xoAAAAAAOEAAACbALwAHgAgAP//BQAaAAAAAAD3AAAAzgGqARsAFwD//wsAFwAAAAAAAQQAAAQBAAAeACkA///8/xoAAAAAAD8AAAA2AbcAHgAgAP//BQAaAAAAAADcAAAAfAAqAB4AKQD///z/GgAAAAAAMwAAADYB2AAeACAA//8FABoAAAAAAGsAAADkATsBGwAgAP//BQAXAAAAAADAAAAAkwEqAB4AKQD///z/GgAAAAAA0wAAADYBKgAeACkA///8/xoAAAAAAH0AAABmAGsBFQAgAP//BQASAAAAAAASBAAAHwDqAB4AIAD//wUAGgAAAAAARwQAAEEArAEeABcA//8OABoAAAAAAPkAAAAAAKgAHgAgAP//BQAaAAAAAAA5BAAAmwBAAR4AIAD//wUAGgAAAAAALgQAABQBVAApACAA//8FACUAAAAAACAAAADzAZIBCwAJAPv/JQANAAAAAADjAAAAXQDGAB4AIAD//wUAGgAAAAAAWgAAALcBdQAeACAA//8FABoAAAAAAOQAAAA+AMkAHgAgAP//BQAaAAAAAAAgBAAAfAAjAR4AIAD//wUAGgAAAAAA4gAAAHwAwAAeACAA//8FABoAAAAAABYEAAD4AHoAIQAgAP//BQAdAAAAAAAoAAAA6gBhARUAIAD//wUAEgAAAAAAxwAAAFQAVwAeACYA//8FABoAAAAAANIAAABVASoAHgApAP///P8aAAAAAABDAAAAugD+AB4AIAD//wUAGgAAAAAASwQAAHMBegEkABcA//8OACAAAAAAADcAAACTAdgAHgAgAP//BQAaAAAAAAB1AAAA1AGSAR4AFwD//w4AGgAAAAAAKgQAAG4AfgAjACAA//8FAB8AAAAAAG4AAAAXAbMBHgAXAP//DgAaAAAAAADBAAAAiAAAAB4AKQD///z/GgAAAAAA0AAAANYAegAhACAA//8FAB0AAAAAACcEAABVARoBHgAgAP//BQAaAAAAAABEBAAARAAAACQAKQD//wUAIAAAAAAAPAAAAAAAjwEYAB0A//8IABQAAAAAADsAAAAZAI8BEgAdAPz/CwALAAAAAAClAAAAsgG3AB4AIAD//wUAGgAAAAAAuwAAAFUBXAEkAB0A//8IACAAAAAAAPQAAABdAKUAHgAgAP//BQAaAAAAAAA7BAAAHwDFAR4AFwD//w4AGgAAAAAAoQAAAPABlgAPACAA//8FAAsAAAAAAMQAAADlAAAAHgApAP///P8aAAAAAADfAAAA2QC8AB4AIAD//wUAGgAAAAAAIiEAAGoA3AEkABQA//8FACAAAAAAAAYEAACsATsBGwAgAP//BQAXAAAAAAB0AAAATQBuARgAIAD//wUAFAAAAAAA8wAAAHwAnwAeACAA//8FABoAAAAAABMEAADIATsBGwAgAP//BQAXAAAAAAAzBAAAUQDdARgAFwD//w4AFAAAAAAAwgAAAKcAAAAeACkA///8/xoAAAAAAC8EAABdAEoBHgAgAP//BQAaAAAAAAAmAAAAkgB6ACEAIAD//wUAHQAAAAAAPQAAAAIBzAEYABEA//8OABQAAAAAANQAAAAXASoAHgApAP///P8aAAAAAABXAAAA3gFUACEAIAD//wUAHQAAAAAAcQAAAB8AyQAeACAA//8OABoAAAAAABQEAACbAFQAIQAlAP//BQAdAAAAAAA6AAAA8AH5AA8AGgD//wsACwAAAAAAVAAAADYBOwEeACAA//8FABoAAAAAAKoAAADKAIIBFQAZAP//BQASAAAAAAA+BAAAmwDBAR4AFwD//w4AGgAAAAAAqwAAAHoBXAEkAB0A//8IACAAAAAAACIAAAAbAcsBGAARAP//BQAUAAAAAABKAAAA0QH5AB4AIAD//wUAGgAAAAAAcAAAANEBtwAeACAA//8OABoAAAAAAP8AAAC+AQAAHgApAP//BQAaAAAAAABLAAAA+AAfAR4AIAD//wUAGgAAAAAAewAAAHwAZQEVACAA//8FABIAAAAAADAAAAC6AN0AHgAgAP//BQAaAAAAAADxAAAA+ACbAB4AIAD//wUAGgAAAAAA+wAAAB8ACwEeACAA//8FABoAAAAAAEAEAAC6AEABHgAgAP//DgAaAAAAAACpAAAAJQCHACQAIAD//wUAIAAAAAAATAQAANkAtQEeABcA//8OABoAAAAAAEcAAAA2AfkAHgAgAP//BQAaAAAAAADqAAAAdAGWAB4AIAD//wUAGgAAAAAAQgQAABwA3QEbABcA//8OABcAAAAAANcAAAA4AN0BGAAXAP//CAAUAAAAAADeAAAA+AC8AB4AIAD//wUAGgAAAAAAGQQAALoAKgAeACkA///8/xoAAAAAABEEAAA+AOoAHgAgAP//BQAaAAAAAAA1AAAAVQHYAB4AIAD//wUAGgAAAAAA8AAAALQAegAhACAA//8FAB0AAAAAAEgEAADeAXoBIQAXAP//DgAdAAAAAABBAAAAfAACAR4AIAD//wUAGgAAAAAAvwAAABcB3QAeACAA//8FABoAAAAAANoAAABpAAAAHgApAP///P8aAAAAAABOBAAASwF7AScAFwD//w4AIwAAAAAALwAAAJsA3QAeACAA//8FABoAAAAAAEkAAACQATsBGwAgAP//BQAXAAAAAAAaBAAAsgH5AB4AIAD//wUAGgAAAAAAUQQAABcBQAEeACAA//8FABoAAAAAACwAAAA0AcsBEgARAPz/FwALAAAAAAA2BAAAAACtASEAFwD//w4AHQAAAAAAWwAAANQAYQEVACAA//8FABIAAAAAAHgAAAC9AJ0BHgAXAP//DgAaAAAAAABhAAAAkwGqAR4AFwD//w4AGgAAAAAA/////wAAAAAVADIAAgD8/xUAAAAAAKIAAACfAVwBHgAdAP//CwAaAAAAAACjAAAAdAG3AB4AIAD//wUAGgAAAAAA5gAAABoBggEwABcA//8OACwAAAAAAEEEAADcAJwBHgAXAP//DgAaAAAAAABIAAAAkwH5AB4AIAD//wUAGgAAAAAAYwAAAHQBqwEeABcA//8OABoAAAAAAHIAAACyAaoBGwAXAP//DgAXAAAAAAAdBAAAHwAsAR4AIAD//wUAGgAAAAAALQQAAB8ATQEeACAA//8FABoAAAAAACEAAADwAbcADwAgAP//BQALAAAAAAAlAAAAAADqAB4AIAD//wUAGgAAAAAAQAAAAF0ACAEeACAA//8FABoAAAAAAD0EAAB/AKkBHgAXAP//DgAaAAAAAABdAAAAvgBhARUAIAD//wUAEgAAAAAAdwAAADkBmgEeABcA//8OABoAAAAAAPwAAAAAAAsBHgAgAP//BQAaAAAAAAAYBAAAdAH5AB4AIAD//wUAGgAAAAAA+AAAACIArQEeABcA//8OABoAAAAAACQEAACOAVQAJwAgAP//BQAjAAAAAAApAAAAqABhARUAIAD//wUAEgAAAAAATwQAADYBsgEeABcA//8OABoAAAAAAOkAAACTAZYAHgAgAP//BQAaAAAAAABfAAAAnAHCARgACwD//xoAFAAAAAAAxgAAAGYBVAAnACAA//8FACMAAAAAAOgAAACyAZYAHgAgAP//BQAaAAAAAABcAAAA2QAfAR4AIAD//wUAGgAAAAAAcwAAAHcBkgEeABcA//8OABoAAAAAACoAAAC8AXoBIQAXAP//CAAdAAAAAAD9AAAAHwAwAB4AKQD//wUAGgAAAAAA4AAAALoAvAAeACAA//8FABoAAAAAADoEAAAAAN0BGwAXAP//DgAXAAAAAADlAAAA0QGWAB4AIAD//wUAGgAAAAAA/gAAAAAAMwAeACkA//8FABoAAAAAABcEAABVAfkAHgAgAP//BQAaAAAAAAAuAAAA8AEmAQ8ADgD//xcACwAAAAAAsQAAADkBXAEbAB4A//8GABcAAAAAACcAAADwARQBDwARAP//BQALAAAAAABCAAAAmwD+AB4AIAD//wUAGgAAAAAAUwAAAPgAQAEeACAA//8FABoAAAAAAM8AAAA4AFoAGwApAP///P8XAAAAAAAiBAAAugAfAR4AIAD//wUAGgAAAAAAkAQAAN8AVAAbACUA//8AABcAAAAAAFgAAAB5AXUAHgAgAP//BQAaAAAAAAAjAAAAPgFUACcAIAD//wUAIwAAAAAArgAAAK4AggEbABoA//8FABcAAAAAAO4AAAAaAG4BGQAgAPr/BQAQAAAAAAA4BAAAXQDEAR4AFwD//w4AGgAAAAAAfgAAAOYAzQEbABEA//8LABcAAAAAACsEAAC2AVQAJwAgAP//BQAjAAAAAAArAAAA/gCCARsAGAD//wkAFwAAAAAAVgAAAFoBdQAeACAA//8FABoAAAAAAAAAAAA"},{ name : "R_img_shoot_png", data : "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAYNSURBVFhHxZdZb1ZVFIZXaUsnOk/0o/wlhGiJwwUJ3EGi/BSVRK7EEL0RJFb9SZ3niba0tD0+zz57d0hLi8bEFdZ3vp7vnLXeNb1r01RVVfyf8s8A3LlTRXtbxPXWiGb02jVu8v4RenAQsb8fsfcu4s+/muoXrpaPA/DpZ1V0d0V0dEa0twPgekSLIPDj60dHJwDe7Ubs7ES83Y548+ZKIJcD+OReFf09Ed3ojRsRXYIQAFlobckZQA4B8F4AezWAbQFsRWyi6xsRf0x+EMiHAUzcr2KgP6JPFUA3KoCOiDZAJADNOQOHAHhP+gFg9DtEv6XzTXQ9Ym014vXrC0FcDOCLz6sYHIzoRwf7InoB0SMIAHSi9kGLZSADpQTvTT/1T9G/JXqdE73OV1cilpcjfn11DsR5APeJfGQ4YmgEHYgYEAgAenspBWXoRFMZAGAGmnj/AADH9Sf6DdNv5Ghyji4BYHkx4tXZTJwFcO9uFaOjEaM4H+Y6PEQG0AGA9JOJlAUA6HyPlNt4toFA2siKJbD2Gzn1K2voUh39Is4XFyIWuE6e9ETuoix9OLHm/TlynQtilIyM3gQAWTDC6Rl0OmIGnUL9ewbdIQOW6ybPjhDACO8OGYQBoH2omTwlJxmYmKhirBExxsuqRszGiKUAwAERrxLRJnV1xEy3nW8sckIHGbBRdaAj+2OZ6I14gcjn1blaZ2cjfqtH9CQDXaTWWXfkjDQZytnYx/mCxjAyN19Hbgamp+oM+LdGNe4zy+ghk5GixoZTZPm6Adil4itLDeAute9ivGwwO906+0Iv2sK4redOXgLEPAAEMY3DqVIKrnNGh+MlIl7h2TWy1UqvaKObYGxgHSc/+JBVjwHYQO38YHd3+gCMJxjRFjLRoIYXASGA2ezcLMwAZg7n/uYzqzxvE9qQhcC6tInt9symKlIDsKvld4EkMPmBFrp7h5kuc13GaglnpjwBMHq+2+X+tobzLfvE9+gVWbOQl/zRjq821OwgNQDTLLerrWp+yLGSXFQZbtsRw7jjZa1LBmy0Vcrk+OnYZ3d5Zz+rNg3Sa/KDP5kUqQHI6c5yc7lmPaCRbCZpNlFtZjuzYoqN3HJs4Nx7/iYh+awc4ftq2pzYS5p95D1SfzoQMppfmtRyD4bjX+Zbv9Ti6LqCXUKqP6XX/cjf/fC5dN+/lWL/5GYNQC6vNJQjLtdrlga0KW2k0DRaGtey3Z34Aq5wYmyw69TZXjK9prk5v39INrSZVNAA8DtSAyipkmzSXkelWh2mxsGwjWQnO1LOt0x361bEOCpZST49ueNTt9t0ggZQKWFSbAtIRWoAaZOh5USzB8t5VRxJ5zfxAlQ9CLG4rBpjEbfHAXGbTMCggpC++5z57ppPnHdLtJvt2dSeGfTz8y+pBjWAXW7q1AfVcqKxo2XGPgy6J1zRwziXphtGj/NxQIwDQNp2b7jCzUYiH97bylOxrW1AJB85OKQGMPl7U1okaZfjeEtlpFSbRYNpMRXnRG/6zYDaMBPcc2GZHZePmbLe2pDMtgGyjd0EBD9Zzq7jp09ZSBi6iY65iIriXHAuI3lAY0ZivwjQprPmZRl5krJnpGV3yKL0DW8kuub7d9/WI4DUGSgiWslkgxmXetVVdrmHCR0YvfVuoKY+ZYBMmA21we9mQSJzbyy7Q1DtbKCyqSx5Ss6fiB4/5kRE1J4B0qmImhqRpyK3pNzuyEpKjqoiaTmChuNZ0JWdaBvnKx5GDCKv5efPj6NXzgNQvvm6SmeA5BwtR7IeUuwoygNGKXNW2EtsmWnbHjJSS5UyWECQkWfPzjhXLgbw1ZccSj3N0Ew2oMexdDTPAFwszrd0qkkBeGYoO8POTyAsJQAsxbPvzzlXLgZQ5MmTKo2fqTf6Gzn6dCwHgP8xOUItSeISsmBzOr6CEMA6WfjhbNpPy+UAlEcPq/owavQQi+eGtE7p/CZqrxwxDU5EWlaOsiByL7z46YPOlasBFHn4iFMT0TsNUnTi+dwDxwAsA87llBc/Xuq4yMcDOC0PHlT1sjH9aNqKAHj58qOcnpZ/B+A/k4i/AfiUBar3AjOeAAAAAElFTkSuQmCC"},{ name : "R_font22_png", data : "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QEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAkJAAAQEICAAAk9H8wVmWdi6DjbAAAAABJRU5ErkJggg"},{ name : "R_img_txt_cursor_png", data : "iVBORw0KGgoAAAANSUhEUgAAAAIAAAAeCAIAAACJwFiTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAWSURBVBhXY/z//z8DAwMTEA8LioEBAIccAznI8jj2AAAAAElFTkSuQmCC"},{ name : "R_outline_font33_png", data : "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"},{ name : "R_font11_png", data : "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"},{ name : "R_img_cursor_png", data : "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"},{ name : "R_font33_fnt", data : "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AAAAAOQAAAAWAM8AFQAYAAMACQAZAAAAAABBAAAAbgCPABUAGAADAAkAGQAAAAAAEwQAAFgA9gASABgAAwAJABYAAAAAAOUAAAAsAM8AFQAYAAMACQAZAAAAAABCAAAAhACPABUAGAADAAkAGQAAAAAAFAQAAH8BIgAYAB0AAwAJABwAAAAAABggAACiAEEBCQAJAAMACQANAAAAAADmAAAAbwEJAScADwADABIAKwAAAAAAQwAAAJoAjwAVABgAAwAJABkAAAAAABUEAAA0AdoAFQAYAAMACQAZAAAAAAAZIAAArABBAQkACQAAAAkACgAAAAAA5wAAADIAGgEVABUAAwASABkAAAAAAEQAAACwAI8AFQAYAAMACQAZAAAAAAAWBAAAKgFdABgAGAADAAkAHAAAAAAA6AAAAEIAzQAVABgAAwAJABkAAAAAAEUAAADGAI8AFQAYAAMACQAZAAAAAAAXBAAASgHaABUAGAADAAkAGQAAAAAA6QAAAFgAxAAVABgAAwAJABkAAAAAAEYAAADcAI8AFQAYAAMACQAZAAAAAAAYBAAAYAHXABUAGAADAAkAGQAAAAAAHCAAADIAUAESAAkAAwAJABYAAAAAAOoAAABuAMEAFQAYAAMACQAZAAAAAABHAAAAGACEABUAGAADAAkAGQAAAAAAGQQAALMAAAAVACEAAwAAABkAAAAAAB0gAABFAFABEgAJAAAACQATAAAAAADrAAAAhADBABUAGAADAAkAGQAAAAAASAAAAPIAjwAVABgAAwAJABkAAAAAABoEAAB2AdYAFQAYAAMACQAZAAAAAADsAAAAjgHvAAkAGAAAAAkACgAAAAAASQAAAGsA9gASABgAAwAJABYAAAAAABsEAACMAdYAFQAYAAMACQAZAAAAAABKAAAACAGPABUAGAADAAkAGQAAAAAAHAQAAKIB1gAVABgAAwAJABkAAAAAAO0AAACYAe8ACQAYAAMACQANAAAAAABLAAAAHgGPABUAGAADAAkAGQAAAAAAHQQAALgB1gAVABgAAwAJABkAAAAAAO4AAADuAPMAEAAYAP7/CQAPAAAAAABMAAAApADzABIAGAADAAkAFgAAAAAAHgQAAM4B1gAVABgAAwAJABkAAAAAAO8AAAD/APMAEAAYAP7/CQAPAAAAAABNAAAANAGPABUAGAADAAkAGQAAAAAAHwQAAOQB1gAVABgAAwAJABkAAAAAAPAAAADAAVkAGAAYAAMACQAcAAAAAABOAAAASgGPABUAGAADAAkAGQAAAAAAIAQAAAAAAQEVABgAAwAJABkAAAAAAPEAAACwAMEAFQAYAAMACQAZAAAAAAAhBAAAFgABARUAGAADAAkAGQAAAAAA8gAAAMYAwQAVABgAAwAJABkAAAAAAE8AAABgAYwAFQAYAAMACQAZAAAAAAAiBAAALAABARUAGAADAAkAGQAAAAAA8wAAANwAwQAVABgAAwAJABkAAAAAAFAAAAB2AYsAFQAYAAMACQAZAAAAAAAjBAAAQgD/ABUAGAADAAkAGQAAAAAA9AAAAPIAwQAVABgAAwAJABkAAAAAAFEAAACMAYsAFQAYAAMACQAZAAAAAAAkBAAAFQFEAB4AGAADAAkAIgAAAAAA9QAAAAgBwQAVABgAAwAJABkAAAAAAFIAAACiAYsAFQAYAAMACQAZAAAAAAAlBAAALgCCABUAGAADAAkAGQAAAAAA9gAAAB4BwQAVABgAAwAJABkAAAAAAFMAAAC4AYsAFQAYAAMACQAZAAAAAAAmBAAAsQEiABgAHQADAAkAHAAAAAAA9wAAALIBKAESAA8AAwAPABYAAAAAAFQAAADOAYsAFQAYAAMACQAZAAAAAAAnBAAARAB5ABUAGAADAAkAGQAAAAAA+AAAAPIAMQEVAA8AAwASABkAAAAAAFUAAADkAYsAFQAYAAMACQAZAAAAAAAoBAAAVABdABsAGAADAAkAHwAAAAAA+QAAADQBwQAVABgAAwAJABkAAAAAAFYAAAAAALYAFQAYAAMACQAZAAAAAAApBAAARAEiAB4AHQADAAkAIgAAAAAA+gAAAEoBwQAVABgAAwAJABkAAAAAAFcAAACOAVkAGAAYAAMACQAcAAAAAAAqBAAAjABdABoAGAADAAkAHgAAAAAA+wAAAGABvgAVABgAAwAJABkAAAAAAFgAAAAWALYAFQAYAAMACQAZAAAAAAArBAAAUwFAAB4AGAADAAkAIgAAAAAA/AAAAHYBvQAVABgAAwAJABkAAAAAAFkAAAAsALYAFQAYAAMACQAZAAAAAAAsBAAAcAB2ABUAGAADAAkAGQAAAAAA/QAAAFgAIgAVACEAAwAJABkAAAAAAFoAAABCALQAFQAYAAMACQAZAAAAAAAtBAAAmgDBABUAGAADAAkAGQAAAAAA/gAAAG4AIgAVACEAAwAJABkAAAAAAFsAAABnAfAADAAYAAMACQARAAAAAAAuBAAA9ABEACAAGAADAAkAJAAAAAAA/wAAALsBAAAVACEAAwAJABkAAAAAAFwAAABYAKsAFQAYAAMACQAZAAAAAAAvBAAAhgB2ABUAGAADAAkAGQAAAAAAXQAAAE0B8wAMABgAAwAJABEAAAAAADAEAACEADQBFQAPAAMAEgAZAAAAAABeAAAAHABQARUACQADAAkAGQAAAAAAMQQAAJwAdgAVABgAAwAJABkAAAAAAF8AAABEAJIADwADAAMAHgATAAAAAAAyBAAA3AAxARUADwADABIAGQAAAAAAYAAAAIsARAEMAAkAAwAJABEAAAAAADMEAADYASgBDwAPAAMAEgATAAAAAABhAAAAdgEtARUADwADABIAGQAAAAAANAQAALMADAEYABQAAwASABwAAAAAAJEDAACMAb0AFQAYAAMACQAZAAAAAABiAAAAbgCoABUAGAADAAkAGQAAAAAANQQAAMYAMQEVAA8AAwASABkAAAAAAP////8AAAAADAAqAAYAAAAUAAAAAACSAwAAogG9ABUAGAADAAkAGQAAAAAAYwAAADsBHgEVAA8AAwASABkAAAAAADYEAACeACEBGAAPAAMAEgAcAAAAAACTAwAAkQDzABIAGAADAAkAFgAAAAAAZAAAAIQAqAAVABgAAwAJABkAAAAAADcEAACwADEBFQAPAAMAEgAZAAAAAACUAwAANAFBAB4AGAADAAkAIgAAAAAAZQAAADQBLwEVAA8AAwASABkAAAAAADgEAACaADEBFQAPAAMAEgAZAAAAAACVAwAAuAG9ABUAGAADAAkAGQAAAAAAZgAAADAB8wAPABgAAwAJABMAAAAAADkEAACyAHYAFQAYAAMACQAZAAAAAACWAwAAzgG9ABUAGAADAAkAGQAAAAAAZwAAAJoAqAAVABgAAwASABkAAAAAADoEAACMASkBEgAPAAMAEgAWAAAAAACXAwAA5AG9ABUAGAADAAkAGQAAAAAAaAAAALAAqAAVABgAAwAJABkAAAAAADsEAABuADQBFQAPAAMAEgAZAAAAAACYAwAAAADoABUAGAADAAkAGQAAAAAAaQAAAKwB7wAGABgAAwAJAAoAAAAAADwEAAAsAEABFQAPAAMAEgAZAAAAAACZAwAAygDzABIAGAADAAkAFgAAAAAAagAAABMATQAPABsAAwAJABMAAAAAAD0EAAAWAEABFQAPAAMAEgAZAAAAAACaAwAAFgDoABUAGAADAAkAGQAAAAAAawAAALcA8wASABgAAwAJABYAAAAAAD4EAAC/ARgBFQAPAAMAEgAZAAAAAACbAwAAkQFAAB4AGAADAAkAIgAAAAAAbAAAAKIB7wAJABgAAwAJAA0AAAAAAD8EAABnAR0BFQAPAAMAEgAZAAAAAACcAwAALADoABUAGAADAAkAGQAAAAAAbQAAAA8BIQEVAA8AAwASABkAAAAAAEAEAADIAHYAFQAYAAMAEgAZAAAAAACdAwAAQgDmABUAGAADAAkAGQAAAAAAbgAAAFgAPgEVAA8AAwASABkAAAAAAEEEAAB9ARkBFQAPAAMAEgAZAAAAAACeAwAAWADdABUAGAADAAkAGQAAAAAAbwAAAAgBMQEVAA8AAwASABkAAAAAAEIEAADrARUBEgAPAAMAEgAWAAAAAACfAwAAbgDaABUAGAADAAkAGQAAAAAAcAAAAMYAqAAVABgAAwASABkAAAAAAEMEAADeAHYAFQAYAAMAEgAZAAAAAACgAwAAAABrABsAGAADAAkAHwAAAAAAcQAAANwAqAAVABgAAwASABkAAAAAAEQEAAApAAAAGwAhAAMACQAfAAAAAAChAwAAhADaABUAGAADAAkAGQAAAAAAcgAAAJ8BKQESAA8AAwASABYAAAAAAEUEAAAlAR8BFQAPAAMAEgAZAAAAAABzAAAAHgExARUADwADABIAGQAAAAAARgQAAJoADAEYABQAAwASABwAAAAAAKMDAACaANoAFQAYAAMACQAZAAAAAAB0AAAAEAHzAA8AGAADAAkAEwAAAAAARwQAAFEBHQEVAA8AAwASABkAAAAAAKQDAACwANoAFQAYAAMACQAZAAAAAAB1AAAASgEuARUADwADABIAGQAAAAAASAQAAFMALgEYAA8AAwASABwAAAAAAKUDAADPAUAAGwAYAAMACQAfAAAAAAB2AAAAzQAhARUADwADABIAGQAAAAAASQQAAGIADwEbABQAAwASAB8AAAAAAKYDAAAcAGkAGwAYAAMACQAfAAAAAAB3AAAAqQEYARUADwADABIAGQAAAAAASgQAADgAMAEaAA8AAwASAB4AAAAAAKcDAADGANoAFQAYAAMACQAZAAAAAAB4AAAAAABAARUADwADABIAGQAAAAAASwQAAAAAMAEbAA8AAwASAB8AAAAAAKgDAABsAEQAIQAYAAMACQAlAAAAAAB5AAAA8gCoABUAGAADABIAGQAAAAAATAQAAJMBGQEVAA8AAwASABkAAAAAAKkDAADSAEQAIQAYAAMACQAlAAAAAAB6AAAA+QAhARUADwADABIAGQAAAAAATQQAALcAIQEVAA8AAwASABkAAAAAAHsAAABaAfMADAAYAAMACQARAAAAAABOBAAA2wEFAR4ADwADABIAIgAAAAAAfAAAAD0BIgAGAB4AAwAJAAoAAAAAAE8EAADVARgBFQAPAAMAEgAZAAAAAAB9AAAA8QFZAAwAGAADAAkAEQAAAAAAUAQAAPQAdgAVABgAAwAJABkAAAAAAH4AAABYAE4BEgAJAAMADwAWAAAAAABRBAAACgF2ABUAGAADAAkAGQAAAAAAUwQAACAB8wAPABgAAwAJABMAAAAAALEDAADjACEBFQAPAAMAEgAZAAAAAABUBAAAQgBAARUADwADABIAGQAAAAAAsgMAAHkBAAAVACEAAwAJABkAAAAAAFYEAAD5ASIABgAYAAMACQAKAAAAAABXBAAA3QDzABAAGAD+/wkADwAAAAAAWQQAALkBCAEhAA8AAwASACUAAAAAAFoEAACXAQgBIQAPAAMAEgAlAAAAAABbBAAAXAFZABgAGAAAAAkAGQAAAAAAXAQAAH4A8wASABgAAwAJABYAAAAAAF0EAABMAXMAFQAYAAMACQAZAAAAAABeBAAAmgAiABUAIQADAAkAGQAAAAAAoQAAALMB7wAGABgAAwAJAAoAAAAAAKIAAAAcABoBFQAVAAMADwAZAAAAAAAAAAAA"},{ name : "R_font11_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmf1/woAZm9udDExLnBuZw4ACwA/AAAAowAAALAAJwAHAAgAAQADAAgAAAAAAKQAAACoAEIABwAGAAEABAAIAAAAAAClAAAAuAAnAAcACAABAAMACAAAAAAApgAAAAUAAAACAA0AAQABAAMAAAAAAKcAAADAACcABwAIAAEAAwAIAAAAAACoAAAArwBPAAUAAgABAAMABgAAAAAAIiEAAGgAUgAJAAQAAQADAAoAAAAAAKkAAABxABcACQAIAAEAAwAKAAAAAACqAAAAvgBCAAQABgABAAMABgAAAAAAqwAAAE0ARAAJAAcAAQAEAAoAAAAAAK4AAACwAEIABgAGAAEAAwAHAAAAAACxAAAA3gA5AAYACAABAAMABwAAAAAAtQAAAIUAFQAIAAgAAAAGAAgAAAAAALYAAADIACcABwAIAAEAAwAIAAAAAAC7AAAALwBFAAkABwABAAQACgAAAAAAkAQAAHUADAAGAAoAAQABAAcAAAAAAJEEAACeAEIABQAHAAEABAAGAAAAAAC/AAAA0AAnAAcACAABAAMACAAAAAAAkgQAAKAAHgAHAAgAAAADAAcAAAAAAMAAAADSAAAABwALAAEAAAAIAAAAAACTBAAAVQBSAAYABQAAAAYABgAAAAAAwQAAAAAADwAHAAsAAQAAAAgAAAAAAMIAAACyAAAABwALAAEAAAAIAAAAAADDAAAAwgAAAAcACwABAAAACAAAAAAAIAAAAAsAIgADAAEA//8NAAQAAAAAAJYEAAA3AAwACQAKAAEAAwAKAAAAAADEAAAAygAAAAcACwABAAAACAAAAAAAIQAAACwARQACAAgAAQADAAMAAAAAAJcEAAA5AEQACQAHAAEABgAKAAAAAADFAAAA6gAAAAcACwABAAAACAAAAAAAIgAAAI8AUgAFAAMAAQADAAYAAAAAAAD7AAArABgACQAIAAEAAwAKAAAAAADGAAAAFgAYAAoACAABAAMACwAAAAAAIwAAAAAAGwAKAAgAAQADAAsAAAAAAAH7AACoAB4ABwAIAAEAAwAIAAAAAADHAAAAbQAMAAcACgABAAMACAAAAAAAJAAAAAgAAAAHAAwAAQABAAgAAAAAAAL7AADWABUACAAIAAEAAwAJAAAAAAAD+wAAqAAMAAsACAABAAMADAAAAAAA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AwAIAAAAAAAtBAAAQAAyAAcACAABAAMACAAAAAAA/gAAAOIAAAAHAAsAAQADAAgAAAAAAFsAAAD3ADkABAAIAAEAAwAGAAAAAAAuBAAAwAAMAAsACAABAAMADAAAAAAA/wAAAKIAAAAHAAsAAQADAAgAAAAAAFwAAABwACkABwAIAAEAAwAIAAAAAAAvBAAAEAAiAAcACAABAAMACAAAAAAAXQAAABkARQAEAAgAAQADAAYAAAAAADAEAAAIAFcABwAFAAEABgAIAAAAAABeAAAAcgBSAAcAAwABAAMACAAAAAAAMQQAABgAIQAHAAgAAQADAAgAAAAAAF8AAACLAEoABQABAAEACgAGAAAAAAAyBAAAAABXAAcABQABAAYACAAAAAAAYAAAAJsAUAAEAAMAAQADAAYAAAAAADMEAABcAFIABQAFAAEABgAGAAAAAABhAAAAQQBMAAcABQABAAYACAAAAAAANAQAAFcARAAIAAcAAQAGAAkAAAAAAJEDAACYADAABwAIAAEAAwAIAAAAAABiAAAAeAApAAcACAABAAMACAAAAAAANQQAAPEASAAHAAUAAQAGAAgAAAAAAP////8AAAAABAAOAAIAAAAHAAAAAACSAwAAoAAwAAcACAABAAMACAAAAAAAYwAAADgAUwAHAAUAAQAGAAgAAAAAADYEAAAwAE0ACAAFAAEABgAJAAAAAACTAwAAnwA5AAYACAABAAMABwAAAAAAZAAAAIAAKQAHAAgAAQADAAgAAAAAADcEAADpAEgABwAFAAEABgAIAAAAAACUAwAA4wAMAAoACAABAAMACwAAAAAAZQAAACgAVAAHAAUAAQAGAAgAAAAAADgEAADhAEgABwAFAAEABgAIAAAAAACVAwAAqAAwAAcACAABAAMACAAAAAAAZgAAAOsAOQAFAAgAAQADAAYAAAAAADkEAAAgACEABwAIAAEAAwAIAAAAAACWAwAAsAAwAAcACAABAAMACAAAAAAAZwAAAIgAJwAHAAgAAQAGAAgAAAAAADoEAABAAFIABgAFAAEABgAHAAAAAACXAwAAuAAwAAcACAABAAMACAAAAAAAaAAAAJAAJwAHAAgAAQADAAgAAAAAADsEAADRAEgABwAFAAEABgAIAAAAAACYAwAAwAAwAAcACAABAAMACAAAAAAAaQAAAP0AAAACAAgA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"},{ name : "R_img_tiles_hex_h_png", data : "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"},{ name : "R_img_ring_png", data : "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"},{ name : "R_img_tiles_hex_v_png", data : "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"},{ name : "R_font22_fnt", data : "QkZOVAABDABSZXRybyBHYW1pbmfq/woAZm9udDIyLnBuZxwAFgA/AAAAowAAAMMATQAOABAAAgAGABEAAAAAAKQAAAAsAYgADQAKAAIACQAQAAAAAAClAAAA0gBMAA4AEAACAAYAEQAAAAAApgAAAAkAAAADABoAAgACAAYAAAAAAKcAAADhAEoADgAQAAIABgARAAAAAACoAAAAIwCiAAoABAACAAYADQAAAAAAIiEAAJ4BhgASAAgAAgAGABUAAAAAAKkAAABfACsAEgAQAAIABgAVAAAAAACqAAAAaACAAAgACwACAAYACwAAAAAAqwAAAGUBbAASAA4AAgAIABUAAAAAAK4AAABbAIAADAAMAAIABgAPAAAAAACxAAAAqQFsAAwADgACAAcADwAAAAAAtQAAAEIBKAAPABAAAQAMABEAAAAAALYAAADwAEoADgAQAAIABgARAAAAAAC7AAAAeAFsABIADgACAAgAFQAAAAAAkAQAALYAFwAMABMAAgADAA8AAAAAAJEEAABQAIEACgANAAIACQANAAAAAAC/AAAA/wBKAA4AEAACAAYAEQAAAAAAkgQAAMMAPAAOABAAAAAGAA8AAAAAAMAAAACIAQAADgAWAAIAAAARAAAAAACTBAAAbgGGAAwACgAAAAwADQAAAAAAwQAAAC8AAAAOABYAAgAAABEAAAAAAMIAAABMAQAADgAWAAIAAAARAAAAAADDAAAAagEAAA4AFgACAAAAEQAAAAAAIAAAAAkAGwADAAEA//8bAAgAAAAAAJYEAABQABcAEgATAAIABgAVAAAAAADEAAAAeQEAAA4AFgACAAAAEQAAAAAAIQAAAGABbAAEABAAAgAGAAcAAAAAAJcEAADTAWwAEgANAAIADAAVAAAAAADFAAAAtQEAAA4AFgACAAAAEQAAAAAAIgAAAOcBhQAKAAYAAgAGAA0AAAAAAAD7AAA5ACwAEgAQAAIABgAVAAAAAADGAAAA2gEXABQAEAACAAYAFwAAAAAAIwAAALABFwAUABAAAgAGABcAAAAAAAH7AADSADsADgAQAAIABgARAAAAAADHAAAAJwAXAA4AFAACAAYAEQAAAAAAJAAAAA0AAAAOABgAAgACABEAAAAAAAL7AAC6ACsAEAAQAAIABgATAAAAAAAD+wAAFgEXABYAEAACAAYAGQAAAAAAmgQAAJYAFwAQABMAAgAGABMAAAAAAMgAAAA9AQAADgAWAAIAAAARAAAAAAAlAAAAjwEoAA4AEAACAAYAEQAAAAAABPsAAM4AFwAYABAAAgAGABsAAAAAAJsEAAAzAIUADwANAAIADAASAAAAAADJAAAAHwEAAA4AFgACAAAAEQAAAAAAJgAAAO8BFwAQABAAAgAGABMAAAAAAJwEAAAgASgAEAAQAAIABgATAAAAAADKAAAAWwEAAA4AFgACAAAAEQAAAAAAJwAAAB4AogAEAAYAAgAGAAcAAAAAAJ0EAABpAXsADgAKAAIADAARAAAAAADLAAAA1AAAAA4AFgACAAAAEQAAAAAAKAAAAAQBbAAIABAAAgAGAAsAAAAAAJ4EAAD+ACgAEAAQAAAABgARAAAAAADMAAAADQAZAAwAFgACAAAADwAAAAAAKQAAAA0BbAAIABAAAgAGAAsAAAAAAJ8EAABSASgADwAQAAAABgAQAAAAAADNAAAAAAAdAAwAFgACAAAADwAAAAAAKgAAABgBfQAQAAoAAgAIABMAAAAAAKAEAACoACsAEQAQAAIABgAUAAAAAADOAAAAGgAZAAwAFgACAAAADwAAAAAAKwAAADoBiAAMAAoAAgAJAA8AAAAAAM8AAADwAQAADAAWAAIAAAAPAAAAAAAsAAAACQCiAAYABgAAABIABwAAAAAAoQQAADoBfQAQAAoAAgAMABMAAAAAANAAAADcACgAEAAQAAIABgATAAAAAAAtAAAAEwBBAAgAAgACAA0ACwAAAAAAogQAAHQAFwAQABMAAgAGABMAAAAAANEAAADFAAAADgAWAAIAAAARAAAAAAAuAAAALgCeAAQABAACABIABwAAAAAAowQAABEAiQAQAA0AAgAMABMAAAAAAAEEAADjAAAADgAWAAIAAAARAAAAAADSAAAAtgAAAA4AFgACAAAAEQAAAAAALwAAAB4AQQAOABAAAgAGABEAAAAAAKQEAACWACsAEQAQAAIABgAUAAAAAADTAAAApwAAAA4AFgACAAAAEQAAAAAAMAAAAC0AQQAOABAAAgAGABEAAAAAAKUEAADiAH8AEgAKAAIADAAVAAAAAADUAAAAmAAAAA4AFgACAAAAEQAAAAAAMQAAAB8BbAAIABAAAgAGAAsAAAAAAHgBAAA+AAAADgAWAAIAAAARAAAAAADVAAAAXAAAAA4AFgACAAAAEQAAAAAAMgAAAEsAPQAOABAAAgAGABEAAAAAAAQEAABZAVsADgAQAAIABgARAAAAAACsIAAAhAArABEAEAABAAYAEwAAAAAA1gAAAE0AAAAOABYAAgAAABEAAAAAADMAAABaADwADgAQAAIABgARAAAAAADXAAAAkwGGAAoACgACAAgADQAAAAAANAAAAGkAPAAOABAAAgAGABEAAAAAAAYEAACbAG8ADAAQAAIABgAPAAAAAADYAAAADgFKAA4AEAACAAYAEQAAAAAANQAAAHgAPAAOABAAAgAGABEAAAAAAAcEAADiAQAADQAWAAIAAAAQAAAAAADZAAAA0wEAAA4AFgACAAAAEQAAAAAANgAAAIcAPAAOABAAAgAGABEAAAAAANoAAABrAAAADgAWAAIAAAARAAAAAAA3AAAAlgA8AA4AEAACAAYAEQAAAAAArAQAAKcAFwAOABMAAgAGABEAAAAAAAkEAADnABcAFwAQAAIABgAaAAAAAADbAAAAiQAAAA4AFgACAAAAEQAAAAAAOAAAAKUAPAAOABAAAgAGABEAAAAAAK0EAABDAIEADAANAAIADAAPAAAAAAAKBAAALQEXABYAEAACAAYAGQAAAAAA3AAAAPIAAAAOABYAAgAAABEAAAAAADkAAAC0ADwADgAQAAIABgARAAAAAADdAAAAEAEAAA4AFgACAAAAEQAAAAAAOgAAAPkBbAAEAAwAAgAKAAcAAAAAAN4AAAAdAUoADgAQAAIABgARAAAAAAA7AAAAzAFsAAYADgAAAAoABwAAAAAA3wAAACwBSgAOABAAAgAGABEAAAAAADwAAAC2AWwACgAOAAIACAANAAAAAADgAAAAOwFKAA4AEAACAAYAEQAAAAAAPQAAAPIBhQAKAAYAAgAMAA0AAAAAAOEAAABKAUoADgAQAAIABgARAAAAAAA+AAAAwQFsAAoADgACAAgADQAAAAAAEAQAAGgBWwAOABAAAgAGABEAAAAAAOIAAABZAUoADgAQAAIABgARAAAAAAA/AAAA4QA5AA4AEAACAAYAEQAAAAAAEQQAAHcBWwAOABAAAgAGABEAAAAAAOMAAABoAUoADgAQAAIABgARAAAAAABAAAAA8AA5AA4AEAACAAYAEQAAAAAAEgQAAIYBWwAOABAAAgAGABEAAAAAAOQAAAB3AUoADgAQAAIABgARAAAAAABBAAAA/wA5AA4AEAACAAYAEQAAAAAAEwQAAI4AbwAMABAAAgAGAA8AAAAAAOUAAACGAUoADgAQAAIABgARAAAAAABCAAAADgE5AA4AEAACAAYAEQAAAAAAFAQAAGMAFwAQABMAAgAGABMAAAAAABggAAAQAKIABgAGAAIABgAJAAAAAADmAAAAcQCAABoACgACAAwAHQAAAAAAQwAAAB0BOQAOABAAAgAGABEAAAAAABUEAACVAVsADgAQAAIABgARAAAAAAAZIAAAFwCiAAYABgAAAAYABwAAAAAA5wAAAJoBbAAOAA4AAgAMABEAAAAAAEQAAAAsATkADgAQAAIABgARAAAAAAAWBAAAywAqABAAEAACAAYAEwAAAAAA6AAAAJUBSgAOABAAAgAGABEAAAAAAEUAAAA7ATkADgAQAAIABgARAAAAAAAXBAAApAFbAA4AEAACAAYAEQAAAAAA6QAAAKQBSgAOABAAAgAGABEAAAAAAEYAAABKATkADgAQAAIABgARAAAAAAAYBAAAswFbAA4AEAACAAYAEQAAAAAAHCAAAM0BhgAMAAYAAgAGAA8AAAAAAOoAAACzAUoADgAQAAIABgARAAAAAABHAAAAYgEoAA4AEAACAAYAEQAAAAAAGQQAAHoAAAAOABYAAgAAABEAAAAAAB0gAADaAYYADAAGAAAABgANAAAAAADrAAAAwgFKAA4AEAACAAYAEQAAAAAASAAAAFkBOQAOABAAAgAGABEAAAAAABoEAADCAVsADgAQAAIABgARAAAAAADsAAAAQwFsAAYAEAAAAAYABwAAAAAASQAAAIEAbwAMABAAAgAGAA8AAAAAABsEAADRAVsADgAQAAIABgARAAAAAABKAAAAaAE5AA4AEAACAAYAEQAAAAAAHAQAAOABWwAOABAAAgAGABEAAAAAAO0AAAD4ASgABgAQAAIABgAJAAAAAABLAAAAdwE5AA4AEAACAAYAEQAAAAAAHQQAAO8BWwAOABAAAgAGABEAAAAAAO4AAAD5AGwACgAQAP//BgAKAAAAAABMAAAAdABvAAwAEAACAAYADwAAAAAAHgQAAAAAeAAOABAAAgAGABEAAAAAAO8AAADuAGwACgAQAP//BgAKAAAAAABNAAAAhgE5AA4AEAACAAYAEQAAAAAAHwQAAA8AeAAOABAAAgAGABEAAAAAAPAAAAAxASgAEAAQAAIABgATAAAAAABOAAAAlQE5AA4AEAACAAYAEQAAAAAAIAQAAB4AdAAOABAAAgAGABEAAAAAAPEAAADgAUoADgAQAAIABgARAAAAAAAhBAAALQB0AA4AEAACAAYAEQAAAAAA8gAAAO8BSgAOABAAAgAGABEAAAAAAE8AAACkATkADgAQAAIABgARAAAAAAAiBAAAPABwAA4AEAACAAYAEQAAAAAA8wAAAAAAZwAOABAAAgAGABEAAAAAAFAAAACzATkADgAQAAIABgARAAAAAAAjBAAASwBwAA4AEAACAAYAEQAAAAAA9AAAAA8AZwAOABAAAgAGABEAAAAAAFEAAADCATkADgAQAAIABgARAAAAAAAkBAAAcQEXABQAEAACAAYAFwAAAAAA9QAAAB4AYwAOABAAAgAGABEAAAAAAFIAAADRATkADgAQAAIABgARAAAAAAAlBAAAcQEoAA4AEAACAAYAEQAAAAAA9gAAAC0AYwAOABAAAgAGABEAAAAAAFMAAADgATkADgAQAAIABgARAAAAAAAmBAAAhQAXABAAEwACAAYAEwAAAAAA9wAAAHsBhgAMAAoAAgAKAA8AAAAAAFQAAADvATkADgAQAAIABgARAAAAAAAnBAAAgAEoAA4AEAACAAYAEQAAAAAA+AAAADwAkwAOAAoAAgAMABEAAAAAAFUAAAAAAFYADgAQAAIABgARAAAAAAAoBAAATAArABIAEAACAAYAFQAAAAAA+QAAADwAXwAOABAAAgAGABEAAAAAAFYAAAAPAFYADgAQAAIABgARAAAAAAApBAAAOwAXABQAEwACAAYAFwAAAAAA+gAAAEsAXwAOABAAAgAGABEAAAAAAFcAAAAPASgAEAAQAAIABgATAAAAAAAqBAAAcgArABEAEAACAAYAFAAAAAAA+wAAAFoAXgAOABAAAgAGABEAAAAAAFgAAAAeAFIADgAQAAIABgARAAAAAAArBAAAmwEXABQAEAACAAYAFwAAAAAA/AAAAGkAXgAOABAAAgAGABEAAAAAAFkAAAAtAFIADgAQAAIABgARAAAAAAAsBAAAngEoAA4AEAACAAYAEQAAAAAA/QAAAJcBAAAOABYAAgAGABEAAAAAAFoAAAA8AE4ADgAQAAIABgARAAAAAAAtBAAA0QFKAA4AEAACAAYAEQAAAAAA/gAAAKYBAAAOABYAAgAGABEAAAAAAFsAAAAxAWwACAAQAAIABgALAAAAAAAuBAAAWwEXABUAEAACAAYAGAAAAAAA/wAAAC4BAAAOABYAAgAGABEAAAAAAFwAAABLAE4ADgAQAAIABgARAAAAAAAvBAAArQEoAA4AEAACAAYAEQAAAAAAXQAAACgBbAAIABAAAgAGAAsAAAAAADAEAADhAIsADgAKAAIADAARAAAAAABeAAAAsQGGAA4ABgACAAYAEQAAAAAAMQQAALwBKAAOABAAAgAGABEAAAAAAF8AAAAnACwACgACAAIAFAANAAAAAAAyBAAA0gCLAA4ACgACAAwAEQAAAAAAYAAAAAAAogAIAAYAAgAGAAsAAAAAADMEAACIAYYACgAKAAIADAANAAAAAABhAAAAeAF7AA4ACgACAAwAEQAAAAAANAQAAAAAiQAQAA0AAgAMABMAAAAAAJEDAAB4AF4ADgAQAAIABgARAAAAAABiAAAAWgBNAA4AEAACAAYAEQAAAAAANQQAAMMAiwAOAAoAAgAMABEAAAAAAP////8AAAAACAAcAAQAAAANAAAAAACSAwAAhwBeAA4AEAACAAYAEQAAAAAAYwAAAFoBfQAOAAoAAgAMABEAAAAAADYEAAAHAX0AEAAKAAIADAATAAAAAACTAwAAZwBvAAwAEAACAAYADwAAAAAAZAAAAGkATQAOABAAAgAGABEAAAAAADcEAAC0AIsADgAKAAIADAARAAAAAACUAwAAhgEXABQAEAACAAYAFwAAAAAAZQAAAA4BiAAOAAoAAgAMABEAAAAAADgEAAClAIsADgAKAAIADAARAAAAAACVAwAAlgBeAA4AEAACAAYAEQAAAAAAZgAAANgAbgAKABAAAgAGAA0AAAAAADkEAADLASgADgAQAAIABgARAAAAAACWAwAApQBeAA4AEAACAAYAEQAAAAAAZwAAAHgATQAOABAAAgAMABEAAAAAADoEAABUAYgADAAKAAIADAAPAAAAAACXAwAAtABeAA4AEAACAAYAEQAAAAAAaAAAAIcATQAOABAAAgAGABEAAAAAADsEAACHAIsADgAKAAIADAARAAAAAACYAwAAwwBeAA4AEAACAAYAEQAAAAAAaQAAAFEBbAAEABAAAgAGAAcAAAAAADwEAABaAI8ADgAKAAIADAARAAAAAACZAwAAWgBvAAwAEAACAAYADwAAAAAAagAAAMMAFwAKABIAAgAGAA0AAAAAAD0EAABLAI8ADgAKAAIADAARAAAAAACaAwAA0gBdAA4AEAACAAYAEQAAAAAAawAAAKgAbwAMABAAAgAGAA8AAAAAAD4EAAAeAJcADgAKAAIADAARAAAAAACbAwAAxQEXABQAEAACAAYAFwAAAAAAbAAAAEoBbAAGABAAAgAGAAkAAAAAAD8EAADhAXoADgAKAAIADAARAAAAAACcAwAA4QBbAA4AEAACAAYAEQAAAAAAbQAAAEsBfQAOAAoAAgAMABEAAAAAAEAEAADaASgADgAQAAIADAARAAAAAACdAwAA8ABbAA4AEAACAAYAEQAAAAAAbgAAAHgAiwAOAAoAAgAMABEAAAAAAEEEAAClAXsADgAKAAIADAARAAAAAACeAwAA/wBbAA4AEAACAAYAEQAAAAAAbwAAAPAAigAOAAoAAgAMABEAAAAAAEIEAABHAYgADAAKAAIADAAPAAAAAACfAwAADgFbAA4AEAACAAYAEQAAAAAAcAAAAJYATQAOABAAAgAMABEAAAAAAEMEAADpASgADgAQAAIADAARAAAAAACgAwAAEwAwABIAEAACAAYAFQAAAAAAcQAAAKUATQAOABAAAgAMABEAAAAAAEQEAAAcAAAAEgAWAAIABgAVAAAAAAChAwAAHQFbAA4AEAACAAYAEQAAAAAAcgAAAGEBiAAMAAoAAgAMAA8AAAAAAEUEAAC0AXsADgAKAAIADAARAAAAAABzAAAA/wCIAA4ACgACAAwAEQAAAAAARgQAACIAhQAQAA0AAgAMABMAAAAAAKMDAAAsAVsADgAQAAIABgARAAAAAAB0AAAA4wBsAAoAEAACAAYADQAAAAAARwQAANIBewAOAAoAAgAMABEAAAAAAKQDAAA7AVsADgAQAAIABgARAAAAAAB1AAAAHQGIAA4ACgACAAwAEQAAAAAASAQAACkBfQAQAAoAAgAMABMAAAAAAKUDAAAAADQAEgAQAAIABgAVAAAAAAB2AAAAhwF7AA4ACgACAAwAEQAAAAAASQQAAOYBbAASAA0AAgAMABUAAAAAAKYDAAAmADAAEgAQAAIABgAVAAAAAAB3AAAA8AF6AA4ACgACAAwAEQAAAAAASgQAAPUAfQARAAoAAgAMABQAAAAAAKcDAABKAVsADgAQAAIABgARAAAAAAB4AAAAlgCLAA4ACgACAAwAEQAAAAAASwQAAM8AgAASAAoAAgAMABUAAAAAAKgDAAD/ABcAFgAQAAIABgAZAAAAAAB5AAAAtABNAA4AEAACAAwAEQAAAAAATAQAAAAAlwAOAAoAAgAMABEAAAAAAKkDAABEARcAFgAQAAIABgAZAAAAAAB6AAAAlgF7AA4ACgACAAwAEQAAAAAATQQAAA8AlwAOAAoAAgAMABEAAAAAAHsAAAA6AWwACAAQAAIABgALAAAAAABOBAAAugCAABQACgACAAwAFwAAAAAAfAAAADYAFwAEABQAAgAGAAcAAAAAAE8EAAAtAJMADgAKAAIADAARAAAAAAB9AAAAFgFsAAgAEAACAAYACwAAAAAAUAQAAAAARQAOABAAAgAGABEAAAAAAH4AAADAAYYADAAGAAIACgAPAAAAAABRBAAADwBFAA4AEAACAAYAEQAAAAAAUwQAAM0AbwAKABAAAgAGAA0AAAAAALEDAADDAXsADgAKAAIADAARAAAAAABUBAAAaQCMAA4ACgACAAwAEQAAAAAAsgMAAAEBAAAOABYAAgAGABEAAAAAAFYEAABWAWwABAAQAAIABgAHAAAAAABXBAAAwgBvAAoAEAD//wYACgAAAAAAWQQAAKMAgAAWAAoAAgAMABkAAAAAAFoEAACMAIAAFgAKAAIADAAZAAAAAABbBAAA7QAoABAAEAAAAAYAEQAAAAAAXAQAALUAbwAMABAAAgAGAA8AAAAAAF0EAAA8AD0ADgAQAAIABgARAAAAAABeBAAAxAEAAA4AFgACAAYAEQAAAAAAoQAAAFsBbAAEABAAAgAGAAcAAAAAAKIAAACLAWwADgAOAAIACgARAAAAAAAAAAAA"},{ name : "R_img_no_image_png", data : "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"},{ name : "R_font33_png", data : "iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAgAElEQVR4nO3d3ZqbuLIAUGe+fv9X7nOxTyY9jgH9VAkJrXU107EFxoCLklT69f39/f2q8+v1en16z6+L951t5+q9pUZsI2p7R+/9VfmaUe1ebefXxd9btBzf2vdkfIc1bYxst2Y7Je3fcU23nmerXW8jruOWe3+LrPNkxvvv2ftK3lsi7P7wVfPiwg0DAJP75+4dAADG+50B+JRO87T/2ehuhpmcpWO/P/w9YhuftnfmLIUXkTqrTR2WHpesdku3U9vO++vPjnVtuyPOs13VprVbz7kZ0/6jZFwXKfcHGQAA2NDZGIDaAVMAwCJ+Jc4C6AkWZhttCrCqntkCETOGmNTXj/8umf4AADzA7zEA79Gc6A4AHuxnBiBidG3tSMWWEYyt2YmI7oHeUeQjUnFZXS+R7WYdh6h05fv553vLbTdyxsDPdjIymXe0O2uqfvR13CPz+Gbtb+2+lL7/X1/XLwHg4XT7buhoDMCn/3+9nCQAu9I1/DAzZQAiUuc1af7eLofoAi09olJbWanvFYq33BHcrva9jTgfRpwrq7XL/6x2fCP3N+V36CgA8KQPwE8rBPJUOAoAlAIG2EfL6pos7mwtgJYxACXpiJL27o4ua/drpu4Ayrm5zc31w87Sf4eO1gJwYwSABztbC0BZXQB4qJpBgLXjAkr6lHZLndd+3lm7SFYmu7WmyHtCWCGVQe1m6b3vjL6frXx8j9y6v0djAACABzsaAwAAPNjZGICZ1M4u+GTUWgClaj/T7N/RzGqLaDCHiOv+qt1Iq12jken5Efez3uObdT6VbC9S2P62dgEcjREAABbwaS2A79fxj7mnJAB4gOgugBHp69ZlEiP2oWfZyKt2Tbscw7Fck+6aXNH36NnvZ1HLTt8h7HfoZwbg0xueOh0PALZ21AXwqTQwAPAQPwcB/v6R7+n/f8paADyL8+lZdAdAgJ91AD49+f/8NwDgIX4GAEcrAL5O/g4ALKhmFkDvWgCzjwpdWVSBi5Za3zO1W/pvtVY7Dqu126OlO6Ano9k6C6mk3RmP70wiv7esc2D0NrpczQL46aknFQBsx1oAALChX9/f32eV/979fm1LKWBdAAAwiU/TAI/MOBOgZ5GX2QKW2u3dOYWytUBU1Gc8227k91bSVsZnivoMLedI9HlVet+IOo9K2j77jKWfv+Y76m2z9n7W+x2O6GvvqWa32zZ6nJ7TNWMAAICHqJkFMOsSnABApbPlgDOrbR2VGp6pBPHZ549aI2GlcRFHn7nmWJQe05L3925jtuMbZcS67hHdZ7XfTe3nat33XfUcX/7Wch0OX+ju6+DvJX2RAMCiPi0G9Dr52/fB3wGAhdSMAeh1lvZvTdHVpoRbZR2flQKp1rR/SXtZereRcX5ln7NZVfai3xc5err1NRBp1sXtDrd/NgYAAHior9f90QkAMNjRIMDXK25U9tVrowKQ6P2NandEAYmS9xzpLQ5S2h2QdRxGt1srYzZN9P7N2hbP9ZSs86xp/5+KCgEBMJ+SH8un/KAykAAAYA5Z2SL46D0AqK0z3TIaPDJVn7W/I45DltrU99m+r3wcerUWQGkp9BFZNORJbfFcI6rPjrD0vVAGAGAOGT94S/wQcQ8BAMDcolYDhP94DwCyCmxEppJrU4ml28hqdzWOA0C95e6F/9y9AwDAeAIAANjQ1yunv0hKHejVc08w64A7LfF7JgMAABsSAADAhs6mAd6enqiUNfWlt92SVFCk0WsBtGxnxHHgWXrOn4h7Wc15Wvra0eng0plPR+9p2UaG3oJukdvoEbWN989Z3JYMAABsSAAAABu6oxJgVso3q7Z0ZLu1aZ6s/W2x2nHguVrXaehpO8rZPkYVYuutChh5ffYcz9LPMWJJ+RGfo7SN2rYO910GAAA2JAAAgA2ddQFkja59yjKQwD1GjfyHR5MBAIANWQ4YYJzRmYmz7UXty4jPZBsJbT2pENAKero2nvR9RB6HqAJDpctOXzmrQd9TVGXHto70XgsjCrtkbK+l/dr3jFhD4c5tRGlZ76ZE5LV15N/9kwEAdmbRILZlDAAAbOjX9/d3VgTc066oHBgh8l6jC6B+P45kHf8n/t41v18XQLu7+vMjbwKt7+tdgKO2Mlb0Pka8t1RGX2TP8e+pKFbTZo3RAX/tIjgePHgkXQAA3OHXS3B1q8wMQFTtZIBsv+85qxYhi5p9Ufv6u+/Vs+7XEjIDgMg+n4y0cuR+ZC5Ocrato2lvs3Qx3DnV6E7Z04MivuuehU/e33u2P1Frsh95yjnzRFHfve84iTEAwA78GM3jqJbHqtmXZfWuBXDERQKsYMSP0YgR8FHZtqdn5470ZptqM7NTHOeZMwDZJ+4Tos2o7oApTsbFZR/D7K6fSCOv3Rk/Pyxh1kGAAECir5cfaoBMtVk4WY1+I7pdStoqWZ/ktu+4JQNwW9WiB6k5OUuPS+uiOO//3vs91r6m5/W9M0d63rvT+QqlMrpWBURJZh4DAMR7wtiXUn6M5lFyrKKmclNIAADs5ok/RrsWAjoyy+Dvq2V8bz1+swUAM6SVR6hJXbc8cUTW2u/Zxp0zNjJmP5z1085YoAngkLUAAGBDX685n5CBHKquPZNCQFS7owugpZpSyft3LARUYuo+qIdSoImdjLyXGoQZaLYxAAA9MsYRlbTjx+hvUSvC7vKwNtxZAOCEBuh3Z1EayqzwHYXP3LgjAyCtyU6WXCSkU2tRqncKMkEiswAAYEPGAADEyM5GRC4TfOc2Itsf8fl6ZawIGkIAcC0jJZuxFgBxWlLP2QOVotPhZ90Okf2ho2c7rHS9jOju6dnG2XtL271aayRiG1eyjnPrMWjdh0/tdB0nAQDA33oCupWCEDZmDAAAbGjnDEDp6Oyouax3mq1vMvL1s3w/s/TzrZg2v3v7I/XUKchaqnvFWSg9XQu926p5/Yjj1lx4bOcAIEtGv1BEm616tjHyptHbb53RV3rUXuQxjDiPIvbjk8jtlXw/Ua8507JQFExJFwAAbGjmDMDI6R2idGCEEen20VmRWYw4niO2N8xsAcDIk7V2WtWsVcmypylejYm4s053zwJQI9K0R+32HsOM7qOr7ZQer10X5YpaAAqG0QUAABuKzgAsnxIBmEhW5nHle/Wnfb+aFdDabrazDFH6/szWBZAtKj25wkXyrvRkmv2z9Xwns3+2M1HVxGqsfLyAPz4GGrsFAABHRszRh0xV49aiA4DaZUBdNAD/VTsYumWg4cqDFj/V0nj/W9ag1ZL31vi9ne+CfQnvEpgtA/D0NO5od6SNS7f/Sc9I8avXtH7eu0epRxauyQrKI76fK7Wfo2Tb7iU8TdV1NlsAAD/d/eML8ATDSwGLrpmB85BSsxTHGX3ORnYHXAXtmUH96t0aEa+pMnMGIHMN5ZbXlLx+1pPrLrV17EsWYhp97Ef1BV5t/+pYHWk5XrVrFfT8cJZuK2MtgBV+GCDN18uJz/zuHAMA8Ehfr7H9rG7CAPPKmmnwU+To+ZJ/l/U5cHcXQOuJUNM9kJGeXOXEOfvsK3y2ETeKVZR+l9mf9ynHM8On89XxYlrWAgCADb2PAcgoiiACptUMgwCBvx39btSOZr87Jd9TX+KondGa74l3dAGU7mzrkqd3n1Czesqx+FQF7PUq+96fEjzM0h2wo1mXBYdqugAAYEN3DwIE2FVPpqB3JP4K24jKpIz4HHe0292+AGCcmj6l2kIsn94XNb2z5+TN6ke7GrciTftHxPmReaxmna41Y59uiRFrykdVBfzU7oj71mrHN3J//0MAANDu7gW3oJkxAACwIRmAeHdG/bulSiO3P6Kv9O5tz76QTW9/8MrLiUdNwS5ZTyNrP0rf35LS7v3eso7vkd41RIbsrwDgHpEVCUdMbcvql4vu26pNx5a8fvRnj665kZGijlqYp1fElOIrrSVn3/9/1sCDjekCAIAN7ZYBqI3CRe3ACDPOOohM+68scqriVMdqhwBg5AJApan63v6wETKOQ2+7V1oWP2rdh6y+w2i7pqhH9/mWtg3T0AUAABu6IwMQUZjE3FvgqTIHLdZs4yz7MTqVnVVUbMSiPy3HasgiRTt0Acxop4Vr7uI4/W3klMnRPwRZ08Qit++aZioCAIA8s47xgdsDgNZ6zSJm4ElGZweyBkP2BjxRa49kFezpPQ4jZlYoBPTDLMHC6BRhb19R9iJDZ1pG7EvN/i2rL3lEH3XJ9kal/eGRdggA4BM3f7I4t1jCzAHA6k9fAE81cplwkswcAFx5Sso3a196+4qyCgHVvmfW9eJn7WLJ6jscXVhndNp/heJcEOo9ALhzRbTZuSmsz3dIFucWy3kPAEY+GY8owNDCkwAQZcT95O7VQiOttr9LW7kLYGUj1ydYxWqfJXJ/oxYUiX7P6HZnnAoHjyUA4OlkcQA+GB0A9Dz53jHoa8STGffQ1UOWyPtTZGGdtJrygbL213H44KuwwbtHXH9SOzr87jR6T/Djx4pes6bRpf3hJpYDBoANjegC6InwRetEcj6RZUTdjl6znP+l+7FyFujOQcLFnjIIsLa/ZJYLoVRLF8zWfVuLiaytrw/17+1kHYdaI8/ZqK7CUWtC7Lq/79sYWuDu63V8odRuHIB2oxdZYnMRGQDL9jIz5yDAB7++v//z+92SAbgKADJqb7csBTsiuyGDArQakaLuTSVr9/q9PQ/Fw7sAeJaSm0hWP1npNnq2F9kXN+I4vG/vEX2HJ+8pMeqGH7ViXW+7I36gZpyqzeRaAgBPuQCwuJUzALWByIhlZQVBAM/w+Pv5LAFA7SI4mTJH4o5OV0cGPZEpyRElobPKS688NzlST6q+RW83ReT+SrfzCKUBgLQ/ADzILBkAAPLNWrjpyG4FrIYSAPwt+oseMSr59fZvV3+/Y/TwLCWh7z4OlIvMPGYtruW8YVmlAUDPTdMNFwAmIwMAsI/VHrYiBx/31G945AOrAOA+vQV7RtNn9j9Z39ud7c7kzoqdke0+9fznQVoCgOzuAAAg2coZgFWW5QTYiQe6RawcAGQavSxn1qjkSGqT/89qhYBGF+zplTVo+Kjd3mtPVpNlvQcAtReWp3AAWNB7ADD7ymq92xB0AOQavQz7mbu3PzVdAH88ZVnO1VK+zO3OG+iI7oBIkV15kO6fu3cAABjv63Xvk29vJC69AzBOz6DHkoGY0VZbC2Do/uoC+OPOoOHoy31SGrEnnZtVE763LcZZraR4aXfAaj9QPIguAADYkAwAwPOMHqTZ+94RU8rvSOPP0M4hAUCdyKmGq6XsIlOSUf2IZ2asrb/ad/56SVFHaOkOiNTzXfUuQ15q1HU1+vhHbS/lfiYAAJibcSukyAwASiKWlhO7p90jLiQAtvLr+/s7ahrg+3tnryrYuz3pY2CEyAel2vv6++uzqrrW7m/EfTmrOyA77R9WaVEXwLpmTAuW7lPkTWTGPsmfRpXIzgrka99zpPeG3/Le2R9CVgjqZ51mSYCvV95qVln1oHvafdK8egBoJgNwLTLqFUEDM4p84CvZxgyZhdmX9i5pp2tbAoB8M6bq75CR8r1D741u5ePQk3EbdcPPKm0e1Z3Q0s5u9woGeQ8Aak+0u29IAEADGYBrnuCBJzrKysz6YNd7L55xUOgd7f5LAABkWS1InnV/PYSQonc5YIAVZJWGhmXJAACwg54xbmeDWFdr918CgHyj1zGPLIM8a19gCeWgY0SV3j67uZVcF3dnKkf0kctSMFRkISAnJrCyGeamwzAyANfcCGAdZ0vZXlk541Vq5SCnN5t6Z+Zmpnb/JQD4Y8QiQyO6A2YtVJNVcrpke0dG3ERazoEWq5X0LtnG3Wn/I5HBxKyfkQ30FgIqNUu7LiqYQ09gMmLxIni83mmALcsBz9ou8CwrFLfJ0tMV0iJzzNintkuzqVkZzdXa/UgXwB9Z6z+XbG+2RTKyrVxy+s7FoUqPw8rHdxYrXIceaOjyz907AACMJwMA3KG1v7716Xa3WQA9df5bjnFm1uF32y0DRJ8y6Dbl3BQAtItMv+3cHcCeWm9oV8HBamlxdVi4jS4AANhQZgZgtVKfAE9xdN8cUWckq92V932mdv+lC6DOiCBldLWrUX1mP6Wvc725yOMbtRbA+zayxgCsnFIfPUUv8gGsd2xB1P2l5fxt2cbodlOmuQsAAHK1/FhYGIh0owKAyFKfuhYAoJMMwLVZA4gR21+hb6unrdJAcxal+zTL8b17m3d+hzOeP9FquxZaZjVlrelx53iCaaabCgCeJzJ1mNV3OKo/9n07n+YTl7afMTd9xPYyU8lRxzezj3ql723EDyr8a1QAkHVir7aKGABMQQbgs1kCCAEL0Ctyil3tvVH24n9m+U35DwHAPJ6eOqy9AFr39ywt3fO5z9LRUcczO+0fcT5kHd8sK31vI+bCw7++Xnmj6kdHildzM104APD/ZAD+mDJFA9BgaEGZRFkDhkfUWYg8jhYDeqDZU4eR7Ual3K8yQlklULPaymg3M5WccXxHpb5n/N6e8kPNgt4DAKPqAWADMgDX1K0HOJdV3GbWQkAl+xK5vd5aJR8JAO4VdRJmBSkrBD9Zi4hEbUO7Y9vNSqlL1fM4ZwHAUXeAk5ZI05TFBNiJDMAfAhuANikp6kUsm+ERABzLqCkwY6rzPbuT1e5osx4H7T7rPINllQYAWVPIot/rBgAABa4CgBVW+7ranqBgbjunDoE1LZv2/0kXwLGoGuKjU51ZP5Z+hAEe5J+7dwAAGO9TBmC11b5+K1m8aLZ9BshQW9V1VneuBdCyjRVqp/xLF0CZjC/mzspZd7Tbsxxw5H7ATJ7yQ82CdAEAwIY+ZQBWXe1L2h/gb7OshHlHbf6d2q1+76/v70dmmnoDgFkK9pRarT8rsl9vRI32WY6Ddse1e7aNEetP9Bq9dkHvdxj10JZVcOrsvSN+L3ocflZjAADuE/WAIOtJtfcAYMZIvLddg8kA4I0MwB9ZBXuiRvnqP4tvq/S9KxwH7a7f7p0i0/61M3vOXjdrpdDRBd5SjoMA4Blm7IMa1bc1ut1Z+lAj5zs/qR99RB/qLHO9HzmAi3HeA4CefqezSGa1dgHg0WQArkVG2QINYBYrjI8qqfBKIwFAvtlT1Fl9UJHtnmntb5zhJtfTh3p2fGtX32zJht3Zv37HeTb6eqvdD6gWOQvgzGrtAsCjyQBcm+FJESDCCmn/I5EPfB4eXwKAEVa4sPhbbbq8t2pYb7ns2nYjuwN2cOex8GNFiq9XznSns3+btV3u4QcH4AYyAH+MKNizMyN44X6rZX5KFnlruZ94YHwJACi3cyBUGxw+6bMfubNwUVa7M31vtTM5oNrXK+7J991q7XK/WZ9CRsj6gXJd5HOMWZIMwGe7/fiM5imGXc10b1m5O4AAAoA/ek76HVLBT/ostUYU1lnNbgWn7rTyvjOx3rUASq3WbqasASsr8dTPrnYIDllEZCXAyPnOZ++NuoBciPPZ+XuYpbQu9a6O8QrHd+ds1rZ0AXzmpEdhHe7kXCGdAIBRVngKAthGZCXArFWuSsufrpLqFNn/l+MB69hhwHOJRxSOkwG4JoVLpJ6uAjff+4w49r5Hhvrn7h0AAMa7OwMQGVVH1okGWFlPNiGrnsKT2o3aRmRb1e+9OwBYzUzdAY/og3rFTj1dTc93ePdnf+JaAGfbyLreht7wD/SOv4p4T8Ry2hHtl26rR2270Z/rXwIAgDlFBkPGj/CXOwKAESeitD8AnLgKAM5+SHeJHHtTfxnBSGQa8art2dvN2t7o1Oys+7va+TDiPHvava9lZkrpe2Qe/icy7X/0/9XT8nUBcKa3X65W9A1jRFu1zj7j73+/2l7r8a95X+R+tN7sex5AWsZRZJ3v0an53nEPu/34cuCOACCrZOpRu2YEAMAbGYA6LcGEaBtYRW93wFl7ETK2VftgGDFjoafdI9Xf3VUA4Mer36jUcW1bRyLThk86f2arzteSvp9pGuuRjLR/y/l+pvZcKH1dxHci7U+xuzMAI7oDAIA3dwcAKzO2ACCxUM3N22oxOu1/pOjhWgBwn8jMhrT9WkqO8dVrZmkj2p3bE8jvabbuvWFmCgCyugMAgDczBQAr8xQBQO2DbNaDb1H2QgCwr1n6qmZy52eM2PYdbZQEvC39tiVK37/DuQvVvl79pW5/czEBfCYzyHRkAP6ICmAEQkAp94sx7jjOo7sDqjNdAoA/etKET00xPvVz/bTDZ8xUMv4lczZK1vbh8efNewAQ+YFnXJ3s8V8osBSznLjN12tMedmfescWjFheFyDSKjOFnppFyRqI+t5Wyb9Fdgd0fV+6AHj31BvATzt8RvakngrF/rl7BwCA8c4yALWD384izJ65xe/ttq7sJeoF+NsMGbGdMhe1nyNtuWVdALzb4ULc4TPyXKU/2M7zMqOOQUaRrSNFn0kXAABsKDMD0JNWEpUCjBG59GxE263tpaXKn0oXAGdmSiFmlabunW5zZIZ+1dFqy4rPcCxq1xKImDZWes7NUpel1YzF1UZPe68VdcyK7tECgGszz9kFeL3i+ovT+52Zx1kAsNtiQKsU6gCAbjIAa4lMQ08zFWWitu7sQ4xof5Y2atq5+9wZ9Z4RbdEuYyR+qdseOAUA+yrpa4p6Tc3rPuntD4xMa474HC3bqKmBMUv57979aj1uLa+ryRD+fu3760JXcmt83aftDe13Zh69hYCequdiAoDpyQDkky4E+KPngankvSPuk5H7cdv4MwHAWC0rUmWl5J9uZNWtO2TU2bjj3OlJG7e+t+Tz93RP3HEuZWxztWuCSgIAYCalPzojAtqjwLqmL3+3wJuFCAD+8OQM9TwlUitj4O/owYhZ+1FbTKuknUMCgH31nGiCpb/dOV1o5+P+04hZIb0ip/JmzEipbYeFZQYAPWVk3egAIJEMwB9DUy/wcNEFhXQ18Hq1ZS4yHihb9iOyMFkIAcBYMwUHGbMOdi4EEpV2Ld3GLsc96oe/J/M4q4yHFg8/8wov4DUqAOg5wZxUwFPo9mQaMgCfuehgTq7NdfR8V7MUUHv0+SYAiCF6/1vrvOmebfTMYCjdRoaR04VaPsOnNked2+/f6/ePv7+Lvg6P2mstCpR5zEYv4jRSbVdk5FolJbLub+/bCM8efZW8KNgKFwHwXC035YjFgGY0y0JZ3ODrFVcyNfJL7o2as6I5INen6y/imryt3jrMShdAu8glW3tTSLWvOUsn/VT7mpolaVv1Pr31biOqPzFyG1HpzMi0aMs2jTpnpKxlkLMLNIURAAB8dnTDbhmnEfnaXlk/fCzmfQxAyZcbORc5suyskxooEX1dZzzxlQ5qreWexr9kAOpkjn/IuDD1dbKS3mug5v3GCZElqrBSOgEAMJusJ2r6jRiU7bsa5D0AGNEdEDWnMzJV74SLMeI4nm1jpbnQK0yHjRooSqzpBpOxJhmAa71PFKs/kUTNee4NBHtec/a6ElnjTVq2cfSeO/qSw2uTJzNOiBHMAgBoVJv1Wz3IXknLsRZgTeosALhzdkDJPkV66g1k9f2HI1Lc0EkG4FpvYDNqylHptmtT9Vep6ZmDp9VSvrVdHqWfLyr12DL/ffR4niyjK5LyR1ZGKGq0/t3nbPP2BQDAzGorBd5xM16tzPDoH77VflCf5DQYOgsAZl8j4H0bT4nmACCdDECdGVKYLaPFa+vORzzFXG2zJ2AbnfqeSeTT5qxP1DOauatrJ1lTUyO/x562hp5PAgBgZrVBzt3jCWq3eXcAOssPX5asadwleqfKvr+/9oHm8vXvAcCItH/tk9+IaScAXIv8jeip81GybS7IALSboTvgSmv0e/bvpYHT1TYyCgG9H/uS99feuGq2f9XWHSPLn3JDbekKMU4IfhAAALOpDZhWCMa5R9b3PqqmTe2U2qr9+nrFpnRqlWyj90A/5YkHeJ6sGiJ33tMi+93dmxPJAMSY9ST9vV9nxXtaU/U12yjZToYRKd/eIj1RbbV0hRzZIWieZf8z6sa3zBQ6MstxIoEAIFZGv/bRa+CpZnzyHfFDTbuoQd2lAfMd32lL2v90f76uXlDbYJCnT00B8nnyHWdE1zDBWsYAlOid+lHb7pHa9OdTT7yz7MJVqr5lsErU6yOLfjw9cM3qS27d5tVrnnqtRfp0bWZNiz7arv74B9MFwCgr93VGthuZqjwSFSiveHzZU1bwPVP3TcosAJiRQk3jPOlYRwWannzrmIq5oKcEADXpryfd7F6vOcdwAH0+3adaZ9Y87Z5HkKcEAPwxS7p6VKCR9cQ3+kly9P62Tu+8avdoG5HHF0qtfp6V3D+auwMEAMzEk0q+XY/xrp/7DroDFnEWAIwuBjLDBaomOLtzTs/hU5bk/W9nP6gjZ1uxKBmAZ4hO/169v2Q/RkX7UTe0u/tTRwSfRyP97/7eLMxDlt7zY7X3mwXAUjxt5HOMBQpRVqhPQaGzAKDk6THyaWGG1NTVPvTU1KdOyVxc2jlf5/fpOyrtX4/KsPBgMgBj9NSWvtOM+/SupPsjMpi9s6pe1A1/th//1bqadFnwCAIAeI4VArZsfqih0EyzAGbgJnEvxzOX4zufnu9kpnUwWJAMQKwnXGirTR/KeuIb/STZ225UN9Oo4zBiTYQsT7jOQQAwwMo3OliZawZOfL1yLpKsQVQR++qmMBffRzwzKIBLv76/v7OWaV2t3ZLXlRiV6pz9OJy1C8DNdAHcx/Kkx3oDlKcfH4Bu/9y9AwDAeO9jAEqeOGd96qrd37P3/zTrk7rpQwA0K+0CMJDoGXrHNvQGf1ljOwCopAsAADb0ngGoTZ1HLUkaLXIbPbXmAWBKZgHsJXLFxrtmKOgqAAigCwAANvSeAahNnbc8+WXVlD96Ou2tihZZWAcApqALYC+RFQ5LuwNKgyNTEwEGKg0A1BYHgAf5etWnr2cYCHalZfujl2QbkMEAAAPFSURBVH8FgNvoAsh39+qHme2VtCsgApiQAGCszEp6UdsAYAPvawHUynryu6PdqG0AwPTOxgCUqJ0id/b6yMqDkU/KnroBeBxdAPlKahKUvEYwAUAYlQABYEOfxgC8p7PP/r234l5tev3siViqHgAK6QLIt3I9BQAeShcAAGyoNwPQsgDPCpUHdScA8Gi6AOYQWZ9AAALAJV0AALChyAzAiCp7vRUCPWkDwEsGAAC2JAAAgA39+v7uWQoAAFiRDAAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCGBAAAsCEBAABsSAAAABsSAADAhgQAALAhAQAAbEgAAAAbEgAAwIYEAACwIQEAAGxIAAAAGxIAAMCG/g8eQYmtZ+ptpgAAAABJRU5ErkJggg"},{ name : "R_img_dmg_effect_png", data : "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"}];
 haxe_MainLoop.add(hxd_System.updateCursor,-1);
 js_Boot.__toStr = ({ }).toString;
 if(ArrayBuffer.prototype.slice == null) {
@@ -110183,12 +110591,12 @@ logic_JSWorker.CALC_CACHE = "CALC_CACHE";
 logic_JSWorker.CALC_TURN = "CALC_TURN";
 logic_JSWorker.COPY_FILE = "COPY_FILE";
 logic_JSWorker.CLEAR = "CLEAR";
-logic_JSWorker.fieldWriter = new JsonWriter_$1178();
-logic_JSWorker.fieldParser = new JsonParser_$1710();
-logic_JSWorker.turnWriter = new JsonWriter_$1195();
-logic_JSWorker.turnParser = new JsonParser_$1772();
-logic_JSWorker.cacheWriter = new JsonWriter_$1227();
-logic_JSWorker.cacheParser = new JsonParser_$1788();
+logic_JSWorker.fieldWriter = new JsonWriter_$930();
+logic_JSWorker.fieldParser = new JsonParser_$1425();
+logic_JSWorker.turnWriter = new JsonWriter_$947();
+logic_JSWorker.turnParser = new JsonParser_$1442();
+logic_JSWorker.cacheWriter = new JsonWriter_$971();
+logic_JSWorker.cacheParser = new JsonParser_$1465();
 logic_EventSystem.listeners = new haxe_ds_StringMap();
 logic_CamSystem.cursor = new logic_MapCursor();
 logic_DataBase.UNITS_PATH = "units.json";
@@ -110675,12 +111083,12 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		logic_KeySystem.pressedKeys = msg.data;
 	};
 	_g.h["saves_list"] = function(msg) {
-		var parser = new JsonParser_$1765();
+		var parser = new JsonParser_$1513();
 		var saveDB = parser.fromJson(msg.data);
 		logic_EventSystem.fire(Std.string(logic_EventType.SavesListLoaded) + "",saveDB);
 	};
 	_g.h["save_file_loaded"] = function(msg) {
-		var parser = new JsonParser_$1767();
+		var parser = new JsonParser_$1515();
 		var result = parser.fromJson(msg.data);
 		var _g = 0;
 		var _g1 = result.turns;
@@ -110697,6 +111105,12 @@ utils_IframeEvents.eventHandlers = (function($this) {
 		var selectMapScr = Main.curScreen;
 		if(selectMapScr != null) {
 			selectMapScr.setMapList(mapList);
+		}
+	};
+	_g.h["map_info"] = function(msg) {
+		var selectMapScr = Main.curScreen;
+		if(selectMapScr != null) {
+			selectMapScr.setMapInfo(msg.mapId,msg.info);
 		}
 	};
 	_g.h["change_tool"] = function(msg) {
