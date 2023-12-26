@@ -29,7 +29,7 @@ export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED' | 'ADD_FILE';
   path: string;
   dirFiles?: string[];
-  editMode?: boolean;
+  editMode?: boolean;//shows if map loaded in map editor or in game
 }
 
 export type RenameType = {

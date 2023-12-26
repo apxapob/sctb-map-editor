@@ -275,7 +275,7 @@ const FileAdder = ({
       <input
         value={inputVal} ref={inputRef} 
         onBlur={reset}
-        onChange={e => setInputVal(e.target.value)}
+        onChange={e => setInputVal(e.target.value.replaceAll(/[\\/:*?\"<>|]/gmi, ''))}
         onKeyDown={e => {
           if (e.key === 'Enter') { createFile() }
           if (e.key === 'Escape') { reset() }

@@ -141,8 +141,8 @@ const makeFieldsDir = async (dir, mapId) => {
 
 const testScriptText = `
 //This is a script file. The script language is Haxe.
-//Assign it to a skill or buff in the map editor and 
-//it will be executed when a unit uses the skill or is affected by the buff effect.
+//Check this for details: https://github.com/HaxeFoundation/hscript
+
 //There are global variables and functions.
 //Use trace function to write any information in the console. Like this:
 trace("Hello World!");
@@ -161,4 +161,4 @@ trace(Math);
 //Sometimes the game waits for a script to return a value.
 //For example, if you return false, it will be considered a failure and any changes made by the script will be reverted.
 return false;
-  `
+`

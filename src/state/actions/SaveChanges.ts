@@ -48,7 +48,17 @@ const SaveChanges = (tab?:TabType):boolean => {
 export default action(SaveChanges)
 
 export const CreateFile = action((path:string) => {
-  const text = path.endsWith('.json') ? '{}' : ''
+  let text = path.endsWith('.json') ? '{}' : ''
+  if(path.endsWith('.hx')) text = 
+`
+trace("Hello World! I'm ${path.split('/').pop()} script.");
+
+trace(vars);   //All game variables
+trace(funcs);  //All game functions
+trace(HexMath);//Util math functions for hexagonal calculations
+trace(Math);   //Util math functions
+`
+
   if(!path.includes(".")){
     path += ".txt"
   }
@@ -60,17 +70,20 @@ export const CreateFile = action((path:string) => {
     command: 'LOAD_TEXT_FILE',
     file: path,
     progress: 1,
-    text
+    text,
+    editMode: true
   })
 })
 
 export const CreateFolder = action((path:string) => {
   SendToElectron({ 
     command: 'MAKE_DIR',
-    path
+    path,
+    editMode: true
   })
   OnLoadedDirectory({
     command: 'LOAD_DIRECTORY',
-    path
+    path,
+    editMode: true
   })
 })
