@@ -52,10 +52,13 @@ const getFileMenuItems = (
   },
   {
     title: 'Delete', 
-    callback: () => SendToElectron({
-      command: 'DELETE',
-      path: tree.path
-    })
+    callback: () => {
+      SendToElectron({
+        command: 'DELETE',
+        path: tree.path
+      })
+      fileSelectors[EditorState.activeTab]?.('')
+    }
   },
 ]
 
@@ -80,11 +83,14 @@ const getFolderMenuItems = (
   },
   {
     title: 'Delete',
-    callback: () => SendToElectron({
-      command: 'DELETE',
-      path: tree.path,
-      dirFiles: Object.keys(tree.nodes)
-    })
+    callback: () => {
+      SendToElectron({
+        command: 'DELETE',
+        path: tree.path,
+        dirFiles: Object.keys(tree.nodes)
+      })
+      fileSelectors[EditorState.activeTab]?.('')
+    }
   },
 ]
 
