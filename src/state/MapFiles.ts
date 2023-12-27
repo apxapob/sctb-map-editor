@@ -35,10 +35,11 @@ export const getFilePath = (tab:TabType) => {
       return MapFiles.selectedLang
     case 'Scripts':
       return MapFiles.selectedScript
+    case 'Files':
+      return MapFiles.selectedFile
     case 'Particles':
       return MapFiles.selectedParticlesFile
   }
-  return ''
 }
 
 export const getDirPath = (tab:TabType) => {

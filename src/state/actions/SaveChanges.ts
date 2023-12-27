@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { MapInfo, TabType } from '../../types/types'
 import { SendToElectron } from '../../utils/messenger'
-import { getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
+import { FIELDS_PATH, getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
 import { EditorState, TabsErrors, UnsavedFiles } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendToGame from './SendToGame'
@@ -9,18 +9,21 @@ import SendToGame from './SendToGame'
 const SaveChanges = (tab?:TabType):boolean => {
   if (MapFiles.status !== 'Loaded') return false
 
-  if(!tab){
-    tab = EditorState.activeTab
-  }
+  tab ??= EditorState.activeTab
   
   if (tab === 'Field') {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
     SendToGame({ method: 'save_map', data: mapInfo.mapId })
-    delete UnsavedFiles[tab]
+    for(const file in UnsavedFiles){
+      if(file.startsWith(FIELDS_PATH)){
+        delete UnsavedFiles[file]
+      }
+    }
+    
     return true
   }
   const path = getFilePath(tab)
-  const text = UnsavedFiles[tab]
+  const text = UnsavedFiles[path]
   if (text === null || text === undefined) return true
 
   try {
@@ -29,7 +32,7 @@ const SaveChanges = (tab?:TabType):boolean => {
     }
     const data = { text, path }
     
-    delete UnsavedFiles[tab]
+    delete UnsavedFiles[path]
     delete TabsErrors[tab]
     
     SendToElectron({ command: 'SAVE_TEXT_FILE', data })

@@ -6,7 +6,7 @@ import { FilesTree, MapFiles, PathTreeType, SCRIPTS_PATH } from '../../state/Map
 import { SendToElectron } from '../../utils/messenger'
 import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
-import { EditorState } from '../../state/ToolState'
+import { EditorState, UnsavedFiles } from '../../state/ToolState'
 import { Renamer } from './components/Renamer'
 import { TabType } from '../../types/types'
 
@@ -39,7 +39,8 @@ const getFileMenuItems = (
     title: 'Add file', 
     callback: () => SendToElectron({
       command: 'ADD_FILE',
-      path: tree.path.substring(0, tree.path.lastIndexOf("/"))
+      path: tree.path.substring(0, tree.path.lastIndexOf("/")),
+      editMode: true
     })
   },
   {
@@ -55,7 +56,8 @@ const getFileMenuItems = (
     callback: () => {
       SendToElectron({
         command: 'DELETE',
-        path: tree.path
+        path: tree.path,
+        editMode: true
       })
       fileSelectors[EditorState.activeTab]?.('')
     }
@@ -74,7 +76,8 @@ const getFolderMenuItems = (
     title: 'Add File', 
     callback: () => SendToElectron({
       command: 'ADD_FILE',
-      path: tree.path
+      path: tree.path,
+      editMode: true
     })
   },
   {
@@ -87,7 +90,8 @@ const getFolderMenuItems = (
       SendToElectron({
         command: 'DELETE',
         path: tree.path,
-        dirFiles: Object.keys(tree.nodes)
+        dirFiles: Object.keys(tree.nodes),
+        editMode: true
       })
       fileSelectors[EditorState.activeTab]?.('')
     }
@@ -242,7 +246,7 @@ const FileItem = observer(
         tabIndex={0}
         onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}
         onClick={() => fileSelector(tree.path)}>
-        {root}
+        {root}{UnsavedFiles[tree.path] && '*'}
       </div>
     )
   }

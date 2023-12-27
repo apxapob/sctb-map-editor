@@ -41,7 +41,7 @@ const OnGameMessage = (msg:GameMessage) => {
       OnSelectUnits(msg.data)
       break
     case 'mark_field_unsaved':
-      UpdateUnsavedData('Field', 'unsaved')
+      UpdateUnsavedData(MapFiles.selectedField, 'unsaved')
       break
     case 'update_field_size':
       MapFiles.json[MapFiles.selectedField].size = msg.data.size

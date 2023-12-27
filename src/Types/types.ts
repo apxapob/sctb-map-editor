@@ -131,7 +131,7 @@ export type EditorStateType = {
   activeTab: TabType;
   beforeTestTab: TabType;
   mode: 'play' | 'edit' | 'test';
-  jsonEditorTrigger: boolean;
+  jsonEditorTrigger: boolean;//needed to force json editor to rerender
 }
 
 export type ToolStateChangeType = Partial<ToolStateType>;

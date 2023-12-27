@@ -7,24 +7,40 @@ import { UnsavedFiles } from '../../state/ToolState'
 import ShowMenu from '../../state/actions/ShowMenu'
 import { CancelUnsavedData } from '../../state/actions/UpdateText'
 import SaveChanges from '../../state/actions/SaveChanges'
+import { getDirPath, getFilePath } from '../../state/MapFiles'
+import { toJS } from 'mobx'
 
 export type TabProps = {
-  title: TabType;
+  tab: TabType;
   selected: boolean;
 }
 
-const Tab = ({ title, selected }:TabProps) => 
-  <div 
+const isTabUnsaved = (tab: TabType) => {
+  if(tab == 'Files') return false
+  
+  const dir = getDirPath(tab)
+  if(dir){
+    for(const file in UnsavedFiles){
+      if(file.startsWith(dir))return true
+    }
+  } else {
+    return !!UnsavedFiles[getFilePath(tab)]
+  }
+  return false
+}
+
+const Tab = ({ tab, selected }:TabProps) => 
+  <div
     className={ `tab ${selected ? '' : 'not-'}selected-tab` } 
-    onClick={() => SelectTab(title)}
+    onClick={() => SelectTab(tab)}
     onContextMenu={e =>
       ShowMenu(e, [
-        { title: 'Discard changes', callback: () => CancelUnsavedData(title) },
-        { title: 'Save changes', callback: () => SaveChanges(title) }
+        { title: 'Discard changes', callback: () => CancelUnsavedData(tab) },
+        { title: 'Save changes', callback: () => SaveChanges(tab) }
       ])
     }
   >
-    {title}{UnsavedFiles[title] && '*'}
+    {tab}{isTabUnsaved(tab) && '*'}
   </div>
 
 export default observer(Tab)

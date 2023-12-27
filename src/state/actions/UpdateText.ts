@@ -1,11 +1,11 @@
 import { action } from 'mobx'
 import { EffectTemplates, EffectType, Effects, JSONObject, JSONValue, TabType } from '../../types/types'
 import { EditorState, UnsavedFiles } from '../ToolState'
-import { INFO_PATH, MapFiles, getFilePath } from '../MapFiles'
+import { MapFiles, getFilePath } from '../MapFiles'
 import SendToGame from './SendToGame'
 
-export const UpdateUnsavedData = action((tab:TabType, text:string|null) => {
-  UnsavedFiles[tab] = text
+export const UpdateUnsavedData = action((filePath:string, text:string) => {
+  UnsavedFiles[filePath] = text
 })
 
 export const CancelUnsavedData = action((tab?:TabType) => {
@@ -16,11 +16,11 @@ export const CancelUnsavedData = action((tab?:TabType) => {
   }
   
   const filePath = getFilePath(tab)
-  if (tab !== 'Scripts' && filePath) {
+  if (filePath?.endsWith('.json') && MapFiles.text[filePath]) {
     MapFiles.json[filePath] = JSON.parse(MapFiles.text[filePath])
   }
   
-  UnsavedFiles[tab] = null
+  delete UnsavedFiles[filePath]
   EditorState.jsonEditorTrigger = !EditorState.jsonEditorTrigger
 })
 
@@ -69,7 +69,7 @@ export const AddJsonFileValue = action(<T extends JSONObject>(
     n++
   }
   fileObj[newId] = template
-  UnsavedFiles[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
+  UnsavedFiles[filePath] = JSON.stringify(fileObj, null, 2)
   selectItem?.(newId)
 })
 
@@ -83,7 +83,7 @@ export const DeleteJsonFileValue = action((
   
   delete fileObj[id]
   
-  UnsavedFiles[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
+  UnsavedFiles[filePath] = JSON.stringify(fileObj, null, 2)
 })
 
 export const RenameJsonFileValue = action((
@@ -105,7 +105,7 @@ export const RenameJsonFileValue = action((
   delete fileObj[oldId]
   fileObj[newId] = value
 
-  UnsavedFiles[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
+  UnsavedFiles[filePath] = JSON.stringify(fileObj, null, 2)
 })
 
 export const ChangeEffectType = action((
@@ -126,7 +126,7 @@ export const ChangeEffectType = action((
 
   const newEffect = { [newVal]: newEffectData }
   effectsArray[idx] = newEffect as EffectType
-  UnsavedFiles[EditorState.activeTab] = JSON.stringify(MapFiles.json[filePath], null, 2)
+  UnsavedFiles[filePath] = JSON.stringify(MapFiles.json[filePath], null, 2)
 })
 
 export const UpdateJsonFileValue = action((
@@ -161,5 +161,5 @@ export const UpdateJsonFileValue = action((
   const oldValue = targetObj[lastPathPart]
   if (oldValue === value) return
   targetObj[lastPathPart] = value
-  UnsavedFiles[EditorState.activeTab] = JSON.stringify(fileObj, null, 2)
+  UnsavedFiles[filePath] = JSON.stringify(fileObj, null, 2)
 })

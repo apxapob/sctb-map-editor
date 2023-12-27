@@ -12,7 +12,7 @@ const TestMap = () => {
     SendToElectron({
       command: 'SHOW_MESSAGE',
       title: 'Can\'t test map',
-      message: 'Please save changes in those tabs: ' + unsavedTabs.join()
+      message: 'Can\'t test map. Please save changes.'
     })
     return
   }

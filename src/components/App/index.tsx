@@ -42,7 +42,7 @@ const App = () => {
       {isLoaded && EditorState.mode === 'edit' &&
         <div className='hflex tab-container'>
           {AllTabs.map(
-            s => <Tab key={s} selected={tab === s} title={s} />
+            s => <Tab key={s} selected={tab === s} tab={s} />
           )}
         </div>
       }

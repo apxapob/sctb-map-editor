@@ -89,6 +89,14 @@ input[type="checkbox"]:checked::before {
   content: "✔";
 }
 
+.url {
+  color: dodgerblue;
+  cursor: pointer;
+}
+.url:hover {
+  text-decoration: underline;
+}
+
 .hflex {
   display: flex;
   justify-content: center;
