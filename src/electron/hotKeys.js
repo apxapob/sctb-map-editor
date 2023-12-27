@@ -10,9 +10,6 @@ exports.initHotKeys = (win) => {
       if(input.code === 'KeyS') {
         sendCommand({ command: 'SAVE_CHANGES' })
       }
-      if(input.key.toLowerCase() === 'f8') {
-        sendCommand({ command: 'JSON_MODE' })
-      }
       if(input.key.toLowerCase() === 'f9') {
         sendCommand({ command: 'TEST_MAP' })
       }

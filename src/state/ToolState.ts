@@ -24,14 +24,10 @@ export const EditorState:EditorStateType = observable({
   jsonEditorTrigger: false
 })
 
-export const TabsState:{
-  [tab in TabType]?: string | null;
+export const UnsavedFiles:{
+  [path:string]: string;
 } = observable({})
 
 export const TabsErrors:{
-  [tab in TabType]?: string | null;
-} = observable({})
-
-export const JsonMode:{
-  [tab in TabType]?: boolean | null;
+  [tab in TabType]?: string;
 } = observable({})

@@ -4,7 +4,7 @@ import './JsonEditor.css'
 import { MapFiles, getDirPath, getFilePath } from '../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { TabType } from '../../types/types'
-import { EditorState, TabsErrors, TabsState } from '../../state/ToolState'
+import { EditorState, TabsErrors, UnsavedFiles } from '../../state/ToolState'
 import { UpdateUnsavedData } from '../../state/actions/UpdateText'
 import AceEditor from 'react-ace'
 
@@ -53,7 +53,7 @@ export const EditorDiv = (props: {
   filePath: string;
 }) => {
   const editorRef = React.useRef<ReactAce>(null)
-  const text = TabsState[props.tab] || MapFiles.text[props.filePath] || ''
+  const text = UnsavedFiles[props.tab] || MapFiles.text[props.filePath] || ''
 
   React.useEffect(
     () => () => editorRef.current?.editor.getSession().getUndoManager().reset(), 

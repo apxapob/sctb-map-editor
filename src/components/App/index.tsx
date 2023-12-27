@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { ReactElement } from 'react'
 import { MapFiles, } from '../../state/MapFiles'
-import { EditorState, JsonMode } from '../../state/ToolState'
+import { EditorState } from '../../state/ToolState'
 import { AllTabs, TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
 import JsonEditor from '../ui/JsonEditor'
@@ -48,7 +48,7 @@ const App = () => {
       }
       <GameCanvas />
       {isLoaded && EditorState.mode === 'edit' && 
-        (JsonMode[tab] ? <JsonEditor /> : <View />)
+        <View />
       }
       <ContextMenu />
     </div>

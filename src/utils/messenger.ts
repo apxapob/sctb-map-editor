@@ -1,14 +1,10 @@
-import { toJS } from 'mobx'
-import { EditorState } from '../state/ToolState'
 import { OnDeleted, OnLoadedBinary, OnLoadedDirectory, 
   OnLoadedText, OnLoadingEnd, OnLoadingError, 
   OnLoadingStart, OnRenamed } from '../state/actions/FileActions'
 import SaveChanges from '../state/actions/SaveChanges'
 import SendToGame from '../state/actions/SendToGame'
 import TestMap from '../state/actions/TestMap'
-import ToggleJsonMode from '../state/actions/ToggleJsonMode'
 import { CommandType } from '../types/commands'
-import { FilesTree } from '../state/MapFiles'
 
 const { ipcRenderer } = require('electron')
 
@@ -24,9 +20,6 @@ export function InitMessenger() {
         break
       case 'TEST_MAP':
         TestMap()
-        break
-      case 'JSON_MODE':
-        ToggleJsonMode()
         break
       case 'TO_GAME':
         SendToGame(message.data)
