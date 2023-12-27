@@ -28,8 +28,8 @@ const SaveChanges = (tab?:TabType):boolean => {
       JSON.parse(text)
     }
     
-    TabsState[tab] = null
-    TabsErrors[tab] = null
+    delete TabsState[tab]
+    delete TabsErrors[tab]
     const data = { text, path }
     SendToElectron({ command: 'SAVE_TEXT_FILE', data })
     OnLoadedText({

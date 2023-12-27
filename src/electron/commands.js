@@ -249,6 +249,14 @@ exports.SAVE_TEXT_FILE = async ({ data }) => {
   }
 }
 
+exports.SHOW_MESSAGE = async ({ title, message }) => {
+  dialog.showMessageBox({
+    type: 'warning',
+    title: title || 'Message',
+    message
+  })
+}
+
 exports.MAKE_DIR = async ({ path }) => {
   try {
     if(isMapFileMode()){
