@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { OpenFileTree, SelectFieldFile, SelectFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
-import { FilesTree, MapFiles, PathTreeType } from '../../state/MapFiles'
+import { FilesTree, MapFiles, PathTreeType, SCRIPTS_PATH } from '../../state/MapFiles'
 import { SendToElectron } from '../../utils/messenger'
 import './DirectoryViewer.css'
 import ShowMenu from '../../state/actions/ShowMenu'
@@ -257,11 +257,15 @@ const FileAdder = ({
   fileSelector: (path:string) => void;
   reset: () => void;
 }) => {
-  const [inputVal, setInputVal] = React.useState<string>('')
+  const [inputVal, setInputVal] = React.useState<string>(
+    add === 'folder' ? '' 
+      : path.startsWith(SCRIPTS_PATH.replace('/', '')) ? '.hx' : '.json'
+  )
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
     inputRef.current?.focus()
+    inputRef.current?.setSelectionRange(0, 0)
   }, [add])
 
   const createFile = () => {
