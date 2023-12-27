@@ -36,6 +36,7 @@ const SaveChanges = (tab?:TabType):boolean => {
       command: 'LOAD_TEXT_FILE',
       file: path,
       progress: 1,
+      editMode: true,
       text
     }, true)
   } catch (e) {

@@ -22,14 +22,14 @@ export type OpenMapType = {
 export type LoadingEndType = {
   command: 'LOADING_END';
   mapId: string;
-  editMode?: boolean;
+  editMode: boolean;//shows if map loaded in map editor or in game
 }
 
 export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED' | 'ADD_FILE';
   path: string;
   dirFiles?: string[];
-  editMode?: boolean;//shows if map loaded in map editor or in game
+  editMode: boolean;//shows if map loaded in map editor or in game
 }
 
 export type RenameType = {
@@ -43,7 +43,7 @@ export type LoadTextCommandType = {
   file: string;
   progress: number;
   text: string;
-  editMode?: boolean;
+  editMode: boolean;//shows if map loaded in map editor or in game
 } 
 
 export type LoadBinaryCommandType = {
@@ -51,7 +51,7 @@ export type LoadBinaryCommandType = {
   file: string;
   progress: number;
   bytes: Uint8Array;
-  editMode?: boolean;
+  editMode: boolean;//shows if map loaded in map editor or in game
 }
 
 export type LoadMapErrorType = {

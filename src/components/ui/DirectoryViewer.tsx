@@ -250,7 +250,7 @@ const FileItem = observer(
 
 const FileAdder = ({
   path, level, fileSelector, add, reset
-}:{ 
+}:{
   path: string;
   level: number;
   add: AdderType;
