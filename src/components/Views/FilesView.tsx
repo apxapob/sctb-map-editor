@@ -13,7 +13,7 @@ const FilesView = () => {
   const mode = filePath.endsWith('.json') ? 'json' : 'haxe'
   const dirPath = getDirPath(EditorState.activeTab).replace('/', '')
 
-  EditorState.jsonEditorTrigger//just subscribing to the trigger
+  EditorState.editorTrigger//just subscribing to the trigger
 
   return <>
     <div className='view-container hflex' style={{ alignItems: 'center' }}>
