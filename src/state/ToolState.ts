@@ -28,6 +28,6 @@ export const UnsavedFiles:{
   [path:string]: string;
 } = observable({})
 
-export const TabsErrors:{
-  [tab in TabType]?: string;
+export const FileErrors:{
+  [path:string]: string;
 } = observable({})

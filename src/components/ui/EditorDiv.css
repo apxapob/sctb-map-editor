@@ -17,6 +17,7 @@
 
 .error-div {
   color: red;
+  padding: 0 6px;
 }
 
 .parse-error {

@@ -4,7 +4,6 @@ import { MapFiles, } from '../../state/MapFiles'
 import { EditorState } from '../../state/ToolState'
 import { AllTabs, TabType } from '../../types/types'
 import GameCanvas from '../Views/GameCanvas'
-import JsonEditor from '../ui/JsonEditor'
 import Tab from '../ui/Tab'
 import './App.css'
 import ContextMenu from '../ui/ContextMenu'
@@ -24,10 +23,10 @@ const Views: Record<TabType, () => ReactElement|null> = {
   Skills: SkillsView,
   Buffs: BuffsView,
   Upgrades: UpgradesView,
-  Scripts: JsonEditor,
+  Scripts: FilesView,
   Map: MapView,
-  Texts: JsonEditor,
-  Particles: JsonEditor,
+  Texts: FilesView,
+  Particles: FilesView,
   Files: FilesView,
 }
 

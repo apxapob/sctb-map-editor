@@ -2,7 +2,7 @@ import { action } from 'mobx'
 import { MapInfo, TabType } from '../../types/types'
 import { SendToElectron } from '../../utils/messenger'
 import { FIELDS_PATH, getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
-import { EditorState, TabsErrors, UnsavedFiles } from '../ToolState'
+import { EditorState, FileErrors, UnsavedFiles } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendToGame from './SendToGame'
 
@@ -33,7 +33,7 @@ const SaveChanges = (tab?:TabType):boolean => {
     const data = { text, path }
     
     delete UnsavedFiles[path]
-    delete TabsErrors[tab]
+    delete FileErrors[path]
     
     SendToElectron({ command: 'SAVE_TEXT_FILE', data })
     OnLoadedText({
@@ -44,7 +44,7 @@ const SaveChanges = (tab?:TabType):boolean => {
       text
     }, true)
   } catch (e) {
-    TabsErrors[tab] = (e as Error).message
+    FileErrors[path] = (e as Error).message
     return false
   }
   return true
