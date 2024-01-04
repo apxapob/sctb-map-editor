@@ -13,7 +13,10 @@ const ContextMenu = () => {
     <div className='context-menu-back' onClick={() => HideMenu()}>
       <div 
         className='context-menu-container'
-        style={{ top: MenuState.menuY, left: MenuState.menuX }}
+        style={{ 
+          top: Math.min(MenuState.menuY, window.innerHeight - 28 * MenuState.items.length - 10), 
+          left: Math.min(MenuState.menuX, window.innerWidth - 120)
+        }}
       >
         {MenuState.items.filter(_=>_).map((i, idx) => i &&
           <div className='context-menu-item' key={idx} onClick={i.callback}>

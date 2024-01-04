@@ -21,7 +21,7 @@ export const fileSelectors: {
 }
 
 export type DirectoryViewerProps = {
-  path?: string;
+  path: string;
 }
 
 type AdderType = 'file'|'folder'|null
@@ -102,10 +102,10 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
-    path: '',
-    nodes: path ? {
-      [path]: FilesTree.nodes[path]
-    } : FilesTree.nodes
+    path,
+    nodes: path 
+      ? FilesTree.nodes[path].nodes
+      : FilesTree.nodes
   }
 
   const fileSelector = fileSelectors[EditorState.activeTab]
@@ -115,7 +115,6 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
       <PathTree
         fileSelector={fileSelector}
         tree={mainTree}
-        root={null}
         level={0}
         setAdder={() => {}}
       />
@@ -127,7 +126,7 @@ export default observer(DirectoryViewer)
 
 type FilesTreeProps = {
   tree: PathTreeType;
-  root: string | null;
+  root?: string;
   level: number;
   fileSelector: (path:string) => void;
   setAdder: (val:AdderType) => void;
@@ -139,9 +138,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
     setAdder = _
   }
   
-  if (!tree) {
-    return null
-  }
+  if (!tree) { return null }
   
   const nodes = Object.keys(tree.nodes)
     .sort((key1, key2) => {
@@ -158,7 +155,7 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
     })
     .map(nodeKey => 
       <PathTree
-        tree={tree.nodes[nodeKey]} 
+        tree={tree.nodes[nodeKey]}
         root={nodeKey} 
         level={level + 1}
         setAdder={setAdder}
@@ -177,16 +174,18 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
         setAdder={setAdder}
       />
     }
-    {root && tree.isDirectory &&
+    {tree.isDirectory &&
       <>
-        <div className='node' 
-          style={{ paddingLeft: 2 + 18 * (level - 1) }}
-          onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
-          onClick={() => OpenFileTree(tree)}>
-          {tree.isOpen ? '▾📂'  : '▸📁'}
-          {root}
-        </div>
-        
+        {root &&
+          <div className='node' 
+            style={{ paddingLeft: 2 + 18 * (level - 1), color: tree.isGameFile ? 'cyan' : 'white' }}
+            title={tree.isGameFile ? 'This folder belongs to the game, not to the map' : undefined}
+            onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
+            onClick={() => OpenFileTree(tree)}>
+            {tree.isOpen ? '▾📂'  : '▸📁'}
+            {root}
+          </div>
+        }
         {tree.isOpen && adder !== null &&
           <FileAdder
             path={tree.path} 
@@ -241,7 +240,8 @@ const FileItem = observer(
 
     return (
       <div className={`node ${ isSelected ? 'selected-item' : '' }`}
-        style={{ paddingLeft: 4 + 18 * (level - 1) }}
+        style={{ paddingLeft: 4 + 18 * (level - 1), color: tree.isGameFile ? 'cyan' : 'white' }}
+        title={tree.isGameFile ? 'This file belongs to the game, not to the map' : undefined}
         onDoubleClick={startRenaming}
         tabIndex={0}
         onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}

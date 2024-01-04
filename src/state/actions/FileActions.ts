@@ -59,7 +59,7 @@ const removeFromTree = action((file:string) => {
   }
 })
 
-const addToTree = action((file:string, isDirectory = false) => {
+const addToTree = action((file:string, isDirectory = false, isGameFile = false) => {
   const parts = file.split('/')
   let curPart = ''
   let curTree:PathTreeType = FilesTree
@@ -67,8 +67,9 @@ const addToTree = action((file:string, isDirectory = false) => {
     curPart = parts[i]
     if (!(curPart in curTree.nodes)) {
       curTree.nodes[curPart] = {
-        isOpen: true,
+        isOpen: false,
         isDirectory: i < parts.length - 1 || isDirectory,
+        isGameFile,
         nodes: {}, 
         path: curTree.path === '' ? curPart : curTree.path + '/' + curPart
       }
@@ -77,7 +78,7 @@ const addToTree = action((file:string, isDirectory = false) => {
   }
 })
 
-export const processTextFile = action((file:string, text:string) => {
+export const processTextFile = action((file:string, text:string, gameFile: boolean) => {
   MapFiles.text[file] = text
 
   if (file.endsWith('.json')) {
@@ -88,7 +89,7 @@ export const processTextFile = action((file:string, text:string) => {
     }
   }
   
-  addToTree(file)
+  addToTree(file, false, gameFile)
 })
 
 export const OnLoadedDirectory = action((c:FSCommandType) => {
@@ -97,7 +98,7 @@ export const OnLoadedDirectory = action((c:FSCommandType) => {
     c.path = c.path.substring(0, c.path.length-1)
   }
   
-  addToTree(c.path, true)
+  addToTree(c.path, true, c.gameFile)
 })
 
 export const OnDeleted = action((c:FSCommandType) => {
@@ -153,11 +154,11 @@ export const OnRenamed = action((c:RenameType) => {
 
 export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
   if(c.editMode){
-    processTextFile(c.file, c.text)
+    processTextFile(c.file, c.text, c.gameFile)
   }
   
   SendToGame({
-    method: 'load_text_file', 
+    method: 'load_text_file',
     data: {
       path: c.file,
       text: c.text,
@@ -170,7 +171,7 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
   if(c.editMode){
     MapFiles.binary[c.file] = c.bytes
-    addToTree(c.file)
+    addToTree(c.file, false, c.gameFile)
   }
   SendToGame({
     method: 'load_binary_file', 

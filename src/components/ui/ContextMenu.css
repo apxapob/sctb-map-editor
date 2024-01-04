@@ -7,6 +7,7 @@
 }
 
 .context-menu-back {
+  overflow: clip;
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
   top: 0;

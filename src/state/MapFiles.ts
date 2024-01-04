@@ -89,6 +89,7 @@ export const MapFiles:{
 export type PathTreeType = {
   isOpen: boolean;
   isDirectory: boolean;
+  isGameFile?: boolean;
   path: string;
   nodes: {
     [index: string]: PathTreeType;

@@ -35,6 +35,7 @@ export type FSCommandType = {
   command: 'MAKE_DIR' | 'LOAD_DIRECTORY' | 'DELETE' | 'DELETED' | 'ADD_FILE';
   path: string;
   dirFiles?: string[];
+  gameFile?: boolean;//shows if the file belongs to game or map
   editMode: boolean;//shows if map loaded in map editor or in game
 }
 
@@ -49,6 +50,7 @@ export type LoadTextCommandType = {
   file: string;
   progress: number;
   text: string;
+  gameFile: boolean;//shows if the file belongs to game or map
   editMode: boolean;//shows if map loaded in map editor or in game
 } 
 
@@ -57,6 +59,7 @@ export type LoadBinaryCommandType = {
   file: string;
   progress: number;
   bytes: Uint8Array;
+  gameFile: boolean;//shows if the file belongs to game or map
   editMode: boolean;//shows if map loaded in map editor or in game
 }
 

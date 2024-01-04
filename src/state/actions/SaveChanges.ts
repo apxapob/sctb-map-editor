@@ -41,6 +41,7 @@ const SaveChanges = (tab?:TabType):boolean => {
       file: path,
       progress: 1,
       editMode: true,
+      gameFile: false,
       text
     }, true)
   } catch (e) {
@@ -76,6 +77,7 @@ trace(Math);   //Util math functions
     file: path,
     progress: 1,
     text,
+    gameFile: false,
     editMode: true
   })
 })

@@ -32,12 +32,12 @@ const loadMap = async (mapPath, editMode = false) => {
     const dirs = []
 
     const sharedImgPath = getSharedImagesDirPath()
-    await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, 'img'))
+    await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, 'img'), true)
     
     if(isMapFileMode()){
       await loadMapFile(mapPath, dirs, files)
     } else {
-      await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''))
+      await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''), false)
     }
 
     files = files.reverse().filter((f, idx) => {
@@ -46,18 +46,19 @@ const loadMap = async (mapPath, editMode = false) => {
     })
 
     for (const dir of dirs) {
-      sendCommand({ command: 'LOAD_DIRECTORY', path: dir, editMode })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.path, editMode, gameFile: dir.gameFile })
     }
 
     let loaded = 0
     for (const fileEntry of files) {
-      const { content, path } = fileEntry
+      const { content, path, gameFile } = fileEntry
       if (isTextFile(path)) {
         sendCommand({
           command: 'LOAD_TEXT_FILE', 
           text: content.toString(),
           progress: loaded / files.length, 
           file: path,
+          gameFile,
           editMode
         })
         loaded++
@@ -67,6 +68,7 @@ const loadMap = async (mapPath, editMode = false) => {
           bytes: content, 
           progress: loaded / files.length, 
           file: path,
+          gameFile,
           editMode
         })
         loaded++
@@ -301,6 +303,7 @@ exports.DELETE = async ({ path, dirFiles }) => {
             bytes: content, 
             progress: 1,
             file: path,
+            gameFile: true,
             editMode: true
           })
         }
@@ -314,6 +317,7 @@ exports.DELETE = async ({ path, dirFiles }) => {
         bytes,
         progress: 1,
         file: path,
+        gameFile: true,
         editMode: true
       })
     }
@@ -368,6 +372,7 @@ exports.ADD_FILE = async ({ path }) => {
       command: 'LOAD_BINARY_FILE', 
       bytes,
       progress: 1,
+      gameFile: false,
       file: path + "/" + fileName,
       editMode: true
     })
