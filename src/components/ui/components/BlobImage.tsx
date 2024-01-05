@@ -12,38 +12,38 @@ type BlobImageProps = {
   direction?: number;
 }
 
-const getDir = (d:number, directions:number):{ dir:number, flip:boolean } => {
+const getSpriteDir = (unitDir:number, directions:number):{ dir:number, flip:boolean } => {
   switch(directions){
-    case 1: return { dir: 0, flip: false }
-    case 3: return d === 11 || d < 2 ? { dir: 0, flip: false } :
-                               d < 5 ? { dir: 1, flip: false } :
-                               d < 8 ? { dir: 2, flip: false } :
-                                       { dir: 1, flip: true }
-    case 4: return d === 11 || d < 2 ? { dir: 0, flip: false } :
-                               d < 5 ? { dir: 1, flip: false } :
-                               d < 8 ? { dir: 2, flip: false } :
-                                       { dir: 3, flip: false }
-    case 5: return d < 1 ? { dir: 0, flip: false } :
-                   d < 3 ? { dir: 1, flip: false } :
-                   d < 4 ? { dir: 2, flip: false } :
-                   d < 6 ? { dir: 3, flip: false } :
-                   d < 7 ? { dir: 4, flip: false } :
-                   d < 9 ? { dir: 3, flip: true } :
-                   d < 10 ? { dir: 2, flip: true } :
-                            { dir: 1, flip: true }
-    case 8: return d < 1 ? { dir: 0, flip: false } :
-                   d < 3 ? { dir: 1, flip: false } :
-                   d < 4 ? { dir: 2, flip: false } :
-                   d < 6 ? { dir: 3, flip: false } :
-                   d < 7 ? { dir: 4, flip: false } :
-                   d < 9 ? { dir: 5, flip: false } :
-                   d < 10 ? { dir: 6, flip: false } :
-                            { dir: 7, flip: false }
-    case 7: return d < 7 ? { dir: d, flip: false } :
-                           { dir: 12-d, flip: true }
+    case 1: return { dir: 0, flip: unitDir > 5 }
+    case 3: return unitDir === 11 || unitDir < 2 ? { dir: 0, flip: false } :
+                                     unitDir < 5 ? { dir: 1, flip: false } :
+                                     unitDir < 8 ? { dir: 2, flip: false } :
+                                                   { dir: 1, flip: true }
+    case 4: return unitDir === 11 || unitDir < 2 ? { dir: 0, flip: false } :
+                                     unitDir < 5 ? { dir: 1, flip: false } :
+                                     unitDir < 8 ? { dir: 2, flip: false } :
+                                                   { dir: 3, flip: false }
+    case 5: return unitDir < 1 ? { dir: 0, flip: false } :
+                   unitDir < 3 ? { dir: 1, flip: false } :
+                   unitDir < 4 ? { dir: 2, flip: false } :
+                   unitDir < 6 ? { dir: 3, flip: false } :
+                   unitDir < 7 ? { dir: 4, flip: false } :
+                   unitDir < 9 ? { dir: 3, flip: true } :
+                   unitDir < 10 ? { dir: 2, flip: true } :
+                                  { dir: 1, flip: true }
+    case 8: return unitDir < 1 ? { dir: 0, flip: false } :
+                   unitDir < 3 ? { dir: 1, flip: false } :
+                   unitDir < 4 ? { dir: 2, flip: false } :
+                   unitDir < 6 ? { dir: 3, flip: false } :
+                   unitDir < 7 ? { dir: 4, flip: false } :
+                   unitDir < 9 ? { dir: 5, flip: false } :
+                   unitDir < 10 ? { dir: 6, flip: false } :
+                                  { dir: 7, flip: false }
+    case 7: return unitDir < 7 ? { dir: unitDir, flip: false } :
+                                 { dir: 12-unitDir, flip: true }
   }
 
-  return { dir: d, flip: false }
+  return { dir: unitDir, flip: false }
 }
 
 const BlobImage = ({
@@ -76,7 +76,7 @@ const BlobImage = ({
     const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
     const { animationFramesNum: framesNum, directions } = info.packer
     let mW = 0, mH = 0
-    const { dir } = getDir(direction, directions)
+    const { dir } = getSpriteDir(direction, directions)
     for(let i = 0; i < framesNum; i++){
       const { w, h } = info.sprites[directions * i + dir]
       mW = Math.max(mW, w)
@@ -90,7 +90,7 @@ const BlobImage = ({
     if(spriteSheetPath){
       const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
       const { width, height, animationFramesNum: framesNum, directions } = info.packer
-      const { dir, flip } = getDir(direction, directions)
+      const { dir, flip } = getSpriteDir(direction, directions)
       const { x, y, w, h } = info.sprites[directions * (frame % framesNum) + dir]
 
       setTimeout(() => setFrame((frame+1) % framesNum), 100)
