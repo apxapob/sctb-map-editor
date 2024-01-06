@@ -30,6 +30,7 @@
 
 .blob-image {
   width: 256px;
+  z-index: 1;
 }
 
 .blob-image-container {

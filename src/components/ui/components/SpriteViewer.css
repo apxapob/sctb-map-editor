@@ -10,3 +10,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.hex {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

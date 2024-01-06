@@ -6,6 +6,7 @@ import SpriteViewer from '../ui/components/SpriteViewer'
 import DirectoryViewer from '../ui/DirectoryViewer'
 import { EditorDiv } from '../ui/EditorDiv'
 import { EditorState, FileErrors } from '../../state/ToolState'
+import ImageViewer from '../ui/components/ImageViewer'
 
 const FilesView = () => {
   const filePath = getFilePath(EditorState.activeTab)
@@ -26,7 +27,7 @@ const FilesView = () => {
         }
         {filePath && 
           (filePath.endsWith(".png") 
-              ? <SpriteViewer path={filePath} containerCssClass='image-view-container' cssClass='image-view' />
+              ? <ImageViewer path={filePath} containerCssClass='image-view-container' cssClass='image-view' />
               : <EditorDiv error={error} filePath={filePath} mode={mode} />
           )
         }

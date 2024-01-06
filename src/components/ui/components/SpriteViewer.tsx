@@ -12,7 +12,6 @@ type SpriteRotatorProps = {
 type SpriteViewerProps = {
   path: string;
   cssClass?: string;
-  containerCssClass?: string;
   spriteSheetPath?: string;
   direction?: number;
 }
@@ -72,8 +71,16 @@ const SpriteRotator = ({
   </div>
 }
 
+const Hex = () => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 138" className='hex'>
+    <g stroke="white" stroke-width="4" fill="none">
+      <path d="M 1 74 L 64 11 L 191 11 L 255 74 L 191 137 L 64 137 L 1 74"/>
+    </g>
+  </svg>
+}
+
 const SpriteViewer = ({
-  path, cssClass, containerCssClass, spriteSheetPath
+  path, cssClass, spriteSheetPath
 }:SpriteViewerProps) => {
   const ref = useRef<HTMLImageElement>(null)
   const [error, setError] = useState('')
@@ -122,7 +129,8 @@ const SpriteViewer = ({
       setTimeout(() => setFrame((frame+1) % framesNum), 100)
     
       return <>
-        <div className={'blob-image-container'} style={{ width: maxW, height: maxH }}>
+        <div className='blob-image-container' style={{ width: maxW, height: maxH }}>
+          <Hex />
           <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
             {buffer 
               ? <img ref={ref} onError={() => setError('Invalid image')} 
@@ -145,7 +153,8 @@ const SpriteViewer = ({
     console.warn("Image error", e)
   }
   
-  return <div className={containerCssClass ?? 'blob-image-container'}>
+  return <div className='blob-image-container'>
+    <Hex />
     {buffer 
       ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
       : 'No Image'
