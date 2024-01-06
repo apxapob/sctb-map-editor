@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 type ImageViewerProps = {
   path: string;
   cssClass?: string;
-  containerCssClass?: string;
+  containerCssClass: string;
 }
 
 const ImageViewer = ({
@@ -27,7 +27,7 @@ const ImageViewer = ({
     return () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
   }, [path])
   
-  return <div className={containerCssClass ?? 'blob-image-container'}>
+  return <div className={containerCssClass}>
     {buffer 
       ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
       : 'No Image'

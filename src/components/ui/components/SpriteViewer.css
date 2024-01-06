@@ -17,3 +17,12 @@
   left: 0;
   right: 0;
 }
+
+.sprite-image-container {
+  overflow: clip;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  min-width: 16px;
+  min-height: 16px;
+}

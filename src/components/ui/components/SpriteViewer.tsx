@@ -94,7 +94,8 @@ const SpriteViewer = ({
 
   const buffer = MapFiles.binary[path]
   const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
-  const { animationFramesNum: framesNum, directions } = info.packer
+  const framesNum = info?.packer?.animationFramesNum
+  const directions = info?.packer?.directions
   
   useEffect(() => {
     setError('')
@@ -123,7 +124,7 @@ const SpriteViewer = ({
   }, [spriteSheetPath, direction, framesNum])
 
   if(!spriteSheetPath || !info || error){
-    return <div className='blob-image-container'>
+    return <div>
       <Hex />
       {buffer 
         ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
@@ -139,25 +140,44 @@ const SpriteViewer = ({
     const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
     const { x, y, w, h } = info.sprites[frameId]
 
+    const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number ?? 0.8)
+    const dir_dx = info.packer[`dir${dir+1}_dx`] as number ?? 0
+    const dir_dy = info.packer[`dir${dir+1}_dy`] as number ?? 0
+
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
   
     return <>
-      <div className='blob-image-container' style={{ width: maxW, height: maxH }}>
+      <div style={{ 
+        position: 'relative', 
+        width: maxW / dir_width, 
+        height: Math.max(138, maxH * dir_width - dir_dy) 
+      }}>
         <Hex />
-        <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
-          {buffer 
-            ? <img ref={ref} onError={() => setError('Invalid image')} 
-              style={{
-                top: (maxH-h)/2-y,
-                left: (maxW-w)/2-x,
-                clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
-                position: 'absolute'
-              }}
-            />
-            : 'No Image'
-          }
+        <div className='sprite-image-container' 
+          style={{ 
+            width: maxW, 
+            height: maxH,
+            transform: `translate(${dir_dx-maxW/2}px, ${dir_dy}px)`
+          }}>
+          <div style={{ 
+            transform: `scaleX(${flip ? -1 : 1})`, 
+            width:"100%", 
+            height:"100%" 
+          }}>
+            {buffer 
+              ? <img ref={ref} onError={() => setError('Invalid image')} 
+                style={{
+                  top: (maxH-h)/2-y,
+                  left: (maxW-w)/2-x,
+                  clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
+                  position: 'absolute'
+                }}
+              />
+              : 'No Image'
+            }
+          </div>
+          {error}
         </div>
-        {error}
       </div>
       <SpriteRotator setDirection={setDirection} direction={direction}/>
       <SpriteSheetOptions configPath={spriteSheetPath} />

@@ -44,6 +44,7 @@ export type SpriteSheetInfo = {
     dir12_width?: number;
     dir12_dx?: number;
     dir12_dy?: number;
+    [propName: string]: number | string | undefined;
   },
   sprites: {
     name: string;

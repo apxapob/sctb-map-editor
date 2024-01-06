@@ -30,18 +30,6 @@
 
 .blob-image {
   width: 256px;
-  z-index: 1;
-}
-
-.blob-image-container {
-  overflow: clip;
   position: relative;
-  min-width: 16px;
-  min-height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
-  border: 1px solid white;
-  margin: 6px;
+  z-index: 1;
 }
