@@ -140,9 +140,9 @@ const SpriteViewer = ({
     const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
     const { x, y, w, h } = info.sprites[frameId]
 
-    const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number ?? 0.8)
-    const dir_dx = info.packer[`dir${dir+1}_dx`] as number ?? 0
-    const dir_dy = info.packer[`dir${dir+1}_dy`] as number ?? 0
+    const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.8)
+    const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * (maxW / dir_width / 256) * (flip ? -1 : 1)
+    const dir_dy = (info.packer[`dir${dir+1}_dy`] as number ?? 0) * (maxW / dir_width / 256)
 
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
   
