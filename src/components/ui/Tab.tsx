@@ -8,7 +8,6 @@ import ShowMenu from '../../state/actions/ShowMenu'
 import { CancelUnsavedData } from '../../state/actions/UpdateText'
 import SaveChanges from '../../state/actions/SaveChanges'
 import { getDirPath, getFilePath } from '../../state/MapFiles'
-import { toJS } from 'mobx'
 
 export type TabProps = {
   tab: TabType;
@@ -18,15 +17,13 @@ export type TabProps = {
 const isTabUnsaved = (tab: TabType) => {
   if(tab == 'Files') return false
   
-  const dir = getDirPath(tab)
-  if(dir){
+  const directory = getDirPath(tab)
+  if(directory){
     for(const file in UnsavedFiles){
-      if(file.startsWith(dir))return true
+      if(file.startsWith(directory))return true
     }
-  } else {
-    return !!UnsavedFiles[getFilePath(tab)]
   }
-  return false
+  return !!UnsavedFiles[getFilePath(tab)]
 }
 
 const Tab = ({ tab, selected }:TabProps) => 

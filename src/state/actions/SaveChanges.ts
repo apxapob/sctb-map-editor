@@ -1,13 +1,13 @@
 import { action } from 'mobx'
 import { MapInfo, TabType } from '../../types/types'
 import { SendToElectron } from '../../utils/messenger'
-import { FIELDS_PATH, getFilePath, INFO_PATH, MapFiles } from '../MapFiles'
+import { FIELDS_PATH, getFilePath, INFO_PATH, ITEMS_IMAGES_PATH, MapFiles, UNITS_IMAGES_PATH } from '../MapFiles'
 import { EditorState, FileErrors, UnsavedFiles } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendToGame from './SendToGame'
 
-const SaveChanges = (tab?:TabType):boolean => {
-  if (MapFiles.status !== 'Loaded') return false
+const SaveChanges = (tab?:TabType) => {
+  if (MapFiles.status !== 'Loaded') return
 
   tab ??= EditorState.activeTab
   
@@ -20,35 +20,44 @@ const SaveChanges = (tab?:TabType):boolean => {
       }
     }
     
-    return true
+    return
   }
-  const path = getFilePath(tab)
-  const text = UnsavedFiles[path]
-  if (text === null || text === undefined) return true
 
-  try {
-    if (path.endsWith('.json')) {
-      JSON.parse(text)
+  const filesToSave = [getFilePath(tab)]
+  if(tab === 'Units' || tab === 'Items'){
+    const directory = tab === 'Units' ? UNITS_IMAGES_PATH : ITEMS_IMAGES_PATH
+    for(const file in UnsavedFiles){
+      if(file.startsWith(directory)){
+        filesToSave.push(file)
+      }
     }
-    const data = { text, path }
-    
-    delete UnsavedFiles[path]
-    delete FileErrors[path]
-    
-    SendToElectron({ command: 'SAVE_TEXT_FILE', data })
-    OnLoadedText({
-      command: 'LOAD_TEXT_FILE',
-      file: path,
-      progress: 1,
-      editMode: true,
-      gameFile: false,
-      text
-    }, true)
-  } catch (e) {
-    FileErrors[path] = (e as Error).message
-    return false
   }
-  return true
+  
+  for(const file in filesToSave){
+    const path = filesToSave[file]
+    const text = UnsavedFiles[path]
+    if (text === null || text === undefined) continue
+
+    try {
+      if (path.endsWith('.json')) { JSON.parse(text) }
+      const data = { text, path }
+      
+      delete UnsavedFiles[path]
+      delete FileErrors[path]
+      
+      SendToElectron({ command: 'SAVE_TEXT_FILE', data })
+      OnLoadedText({
+        command: 'LOAD_TEXT_FILE',
+        file: path,
+        progress: 1,
+        editMode: true,
+        gameFile: false,
+        text
+      }, true)
+    } catch (e) {
+      FileErrors[path] = (e as Error).message
+    }
+  }
 }
 
 export default action(SaveChanges)

@@ -3,6 +3,7 @@ import { MapFiles } from '../../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { SpriteSheetInfo } from '../../../types/types';
 import './SpriteViewer.css'
+import SpriteSheetOptions from './SpriteSheetOptions';
 
 type SpriteRotatorProps = {
   direction: number;
@@ -60,7 +61,7 @@ const SpriteRotator = ({
     ↻
     </button>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" className='dir-clock'>
-      <g stroke="white" stroke-width="2" fill="none">
+      <g stroke="white" strokeWidth="2" fill="none">
         <circle cx="14" cy="14" r="13"/>
         <line x1="14" y1="14" x2={14 + 14 * Math.cos(clockAngle)} y2={14 + 14 * Math.sin(clockAngle)} />
       </g>
@@ -73,7 +74,7 @@ const SpriteRotator = ({
 
 const Hex = () => {
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 138" className='hex'>
-    <g stroke="white" stroke-width="4" fill="none">
+    <g stroke="white" strokeWidth="4" fill="none">
       <path d="M 1 74 L 64 11 L 191 11 L 255 74 L 191 137 L 64 137 L 1 74"/>
     </g>
   </svg>
@@ -92,6 +93,8 @@ const SpriteViewer = ({
   const setDirection = (d:number) => _setDirection((d+12) % 12)
 
   const buffer = MapFiles.binary[path]
+  const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
+  const { animationFramesNum: framesNum, directions } = info.packer
   
   useEffect(() => {
     setError('')
@@ -106,61 +109,62 @@ const SpriteViewer = ({
 
   useEffect(() => {
     if(!spriteSheetPath){ return }
-    const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
-    const { animationFramesNum: framesNum, directions } = info.packer
+    
     let mW = 0, mH = 0
     const { dir } = getSpriteDir(direction, directions)
     for(let i = 0; i < framesNum; i++){
-      const { w, h } = info.sprites[directions * i + dir]
+      const frameId = Math.min(info.sprites.length-1, directions * i + dir)
+      const { w, h } = info.sprites[frameId]
       mW = Math.max(mW, w)
       mH = Math.max(mH, h)
     }
     setMaxW(mW)
     setMaxH(mH)
-  }, [spriteSheetPath, direction])
+  }, [spriteSheetPath, direction, framesNum])
 
-  try{
-    if(spriteSheetPath){
-      const info = MapFiles.json[spriteSheetPath] as SpriteSheetInfo
-      const { width, height, animationFramesNum: framesNum, directions } = info.packer
-      const { dir, flip } = getSpriteDir(direction, directions)
-      const { x, y, w, h } = info.sprites[directions * (frame % framesNum) + dir]
-
-      setTimeout(() => setFrame((frame+1) % framesNum), 100)
-    
-      return <>
-        <div className='blob-image-container' style={{ width: maxW, height: maxH }}>
-          <Hex />
-          <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
-            {buffer 
-              ? <img ref={ref} onError={() => setError('Invalid image')} 
-                style={{
-                  top: (maxH-h)/2-y,
-                  left: (maxW-w)/2-x,
-                  clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
-                  position: 'absolute'
-                }}
-              />
-              : 'No Image'
-            }
-          </div>
-          {error}
-        </div>
-        <SpriteRotator setDirection={setDirection} direction={direction}/>
-      </>
-    }
-  } catch(e) {
-    console.warn("Image error", e)
+  if(!spriteSheetPath || !info || error){
+    return <div className='blob-image-container'>
+      <Hex />
+      {buffer 
+        ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
+        : 'No Image'
+      }
+      {error}
+    </div>
   }
   
-  return <div className='blob-image-container'>
-    <Hex />
-    {buffer 
-      ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
-      : 'No Image'
-    }
-    {error}
-  </div>
+  try{
+    const { width, height, animationFramesNum: framesNum, directions } = info.packer
+    const { dir, flip } = getSpriteDir(direction, directions)
+    const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
+    const { x, y, w, h } = info.sprites[frameId]
+
+    setTimeout(() => setFrame((frame+1) % framesNum), 100)
+  
+    return <>
+      <div className='blob-image-container' style={{ width: maxW, height: maxH }}>
+        <Hex />
+        <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
+          {buffer 
+            ? <img ref={ref} onError={() => setError('Invalid image')} 
+              style={{
+                top: (maxH-h)/2-y,
+                left: (maxW-w)/2-x,
+                clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
+                position: 'absolute'
+              }}
+            />
+            : 'No Image'
+          }
+        </div>
+        {error}
+      </div>
+      <SpriteRotator setDirection={setDirection} direction={direction}/>
+      <SpriteSheetOptions configPath={spriteSheetPath} />
+    </>
+  } catch(e:any) {
+    setError(`Image error: ${e?.message}`)
+  }
 }
 
 export default observer(SpriteViewer)

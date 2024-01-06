@@ -52,6 +52,10 @@ export const getDirPath = (tab:TabType) => {
       return SCRIPTS_PATH
     case 'Particles':
       return PARTICLES_PATH
+    case 'Units':
+      return UNITS_IMAGES_PATH
+    case 'Items':
+      return ITEMS_IMAGES_PATH
   }
   return ''
 }
