@@ -2,7 +2,7 @@ import React from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
 import { getDirPath, getFilePath } from '../../state/MapFiles'
-import BlobImage from '../ui/components/BlobImage'
+import SpriteViewer from '../ui/components/SpriteViewer'
 import DirectoryViewer from '../ui/DirectoryViewer'
 import { EditorDiv } from '../ui/EditorDiv'
 import { EditorState, FileErrors } from '../../state/ToolState'
@@ -26,7 +26,7 @@ const FilesView = () => {
         }
         {filePath && 
           (filePath.endsWith(".png") 
-              ? <BlobImage path={filePath} containerCssClass='image-view-container' cssClass='image-view' />
+              ? <SpriteViewer path={filePath} containerCssClass='image-view-container' cssClass='image-view' />
               : <EditorDiv error={error} filePath={filePath} mode={mode} />
           )
         }

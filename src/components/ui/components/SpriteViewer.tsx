@@ -2,9 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MapFiles } from '../../../state/MapFiles'
 import { observer } from 'mobx-react-lite'
 import { SpriteSheetInfo } from '../../../types/types';
-import './BlobImage.css'
+import './SpriteViewer.css'
 
-type BlobImageProps = {
+type SpriteRotatorProps = {
+  direction: number;
+  setDirection: (dir:number) => void;
+}
+
+type SpriteViewerProps = {
   path: string;
   cssClass?: string;
   containerCssClass?: string;
@@ -46,9 +51,30 @@ const getSpriteDir = (unitDir:number, directions:number):{ dir:number, flip:bool
   return { dir: unitDir, flip: false }
 }
 
-const BlobImage = ({
+const SpriteRotator = ({
+  direction,
+  setDirection
+}:SpriteRotatorProps) => {
+  const clockAngle = Math.PI * (direction - 3) / 6
+  return <div className='sprite-rotator'>
+    <button onClick={() => setDirection(direction+1)} style={{ marginRight: 24 }}>
+    ↻
+    </button>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" className='dir-clock'>
+      <g stroke="white" stroke-width="2" fill="none">
+        <circle cx="14" cy="14" r="13"/>
+        <line x1="14" y1="14" x2={14 + 14 * Math.cos(clockAngle)} y2={14 + 14 * Math.sin(clockAngle)} />
+      </g>
+    </svg>
+    <button onClick={() => setDirection(direction-1)} style={{ marginLeft: 24 }}>
+    ↺
+    </button>
+  </div>
+}
+
+const SpriteViewer = ({
   path, cssClass, containerCssClass, spriteSheetPath
-}:BlobImageProps) => {
+}:SpriteViewerProps) => {
   const ref = useRef<HTMLImageElement>(null)
   const [error, setError] = useState('')
 
@@ -95,33 +121,25 @@ const BlobImage = ({
 
       setTimeout(() => setFrame((frame+1) % framesNum), 100)
     
-      return <div className={'blob-image-container'} style={{ width: maxW, height: maxH }}>
-        <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
-          {buffer 
-            ? <img ref={ref} onError={() => setError('Invalid image')} 
-              style={{
-                top: (maxH-h)/2-y,
-                left: (maxW-w)/2-x,
-                clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
-                position: 'absolute'
-              }}
-            />
-            : 'No Image'
-          }
-        </div>
-        {error}
-        <div className='sprite-rotator'>
-          <div className='rotator-buttons'>
-            <button onClick={() => setDirection(direction+1)}>
-            ↻
-            </button>
-            <span className='center-span' style={{ width: 40 }}>{direction === 0 ? 12 : direction}</span>
-            <button onClick={() => setDirection(direction-1)}>
-            ↺
-            </button>
+      return <>
+        <div className={'blob-image-container'} style={{ width: maxW, height: maxH }}>
+          <div style={{ transform: `scaleX(${flip ? -1 : 1})`, width:"100%", height:"100%" }}>
+            {buffer 
+              ? <img ref={ref} onError={() => setError('Invalid image')} 
+                style={{
+                  top: (maxH-h)/2-y,
+                  left: (maxW-w)/2-x,
+                  clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
+                  position: 'absolute'
+                }}
+              />
+              : 'No Image'
+            }
           </div>
+          {error}
         </div>
-      </div>
+        <SpriteRotator setDirection={setDirection} direction={direction}/>
+      </>
     }
   } catch(e) {
     console.warn("Image error", e)
@@ -136,4 +154,4 @@ const BlobImage = ({
   </div>
 }
 
-export default observer(BlobImage)
+export default observer(SpriteViewer)
