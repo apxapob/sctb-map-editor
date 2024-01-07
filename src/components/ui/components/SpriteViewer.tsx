@@ -17,38 +17,32 @@ type SpriteViewerProps = {
   direction?: number;
 }
 
-const getSpriteDir = (unitDir:number, directions:number):{ dir:number, flip:boolean } => {
+const getSpriteDir = (objDir:number, directions:number):{ dir:number, flip:boolean } => {
+  if(directions < 1)directions = 1
+  if(directions > 12)directions = 12
   switch(directions){
-    case 1: return { dir: 0, flip: unitDir > 5 }
-    case 3: return unitDir === 11 || unitDir < 2 ? { dir: 0, flip: false } :
-                                     unitDir < 5 ? { dir: 1, flip: false } :
-                                     unitDir < 8 ? { dir: 2, flip: false } :
+    case 1: return { dir: 0, flip: objDir > 5 }
+    case 3: return objDir === 11 || objDir < 2 ? { dir: 0, flip: false } :
+                                     objDir < 5 ? { dir: 1, flip: false } :
+                                     objDir < 8 ? { dir: 2, flip: false } :
                                                    { dir: 1, flip: true }
-    case 4: return unitDir === 11 || unitDir < 2 ? { dir: 0, flip: false } :
-                                     unitDir < 5 ? { dir: 1, flip: false } :
-                                     unitDir < 8 ? { dir: 2, flip: false } :
+    case 4: return objDir === 11 || objDir < 2 ? { dir: 0, flip: false } :
+                                     objDir < 5 ? { dir: 1, flip: false } :
+                                     objDir < 8 ? { dir: 2, flip: false } :
                                                    { dir: 3, flip: false }
-    case 5: return unitDir < 1 ? { dir: 0, flip: false } :
-                   unitDir < 3 ? { dir: 1, flip: false } :
-                   unitDir < 4 ? { dir: 2, flip: false } :
-                   unitDir < 6 ? { dir: 3, flip: false } :
-                   unitDir < 7 ? { dir: 4, flip: false } :
-                   unitDir < 9 ? { dir: 3, flip: true } :
-                   unitDir < 10 ? { dir: 2, flip: true } :
+    case 5: return objDir < 1 ? { dir: 0, flip: false } :
+                   objDir < 3 ? { dir: 1, flip: false } :
+                   objDir < 4 ? { dir: 2, flip: false } :
+                   objDir < 6 ? { dir: 3, flip: false } :
+                   objDir < 7 ? { dir: 4, flip: false } :
+                   objDir < 9 ? { dir: 3, flip: true } :
+                   objDir < 10 ? { dir: 2, flip: true } :
                                   { dir: 1, flip: true }
-    case 8: return unitDir < 1 ? { dir: 0, flip: false } :
-                   unitDir < 3 ? { dir: 1, flip: false } :
-                   unitDir < 4 ? { dir: 2, flip: false } :
-                   unitDir < 6 ? { dir: 3, flip: false } :
-                   unitDir < 7 ? { dir: 4, flip: false } :
-                   unitDir < 9 ? { dir: 5, flip: false } :
-                   unitDir < 10 ? { dir: 6, flip: false } :
-                                  { dir: 7, flip: false }
-    case 7: return unitDir < 7 ? { dir: unitDir, flip: false } :
-                                 { dir: 12-unitDir, flip: true }
+    case 7: return objDir < 7 ? { dir: objDir, flip: false } :
+                                 { dir: 12-objDir, flip: true }
   }
 
-  return { dir: unitDir, flip: false }
+  return { dir: Math.floor(objDir * directions / 12), flip: false };
 }
 
 const SpriteRotator = ({
@@ -72,13 +66,11 @@ const SpriteRotator = ({
   </div>
 }
 
-const Hex = () => {
-  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 138" className='hex'>
-    <g stroke="white" strokeWidth="4" fill="none">
-      <path d="M 1 74 L 64 11 L 191 11 L 255 74 L 191 137 L 64 137 L 1 74"/>
-    </g>
-  </svg>
-}
+const Hex = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 138" className='hex'>
+  <path stroke="white" strokeWidth="4" fill="none" 
+        d="M 1 74 L 64 11 L 191 11 L 255 74 L 191 137 L 64 137 L 1 74"
+  />
+</svg>
 
 const SpriteViewer = ({
   path, cssClass, spriteSheetPath
@@ -94,8 +86,8 @@ const SpriteViewer = ({
 
   const buffer = MapFiles.binary[path]
   const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
-  const framesNum = info?.packer?.animationFramesNum ?? info?.sprites?.length ?? 1
-  const directions = info?.packer?.directions ?? 1
+  const framesNum = (info?.packer?.animationFramesNum ?? info?.sprites?.length) || 1
+  const directions = info?.packer?.directions || 1
   
   useEffect(() => {
     setError('')

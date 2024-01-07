@@ -30,7 +30,8 @@ const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
       filePath={configPath}
       valuePath="packer.directions"
       isInteger={true}
-      min={0}
+      min={1}
+      max={12}
     />
     {Array(directions).fill(0).map((_, idx)=>
       <div key={idx}>
