@@ -94,8 +94,8 @@ const SpriteViewer = ({
 
   const buffer = MapFiles.binary[path]
   const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
-  const framesNum = info?.packer?.animationFramesNum
-  const directions = info?.packer?.directions
+  const framesNum = info?.packer?.animationFramesNum ?? info?.sprites?.length ?? 1
+  const directions = info?.packer?.directions ?? 1
   
   useEffect(() => {
     setError('')
@@ -135,7 +135,7 @@ const SpriteViewer = ({
   }
   
   try{
-    const { width, height, animationFramesNum: framesNum, directions } = info.packer
+    const { width, height } = info.packer
     const { dir, flip } = getSpriteDir(direction, directions)
     const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
     const { x, y, w, h } = info.sprites[frameId]

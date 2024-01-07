@@ -10,12 +10,12 @@ type SpriteSheetOptionsProps = {
 
 const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
 
-  const { packer } = MapFiles.json[configPath] as SpriteSheetInfo
-  const { directions } = packer
+  const { packer, sprites } = MapFiles.json[configPath] as SpriteSheetInfo
+  const directions = packer.directions ?? 1
 
   return <div className='vflex' style={{ alignItems: 'center' }}>
     <JsonNumberInput
-      placeholder='Frames number'
+      placeholder={sprites.length + ''}
       title="Animation Frames"
       tooltip="Number of frames in animation"
       filePath={configPath}
@@ -24,7 +24,7 @@ const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
       min={0}
     />
     <JsonNumberInput
-      placeholder='Directions number'
+      placeholder='1'
       title="Directions"
       tooltip="Number of directions in the spritesheet"
       filePath={configPath}
