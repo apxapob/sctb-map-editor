@@ -69,7 +69,7 @@ const ItemsView = () => {
           selectItem(newName)
           RenameObject("item", oldName, newName)
         }}
-        addItem={() => AddJsonFileValue<ItemType>(
+        addItem={() => AddJsonFileValue(
           ITEMS_PATH, 
           'Item', 
           { type: '', buffs: [], unpickable: false, invisible: 0 },

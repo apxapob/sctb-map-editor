@@ -161,7 +161,7 @@ const UnitsView = () => {
           selectUnit(newName)
           RenameObject("unit", oldName, newName)
         }}
-        addItem={() => AddJsonFileValue<UnitStatsType>(
+        addItem={() => AddJsonFileValue(
           UNITS_PATH, 
           'Unit',
           {

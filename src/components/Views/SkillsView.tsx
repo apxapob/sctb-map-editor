@@ -104,10 +104,10 @@ const SkillsView = () => {
           selectSkill(newName)
           RenameObject("skill", oldName, newName)
         }}
-        addItem={() => AddJsonFileValue<SkillType>(
+        addItem={() => AddJsonFileValue(
           SKILLS_PATH, 
           'Skill', 
-          { type: 'Skill', args: [], manaCost: 0, script: '', areaScript: '', mineralsCost: 0, radius: 0, range: 0 },
+          { type: '', args: [], manaCost: 0, script: '', areaScript: '', mineralsCost: 0, radius: 0, range: 0 },
           selectSkill
         )}
         deleteItem={id => {

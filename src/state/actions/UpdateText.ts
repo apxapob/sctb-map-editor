@@ -55,10 +55,10 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
   return result
 }
 
-export const AddJsonFileValue = action(<T extends JSONObject>(
+export const AddJsonFileValue = action((
   filePath: string,
   defaultName: string,
-  template: T,
+  template: any,
   selectItem?: (id:string) => void
 ) => {
   const fileObj = MapFiles.json[filePath]
@@ -67,6 +67,9 @@ export const AddJsonFileValue = action(<T extends JSONObject>(
   while (fileObj[newId]) {
     newId = 'New ' + defaultName + n
     n++
+  }
+  if(template.type === ''){
+    template.type = newId
   }
   fileObj[newId] = template
   UnsavedFiles[filePath] = JSON.stringify(fileObj, null, 2)

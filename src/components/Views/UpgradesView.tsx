@@ -57,7 +57,7 @@ const UpgradesView = () => {
           selectUpgrade(newName)
           RenameJsonFileValue(UPGRADES_PATH, id, newName)
         }}
-        addItem={() => AddJsonFileValue<UpgradeType>(
+        addItem={() => AddJsonFileValue(
           UPGRADES_PATH, 
           'Upgrade', 
           { type: '', effects: [], unitTypes: [] },

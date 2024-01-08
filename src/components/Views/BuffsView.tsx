@@ -57,7 +57,7 @@ const BuffsView = () => {
           selectBuff(newName)
           RenameObject("buff", oldName, newName)
         }}
-        addItem={() => AddJsonFileValue<BuffType>(
+        addItem={() => AddJsonFileValue(
           BUFFS_PATH, 
           'Buff', 
           { type: '', effects: [], turns: 0 },
