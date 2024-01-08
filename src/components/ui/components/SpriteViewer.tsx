@@ -99,7 +99,7 @@ const SpriteViewer = ({
     const url = URL.createObjectURL(blob)
     img.src = url
     return () => URL.revokeObjectURL(url)// So the Blob can be Garbage Collected
-  }, [path])
+  }, [path, spriteSheetPath])
 
   useEffect(() => {
     if(!spriteSheetPath){ return }
