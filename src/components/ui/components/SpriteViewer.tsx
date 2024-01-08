@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { SpriteSheetInfo } from '../../../types/types';
 import './SpriteViewer.css'
 import SpriteSheetOptions from './SpriteSheetOptions';
+import { relative } from 'path';
 
 type SpriteRotatorProps = {
   direction: number;
@@ -115,9 +116,9 @@ const SpriteViewer = ({
     setMaxH(mH)
   }, [spriteSheetPath, direction, framesNum])
 
-  if(!spriteSheetPath || !info || error){
-    return <div>
-      <Hex />
+  if(!spriteSheetPath || !info || error || !buffer){
+    return <div style={{ position: 'relative' }}>
+      {buffer && <Hex />}
       {buffer 
         ? <img ref={ref} className={cssClass ?? 'blob-image'} onError={() => setError('Invalid image')} />
         : 'No Image'
@@ -155,18 +156,15 @@ const SpriteViewer = ({
             transform: `scaleX(${flip ? -1 : 1})`, 
             width:"100%", 
             height:"100%" 
-          }}>
-            {buffer 
-              ? <img ref={ref} onError={() => setError('Invalid image')} 
-                style={{
-                  top: (maxH-h)/2-y,
-                  left: (maxW-w)/2-x,
-                  clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
-                  position: 'absolute'
-                }}
-              />
-              : 'No Image'
-            }
+          }}> 
+            <img ref={ref} onError={() => setError('Invalid image')} 
+              style={{
+                top: (maxH-h)/2-y,
+                left: (maxW-w)/2-x,
+                clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
+                position: 'absolute'
+              }}
+            />  
           </div>
           {error}
         </div>
