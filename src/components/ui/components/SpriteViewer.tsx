@@ -159,7 +159,7 @@ const SpriteViewer = ({
           }}> 
             <img ref={ref} onError={() => setError('Invalid image')} 
               style={{
-                top: (maxH-h)/2-y,
+                top: maxH-h-y,
                 left: (maxW-w)/2-x,
                 clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
                 position: 'absolute'
