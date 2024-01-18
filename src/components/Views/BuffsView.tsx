@@ -36,7 +36,6 @@ const BuffEditor = ({
       valuePath={`${buffId}.effects`} 
       title={'Effects'}
     />
-
   </div>
 }
 

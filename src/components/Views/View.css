@@ -35,6 +35,11 @@
 }
 
 .map-view {
-  padding: 6px;
-  text-align: center;
+  padding: 12px;
+}
+
+.script-item {
+  border-left: 1px white solid;
+  margin: 6px 12px;
+  padding-left: 6px;
 }

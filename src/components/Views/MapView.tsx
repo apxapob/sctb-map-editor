@@ -6,10 +6,14 @@ import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesOptions from '../ui/components/CountriesOptions'
 import TilesOptions from '../ui/components/TilesOptions'
+import JsonScriptsList from '../ui/components/JsonScriptsList'
 
 const MapView = () => 
-  <div className='view-container hflex map-view'>
-    <div className='vflex' style={{ width: 380 }}>
+  <div className='view-container hflex map-view' style={{ gap: 30 }}>
+    <div className='vflex' style={{ width: 380, textAlign: "center" }}>
+      <h3 style={{ textAlign: "left" }}>
+      Map settings
+      </h3>
       <JsonStringInput
         placeholder='Map id'
         title="Map id"
@@ -66,6 +70,11 @@ const MapView = () =>
         valuePath='tiles'
       />
     </div>
+    
+    <JsonScriptsList 
+      filePath={INFO_PATH} valuePath='mapScripts' title='Map Scripts' 
+      tooltip='List of map scripts which will be launched at the start of every turn'
+    />
   </div>
 
 export default MapView

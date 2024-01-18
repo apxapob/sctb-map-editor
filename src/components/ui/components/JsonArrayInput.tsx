@@ -28,7 +28,7 @@ const JsonArrayInput = (
       title={tooltip}
     >
       {title &&
-        <div style={{ fontSize: 20, marginTop: 8 }}>
+        <div style={{ marginTop: 8 }}>
           {title}
         </div>
       }
