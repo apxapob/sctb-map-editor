@@ -28,7 +28,7 @@ const CountriesOptions = (
 
   return <div>
     <div className='hflex' style={{ gap: 6, marginTop: 12 }}>
-      <span style={{ width: 124 }}>
+      <span style={{ width: 144 }}>
         Country
       </span>
       <span style={{ width: 60 }}>

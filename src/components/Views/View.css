@@ -33,3 +33,8 @@
   position: relative;
   z-index: 1;
 }
+
+.map-view {
+  padding: 6px;
+  text-align: center;
+}

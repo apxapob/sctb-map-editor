@@ -8,8 +8,8 @@ import CountriesOptions from '../ui/components/CountriesOptions'
 import TilesOptions from '../ui/components/TilesOptions'
 
 const MapView = () => 
-  <div className='tools-container'>
-    <div className='vflex'>
+  <div className='view-container hflex map-view'>
+    <div className='vflex' style={{ width: 380 }}>
       <JsonStringInput
         placeholder='Map id'
         title="Map id"

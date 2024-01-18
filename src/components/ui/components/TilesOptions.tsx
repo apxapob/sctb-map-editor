@@ -16,14 +16,14 @@ const TilesOptions = (
   
   return <div style={{ marginTop: 12 }}>
     Hex Types
-    <div className='hflex' style={{ gap: 6 }}>
-      <span style={{ width: 120 }}>
+    <div className='hflex' style={{ gap: 6, marginRight: 30 }}>
+      <span style={{ width: 139 }}>
         Horizontal
       </span>
-      <span style={{ width: 120 }}>
+      <span style={{ width: 139 }}>
         Vertical
       </span>
-      <span style={{ width: 60, marginRight: 30 }}>
+      <span style={{ width: 60 }}>
         Color
       </span>
     </div>
