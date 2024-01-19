@@ -274,6 +274,7 @@ export const EffectTemplates = {
   //AddCustomSkill: { skill:SkillType },//TODO: implement this
   RemoveSkill: { id:'' },
   BlockSkills: null,
+  BlockAttacks: null,
   BlockMovement: null,
   
   Aura: { //works for items too
@@ -291,7 +292,7 @@ export const EffectTypes = [...Object.keys(EffectTemplates)] as const
 
 export type Effects = keyof typeof EffectTemplates
 
-export type EffectType = 'BlockSkills' | 'BlockMovement' | {
+export type EffectType = 'BlockSkills' | 'BlockMovement' | 'BlockAttacks' | {
   [type in Effects]: {
     value?: number;
     script?: string;
