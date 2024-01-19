@@ -4,7 +4,7 @@ import { MenuItem, MenuState } from '../MenuState'
 const ShowMenu = (e:React.MouseEvent, items:MenuItem[]):void => {
   MenuState.menuX = e.clientX
   MenuState.menuY = e.clientY
-  MenuState.items = items
+  MenuState.items = items.filter(_ => _)
 }
 
 export default action(ShowMenu)

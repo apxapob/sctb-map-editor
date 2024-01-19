@@ -67,6 +67,7 @@ const getFileMenuItems = (
 const getFolderMenuItems = (
   tree:PathTreeType,
   setAdder: (val:AdderType) => void,
+  canDelete = true,
 ) => [
   {
     title: 'New file', 
@@ -84,7 +85,7 @@ const getFolderMenuItems = (
     title: 'New folder', 
     callback: () => setAdder('folder')
   },
-  {
+  canDelete && {
     title: 'Delete',
     callback: () => {
       SendToElectron({
@@ -99,6 +100,7 @@ const getFolderMenuItems = (
 ]
 
 const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
+  const [adder, setAdder] = React.useState<AdderType>(null)
   const mainTree:PathTreeType = {
     isOpen: true,
     isDirectory: true,
@@ -111,7 +113,19 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
   const fileSelector = fileSelectors[EditorState.activeTab]
   if (!fileSelector) return null
   return (
-    <div className='dir-viewer-container'>
+    <div className='dir-viewer-container'
+      onContextMenu={
+        e => ShowMenu(e, getFolderMenuItems(mainTree, setAdder, false))
+      }>
+      {adder !== null &&
+        <FileAdder
+          path={mainTree.path} 
+          level={0} 
+          fileSelector={fileSelector} 
+          add={adder} 
+          reset={() => setAdder(null)}
+        />
+      }
       <PathTree
         fileSelector={fileSelector}
         tree={mainTree}
@@ -180,7 +194,10 @@ const PathTree = observer(({ tree, root, level, fileSelector, setAdder }:FilesTr
           <div className='node' 
             style={{ paddingLeft: 2 + 18 * (level - 1), color: tree.isGameFile ? 'cyan' : 'white' }}
             title={tree.isGameFile ? 'This folder belongs to the game, not to the map' : undefined}
-            onContextMenu={e => ShowMenu(e, getFolderMenuItems(tree, setAdder))}
+            onContextMenu={e => {
+              e.stopPropagation()
+              ShowMenu(e, getFolderMenuItems(tree, setAdder))
+            }}
             onClick={() => OpenFileTree(tree)}>
             {tree.isOpen ? '▾📂'  : '▸📁'}
             {root}
@@ -244,7 +261,10 @@ const FileItem = observer(
         title={tree.isGameFile ? 'This file belongs to the game, not to the map' : undefined}
         onDoubleClick={startRenaming}
         tabIndex={0}
-        onContextMenu={e => ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))}
+        onContextMenu={e => {
+          e.stopPropagation()
+          ShowMenu(e, getFileMenuItems(tree, startRenaming, setAdder))
+        }}
         onClick={() => fileSelector(tree.path)}>
         {root}{UnsavedFiles[tree.path] && '*'}
       </div>

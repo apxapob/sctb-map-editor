@@ -18,7 +18,7 @@ const ContextMenu = () => {
           left: Math.min(MenuState.menuX, window.innerWidth - 120)
         }}
       >
-        {MenuState.items.filter(_=>_).map((i, idx) => i &&
+        {MenuState.items.map((i, idx) => i &&
           <div className='context-menu-item' key={idx} onClick={i.callback}>
             {i.title}
           </div>
