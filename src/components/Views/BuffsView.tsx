@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, PARTICLES_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import { BuffType, BuffsMap } from '../../types/types'
 import { JsonArrayViewer } from '../ui/components/JsonArrayViewer'
 import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../../state/actions/UpdateText'
 import JsonEffectsEditor from '../ui/components/JsonEffectsEditor'
 import { RenameObject } from '../../state/actions/RenameActions'
+import FileSelector from '../ui/components/FileSelector'
 
 type BuffsEditorProps = {
   buffId: string;
@@ -31,6 +32,16 @@ const BuffEditor = ({
       isInteger={true}
       min={-1}
     />
+    
+    <div className='hflex' style={{ alignItems: "start", justifyContent: "flex-start" }}>
+      <span className="view-input-title">Visual effect</span>
+      <FileSelector
+        filesSourcePath={PARTICLES_PATH}
+        filePath={BUFFS_PATH}
+        valuePath={`${buffId}.particles`}
+      />
+    </div>
+    
     <JsonEffectsEditor 
       filePath={BUFFS_PATH} 
       valuePath={`${buffId}.effects`} 

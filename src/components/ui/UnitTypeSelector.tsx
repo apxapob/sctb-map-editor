@@ -14,7 +14,7 @@ const UnitTypeSelector = () => {
     SelectUnitType(unitArray[0]?.type, false)
   }, [units])
 
-  return <Selector items={unitArray.map(u => u.type)} onSelect={SelectUnitType} />
+  return <Selector items={unitArray.map(u => u.type)} onSelect={SelectUnitType} className='btnArrow' />
 }
 
 export default observer(UnitTypeSelector)

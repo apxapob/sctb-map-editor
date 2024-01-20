@@ -5,6 +5,7 @@ export type SelectorProps = {
   items: readonly string[];
   onSelect: (value:string) => void;
   style?: React.CSSProperties;
+  className?: string;
 }
 
 export const Selector = (props:SelectorProps) => 
@@ -12,7 +13,7 @@ export const Selector = (props:SelectorProps) =>
     value={props.value}
     disabled={!props.items || props.items.length === 0}
     style={{ width: 20, ...props.style }} 
-    className={props.value === undefined ? 'btnArrow' : ''}
+    className={props.className}
     onChange={e => {
       props.onSelect(e.target.value)
       e.target.blur()

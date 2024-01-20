@@ -16,7 +16,7 @@ const ItemTypeSelector = () => {
     SelectItemType(itemArray[0]?.type, false)
   }, [items])
 
-  return <Selector items={itemArray.map(i => i.type)} onSelect={SelectItemType} />
+  return <Selector items={itemArray.map(i => i.type)} onSelect={SelectItemType} className='btnArrow' />
 }
 
 export default observer(ItemTypeSelector)
