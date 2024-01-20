@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite'
 import { SpriteSheetInfo } from '../../../types/types';
 import './SpriteViewer.css'
 import SpriteSheetOptions from './SpriteSheetOptions';
-import { relative } from 'path';
 
 type SpriteRotatorProps = {
   direction: number;
@@ -135,7 +134,7 @@ const SpriteViewer = ({
 
     const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.8)
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * (maxW / dir_width / 256) * (flip ? -1 : 1)
-    const dir_dy = (info.packer[`dir${dir+1}_dy`] as number ?? 0) * (maxW / dir_width / 256)
+    const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * (maxW / dir_width / 256)
 
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
   

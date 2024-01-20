@@ -119,7 +119,7 @@ const DirectoryViewer = ({ path }: DirectoryViewerProps) => {
       }>
       {adder !== null &&
         <FileAdder
-          path={mainTree.path} 
+          path={mainTree.path}
           level={0} 
           fileSelector={fileSelector} 
           add={adder} 

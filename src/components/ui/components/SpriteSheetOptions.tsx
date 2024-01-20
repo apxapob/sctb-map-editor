@@ -36,7 +36,7 @@ const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
     {Array(directions).fill(0).map((_, idx)=>
       <div key={idx}>
         <JsonNumberInput
-          placeholder="0.8"
+          placeholder="0.7"
           title={`Direction ${idx+1} width`}
           tooltip={`Width for Direction ${idx+1} sprites. 1 = hex width`}
           filePath={configPath}
