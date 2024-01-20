@@ -9,6 +9,7 @@ import { AddJsonFileValue, DeleteJsonFileValue, RenameJsonFileValue } from '../.
 import JsonEffectsEditor from '../ui/components/JsonEffectsEditor'
 import { RenameObject } from '../../state/actions/RenameActions'
 import FileSelector from '../ui/components/FileSelector'
+import JsonBoolInput from '../ui/components/JsonBoolInput'
 
 type BuffsEditorProps = {
   buffId: string;
@@ -39,6 +40,12 @@ const BuffEditor = ({
         filesSourcePath={PARTICLES_PATH}
         filePath={BUFFS_PATH}
         valuePath={`${buffId}.particles`}
+      />
+      &nbsp;
+      <JsonBoolInput
+        title="Country color effect"
+        filePath={BUFFS_PATH}
+        valuePath={`${buffId}.countryColorParticles`}
       />
     </div>
     
