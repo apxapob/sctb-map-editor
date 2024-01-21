@@ -367,9 +367,12 @@ exports.ADD_FILE = async ({ path }) => {
   for (const filePath of files){
     const fileName = filePath.replaceAll("\\", "/").split("/").pop()
     
-    const bytes = await fs.promises.readFile(filePath)
+    const isText = isTextFile(filePath)
+    const bytes = isText ? undefined : await fs.promises.readFile(filePath)
+    const text = isText ? await fs.promises.readFile(filePath, { encoding: 'utf8' }) : undefined
     sendCommand({
-      command: 'LOAD_BINARY_FILE', 
+      command: isText ? 'LOAD_TEXT_FILE' : 'LOAD_BINARY_FILE',
+      text,
       bytes,
       progress: 1,
       gameFile: false,
@@ -378,7 +381,7 @@ exports.ADD_FILE = async ({ path }) => {
     })
 
     if(isMapFileMode()){
-      saveMapFile(curMapPath, path + "/" + fileName, bytes)
+      saveMapFile(curMapPath, path + "/" + fileName, bytes ?? text)
     } else {
       fs.promises.copyFile(filePath, curMapPath + "/" + path + "/" + fileName)
     }
