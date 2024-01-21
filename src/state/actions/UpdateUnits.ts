@@ -48,6 +48,14 @@ export const RotateUnits = action((delta:number) => {
   UpdateObjects()
 })
 
+export const SetUnitsHP = action((hp:number) => {
+  SelectedObjects.data.forEach(u => {
+    if (!isUnit(u)) return
+    (u as UnitDataType).hp = hp
+  })
+  UpdateObjects()
+})
+
 export const setBuffTurns = action((idx:number, value:number) => {
   if (Number.isNaN(value)) return
   SelectedObjects.data.forEach(

@@ -1,12 +1,13 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import SendToGame from '../../state/actions/SendToGame'
-import { addBuff, isItem, isUnit, removeBuff, RotateUnits, setBuffTurns, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { addBuff, isItem, isUnit, removeBuff, RotateUnits, setBuffTurns, SetUnitsHP, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
 import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
 import CountryColorSelector from './components/CountryColorSelector'
+import { toJS } from 'mobx'
 
 const ObjectSelection = () => {
   const selectedObjects = SelectedObjects.data
@@ -14,7 +15,7 @@ const ObjectSelection = () => {
   if (selectedObjects.length === 0) {
     return null
   }
-
+  
   const selectedUnits:UnitDataType[] = selectedObjects.filter(isUnit) as UnitDataType[]
 
   const mainObj = selectedObjects[0]
@@ -49,6 +50,18 @@ const ObjectSelection = () => {
     }
   }
 
+  let commonHP = null
+  if(isUnit(mainObj)){
+    commonHP = mainUnit.hp 
+    for(let i=0; i < selectedUnits.length; i++){
+      if(selectedUnits[i].hp !== commonHP){
+        commonHP = null
+        break
+      }
+    }
+  }
+   
+
   return <div className='tools-container unit-selection-container vflex' >
     <div className='hflex gapped'>
       Type:
@@ -56,9 +69,20 @@ const ObjectSelection = () => {
       {isItem(mainObj) && <ItemsTypeChanger typeValue={typeValue} />}
     </div>
 
+    {isUnit(mainObj) && commonHP !== null &&
+      <div className='hflex gapped'>
+        HP:
+        <input 
+          onChange={ e => SetUnitsHP(parseInt(e.target.value)) }
+          value={commonHP} 
+          type='number'
+        />
+      </div>
+    }
+
     {selectedUnits.length > 0 &&
       <div className='hflex gapped'>
-        Country: 
+        Country:
         <CountryColorSelector countryId={countryValue} onChange={UpdateUnitsCountry} />
       </div>
     }
@@ -69,6 +93,7 @@ const ObjectSelection = () => {
         <button onClick={() => RotateUnits(1)}>
         ↻
         </button>
+
         <button onClick={() => RotateUnits(-1)}>
         ↺
         </button>
@@ -86,9 +111,9 @@ const ObjectSelection = () => {
       </div>
       <BuffAdder />
       <button onClick={
-        () => SendToGame({ method: 'reset_units_buffs' })
+        () => SendToGame({ method: 'reset_objects' })
       }>
-        Set default buffs
+        Reset to default
       </button>
     </div> 
     

@@ -60,7 +60,7 @@ export type SpriteSheetInfo = {
 }
 
 export type GameMessage = {
-  method: 'init_complete' | 'mark_field_unsaved' | 'reset_units_buffs' | 'to_main_screen' |
+  method: 'init_complete' | 'mark_field_unsaved' | 'reset_objects' | 'to_main_screen' |
           'reset_field' | 'create_map' | 'maps_list' | 'loading_start' | 'save_changes';
 } | {
   method: 'to_electron';
