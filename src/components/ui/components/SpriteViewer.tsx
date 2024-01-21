@@ -45,7 +45,7 @@ const getSpriteDir = (objDir:number, directions:number):{ dir:number, flip:boole
   return { dir: Math.floor(objDir * directions / 12), flip: false };
 }
 
-const SpriteRotator = ({
+export const SpriteRotator = ({
   direction,
   setDirection
 }:SpriteRotatorProps) => {

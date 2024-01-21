@@ -1,13 +1,14 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import SendToGame from '../../state/actions/SendToGame'
-import { addBuff, isItem, isUnit, removeBuff, RotateUnits, setBuffTurns, SetUnitsHP, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
+import { addBuff, isItem, isUnit, removeBuff, SetObjectDirection, setBuffTurns, SetUnitsHP, UpdateItemsType, UpdateUnitsCountry, UpdateUnitsType } from '../../state/actions/UpdateUnits'
 import { BUFFS_PATH, INFO_PATH, ITEMS_PATH, MapFiles, UNITS_PATH } from '../../state/MapFiles'
 import { SelectedObjects } from '../../state/ToolState'
 import { BuffType, ItemType, MapInfo, UnitDataType, UnitsMap } from '../../types/types'
 import './UnitSelection.css'
 import CountryColorSelector from './components/CountryColorSelector'
 import { toJS } from 'mobx'
+import { SpriteRotator } from './components/SpriteViewer'
 
 const ObjectSelection = () => {
   const selectedObjects = SelectedObjects.data
@@ -24,7 +25,7 @@ const ObjectSelection = () => {
   const mainUnit = selectedUnits[0]
   const countryValue = mainUnit && (selectedUnits.find(u => u.countryId !== mainUnit.countryId) ? undefined : mainUnit.countryId)
   
-  const buffs: ( 
+  const buffs: (
     BuffType | 'different buffs' | { type: string }
   )[] = []
 
@@ -89,14 +90,8 @@ const ObjectSelection = () => {
 
     {isUnit(mainObj) &&
       <div className='hflex gapped'>
-        Direction: 
-        <button onClick={() => RotateUnits(1)}>
-        ↻
-        </button>
-
-        <button onClick={() => RotateUnits(-1)}>
-        ↺
-        </button>
+        Direction:
+        <SpriteRotator setDirection={SetObjectDirection} direction={mainObj.dir}/>
       </div>
     }
     

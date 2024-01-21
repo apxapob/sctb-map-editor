@@ -40,11 +40,8 @@ export const UpdateUnitsCountry = action((newCountryId:number) => {
   UpdateObjects()
 })
 
-export const RotateUnits = action((delta:number) => {
-  SelectedObjects.data.forEach(u => {
-    if (!isUnit(u)) return
-    (u as UnitDataType).dir += delta
-  })
+export const SetObjectDirection = action((dir:number) => {
+  SelectedObjects.data.forEach(obj => { obj.dir = dir })
   UpdateObjects()
 })
 

@@ -180,6 +180,7 @@ export type ObjectDataType = {
   image: string;
   spriteSheetInfo?: string;
   pos: HexCoords;
+  dir: number;
 }
 
 export type ItemDataType = ObjectDataType & {
@@ -188,7 +189,6 @@ export type ItemDataType = ObjectDataType & {
 }
 
 export type UnitDataType = ObjectDataType & {
-  dir: number;
   countryId: number;
   orders: OrderType[];
   hp: number;
