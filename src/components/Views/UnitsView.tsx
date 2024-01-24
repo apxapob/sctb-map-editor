@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './View.css'
 import { observer } from 'mobx-react-lite'
-import { BUFFS_PATH, MapFiles, SCRIPTS_PATH, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
+import { BUFFS_PATH, MapFiles, PARTICLES_PATH, SCRIPTS_PATH, SKILLS_PATH, UNITS_PATH } from '../../state/MapFiles'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
 import JsonArrayInput from '../ui/components/JsonArrayInput'
 import { BuffsMap, SkillsMap, UnitStatsType, UnitsMap } from '../../types/types'
@@ -11,6 +11,7 @@ import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import FileSelector from '../ui/components/FileSelector'
 import ObjectImage from '../ui/components/ObjectImage'
+import JsonStringInput from '../ui/components/JsonStringInput'
 
 type UnitsStatsEditorProps = {
   unitId: string;
@@ -55,6 +56,11 @@ const UnitsStatsEditor = ({
       valuePath={`${unitId}.range`}
       isInteger={true}
       min={0}
+    />
+    Range attack effect: <FileSelector
+      filesSourcePath={PARTICLES_PATH}
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.rangeAttackParticles`}
     />
     <JsonNumberInput
       placeholder='Move speed'
