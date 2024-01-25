@@ -7,8 +7,12 @@
 .unit-container {
   display: flex;
   flex: 1;
+  gap: 16px;
   align-items: flex-start;
   justify-content: flex-start;
+  height: calc(100vh - 24px);
+  overflow: auto;
+  padding-bottom: 16px;
 }
 
 .image-view {

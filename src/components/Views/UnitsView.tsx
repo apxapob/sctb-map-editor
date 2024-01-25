@@ -11,7 +11,6 @@ import { DeleteEntity, RenameObject } from '../../state/actions/RenameActions'
 import JsonBoolInput from '../ui/components/JsonBoolInput'
 import FileSelector from '../ui/components/FileSelector'
 import ObjectImage from '../ui/components/ObjectImage'
-import JsonStringInput from '../ui/components/JsonStringInput'
 
 type UnitsStatsEditorProps = {
   unitId: string;
