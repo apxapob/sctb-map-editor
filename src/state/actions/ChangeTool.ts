@@ -2,7 +2,7 @@ import { ToolStateChangeType } from '../../types/types'
 import { action } from 'mobx'
 import { ToolState } from '../ToolState'
 import SendToGame from './SendToGame'
-import { MapFiles } from '../MapFiles'
+import { FIELDS_PATH, MapFiles } from '../MapFiles'
 
 const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.radius)ToolState.radius = Math.max(1, Math.min(10, newTool.radius)) 
@@ -27,6 +27,15 @@ export const ChangeFogOfWarCountry = action((newId:number) => {
   SendToGame({
     method: 'select_country_view', 
     data: { countyId: newId }
+  })
+})
+
+export const ChangeSelectedField = action((selectedField:string) => {
+  MapFiles.selectedField = FIELDS_PATH + selectedField
+  
+  SendToGame({
+    method: 'change_field', 
+    data: { field: selectedField }
   })
 })
 

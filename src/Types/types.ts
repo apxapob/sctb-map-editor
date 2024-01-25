@@ -69,6 +69,9 @@ export type GameMessage = {
   method: 'save_map' | 'saves_list' | 'save_file_loaded' | 'test_map';
   data: string;
 } | {
+  method: 'change_field';
+  data: { field: string; }
+} | {
   method: 'show_map';
   data: {
     mapId: string;
