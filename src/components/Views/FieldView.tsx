@@ -4,9 +4,9 @@ import ObjectSelection from '../ui/ObjectSelection'
 import { Selector } from '../ui/components/Selector'
 import { observer } from 'mobx-react-lite'
 import { MapInfo } from '../../types/types'
-import { FIELDS_PATH, INFO_PATH, MapFiles } from '../../state/MapFiles'
+import { INFO_PATH, MapFiles } from '../../state/MapFiles'
 import { ToolState } from '../../state/ToolState'
-import { ChangeFogOfWarCountry, ChangeSelectedField } from '../../state/actions/ChangeTool'
+import { ChangeFogOfWarCountry } from '../../state/actions/ChangeTool'
 
 const FogOfWarSelector = observer(() => {
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
@@ -25,27 +25,11 @@ const FogOfWarSelector = observer(() => {
   />
 })
 
-const FieldSelector = observer(() => {
-  const files:{ [filename: string]: any; } = MapFiles['text']
-  
-  const items = Object.keys(files)
-    .filter(filename => filename.startsWith(FIELDS_PATH))
-    .map(filename => filename.replace(FIELDS_PATH, ''))
-  
-  const value = MapFiles.selectedField?.replace(FIELDS_PATH, '')
-  return <Selector
-    value={value} items={items}
-    style={{ width: 'unset', margin: 0, position: 'absolute', right: 0, borderRadius: '0 0 0 6px' }}
-    onSelect={newVal => ChangeSelectedField(newVal)}
-  />
-})
-
 const FieldView = () => 
   <>
     <Tools />
     <ObjectSelection />
     <FogOfWarSelector />
-    <FieldSelector />
   </>
 
 export default FieldView
