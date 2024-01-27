@@ -30,7 +30,7 @@ export const EditorDiv = ({ error, mode, filePath }: EditorDivProps) => {
   )
 
   if(filePath === FIELD_PATH){
-    return <div>
+    return <div style={{ textAlign: "center" }}>
       Can't show this file contents here. Look in <a className='url' onClick={() => SelectTab('Field')}>Field</a> tab
     </div>
   }
