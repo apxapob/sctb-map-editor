@@ -66,14 +66,20 @@ export type GameMessage = {
   method: 'to_electron';
   data: any;
 } | {
-  method: 'save_map' | 'saves_list' | 'save_file_loaded' | 'test_map';
+  method: 'save_map' | 'saves_list' | 'save_file_loaded';
   data: string;
 } | {
   method: 'show_map';
   data: {
     mapId: string;
     isPlayMode: boolean;
-  } 
+  }
+} | {
+  method: 'test_map';
+  data: {
+    mode: string;
+    players: number;
+  }
 } | {
   method: 'tool_updated';
   data: {[index: string]: number | string | boolean}
@@ -151,6 +157,10 @@ export type ToolStateType = {
   toolItem: string|null;
   tileType: number;
   countryId: number;
+}
+
+export type TestingSettingsType = {
+  players: number;
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'
@@ -341,7 +351,7 @@ export type MapInfo = {
   version: number;
   author: string | null;
   startField: string;
-  singlePlayer: boolean;
+  minPlayers: number;
   maxPlayers: number;
   countries: CountryInfo[];
   tiles: TileTypeInfo[];

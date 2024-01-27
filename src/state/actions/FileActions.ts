@@ -5,6 +5,7 @@ import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath }
 import SendToGame from './SendToGame'
 import { EditorState } from '../ToolState'
 import { CreateFolder } from './SaveChanges'
+import { ChangePlayersNum } from './ChangeTestSettings'
 
 export const OnLoadingStart = action(() => {
   MapFiles.text = {}
@@ -84,6 +85,7 @@ export const processTextFile = action((file:string, text:string, gameFile: boole
   if (file.endsWith('.json')) {
     try {
       MapFiles.json[file] = JSON.parse(text)
+      if(file === INFO_PATH)ChangePlayersNum(0)
     } catch (e) {
       console.error('Can\'t parse', file, (e as Error).message, text)
     }

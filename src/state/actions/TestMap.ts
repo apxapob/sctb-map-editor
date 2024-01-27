@@ -1,6 +1,6 @@
 import { action, toJS } from 'mobx'
 import { MapFiles } from '../MapFiles'
-import { EditorState, UnsavedFiles } from '../ToolState'
+import { EditorState, TestingSettings, UnsavedFiles } from '../ToolState'
 import SendToGame from './SendToGame'
 import { SendToElectron } from '../../utils/messenger'
 
@@ -26,7 +26,13 @@ const TestMap = () => {
     EditorState.activeTab = EditorState.beforeTestTab
   }
   
-  SendToGame({ method: 'test_map', data: EditorState.mode })
+  SendToGame({ 
+    method: 'test_map',
+    data: {
+      mode: EditorState.mode,
+      players: TestingSettings.players
+    }
+  })
 }
 
 export default action(TestMap)

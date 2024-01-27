@@ -46,7 +46,7 @@ const makeRootFiles = async (dir, mapId) => {
       author: 'unknown',
       version: 0.01,
       startField: 'main.json',
-      singlePlayer: false,
+      minPlayers: 1,
       maxPlayers: 6,
       countries: [
         {

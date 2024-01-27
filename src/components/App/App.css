@@ -117,6 +117,10 @@ input[type="checkbox"]:checked::before {
   gap: 0px;
 }
 
+.gap {
+  gap: 6px;
+}
+
 div::-webkit-scrollbar {
   width: 6px;
   height: 6px;

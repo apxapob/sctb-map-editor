@@ -15,6 +15,15 @@
   padding-bottom: 16px;
 }
 
+.test-tool {
+  position: absolute;
+  right: 0;
+  padding: 0 6px 6px 6px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 0 0 0 6px;
+}
+
 .image-view {
   min-width: 1px;
   min-height: 1px;

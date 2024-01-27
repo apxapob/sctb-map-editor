@@ -5,8 +5,10 @@ import { Selector } from '../ui/components/Selector'
 import { observer } from 'mobx-react-lite'
 import { MapInfo } from '../../types/types'
 import { INFO_PATH, MapFiles } from '../../state/MapFiles'
-import { ToolState } from '../../state/ToolState'
+import { ToolState, TestingSettings } from '../../state/ToolState'
 import { ChangeFogOfWarCountry } from '../../state/actions/ChangeTool'
+import { ChangePlayersNum } from '../../state/actions/ChangeTestSettings'
+import TestMap from '../../state/actions/TestMap'
 
 const FogOfWarSelector = observer(() => {
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
@@ -25,11 +27,27 @@ const FogOfWarSelector = observer(() => {
   />
 })
 
+const TestingTool = observer(() => {
+  const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
+  const players = TestingSettings.players
+
+  return <div className='test-tool vflex'>
+    Test map settings
+    <div className="hflex gap">
+      <button className="tool" onClick={() => ChangePlayersNum(-1)} >-</button>
+      {players}/{maxPlayers}
+      <button className="tool" onClick={() => ChangePlayersNum(1)} >+</button>
+    </div>
+    <button className="tool" onClick={TestMap} >Test Map</button>
+  </div>
+})
+
 const FieldView = () => 
   <>
     <Tools />
     <ObjectSelection />
     <FogOfWarSelector />
+    <TestingTool />
   </>
 
 export default FieldView

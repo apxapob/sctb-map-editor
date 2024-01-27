@@ -1,12 +1,13 @@
 import React from 'react'
 import JsonStringInput from '../ui/components/JsonStringInput'
-import { INFO_PATH } from '../../state/MapFiles'
+import { INFO_PATH, MapFiles } from '../../state/MapFiles'
 import './View.css'
 import JsonNumberInput from '../ui/components/JsonNumberInput'
-import JsonBoolInput from '../ui/components/JsonBoolInput'
 import CountriesOptions from '../ui/components/CountriesOptions'
 import TilesOptions from '../ui/components/TilesOptions'
 import JsonScriptsList from '../ui/components/JsonScriptsList'
+import { MapInfo } from '../../types/types'
+import { observer } from 'mobx-react-lite'
 
 const MapView = () => 
   <div className='view-container hflex map-view' style={{ gap: 30 }}>
@@ -46,11 +47,14 @@ const MapView = () =>
         isInteger={false}
         min={0}
       />
-      <JsonBoolInput
-        placeholder='Singleplayer'
-        title="Singleplayer"
+      <JsonNumberInput
+        placeholder='Min players'
+        title="Min players"
         filePath={INFO_PATH}
-        valuePath='singlePlayer'
+        valuePath='minPlayers'
+        isInteger={true}
+        min={1}
+        max={(MapFiles.json[INFO_PATH] as MapInfo).maxPlayers}
       />
       <JsonNumberInput
         placeholder='Max players'
@@ -58,7 +62,7 @@ const MapView = () =>
         filePath={INFO_PATH}
         valuePath='maxPlayers'
         isInteger={true}
-        min={1}
+        min={(MapFiles.json[INFO_PATH] as MapInfo).minPlayers}
         max={99}
       />
       <CountriesOptions
@@ -77,4 +81,4 @@ const MapView = () =>
     />
   </div>
 
-export default MapView
+export default observer(MapView)

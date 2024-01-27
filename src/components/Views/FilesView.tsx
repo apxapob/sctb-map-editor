@@ -26,12 +26,11 @@ const FilesView = () => {
           </div>
         }
         {filePath && 
-          (filePath.endsWith(".png") 
+          (filePath.endsWith(".png") || filePath.endsWith(".jpg")
               ? <ImageViewer path={filePath} containerCssClass='image-view-container' cssClass='image-view' />
               : <EditorDiv error={error} filePath={filePath} mode={mode} />
           )
         }
-        
       </div>
     </div>
   </>

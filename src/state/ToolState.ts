@@ -1,5 +1,5 @@
 import { observable } from 'mobx'
-import { EditorStateType, ItemDataType, TabType, ToolStateType, UnitDataType } from '../types/types'
+import { EditorStateType, ItemDataType, TabType, TestingSettingsType, ToolStateType, UnitDataType } from '../types/types'
 
 export const ToolState:ToolStateType = observable({
   fogOfWarCountryId: 0,
@@ -9,6 +9,10 @@ export const ToolState:ToolStateType = observable({
   toolItem: null,
   tileType: 0,
   countryId: 0
+})
+
+export const TestingSettings:TestingSettingsType = observable({
+  players: 1
 })
 
 export const SelectedObjects: {
