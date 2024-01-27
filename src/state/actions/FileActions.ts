@@ -1,7 +1,7 @@
 import { action, toJS } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FIELDS_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
+import { FIELD_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
 import SendToGame from './SendToGame'
 import { EditorState } from '../ToolState'
 import { CreateFolder } from './SaveChanges'
@@ -21,10 +21,6 @@ export const OnLoadingStart = action(() => {
 export const OnLoadingEnd = action((mapId:string, isPlayMode:boolean) => {
   try {
     MapFiles.status = 'Loaded'
-    const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
-    if (mapInfo && mapInfo.mapId) {
-      MapFiles.selectedField = FIELDS_PATH + mapInfo.startField
-    }
     
     SendToGame({ 
       method: 'show_map', 

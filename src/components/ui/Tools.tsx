@@ -5,13 +5,13 @@ import { ToolState } from '../../state/ToolState'
 import ItemTypeSelector from './ItemTypeSelector'
 import './Tools.css'
 import UnitTypeSelector from './UnitTypeSelector'
-import { MapFiles } from '../../state/MapFiles'
+import { FIELD_PATH, MapFiles } from '../../state/MapFiles'
 import CountryColorSelector from './components/CountryColorSelector'
 import TileTypeSelector from './components/TileTypeSelector'
 
 const Tools = () => {
   const { radius, tool, toolUnit, toolItem } = ToolState
-  const fieldSize = MapFiles.json[MapFiles.selectedField].size as number
+  const fieldSize = MapFiles.json[FIELD_PATH].size as number
 
   return (
     <div className="tools-container">

@@ -11,7 +11,7 @@ import CreateMap from './CreateMap'
 import SaveChanges from './SaveChanges'
 import TestMap from './TestMap'
 import ToMainScreen from './ToMainScreen'
-import { MapFiles } from '../MapFiles'
+import { FIELD_PATH, MapFiles } from '../MapFiles'
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
@@ -35,16 +35,16 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'text_file_updated':
       SendToElectron({ command: 'SAVE_TEXT_FILE', data: msg.data })
-      processTextFile(msg.data.path, msg.data.text)
+      processTextFile(msg.data.path, msg.data.text, false)
       break
     case 'selected_objects':
       OnSelectUnits(msg.data)
       break
     case 'mark_field_unsaved':
-      UpdateUnsavedData(MapFiles.selectedField, 'unsaved')
+      UpdateUnsavedData(FIELD_PATH, 'unsaved')
       break
     case 'update_field_size':
-      MapFiles.json[MapFiles.selectedField].size = msg.data.size
+      MapFiles.json[FIELD_PATH].size = msg.data.size
       break
     case 'create_map':
       CreateMap()

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { OpenFileTree, SelectFieldFile, SelectFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
+import { OpenFileTree, SelectFile, SelectLangFile, SelectParticlesFile, SelectScriptFile } from '../../state/actions/OpenFileTree'
 import { CreateFile, CreateFolder } from '../../state/actions/SaveChanges'
 import { FilesTree, MapFiles, PathTreeType, SCRIPTS_PATH } from '../../state/MapFiles'
 import { SendToElectron } from '../../utils/messenger'
@@ -13,7 +13,6 @@ import { TabType } from '../../types/types'
 export const fileSelectors: {
   [tab in TabType]?: (path:string) => void;
 } = {
-  'Field': SelectFieldFile,
   'Scripts': SelectScriptFile, 
   'Texts': SelectLangFile, 
   'Particles': SelectParticlesFile,
@@ -224,7 +223,6 @@ const isFileSelected = (path:string) => {
     case 'Texts': return MapFiles.selectedLang === path
     case 'Particles': return MapFiles.selectedParticlesFile === path
     case 'Files': return MapFiles.selectedFile === path
-    case 'Field': return MapFiles.selectedField === path
   }
   return false
 }

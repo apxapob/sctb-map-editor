@@ -2,7 +2,7 @@ import { ToolStateChangeType } from '../../types/types'
 import { action } from 'mobx'
 import { ToolState } from '../ToolState'
 import SendToGame from './SendToGame'
-import { MapFiles } from '../MapFiles'
+import { FIELD_PATH, MapFiles } from '../MapFiles'
 
 const ChangeTool = (newTool:ToolStateChangeType):void => {
   if (newTool.radius)ToolState.radius = Math.max(1, Math.min(10, newTool.radius)) 
@@ -31,7 +31,7 @@ export const ChangeFogOfWarCountry = action((newId:number) => {
 })
 
 export const ChangeFieldSize = action((newSize:number) => {
-  MapFiles.json[MapFiles.selectedField].size = Math.max(1, newSize)
+  MapFiles.json[FIELD_PATH].size = Math.max(1, newSize)
   
   SendToGame({
     method: 'change_field_size',

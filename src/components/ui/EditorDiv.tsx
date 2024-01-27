@@ -1,7 +1,7 @@
 
 import React from 'react'
 import './EditorDiv.css'
-import { FIELDS_PATH, MapFiles } from '../../state/MapFiles'
+import { FIELD_PATH, MapFiles } from '../../state/MapFiles'
 import { UnsavedFiles } from '../../state/ToolState'
 import { UpdateUnsavedData } from '../../state/actions/UpdateText'
 import AceEditor from 'react-ace'
@@ -29,7 +29,7 @@ export const EditorDiv = ({ error, mode, filePath }: EditorDivProps) => {
     [filePath]
   )
 
-  if(filePath?.startsWith(FIELDS_PATH)){
+  if(filePath === FIELD_PATH){
     return <div>
       Can't show this file contents here. Look in <a className='url' onClick={() => SelectTab('Field')}>Field</a> tab
     </div>

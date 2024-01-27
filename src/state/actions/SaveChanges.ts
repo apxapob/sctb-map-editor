@@ -1,7 +1,7 @@
 import { action } from 'mobx'
 import { MapInfo, TabType } from '../../types/types'
 import { SendToElectron } from '../../utils/messenger'
-import { FIELDS_PATH, getFilePath, INFO_PATH, ITEMS_IMAGES_PATH, MapFiles, UNITS_IMAGES_PATH } from '../MapFiles'
+import { FIELD_PATH, getFilePath, INFO_PATH, ITEMS_IMAGES_PATH, MapFiles, UNITS_IMAGES_PATH } from '../MapFiles'
 import { EditorState, FileErrors, UnsavedFiles } from '../ToolState'
 import { OnLoadedDirectory, OnLoadedText } from './FileActions'
 import SendToGame from './SendToGame'
@@ -15,7 +15,7 @@ const SaveChanges = (tab?:TabType) => {
     const mapInfo = MapFiles.json[INFO_PATH] as MapInfo
     SendToGame({ method: 'save_map', data: mapInfo.mapId })
     for(const file in UnsavedFiles){
-      if(file.startsWith(FIELDS_PATH)){
+      if(file === FIELD_PATH){
         delete UnsavedFiles[file]
       }
     }

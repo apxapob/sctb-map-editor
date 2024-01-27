@@ -45,7 +45,6 @@ const makeRootFiles = async (dir, mapId) => {
       name: mapId,
       author: 'unknown',
       version: 0.01,
-      startField: 'main.json',
       minPlayers: 1,
       maxPlayers: 6,
       countries: [
@@ -126,11 +125,9 @@ const makeImagesDir = async (dir, mapId) => {
 const makeFieldsDir = async (dir, mapId) => {
   const mapSize = 19
 
-  await fs.promises.mkdir(dir + '\\fields')
   await fs.promises.writeFile(
-    dir + '\\fields\\main.json',
+    dir + '\\field.json',
     JSON.stringify({
-      id: 'main.json',
       size: mapSize,
       tiles: Array(mapSize * mapSize).fill([1, 0]),
       units: {},

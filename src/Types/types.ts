@@ -350,7 +350,6 @@ export type MapInfo = {
   name: string;
   version: number;
   author: string | null;
-  startField: string;
   minPlayers: number;
   maxPlayers: number;
   countries: CountryInfo[];
