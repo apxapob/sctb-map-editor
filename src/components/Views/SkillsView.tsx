@@ -36,7 +36,7 @@ const SkillsStatsEditor = ({
     </div>
 
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
-      <span className='view-input-title'>
+      <span className='view-input-title' title='Script for calculating the area where you can target the skill'>
         Area script:
       </span>
       <FileSelector
