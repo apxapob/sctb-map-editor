@@ -133,41 +133,49 @@ const SpriteViewer = ({
     const { x, y, w, h } = info.sprites[frameId]
 
     const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.8)
-    const scale = (maxW / dir_width / 256)
+    const scale = maxW / dir_width / 256
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
     
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
-  
+    const totalScale = Math.min(1, 256 / maxW * dir_width)
+    const totalW = maxW / dir_width
+    const totalH = Math.max(138, maxH - dir_dy)
     return <>
-      <div style={{ 
-        position: 'relative', 
-        width: maxW / dir_width, 
+      <div style={{
         marginTop: 16,
-        height: Math.max(138, maxH - dir_dy)
+        width: totalScale * totalW, 
+        height: totalScale * totalH,
       }}>
-        <Hex />
-        <div className='sprite-image-container' 
-          style={{
-            width: maxW, 
-            height: maxH,
-            transform: `translate(${dir_dx-maxW/2}px, ${dir_dy}px)`
-          }}>
-          <div style={{ 
-            transform: `scaleX(${flip ? -1 : 1})`, 
-            width:"100%", 
-            height:"100%" 
-          }}> 
-            <img ref={ref} onError={() => setError('Invalid image')} 
-              style={{
-                top: maxH-h-y,
-                left: (maxW-w)/2-x,
-                clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
-                position: 'absolute'
-              }}
-            />  
+        <div style={{ 
+          position: 'relative', 
+          width: totalW, 
+          height: totalH,
+          transform: `scale(${totalScale}) translate(${(totalW - totalW / totalScale)/2}px, ${(totalH - totalH / totalScale)/2}px)`
+        }}>
+          <Hex />
+          <div className='sprite-image-container' 
+            style={{
+              width: maxW, 
+              height: maxH,
+              transform: `translate(${dir_dx-maxW/2}px, ${dir_dy}px)`
+            }}>
+            <div style={{ 
+              transform: `scaleX(${flip ? -1 : 1})`, 
+              width:"100%", 
+              height:"100%" 
+            }}> 
+              <img ref={ref} onError={() => setError('Invalid image')} 
+                style={{
+                  top: maxH-h-y,
+                  left: (maxW-w)/2-x,
+                  clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
+                  position: 'absolute'
+                }}
+              />  
+            </div>
+            {error}
           </div>
-          {error}
         </div>
       </div>
       <SpriteRotator setDirection={setDirection} direction={direction}/>
