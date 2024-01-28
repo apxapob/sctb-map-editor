@@ -26,3 +26,13 @@
   min-width: 16px;
   min-height: 16px;
 }
+
+.sprite-direction-config {
+  padding: 2px 6px;
+}
+
+.sprite-current-direction {
+  border: 1px solid white;
+  border-radius: 6px;
+  background-color: #333;
+}

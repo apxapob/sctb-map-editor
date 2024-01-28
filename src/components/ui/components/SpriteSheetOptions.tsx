@@ -6,14 +6,14 @@ import JsonNumberInput from './JsonNumberInput';
 
 type SpriteSheetOptionsProps = {
   configPath: string;
+  dirNumber: number;
 }
 
-const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
+const SpriteSheetOptions = ({ configPath, dirNumber }:SpriteSheetOptionsProps) => {
 
   const { packer, sprites } = MapFiles.json[configPath] as SpriteSheetInfo
   const directions = packer.directions ?? 1
-
-  return <div className='vflex' style={{ alignItems: 'center' }}>
+  return <div className='vflex' style={{ alignItems: 'center', gap: 2 }}>
     <JsonNumberInput
       placeholder={sprites.length + ''}
       title="Animation Frames"
@@ -34,7 +34,7 @@ const SpriteSheetOptions = ({ configPath }:SpriteSheetOptionsProps) => {
       max={12}
     />
     {Array(directions).fill(0).map((_, idx)=>
-      <div key={idx}>
+      <div key={idx} className={'sprite-direction-config ' + (dirNumber === idx ? 'sprite-current-direction':'')}>
         <JsonNumberInput
           placeholder="0.7"
           title={`Direction ${idx+1} width`}

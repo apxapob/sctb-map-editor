@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { SpriteSheetInfo } from '../../../types/types';
 import './SpriteViewer.css'
 import SpriteSheetOptions from './SpriteSheetOptions';
+import { PressedKeys } from '../../../state/PressedKeys';
 
 type SpriteRotatorProps = {
   direction: number;
@@ -84,6 +85,11 @@ const SpriteViewer = ({
   const [direction, _setDirection] = useState(0)
   const setDirection = (d:number) => _setDirection((d+12) % 12)
 
+  useEffect(() => {
+    if(PressedKeys[69])setDirection(direction+1)
+    if(PressedKeys[81])setDirection(direction-1)
+  }, [PressedKeys[69], PressedKeys[81]])
+
   const buffer = MapFiles.binary[path]
   const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
   const framesNum = (info?.packer?.animationFramesNum ?? info?.sprites?.length) || 1
@@ -132,7 +138,7 @@ const SpriteViewer = ({
     const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
     const { x, y, w, h } = info.sprites[frameId]
 
-    const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.8)
+    const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.7)
     const scale = maxW / dir_width / 256
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
@@ -179,7 +185,7 @@ const SpriteViewer = ({
         </div>
       </div>
       <SpriteRotator setDirection={setDirection} direction={direction}/>
-      <SpriteSheetOptions configPath={spriteSheetPath} />
+      <SpriteSheetOptions configPath={spriteSheetPath} dirNumber={dir}/>
     </>
   } catch(e:any) {
     setError(`Image error: ${e?.message}`)
