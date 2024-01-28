@@ -144,7 +144,7 @@ const SpriteViewer = ({
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
     
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
-    const totalScale = Math.min(1, 256 / maxW * dir_width)
+    const totalScale =  256 / maxW * dir_width
     const totalW = maxW / dir_width
     const totalH = Math.max(138, maxH - dir_dy)
     return <>
