@@ -101,7 +101,7 @@ const SpriteViewer = ({
   }, [path, spriteSheetPath])
 
   useEffect(() => {
-    if(!spriteSheetPath){ return }
+    if(!spriteSheetPath || !info){ return }
     
     let mW = 0, mH = 0
     const { dir } = getSpriteDir(direction, directions)
@@ -133,20 +133,22 @@ const SpriteViewer = ({
     const { x, y, w, h } = info.sprites[frameId]
 
     const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.8)
-    const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * (maxW / dir_width / 256) * (flip ? -1 : 1)
-    const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * (maxW / dir_width / 256)
-
+    const scale = (maxW / dir_width / 256)
+    const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
+    const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
+    
     setTimeout(() => setFrame((frame+1) % framesNum), 100)
   
     return <>
       <div style={{ 
         position: 'relative', 
         width: maxW / dir_width, 
-        height: Math.max(138, maxH * dir_width - dir_dy) 
+        marginTop: 16,
+        height: Math.max(138, maxH - dir_dy)
       }}>
         <Hex />
         <div className='sprite-image-container' 
-          style={{ 
+          style={{
             width: maxW, 
             height: maxH,
             transform: `translate(${dir_dx-maxW/2}px, ${dir_dy}px)`
