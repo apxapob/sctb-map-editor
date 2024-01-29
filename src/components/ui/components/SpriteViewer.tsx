@@ -92,8 +92,8 @@ const SpriteViewer = ({
 
   const buffer = MapFiles.binary[path]
   const info = MapFiles.json[spriteSheetPath ?? ''] as SpriteSheetInfo
-  const framesNum = (info?.packer?.animationFramesNum ?? info?.sprites?.length) || 1
   const directions = info?.packer?.directions || 1
+  const framesNum = (info?.packer?.animationFramesNum ?? (info?.sprites?.length / directions)) || 1
   
   useEffect(() => {
     setError('')

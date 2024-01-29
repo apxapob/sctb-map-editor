@@ -15,7 +15,7 @@ const SpriteSheetOptions = ({ configPath, dirNumber }:SpriteSheetOptionsProps) =
   const directions = packer.directions ?? 1
   return <div className='vflex' style={{ alignItems: 'center', gap: 2 }}>
     <JsonNumberInput
-      placeholder={sprites.length + ''}
+      placeholder={(sprites.length / directions) + ''}
       title="Animation Frames"
       tooltip="Number of frames in animation"
       filePath={configPath}
