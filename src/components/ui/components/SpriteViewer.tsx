@@ -138,18 +138,23 @@ const SpriteViewer = ({
     const frameId = Math.min(info.sprites.length-1, directions * (frame % framesNum) + dir)
     const { x, y, w, h } = info.sprites[frameId]
 
+    const trimLeft = info.sprites[frameId].trimLeft ?? 0
+    const trimTop = info.sprites[frameId].trimTop ?? 0
+    const trimOWidth = info.sprites[frameId].trimOWidth ?? maxW
+    const trimOHeight = info.sprites[frameId].trimOHeight ?? maxH
+
     const dir_width = Math.max(0.01, info.packer[`dir${dir+1}_width`] as number || 0.7)
     const scale = maxW / dir_width / 256
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
     
-    setTimeout(() => setFrame((frame+1) % framesNum), 100)
-    const totalScale =  256 / maxW * dir_width
+    setTimeout(() => setFrame((frame+1) % framesNum), 100)//bug here
+    const totalScale = 256 / maxW * dir_width
     const totalW = maxW / dir_width
-    const totalH = Math.max(138, maxH - dir_dy)
+    const totalH = Math.max(138 / totalScale, maxH - dir_dy)
     return <>
       <div style={{
-        marginTop: 16,
+        marginTop: 16 + Math.max(0, 138 - totalScale * totalH),
         width: totalScale * totalW, 
         height: totalScale * totalH,
       }}>
@@ -160,12 +165,7 @@ const SpriteViewer = ({
           transform: `scale(${totalScale}) translate(${(totalW - totalW / totalScale)/2}px, ${(totalH - totalH / totalScale)/2}px)`
         }}>
           <Hex />
-          <div className='sprite-image-container' 
-            style={{
-              width: maxW, 
-              height: maxH,
-              transform: `translate(${dir_dx-maxW/2}px, ${dir_dy}px)`
-            }}>
+          <div className='sprite-image-container' >
             <div style={{ 
               transform: `scaleX(${flip ? -1 : 1})`, 
               width:"100%", 
@@ -173,8 +173,8 @@ const SpriteViewer = ({
             }}> 
               <img ref={ref} onError={() => setError('Invalid image')} 
                 style={{
-                  top: maxH-h-y,
-                  left: (maxW-w)/2-x,
+                  top: dir_dy + trimTop - y + totalH/2 - trimOHeight/2,//уже почти правильно
+                  left: dir_dx + trimLeft - x + totalW/2 - trimOWidth/2,
                   clipPath: `inset(${y}px ${width-x-w}px ${height-y-h}px ${x}px)`,
                   position: 'absolute'
                 }}
