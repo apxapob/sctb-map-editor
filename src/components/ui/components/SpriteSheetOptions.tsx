@@ -43,7 +43,7 @@ const SpriteSheetOptions = ({ configPath, dirNumber }:SpriteSheetOptionsProps) =
           valuePath={`packer.dir${idx+1}_width`}
           isInteger={false}
           min={0}
-          max={1}
+          max={10}
         />
         <JsonNumberInput
           placeholder='0'
