@@ -34,31 +34,34 @@ const SaveChanges = (tab?:TabType) => {
   }
   
   for(const file in filesToSave){
-    const path = filesToSave[file]
-    const text = UnsavedFiles[path]
-    if (text === null || text === undefined) continue
-
-    try {
-      if (path.endsWith('.json')) { JSON.parse(text) }
-      const data = { text, path }
-      
-      delete UnsavedFiles[path]
-      delete FileErrors[path]
-      
-      SendToElectron({ command: 'SAVE_TEXT_FILE', data })
-      OnLoadedText({
-        command: 'LOAD_TEXT_FILE',
-        file: path,
-        progress: 1,
-        editMode: true,
-        gameFile: false,
-        text
-      }, true)
-    } catch (e) {
-      FileErrors[path] = (e as Error).message
-    }
+    SaveFile(filesToSave[file])
   }
 }
+
+export const SaveFile = action((path:string) => {
+  const text = UnsavedFiles[path]
+  if (text === null || text === undefined) return
+
+  try {
+    if (path.endsWith('.json')) { JSON.parse(text) }
+    const data = { text, path }
+    
+    delete UnsavedFiles[path]
+    delete FileErrors[path]
+    
+    SendToElectron({ command: 'SAVE_TEXT_FILE', data })
+    OnLoadedText({
+      command: 'LOAD_TEXT_FILE',
+      file: path,
+      progress: 1,
+      editMode: true,
+      gameFile: false,
+      text
+    }, true)
+  } catch (e) {
+    FileErrors[path] = (e as Error).message
+  }
+})
 
 export default action(SaveChanges)
 

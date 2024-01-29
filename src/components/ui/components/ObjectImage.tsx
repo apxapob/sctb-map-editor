@@ -4,6 +4,7 @@ import { ITEMS_IMAGES_PATH, ITEMS_PATH, UNITS_IMAGES_PATH, UNITS_PATH } from '..
 import { GetJsonFileValue } from '../../../state/actions/UpdateText'
 import SpriteViewer from './SpriteViewer'
 import FileSelector from './FileSelector'
+import { SortSprites } from '../../../utils/spriteUtils'
 
 type ObjectImageProps = {
   objId: string;
@@ -35,6 +36,9 @@ const ObjectImage = ({ objId, type }:ObjectImageProps) => {
       fileType='json'
       valuePath={spriteSheetInfo}
     />
+    {spriteSheetPath &&
+      <button onClick={() => SortSprites(dirPath + spriteSheetPath)}>Sort sprites</button>
+    }
   </div>
 }
 
