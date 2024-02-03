@@ -31,6 +31,12 @@ const UnitsStatsEditor = ({
     <span style={{ fontSize: 24, margin: '2px 0 6px 0' }}>
       {unitId}
     </span>
+    <JsonBoolInput
+      title="Use country color"
+      tooltip='Change unit color to country color'
+      filePath={UNITS_PATH}
+      valuePath={`${unitId}.paintToCountryColor`}
+    />
     <JsonNumberInput
       placeholder='Max Health'
       title='Max Health'
