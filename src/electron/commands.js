@@ -140,6 +140,24 @@ exports.SAVE_GAME = async ({ data }) => {
   }
 }
 
+exports.LOAD_MULTIPLAYER_PROFILE = async () => {
+  let decompressed = null
+  try {
+    const profilePath = getSaveFilesDirPath() + 'data.prf'
+    const fileBuffer = await fs.promises.readFile(profilePath)
+    decompressed = await decompress(fileBuffer)
+  } catch (err) {
+    console.warn('Load profile error:', err.message)
+  }
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'profile_loaded',
+      profile: decompressed
+    }
+  })
+}
+
 exports.LOAD_GAME = async ({ data }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data
