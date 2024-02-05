@@ -37,6 +37,7 @@
     "electron": "^27.1.2"
   },
   "scripts": {
+    "launch_web_server": "vite --port=3000",
     "dev": "vite --port=3000 | electron .",
     "build": "tsc && vite build",
     "package": "electron-forge package",

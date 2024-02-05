@@ -1,5 +1,6 @@
 const { app, globalShortcut } = require('electron')
 const { sendCommand } = require('./messenger')
+const { DebugMode } = require('./main')
 
 exports.initHotKeys = (win) => {
 
@@ -16,7 +17,7 @@ exports.initHotKeys = (win) => {
       return
     }
 
-    if(!app.isPackaged){
+    if(!DebugMode){//maybe we should allow this?
       if(input.key.toLowerCase() === 'f5') {
         win.webContents.reload()
       }

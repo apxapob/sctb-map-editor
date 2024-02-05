@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require('electron')
 const { initHotKeys } = require('./hotKeys')
 const { messengerInit } = require('./messenger')
 
+exports.DebugMode = true
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1200,
@@ -15,7 +17,7 @@ const createWindow = () => {
 
   win.setMenu(null)
 
-  if(app.isPackaged){
+  if(app.isPackaged && !exports.DebugMode){
     win.loadFile('./dist/index.html')
   } else {
     win.loadURL('http://localhost:3000')
@@ -23,9 +25,9 @@ const createWindow = () => {
   
   initHotKeys(win)
 
-  //if(!app.isPackaged){
+  if(!app.isPackaged){
     win.webContents.openDevTools()
-  //}
+  }
   
   win.once('ready-to-show', () => win.maximize())
   exports.mainWindow = win
