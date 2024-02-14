@@ -1,3 +1,5 @@
+import { MapLoadMode } from "./commands";
+
 export type JSONValue = string | number | boolean | JSONObject | JSONArray
 export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
@@ -72,7 +74,7 @@ export type GameMessage = {
   method: 'show_map';
   data: {
     mapId: string;
-    isPlayMode: boolean;
+    mode: MapLoadMode;
   }
 } | {
   method: 'test_map';
@@ -177,7 +179,7 @@ export const AllAffects:AffectType[] = ['All', 'Allies', 'Enemies']
 export type EditorStateType = {
   activeTab: TabType;
   beforeTestTab: TabType;
-  mode: 'play' | 'edit' | 'test';
+  mode: MapLoadMode;
   editorTrigger: boolean;//needed to force editor to rerender
 }
 

@@ -38,8 +38,7 @@ const getFileMenuItems = (
     title: 'Add file', 
     callback: () => SendToElectron({
       command: 'ADD_FILE',
-      path: tree.path.substring(0, tree.path.lastIndexOf("/")),
-      editMode: true
+      path: tree.path.substring(0, tree.path.lastIndexOf("/"))
     })
   },
   {
@@ -55,8 +54,7 @@ const getFileMenuItems = (
     callback: () => {
       SendToElectron({
         command: 'DELETE',
-        path: tree.path,
-        editMode: true
+        path: tree.path
       })
       fileSelectors[EditorState.activeTab]?.('')
     }
@@ -76,8 +74,7 @@ const getFolderMenuItems = (
     title: 'Add File', 
     callback: () => SendToElectron({
       command: 'ADD_FILE',
-      path: tree.path,
-      editMode: true
+      path: tree.path
     })
   },
   {
@@ -90,8 +87,7 @@ const getFolderMenuItems = (
       SendToElectron({
         command: 'DELETE',
         path: tree.path,
-        dirFiles: Object.keys(tree.nodes),
-        editMode: true
+        dirFiles: Object.keys(tree.nodes)
       })
       fileSelectors[EditorState.activeTab]?.('')
     }

@@ -1,5 +1,5 @@
 import { action, toJS } from 'mobx'
-import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, RenameType } from '../../types/commands'
+import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, MapLoadMode, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
 import { FIELD_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
 import SendToGame from './SendToGame'
@@ -18,16 +18,16 @@ export const OnLoadingStart = action(() => {
   SendToGame({ method: 'loading_start' })
 })
 
-export const OnLoadingEnd = action((mapId:string, isPlayMode:boolean) => {
+export const OnLoadingEnd = action((mapId:string, mode:MapLoadMode) => {
   try {
     MapFiles.status = 'Loaded'
     
     SendToGame({ 
       method: 'show_map', 
-      data: { mapId, isPlayMode }
+      data: { mapId, mode }
     })
     
-    EditorState.mode = isPlayMode ? 'play' : 'edit'
+    EditorState.mode = mode
   } catch (e:unknown) {
     OnLoadingError('Invalid info.json file: ' + (e as Error).message)
   }
@@ -91,7 +91,7 @@ export const processTextFile = action((file:string, text:string, gameFile: boole
 })
 
 export const OnLoadedDirectory = action((c:FSCommandType) => {
-  if(c.editMode !== true){ return }
+  if(c.mode !== 'edit'){ return }
   if(c.path.endsWith("\\") || c.path.endsWith("/")){
     c.path = c.path.substring(0, c.path.length-1)
   }
@@ -151,7 +151,7 @@ export const OnRenamed = action((c:RenameType) => {
 })
 
 export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) => {
-  if(c.editMode){
+  if(c.mode === "edit"){
     processTextFile(c.file, c.text, c.gameFile)
   }
   
@@ -167,7 +167,7 @@ export const OnLoadedText = action((c:LoadTextCommandType, refreshGame = false) 
 })
 
 export const OnLoadedBinary = action((c:LoadBinaryCommandType) => {
-  if(c.editMode){
+  if(c.mode === "edit"){
     MapFiles.binary[c.file] = c.bytes
     addToTree(c.file, false, c.gameFile)
   }

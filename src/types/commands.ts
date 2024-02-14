@@ -25,10 +25,12 @@ export type OpenMapType = {
   data: string;
 }
 
+export type MapLoadMode = 'edit'|'play'|'replay'|'test'
+
 export type LoadingEndType = {
   command: 'LOADING_END';
   mapId: string;
-  editMode: boolean;//shows if map loaded in map editor or in game
+  mode: MapLoadMode;
 }
 
 export type FSCommandType = {
@@ -36,7 +38,7 @@ export type FSCommandType = {
   path: string;
   dirFiles?: string[];
   gameFile?: boolean;//shows if the file belongs to game or map
-  editMode: boolean;//shows if map loaded in map editor or in game
+  mode?: MapLoadMode;
 }
 
 export type RenameType = {
@@ -51,7 +53,7 @@ export type LoadTextCommandType = {
   progress: number;
   text: string;
   gameFile: boolean;//shows if the file belongs to game or map
-  editMode: boolean;//shows if map loaded in map editor or in game
+  mode: MapLoadMode;
 } 
 
 export type LoadBinaryCommandType = {
@@ -60,7 +62,7 @@ export type LoadBinaryCommandType = {
   progress: number;
   bytes: Uint8Array;
   gameFile: boolean;//shows if the file belongs to game or map
-  editMode: boolean;//shows if map loaded in map editor or in game
+  mode: MapLoadMode;
 }
 
 export type LoadMapErrorType = {

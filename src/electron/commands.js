@@ -19,7 +19,7 @@ const getSaveFilesDirPath = () => {
   return app.isPackaged ? './saves/' : '../sctb-client/saves/'
 }
 
-const loadMap = async (mapPath, editMode = false) => {
+const loadMap = async (mapPath, mode) => {
   try {
     curMapPath = mapPath = mapPath.replaceAll("\\", "/")
     const mapId = mapPath.substring(
@@ -46,7 +46,7 @@ const loadMap = async (mapPath, editMode = false) => {
     })
 
     for (const dir of dirs) {
-      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.path, editMode, gameFile: dir.gameFile })
+      sendCommand({ command: 'LOAD_DIRECTORY', path: dir.path, mode, gameFile: dir.gameFile })
     }
 
     let loaded = 0
@@ -59,7 +59,7 @@ const loadMap = async (mapPath, editMode = false) => {
           progress: loaded / files.length, 
           file: path,
           gameFile,
-          editMode
+          mode
         })
         loaded++
       } else {
@@ -69,12 +69,12 @@ const loadMap = async (mapPath, editMode = false) => {
           progress: loaded / files.length, 
           file: path,
           gameFile,
-          editMode
+          mode
         })
         loaded++
       }
     }
-    sendCommand({ command: 'LOADING_END', editMode, mapId })
+    sendCommand({ command: 'LOADING_END', mode, mapId })
   } catch (err) {
     curMapPath = null
     console.error(err)
@@ -158,7 +158,7 @@ exports.LOAD_MULTIPLAYER_PROFILE = async () => {
   })
 }
 
-exports.LOAD_GAME = async ({ data }) => {
+exports.LOAD_GAME = async ({ data, replay }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data
     const fileBuffer = await fs.promises.readFile(saveFilePath)
@@ -168,7 +168,8 @@ exports.LOAD_GAME = async ({ data }) => {
       command: 'TO_GAME', 
       data: { 
         method: 'save_file_loaded',
-        data: decompressed
+        data: decompressed,
+        replay
       }
     })
   } catch (err) {
@@ -226,9 +227,9 @@ exports.LOAD_MAP_INFO = async ({ mapId }) => {
 
 exports.EXIT = () => app.quit()
 
-exports.OPEN_MAP = async ({ data }) => {
+exports.OPEN_MAP = async ({ data, replay }) => {
   const mapsDirPath = getMapsDirPath()
-  await loadMap(mapsDirPath + data + ".map")
+  await loadMap(mapsDirPath + data + ".map", replay ? "replay" : "play")
 }
 
 exports.EDIT_MAP_FOLDER = async () => {
@@ -236,7 +237,7 @@ exports.EDIT_MAP_FOLDER = async () => {
   const dirs = dialog.showOpenDialogSync(mainWindow, { properties: ['openDirectory'] })
   if (!dirs) { return }
   
-  await loadMap(dirs[0], true)
+  await loadMap(dirs[0], "edit")
 }
 
 exports.EDIT_MAP = async () => {
@@ -306,13 +307,13 @@ exports.DELETE = async ({ path, dirFiles }) => {
     if(fs.existsSync( sharedImgPath )){
       if( fs.lstatSync(sharedImgPath).isDirectory() ){
         if(!isMapFileMode()){ fs.promises.mkdir(curMapPath + '\\' + path) }
-        sendCommand({ command: 'LOAD_DIRECTORY', path, editMode: true })
+        sendCommand({ command: 'LOAD_DIRECTORY', path, mode: "edit" })
 
         const dirs = []
         const files = []
         await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, path))
         for (const dir of dirs) {
-          sendCommand({ command: 'LOAD_DIRECTORY', path: dir, editMode: true })
+          sendCommand({ command: 'LOAD_DIRECTORY', path: dir, mode: "edit" })
         }
         for (const fileEntry of files) {
           const { content, path } = fileEntry
@@ -322,7 +323,7 @@ exports.DELETE = async ({ path, dirFiles }) => {
             progress: 1,
             file: path,
             gameFile: true,
-            editMode: true
+            mode: "edit"
           })
         }
         
@@ -336,7 +337,7 @@ exports.DELETE = async ({ path, dirFiles }) => {
         progress: 1,
         file: path,
         gameFile: true,
-        editMode: true
+        mode: "edit"
       })
     }
   } catch (err) {
@@ -395,7 +396,7 @@ exports.ADD_FILE = async ({ path }) => {
       progress: 1,
       gameFile: false,
       file: path + "/" + fileName,
-      editMode: true
+      mode: "edit"
     })
 
     if(isMapFileMode()){

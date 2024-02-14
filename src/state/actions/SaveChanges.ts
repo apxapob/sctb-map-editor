@@ -54,7 +54,7 @@ export const SaveFile = action((path:string) => {
       command: 'LOAD_TEXT_FILE',
       file: path,
       progress: 1,
-      editMode: true,
+      mode: 'edit',
       gameFile: false,
       text
     }, true)
@@ -90,19 +90,15 @@ trace(Math);   //Util math functions
     progress: 1,
     text,
     gameFile: false,
-    editMode: true
+    mode: 'edit'
   })
 })
 
 export const CreateFolder = action((path:string) => {
-  SendToElectron({ 
-    command: 'MAKE_DIR',
-    path,
-    editMode: true
-  })
+  SendToElectron({ command: 'MAKE_DIR', path })
   OnLoadedDirectory({
     command: 'LOAD_DIRECTORY',
     path,
-    editMode: true
+    mode: 'edit'
   })
 })

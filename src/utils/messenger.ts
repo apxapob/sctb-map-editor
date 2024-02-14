@@ -28,7 +28,7 @@ export function InitMessenger() {
         OnLoadingStart()
         break
       case 'LOADING_END':
-        OnLoadingEnd(message.mapId, !message.editMode)
+        OnLoadingEnd(message.mapId, message.mode)
         break
       case 'LOAD_TEXT_FILE':
         OnLoadedText(message)
