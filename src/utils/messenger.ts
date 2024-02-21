@@ -8,7 +8,10 @@ import { CommandType } from '../types/commands'
 
 const { ipcRenderer } = require('electron')
 
-export function SendToElectron(c:CommandType) {
+export function SendToElectron(c:CommandType, requestId?: number) {
+  if(requestId !== undefined){
+    c.requestId = requestId
+  }
   ipcRenderer.send('commands', c)
 }
 

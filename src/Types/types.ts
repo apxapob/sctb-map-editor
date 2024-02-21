@@ -67,6 +67,7 @@ export type GameMessage = {
 } | {
   method: 'to_electron';
   data: any;
+  requestId?: number;
 } | {
   method: 'save_map' | 'saves_list' | 'save_file_loaded';
   data: string;

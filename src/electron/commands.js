@@ -140,7 +140,7 @@ exports.SAVE_GAME = async ({ data }) => {
   }
 }
 
-exports.LOAD_MULTIPLAYER_PROFILE = async () => {
+exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
   let decompressed = null
   try {
     const profilePath = getSaveFilesDirPath() + 'data.prf'
@@ -153,12 +153,13 @@ exports.LOAD_MULTIPLAYER_PROFILE = async () => {
     command: 'TO_GAME', 
     data: { 
       method: 'profile_loaded',
-      profile: decompressed
+      profile: decompressed,
+      requestId
     }
   })
 }
 
-exports.LOAD_GAME = async ({ data, replay }) => {
+exports.LOAD_GAME = async ({ data, replay, requestId }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data
     const fileBuffer = await fs.promises.readFile(saveFilePath)
@@ -169,7 +170,8 @@ exports.LOAD_GAME = async ({ data, replay }) => {
       data: { 
         method: 'save_file_loaded',
         data: decompressed,
-        replay
+        replay,
+        requestId
       }
     })
   } catch (err) {
@@ -177,24 +179,24 @@ exports.LOAD_GAME = async ({ data, replay }) => {
   }
 }
 
-exports.LOAD_SAVES_LIST = async () => {
+exports.LOAD_SAVES_LIST = async ({ requestId }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + "saves.inf"
     const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
 
     sendCommand({
       command: 'TO_GAME',
-      data: { method: 'saves_list', data: fileText }
+      data: { method: 'saves_list', data: fileText, requestId }
     })
   } catch (err) {
     sendCommand({
       command: 'TO_GAME',
-      data: { method: 'saves_list', data: '{}' }
+      data: { method: 'saves_list', data: '{}', requestId }
     })
   }
 }
 
-exports.LOAD_MAPS_LIST = async () => {
+exports.LOAD_MAPS_LIST = async ({ requestId }) => {
   let files = []
   const mapsDirPath = getMapsDirPath()
   try {
@@ -207,18 +209,19 @@ exports.LOAD_MAPS_LIST = async () => {
     command: 'TO_GAME',
     data: { 
       method: 'maps_list', 
-      data: files.filter(f => f.endsWith(".map")).map(f => f.substring(0, f.length-4))
+      data: files.filter(f => f.endsWith(".map")).map(f => f.substring(0, f.length-4)),
+      requestId
     }
   })
 }
 
-exports.LOAD_MAP_INFO = async ({ mapId }) => {
+exports.LOAD_MAP_INFO = async ({ mapId, requestId }) => {
   try {
     const mapFilePath = getMapsDirPath() + mapId + ".map"
     const info = await loadMapInfo(mapFilePath)
     sendCommand({
       command: 'TO_GAME',
-      data: { method: 'map_info', mapId, info }
+      data: { method: 'map_info', mapId, info, requestId }
     })
   } catch (err) {
     console.error('Map file error:', err.message)

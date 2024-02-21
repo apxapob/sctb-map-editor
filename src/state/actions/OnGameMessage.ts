@@ -25,7 +25,7 @@ const OnGameMessage = (msg:GameMessage) => {
       TestMap()
       break
     case 'to_electron':
-      SendToElectron(msg.data)
+      SendToElectron(msg.data, msg.requestId)
       break
     case 'to_main_screen':
       ToMainScreen()
