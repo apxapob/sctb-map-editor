@@ -1,8 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 const { initHotKeys } = require('./hotKeys')
 const { messengerInit } = require('./messenger')
-
-exports.DebugMode = true
+const { DebugMode } = require('./consts')
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -17,7 +16,7 @@ const createWindow = () => {
 
   win.setMenu(null)
 
-  if(app.isPackaged && !exports.DebugMode){
+  if(app.isPackaged && !DebugMode){
     win.loadFile('./dist/index.html')
   } else {
     win.loadURL('http://localhost:3000')

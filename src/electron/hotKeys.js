@@ -1,6 +1,6 @@
 const { app, globalShortcut } = require('electron')
 const { sendCommand } = require('./messenger')
-const { DebugMode } = require('./main')
+const { DebugMode } = require('./consts')
 
 exports.initHotKeys = (win) => {
 
