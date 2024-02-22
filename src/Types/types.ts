@@ -76,7 +76,8 @@ export type GameMessage = {
   data: {
     mapId: string;
     mode: MapLoadMode;
-  }
+  };
+  requestId?: number;
 } | {
   method: 'test_map';
   data: {

@@ -33,6 +33,7 @@ export type LoadingEndType = {
   command: 'LOADING_END';
   mapId: string;
   mode: MapLoadMode;
+  requestId?: number;
 }
 
 export type FSCommandType = {

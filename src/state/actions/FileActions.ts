@@ -18,12 +18,13 @@ export const OnLoadingStart = action(() => {
   SendToGame({ method: 'loading_start' })
 })
 
-export const OnLoadingEnd = action((mapId:string, mode:MapLoadMode) => {
+export const OnLoadingEnd = action((mapId:string, mode:MapLoadMode, requestId?:number) => {
   try {
     MapFiles.status = 'Loaded'
     
     SendToGame({ 
-      method: 'show_map', 
+      method: 'show_map',
+      requestId,
       data: { mapId, mode }
     })
     

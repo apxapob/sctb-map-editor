@@ -7,7 +7,6 @@ import { SendToElectron } from '../../utils/messenger'
 import { OnSelectUnits } from './OnSelectUnits'
 import { UpdateUnsavedData } from './UpdateText'
 import { processTextFile } from './FileActions'
-import CreateMap from './CreateMap'
 import SaveChanges from './SaveChanges'
 import TestMap from './TestMap'
 import ToMainScreen from './ToMainScreen'
@@ -45,9 +44,6 @@ const OnGameMessage = (msg:GameMessage) => {
       break
     case 'update_field_size':
       MapFiles.json[FIELD_PATH].size = msg.data.size
-      break
-    case 'create_map':
-      CreateMap()
       break
     default:
       console.warn('unknown message', msg)

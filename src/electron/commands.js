@@ -19,7 +19,7 @@ const getSaveFilesDirPath = () => {
   return app.isPackaged ? './saves/' : '../sctb-client/saves/'
 }
 
-const loadMap = async (mapPath, mode) => {
+const loadMap = async (mapPath, mode, requestId) => {
   try {
     curMapPath = mapPath = mapPath.replaceAll("\\", "/")
     const mapId = mapPath.substring(
@@ -74,28 +74,29 @@ const loadMap = async (mapPath, mode) => {
         loaded++
       }
     }
-    sendCommand({ command: 'LOADING_END', mode, mapId })
+    sendCommand({ command: 'LOADING_END', mode, mapId, requestId })
   } catch (err) {
     curMapPath = null
     console.error(err)
     sendCommand({
       command: 'LOAD_MAP_ERROR', 
-      error: err.message || 'unknown error'
+      error: err.message || 'unknown error',
+      requestId
     })
   }
 }
 
-exports.DELETE_SAVE_FILE = async ({ data }) => {
+exports.DELETE_SAVE_FILE = async ({ data, requestId }) => {
   try {
     const fullPath = getSaveFilesDirPath() + data + '.sav'
     await fs.promises.rm(fullPath)
-    await UPDATE_SAVES_INFO({ key: data })
+    await UPDATE_SAVES_INFO({ key: data, requestId })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)
   }
 }
 
-const UPDATE_SAVES_INFO = async ({ key, data }) => {
+const UPDATE_SAVES_INFO = async ({ key, data, requestId }) => {
   try {
     const fullPath = getSaveFilesDirPath() + 'saves.inf'
     let savesDB = {}
@@ -120,7 +121,7 @@ const UPDATE_SAVES_INFO = async ({ key, data }) => {
     )
     sendCommand({
       command: 'TO_GAME',
-      data: { method: 'saves_list', data: json }
+      data: { method: 'saves_list', data: json, requestId }
     })
   } catch (err) {
     dialog.showErrorBox('Save game error:', err.message)
@@ -230,20 +231,20 @@ exports.LOAD_MAP_INFO = async ({ mapId, requestId }) => {
 
 exports.EXIT = () => app.quit()
 
-exports.OPEN_MAP = async ({ data, replay }) => {
+exports.OPEN_MAP = async ({ data, replay, requestId }) => {
   const mapsDirPath = getMapsDirPath()
-  await loadMap(mapsDirPath + data + ".map", replay ? "replay" : "play")
+  await loadMap(mapsDirPath + data + ".map", replay ? "replay" : "play", requestId)
 }
 
-exports.EDIT_MAP_FOLDER = async () => {
+exports.EDIT_MAP_FOLDER = async ({ requestId }) => {
   const { mainWindow } = require('./main')
   const dirs = dialog.showOpenDialogSync(mainWindow, { properties: ['openDirectory'] })
   if (!dirs) { return }
   
-  await loadMap(dirs[0], "edit")
+  await loadMap(dirs[0], "edit", requestId)
 }
 
-exports.EDIT_MAP = async () => {
+exports.EDIT_MAP = async ({ requestId }) => {
   const { mainWindow } = require('./main')
   const files = dialog.showOpenDialogSync(mainWindow, {
     filters: [
@@ -252,7 +253,7 @@ exports.EDIT_MAP = async () => {
   })
   if (!files) { return }
   
-  await loadMap(files[0], true)
+  await loadMap(files[0], true, requestId)
 }
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {
@@ -411,7 +412,7 @@ exports.ADD_FILE = async ({ path }) => {
   
 }
 
-exports.CREATE_MAP = async () => {
+exports.CREATE_MAP = async ({ requestId }) => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
     title: 'Create Map',
@@ -422,7 +423,7 @@ exports.CREATE_MAP = async () => {
   try {
     await fs.promises.mkdir(dir)
     await makeNewMap(dir)
-    await loadMap(dir + ".map", true)
+    await loadMap(dir + ".map", true, requestId)
   } catch (err) {
     dialog.showErrorBox('Create directory error', err.message)
   }
