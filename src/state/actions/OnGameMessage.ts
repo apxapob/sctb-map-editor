@@ -11,9 +11,15 @@ import SaveChanges from './SaveChanges'
 import TestMap from './TestMap'
 import ToMainScreen from './ToMainScreen'
 import { FIELD_PATH, MapFiles } from '../MapFiles'
+import * as Sentry from "@sentry/react";
 
 const OnGameMessage = (msg:GameMessage) => {
   switch (msg.method) {
+    case 'report_error':
+      const ex = new Error(msg.error)
+      ex.stack = msg.details
+      Sentry.captureException(ex)
+      break
     case 'init_complete':
       OnInitComplete()
       break

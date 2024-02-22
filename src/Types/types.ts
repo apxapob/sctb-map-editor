@@ -62,6 +62,10 @@ export type SpriteSheetInfo = {
 }
 
 export type GameMessage = {
+  method: 'report_error',
+  error: string;
+  details: string;
+} | {
   method: 'init_complete' | 'mark_field_unsaved' | 'reset_objects' | 'to_main_screen' |
           'reset_field' | 'create_map' | 'maps_list' | 'loading_start' | 'save_changes';
 } | {
