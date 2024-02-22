@@ -24,7 +24,7 @@ const createWindow = () => {
   
   initHotKeys(win)
 
-  if(!app.isPackaged){
+  if(DebugMode){
     win.webContents.openDevTools()
   }
   

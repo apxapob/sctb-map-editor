@@ -1,4 +1,3 @@
-const { app, globalShortcut } = require('electron')
 const { sendCommand } = require('./messenger')
 const { DebugMode } = require('./consts')
 
@@ -14,10 +13,9 @@ exports.initHotKeys = (win) => {
       if(input.key.toLowerCase() === 'f9') {
         sendCommand({ command: 'TEST_MAP' })
       }
-      return
     }
-
-    if(!DebugMode){//maybe we should allow this?
+    
+    if (input.control || input.command || DebugMode){
       if(input.key.toLowerCase() === 'f5') {
         win.webContents.reload()
       }
@@ -25,7 +23,6 @@ exports.initHotKeys = (win) => {
         win.webContents.openDevTools()
       }
     }
-     
   })
 
 }
