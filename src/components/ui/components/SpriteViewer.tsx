@@ -80,8 +80,8 @@ const SpriteViewer = ({
   const [error, setError] = useState('')
 
   const [frame, setFrame] = useState(0)
-  const [maxW, setMaxW] = useState(0)
-  const [maxH, setMaxH] = useState(0)
+  const [maxW, setMaxW] = useState(1)
+  const [maxH, setMaxH] = useState(1)
   const [direction, _setDirection] = useState(0)
   const setDirection = (d:number) => _setDirection((d+12) % 12)
 
@@ -109,7 +109,7 @@ const SpriteViewer = ({
   useEffect(() => {
     if(!spriteSheetPath || !info){ return }
     
-    let mW = 0, mH = 0
+    let mW = 1, mH = 1
     const { dir } = getSpriteDir(direction, directions)
     for(let i = 0; i < framesNum; i++){
       const frameId = Math.min(info.sprites.length-1, directions * i + dir)
@@ -143,7 +143,11 @@ const SpriteViewer = ({
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
     
-    setTimeout(() => setFrame((frame+1) % framesNum), 100)//bug here
+    const timeoutRef = useRef<Any>()
+    
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => setFrame((frame+1) % framesNum), 100)//bug here
+    
     const totalScale = 256 / maxW * dir_width
     const totalW = maxW / dir_width
     const totalH = Math.max(138 / totalScale, maxH - dir_dy)
