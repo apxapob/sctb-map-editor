@@ -143,7 +143,7 @@ const SpriteViewer = ({
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
     
-    const timeoutRef = useRef<Any>()
+    const timeoutRef = useRef<any>()
     
     clearTimeout(timeoutRef.current)
     timeoutRef.current = setTimeout(() => setFrame((frame+1) % framesNum), 100)//bug here
