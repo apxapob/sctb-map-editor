@@ -4,6 +4,7 @@ const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
 const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
+const { GetPlayerName } = require('./steamApi')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -149,6 +150,9 @@ exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
     decompressed = await decompress(fileBuffer)
   } catch (err) {
     console.warn('Load profile error:', err.message)
+  }
+  if(decompressed === null){
+    decompressed = JSON.stringify({ name: GetPlayerName() })
   }
   sendCommand({
     command: 'TO_GAME', 

@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require('electron')
 const { initHotKeys } = require('./hotKeys')
 const { messengerInit } = require('./messenger')
 const { DebugMode } = require('./consts')
+const { InitAPI } = require('./steamApi')
+
+InitAPI()
 
 const createWindow = () => {
   const win = new BrowserWindow({
