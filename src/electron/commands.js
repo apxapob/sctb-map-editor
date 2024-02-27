@@ -4,7 +4,7 @@ const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
 const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
-const { GetPlayerName } = require('./steamApi')
+const { GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists } = require('./steamApi')
 
 let curMapPath = null
 const isMapFileMode = () => curMapPath?.endsWith(".map")
@@ -17,6 +17,8 @@ const getMapsDirPath = () => {
   return app.isPackaged ? './maps/' : '../sctb-client/maps/'
 }
 const getSaveFilesDirPath = () => {
+  if(CloudEnabled())return ""
+  
   return app.isPackaged ? './saves/' : '../sctb-client/saves/'
 }
 
@@ -90,7 +92,7 @@ const loadMap = async (mapPath, mode, requestId) => {
 exports.DELETE_SAVE_FILE = async ({ data, requestId }) => {
   try {
     const fullPath = getSaveFilesDirPath() + data + '.sav'
-    await fs.promises.rm(fullPath)
+    await deleteFile(fullPath)
     await UPDATE_SAVES_INFO({ key: data, requestId })
   } catch (err) {
     dialog.showErrorBox('Can\'t delete', err.message)
@@ -103,7 +105,7 @@ const UPDATE_SAVES_INFO = async ({ key, data, requestId }) => {
     let savesDB = {}
     
     try {
-      const fileText = await fs.promises.readFile(fullPath, { encoding: 'utf8' })
+      const fileText = await readFile(fullPath)
       savesDB = JSON.parse(fileText)
     } catch (err) {
       console.warn('Saves DB error:', err.message)
@@ -116,15 +118,13 @@ const UPDATE_SAVES_INFO = async ({ key, data, requestId }) => {
     }
 
     const json = JSON.stringify(savesDB)
-    await fs.promises.writeFile(
-      fullPath, 
-      json
-    )
+    await writeFile(fullPath, json)
     sendCommand({
       command: 'TO_GAME',
       data: { method: 'saves_list', data: json, requestId }
     })
   } catch (err) {
+    console.error(err)
     dialog.showErrorBox('Save game error:', err.message)
   }
 }
@@ -136,8 +136,9 @@ exports.SAVE_GAME = async ({ data }) => {
     const fullPath = getSaveFilesDirPath() + path
     
     const compressed = await compress(text)
-    await fs.promises.writeFile(fullPath, compressed)
+    await writeFile(fullPath, compressed)
   } catch (err) {
+    console.error(err)
     dialog.showErrorBox('Save game error:', err.message)
   }
 }
@@ -146,13 +147,13 @@ exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
   let decompressed = null
   try {
     const profilePath = getSaveFilesDirPath() + 'data.prf'
-    const fileBuffer = await fs.promises.readFile(profilePath)
-    decompressed = await decompress(fileBuffer)
+    const fileContent = await readFile(profilePath)
+    decompressed = await decompress(fileContent)
   } catch (err) {
     console.warn('Load profile error:', err.message)
   }
   if(decompressed === null){
-    decompressed = JSON.stringify({ name: GetPlayerName() })
+    decompressed = JSON.stringify({ name: GetPlayerName(), id: GetPlayerId() })
   }
   sendCommand({
     command: 'TO_GAME', 
@@ -167,9 +168,9 @@ exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
 exports.LOAD_GAME = async ({ data, replay, requestId }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data
-    const fileBuffer = await fs.promises.readFile(saveFilePath)
-    const decompressed = await decompress(fileBuffer)
-    
+    const fileContent = await readFile(saveFilePath)
+    const decompressed = await decompress(fileContent)
+
     sendCommand({
       command: 'TO_GAME', 
       data: { 
@@ -187,8 +188,7 @@ exports.LOAD_GAME = async ({ data, replay, requestId }) => {
 exports.LOAD_SAVES_LIST = async ({ requestId }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + "saves.inf"
-    const fileText = await fs.promises.readFile(saveFilePath, { encoding: 'utf8' })
-
+    const fileText = await readFile(saveFilePath)
     sendCommand({
       command: 'TO_GAME',
       data: { method: 'saves_list', data: fileText, requestId }
