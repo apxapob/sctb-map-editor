@@ -89,9 +89,7 @@ while(maps.length > 0){
   await makeMapFile(mapsSource + map, mapsDest + map + ".map")
 }
 
-console.log("5) Removing garbage from app.asar...")
-await shell(`npx asar extract ${asarDir + "app.asar"} ${asarDir + "app"}`)
-await fs.promises.rm(asarDir + "app.asar")
+console.log("5) Removing garbage...")
 
 await fs.promises.rm(asarDir + "app/public/", { recursive: true, force: true })
 await fs.promises.rm(asarDir + "app/.vscode/", { recursive: true, force: true })
@@ -109,6 +107,7 @@ await removeExcept(asarDir + "app/node_modules/", {
   "archiver": true, 
   "archiver-utils": true, 
   "unzipper": true,
+  "steamworks.js": true,
   "readdir-glob": true,
   "balanced-match": true,
   "async": true,
@@ -149,8 +148,5 @@ await removeExcept(asarDir + "app/node_modules/", {
   "mkdirp": true,
   "big-integer": true,
 })
-
-await shell(`npx asar pack ${asarDir + "app"} ${asarDir + "app.asar"}`)
-await fs.promises.rm(asarDir + "app/", { recursive: true, force: true })
 
 console.log("!!! FULL DEPLOY FINISHED !!!")
