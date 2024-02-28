@@ -76,6 +76,7 @@ const Hex = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 138" 
 const SpriteViewer = ({
   path, cssClass, spriteSheetPath
 }:SpriteViewerProps) => {
+  const timeoutRef = useRef<any>()
   const ref = useRef<HTMLImageElement>(null)
   const [error, setError] = useState('')
 
@@ -142,8 +143,6 @@ const SpriteViewer = ({
     const scale = maxW / dir_width / 256
     const dir_dx = (info.packer[`dir${dir+1}_dx`] as number ?? 0) * scale * (flip ? -1 : 1)
     const dir_dy = ((info.packer[`dir${dir+1}_dy`] as number ?? 0) - 25) * scale
-    
-    const timeoutRef = useRef<any>()
     
     clearTimeout(timeoutRef.current)
     timeoutRef.current = setTimeout(() => setFrame((frame+1) % framesNum), 100)//bug here

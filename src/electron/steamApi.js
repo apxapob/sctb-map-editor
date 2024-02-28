@@ -10,6 +10,8 @@ exports.InitAPI = () => {
   client = steamworks.init(2865970)//pass steam app api here
   
   steamworks.electronEnableSteamOverlay()
+
+  console.log("Steam Cloud enabled", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
 }
 
 exports.GetPlayerName = () => client?.localplayer?.getName()
