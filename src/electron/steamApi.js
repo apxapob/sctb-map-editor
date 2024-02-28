@@ -5,7 +5,9 @@ let client = null
 
 exports.InitAPI = () => {
   console.log("Steam Api init")
-  client = steamworks.init(2860520)//pass steam app api here
+  //2865970 - playtest id
+  //2860520 - main game id
+  client = steamworks.init(2865970)//pass steam app api here
   
   steamworks.electronEnableSteamOverlay()
 }
