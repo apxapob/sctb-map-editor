@@ -148,12 +148,12 @@ exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
   try {
     const profilePath = getSaveFilesDirPath() + 'data.prf'
     const fileContent = await readFile(profilePath)
-    decompressed = await decompress(fileContent)
+    if(!!fileContent)decompressed = await decompress(fileContent)
   } catch (err) {
     console.warn('Load profile error:', err.message)
   }
   if(decompressed === null){
-    decompressed = JSON.stringify({ name: GetPlayerName(), id: GetPlayerId() })
+    decompressed = JSON.stringify({ name: GetPlayerName(), id: GetPlayerId(), password: null })
   }
   sendCommand({
     command: 'TO_GAME', 
