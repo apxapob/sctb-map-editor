@@ -23,7 +23,7 @@ const removeExcept = async (dir, exceptions) => {
   }
 }
 
-const makeMapFile = async (mapDir, dest) => {
+const compressFolder = async (mapDir, dest) => {
   const output = fs.createWriteStream(dest)
   const archive = archiver('zip', { zlib: { level: 9 } })
   output.on('close', () => {})
@@ -86,7 +86,7 @@ while(maps.length > 0){
   var stats = await fs.promises.stat(mapsSource + map)
   if(!stats.isDirectory()){ continue }
 
-  await makeMapFile(mapsSource + map, mapsDest + map + ".map")
+  await compressFolder(mapsSource + map, mapsDest + map + ".map")
 }
 
 console.log("5) Removing garbage...")
@@ -148,5 +148,8 @@ await removeExcept(asarDir + "app/node_modules/", {
   "mkdirp": true,
   "big-integer": true,
 })
+
+console.log("6) Creating archive...")
+await compressFolder(win64packagePath, win64packagePath.substring(0, win64packagePath.length-1) + ".zip")
 
 console.log("!!! FULL DEPLOY FINISHED !!!")
