@@ -1,8 +1,9 @@
-import { promisify } from "util";
+import { promisify } from "util"
 import { exec } from "node:child_process"
 import fs from "fs"
 import archiver from "archiver"
 
+const outDir = "./out/"
 const resSource = "../sctb-client/res/"
 const mapsSource = "../sctb-client/maps/"
 const win64packagePath = "./out/sctb-map-editor-win32-x64/"
@@ -11,7 +12,7 @@ const resDest = win64packagePath + "res/"
 const mapsDest = win64packagePath + "maps/"
 const savesDest = win64packagePath + "saves/"
 
-const shell = promisify(exec);
+const shell = promisify(exec)
 
 const removeExcept = async (dir, exceptions) => {
   const entries = await fs.promises.readdir(dir)
@@ -45,20 +46,23 @@ const compressFolder = async (mapDir, dest) => {
 
 console.log("!!! FULL DEPLOY STARTED !!!")
 
-console.log("1) Building static files...")
+console.log("-Cleaning...")
+await removeExcept(outDir, {})
+
+console.log("-Building static files...")
 await shell('npm run build')
 
-console.log("2) Fixing the html...")
+console.log("-Fixing main html file...")
 const html = await fs.promises.readFile("./dist/index.html", { encoding: 'utf8' })
 await fs.promises.writeFile(
   "./dist/index.html", 
   html.replaceAll(`="/assets`, `="./assets`)
 )
 
-console.log("3) Packaging electron...")
+console.log("-Packing electron...")
 await shell('npm run package')
 
-console.log("4) Copying maps and resources...")
+console.log("-Copying maps and resources...")
 await fs.promises.mkdir(savesDest)
 await fs.promises.mkdir(resDest)
 await fs.promises.mkdir(mapsDest)
@@ -84,12 +88,12 @@ const maps = await fs.promises.readdir(mapsSource)
 while(maps.length > 0){
   const map = maps.pop()
   var stats = await fs.promises.stat(mapsSource + map)
-  if(!stats.isDirectory()){ continue }
+  if(!stats.isDirectory() || map == "test"){ continue }
 
   await compressFolder(mapsSource + map, mapsDest + map + ".map")
 }
 
-console.log("5) Removing garbage...")
+console.log("-Removing garbage...")
 
 await fs.promises.rm(asarDir + "app/public/", { recursive: true, force: true })
 await fs.promises.rm(asarDir + "app/.vscode/", { recursive: true, force: true })
@@ -149,7 +153,7 @@ await removeExcept(asarDir + "app/node_modules/", {
   "big-integer": true,
 })
 
-console.log("6) Creating archive...")
+console.log("-Compressing...")
 await compressFolder(win64packagePath, win64packagePath.substring(0, win64packagePath.length-1) + ".zip")
 
 console.log("!!! FULL DEPLOY FINISHED !!!")

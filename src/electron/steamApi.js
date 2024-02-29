@@ -14,9 +14,9 @@ exports.InitAPI = () => {
   console.log("Steam Cloud enabled", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
 }
 
-exports.GetPlayerName = () => client?.localplayer?.getName()
-exports.GetPlayerId = () => client?.localplayer?.getSteamId().accountId
-exports.CloudEnabled = () => client?.cloud.isEnabledForAccount() && client?.cloud.isEnabledForApp()
+exports.GetPlayerName = () => null//client?.localplayer?.getName()
+exports.GetPlayerId = () => null//client?.localplayer?.getSteamId().accountId
+exports.CloudEnabled = () => false//client?.cloud.isEnabledForAccount() && client?.cloud.isEnabledForApp()
 
 exports.readFile = async (name) => {
   if(exports.CloudEnabled()) return client?.cloud.readFile(name)
