@@ -8,16 +8,20 @@ export type NumberInputProps = InputProps & {
   isInteger: boolean;
   min?: number;
   max?: number;
+  nullable?: boolean;
 }
 
 const JsonNumberInput = (
-  { filePath, valuePath, title, placeholder, isInteger, min, max, tooltip }:NumberInputProps
+  { filePath, valuePath, title, placeholder, isInteger, min, max, tooltip, nullable }:NumberInputProps
 ) => {
   const value = GetJsonFileValue(filePath, valuePath) as number
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    let newVal = (isInteger ? parseInt(e.target.value) : parseFloat(e.target.value)) || 0
-    if (min !== undefined) newVal = Math.max(min, newVal)
-    if (max !== undefined) newVal = Math.min(max, newVal)
+    
+    let newVal: number|null = isInteger ? parseInt(e.target.value) : parseFloat(e.target.value)
+    if(isNaN(newVal) || newVal === undefined || newVal === null) newVal = nullable ? null : 0
+    
+    if (min !== undefined) newVal = Math.max(min, newVal ?? 0)
+    if (max !== undefined) newVal = Math.min(max, newVal ?? 0)
     UpdateJsonFileValue(
       filePath,
       valuePath,

@@ -1,2 +1,2 @@
-exports.DebugMode = false
+exports.DebugMode = true
 exports.SteamEnabled = true

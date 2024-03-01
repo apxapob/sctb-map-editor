@@ -1,6 +1,6 @@
 import { MapLoadMode } from "./commands";
 
-export type JSONValue = string | number | boolean | JSONObject | JSONArray
+export type JSONValue = string | number | boolean | null | JSONObject | JSONArray
 export type JSONObject = { [x: string]: JSONValue; }
 export type JSONArray = JSONValue[]
 

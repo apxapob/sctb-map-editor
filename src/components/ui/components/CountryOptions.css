@@ -1,0 +1,7 @@
+.countries-grid {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  justify-items: center;
+  grid-template-columns: repeat(6, 70px);
+}

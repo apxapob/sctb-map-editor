@@ -10,9 +10,11 @@ const JsonBoolInput = (
   const value = GetJsonFileValue(filePath, valuePath) === true
   return (
     <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }} title={tooltip}>
-      <span className='view-input-title'>
-        {title}
-      </span>
+      {title &&
+        <span className='view-input-title'>
+          {title}
+        </span>
+      }
       <input
         type='checkbox'
         onChange={e => UpdateJsonFileValue(filePath, valuePath, e.target.checked)}

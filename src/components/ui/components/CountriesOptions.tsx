@@ -2,11 +2,12 @@ import React from 'react'
 import { MapFiles } from '../../../state/MapFiles'
 import { GetJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
-import './JsonValueInput.css'
+import './CountryOptions.css'
 import { InputProps } from './JsonStringInput'
 import { CountryInfo, MapInfo } from '../../../types/types'
 import JsonNumberInput from './JsonNumberInput'
 import JsonColorSelector from './JsonColorSelector'
+import JsonBoolInput from './JsonBoolInput'
   
 const CountriesOptions = (
   { filePath, valuePath }:InputProps
@@ -26,50 +27,59 @@ const CountriesOptions = (
     }
   }
 
-  return <div>
-    <div className='hflex' style={{ gap: 6, marginTop: 12 }}>
-      <span style={{ width: 144 }}>
-        Country
-      </span>
-      <span style={{ width: 60 }}>
-        Color
-      </span>
-      <span style={{ width: 70 }}>
-        Minerals
-      </span>
-      <span style={{ width: 70 }}>
-        Mana
-      </span>
-    </div>
-    <div className='vflex' style={{ margin: '6px 0 0 0' }}>
-      {observedCountries.map((c, idx) => 
-        <div key={idx} className='hflex' style={{ alignItems: "center", gap: 6 }}>
-          <div className='hflex' style={{ alignItems: 'start', justifyContent: 'flex-start' }}>
-            <span className='view-input-title'>
-              {'Country ' + (idx + 1)}
-            </span>
-            <JsonColorSelector
-              filePath={filePath}
-              valuePath={`countries.${idx}.color`}
-            />
-          </div>
-          <JsonNumberInput
-            placeholder='Minerals'
-            title=""
-            filePath={filePath}
-            valuePath={`countries.${idx}.minerals`} 
-            isInteger={true} 
-          />
-          <JsonNumberInput
-            placeholder='Mana'
-            title=""
-            filePath={filePath}
-            valuePath={`countries.${idx}.mana`} 
-            isInteger={true} 
-          />
-        </div>
-      )}
-    </div>
+  return <div className='countries-grid'>
+    <span>Country</span>
+    <span>Color</span>
+    <span>Minerals</span>
+    <span>Mana</span>
+    <span>AI only</span>
+    <span>Team ID</span>
+    
+    {observedCountries.map((c, idx) => 
+      [
+        <span key={"1_" + idx}>
+          {(idx + 1)}
+        </span>,
+        <JsonColorSelector
+          key={"2_" + idx}
+          filePath={filePath}
+          valuePath={`countries.${idx}.color`}
+        />,
+        <JsonNumberInput
+          key={"3_" + idx}
+          placeholder='Minerals'
+          title=""
+          filePath={filePath}
+          valuePath={`countries.${idx}.minerals`} 
+          isInteger={true}
+          min={0}
+        />,
+        <JsonNumberInput
+          key={"4_" + idx}
+          placeholder='Mana'
+          title=""
+          filePath={filePath}
+          valuePath={`countries.${idx}.mana`} 
+          isInteger={true}
+          min={0}
+        />,
+        <JsonBoolInput
+          key={"5_" + idx}
+          placeholder='AI only'
+          filePath={filePath}
+          valuePath={`countries.${idx}.ai_only`}
+        />,
+        <JsonNumberInput
+          key={"6_" + idx}
+          placeholder='Team'
+          title=""
+          nullable={true}
+          filePath={filePath}
+          valuePath={`countries.${idx}.team`}
+          isInteger={true}
+        />
+      ]
+    )}
   </div>
 }
 

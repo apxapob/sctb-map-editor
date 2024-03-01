@@ -90,7 +90,7 @@ const UnitsStatsEditor = ({
       filePath={UNITS_PATH}
       valuePath={`${unitId}.flying`}
       isInteger={true}
-      min={0}
+      min={-1}
     />
     <JsonNumberInput
       placeholder='Detection range'

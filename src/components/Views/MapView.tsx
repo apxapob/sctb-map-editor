@@ -11,7 +11,7 @@ import { observer } from 'mobx-react-lite'
 
 const MapView = () => 
   <div className='view-container hflex map-view' style={{ gap: 30 }}>
-    <div className='vflex' style={{ width: 380, textAlign: "center" }}>
+    <div className='vflex' style={{ textAlign: "center" }}>
       <h3 style={{ textAlign: "left" }}>
       Map settings
       </h3>
@@ -48,8 +48,8 @@ const MapView = () =>
         min={0}
       />
       <JsonNumberInput
-        placeholder='Min players'
-        title="Min players"
+        placeholder='Min players num'
+        title="Min players num"
         filePath={INFO_PATH}
         valuePath='minPlayers'
         isInteger={true}
@@ -57,8 +57,8 @@ const MapView = () =>
         max={(MapFiles.json[INFO_PATH] as MapInfo).maxPlayers}
       />
       <JsonNumberInput
-        placeholder='Max players'
-        title="Max players"
+        placeholder='Max countries num'
+        title="Max countries num"
         filePath={INFO_PATH}
         valuePath='maxPlayers'
         isInteger={true}
