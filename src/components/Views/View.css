@@ -48,7 +48,9 @@
 }
 
 .map-view {
-  padding: 12px;
+  padding: 0 12px 12px 12px;
+  overflow: auto;
+  height: calc(100vh - 24px);
 }
 
 .script-item {

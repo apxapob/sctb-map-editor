@@ -77,7 +77,11 @@ const MapView = () =>
     
     <JsonScriptsList 
       filePath={INFO_PATH} valuePath='mapScripts' title='Map Scripts' 
-      tooltip='List of map scripts which will be launched at the start of every turn'
+      tooltip='List of scripts which will be launched at the start of every turn'
+    />
+    <JsonScriptsList 
+      filePath={INFO_PATH} valuePath='aiScripts' title='AI Scripts' 
+      tooltip='List of scripts which will be launched before the end of every turn for every AI country'
     />
   </div>
 
