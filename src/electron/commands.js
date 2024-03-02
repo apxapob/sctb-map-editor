@@ -257,7 +257,7 @@ exports.EDIT_MAP = async ({ requestId }) => {
   })
   if (!files) { return }
   
-  await loadMap(files[0], true, requestId)
+  await loadMap(files[0], "edit", requestId)
 }
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {
@@ -416,7 +416,7 @@ exports.ADD_FILE = async ({ path }) => {
   
 }
 
-exports.CREATE_MAP = async ({ requestId }) => {
+exports.CREATE_MAP = async ({ requestId, folderMode }) => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
     title: 'Create Map',
@@ -426,8 +426,12 @@ exports.CREATE_MAP = async ({ requestId }) => {
   
   try {
     await fs.promises.mkdir(dir)
-    await makeNewMap(dir)
-    await loadMap(dir + ".map", true, requestId)
+    await makeNewMap(dir, folderMode)
+    await loadMap(
+      dir + (folderMode ? "" : ".map"),
+      "edit",
+      requestId
+    )
   } catch (err) {
     dialog.showErrorBox('Create directory error', err.message)
   }
