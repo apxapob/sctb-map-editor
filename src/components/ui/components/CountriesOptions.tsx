@@ -1,4 +1,3 @@
-import React from 'react'
 import { MapFiles } from '../../../state/MapFiles'
 import { GetJsonFileValue } from '../../../state/actions/UpdateText'
 import { observer } from 'mobx-react-lite'
@@ -7,7 +6,6 @@ import { InputProps } from './JsonStringInput'
 import { CountryInfo, MapInfo } from '../../../types/types'
 import JsonNumberInput from './JsonNumberInput'
 import JsonColorSelector from './JsonColorSelector'
-import JsonBoolInput from './JsonBoolInput'
 import JsonValueSelector from './JsonValueSelector'
   
 const CountriesOptions = (
@@ -65,8 +63,9 @@ const CountriesOptions = (
           min={0}
         />,
         <JsonValueSelector 
-          values={['only player', "AI or Player", "only AI"]}
-          defaultValue="only player"
+          key={"5_" + idx}
+          values={['only_player', "ai_or_player", "only_ai"]}
+          defaultValue="only_player"
           filePath={filePath}
           valuePath={`countries.${idx}.control`}
         />,

@@ -7,8 +7,9 @@ import { MapInfo } from '../../types/types'
 import { INFO_PATH, MapFiles } from '../../state/MapFiles'
 import { ToolState, TestingSettings } from '../../state/ToolState'
 import { ChangeFogOfWarCountry } from '../../state/actions/ChangeTool'
-import { ChangePlayersNum } from '../../state/actions/ChangeTestSettings'
+import { ChangePlayerSetting } from '../../state/actions/ChangeTestSettings'
 import TestMap from '../../state/actions/TestMap'
+import { toJS } from 'mobx'
 
 const FogOfWarSelector = observer(() => {
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
@@ -30,13 +31,33 @@ const FogOfWarSelector = observer(() => {
 const TestingTool = observer(() => {
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
   const players = TestingSettings.players
-
+  
   return <div className='test-tool vflex'>
     Test map settings
-    <div className="hflex gap">
-      <button className="tool" onClick={() => ChangePlayersNum(-1)} >-</button>
-      {players}/{maxPlayers}
-      <button className="tool" onClick={() => ChangePlayersNum(1)} >+</button>
+    <div className="vflex gap">
+      {Array(maxPlayers).fill(0).map((_, idx) => 
+        <div key={idx} className="hflex gap">
+          country {idx}:
+          <button 
+            className={players[idx] === 'player' ? 'selectedBtn' : ''} 
+            onClick={() => ChangePlayerSetting(idx, "player")}
+          >
+              player
+          </button>
+          <button 
+            className={players[idx] === 'ai' ? 'selectedBtn' : ''} 
+            onClick={() => ChangePlayerSetting(idx, "ai")}
+          >
+            ai
+          </button>
+          <button 
+            className={!players[idx] ? 'selectedBtn' : ''} 
+            onClick={() => ChangePlayerSetting(idx, null)}
+          >
+            disabled
+          </button>
+        </div>
+      )}
     </div>
     <button className="tool" onClick={TestMap} >Test Map</button>
   </div>

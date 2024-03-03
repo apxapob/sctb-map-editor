@@ -86,7 +86,7 @@ export type GameMessage = {
   method: 'test_map';
   data: {
     mode: string;
-    players: number;
+    players: string;
   }
 } | {
   method: 'tool_updated';
@@ -167,8 +167,9 @@ export type ToolStateType = {
   countryId: number;
 }
 
+export type PlayerSetting = 'player' | 'ai' | null
 export type TestingSettingsType = {
-  players: number;
+  players: PlayerSetting[];
 }
 
 export type StatType = 'attack' | 'maxHp' | 'vision' | 'range' | 'speed' | 'flying' | 'detector' | 'invisible'

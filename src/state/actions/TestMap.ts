@@ -30,7 +30,7 @@ const TestMap = () => {
     method: 'test_map',
     data: {
       mode: EditorState.mode,
-      players: TestingSettings.players
+      players: JSON.stringify(TestingSettings.players)
     }
   })
 }

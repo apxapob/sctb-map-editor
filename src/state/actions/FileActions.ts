@@ -1,11 +1,11 @@
 import { action, toJS } from 'mobx'
 import { FSCommandType, LoadBinaryCommandType, LoadTextCommandType, MapLoadMode, RenameType } from '../../types/commands'
 import { MapInfo } from '../../types/types'
-import { FIELD_PATH, FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
+import { FilesTree, INFO_PATH, MapFiles, PathTreeType, getDirPath } from '../MapFiles'
 import SendToGame from './SendToGame'
 import { EditorState } from '../ToolState'
 import { CreateFolder } from './SaveChanges'
-import { ChangePlayersNum } from './ChangeTestSettings'
+import { ResetPlayerSetting } from './ChangeTestSettings'
 
 export const OnLoadingStart = action(() => {
   MapFiles.text = {}
@@ -82,7 +82,10 @@ export const processTextFile = action((file:string, text:string, gameFile: boole
   if (file.endsWith('.json')) {
     try {
       MapFiles.json[file] = JSON.parse(text)
-      if(file === INFO_PATH)ChangePlayersNum(0)
+      
+      if(file === INFO_PATH)ResetPlayerSetting(
+        (MapFiles.json[file] as MapInfo).minPlayers
+      )
     } catch (e) {
       console.error('Can\'t parse', file, (e as Error).message, text)
     }

@@ -12,7 +12,7 @@ export const ToolState:ToolStateType = observable({
 })
 
 export const TestingSettings:TestingSettingsType = observable({
-  players: 1
+  players: ['player']
 })
 
 export const SelectedObjects: {
