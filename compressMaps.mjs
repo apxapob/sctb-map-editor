@@ -30,6 +30,9 @@ while(maps.length > 0){
   if(!stats.isDirectory()){ continue }
 
   console.log("compressing", map)
-  await fs.promises.rm(mapsSource + map + ".map")
+  if(fs.existsSync(mapsSource + map + ".map")){
+    await fs.promises.rm(mapsSource + map + ".map")
+  }
+  
   await compressFolder(mapsSource + map, mapsSource + map + ".map")
 }
