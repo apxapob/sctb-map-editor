@@ -8,6 +8,7 @@ import { CountryInfo, MapInfo } from '../../../types/types'
 import JsonNumberInput from './JsonNumberInput'
 import JsonColorSelector from './JsonColorSelector'
 import JsonBoolInput from './JsonBoolInput'
+import JsonValueSelector from './JsonValueSelector'
   
 const CountriesOptions = (
   { filePath, valuePath }:InputProps
@@ -32,7 +33,7 @@ const CountriesOptions = (
     <span>Color</span>
     <span>Minerals</span>
     <span>Mana</span>
-    <span>AI only</span>
+    <span>Control</span>
     <span>Team ID</span>
     
     {observedCountries.map((c, idx) => 
@@ -63,11 +64,11 @@ const CountriesOptions = (
           isInteger={true}
           min={0}
         />,
-        <JsonBoolInput
-          key={"5_" + idx}
-          placeholder='AI only'
+        <JsonValueSelector 
+          values={['only player', "AI or Player", "only AI"]}
+          defaultValue="only player"
           filePath={filePath}
-          valuePath={`countries.${idx}.ai_only`}
+          valuePath={`countries.${idx}.control`}
         />,
         <JsonNumberInput
           key={"6_" + idx}

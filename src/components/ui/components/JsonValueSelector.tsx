@@ -3,13 +3,20 @@ import { Selector } from './Selector'
 import { observer } from 'mobx-react-lite'
 import { GetJsonFileValue, UpdateJsonFileValue } from '../../../state/actions/UpdateText'
 
-const ValueSelector = (
-  { values, filePath, valuePath } : { values: string[], filePath: string, valuePath: string }
+type JsonValueSelectorProps = { 
+  values: string[];
+  filePath: string; 
+  valuePath: string;
+  defaultValue?: string;
+}
+
+const JsonValueSelector = (
+  { values, filePath, valuePath,defaultValue } : JsonValueSelectorProps
 ) => {
   const value = GetJsonFileValue(filePath, valuePath) as string
 
   return <Selector
-    value={value}
+    value={value ?? defaultValue}
     style={{ width: 'unset', margin: 0 }}
     items={values}
     onSelect={newVal => UpdateJsonFileValue(
@@ -20,4 +27,4 @@ const ValueSelector = (
   />
 }
 
-export default observer(ValueSelector)
+export default observer(JsonValueSelector)

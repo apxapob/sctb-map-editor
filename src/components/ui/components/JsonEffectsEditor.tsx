@@ -9,7 +9,7 @@ import FileSelector from './FileSelector'
 import './EffectsEditor.css'
 import JsonNumberInput from './JsonNumberInput'
 import { MapFiles, PARTICLES_PATH, SCRIPTS_PATH, SKILLS_PATH } from '../../../state/MapFiles'
-import ValueSelector from './ValueSelector'
+import JsonValueSelector from './JsonValueSelector'
 import JsonArrayInput from './JsonArrayInput'
 import JsonColorSelector from './JsonColorSelector'
 import { EffectTemplates } from '../../../types/types'
@@ -73,7 +73,7 @@ const EffectEditor = observer((
     {'stat' in data &&
       <div className='effect-param'>
         Stat
-        <ValueSelector 
+        <JsonValueSelector 
           values={AllStats}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.stat`}
@@ -92,7 +92,7 @@ const EffectEditor = observer((
     {'id' in data &&
       <div className='effect-param'>
         Skill Id
-        <ValueSelector 
+        <JsonValueSelector 
           values={AllSkills}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.id`}
@@ -112,7 +112,7 @@ const EffectEditor = observer((
     {'affects' in data &&
       <div className='effect-param'>
         Affects
-        <ValueSelector 
+        <JsonValueSelector 
           values={AllAffects}
           filePath={filePath}
           valuePath={`${effectPath}.${idx}.${type}.affects`}
