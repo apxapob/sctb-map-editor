@@ -27,7 +27,7 @@ const CountriesOptions = (
   }
 
   return <div className='countries-grid'>
-    <span>Country</span>
+    <span>Country ID</span>
     <span>Color</span>
     <span>Minerals</span>
     <span>Mana</span>
