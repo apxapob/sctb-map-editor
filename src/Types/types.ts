@@ -363,6 +363,7 @@ export type MapInfo = {
   maxPlayers: number;
   countries: CountryInfo[];
   tiles: TileTypeInfo[];
+  teams?: 'disabled' | 'fixed' | 'configurable'
 }
 
 export type UnitsMap = {

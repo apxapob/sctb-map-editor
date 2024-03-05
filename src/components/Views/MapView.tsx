@@ -8,6 +8,7 @@ import TilesOptions from '../ui/components/TilesOptions'
 import JsonScriptsList from '../ui/components/JsonScriptsList'
 import { MapInfo } from '../../types/types'
 import { observer } from 'mobx-react-lite'
+import JsonValueSelector from '../ui/components/JsonValueSelector'
 
 const MapView = () => 
   <div className='view-container hflex map-view' style={{ gap: 30 }}>
@@ -65,6 +66,14 @@ const MapView = () =>
         min={(MapFiles.json[INFO_PATH] as MapInfo).minPlayers}
         max={99}
       />
+      <JsonValueSelector
+        title="Teams"
+        values={['disabled', 'fixed', 'configurable']}
+        defaultValue="disabled"
+        filePath={INFO_PATH}
+        valuePath={`teams`}
+      />
+
       <CountriesOptions
         filePath={INFO_PATH}
         valuePath='countries'

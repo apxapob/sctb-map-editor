@@ -13,6 +13,7 @@ const CountriesOptions = (
 ) => {
   const observedCountries = GetJsonFileValue(filePath, valuePath) as CountryInfo[]
   const maxPlayers = (MapFiles.json[filePath] as MapInfo).maxPlayers
+  const teamsSetting = (MapFiles.json[filePath] as MapInfo).teams
 
   while (observedCountries.length !== maxPlayers) {
     if (observedCountries.length > maxPlayers) {
@@ -32,7 +33,7 @@ const CountriesOptions = (
     <span>Minerals</span>
     <span>Mana</span>
     <span>Control</span>
-    <span>Team ID</span>
+    <span>{teamsSetting && teamsSetting !== "disabled" ? "Team ID" : ""}</span>
     
     {observedCountries.map((c, idx) => 
       [
@@ -69,6 +70,7 @@ const CountriesOptions = (
           filePath={filePath}
           valuePath={`countries.${idx}.control`}
         />,
+        teamsSetting && teamsSetting !== "disabled" ?
         <JsonNumberInput
           key={"6_" + idx}
           placeholder='Team'
@@ -77,7 +79,8 @@ const CountriesOptions = (
           filePath={filePath}
           valuePath={`countries.${idx}.team`}
           isInteger={true}
-        />
+          min={1}
+        /> : <div key={"6_" + idx} />
       ]
     )}
   </div>
