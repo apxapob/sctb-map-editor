@@ -43,7 +43,7 @@ export const GetJsonFileValue = (filePath:string, valuePath:string) => {
     if (Array.isArray(result)) {
       const idx = parseInt(nextPathPart)
       result = result[idx]
-    } else {
+    } else if(result !== null){
       result = result[nextPathPart]
     }
     if (result === undefined) {
