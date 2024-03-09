@@ -67,31 +67,28 @@ await fs.promises.mkdir(savesDest)
 await fs.promises.mkdir(resDest)
 await fs.promises.mkdir(mapsDest)
 
-const entries = await fs.promises.readdir(resSource)
-while(entries.length > 0){
-  const entry = entries.pop()
-  if(entry === ".tmp"){ continue }
-  var stats = await fs.promises.stat(resSource + entry)
-  if(stats.isDirectory()){
-    await fs.promises.mkdir(resDest + entry)
+const copyDir = async (source, dest) => {
+  const entries = await fs.promises.readdir(source)
 
-    const subEntries = await fs.promises.readdir(resSource + entry)
-    entries.push(
-      ...subEntries.map(s => entry + "/" + s)
-    )
-  } else {
-    await fs.promises.copyFile(resSource + entry, resDest + entry)
+  while(entries.length > 0){
+    const entry = entries.pop()
+    if(entry === ".tmp"){ continue }
+    var stats = await fs.promises.stat(source + entry)
+    if(stats.isDirectory()){
+      await fs.promises.mkdir(dest + entry)
+      
+      const subEntries = await fs.promises.readdir(source + entry)
+      entries.push(
+        ...subEntries.map(s => entry + "/" + s)
+      )
+    } else {
+      await fs.promises.copyFile(source + entry, dest + entry)
+    }
   }
 }
 
-const maps = await fs.promises.readdir(mapsSource)
-while(maps.length > 0){
-  const map = maps.pop()
-  var stats = await fs.promises.stat(mapsSource + map)
-  if(!stats.isDirectory() || map == "test"){ continue }
-
-  await compressFolder(mapsSource + map, mapsDest + map + ".map")
-}
+await copyDir(resSource, resDest)
+await copyDir(mapsSource, mapsDest)
 
 console.log("-Removing garbage...")
 
