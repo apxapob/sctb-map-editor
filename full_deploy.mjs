@@ -107,7 +107,6 @@ await removeExcept(asarDir + "app/src/", { electron: true })
 await removeExcept(asarDir + "app/node_modules/", {
   "archiver": true, 
   "archiver-utils": true, 
-  "unzipper": true,
   "steamworks.js": true,
   "readdir-glob": true,
   "balanced-match": true,

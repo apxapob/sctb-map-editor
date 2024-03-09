@@ -2,12 +2,11 @@ const { dialog, shell, app } = require('electron')
 const fs = require('fs')
 const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
-const { loadMapDir, loadMapFile, saveMapFile, removeMapFile, renameMapFile, loadMapInfo } = require('./loadFuncs')
+const { loadMapDir } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
 const { GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists } = require('./steamApi')
 
 let curMapPath = null
-const isMapFileMode = () => curMapPath?.endsWith(".map")
 
 const getSharedImagesDirPath = () => {
   return app.isPackaged ? './res/img/' : '../sctb-client/res/img/'
@@ -25,10 +24,7 @@ const getSaveFilesDirPath = () => {
 const loadMap = async (mapPath, mode, requestId) => {
   try {
     curMapPath = mapPath = mapPath.replaceAll("\\", "/")
-    const mapId = mapPath.substring(
-      mapPath.lastIndexOf("/")+1,
-      mapPath.endsWith(".map") ? mapPath.length-4 : undefined
-    )
+    const mapId = mapPath.substring(mapPath.lastIndexOf("/")+1)
     sendCommand({ command: 'LOADING_START' })
     
     let files = []
@@ -36,13 +32,8 @@ const loadMap = async (mapPath, mode, requestId) => {
 
     const sharedImgPath = getSharedImagesDirPath()
     await loadMapDir(sharedImgPath, dirs, files, s => s.replace(sharedImgPath, 'img'), true)
+    await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''), false)
     
-    if(isMapFileMode()){
-      await loadMapFile(mapPath, dirs, files)
-    } else {
-      await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''), false)
-    }
-
     files = files.reverse().filter((f, idx) => {
       const dupIdx = files.findIndex(f2 => f2.path === f.path)
       return idx <= dupIdx
@@ -202,10 +193,11 @@ exports.LOAD_SAVES_LIST = async ({ requestId }) => {
 }
 
 exports.LOAD_MAPS_LIST = async ({ requestId }) => {
-  let files = []
+  let mapDirs = []
   const mapsDirPath = getMapsDirPath()
   try {
-    files = await fs.promises.readdir(mapsDirPath)
+    mapDirs = await fs.promises.readdir(mapsDirPath)
+    mapDirs = mapDirs.filter(f => fs.lstatSync(mapsDirPath+f).isDirectory())
   } catch (err) {
     dialog.showErrorBox('Maps directory error:', err.message)
   }
@@ -214,7 +206,7 @@ exports.LOAD_MAPS_LIST = async ({ requestId }) => {
     command: 'TO_GAME',
     data: { 
       method: 'maps_list', 
-      data: files.filter(f => f.endsWith(".map")).map(f => f.substring(0, f.length-4)),
+      data: mapDirs,
       requestId
     }
   })
@@ -222,8 +214,9 @@ exports.LOAD_MAPS_LIST = async ({ requestId }) => {
 
 exports.LOAD_MAP_INFO = async ({ mapId, requestId }) => {
   try {
-    const mapFilePath = getMapsDirPath() + mapId + ".map"
-    const info = await loadMapInfo(mapFilePath)
+    const mapInfoPath = getMapsDirPath() + mapId + "/" + "info.json"
+    const info = await fs.promises.readFile(mapInfoPath, { encoding: 'utf8' })
+    
     sendCommand({
       command: 'TO_GAME',
       data: { method: 'map_info', mapId, info, requestId }
@@ -237,27 +230,15 @@ exports.EXIT = () => app.quit()
 
 exports.OPEN_MAP = async ({ data, replay, requestId }) => {
   const mapsDirPath = getMapsDirPath()
-  await loadMap(mapsDirPath + data + ".map", replay ? "replay" : "play", requestId)
+  await loadMap(mapsDirPath + data, replay ? "replay" : "play", requestId)
 }
 
-exports.EDIT_MAP_FOLDER = async ({ requestId }) => {
+exports.EDIT_MAP = async ({ requestId }) => {
   const { mainWindow } = require('./main')
   const dirs = dialog.showOpenDialogSync(mainWindow, { properties: ['openDirectory'] })
   if (!dirs) { return }
   
   await loadMap(dirs[0], "edit", requestId)
-}
-
-exports.EDIT_MAP = async ({ requestId }) => {
-  const { mainWindow } = require('./main')
-  const files = dialog.showOpenDialogSync(mainWindow, {
-    filters: [
-      { name: 'Map files', extensions: ['map'] }
-    ]
-  })
-  if (!files) { return }
-  
-  await loadMap(files[0], "edit", requestId)
 }
 
 exports.SAVE_TEXT_FILE = async ({ data }) => {
@@ -267,12 +248,8 @@ exports.SAVE_TEXT_FILE = async ({ data }) => {
     return
   }
   try {
-    if(isMapFileMode()){
-      saveMapFile(curMapPath, path, text)
-    } else {
-      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
-      await fs.promises.writeFile(fullPath, text)
-    }
+    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+    await fs.promises.writeFile(fullPath, text)
   } catch (err) {
     dialog.showErrorBox('Map save error', err.message)
   }
@@ -288,12 +265,8 @@ exports.SHOW_MESSAGE = async ({ title, message }) => {
 
 exports.MAKE_DIR = async ({ path }) => {
   try {
-    if(isMapFileMode()){
-      return
-    } else {
-      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
-      await fs.promises.mkdir(fullPath)
-    }
+    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+    await fs.promises.mkdir(fullPath)
   } catch (err) {
     dialog.showErrorBox('Folder creation error', err.message)
   }
@@ -301,20 +274,16 @@ exports.MAKE_DIR = async ({ path }) => {
 
 exports.DELETE = async ({ path, dirFiles }) => {
   try {
-    if(isMapFileMode()){
-      removeMapFile(curMapPath, path, dirFiles)
-    } else {
-      const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
-      await shell.trashItem(fullPath)
-    }
-
+    const fullPath = (curMapPath + '\\' + path).replaceAll('/', '\\')
+    await shell.trashItem(fullPath)
+    
     sendCommand({ command: 'DELETED', path })
     if(!path.startsWith("img/")){ return }
 
     const sharedImgPath = getSharedImagesDirPath() + path.substring(4)
     if(fs.existsSync( sharedImgPath )){
       if( fs.lstatSync(sharedImgPath).isDirectory() ){
-        if(!isMapFileMode()){ fs.promises.mkdir(curMapPath + '\\' + path) }
+        fs.promises.mkdir(curMapPath + '\\' + path)
         sendCommand({ command: 'LOAD_DIRECTORY', path, mode: "edit" })
 
         const dirs = []
@@ -366,14 +335,10 @@ exports.RENAME = async ({ path, newName }) => {
     parts.pop()
     parts.push(newName)
 
-    if(isMapFileMode()){
-      renameMapFile(curMapPath, path, parts.join('/'))
-    } else {
-      const oldPath = (curMapPath + '/' + path).replaceAll('/', '\\')
-      const newPath = (curMapPath + '/' + parts.join('/')).replaceAll('/', '\\')
-      
-      await fs.promises.rename(oldPath, newPath)
-    }
+    const oldPath = (curMapPath + '/' + path).replaceAll('/', '\\')
+    const newPath = (curMapPath + '/' + parts.join('/')).replaceAll('/', '\\')
+    
+    await fs.promises.rename(oldPath, newPath)
     
     sendCommand({ command: 'RENAMED', path, newName })
   } catch (err) {
@@ -407,16 +372,12 @@ exports.ADD_FILE = async ({ path }) => {
       mode: "edit"
     })
 
-    if(isMapFileMode()){
-      saveMapFile(curMapPath, path + "/" + fileName, bytes ?? text)
-    } else {
-      fs.promises.copyFile(filePath, curMapPath + "/" + path + "/" + fileName)
-    }
+    fs.promises.copyFile(filePath, curMapPath + "/" + path + "/" + fileName)
   }
   
 }
 
-exports.CREATE_MAP = async ({ requestId, folderMode }) => {
+exports.CREATE_MAP = async ({ requestId }) => {
   const { mainWindow } = require('./main')
   const dir = dialog.showSaveDialogSync(mainWindow, {
     title: 'Create Map',
@@ -426,9 +387,9 @@ exports.CREATE_MAP = async ({ requestId, folderMode }) => {
   
   try {
     await fs.promises.mkdir(dir)
-    await makeNewMap(dir, folderMode)
+    await makeNewMap(dir)
     await loadMap(
-      dir + (folderMode ? "" : ".map"),
+      dir,
       "edit",
       requestId
     )

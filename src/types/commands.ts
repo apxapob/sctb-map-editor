@@ -1,7 +1,7 @@
 export type CommandType = (
 {
   command: 'SAVE_CHANGES' | 'EDIT_MAP' | 'LOADING_START' | 'CREATE_MAP' | 
-           'TEST_MAP' | 'LOAD_MAPS_LIST' | 'EXIT';
+           'TEST_MAP' | 'EXIT';
 } | LoadTextCommandType | LoadBinaryCommandType | LoadMapErrorType | ToGameType
   | SaveTextFileType | FSCommandType | RenameType | LoadingEndType | OpenMapType | ShowMessageType
 ) & { requestId?: number }

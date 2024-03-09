@@ -1,7 +1,6 @@
 const fs = require('fs')
-const { makeMapFile } = require('./loadFuncs')
 
-exports.makeNewMap = async (dir, folderMode) => {
+exports.makeNewMap = async (dir) => {
   const mapId = dir.split(/[\\/]/gm).pop()
 
   await makeRootFiles(dir, mapId)
@@ -11,11 +10,6 @@ exports.makeNewMap = async (dir, folderMode) => {
   await makeLocaleDir(dir, mapId)
   await makeParticlesDir(dir, mapId)
   await makeScriptsDir(dir, mapId)
-  
-  if(!folderMode){
-    await makeMapFile(dir, dir + ".map")
-    await fs.promises.rm(dir, { recursive: true, force: true })
-  }
 }
 
 const makeRootFiles = async (dir, mapId) => {
