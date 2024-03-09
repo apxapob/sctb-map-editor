@@ -223,14 +223,74 @@ exports.LOAD_MAP_INFO = async ({ mapId, requestId }) => {
     })
   } catch (err) {
     console.error('Map file error:', err.message)
+    sendCommand({
+      command: 'TO_GAME',
+      data: { method: 'map_info', mapId, info: null, error: err.message, requestId }
+    })
   }
 }
 
 exports.EXIT = () => app.quit()
 
-exports.OPEN_MAP = async ({ data, replay, requestId }) => {
-  const mapsDirPath = getMapsDirPath()
-  await loadMap(mapsDirPath + data, replay ? "replay" : "play", requestId)
+exports.OPEN_MAP = async ({ mapId, replay, requestId }) => {
+  const mapsDirPath = getMapsDirPath() + mapId
+  await loadMap(mapsDirPath, replay ? "replay" : "play", requestId)
+}
+
+exports.MAP_TRANSFER = async ({ mapId, toPlayerId, requestId }) => {
+  const mapPath = getMapsDirPath() + mapId
+
+  const dirs = []
+  const files = []
+  await loadMapDir(mapPath, dirs, files, s => s.replace(mapPath + '/', ''), false)
+
+  for (const dir of dirs) {
+    sendCommand({
+      command: 'TO_GAME',
+      data: { method: 'transfer_dir', path: dir.path, toPlayerId, mapId }
+    })
+  }
+
+  let loaded = 0
+  for (const fileEntry of files) {
+    const { content, path, gameFile } = fileEntry
+    if (isTextFile(path)) {
+      sendCommand({
+        command: 'TO_GAME',
+        data: { 
+          method: 'transfer_text_file', 
+          path,
+          toPlayerId, 
+          mapId,
+          text: content.toString(),
+          progress: loaded / files.length 
+        }
+      })
+      loaded++
+    } else {
+      sendCommand({
+        command: 'TO_GAME',
+        data: { 
+          method: 'transfer_binary_file', 
+          path, 
+          toPlayerId, 
+          mapId,
+          bytes: content, 
+          progress: loaded / files.length
+        }
+      })
+      loaded++
+    }
+  }
+  sendCommand({
+    command: 'TO_GAME',
+    data: { 
+      method: 'transfer_end', 
+      mapId, 
+      toPlayerId,
+      requestId 
+    }
+  })
 }
 
 exports.EDIT_MAP = async ({ requestId }) => {

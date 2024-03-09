@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { isTextFile } = require('./StringUtils')
 
+//gameFile - flag which shows is a file belongs to the game or the to map
 const loadMapDir = async (path, dirs, files, replacer, gameFile) => {
   const entries = await fs.promises.readdir(path, { withFileTypes: true })
   for (const entry of entries) {
