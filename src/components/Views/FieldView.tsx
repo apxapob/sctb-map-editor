@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Tools from '../ui/Tools'
 import ObjectSelection from '../ui/ObjectSelection'
 import { Selector } from '../ui/components/Selector'
@@ -31,34 +31,38 @@ const FogOfWarSelector = observer(() => {
 const TestingTool = observer(() => {
   const maxPlayers = (MapFiles.json[INFO_PATH] as MapInfo).maxPlayers
   const players = TestingSettings.players
+
+  const [open, setOpen] = useState(false)
   
   return <div className='test-tool vflex'>
-    Test map settings
-    <div className="vflex gap">
-      {Array(maxPlayers).fill(0).map((_, idx) => 
-        <div key={idx} className="hflex gap">
-          country {idx}:
-          <button 
-            className={players[idx] === 'player' ? 'selectedBtn' : ''} 
-            onClick={() => ChangePlayerSetting(idx, "player")}
-          >
+    <span onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }} >Test map settings {open ? "⌃" : "˅"}</span>
+    {open &&
+      <div className="vflex gap">
+        {Array(maxPlayers).fill(0).map((_, idx) => 
+          <div key={idx} className="hflex gap">
+            country {idx+1}:
+            <button 
+              className={players[idx] === 'player' ? 'selectedBtn' : ''} 
+              onClick={() => ChangePlayerSetting(idx, "player")}
+            >
               player
-          </button>
-          <button 
-            className={players[idx] === 'ai' ? 'selectedBtn' : ''} 
-            onClick={() => ChangePlayerSetting(idx, "ai")}
-          >
-            ai
-          </button>
-          <button 
-            className={!players[idx] ? 'selectedBtn' : ''} 
-            onClick={() => ChangePlayerSetting(idx, null)}
-          >
-            disabled
-          </button>
-        </div>
-      )}
-    </div>
+            </button>
+            <button 
+              className={players[idx] === 'ai' ? 'selectedBtn' : ''} 
+              onClick={() => ChangePlayerSetting(idx, "ai")}
+            >
+              ai
+            </button>
+            <button 
+              className={!players[idx] ? 'selectedBtn' : ''} 
+              onClick={() => ChangePlayerSetting(idx, null)}
+            >
+              disabled
+            </button>
+          </div>
+        )}
+      </div>
+    }
     <button className="tool" onClick={TestMap} >Test Map</button>
   </div>
 })

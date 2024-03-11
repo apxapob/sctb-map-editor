@@ -30,8 +30,12 @@ const CountriesOptions = (
   return <div className='countries-grid'>
     <span>Country ID</span>
     <span>Color</span>
-    <span>Minerals</span>
-    <span>Mana</span>
+    <span title='Initial amount of minerals. You can change name of this resource in locale files. Use: label_minerals key to do it'>
+      Minerals
+    </span>
+    <span title='Initial amount of mana. You can change name of this resource in locale files. Use: label_mana key to do it'>
+      Mana
+    </span>
     <span>Control</span>
     <span>{teamsSetting && teamsSetting !== "disabled" ? "Team ID" : ""}</span>
     
