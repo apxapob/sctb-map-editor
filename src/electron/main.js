@@ -22,7 +22,8 @@ const createWindow = () => {
   if(app.isPackaged && !DebugMode){
     win.loadFile('./dist/index.html')
   } else {
-    win.loadURL('http://localhost:3000')
+    //win.loadURL('http://localhost:3000')
+    win.loadURL('http://192.168.56.1:3000/')
   }
   
   initHotKeys(win)
