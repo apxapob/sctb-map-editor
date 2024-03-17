@@ -18,7 +18,7 @@ exports.InitAPI = () => {
 }
 
 exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player"
-exports.GetPlayerId = () => client?.localplayer?.getSteamId().accountId ?? null
+exports.GetPlayerId = () => client?.localplayer?.getSteamId().steamId64 + ''
 exports.CloudEnabled = () => !!(client?.cloud.isEnabledForAccount() && client?.cloud.isEnabledForApp())
 
 exports.readFile = async (name) => {
@@ -40,18 +40,26 @@ exports.fileExists = async (name) => {
   else return await fs.promises.fileExists(name)
 }
 
+const lobbyToJSObj = lobby => ({
+  id: lobby.id,
+  membersCount: lobby.getMemberCount(),
+  membersLimit: lobby.getMemberLimit(),
+  members: lobby.getMembers().map(id => id.steamId64 + ''),
+  owner: lobby.getOwner().steamId64 + ''
+})
+
 exports.getLobbies = async () => {
-  return await client?.matchmaking.getLobbies()
+  return (await client?.matchmaking.getLobbies()).map(lobbyToJSObj)
 }
 
 exports.createLobby = async (isPrivate) => {
   curLobby = await client?.matchmaking.createLobby(isPrivate ? 0 : 2, 20)
-  return curLobby
+  return lobbyToJSObj(curLobby)
 }
 
 exports.joinLobby = async (lobbyId) => {
   curLobby = await client?.matchmaking.joinLobby(lobbyId)
-  return curLobby
+  return lobbyToJSObj(curLobby)
 }
 
 exports.leaveLobby = () => {
