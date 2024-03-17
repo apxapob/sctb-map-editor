@@ -2,7 +2,8 @@ const fs = require('fs')
 const steamworks = require('steamworks.js')
 const { SteamEnabled } = require('./consts')
 
-let client = null 
+let client = null
+let curLobby = null
 
 exports.InitAPI = () => {
   if(!SteamEnabled) return
@@ -10,7 +11,7 @@ exports.InitAPI = () => {
   //2865970 - playtest id
   //2860520 - main game id
   client = steamworks.init(2865970)//pass steam app api here
-  
+  console.log("client", client)
   steamworks.electronEnableSteamOverlay()
 
   console.log("Steam Cloud enabled:", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
@@ -37,4 +38,31 @@ exports.deleteFile = async (name) => {
 exports.fileExists = async (name) => {
   if(exports.CloudEnabled()) return client?.cloud.fileExists(name)
   else return await fs.promises.fileExists(name)
+}
+
+exports.getLobbies = async () => {
+  return await client?.matchmaking.getLobbies()
+}
+
+exports.createLobby = async (isPrivate) => {
+  curLobby = await client?.matchmaking.createLobby(isPrivate ? 0 : 2, 20)
+  return curLobby
+}
+
+exports.joinLobby = async (lobbyId) => {
+  curLobby = await client?.matchmaking.joinLobby(lobbyId)
+  return curLobby
+}
+
+exports.leaveLobby = () => {
+  curLobby.leave()
+  curLobby = null
+}
+
+exports.sendMessage = async (userId, data) => {
+  await client?.networking_messages.sendMessageToUser(userId, data)
+}
+
+exports.receiveMessages = async () => {
+  return client?.networking_messages.receiveMessagesOnChannel()
 }

@@ -4,7 +4,10 @@ const { sendCommand } = require('./messenger')
 const { compress, decompress, isTextFile } = require('./StringUtils')
 const { loadMapDir } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
-const { GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists } = require('./steamApi')
+const { 
+  GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists, 
+  createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, receiveMessages
+} = require('./steamApi')
 
 let curMapPath = null
 
@@ -154,6 +157,46 @@ exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
       requestId
     }
   })
+}
+
+exports.CREATE_LOBBY = async ({ requestId }) => {
+  const lobby = await createLobby()
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'lobby_created',
+      lobby,
+      requestId
+    }
+  })
+}
+
+exports.JOIN_LOBBY = async ({ lobbyId, requestId }) => {
+  const lobby = await joinLobby(lobbyId)
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'lobby_joined',
+      lobby,
+      requestId
+    }
+  })
+}
+
+exports.GET_LOBBIES = async ({ requestId }) => {
+  const lobbies = await getLobbies()
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'lobbies_list',
+      lobbies,
+      requestId
+    }
+  })
+}
+
+exports.LEAVE_LOBBY = () => {
+  leaveLobby()
 }
 
 exports.LOAD_GAME = async ({ data, replay, requestId }) => {
