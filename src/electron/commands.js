@@ -204,6 +204,14 @@ exports.LEAVE_LOBBY = () => {
   leaveLobby()
 }
 
+exports.SEND_MSG_TO = async ({ userId, data }) => {
+  await sendMessage(userId, data)
+}
+exports.RECEIVE_MSG = async () => {
+  const result = await receiveMessages()
+  console.log("@@@ received:", result)
+}
+
 exports.LOAD_GAME = async ({ data, replay, requestId }) => {
   try {
     const saveFilePath = getSaveFilesDirPath() + data

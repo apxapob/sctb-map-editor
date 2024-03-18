@@ -1,6 +1,7 @@
 const fs = require('fs')
 const steamworks = require('steamworks.js')
 const { SteamEnabled } = require('./consts')
+const { compress, decompress } = require('./StringUtils')
 
 let client = null
 let curLobby = null
@@ -41,7 +42,7 @@ exports.fileExists = async (name) => {
 }
 
 const lobbyToJSObj = lobby => ({
-  id: lobby.id,
+  id: lobby.id + '',
   name: lobby.getData("name"),
   membersCount: lobby.getMemberCount(),
   maxPlayers: lobby.getMemberLimit(),
@@ -60,8 +61,13 @@ exports.createLobby = async (isPrivate) => {
 }
 
 exports.joinLobby = async (lobbyId) => {
-  curLobby = await client?.matchmaking.joinLobby(lobbyId)
-  return lobbyToJSObj(curLobby)
+  try{
+    curLobby = await client?.matchmaking.joinLobby(BigInt(lobbyId))
+    return lobbyToJSObj(curLobby)
+  } catch (e){
+    console.error(e)
+  }
+  return null
 }
 
 exports.leaveLobby = () => {
@@ -70,9 +76,14 @@ exports.leaveLobby = () => {
 }
 
 exports.sendMessage = async (userId, data) => {
-  await client?.networking_messages.sendMessageToUser(userId, data)
+  try {
+    const buf = await compress(JSON.stringify(data), true)
+    await client?.networking_messages.sendMessageToUser(BigInt(userId), buf)
+  } catch (e){
+    console.error(e)
+  }
 }
 
 exports.receiveMessages = async () => {
-  return client?.networking_messages.receiveMessagesOnChannel()
+  return await client?.networking_messages.receiveMessagesOnChannel()
 }
