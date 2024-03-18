@@ -8,6 +8,7 @@ const {
   GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists, 
   createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, receiveMessages
 } = require('./steamApi')
+const { SteamEnabled } = require('./consts')
 
 let curMapPath = null
 
@@ -139,16 +140,20 @@ exports.SAVE_GAME = async ({ data }) => {
 
 exports.LOAD_MULTIPLAYER_PROFILE = async ({ requestId }) => {
   let decompressed = null
-  try {
-    const profilePath = getSaveFilesDirPath() + 'data.prf'
-    const fileContent = await readFile(profilePath)
-    if(!!fileContent)decompressed = await decompress(fileContent)
-  } catch (err) {
-    console.warn('Load profile error:', err.message)
+  if(!SteamEnabled){
+    try {
+      const profilePath = getSaveFilesDirPath() + 'data.prf'
+      const fileContent = await readFile(profilePath)
+      if(!!fileContent)decompressed = await decompress(fileContent)
+    } catch (err) {
+      console.warn('Load profile error:', err.message)
+    }
   }
+  
   if(decompressed === null){
     decompressed = JSON.stringify({ name: GetPlayerName(), id: GetPlayerId(), password: null })
   }
+  
   sendCommand({
     command: 'TO_GAME', 
     data: { 

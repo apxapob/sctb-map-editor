@@ -17,7 +17,7 @@ exports.InitAPI = () => {
   console.log("Steam Cloud enabled:", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
 }
 
-exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player"
+exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player " + Math.floor(1 + Math.random() * 9998)
 exports.GetPlayerId = () => client?.localplayer?.getSteamId().steamId64 + ''
 exports.CloudEnabled = () => !!(client?.cloud.isEnabledForAccount() && client?.cloud.isEnabledForApp())
 
@@ -42,10 +42,11 @@ exports.fileExists = async (name) => {
 
 const lobbyToJSObj = lobby => ({
   id: lobby.id,
+  name: lobby.getData("name"),
   membersCount: lobby.getMemberCount(),
-  membersLimit: lobby.getMemberLimit(),
-  members: lobby.getMembers().map(id => id.steamId64 + ''),
-  owner: lobby.getOwner().steamId64 + ''
+  maxPlayers: lobby.getMemberLimit(),
+  players: lobby.getMembers().map(id => id.steamId64 + ''),
+  ownerId: lobby.getOwner().steamId64 + ''
 })
 
 exports.getLobbies = async () => {
@@ -54,6 +55,7 @@ exports.getLobbies = async () => {
 
 exports.createLobby = async (isPrivate) => {
   curLobby = await client?.matchmaking.createLobby(isPrivate ? 0 : 2, 20)
+  curLobby.setData("name", exports.GetPlayerName())
   return lobbyToJSObj(curLobby)
 }
 
@@ -63,7 +65,7 @@ exports.joinLobby = async (lobbyId) => {
 }
 
 exports.leaveLobby = () => {
-  curLobby.leave()
+  curLobby?.leave()
   curLobby = null
 }
 
