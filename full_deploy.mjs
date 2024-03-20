@@ -149,7 +149,7 @@ await removeExcept(asarDir + "app/node_modules/", {
   "big-integer": true,
 })
 
-console.log("-Compressing...")
-await compressFolder(win64packagePath, win64packagePath.substring(0, win64packagePath.length-1) + ".zip")
+//console.log("-Compressing...")
+//await compressFolder(win64packagePath, win64packagePath.substring(0, win64packagePath.length-1) + ".zip")
 
 console.log("!!! FULL DEPLOY FINISHED !!!")

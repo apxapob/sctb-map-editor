@@ -2,6 +2,9 @@ const fs = require('fs')
 const steamworks = require('steamworks.js')
 const { SteamEnabled } = require('./consts')
 const { compress, decompress } = require('./StringUtils')
+const { sendCommand } = require('./messenger')
+
+const steamApiKey = "770FA3A0DFB018C867BD8DD60D3DACAB"
 
 let client = null
 let curLobby = null
@@ -16,6 +19,20 @@ exports.InitAPI = () => {
   steamworks.electronEnableSteamOverlay()
 
   console.log("Steam Cloud enabled:", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
+
+  client.callback.register(client.callback.SteamCallback.LobbyChatUpdate, data => {
+    console.log("@@@ LobbyChatUpdate", data, !!curLobby)
+    if(!curLobby) return
+    sendCommand({
+      command: 'TO_GAME', 
+      data: { 
+        method: 'lobby_change',
+        players: curLobby.getMembers().map(id => id.steamId64 + '')
+      }
+    })
+  })
+
+  setInterval(receiveMessages, 1000)
 }
 
 exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player " + Math.floor(1 + Math.random() * 9998)
@@ -84,6 +101,42 @@ exports.sendMessage = async (userId, data) => {
   }
 }
 
-exports.receiveMessages = async () => {
-  return await client?.networking_messages.receiveMessagesOnChannel()
+receiveMessages = async () => {
+  const messages = await client?.networking_messages.receiveMessagesOnChannel()
+  for(let i in messages){
+    const m = messages[i]
+    console.log("message", m)
+    const fromId = (m.steamId?.steamId64) + ''
+    const msg = JSON.parse(await decompress(m.data))
+    sendCommand({
+      command: 'TO_GAME',
+      data: {
+        method: 'on_received_msg',
+        from: fromId,
+        msg
+      }
+    })
+  }
+}
+
+exports.getUsersData = async users => {
+  if(!users || users.lenth < 1) return []
+  const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${steamApiKey}&steamids=${users.join()}`
+  const response = await fetch(url)
+  const data = await response.json()
+  
+  /*{
+    steamid : 76561198048572879,
+    personaname : Popcorn, 
+    avatar : https://avatars.steamstatic.com/09e64aee9a10d9016021a0d315be5e1e0c3f2cbc.jpg, 
+    avatarmedium : https://avatars.steamstatic.com/09e64aee9a10d9016021a0d315be5e1e0c3f2cbc_medium.jpg, 
+    avatarfull : https://avatars.steamstatic.com/09e64aee9a10d9016021a0d315be5e1e0c3f2cbc_full.jpg, 
+    avatarhash : 09e64aee9a10d9016021a0d315be5e1e0c3f2cbc, 
+  }*/
+  return data.response.players.map(
+    pl => ({
+      id: pl.steamid,
+      name: pl.personaname,
+    })
+  )
 }

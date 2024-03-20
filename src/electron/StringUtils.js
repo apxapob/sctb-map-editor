@@ -16,7 +16,7 @@ exports.compress = async (uncompressed, needBuffer = false) => {
 
 exports.decompress = async (compressed, needBuffer = false) => {
   const buf = await decompressAsync(
-    Buffer.from(compressed, "base64"),
+    typeof compressed === 'string' ? Buffer.from(compressed, "base64") : compressed,
     {
       params: { [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT }
     }

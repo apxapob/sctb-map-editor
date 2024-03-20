@@ -6,7 +6,7 @@ const { loadMapDir } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
 const { 
   GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists, 
-  createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, receiveMessages
+  createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, getUsersData,
 } = require('./steamApi')
 const { SteamEnabled } = require('./consts')
 
@@ -207,9 +207,16 @@ exports.LEAVE_LOBBY = () => {
 exports.SEND_MSG_TO = async ({ userId, data }) => {
   await sendMessage(userId, data)
 }
-exports.RECEIVE_MSG = async () => {
-  const result = await receiveMessages()
-  console.log("@@@ received:", result)
+
+exports.GET_USERS_DATA = async ({ users, requestId }) => {
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'users_loaded',
+      players: await getUsersData(users),
+      requestId
+    }
+  })
 }
 
 exports.LOAD_GAME = async ({ data, replay, requestId }) => {
