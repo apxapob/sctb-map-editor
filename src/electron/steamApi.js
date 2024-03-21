@@ -86,6 +86,10 @@ exports.joinLobby = async (lobbyId) => {
   return null
 }
 
+exports.gameStarted = () => {
+  curLobby?.setJoinable(false)
+}
+
 exports.leaveLobby = () => {
   curLobby?.leave()
   curLobby = null
@@ -132,9 +136,6 @@ exports.getUsersData = async users => {
     avatarhash : 09e64aee9a10d9016021a0d315be5e1e0c3f2cbc, 
   }*/
   return data.response.players.map(
-    pl => ({
-      id: pl.steamid,
-      name: pl.personaname,
-    })
+    pl => ({ id: pl.steamid, name: pl.personaname, })
   )
 }
