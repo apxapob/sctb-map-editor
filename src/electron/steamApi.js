@@ -15,13 +15,12 @@ exports.InitAPI = () => {
   //2865970 - playtest id
   //2860520 - main game id
   client = steamworks.init(2865970)//pass steam app api here
-  console.log("client", client)
+  //console.log("client", client)
   steamworks.electronEnableSteamOverlay()
 
   console.log("Steam Cloud enabled:", client?.cloud.isEnabledForAccount(), client?.cloud.isEnabledForApp())
 
   client.callback.register(client.callback.SteamCallback.LobbyChatUpdate, data => {
-    console.log("@@@ LobbyChatUpdate", data, !!curLobby)
     if(!curLobby) return
     sendCommand({
       command: 'TO_GAME', 
@@ -32,7 +31,7 @@ exports.InitAPI = () => {
     })
   })
 
-  setInterval(receiveMessages, 1000)
+  setInterval(receiveMessages, 100)
 }
 
 exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player " + Math.floor(1 + Math.random() * 9998)
@@ -105,7 +104,6 @@ receiveMessages = async () => {
   const messages = await client?.networking_messages.receiveMessagesOnChannel()
   for(let i in messages){
     const m = messages[i]
-    console.log("message", m)
     const fromId = (m.steamId?.steamId64) + ''
     const msg = JSON.parse(await decompress(m.data))
     sendCommand({
