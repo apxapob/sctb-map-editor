@@ -135,7 +135,19 @@ exports.getUsersData = async users => {
     avatarfull : https://avatars.steamstatic.com/09e64aee9a10d9016021a0d315be5e1e0c3f2cbc_full.jpg, 
     avatarhash : 09e64aee9a10d9016021a0d315be5e1e0c3f2cbc, 
   }*/
-  return data.response.players.map(
-    pl => ({ id: pl.steamid, name: pl.personaname, })
-  )
+  
+  return await Promise.all(data.response.players.map(
+    async pl => {
+      try{
+        const avaResp = await fetch(pl.avatarfull)
+        const blob = await avaResp.blob()
+        const avatar = (await blob.stream().getReader().read()).value
+
+        return { id: pl.steamid, name: pl.personaname, avatar }
+      } catch (e) {
+        console.error("Load avatar error:", e)
+        return { id: pl.steamid, name: pl.personaname }
+      }
+    }
+  ))
 }
