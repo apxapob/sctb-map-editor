@@ -139,7 +139,7 @@ exports.getUsersData = async users => {
   return await Promise.all(data.response.players.map(
     async pl => {
       try{
-        const avaResp = await fetch(pl.avatarfull)
+        const avaResp = await fetch(pl.avatarmedium)
         const blob = await avaResp.blob()
         const avatar = (await blob.stream().getReader().read()).value
 
