@@ -69,7 +69,7 @@ const CountriesOptions = (
         />,
         <JsonValueSelector 
           key={"5_" + idx}
-          values={['only_player', "ai_or_player", "only_ai"]}
+          values={['only_player', 'ai_or_player', 'only_ai']}
           defaultValue="only_player"
           filePath={filePath}
           valuePath={`countries.${idx}.control`}

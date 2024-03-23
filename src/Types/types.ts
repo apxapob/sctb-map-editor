@@ -346,6 +346,7 @@ export type CountryInfo = {
   color: number;
   minerals: number;
   mana: number;
+  control: 'only_player' | 'ai_or_player' | 'only_ai';
 }
 
 export type TileTypeInfo = {

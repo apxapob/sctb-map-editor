@@ -83,9 +83,7 @@ export const processTextFile = action((file:string, text:string, gameFile: boole
     try {
       MapFiles.json[file] = JSON.parse(text)
       
-      if(file === INFO_PATH)ResetPlayerSetting(
-        (MapFiles.json[file] as MapInfo).minPlayers
-      )
+      if(file === INFO_PATH)ResetPlayerSetting()
     } catch (e) {
       console.error('Can\'t parse', file, (e as Error).message, text)
     }

@@ -24,7 +24,7 @@ exports.InitAPI = () => {
     if(!curLobby) return
     sendCommand({
       command: 'TO_GAME', 
-      data: { 
+      data: {
         method: 'lobby_change',
         players: curLobby.getMembers().map(id => id.steamId64 + '')
       }
