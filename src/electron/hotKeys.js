@@ -19,7 +19,7 @@ exports.initHotKeys = (win) => {
       if(input.key.toLowerCase() === 'f5') {
         win.webContents.reload()
       }
-      if(input.key.toLowerCase() === 'f12') {
+      if(input.key.toLowerCase() === 'f11') {
         win.webContents.openDevTools()
       }
     }

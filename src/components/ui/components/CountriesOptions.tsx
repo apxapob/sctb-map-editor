@@ -22,7 +22,8 @@ const CountriesOptions = (
       observedCountries.push({
         color: 0xffffff,
         minerals: 0,
-        mana: 0
+        mana: 0,
+        control: 'only_player'
       })
     }
   }
