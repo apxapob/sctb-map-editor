@@ -90,6 +90,10 @@ exports.gameStarted = () => {
   curLobby?.setJoinable(false)
 }
 
+exports.openInviteDialog = () => {
+  curLobby?.openInviteDialog()
+}
+
 exports.leaveLobby = () => {
   curLobby?.leave()
   curLobby = null

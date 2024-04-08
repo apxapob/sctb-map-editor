@@ -6,7 +6,8 @@ const { loadMapDir } = require('./loadFuncs')
 const { makeNewMap } = require('./makeNewMap')
 const { 
   GetPlayerName, GetPlayerId, CloudEnabled, deleteFile, readFile, writeFile, fileExists, 
-  createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, getUsersData, gameStarted
+  createLobby, getLobbies, joinLobby, leaveLobby, sendMessage, getUsersData, gameStarted,
+  openInviteDialog
 } = require('./steamApi')
 const { SteamEnabled } = require('./consts')
 
@@ -206,6 +207,10 @@ exports.LEAVE_LOBBY = () => {
 
 exports.GAME_STARTED = () => {
   gameStarted()
+}
+
+exports.OPEN_INVITE_DIALOG = () => {
+  openInviteDialog()
 }
 
 exports.SEND_MSG_TO = async ({ userId, data }) => {
