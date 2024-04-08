@@ -31,7 +31,20 @@ exports.InitAPI = () => {
     })
   })
 
-  setInterval(receiveMessages, 100)
+  client.callback.register(client.callback.SteamCallback.GameLobbyJoinRequested, data => {
+    sendCommand({
+      command: 'TO_GAME', 
+      data: { 
+        method: 'room_join_requested',
+        inviteInfo: { 
+          friend_steam_id : data.friend_steam_id + '', 
+          lobby_steam_id : data.lobby_steam_id + ''
+        }
+      }
+    })
+  })
+
+  setInterval(receiveMessages, 50)
 }
 
 exports.GetPlayerName = () => client?.localplayer?.getName() ?? "Player " + Math.floor(1 + Math.random() * 9998)
