@@ -213,6 +213,17 @@ exports.OPEN_INVITE_DIALOG = () => {
   openInviteDialog()
 }
 
+exports.GET_LAUNCH_ARGS = ({ requestId }) => {
+  sendCommand({
+    command: 'TO_GAME', 
+    data: { 
+      method: 'launch_args',
+      args: process.argv,
+      requestId
+    }
+  })
+}
+
 exports.SEND_MSG_TO = async ({ userId, data }) => {
   await sendMessage(userId, data)
 }
